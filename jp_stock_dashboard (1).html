@@ -1,0 +1,762 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#1f2937">
+<title>日本株スイング支援</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E📈%3C/text%3E%3C/svg%3E">
+<script src="https://cdn.tailwindcss.com"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chartjs-adapter-date-fns@3.0.0/dist/chartjs-adapter-date-fns.bundle.min.js"></script>
+<style>
+  body { font-family: -apple-system, BlinkMacSystemFont, "Hiragino Sans", "Noto Sans JP", sans-serif; }
+  .chip { display:inline-block; padding:2px 8px; border-radius:999px; font-size:11px; font-weight:600; }
+  .chip-buy  { background:#d1fae5; color:#065f46; }
+  .chip-sell { background:#fee2e2; color:#991b1b; }
+  .chip-hold { background:#e5e7eb; color:#374151; }
+  .loading { display:inline-block; width:14px; height:14px; border:2px solid #d1d5db; border-top-color:#3b82f6; border-radius:50%; animation:spin 0.8s linear infinite; }
+  @keyframes spin { to { transform: rotate(360deg); } }
+  details > summary { cursor:pointer; list-style:none; }
+  details > summary::-webkit-details-marker { display:none; }
+  input[type="number"], input[type="text"], select, textarea {
+    background:white; border:1px solid #d1d5db; border-radius:6px; padding:6px 10px; font-size:14px;
+  }
+  textarea { font-family: ui-monospace, monospace; }
+  button.btn {
+    background:#3b82f6; color:white; padding:8px 16px; border-radius:6px; font-weight:500; font-size:14px;
+  }
+  button.btn:hover { background:#2563eb; }
+  button.btn:disabled { background:#9ca3af; cursor:not-allowed; }
+  button.btn-sec { background:#e5e7eb; color:#374151; }
+  button.btn-sec:hover { background:#d1d5db; }
+  .metric { background:#f9fafb; padding:10px; border-radius:8px; text-align:center; }
+  .metric-label { font-size:11px; color:#6b7280; }
+  .metric-value { font-size:18px; font-weight:700; margin-top:2px; }
+</style>
+</head>
+<body class="bg-gray-50 text-gray-900">
+
+<!-- ヘッダー -->
+<header class="bg-gray-900 text-white p-4 sticky top-0 z-10 shadow">
+  <div class="flex items-center justify-between max-w-6xl mx-auto gap-2">
+    <h1 class="text-base md:text-xl font-bold">📈 日本株スイング支援</h1>
+    <div class="flex gap-2">
+      <button id="btn-refresh" class="btn !bg-blue-600 hover:!bg-blue-700">🔄 更新</button>
+      <button id="btn-settings" class="btn btn-sec !bg-gray-700 !text-white hover:!bg-gray-600">⚙️</button>
+    </div>
+  </div>
+  <p class="text-xs text-gray-400 max-w-6xl mx-auto mt-1">データ: Stooq (1日遅延) | <span id="last-updated">未取得</span></p>
+</header>
+
+<main class="max-w-6xl mx-auto p-3 md:p-6 space-y-6">
+
+  <!-- 設定パネル -->
+  <section id="settings-panel" class="bg-white rounded-lg shadow p-4 hidden">
+    <h2 class="font-bold mb-3">⚙️ 設定</h2>
+
+    <div class="mb-4">
+      <label class="block text-sm font-medium mb-1">ウォッチリスト (1行1銘柄)</label>
+      <textarea id="tickers" rows="8" class="w-full"></textarea>
+      <p class="text-xs text-gray-500 mt-1">例: 7203 (トヨタ) / 6758.T / ^nkx (日経平均)</p>
+    </div>
+
+    <div class="grid grid-cols-2 md:grid-cols-4 gap-3 mb-4">
+      <div>
+        <label class="block text-xs font-medium mb-1">データ期間</label>
+        <select id="lookback" class="w-full">
+          <option value="180">6ヶ月</option>
+          <option value="365" selected>1年</option>
+          <option value="730">2年</option>
+          <option value="1825">5年</option>
+        </select>
+      </div>
+      <div>
+        <label class="block text-xs font-medium mb-1">SMA短期</label>
+        <input type="number" id="sma-fast" value="25" min="5" max="50" class="w-full">
+      </div>
+      <div>
+        <label class="block text-xs font-medium mb-1">SMA長期</label>
+        <input type="number" id="sma-slow" value="75" min="20" max="200" class="w-full">
+      </div>
+      <div>
+        <label class="block text-xs font-medium mb-1">RSI期間</label>
+        <input type="number" id="rsi-period" value="14" min="5" max="30" class="w-full">
+      </div>
+      <div>
+        <label class="block text-xs font-medium mb-1">RSI買い水準</label>
+        <input type="number" id="rsi-low" value="30" min="10" max="40" class="w-full">
+      </div>
+      <div>
+        <label class="block text-xs font-medium mb-1">RSI売り水準</label>
+        <input type="number" id="rsi-high" value="70" min="60" max="90" class="w-full">
+      </div>
+      <div>
+        <label class="block text-xs font-medium mb-1">BB期間</label>
+        <input type="number" id="bb-period" value="20" min="10" max="50" class="w-full">
+      </div>
+      <div>
+        <label class="block text-xs font-medium mb-1">BB σ</label>
+        <input type="number" id="bb-std" value="2" min="1" max="3" step="0.1" class="w-full">
+      </div>
+      <div>
+        <label class="block text-xs font-medium mb-1">ブレイクアウト期間</label>
+        <input type="number" id="brk-period" value="20" min="5" max="60" class="w-full">
+      </div>
+      <div>
+        <label class="block text-xs font-medium mb-1">BUYしきい値</label>
+        <input type="number" id="buy-th" value="2" min="1" max="4" class="w-full">
+      </div>
+      <div>
+        <label class="block text-xs font-medium mb-1">SELLしきい値</label>
+        <input type="number" id="sell-th" value="-2" min="-4" max="-1" class="w-full">
+      </div>
+    </div>
+
+    <div class="flex flex-wrap gap-2">
+      <label class="flex items-center gap-1 text-sm"><input type="checkbox" id="use-sma" checked> SMAクロス</label>
+      <label class="flex items-center gap-1 text-sm"><input type="checkbox" id="use-rsi" checked> RSI</label>
+      <label class="flex items-center gap-1 text-sm"><input type="checkbox" id="use-bb"  checked> BB</label>
+      <label class="flex items-center gap-1 text-sm"><input type="checkbox" id="use-brk" checked> ブレイク</label>
+    </div>
+
+    <div class="flex gap-2 mt-4">
+      <button id="btn-apply" class="btn">💾 保存して再計算</button>
+      <button id="btn-reset" class="btn btn-sec">初期値に戻す</button>
+    </div>
+  </section>
+
+  <!-- ステータス -->
+  <div id="status" class="text-sm text-gray-600"></div>
+
+  <!-- シグナル発生銘柄 -->
+  <section class="grid md:grid-cols-2 gap-4">
+    <div class="bg-white rounded-lg shadow p-4">
+      <h2 class="font-bold mb-2">🟢 買いシグナル</h2>
+      <div id="buy-list" class="text-sm text-gray-500">計算中...</div>
+    </div>
+    <div class="bg-white rounded-lg shadow p-4">
+      <h2 class="font-bold mb-2">🔴 売りシグナル</h2>
+      <div id="sell-list" class="text-sm text-gray-500">計算中...</div>
+    </div>
+  </section>
+
+  <!-- ウォッチリスト全体 -->
+  <section class="bg-white rounded-lg shadow p-4 overflow-x-auto">
+    <h2 class="font-bold mb-3">📊 ウォッチリスト全体</h2>
+    <table class="w-full text-sm" id="watchlist-table">
+      <thead class="bg-gray-100 text-xs">
+        <tr>
+          <th class="px-2 py-2 text-left">銘柄</th>
+          <th class="px-2 py-2 text-right">現在値</th>
+          <th class="px-2 py-2 text-right">前日比%</th>
+          <th class="px-1 py-2 text-center">SMA</th>
+          <th class="px-1 py-2 text-center">RSI</th>
+          <th class="px-1 py-2 text-center">BB</th>
+          <th class="px-1 py-2 text-center">BRK</th>
+          <th class="px-2 py-2 text-center">スコア</th>
+          <th class="px-2 py-2 text-center">判定</th>
+        </tr>
+      </thead>
+      <tbody id="watchlist-body"></tbody>
+    </table>
+  </section>
+
+  <!-- 個別銘柄詳細 -->
+  <section class="bg-white rounded-lg shadow p-4">
+    <div class="flex items-center gap-3 mb-3 flex-wrap">
+      <h2 class="font-bold">🔍 個別銘柄の詳細</h2>
+      <select id="detail-select" class="text-sm"></select>
+    </div>
+    <div class="mb-4">
+      <canvas id="chart-price" height="240"></canvas>
+    </div>
+    <div class="mb-4">
+      <canvas id="chart-rsi" height="100"></canvas>
+    </div>
+    <div class="mb-4">
+      <canvas id="chart-score" height="100"></canvas>
+    </div>
+
+    <h3 class="font-bold mt-4 mb-2">📉 バックテスト結果</h3>
+    <p class="text-xs text-gray-500 mb-3">BUY判定が出たら買い、BUYが外れたら売り (ロングのみ・手数料未考慮)</p>
+    <div id="backtest-metrics" class="grid grid-cols-3 md:grid-cols-6 gap-2"></div>
+    <details class="mt-3">
+      <summary class="text-sm text-blue-600 hover:underline">取引履歴を見る ▼</summary>
+      <div id="backtest-trades" class="mt-2 overflow-x-auto"></div>
+    </details>
+  </section>
+
+  <footer class="text-xs text-gray-500 text-center py-4 border-t">
+    ⚠️ このツールは個人の判断補助用です。表示シグナルは過去の価格に基づく機械的計算であり、将来の利益を保証しません。売買判断は必ずご自身の責任で。
+  </footer>
+</main>
+
+<script>
+// ==============================================================
+// 設定管理
+// ==============================================================
+const DEFAULT_SETTINGS = {
+  tickers: "7203\n6758\n9984\n8035\n9983\n6861\n7974\n8306\n^nkx",
+  lookback: 365,
+  useSma: true, smaFast: 25, smaSlow: 75,
+  useRsi: true, rsiPeriod: 14, rsiLow: 30, rsiHigh: 70,
+  useBb:  true, bbPeriod: 20, bbStd: 2,
+  useBrk: true, brkPeriod: 20,
+  buyTh: 2, sellTh: -2,
+};
+
+function loadSettings() {
+  try {
+    const s = JSON.parse(localStorage.getItem("jp-stock-settings") || "null");
+    return { ...DEFAULT_SETTINGS, ...(s || {}) };
+  } catch { return { ...DEFAULT_SETTINGS }; }
+}
+function saveSettings(s) {
+  localStorage.setItem("jp-stock-settings", JSON.stringify(s));
+}
+
+let settings = loadSettings();
+
+function settingsToForm() {
+  document.getElementById("tickers").value = settings.tickers;
+  document.getElementById("lookback").value = settings.lookback;
+  document.getElementById("sma-fast").value = settings.smaFast;
+  document.getElementById("sma-slow").value = settings.smaSlow;
+  document.getElementById("rsi-period").value = settings.rsiPeriod;
+  document.getElementById("rsi-low").value = settings.rsiLow;
+  document.getElementById("rsi-high").value = settings.rsiHigh;
+  document.getElementById("bb-period").value = settings.bbPeriod;
+  document.getElementById("bb-std").value = settings.bbStd;
+  document.getElementById("brk-period").value = settings.brkPeriod;
+  document.getElementById("buy-th").value = settings.buyTh;
+  document.getElementById("sell-th").value = settings.sellTh;
+  document.getElementById("use-sma").checked = settings.useSma;
+  document.getElementById("use-rsi").checked = settings.useRsi;
+  document.getElementById("use-bb").checked  = settings.useBb;
+  document.getElementById("use-brk").checked = settings.useBrk;
+}
+function formToSettings() {
+  settings = {
+    tickers:  document.getElementById("tickers").value,
+    lookback: +document.getElementById("lookback").value,
+    smaFast:  +document.getElementById("sma-fast").value,
+    smaSlow:  +document.getElementById("sma-slow").value,
+    rsiPeriod:+document.getElementById("rsi-period").value,
+    rsiLow:   +document.getElementById("rsi-low").value,
+    rsiHigh:  +document.getElementById("rsi-high").value,
+    bbPeriod: +document.getElementById("bb-period").value,
+    bbStd:    +document.getElementById("bb-std").value,
+    brkPeriod:+document.getElementById("brk-period").value,
+    buyTh:    +document.getElementById("buy-th").value,
+    sellTh:   +document.getElementById("sell-th").value,
+    useSma: document.getElementById("use-sma").checked,
+    useRsi: document.getElementById("use-rsi").checked,
+    useBb:  document.getElementById("use-bb").checked,
+    useBrk: document.getElementById("use-brk").checked,
+  };
+  saveSettings(settings);
+}
+
+// ==============================================================
+// データ取得 (Stooq CSV)
+// ==============================================================
+// ユーザー入力を Stooq 形式に変換
+//   "7203"   -> "7203.jp"
+//   "7203.T" -> "7203.jp"
+//   "^nkx"   -> "^nkx"
+function normalizeTicker(raw) {
+  const t = raw.trim().toLowerCase();
+  if (t.startsWith("^")) return t;
+  const base = t.replace(/\.(t|jp)$/i, "");
+  return base + ".jp";
+}
+
+async function fetchStooq(ticker) {
+  const sym = normalizeTicker(ticker);
+  const url = `https://stooq.com/q/d/l/?s=${sym}&i=d`;
+  // Stooq は CORS 許可されているが環境により失敗することがあるので
+  // AllOrigins プロキシを fallback に用意
+  const attempts = [
+    url,
+    `https://api.allorigins.win/raw?url=${encodeURIComponent(url)}`,
+  ];
+  let lastErr;
+  for (const u of attempts) {
+    try {
+      const res = await fetch(u);
+      if (!res.ok) throw new Error("HTTP " + res.status);
+      const text = await res.text();
+      if (!text || text.startsWith("<") || text.length < 50) throw new Error("empty");
+      return parseCSV(text);
+    } catch (e) { lastErr = e; }
+  }
+  throw lastErr;
+}
+
+function parseCSV(text) {
+  const lines = text.trim().split("\n");
+  const header = lines[0].split(",").map(s => s.trim());
+  const idx = Object.fromEntries(header.map((h, i) => [h.toLowerCase(), i]));
+  const rows = [];
+  for (let i = 1; i < lines.length; i++) {
+    const cols = lines[i].split(",");
+    const date = cols[idx.date];
+    const open = +cols[idx.open], high = +cols[idx.high];
+    const low = +cols[idx.low], close = +cols[idx.close];
+    if (!date || isNaN(close)) continue;
+    rows.push({ date, open, high, low, close });
+  }
+  return rows;
+}
+
+// ==============================================================
+// テクニカル指標
+// ==============================================================
+function sma(arr, period) {
+  const out = new Array(arr.length).fill(null);
+  let sum = 0;
+  for (let i = 0; i < arr.length; i++) {
+    sum += arr[i];
+    if (i >= period) sum -= arr[i - period];
+    if (i >= period - 1) out[i] = sum / period;
+  }
+  return out;
+}
+function stddev(arr, period) {
+  const out = new Array(arr.length).fill(null);
+  for (let i = period - 1; i < arr.length; i++) {
+    const slice = arr.slice(i - period + 1, i + 1);
+    const m = slice.reduce((a, b) => a + b, 0) / period;
+    const v = slice.reduce((a, b) => a + (b - m) ** 2, 0) / period;
+    out[i] = Math.sqrt(v);
+  }
+  return out;
+}
+function rsi(closes, period) {
+  const out = new Array(closes.length).fill(null);
+  if (closes.length < period + 1) return out;
+  let gain = 0, loss = 0;
+  for (let i = 1; i <= period; i++) {
+    const d = closes[i] - closes[i - 1];
+    if (d >= 0) gain += d; else loss -= d;
+  }
+  gain /= period; loss /= period;
+  out[period] = loss === 0 ? 100 : 100 - 100 / (1 + gain / loss);
+  for (let i = period + 1; i < closes.length; i++) {
+    const d = closes[i] - closes[i - 1];
+    const g = d > 0 ? d : 0;
+    const l = d < 0 ? -d : 0;
+    gain = (gain * (period - 1) + g) / period;
+    loss = (loss * (period - 1) + l) / period;
+    out[i] = loss === 0 ? 100 : 100 - 100 / (1 + gain / loss);
+  }
+  return out;
+}
+function rollingMax(arr, period) {
+  const out = new Array(arr.length).fill(null);
+  for (let i = period; i < arr.length; i++) {
+    let m = -Infinity;
+    for (let j = i - period; j < i; j++) if (arr[j] > m) m = arr[j];
+    out[i] = m;
+  }
+  return out;
+}
+function rollingMin(arr, period) {
+  const out = new Array(arr.length).fill(null);
+  for (let i = period; i < arr.length; i++) {
+    let m = Infinity;
+    for (let j = i - period; j < i; j++) if (arr[j] < m) m = arr[j];
+    out[i] = m;
+  }
+  return out;
+}
+
+function addIndicators(rows) {
+  const closes = rows.map(r => r.close);
+  const highs = rows.map(r => r.high);
+  const lows = rows.map(r => r.low);
+  const smaFast = sma(closes, settings.smaFast);
+  const smaSlow = sma(closes, settings.smaSlow);
+  const rsiArr = rsi(closes, settings.rsiPeriod);
+  const bbMid = sma(closes, settings.bbPeriod);
+  const sd = stddev(closes, settings.bbPeriod);
+  const bbUp = bbMid.map((m, i) => m != null ? m + settings.bbStd * sd[i] : null);
+  const bbLow = bbMid.map((m, i) => m != null ? m - settings.bbStd * sd[i] : null);
+  const brkHigh = rollingMax(highs, settings.brkPeriod);
+  const brkLow = rollingMin(lows, settings.brkPeriod);
+  return rows.map((r, i) => ({
+    ...r,
+    smaFast: smaFast[i], smaSlow: smaSlow[i],
+    rsi: rsiArr[i],
+    bbMid: bbMid[i], bbUp: bbUp[i], bbLow: bbLow[i],
+    brkHigh: brkHigh[i], brkLow: brkLow[i],
+  }));
+}
+
+// ==============================================================
+// シグナル
+// ==============================================================
+function scoreRow(r) {
+  const s = {};
+  if (settings.useSma && r.smaFast != null && r.smaSlow != null) {
+    s.sma = r.smaFast > r.smaSlow ? 1 : -1;
+  }
+  if (settings.useRsi && r.rsi != null) {
+    s.rsi = r.rsi < settings.rsiLow ? 1 : r.rsi > settings.rsiHigh ? -1 : 0;
+  }
+  if (settings.useBb && r.bbLow != null) {
+    s.bb = r.close < r.bbLow ? 1 : r.close > r.bbUp ? -1 : 0;
+  }
+  if (settings.useBrk && r.brkHigh != null) {
+    s.brk = r.close > r.brkHigh ? 1 : r.close < r.brkLow ? -1 : 0;
+  }
+  return s;
+}
+function classify(total) {
+  if (total >= settings.buyTh) return "BUY";
+  if (total <= settings.sellTh) return "SELL";
+  return "HOLD";
+}
+function computeSignals(rows) {
+  return rows.map(r => {
+    const parts = scoreRow(r);
+    const total = Object.values(parts).reduce((a, b) => a + b, 0);
+    return { ...r, parts, score: total, signal: classify(total) };
+  });
+}
+
+// ==============================================================
+// バックテスト (ロングオンリー)
+// ==============================================================
+function backtest(rows) {
+  const trades = [];
+  let inPos = false, entryPrice = 0, entryDate = "";
+  for (let i = 1; i < rows.length; i++) {
+    const prev = rows[i - 1].signal, sig = rows[i].signal;
+    if (!inPos && prev !== "BUY" && sig === "BUY") {
+      inPos = true; entryPrice = rows[i].close; entryDate = rows[i].date;
+    } else if (inPos && sig !== "BUY") {
+      const ret = (rows[i].close - entryPrice) / entryPrice * 100;
+      trades.push({
+        entry: entryDate, exit: rows[i].date,
+        entryPrice, exitPrice: rows[i].close, ret,
+      });
+      inPos = false;
+    }
+  }
+  if (!trades.length) return { trades: [], summary: null };
+  const wins = trades.filter(t => t.ret > 0).length;
+  const avg = trades.reduce((a, t) => a + t.ret, 0) / trades.length;
+  const max = Math.max(...trades.map(t => t.ret));
+  const min = Math.min(...trades.map(t => t.ret));
+  let equity = 1;
+  for (const t of trades) equity *= (1 + t.ret / 100);
+  return {
+    trades,
+    summary: {
+      count: trades.length,
+      winRate: (wins / trades.length * 100).toFixed(1),
+      avgRet: avg.toFixed(2),
+      maxRet: max.toFixed(2),
+      minRet: min.toFixed(2),
+      cumRet: ((equity - 1) * 100).toFixed(2),
+    },
+  };
+}
+
+// ==============================================================
+// UI レンダリング
+// ==============================================================
+const stockData = {};  // ticker -> rows[]
+
+function renderWatchlist() {
+  const tbody = document.getElementById("watchlist-body");
+  tbody.innerHTML = "";
+  const buyList = [], sellList = [];
+  const tickers = settings.tickers.split("\n").map(t => t.trim()).filter(Boolean);
+
+  for (const t of tickers) {
+    const data = stockData[t];
+    const tr = document.createElement("tr");
+    tr.className = "border-t hover:bg-gray-50 cursor-pointer";
+    tr.onclick = () => {
+      document.getElementById("detail-select").value = t;
+      renderDetail(t);
+      document.getElementById("chart-price").scrollIntoView({ behavior: "smooth", block: "start" });
+    };
+
+    if (!data || !data.rows || !data.rows.length) {
+      tr.innerHTML = `<td class="px-2 py-2 font-mono text-xs">${t}</td>
+        <td colspan="8" class="px-2 py-2 text-center text-gray-400 text-xs">${data?.error || "取得中..."}</td>`;
+      tbody.appendChild(tr);
+      continue;
+    }
+    const rows = data.rows;
+    const cutoff = Math.max(settings.smaSlow, settings.bbPeriod, settings.brkPeriod) + 2;
+    if (rows.length < cutoff) {
+      tr.innerHTML = `<td class="px-2 py-2 font-mono text-xs">${t}</td>
+        <td colspan="8" class="px-2 py-2 text-center text-gray-400 text-xs">データ不足</td>`;
+      tbody.appendChild(tr);
+      continue;
+    }
+    const last = rows[rows.length - 1];
+    const prev = rows[rows.length - 2];
+    const chg = (last.close - prev.close) / prev.close * 100;
+
+    const verdictClass = last.signal === "BUY" ? "chip-buy" : last.signal === "SELL" ? "chip-sell" : "chip-hold";
+    const chgClass = chg > 0 ? "text-green-600" : chg < 0 ? "text-red-600" : "text-gray-500";
+    const cell = (v) => v === 1 ? `<span class="text-green-600 font-bold">+1</span>`
+                     : v === -1 ? `<span class="text-red-600 font-bold">-1</span>`
+                     : v === 0 ? `<span class="text-gray-400">0</span>`
+                     : `<span class="text-gray-300">-</span>`;
+
+    tr.innerHTML = `
+      <td class="px-2 py-2 font-mono text-xs">${t}</td>
+      <td class="px-2 py-2 text-right">${last.close.toLocaleString()}</td>
+      <td class="px-2 py-2 text-right ${chgClass}">${chg >= 0 ? "+" : ""}${chg.toFixed(2)}</td>
+      <td class="px-1 py-2 text-center">${cell(last.parts.sma)}</td>
+      <td class="px-1 py-2 text-center">${cell(last.parts.rsi)}</td>
+      <td class="px-1 py-2 text-center">${cell(last.parts.bb)}</td>
+      <td class="px-1 py-2 text-center">${cell(last.parts.brk)}</td>
+      <td class="px-2 py-2 text-center font-bold">${last.score > 0 ? "+" : ""}${last.score}</td>
+      <td class="px-2 py-2 text-center"><span class="chip ${verdictClass}">${last.signal}</span></td>
+    `;
+    tbody.appendChild(tr);
+
+    if (last.signal === "BUY") buyList.push({ t, last, chg });
+    if (last.signal === "SELL") sellList.push({ t, last, chg });
+  }
+
+  const renderList = (items, id) => {
+    const el = document.getElementById(id);
+    if (!items.length) { el.innerHTML = `<p class="text-gray-400 text-sm">該当なし</p>`; return; }
+    el.innerHTML = items.map(({ t, last, chg }) => `
+      <div class="flex justify-between items-center py-1.5 border-b last:border-0 cursor-pointer hover:bg-gray-50"
+           onclick="document.getElementById('detail-select').value='${t}'; renderDetail('${t}');">
+        <span class="font-mono text-xs">${t}</span>
+        <span class="text-sm">${last.close.toLocaleString()}</span>
+        <span class="text-xs ${chg >= 0 ? "text-green-600" : "text-red-600"}">${chg >= 0 ? "+" : ""}${chg.toFixed(2)}%</span>
+        <span class="text-xs font-bold">score: ${last.score > 0 ? "+" : ""}${last.score}</span>
+      </div>`).join("");
+  };
+  renderList(buyList, "buy-list");
+  renderList(sellList, "sell-list");
+
+  // 詳細セレクト更新
+  const sel = document.getElementById("detail-select");
+  const current = sel.value;
+  const validTickers = tickers.filter(t => stockData[t]?.rows?.length);
+  sel.innerHTML = validTickers.map(t => `<option value="${t}">${t}</option>`).join("");
+  if (validTickers.includes(current)) sel.value = current;
+  if (sel.value) renderDetail(sel.value);
+}
+
+// ==============================================================
+// 詳細チャート
+// ==============================================================
+let priceChart, rsiChart, scoreChart;
+
+function renderDetail(ticker) {
+  const data = stockData[ticker];
+  if (!data || !data.rows || !data.rows.length) return;
+  const rows = data.rows;
+
+  // 直近200日だけ表示 (モバイルで軽く)
+  const r = rows.slice(-200);
+  const labels = r.map(x => x.date);
+
+  const priceCtx = document.getElementById("chart-price").getContext("2d");
+  if (priceChart) priceChart.destroy();
+  priceChart = new Chart(priceCtx, {
+    type: "line",
+    data: {
+      labels,
+      datasets: [
+        { label: "終値", data: r.map(x => x.close), borderColor: "#1f2937", borderWidth: 2, pointRadius: 0, tension: 0.1 },
+        { label: `SMA${settings.smaFast}`, data: r.map(x => x.smaFast), borderColor: "#2563eb", borderWidth: 1.2, pointRadius: 0 },
+        { label: `SMA${settings.smaSlow}`, data: r.map(x => x.smaSlow), borderColor: "#db2777", borderWidth: 1.2, pointRadius: 0 },
+        { label: "BB上", data: r.map(x => x.bbUp), borderColor: "rgba(107,114,128,0.5)", borderWidth: 1, borderDash: [3, 3], pointRadius: 0 },
+        { label: "BB下", data: r.map(x => x.bbLow), borderColor: "rgba(107,114,128,0.5)", borderWidth: 1, borderDash: [3, 3], pointRadius: 0 },
+        {
+          label: "BUY", type: "scatter",
+          data: r.map((x, i) => (x.signal === "BUY" && (i === 0 || r[i - 1].signal !== "BUY")) ? { x: labels[i], y: x.low * 0.98 } : null).filter(Boolean),
+          backgroundColor: "#10b981", borderColor: "#10b981",
+          pointStyle: "triangle", pointRadius: 8, rotation: 0,
+        },
+        {
+          label: "SELL", type: "scatter",
+          data: r.map((x, i) => (x.signal === "SELL" && (i === 0 || r[i - 1].signal !== "SELL")) ? { x: labels[i], y: x.high * 1.02 } : null).filter(Boolean),
+          backgroundColor: "#ef4444", borderColor: "#ef4444",
+          pointStyle: "triangle", pointRadius: 8, rotation: 180,
+        },
+      ],
+    },
+    options: {
+      responsive: true, maintainAspectRatio: false,
+      interaction: { mode: "index", intersect: false },
+      plugins: { legend: { position: "top", labels: { boxWidth: 10, font: { size: 10 } } },
+                 title: { display: true, text: `${ticker} - 価格 + SMA + BB` } },
+      scales: { x: { ticks: { maxTicksLimit: 8, font: { size: 10 } } },
+                y: { ticks: { font: { size: 10 } } } },
+    },
+  });
+
+  const rsiCtx = document.getElementById("chart-rsi").getContext("2d");
+  if (rsiChart) rsiChart.destroy();
+  rsiChart = new Chart(rsiCtx, {
+    type: "line",
+    data: {
+      labels,
+      datasets: [
+        { label: "RSI", data: r.map(x => x.rsi), borderColor: "#7c3aed", borderWidth: 1.5, pointRadius: 0 },
+        { label: "買い水準", data: r.map(() => settings.rsiLow), borderColor: "#10b981", borderWidth: 1, borderDash: [3, 3], pointRadius: 0 },
+        { label: "売り水準", data: r.map(() => settings.rsiHigh), borderColor: "#ef4444", borderWidth: 1, borderDash: [3, 3], pointRadius: 0 },
+      ],
+    },
+    options: {
+      responsive: true, maintainAspectRatio: false,
+      plugins: { legend: { display: false }, title: { display: true, text: "RSI" } },
+      scales: { y: { min: 0, max: 100, ticks: { font: { size: 10 } } },
+                x: { display: false } },
+    },
+  });
+
+  const scoreCtx = document.getElementById("chart-score").getContext("2d");
+  if (scoreChart) scoreChart.destroy();
+  scoreChart = new Chart(scoreCtx, {
+    type: "bar",
+    data: {
+      labels,
+      datasets: [{
+        label: "Score",
+        data: r.map(x => x.score),
+        backgroundColor: r.map(x =>
+          x.score >= settings.buyTh ? "#10b981" :
+          x.score <= settings.sellTh ? "#ef4444" : "#9ca3af"),
+      }],
+    },
+    options: {
+      responsive: true, maintainAspectRatio: false,
+      plugins: { legend: { display: false }, title: { display: true, text: "複合スコア" } },
+      scales: { y: { suggestedMin: -4, suggestedMax: 4, ticks: { font: { size: 10 } } },
+                x: { display: false } },
+    },
+  });
+
+  // バックテスト
+  const bt = backtest(rows);
+  const mEl = document.getElementById("backtest-metrics");
+  if (!bt.summary) {
+    mEl.innerHTML = `<div class="col-span-6 text-center text-gray-400 text-sm py-4">この期間では売買シグナルが発生しませんでした</div>`;
+    document.getElementById("backtest-trades").innerHTML = "";
+    return;
+  }
+  const s = bt.summary;
+  mEl.innerHTML = `
+    <div class="metric"><div class="metric-label">取引数</div><div class="metric-value">${s.count}</div></div>
+    <div class="metric"><div class="metric-label">勝率</div><div class="metric-value">${s.winRate}%</div></div>
+    <div class="metric"><div class="metric-label">平均</div><div class="metric-value ${+s.avgRet >= 0 ? "text-green-600" : "text-red-600"}">${s.avgRet}%</div></div>
+    <div class="metric"><div class="metric-label">最大利益</div><div class="metric-value text-green-600">${s.maxRet}%</div></div>
+    <div class="metric"><div class="metric-label">最大損失</div><div class="metric-value text-red-600">${s.minRet}%</div></div>
+    <div class="metric"><div class="metric-label">累積</div><div class="metric-value ${+s.cumRet >= 0 ? "text-green-600" : "text-red-600"}">${s.cumRet}%</div></div>
+  `;
+  document.getElementById("backtest-trades").innerHTML = `
+    <table class="w-full text-xs">
+      <thead class="bg-gray-100"><tr>
+        <th class="px-2 py-1 text-left">エントリー</th>
+        <th class="px-2 py-1 text-left">エグジット</th>
+        <th class="px-2 py-1 text-right">入値</th>
+        <th class="px-2 py-1 text-right">出値</th>
+        <th class="px-2 py-1 text-right">リターン%</th>
+      </tr></thead>
+      <tbody>${bt.trades.map(t => `
+        <tr class="border-t">
+          <td class="px-2 py-1 font-mono">${t.entry}</td>
+          <td class="px-2 py-1 font-mono">${t.exit}</td>
+          <td class="px-2 py-1 text-right">${t.entryPrice.toLocaleString()}</td>
+          <td class="px-2 py-1 text-right">${t.exitPrice.toLocaleString()}</td>
+          <td class="px-2 py-1 text-right ${t.ret >= 0 ? "text-green-600" : "text-red-600"} font-bold">${t.ret >= 0 ? "+" : ""}${t.ret.toFixed(2)}</td>
+        </tr>`).join("")}
+      </tbody>
+    </table>
+  `;
+}
+
+// ==============================================================
+// メイン処理
+// ==============================================================
+async function refreshAll() {
+  const tickers = settings.tickers.split("\n").map(t => t.trim()).filter(Boolean);
+  const status = document.getElementById("status");
+  status.innerHTML = `<span class="loading"></span> データ取得中... (0/${tickers.length})`;
+
+  // 既存データをクリア
+  for (const t of tickers) {
+    if (!stockData[t]) stockData[t] = { rows: null, error: null };
+  }
+  renderWatchlist();
+
+  let done = 0;
+  await Promise.all(tickers.map(async (t) => {
+    try {
+      let rows = await fetchStooq(t);
+      rows = rows.slice(-settings.lookback);
+      rows = addIndicators(rows);
+      rows = computeSignals(rows);
+      stockData[t] = { rows, error: null };
+    } catch (e) {
+      stockData[t] = { rows: null, error: "取得失敗" };
+    }
+    done++;
+    status.innerHTML = `<span class="loading"></span> データ取得中... (${done}/${tickers.length})`;
+    renderWatchlist();
+  }));
+
+  status.innerHTML = `✅ 更新完了`;
+  document.getElementById("last-updated").textContent = `最終更新: ${new Date().toLocaleString("ja-JP")}`;
+}
+
+function recomputeAll() {
+  // 既存の生データから指標とシグナルだけ再計算
+  for (const t of Object.keys(stockData)) {
+    const d = stockData[t];
+    if (!d.rows) continue;
+    // 生の close/high/low/open/date だけ残して再計算
+    const raw = d.rows.map(r => ({ date: r.date, open: r.open, high: r.high, low: r.low, close: r.close }));
+    let rows = addIndicators(raw);
+    rows = computeSignals(rows);
+    stockData[t] = { rows, error: null };
+  }
+  renderWatchlist();
+}
+
+// ==============================================================
+// イベント
+// ==============================================================
+document.getElementById("btn-refresh").onclick = () => refreshAll();
+document.getElementById("btn-settings").onclick = () => {
+  document.getElementById("settings-panel").classList.toggle("hidden");
+};
+document.getElementById("btn-apply").onclick = async () => {
+  const oldTickers = settings.tickers;
+  formToSettings();
+  if (settings.tickers !== oldTickers) {
+    await refreshAll();
+  } else {
+    recomputeAll();
+  }
+};
+document.getElementById("btn-reset").onclick = () => {
+  settings = { ...DEFAULT_SETTINGS };
+  saveSettings(settings);
+  settingsToForm();
+};
+document.getElementById("detail-select").onchange = (e) => renderDetail(e.target.value);
+
+// 初期化
+settingsToForm();
+refreshAll();
+</script>
+</body>
+</html>
