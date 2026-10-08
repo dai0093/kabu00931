@@ -3,6 +3,8 @@ on:
   schedule:
     - cron: "27 7 * * 1-5"   # 平日 16:27 JST
   workflow_dispatch:
+  push:
+    paths: ["scanner/daily.py", ".github/workflows/daily.yml"]
 permissions:
   contents: write
 concurrency: data-write
