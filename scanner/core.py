@@ -44,11 +44,11 @@ def is_signal(d: pd.DataFrame, i: int) -> bool:
     return bool(uptrend and reclaim and volume and liquid)
 
 
-def plan(close: float, atr: float):
+def plan(close: float, atr: float, target_atr: float = TARGET_ATR):
     """指値・損切り・利確・株数を計算する。株数0なら見送り。"""
     entry = round(close)
     stop = round(close - STOP_ATR * atr)
-    target = round(close + TARGET_ATR * atr)
+    target = round(close + target_atr * atr)
     risk_per_share = entry - stop
     if risk_per_share <= 0:
         return None
