@@ -8,7 +8,7 @@ from core import add_indicators, is_signal, plan, simulate
 from data import load
 from universe import STOCKS
 
-NTFY_TOPIC = "kabu00931-2043d388b703"
+NTFY_TOPIC = os.environ.get("NTFY_TOPIC", "")  # GitHubのSecretから読む
 JST = timezone(timedelta(hours=9))
 os.makedirs("data", exist_ok=True)
 
@@ -55,6 +55,9 @@ out = {"updated": datetime.now(JST).strftime("%Y-%m-%d %H:%M"),
 json.dump(out, open("data/signals.json", "w", encoding="utf-8"), ensure_ascii=False, indent=1)
 
 # 3) 通知
+if not NTFY_TOPIC:
+    print("NTFY_TOPIC未設定のため通知をスキップ")
+    raise SystemExit(0)
 if today:
     body = "\n\n".join(
         f"{t['name']}({t['code']}) {t['shares']}株\n"

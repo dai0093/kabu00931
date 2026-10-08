@@ -15,6 +15,8 @@ jobs:
         with: { python-version: "3.11" }
       - run: pip install yfinance pandas
       - run: python scanner/daily.py
+        env:
+          NTFY_TOPIC: ${{ secrets.NTFY_TOPIC }}
       - run: |
           git config user.name "kabu-bot"
           git config user.email "kabu-bot@users.noreply.github.com"
