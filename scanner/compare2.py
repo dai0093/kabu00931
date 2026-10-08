@@ -15,7 +15,8 @@ JPX = ("https://www.jpx.co.jp/markets/statistics-equities/misc/"
 
 def prime_codes():
     path = "/tmp/data_j.xls"
-    urllib.request.urlretrieve(JPX, path)
+    req = urllib.request.Request(JPX, headers={"User-Agent": "Mozilla/5.0"})
+    open(path, "wb").write(urllib.request.urlopen(req, timeout=60).read())
     df = pd.read_excel(path)
     df = df[df["市場・商品区分"].astype(str).str.startswith("プライム")]
     return {str(c): str(n) for c, n in zip(df["コード"], df["銘柄名"])}
@@ -115,33 +116,38 @@ def portfolio(cands):
     return trades
 
 
-def equity(trades, n225, park):
-    """毎日の資産額。park=Trueなら、株に使っていない資金は日経平均で運用。"""
+def equity(trades, n225, park, frames):
+    """毎日の資産額 = 待機資金 + 保有株の終値評価額。
+    park=Trueなら、待機資金は日経平均の値動きで増減する。"""
     ret = n225.pct_change().fillna(0)
     buys, sells = {}, {}
     for t in trades:
-        buys.setdefault(t["entry_date"], []).append(t["buy"] * t["shares"])
-        sells.setdefault(t["exit_date"], []).append(t["sell"] * t["shares"])
-    idle, held, eq = float(CAPITAL), {}, []
-    pos_val = 0.0
+        buys.setdefault(t["entry_date"], []).append(t)
+        sells.setdefault(t["exit_date"], []).append(t)
+    idle, held, eq = float(CAPITAL), [], []
     for dt, r in ret.items():
         ds = str(dt.date())
         if park:
             idle *= 1 + float(r)
-        for c in buys.get(ds, []):
-            idle -= c; pos_val += c
-        for v in sells.get(ds, []):
-            idle += v
-        eq.append(idle)
-    # 保有中の評価額は決済時に反映（最終日に未決済は無い前提）
+        for t in buys.get(ds, []):
+            idle -= t["buy"] * t["shares"]; held.append(t)
+        for t in sells.get(ds, []):
+            idle += t["sell"] * t["shares"]
+            held = [h for h in held if h is not t]
+        val = 0.0
+        for h in held:
+            c = frames[h["code"]].Close
+            px = c.asof(dt) if dt >= c.index[0] else h["buy"]
+            val += float(px) * h["shares"]
+        eq.append(idle + val)
     return eq
 
 
-def summarize(trades, n225, park):
+def summarize(trades, n225, park, frames):
     wins = [t for t in trades if t["hit"]]
     gp = sum(t["pnl"] for t in wins)
     gl = -sum(t["pnl"] for t in trades if not t["hit"])
-    eq = equity(trades, n225, park)
+    eq = equity(trades, n225, park, frames)
     peak, mdd = eq[0], 0.0
     for v in eq:
         peak = max(peak, v); mdd = min(mdd, v - peak)
@@ -157,12 +163,15 @@ def summarize(trades, n225, park):
 
 n225 = yf.download("^N225", period="5y", auto_adjust=True, progress=False)["Close"].squeeze()
 bench_profit = CAPITAL * (float(n225.iloc[-1]) / float(n225.iloc[0]) - 1)
+_bv = CAPITAL * n225 / float(n225.iloc[0])
+bench_mdd = float((_bv - _bv.cummax()).min())
 
 try:
     prime = prime_codes()
 except Exception as e:
     print("JPX一覧の取得失敗:", e)
     prime = {}
+    open("data/compare2_error.txt", "w").write(repr(e))
 universes = {"主要93": STOCKS}
 if prime:
     universes["プライム全体"] = prime
@@ -174,13 +183,13 @@ for uname, codes in universes.items():
         trades = portfolio(candidates(frames, kind))
         for park in (False, True):
             key = f"{uname}×{kind}×{'待機資金を日経運用' if park else '待機資金は現金'}"
-            results[key] = summarize(trades, n225, park)
+            results[key] = summarize(trades, n225, park, frames)
             results[key]["stocks"] = len(frames)
             print(key, results[key])
 
 json.dump({"bench_profit": round(bench_profit), "results": results},
           open("data/compare2.json", "w", encoding="utf-8"), ensure_ascii=False, indent=1)
-lines = [f"日経平均を700万円で5年保有: {bench_profit:+,.0f}円", ""]
+lines = [f"日経平均を700万円で5年保有: {bench_profit:+,.0f}円（最大落ち込み {bench_mdd:,.0f}円）", ""]
 for k, r in sorted(results.items(), key=lambda kv: -kv[1]["profit"]):
     lines.append(f"## {k}（{r['stocks']}銘柄）\n- 最終利益 {r['profit']:+,}円 / 日経比 {r['profit']-bench_profit:+,.0f}円"
                  f"\n- 取引{r['n']} 出来た{r['hit']} 出来なかった{r['miss']} 売買損益{r['trade_pnl']:+,} PF{r['pf']}"
