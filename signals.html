@@ -145,7 +145,7 @@ function render(){
  const top=cands[0],bot=cands[cands.length-1];
  document.getElementById('tiles').innerHTML=top?[top,bot].map((x,k)=>`<div class="tile ${x.r>0?'t-up':x.r<0?'t-dn':'t-flat'}"><div class="n">${x.n}</div><div class="p">${pc(x.r)}</div></div>`).join(''):'<div class="tile t-flat">データなし</div>';
  // 売り指示
- const al=b.hold.map((h,j)=>({h,j})).filter(({h})=>{const c=last(h.code),m=sma25(h.code);return c&&((m&&c<m)||c<=h.stop)});
+ const al=b.hold.map((h,j)=>({h,j})).filter(({h})=>h.date&&(()=>{const c=last(h.code),m=sma25(h.code);return c&&((m&&c<m)||c<=h.stop)})());
  document.getElementById('sells').innerHTML=al.length?'<h2>売り指示</h2>'+al.map(({h})=>{const c=last(h.code),m=sma25(h.code);
   return `<div class="panel alert"><div class="ttl"><span class="nm">${h.name}</span><span class="badge b-sell">明日の寄りで売り</span></div>
    <div class="note">${c<=h.stop?`終値 ${yen(c)} が損切り ${yen(h.stop)} 以下`:`終値 ${yen(c)} が25日線 ${yen(m)} を下回った`}</div></div>`}).join(''):'';

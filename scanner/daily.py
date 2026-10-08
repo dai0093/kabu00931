@@ -126,11 +126,11 @@ for t in today:
                  f"売り：損切りか、終値が25日線を割った翌日の寄り")
 for h in sells:
     parts.append(f"【売り】{h['name']}({h['code']})\n{h['sell_signal']}\n売った代金はETFに戻す")
-for h in held_sells:
+for h in []:  # 保有株への25日線ルールは検証で「予測出来なかった」ため通知しない（held_check参照）
     parts.append(f"【保有株・売り】{h['name']}({h['code']})\n終値 {h['close']:,}円 が25日線 {h['sma25']:,}円 を下回った → 明日の寄りで売り")
 if parts:
     body = "\n\n".join(parts)
-    title = f"買い{len(today)}件・売り{len(sells) + len(held_sells)}件（{last_date}）"
+    title = f"買い{len(today)}件・売り{len(sells)}件（{last_date}）"
 else:
     body, title = "本日は売買なし。ETFのまま保有", f"判定完了（{last_date}）"
 q = urllib.parse.urlencode({"title": title, "click": APP_URL})
