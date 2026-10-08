@@ -67,7 +67,7 @@ input{width:100%;font:inherit;font-size:18px;padding:10px;border-radius:8px;bord
 </div>
 
 <div id="sells"></div>
-<h2>保有中</h2><div id="hold"></div>
+<h2>保有中</h2><div id="hold"></div><div id="unreg"></div>
 <h2>今日の買い候補</h2><div id="sig"></div>
 <h2>日経225ETF（待機資金）</h2><div class="panel" id="etf"></div>
 <h2>売却済み</h2><div class="panel" id="done"></div>
@@ -104,6 +104,9 @@ function buy(i){const t=S.signals[i],b=load(),p=+v('bp'+i),s=+v('bs'+i);if(!p||!
 function skip(i){const t=S.signals[i],b=load();b.skip.push(t.date+t.code);save(b);render()}
 function sell(j){const b=load(),h=b.hold[j],p=+v('sp'+j);if(!p)return;
  b.done.unshift({...h,sell:p,sellDate:new Date().toISOString().slice(0,10),pnl:(p-h.price)*h.shares});b.hold.splice(j,1);save(b);render()}
+function reg(c){const b=load(),p=+v('rp'+c),s=+v('rs'+c);if(!p||!s)return;
+ const q=S.quotes[c]||{},cur=q.close||p;
+ b.hold.push({code:c,name:(C.names||{})[c]||c,date:'',buyDate:'',price:p,shares:s,stop:Math.round(cur-2*(q.atr||0))});save(b);render()}
 function setEtf(){const b=load();b.etf=+v('etfu')||0;save(b);render()}
 const v=id=>document.getElementById(id).value;
 
@@ -158,6 +161,14 @@ function render(){
    <div class="btns"><button class="sel" onclick="toggle('s${j}')">売った</button></div>
    <div class="form" id="s${j}"><label>売った値段（円）</label><input id="sp${j}" type="number" inputmode="numeric" value="${c||''}">
     <div class="btns"><button class="sel" onclick="sell(${j})">記録する</button></div></div></div>`}).join('');
+ // 未登録の保有株（取得単価と株数の入力）
+ const un=Object.keys((S&&S.held)||{}).filter(c=>!b.hold.some(h=>h.code===c));
+ document.getElementById('unreg').innerHTML=!un.length?'':'<h2>未登録の保有株（取得単価と株数を入力）</h2>'+un.map(c=>{const q=S.quotes[c]||{};
+  return `<div class="panel"><div class="ttl"><span class="nm">${c}　${S.held[c]}</span><span class="side">終値 ${q.close?yen(q.close):'--'}</span></div>
+   <label>取得単価（円）</label><input id="rp${c}" type="number" inputmode="decimal">
+   <label>株数（口数）</label><input id="rs${c}" type="number" inputmode="numeric">
+   <div class="btns"><button class="pri" onclick="reg('${c}')">登録</button></div>
+   <div class="note">損切りは「登録時の終値 − 2×ATR」${q.close&&q.atr?`＝ ${fmt(q.close)} − 2×${q.atr} ＝ ${fmt(q.close-2*q.atr)}円`:''}で設定します</div></div>`}).join('');
  // 買い候補
  const sg=(S&&S.signals||[]).map((t,i)=>({t,i})).filter(({t})=>!b.skip.includes(t.date+t.code)&&!b.hold.some(h=>h.code===t.code&&h.date===t.date));
  document.getElementById('sig').innerHTML=!sg.length?'<div class="panel empty">本日は買い候補なし</div>':sg.map(({t,i})=>{charts.push(['cs'+i,t.code,null,null,t.stop]);

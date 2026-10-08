@@ -11,6 +11,7 @@ from core import add_indicators, plan
 from data import load
 from strategy import is_breakout, simulate_trend
 from universe import STOCKS
+from holdings import HELD
 
 NTFY_TOPIC = os.environ.get("NTFY_TOPIC", "")  # GitHubのSecretから読む
 APP_URL = "https://dai0093.github.io/kabu00931/signals.html"
@@ -57,10 +58,34 @@ for h in history:
             sells.append(h)
         else:
             h.pop("sell_signal", None)
+# 保有銘柄（主要93に無いもの）を追加取得
+import yfinance as yf
+_extra = [c for c in HELD if c not in frames]
+if _extra:
+    _raw = yf.download([f"{c}.T" for c in _extra], period="1y", group_by="ticker",
+                       auto_adjust=True, progress=False)
+    for c in _extra:
+        try:
+            frames[c] = add_indicators(_raw[f"{c}.T"].dropna(subset=["Close"]))
+        except Exception as e:
+            print(c, "取得失敗", e)
+
+# 保有銘柄の売り判定（終値が25日線を割ったら翌日寄りで売り）
+held_sells = []
+for c, nm in HELD.items():
+    d = frames.get(c)
+    if d is None or len(d) < 26:
+        continue
+    r = d.iloc[-1]
+    if r.Close < r.sma25:
+        held_sells.append({"code": c, "name": nm, "close": round(float(r.Close)),
+                           "sma25": round(float(r.sma25))})
+
 # ダッシュボード用：全銘柄の最新終値と25日線（保有株の損益・売り判定に使う）
 for code, d in frames.items():
     last = d.iloc[-1]
-    quotes[code] = {"close": round(float(last.Close)), "sma25": round(float(last.sma25))}
+    quotes[code] = {"close": round(float(last.Close)), "sma25": round(float(last.sma25)),
+                    "atr": round(float(last.atr), 1)}
 json.dump(history, open(hist_path, "w", encoding="utf-8"), ensure_ascii=False, indent=1)
 
 closed = [h for h in history if h.get("status") == "closed"]
@@ -68,12 +93,11 @@ track = {"closed": len(closed), "hit": sum(h["hit"] for h in closed),
          "pnl": round(sum(h["pnl"] for h in closed))}
 out = {"updated": datetime.now(JST).strftime("%Y-%m-%d %H:%M"),
        "market_date": last_date, "method": "高値更新＋待機資金は日経平均ETF",
-       "signals": today, "sells": sells, "quotes": quotes, "track": track,
+       "signals": today, "sells": sells, "held_sells": held_sells, "held": HELD, "quotes": quotes, "track": track,
        "open": [h for h in history if h.get("status") == "open"]}
 json.dump(out, open("data/signals.json", "w", encoding="utf-8"), ensure_ascii=False, indent=1)
 
-# ダッシュボード用ローソク足（直近90営業日）：全銘柄＋ETF(1321)＋日経平均
-import yfinance as yf
+# ダッシュボード用ローソク足（直近90営業日）：全銘柄＋保有銘柄＋ETF(1321)＋日経平均
 def _bars(df):
     df = df.tail(90)
     return [[str(x.date()), round(float(r.Open), 1), round(float(r.High), 1),
@@ -86,7 +110,7 @@ for sym, key in (("1321.T", "1321"), ("^N225", "N225")):
         candles[key] = _bars(x.dropna(subset=["Close"]))
     except Exception as e:
         print(sym, "取得失敗", e)
-names = dict(STOCKS, **{"1321": "日経225ETF", "N225": "日経平均"})
+names = dict(STOCKS, **HELD, **{"1321": "日経225ETF", "N225": "日経平均"})
 json.dump({"names": names, "candles": candles},
           open("data/candles.json", "w", encoding="utf-8"), ensure_ascii=False, separators=(",", ":"))
 
@@ -102,9 +126,11 @@ for t in today:
                  f"売り：損切りか、終値が25日線を割った翌日の寄り")
 for h in sells:
     parts.append(f"【売り】{h['name']}({h['code']})\n{h['sell_signal']}\n売った代金はETFに戻す")
+for h in held_sells:
+    parts.append(f"【保有株・売り】{h['name']}({h['code']})\n終値 {h['close']:,}円 が25日線 {h['sma25']:,}円 を下回った → 明日の寄りで売り")
 if parts:
     body = "\n\n".join(parts)
-    title = f"買い{len(today)}件・売り{len(sells)}件（{last_date}）"
+    title = f"買い{len(today)}件・売り{len(sells) + len(held_sells)}件（{last_date}）"
 else:
     body, title = "本日は売買なし。ETFのまま保有", f"判定完了（{last_date}）"
 q = urllib.parse.urlencode({"title": title, "click": APP_URL})
