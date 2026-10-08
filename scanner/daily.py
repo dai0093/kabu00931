@@ -72,6 +72,24 @@ out = {"updated": datetime.now(JST).strftime("%Y-%m-%d %H:%M"),
        "open": [h for h in history if h.get("status") == "open"]}
 json.dump(out, open("data/signals.json", "w", encoding="utf-8"), ensure_ascii=False, indent=1)
 
+# ダッシュボード用ローソク足（直近90営業日）：全銘柄＋ETF(1321)＋日経平均
+import yfinance as yf
+def _bars(df):
+    df = df.tail(90)
+    return [[str(x.date()), round(float(r.Open), 1), round(float(r.High), 1),
+             round(float(r.Low), 1), round(float(r.Close), 1)] for x, r in df.iterrows()]
+candles = {c: _bars(d) for c, d in frames.items()}
+for sym, key in (("1321.T", "1321"), ("^N225", "N225")):
+    try:
+        x = yf.download(sym, period="6mo", auto_adjust=False, progress=False)
+        x.columns = [c[0] if isinstance(c, tuple) else c for c in x.columns]
+        candles[key] = _bars(x.dropna(subset=["Close"]))
+    except Exception as e:
+        print(sym, "取得失敗", e)
+names = dict(STOCKS, **{"1321": "日経225ETF", "N225": "日経平均"})
+json.dump({"names": names, "candles": candles},
+          open("data/candles.json", "w", encoding="utf-8"), ensure_ascii=False, separators=(",", ":"))
+
 # 3) 通知
 if not NTFY_TOPIC:
     print("NTFY_TOPIC未設定のため通知をスキップ")

@@ -3,191 +3,210 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<meta name="theme-color" content="#111827">
+<meta name="theme-color" content="#0b2238">
 <link rel="manifest" href="manifest.json">
 <title>株ダッシュボード</title>
 <style>
-:root{--bg:#f6f7f9;--card:#fff;--ink:#111827;--sub:#6b7280;--line:#e5e7eb;--buy:#0f766e;--sell:#b91c1c;--acc:#1d4ed8;--soft:#eef2ff}
-@media (prefers-color-scheme:dark){:root{--bg:#0b0f17;--card:#151b26;--ink:#f3f4f6;--sub:#9ca3af;--line:#263041;--buy:#2dd4bf;--sell:#f87171;--acc:#60a5fa;--soft:#1e2638}}
-*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.6 -apple-system,"Hiragino Sans","Noto Sans JP",sans-serif}
-main{max-width:560px;margin:0 auto;padding:16px 16px 48px}
-h1{font-size:20px;margin:8px 0 2px}h2{font-size:17px;margin:28px 0 10px}
-.sub{color:var(--sub);font-size:13px}
-.card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:16px;margin-bottom:12px}
-.alert{border:2px solid var(--sell)}
-.name{font-size:18px;font-weight:700}.code{color:var(--sub);font-weight:400;font-size:14px;margin-left:6px}
-.big{font-size:26px;font-weight:800;margin:4px 0 8px}
-.row{display:flex;justify-content:space-between;gap:12px;padding:7px 0;border-top:1px solid var(--line)}
-.row b{font-variant-numeric:tabular-nums;text-align:right}
-.pos{color:var(--buy)}.neg{color:var(--sell)}
-.tag{display:inline-block;font-size:13px;font-weight:700;padding:2px 10px;border-radius:99px;background:var(--soft);color:var(--acc)}
-.tag.s{background:transparent;border:1px solid var(--sell);color:var(--sell)}
+:root{--bg:#081a2c;--panel:#0f2a44;--panel2:#123250;--line:#2a4a6b;--ink:#eaf2fb;--sub:#9db3c9;--up:#ef5b5b;--dn:#4ea3f2;--good:#7ccf6b;--bad:#e34b4b;--head:#2f8f7f}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.5 -apple-system,"Hiragino Sans","Noto Sans JP",sans-serif}
+main{max-width:560px;margin:0 auto;padding:0 12px 48px}
+.head{background:var(--head);margin:0 -12px 12px;padding:14px 16px;display:flex;justify-content:space-between;align-items:center}
+.head .date{font-size:22px;font-weight:700;border:1px solid rgba(255,255,255,.6);padding:2px 12px;border-radius:4px}
+.head .st{font-size:14px}.head .upd{font-size:12px;text-align:right;opacity:.9}
+.panel{background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:14px 16px;margin-bottom:12px}
+.notice{font-size:13px;color:var(--sub)}.notice b{display:block;color:var(--ink);font-size:16px;margin-top:2px}
+.grid{display:grid;grid-template-columns:1.4fr 1fr;gap:12px;margin-bottom:12px}
+.label{display:inline-block;font-size:12px;border:1px solid var(--sub);color:var(--sub);padding:0 6px;border-radius:3px}
+.total{font-size:30px;font-weight:300;margin:10px 0 6px;letter-spacing:.5px;font-variant-numeric:tabular-nums}
+.total small{font-size:15px}
+.diff{display:flex;flex-direction:column;font-size:14px;color:var(--sub)}.diff span:last-child{font-size:16px;font-weight:600}
+.tiles{display:flex;flex-direction:column;border-radius:10px;overflow:hidden}
+.tile{flex:1;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;padding:8px;color:#fff}
+.tile .n{font-size:14px;line-height:1.3}.tile .p{font-size:20px;font-weight:700}
+.t-up{background:var(--good);color:#0b2a12}.t-dn{background:var(--bad)}.t-flat{background:var(--panel2)}
+.ttl{display:flex;justify-content:space-between;align-items:baseline;gap:8px}
+.ttl .nm{font-size:18px;font-weight:700}.ttl .side{font-size:14px;color:var(--sub)}
+.side u{text-decoration-color:var(--up);color:var(--ink)}
+canvas{width:100%;height:190px;display:block;margin:8px 0}
+.row{display:flex;justify-content:space-between;gap:10px;padding:7px 0;border-top:1px solid var(--line);font-size:15px}
+.row b{font-variant-numeric:tabular-nums;text-align:right;font-weight:600}
+.pl{font-size:24px;font-weight:700;text-align:right;font-variant-numeric:tabular-nums}
+.up{color:var(--up)}.dn{color:var(--dn)}
+h2{font-size:15px;color:var(--sub);font-weight:600;margin:22px 4px 8px}
+.badge{font-size:12px;font-weight:700;padding:2px 8px;border-radius:3px}
+.b-buy{background:var(--up);color:#fff}.b-sell{background:var(--dn);color:#fff}
 .btns{display:flex;gap:8px;margin-top:12px}
-button{flex:1;font:inherit;font-weight:700;padding:11px;border-radius:10px;border:1px solid var(--line);background:var(--card);color:var(--ink)}
-button.pri{background:var(--acc);border-color:var(--acc);color:#fff}
-button.dan{background:var(--sell);border-color:var(--sell);color:#fff}
-.form{display:none;margin-top:12px}.form.on{display:block}
-label{display:block;font-size:14px;color:var(--sub);margin-top:8px}
-input{width:100%;font:inherit;font-size:18px;padding:10px;border-radius:10px;border:1px solid var(--line);background:var(--bg);color:var(--ink)}
-.empty{text-align:center;color:var(--sub);padding:20px 8px}
-.note{font-size:14px;color:var(--sub);line-height:1.8}
+button{flex:1;font:inherit;font-weight:700;padding:11px;border-radius:8px;border:1px solid var(--line);background:var(--panel2);color:var(--ink)}
+button.pri{background:var(--up);border-color:var(--up)}button.sel{background:var(--dn);border-color:var(--dn)}
+.form{display:none;margin-top:10px}.form.on{display:block}
+label{display:block;font-size:13px;color:var(--sub);margin-top:8px}
+input{width:100%;font:inherit;font-size:18px;padding:10px;border-radius:8px;border:1px solid var(--line);background:var(--bg);color:var(--ink)}
+.empty{text-align:center;color:var(--sub);padding:14px 4px;font-size:15px}
+.note{font-size:13px;color:var(--sub);line-height:1.8}
+.alert{border:2px solid var(--up)}
 </style>
 </head>
 <body>
 <main>
-<h1>株ダッシュボード</h1>
-<div class="sub" id="upd">読み込み中…</div>
+<div class="head">
+ <div class="date" id="hdate">--月--日</div>
+ <div class="st" id="hst">読み込み中</div>
+ <div class="upd">最終更新<br><span id="hupd">--</span></div>
+</div>
 
-<h2>資金の内訳</h2>
-<div class="card" id="money"></div>
+<div class="panel notice" id="notice"></div>
 
-<div id="sellbox"></div>
+<div class="grid">
+ <div class="panel" style="margin:0">
+  <span class="label">資産総額</span>
+  <div class="total" id="total">--</div>
+  <div class="diff"><span>前日比</span><span id="tdiff">--</span></div>
+ </div>
+ <div class="tiles" id="tiles"></div>
+</div>
 
-<h2>今日の買い候補</h2>
-<div id="sig"></div>
-
-<h2>保有中</h2>
-<div id="hold"></div>
-
-<h2>売却済み（あなたの実績）</h2>
-<div class="card" id="done"></div>
-
-<h2>候補全体の成績</h2>
-<div class="card" id="track"></div>
-
-<h2>過去5年の検証</h2>
-<div class="card" id="bt"></div>
-
+<div id="sells"></div>
+<h2>保有中</h2><div id="hold"></div>
+<h2>今日の買い候補</h2><div id="sig"></div>
+<h2>日経225ETF（待機資金）</h2><div class="panel" id="etf"></div>
+<h2>売却済み</h2><div class="panel" id="done"></div>
+<h2>過去5年の検証</h2><div class="panel" id="bt"></div>
 <h2>使い方</h2>
-<div class="card note">
-1. 普段は資金を日経平均ETF（例：1321）で持つ<br>
+<div class="panel note">
+1. 普段は資金を日経225ETF（1321）で持つ<br>
 2. 買い候補が来たら、表示額だけETFを売り、翌朝に指値で買う<br>
-3. 約定したら「買った」を押し、損切りの逆指値を置く<br>
-4. 「売り」が表示されたら翌朝の寄りで売り、「売った」を押す<br>
-5. 売った代金はETFに戻す<br><br>
-記録はこのスマホのブラウザ内に保存されます。別の端末とは共有されません。
+3. 約定したら「買った」を押す<br>
+4. 赤枠の「売り」が出たら翌朝の寄りで売り、「売った」を押す<br>
+5. 売った代金はETFに戻し、ETFの口数を更新<br><br>
+記録はこのスマホのブラウザ内だけに保存されます。
 </div>
 </main>
 <script>
-const CAP=7000000;
-const yen=n=>(n<0?'−':'')+Math.abs(Math.round(n)).toLocaleString('ja-JP')+'円';
-const sgn=n=>(n>0?'+':'')+yen(n);
-const cls=n=>n>0?'pos':n<0?'neg':'';
-const K='kabu00931_book';
-function load(){try{return JSON.parse(localStorage.getItem(K))||{hold:[],done:[],skip:[]}}catch(e){return{hold:[],done:[],skip:[]}}}
+const CAP=7000000,K='kabu00931_book';
+const fmt=n=>Math.round(n).toLocaleString('ja-JP');
+const yen=n=>(n<0?'−':'')+fmt(Math.abs(n))+'円';
+const sgn=n=>(n>0?'+':n<0?'−':'')+fmt(Math.abs(n))+'円';
+const pc=n=>(n>0?'+':'')+n.toFixed(1)+'%';
+const cl=n=>n>0?'up':n<0?'dn':'';
+function load(){try{return Object.assign({hold:[],done:[],skip:[],etf:0},JSON.parse(localStorage.getItem(K))||{})}catch(e){return{hold:[],done:[],skip:[],etf:0}}}
 function save(b){try{localStorage.setItem(K,JSON.stringify(b))}catch(e){}}
 async function get(u){try{const r=await fetch(u+'?t='+Date.now());return r.ok?r.json():null}catch(e){return null}}
-let S=null,B=null;
-
+let S=null,C=null,BT=null;
+const bars=c=>C&&C.candles&&C.candles[c]||[];
+const last=c=>{const b=bars(c);return b.length?b[b.length-1][4]:null};
+const prev=c=>{const b=bars(c);return b.length>1?b[b.length-2][4]:null};
+const sma25=c=>S&&S.quotes&&S.quotes[c]?S.quotes[c].sma25:null;
 function toggle(id){document.getElementById(id).classList.toggle('on')}
-function buy(i){
-  const t=S.signals[i],b=load();
-  const price=+document.getElementById('bp'+i).value, sh=+document.getElementById('bs'+i).value;
-  if(!price||!sh)return;
-  b.hold.push({code:t.code,name:t.name,date:t.date,price,shares:sh,stop:t.stop});
-  save(b);render();
-}
+
+function buy(i){const t=S.signals[i],b=load(),p=+v('bp'+i),s=+v('bs'+i);if(!p||!s)return;
+ b.hold.push({code:t.code,name:t.name,date:t.date,buyDate:S.market_date,price:p,shares:s,stop:t.stop});save(b);render()}
 function skip(i){const t=S.signals[i],b=load();b.skip.push(t.date+t.code);save(b);render()}
-function sell(j){
-  const b=load(),h=b.hold[j];
-  const px=+document.getElementById('sp'+j).value; if(!px)return;
-  b.done.unshift({...h,sell:px,sellDate:new Date().toISOString().slice(0,10),pnl:(px-h.price)*h.shares});
-  b.hold.splice(j,1);save(b);render();
+function sell(j){const b=load(),h=b.hold[j],p=+v('sp'+j);if(!p)return;
+ b.done.unshift({...h,sell:p,sellDate:new Date().toISOString().slice(0,10),pnl:(p-h.price)*h.shares});b.hold.splice(j,1);save(b);render()}
+function setEtf(){const b=load();b.etf=+v('etfu')||0;save(b);render()}
+const v=id=>document.getElementById(id).value;
+
+/* ローソク足：陽線=赤、陰線=青。▲買い、▽現在、白線で結ぶ。点線=損切り */
+function chart(cv,code,buyDate,buyPx,stop){
+ const d=bars(code).slice(-60); if(!d.length)return;
+ const dpr=window.devicePixelRatio||1,W=cv.clientWidth,H=cv.clientHeight;
+ cv.width=W*dpr;cv.height=H*dpr;const g=cv.getContext('2d');g.scale(dpr,dpr);
+ let lo=Math.min(...d.map(x=>x[3])),hi=Math.max(...d.map(x=>x[2]));
+ if(stop){lo=Math.min(lo,stop)}if(buyPx){lo=Math.min(lo,buyPx);hi=Math.max(hi,buyPx)}const pad=(hi-lo)*.08;lo-=pad;hi+=pad;
+ const y=p=>H-(p-lo)/(hi-lo)*H,step=W/d.length,bw=Math.max(2,step*.6);
+ g.strokeStyle='rgba(157,179,201,.25)';g.lineWidth=1;
+ for(let k=1;k<4;k++){g.beginPath();g.moveTo(0,H*k/4);g.lineTo(W,H*k/4);g.stroke()}
+ d.forEach((x,i)=>{const cx=i*step+step/2,up=x[4]>=x[1];const col=up?'#ef5b5b':'#4ea3f2';
+  g.strokeStyle=col;g.fillStyle=col;g.beginPath();g.moveTo(cx,y(x[2]));g.lineTo(cx,y(x[3]));g.stroke();
+  const t=y(Math.max(x[1],x[4])),b=y(Math.min(x[1],x[4]));g.fillRect(cx-bw/2,t,bw,Math.max(1,b-t))});
+ if(stop){g.setLineDash([4,4]);g.strokeStyle='#4ea3f2';g.beginPath();g.moveTo(0,y(stop));g.lineTo(W,y(stop));g.stroke();g.setLineDash([])}
+ const tri=(cx,cy,upw,fill)=>{g.beginPath();if(upw){g.moveTo(cx,cy-8);g.lineTo(cx-8,cy+6);g.lineTo(cx+8,cy+6)}else{g.moveTo(cx,cy+8);g.lineTo(cx-8,cy-6);g.lineTo(cx+8,cy-6)}g.closePath();g.fillStyle=fill;g.fill();g.strokeStyle='#fff';g.lineWidth=2;g.stroke()};
+ if(buyPx){let bi=d.findIndex(x=>x[0]>buyDate);if(bi<0)bi=d.length-1;
+  const x1=bi*step+step/2,y1=y(buyPx)+12,x2=(d.length-1)*step+step/2,y2=y(d[d.length-1][4])-12;
+  g.strokeStyle='#fff';g.lineWidth=2;g.beginPath();g.moveTo(x1,y1);g.lineTo(x2,y2);g.stroke();
+  tri(x1,y1,true,'#f0a35a');tri(x2,y2,false,'#4ea3f2')}
 }
 
 function render(){
-  const b=load(), q=(S&&S.quotes)||{};
-  // 資金
-  const inStock=b.hold.reduce((a,h)=>a+h.price*h.shares,0);
-  document.getElementById('money').innerHTML=`
-   <div class="row"><span>株に使っている額</span><b>${yen(inStock)}</b></div>
-   <div class="row"><span>ETFで持つ目安</span><b>${yen(CAP-inStock)}</b></div>
-   <div class="row"><span>計算</span><b>${yen(CAP)} − ${yen(inStock)}</b></div>`;
-  // 売り指示（自分の保有分だけ）
-  const alerts=b.hold.map((h,j)=>({h,j,qq:q[h.code]})).filter(x=>x.qq&&(x.qq.close<x.qq.sma25||x.qq.close<=x.h.stop));
-  document.getElementById('sellbox').innerHTML=alerts.length?`<h2>売り指示</h2>`+alerts.map(({h,qq})=>`
-   <div class="card alert"><span class="tag s">明日の寄りで売り</span>
-    <div class="name" style="margin-top:6px">${h.name}<span class="code">${h.code}</span></div>
-    <div class="note">${qq.close<=h.stop?`終値 ${yen(qq.close)} が損切り ${yen(h.stop)} 以下`:`終値 ${yen(qq.close)} が25日線 ${yen(qq.sma25)} を下回った`}</div>
-   </div>`).join(''):'';
-  // 買い候補
-  const box=document.getElementById('sig');
-  const sigs=(S&&S.signals||[]).map((t,i)=>({t,i})).filter(({t})=>!b.skip.includes(t.date+t.code)&&!b.hold.some(h=>h.code===t.code&&h.date===t.date));
-  box.innerHTML=!sigs.length?'<div class="card empty">本日は買い候補なし</div>':sigs.map(({t,i})=>`
-   <div class="card">
-    <span class="tag">買い候補</span>
-    <div class="name" style="margin-top:6px">${t.name}<span class="code">${t.code}</span></div>
-    <div class="big">${t.shares.toLocaleString()}株</div>
-    <div class="row"><span>指値（買い）</span><b>${yen(t.entry)}</b></div>
-    <div class="row"><span>損切り</span><b class="neg">${yen(t.stop)}</b></div>
-    <div class="row"><span>ETFを売る額</span><b>${yen(t.cost)}</b></div>
-    <div class="row"><span>最大損失</span><b>${yen(t.risk_yen)}</b></div>
-    <div class="note" style="margin-top:6px">
-     株数＝ 70,000 ÷ (${t.entry.toLocaleString()} − ${t.stop.toLocaleString()}) → ${t.by_risk.toLocaleString()}株、
-     1,400,000 ÷ ${t.entry.toLocaleString()} → ${t.by_cash.toLocaleString()}株 の小さい方
-    </div>
-    <div class="btns"><button class="pri" onclick="toggle('f${i}')">買った</button><button onclick="skip(${i})">見送り</button></div>
-    <div class="form" id="f${i}">
-     <label>約定した値段（円）</label><input id="bp${i}" type="number" inputmode="numeric" value="${t.entry}">
-     <label>株数</label><input id="bs${i}" type="number" inputmode="numeric" step="100" value="${t.shares}">
-     <div class="btns"><button class="pri" onclick="buy(${i})">記録する</button></div>
-    </div>
-   </div>`).join('');
-  // 保有中
-  document.getElementById('hold').innerHTML=!b.hold.length?'<div class="card empty">保有中の株はありません</div>':b.hold.map((h,j)=>{
-    const qq=q[h.code], cur=qq?qq.close:null, pnl=cur?(cur-h.price)*h.shares:null;
-    return `<div class="card">
-     <div class="name">${h.name}<span class="code">${h.code}</span></div>
-     <div class="big ${cls(pnl)}">${pnl==null?'—':sgn(pnl)}</div>
-     <div class="row"><span>買値 × 株数</span><b>${yen(h.price)} × ${h.shares.toLocaleString()}</b></div>
-     <div class="row"><span>現在値（終値）</span><b>${cur?yen(cur):'—'}</b></div>
-     ${pnl!=null?`<div class="row"><span>損益の計算</span><b>(${cur.toLocaleString()} − ${h.price.toLocaleString()}) × ${h.shares.toLocaleString()}</b></div>`:''}
-     <div class="row"><span>損切り</span><b class="neg">${yen(h.stop)}</b></div>
-     <div class="row"><span>25日線（これを割ったら売り）</span><b>${qq?yen(qq.sma25):'—'}</b></div>
-     <div class="row"><span>買った日</span><b>${h.date}の候補</b></div>
-     <div class="btns"><button class="dan" onclick="toggle('s${j}')">売った</button></div>
-     <div class="form" id="s${j}">
-      <label>売った値段（円）</label><input id="sp${j}" type="number" inputmode="numeric" value="${cur||''}">
-      <div class="btns"><button class="dan" onclick="sell(${j})">記録する</button></div>
-     </div>
-    </div>`}).join('');
-  // 売却済み
-  const tot=b.done.reduce((a,d)=>a+d.pnl,0), win=b.done.filter(d=>d.pnl>0).length;
-  document.getElementById('done').innerHTML=!b.done.length?'<div class="empty">まだ売却した取引はありません</div>':`
-   <div class="row"><span>合計損益</span><b class="${cls(tot)}">${sgn(tot)}</b></div>
-   <div class="row"><span>予測出来た</span><b class="pos">${win}回</b></div>
-   <div class="row"><span>予測出来なかった</span><b class="neg">${b.done.length-win}回</b></div>`+
-   b.done.slice(0,20).map(d=>`<div class="row"><span>${d.name}<br><span class="sub">${d.sellDate}</span></span><b class="${cls(d.pnl)}">${sgn(d.pnl)}</b></div>`).join('');
-  // 候補全体
-  const tr=S&&S.track;
-  document.getElementById('track').innerHTML=tr&&tr.closed?`
-   <div class="row"><span>決着した候補</span><b>${tr.closed}件</b></div>
-   <div class="row"><span>予測出来た</span><b class="pos">${tr.hit}件</b></div>
-   <div class="row"><span>予測出来なかった</span><b class="neg">${tr.closed-tr.hit}件</b></div>
-   <div class="row"><span>合計損益（指示通りの場合）</span><b class="${cls(tr.pnl)}">${sgn(tr.pnl)}</b></div>`
-   :'<div class="empty">まだ決着した候補はありません</div>';
-}
-
-function renderBT(c){
-  const el=document.getElementById('bt');
-  const r=c&&c.results&&c.results['主要93×高値更新×待機資金を日経運用'];
-  if(!r){el.innerHTML='<div class="empty">検証データなし</div>';return}
-  el.innerHTML=`
-   <div class="row"><span>この方式の5年の利益</span><b class="pos">${sgn(r.profit)}</b></div>
-   <div class="row"><span>日経平均を持つだけ</span><b>${sgn(c.bench_profit)}</b></div>
-   <div class="row"><span>差（日経に勝った分）</span><b class="${cls(r.profit-c.bench_profit)}">${sgn(r.profit-c.bench_profit)}</b></div>
-   <div class="row"><span>売買の回数</span><b>${r.n}回</b></div>
-   <div class="row"><span>予測出来た</span><b class="pos">${r.hit}回</b></div>
-   <div class="row"><span>予測出来なかった</span><b class="neg">${r.miss}回</b></div>
-   <div class="row"><span>最大の落ち込み</span><b class="neg">${yen(r.mdd)}</b></div>`;
+ const b=load(),charts=[];
+ // 資産総額と前日比
+ const etfV=b.etf*(last('1321')||0),etfD=b.etf*((last('1321')||0)-(prev('1321')||0));
+ let stV=0,stD=0;b.hold.forEach(h=>{const c=last(h.code)||h.price,p=prev(h.code)||c;stV+=c*h.shares;stD+=(c-p)*h.shares});
+ const tot=etfV+stV,base=tot-etfD-stD;
+ document.getElementById('total').innerHTML=tot?`${fmt(tot)}<small>円</small>`:'<small>ETF口数を下で入力</small>';
+ document.getElementById('tdiff').innerHTML=tot?`<span class="${cl(etfD+stD)}">${sgn(etfD+stD)}（${pc(base?(etfD+stD)/base*100:0)}）</span>`:'--';
+ // 上昇・下落タイル（保有株＋ETF＋日経から最大と最小）
+ const cands=[...b.hold.map(h=>h.code),'1321','N225'].filter((c,i,a)=>a.indexOf(c)===i&&last(c)&&prev(c))
+  .map(c=>({c,n:(C.names||{})[c]||c,r:(last(c)/prev(c)-1)*100})).sort((a,b)=>b.r-a.r);
+ const top=cands[0],bot=cands[cands.length-1];
+ document.getElementById('tiles').innerHTML=top?[top,bot].map((x,k)=>`<div class="tile ${x.r>0?'t-up':x.r<0?'t-dn':'t-flat'}"><div class="n">${x.n}</div><div class="p">${pc(x.r)}</div></div>`).join(''):'<div class="tile t-flat">データなし</div>';
+ // 売り指示
+ const al=b.hold.map((h,j)=>({h,j})).filter(({h})=>{const c=last(h.code),m=sma25(h.code);return c&&((m&&c<m)||c<=h.stop)});
+ document.getElementById('sells').innerHTML=al.length?'<h2>売り指示</h2>'+al.map(({h})=>{const c=last(h.code),m=sma25(h.code);
+  return `<div class="panel alert"><div class="ttl"><span class="nm">${h.name}</span><span class="badge b-sell">明日の寄りで売り</span></div>
+   <div class="note">${c<=h.stop?`終値 ${yen(c)} が損切り ${yen(h.stop)} 以下`:`終値 ${yen(c)} が25日線 ${yen(m)} を下回った`}</div></div>`}).join(''):'';
+ // 保有中
+ document.getElementById('hold').innerHTML=!b.hold.length?'<div class="panel empty">保有中の株はありません</div>':b.hold.map((h,j)=>{
+  const c=last(h.code),pl=c?(c-h.price)*h.shares:0;charts.push(['cv'+j,h.code,h.buyDate||h.date,h.price,h.stop]);
+  return `<div class="panel"><div class="ttl"><span class="nm">${h.code}　${h.name}</span><span class="side"><u>現物買い</u> ${h.shares.toLocaleString()}株</span></div>
+   <canvas id="cv${j}"></canvas>
+   <div class="pl ${cl(pl)}">${sgn(pl)}</div>
+   <div class="row"><span>計算</span><b>(${c?fmt(c):'--'} − ${fmt(h.price)}) × ${h.shares.toLocaleString()}</b></div>
+   <div class="row"><span>損切り（点線）</span><b>${yen(h.stop)}</b></div>
+   <div class="row"><span>25日線（割ったら売り）</span><b>${sma25(h.code)?yen(sma25(h.code)):'--'}</b></div>
+   <div class="btns"><button class="sel" onclick="toggle('s${j}')">売った</button></div>
+   <div class="form" id="s${j}"><label>売った値段（円）</label><input id="sp${j}" type="number" inputmode="numeric" value="${c||''}">
+    <div class="btns"><button class="sel" onclick="sell(${j})">記録する</button></div></div></div>`}).join('');
+ // 買い候補
+ const sg=(S&&S.signals||[]).map((t,i)=>({t,i})).filter(({t})=>!b.skip.includes(t.date+t.code)&&!b.hold.some(h=>h.code===t.code&&h.date===t.date));
+ document.getElementById('sig').innerHTML=!sg.length?'<div class="panel empty">本日は買い候補なし</div>':sg.map(({t,i})=>{charts.push(['cs'+i,t.code,null,null,t.stop]);
+  return `<div class="panel"><div class="ttl"><span class="nm">${t.code}　${t.name}</span><span class="badge b-buy">買い候補 ${t.shares.toLocaleString()}株</span></div>
+   <canvas id="cs${i}"></canvas>
+   <div class="row"><span>指値（買い）</span><b>${yen(t.entry)}</b></div>
+   <div class="row"><span>損切り（点線）</span><b>${yen(t.stop)}</b></div>
+   <div class="row"><span>ETFを売る額</span><b>${yen(t.cost)}</b></div>
+   <div class="row"><span>最大損失</span><b>${yen(t.risk_yen)}</b></div>
+   <div class="note">株数＝70,000÷(${fmt(t.entry)}−${fmt(t.stop)}) → ${t.by_risk.toLocaleString()}株、1,400,000÷${fmt(t.entry)} → ${t.by_cash.toLocaleString()}株 の小さい方</div>
+   <div class="btns"><button class="pri" onclick="toggle('f${i}')">買った</button><button onclick="skip(${i})">見送り</button></div>
+   <div class="form" id="f${i}"><label>約定した値段（円）</label><input id="bp${i}" type="number" inputmode="numeric" value="${t.entry}">
+    <label>株数</label><input id="bs${i}" type="number" inputmode="numeric" step="100" value="${t.shares}">
+    <div class="btns"><button class="pri" onclick="buy(${i})">記録する</button></div></div></div>`}).join('');
+ // ETF
+ const e=last('1321');charts.push(['ce','1321',null,null,null]);
+ document.getElementById('etf').innerHTML=`<canvas id="ce"></canvas>
+  <div class="row"><span>保有口数</span><b>${b.etf.toLocaleString()}口</b></div>
+  <div class="row"><span>評価額</span><b>${e?`${fmt(e)} × ${b.etf.toLocaleString()} = ${yen(etfV)}`:'--'}</b></div>
+  <div class="row"><span>目安（700万円 − 株の額）</span><b>${yen(CAP-b.hold.reduce((a,h)=>a+h.price*h.shares,0))}</b></div>
+  <label>保有口数を更新</label><input id="etfu" type="number" inputmode="numeric" value="${b.etf||''}">
+  <div class="btns"><button onclick="setEtf()">保存</button></div>`;
+ // 売却済み
+ const tt=b.done.reduce((a,d)=>a+d.pnl,0),w=b.done.filter(d=>d.pnl>0).length;
+ document.getElementById('done').innerHTML=!b.done.length?'<div class="empty">まだ売却した取引はありません</div>':
+  `<div class="row"><span>合計損益</span><b class="${cl(tt)}">${sgn(tt)}</b></div>
+   <div class="row"><span>予測出来た</span><b class="up">${w}回</b></div><div class="row"><span>予測出来なかった</span><b class="dn">${b.done.length-w}回</b></div>`+
+  b.done.slice(0,20).map(d=>`<div class="row"><span>${d.name}　<span class="note">${d.sellDate}</span></span><b class="${cl(d.pnl)}">${sgn(d.pnl)}</b></div>`).join('');
+ // 検証
+ const r=BT&&BT.results&&BT.results['主要93×高値更新×待機資金を日経運用'];
+ document.getElementById('bt').innerHTML=r?`
+  <div class="row"><span>この方式の5年の利益</span><b class="up">${sgn(r.profit)}</b></div>
+  <div class="row"><span>日経平均を持つだけ</span><b>${sgn(BT.bench_profit)}</b></div>
+  <div class="row"><span>差（日経に勝った分）</span><b class="${cl(r.profit-BT.bench_profit)}">${sgn(r.profit-BT.bench_profit)}</b></div>
+  <div class="row"><span>予測出来た / 出来なかった</span><b>${r.hit}回 / ${r.miss}回</b></div>
+  <div class="row"><span>最大の落ち込み</span><b class="dn">${yen(r.mdd)}</b></div>`:'<div class="empty">検証データなし</div>';
+ requestAnimationFrame(()=>charts.forEach(([id,...a])=>{const el=document.getElementById(id);if(el)chart(el,...a)}));
 }
 
 (async()=>{
-  S=await get('data/signals.json');
-  document.getElementById('upd').textContent=S?`更新 ${S.updated}（${S.market_date} 終値で判定）`:'まだ判定データがありません';
-  render();
-  renderBT(await get('data/compare2.json'));
+ [S,C,BT]=await Promise.all([get('data/signals.json'),get('data/candles.json'),get('data/compare2.json')]);
+ if(S){const [y,m,d]=S.market_date.split('-');document.getElementById('hdate').textContent=`${+m}月${+d}日`;
+  document.getElementById('hst').textContent='✓ 判定完了';document.getElementById('hupd').textContent=S.updated.slice(11);
+  const ns=S.signals.length,nl=(S.sells||[]).length;
+  document.getElementById('notice').innerHTML=`${S.updated}<b>${ns||nl?`買い候補 ${ns}件・売り ${nl}件`:'本日は売買なし。ETFのまま保有'}</b>`}
+ else document.getElementById('notice').innerHTML='<b>まだ判定データがありません</b>';
+ C=C||{candles:{},names:{}};render();
 })();
+addEventListener('resize',()=>S&&render());
 if('serviceWorker' in navigator)navigator.serviceWorker.register('sw.js').catch(()=>{});
 </script>
 </body>
