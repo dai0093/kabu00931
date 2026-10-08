@@ -92,7 +92,7 @@ const cl=n=>n>0?'up':n<0?'dn':'';
 function load(){try{return Object.assign({hold:[],done:[],skip:[],etf:0},JSON.parse(localStorage.getItem(K))||{})}catch(e){return{hold:[],done:[],skip:[],etf:0}}}
 function save(b){try{localStorage.setItem(K,JSON.stringify(b))}catch(e){}}
 async function get(u){try{const r=await fetch(u+'?t='+Date.now());return r.ok?r.json():null}catch(e){return null}}
-let S=null,C=null,BT=null;
+let S=null,C=null,BT=null,CH=[],lastW=0;
 const bars=c=>C&&C.candles&&C.candles[c]||[];
 const last=c=>{const b=bars(c);return b.length?b[b.length-1][4]:null};
 const prev=c=>{const b=bars(c);return b.length>1?b[b.length-2][4]:null};
@@ -106,7 +106,7 @@ function sell(j){const b=load(),h=b.hold[j],p=+v('sp'+j);if(!p)return;
  b.done.unshift({...h,sell:p,sellDate:new Date().toISOString().slice(0,10),pnl:(p-h.price)*h.shares});b.hold.splice(j,1);save(b);render()}
 function reg(c){const b=load(),p=+v('rp'+c),s=+v('rs'+c);if(!p||!s)return;
  const q=S.quotes[c]||{},cur=q.close||p;
- b.hold.push({code:c,name:(C.names||{})[c]||c,date:'',buyDate:'',price:p,shares:s,stop:Math.round(cur-2*(q.atr||0))});save(b);render()}
+ b.hold.push({code:c,name:(C.names||{})[c]||c,date:'',buyDate:'',price:p,shares:s,stop:0});save(b);render()}
 function setEtf(){const b=load();b.etf=+v('etfu')||0;save(b);render()}
 const v=id=>document.getElementById(id).value;
 
@@ -151,13 +151,13 @@ function render(){
    <div class="note">${c<=h.stop?`終値 ${yen(c)} が損切り ${yen(h.stop)} 以下`:`終値 ${yen(c)} が25日線 ${yen(m)} を下回った`}</div></div>`}).join(''):'';
  // 保有中
  document.getElementById('hold').innerHTML=!b.hold.length?'<div class="panel empty">保有中の株はありません</div>':b.hold.map((h,j)=>{
-  const c=last(h.code),pl=c?(c-h.price)*h.shares:0;charts.push(['cv'+j,h.code,h.buyDate||h.date,h.price,h.stop]);
+  const c=last(h.code),pl=c?(c-h.price)*h.shares:0;charts.push(['cv'+j,h.code,h.buyDate||h.date||'0',h.price,h.stop||null]);
   return `<div class="panel"><div class="ttl"><span class="nm">${h.code}　${h.name}</span><span class="side"><u>現物買い</u> ${h.shares.toLocaleString()}株</span></div>
    <canvas id="cv${j}"></canvas>
    <div class="pl ${cl(pl)}">${sgn(pl)}</div>
    <div class="row"><span>計算</span><b>(${c?fmt(c):'--'} − ${fmt(h.price)}) × ${h.shares.toLocaleString()}</b></div>
-   <div class="row"><span>損切り（点線）</span><b>${yen(h.stop)}</b></div>
-   <div class="row"><span>25日線（割ったら売り）</span><b>${sma25(h.code)?yen(sma25(h.code)):'--'}</b></div>
+   ${h.stop?`<div class="row"><span>損切り（点線）</span><b>${yen(h.stop)}</b></div>
+   <div class="row"><span>25日線（割ったら売り）</span><b>${sma25(h.code)?yen(sma25(h.code)):'--'}</b></div>`:'<div class="note">以前から保有の銘柄のため、売り指示は出しません（検証で予測出来なかったため）</div>'}
    <div class="btns"><button class="sel" onclick="toggle('s${j}')">売った</button></div>
    <div class="form" id="s${j}"><label>売った値段（円）</label><input id="sp${j}" type="number" inputmode="numeric" value="${c||''}">
     <div class="btns"><button class="sel" onclick="sell(${j})">記録する</button></div></div></div>`}).join('');
@@ -168,7 +168,7 @@ function render(){
    <label>取得単価（円）</label><input id="rp${c}" type="number" inputmode="decimal">
    <label>株数（口数）</label><input id="rs${c}" type="number" inputmode="numeric">
    <div class="btns"><button class="pri" onclick="reg('${c}')">登録</button></div>
-   <div class="note">損切りは「登録時の終値 − 2×ATR」${q.close&&q.atr?`＝ ${fmt(q.close)} − 2×${q.atr} ＝ ${fmt(q.close-2*q.atr)}円`:''}で設定します</div></div>`}).join('');
+</div>`}).join('');
  // 買い候補
  const sg=(S&&S.signals||[]).map((t,i)=>({t,i})).filter(({t})=>!b.skip.includes(t.date+t.code)&&!b.hold.some(h=>h.code===t.code&&h.date===t.date));
  document.getElementById('sig').innerHTML=!sg.length?'<div class="panel empty">本日は買い候補なし</div>':sg.map(({t,i})=>{charts.push(['cs'+i,t.code,null,null,t.stop]);
@@ -205,7 +205,7 @@ function render(){
   <div class="row"><span>差（日経に勝った分）</span><b class="${cl(r.profit-BT.bench_profit)}">${sgn(r.profit-BT.bench_profit)}</b></div>
   <div class="row"><span>予測出来た / 出来なかった</span><b>${r.hit}回 / ${r.miss}回</b></div>
   <div class="row"><span>最大の落ち込み</span><b class="dn">${yen(r.mdd)}</b></div>`:'<div class="empty">検証データなし</div>';
- requestAnimationFrame(()=>charts.forEach(([id,...a])=>{const el=document.getElementById(id);if(el)chart(el,...a)}));
+ CH=charts;lastW=innerWidth;drawCharts();
 }
 
 (async()=>{
@@ -217,7 +217,9 @@ function render(){
  else document.getElementById('notice').innerHTML='<b>まだ判定データがありません</b>';
  C=C||{candles:{},names:{}};render();
 })();
-addEventListener('resize',()=>S&&render());
+function drawCharts(){requestAnimationFrame(()=>CH.forEach(([id,...a])=>{const el=document.getElementById(id);if(el)chart(el,...a)}))}
+/* キーボード表示で高さが変わっても描き直さない。横幅が変わった時だけチャートを再描画 */
+addEventListener('resize',()=>{if(innerWidth!==lastW){lastW=innerWidth;drawCharts()}});
 if('serviceWorker' in navigator)navigator.serviceWorker.register('sw.js').catch(()=>{});
 </script>
 </body>
