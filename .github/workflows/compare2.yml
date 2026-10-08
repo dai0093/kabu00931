@@ -5,7 +5,9 @@ on:
   workflow_dispatch:
 permissions:
   contents: write
-concurrency: data-write
+concurrency:
+  group: data-write
+  cancel-in-progress: true
 jobs:
   scan:
     runs-on: ubuntu-latest

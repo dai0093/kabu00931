@@ -167,13 +167,13 @@ _bv = CAPITAL * n225 / float(n225.iloc[0])
 bench_mdd = float((_bv - _bv.cummax()).min())
 
 try:
-    prime = prime_codes()
+    prime = {}  # まずは主要93銘柄のみで検証
 except Exception as e:
     print("JPX一覧の取得失敗:", e)
     prime = {}
     open("data/compare2_error.txt", "w").write(repr(e))
 universes = {"主要93": STOCKS}
-if prime:
+if prime and False:  # プライム全体は後回し（ユーザー指示）
     universes["プライム全体"] = prime
 
 results = {}
