@@ -1,0 +1,96 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#111827">
+<link rel="manifest" href="manifest.json">
+<title>買い候補</title>
+<style>
+:root{--bg:#f6f7f9;--card:#fff;--ink:#111827;--sub:#6b7280;--line:#e5e7eb;--buy:#0f766e;--stop:#b91c1c;--tgt:#1d4ed8}
+@media (prefers-color-scheme:dark){:root{--bg:#0b0f17;--card:#151b26;--ink:#f3f4f6;--sub:#9ca3af;--line:#263041;--buy:#2dd4bf;--stop:#f87171;--tgt:#60a5fa}}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.6 -apple-system,"Hiragino Sans","Noto Sans JP",sans-serif}
+main{max-width:560px;margin:0 auto;padding:16px}
+h1{font-size:20px;margin:8px 0 2px}h2{font-size:17px;margin:28px 0 10px}
+.sub{color:var(--sub);font-size:13px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:16px;margin-bottom:12px}
+.name{font-size:18px;font-weight:700}.code{color:var(--sub);font-weight:400;font-size:14px;margin-left:6px}
+.shares{font-size:26px;font-weight:800;margin:6px 0 10px}
+.row{display:flex;justify-content:space-between;padding:7px 0;border-top:1px solid var(--line)}
+.row b{font-variant-numeric:tabular-nums}
+.buy{color:var(--buy)}.stop{color:var(--stop)}.tgt{color:var(--tgt)}
+.big{font-size:22px;font-weight:800}
+.empty{text-align:center;color:var(--sub);padding:28px 16px}
+details{margin-top:8px}summary{color:var(--sub);font-size:14px;cursor:pointer}
+.calc{font-size:14px;color:var(--sub);margin-top:8px;line-height:1.8}
+</style>
+</head>
+<body>
+<main>
+<h1>日本株 買い候補</h1>
+<div class="sub" id="upd">読み込み中…</div>
+
+<h2>今日の候補</h2>
+<div id="sig"></div>
+
+<h2>これまでの成績（実際に出した候補）</h2>
+<div class="card" id="track"></div>
+
+<h2>過去5年の検証</h2>
+<div class="card" id="bt"></div>
+
+<h2>使い方</h2>
+<div class="card calc">
+1. 夜に通知が届いたら、翌朝の取引開始前に<b>指値</b>で買い注文<br>
+2. 約定したら、<b>損切り</b>（逆指値）と<b>利確</b>（指値）をOCO注文で同時に置く<br>
+3. 20営業日たっても決着しなければ、終値で売却<br>
+4. 翌日に指値まで下がらず約定しなければ、その候補は見送り
+</div>
+</main>
+<script>
+const yen=n=>Math.round(n).toLocaleString('ja-JP')+'円';
+async function get(u){try{const r=await fetch(u+'?t='+Date.now());return r.ok?r.json():null}catch(e){return null}}
+(async()=>{
+ const s=await get('data/signals.json'), b=await get('data/backtest.json');
+ document.getElementById('upd').textContent=s?`更新 ${s.updated}（${s.market_date} 終値で判定）`:'まだ判定データがありません';
+ const box=document.getElementById('sig');
+ if(!s||!s.signals.length){box.innerHTML='<div class="card empty">本日は買い候補なし</div>'}
+ else box.innerHTML=s.signals.map(t=>`
+ <div class="card">
+  <div class="name">${t.name}<span class="code">${t.code}</span></div>
+  <div class="shares">${t.shares.toLocaleString()}株</div>
+  <div class="row"><span>指値（買い）</span><b class="buy">${yen(t.entry)}</b></div>
+  <div class="row"><span>損切り</span><b class="stop">${yen(t.stop)}</b></div>
+  <div class="row"><span>利確</span><b class="tgt">${yen(t.target)}</b></div>
+  <div class="row"><span>投入額</span><b>${yen(t.cost)}</b></div>
+  <div class="row"><span>最大損失</span><b>${yen(t.risk_yen)}</b></div>
+  <details><summary>株数の計算</summary><div class="calc">
+   許容損失 = 7,000,000 × 1% = 70,000円<br>
+   1株の損失 = ${t.entry.toLocaleString()} − ${t.stop.toLocaleString()} = ${t.risk_per_share.toLocaleString()}円<br>
+   損失基準 = 70,000 ÷ ${t.risk_per_share.toLocaleString()} → 100株単位で ${t.by_risk.toLocaleString()}株<br>
+   資金基準 = 1,400,000 ÷ ${t.entry.toLocaleString()} → 100株単位で ${t.by_cash.toLocaleString()}株<br>
+   株数 = 小さい方 = ${t.shares.toLocaleString()}株
+  </div></details>
+ </div>`).join('');
+ const tr=s&&s.track;
+ document.getElementById('track').innerHTML=tr&&tr.closed?`
+  <div class="row"><span>決着した候補</span><b>${tr.closed}件</b></div>
+  <div class="row"><span>予測出来た</span><b class="buy">${tr.hit}件</b></div>
+  <div class="row"><span>予測出来なかった</span><b class="stop">${tr.closed-tr.hit}件</b></div>
+  <div class="row"><span>合計損益</span><b>${yen(tr.pnl)}</b></div>`
+  :'<div class="empty">まだ決着した候補はありません</div>';
+ const a=b&&b.all;
+ document.getElementById('bt').innerHTML=a?`
+  <div class="row"><span>取引数</span><b>${a.trades}回</b></div>
+  <div class="row"><span>予測出来た</span><b class="buy">${a.hit}回</b></div>
+  <div class="row"><span>予測出来なかった</span><b class="stop">${a.miss}回</b></div>
+  <div class="row"><span>勝率</span><b>${a.win_rate}%</b></div>
+  <div class="row"><span>合計損益</span><b class="big">${yen(a.total_pnl)}</b></div>
+  <div class="row"><span>最大の落ち込み</span><b class="stop">${yen(b.max_drawdown)}</b></div>
+  <div class="row"><span>日経平均（同期間）</span><b>${b.nikkei_change_pct}%</b></div>`
+  :'<div class="empty">検証を実行中です</div>';
+})();
+if('serviceWorker' in navigator)navigator.serviceWorker.register('sw.js').catch(()=>{});
+</script>
+</body>
+</html>
