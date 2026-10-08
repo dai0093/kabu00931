@@ -92,6 +92,7 @@ def simulate(d: pd.DataFrame, i: int, p: dict):
 def _close(d, i, k, buy, sell, p, reason):
     pnl = (sell - buy) * p["shares"]
     return {"status": "closed", "buy": float(buy), "sell": float(sell),
+            "entry_date": str(d.index[i + 1].date()),
             "reason": reason, "days": k - i,
             "exit_date": str(d.index[k].date()), "pnl": float(pnl),
             "hit": bool(pnl > 0)}
