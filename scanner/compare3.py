@@ -14,29 +14,45 @@ JPX = ("https://www.jpx.co.jp/markets/statistics-equities/misc/"
 
 
 def all_codes():
-    req = urllib.request.Request(JPX, headers={"User-Agent": "Mozilla/5.0"})
-    open("/tmp/data_j.xls", "wb").write(urllib.request.urlopen(req, timeout=60).read())
-    df = pd.read_excel("/tmp/data_j.xls")
+    """JPXの一覧ページからExcelのリンクを探して取得（URLが変わっても追従）"""
+    import re
+    ua = {"User-Agent": "Mozilla/5.0"}
+    page = "https://www.jpx.co.jp/markets/statistics-equities/misc/01.html"
+    html = urllib.request.urlopen(urllib.request.Request(page, headers=ua), timeout=60).read().decode("utf-8", "ignore")
+    links = re.findall(r'href="([^"]+data_j\.xlsx?)"', html)
+    url = "https://www.jpx.co.jp" + links[0] if links[0].startswith("/") else links[0]
+    ext = url.rsplit(".", 1)[1]
+    open(f"/tmp/data_j.{ext}", "wb").write(urllib.request.urlopen(urllib.request.Request(url, headers=ua), timeout=60).read())
+    df = pd.read_excel(f"/tmp/data_j.{ext}")
     mk = df["市場・商品区分"].astype(str)
     df = df[mk.str.contains("内国株式")]          # ETF・REIT・外国株は除外
     return {str(c): str(n) for c, n in zip(df["コード"], df["銘柄名"])}
 
 
-def download(codes):
-    out, codes = {}, list(codes)
-    for k in range(0, len(codes), 200):
-        chunk = [f"{c}.T" for c in codes[k:k + 200]]
-        try:
-            raw = yf.download(chunk, period="5y", group_by="ticker",
-                              auto_adjust=True, threads=True, progress=False)
-        except Exception as e:
-            print("chunk失敗", k, e); continue
-        for t in chunk:
-            if t in raw.columns.get_level_values(0):
-                df = raw[t].dropna(subset=["Close"])
-                if len(df) > 120:
+def download(codes, period, size=100, wait=8):
+    """レート制限を避けるため小分けにして間隔を空け、失敗分は1回だけ再試行"""
+    out, todo = {}, list(codes)
+    for attempt in range(2):
+        failed = []
+        for k in range(0, len(todo), size):
+            chunk = [f"{c}.T" for c in todo[k:k + size]]
+            try:
+                raw = yf.download(chunk, period=period, group_by="ticker",
+                                  auto_adjust=True, threads=False, progress=False)
+            except Exception:
+                failed += [t[:-2] for t in chunk]; time.sleep(60); continue
+            for t in chunk:
+                ok = t in raw.columns.get_level_values(0)
+                df = raw[t].dropna(subset=["Close"]) if ok else None
+                if df is not None and len(df):
                     out[t[:-2]] = df
-        time.sleep(3)
+                else:
+                    failed.append(t[:-2])
+            time.sleep(wait)
+        todo = failed
+        if not todo:
+            break
+        time.sleep(120)
     return out
 
 
@@ -51,12 +67,13 @@ except Exception:
     names = {str(c): str(c) for c in range(1300, 10000)}
 log.flush()
 print("内国株式", len(names))
-raw = download(names)
-frames = {}
-for c, df in raw.items():
-    d = add_indicators(df)
-    if d["turnover20"].max() >= MIN_TURNOVER:     # 5年間で一度でも10億円以上になった銘柄
-        frames[c] = d
+# 1段目：直近1か月で売買代金の平均が5億円以上の銘柄に絞る
+recent = download(names, "1mo")
+liquid = [c for c, df in recent.items() if (df.Close * df.Volume).mean() >= MIN_TURNOVER / 2]
+log.write(f"直近1か月取得 {len(recent)} / 売買代金5億円以上 {len(liquid)}\n"); log.flush()
+# 2段目：絞った銘柄だけ5年分
+raw = download(liquid, "5y", size=50, wait=10)
+frames = {c: add_indicators(df) for c, df in raw.items() if len(df) > 120}
 print("取得", len(raw), "流動性あり", len(frames))
 log.write(f"取得 {len(raw)} 流動性あり {len(frames)}\n"); log.flush()
 
