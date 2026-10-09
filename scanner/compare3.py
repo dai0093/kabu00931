@@ -77,45 +77,41 @@ frames = {c: add_indicators(df) for c, df in raw.items() if len(df) > 120}
 print("取得", len(raw), "流動性あり", len(frames))
 log.write(f"取得 {len(raw)} 流動性あり {len(frames)}\n"); log.flush()
 
-cands = []
-for code, d in frames.items():
-    for i in range(86, len(d)):
-        if not is_breakout(d, i):
-            continue
-        p = plan(d.Close.iloc[i], d.atr.iloc[i])
-        if not p:
-            continue
-        r = simulate_trend(d, i, p)
-        if r["status"] == "closed":
-            cands.append({"date": str(d.index[i].date()), "code": code,
-                          "vr": float(d.Volume.iloc[i] / d.vol20.iloc[i]), **p, **r})
-
-cands.sort(key=lambda t: (t["date"], -t["vr"]))
-open_pos, trades = [], []
-for t in cands:
-    open_pos = [o for o in open_pos if o["exit_date"] > t["date"]]
-    used = sum(o["buy"] * o["shares"] for o in open_pos)
-    if (len(open_pos) >= MAX_POSITIONS or used + t["cost"] > CAPITAL
-            or any(o["code"] == t["code"] for o in open_pos)):
-        continue
-    open_pos.append(t)
-    trades.append(t)
-
+import core, strategy
 n225 = yf.download("^N225", period="5y", auto_adjust=True, progress=False)["Close"].squeeze()
 bench = CAPITAL * (float(n225.iloc[-1]) / float(n225.iloc[0]) - 1)
 
 
-def equity(park):
+def run(th):
+    strategy.MIN_TURNOVER = th          # 判定時の売買代金基準を差し替え
+    cands = []
+    for code, d in frames.items():
+        for i in range(86, len(d)):
+            if not strategy.is_breakout(d, i):
+                continue
+            p = plan(d.Close.iloc[i], d.atr.iloc[i])
+            if not p:
+                continue
+            r = simulate_trend(d, i, p)
+            if r["status"] == "closed":
+                cands.append({"date": str(d.index[i].date()), "code": code,
+                              "vr": float(d.Volume.iloc[i] / d.vol20.iloc[i]), **p, **r})
+    cands.sort(key=lambda t: (t["date"], -t["vr"]))
+    open_pos, trades = [], []
+    for t in cands:
+        open_pos = [o for o in open_pos if o["exit_date"] > t["date"]]
+        used = sum(o["buy"] * o["shares"] for o in open_pos)
+        if (len(open_pos) >= MAX_POSITIONS or used + t["cost"] > CAPITAL
+                or any(o["code"] == t["code"] for o in open_pos)):
+            continue
+        open_pos.append(t); trades.append(t)
     ret = n225.pct_change().fillna(0)
     buys, sells = {}, {}
     for t in trades:
-        buys.setdefault(t["entry_date"], []).append(t)
-        sells.setdefault(t["exit_date"], []).append(t)
+        buys.setdefault(t["entry_date"], []).append(t); sells.setdefault(t["exit_date"], []).append(t)
     idle, held, eq = float(CAPITAL), [], []
     for dt, r in ret.items():
-        ds = str(dt.date())
-        if park:
-            idle *= 1 + float(r)
+        ds = str(dt.date()); idle *= 1 + float(r)
         for t in buys.get(ds, []):
             idle -= t["buy"] * t["shares"]; held.append(t)
         for t in sells.get(ds, []):
@@ -128,34 +124,31 @@ def equity(park):
     peak, mdd = eq[0], 0.0
     for v in eq:
         peak = max(peak, v); mdd = min(mdd, v - peak)
-    return eq[-1] - CAPITAL, mdd
+    wins = [t for t in trades if t["hit"]]
+    gp = sum(t["pnl"] for t in wins); gl = -sum(t["pnl"] for t in trades if not t["hit"])
+    years = {}
+    for t in trades:
+        years[t["date"][:4]] = years.get(t["date"][:4], 0) + t["pnl"]
+    n_st = sum(1 for d in frames.values() if d.turnover20.iloc[-1] >= th)
+    return {"th_oku": th / 1e8, "stocks_now": n_st, "signals": len(cands), "n": len(trades),
+            "hit": len(wins), "miss": len(trades) - len(wins), "gp": round(gp), "gl": round(gl),
+            "trade_pnl": round(gp - gl), "pf": round(gp / gl, 2) if gl else None,
+            "profit": round(eq[-1] - CAPITAL), "vs_nikkei": round(eq[-1] - CAPITAL - bench),
+            "mdd": round(mdd), "years": {y: round(v) for y, v in sorted(years.items())}}
 
 
-wins = [t for t in trades if t["hit"]]
-gp = sum(t["pnl"] for t in wins)
-gl = -sum(t["pnl"] for t in trades if not t["hit"])
-years = {}
-for t in trades:
-    years[t["date"][:4]] = years.get(t["date"][:4], 0) + t["pnl"]
-res = {"stocks": len(frames), "signals": len(cands), "n": len(trades), "hit": len(wins),
-       "miss": len(trades) - len(wins), "gp": round(gp), "gl": round(gl),
-       "trade_pnl": round(gp - gl), "pf": round(gp / gl, 2) if gl else None,
-       "years": {y: round(v) for y, v in sorted(years.items())}, "bench_profit": round(bench)}
-for park in (True, False):
-    p, m = equity(park)
-    k = "park" if park else "cash"
-    res[f"profit_{k}"], res[f"mdd_{k}"] = round(p), round(m)
-
-json.dump(res, open("data/compare3.json", "w", encoding="utf-8"), ensure_ascii=False, indent=1)
-json.dump({c: names[c] for c in frames}, open("data/universe_all.json", "w", encoding="utf-8"),
+res = {}
+for th in (10e8, 30e8, 50e8, 100e8):
+    res[f"{int(th/1e8)}億"] = run(th)
+    print(th, res[f"{int(th/1e8)}億"])
+json.dump({"bench_profit": round(bench), "results": res},
+          open("data/compare3.json", "w", encoding="utf-8"), ensure_ascii=False, indent=1)
+json.dump({c: names.get(c, c) for c in frames}, open("data/universe_all.json", "w", encoding="utf-8"),
           ensure_ascii=False)
-lines = [f"対象 {len(frames)}銘柄（候補 {len(names)} のうち売買代金10億円以上）",
-         f"日経平均を700万円で5年保有: {bench:+,.0f}円", "",
-         f"全シグナル {len(cands)} → 資金制約で実行 {len(trades)}回",
-         f"予測出来た {len(wins)} / 出来なかった {len(trades)-len(wins)}",
-         f"総利益 {gp:,.0f} / 総損失 {gl:,.0f} / 売買損益 {gp-gl:+,.0f} / PF {res['pf']}",
-         f"待機資金を日経運用: 最終利益 {res['profit_park']:+,}円（日経比 {res['profit_park']-bench:+,.0f}）最大落ち込み {res['mdd_park']:,}",
-         f"待機資金は現金: 最終利益 {res['profit_cash']:+,}円 最大落ち込み {res['mdd_cash']:,}",
-         f"年別売買損益 {res['years']}"]
-open("data/compare3.md", "w", encoding="utf-8").write("\n".join(lines) + "\n")
+lines = [f"日経平均を700万円で5年保有: {bench:+,.0f}円", ""]
+for k, r in res.items():
+    lines.append(f"## 売買代金{k}以上（現在{r['stocks_now']}銘柄）\n- 最終利益 {r['profit']:+,}円 / 日経比 {r['vs_nikkei']:+,}円 / 最大落ち込み {r['mdd']:,}円"
+                 f"\n- 取引{r['n']} 出来た{r['hit']} 出来なかった{r['miss']} 総利益{r['gp']:,} 総損失{r['gl']:,} PF{r['pf']}"
+                 f"\n- 年別 {r['years']}\n")
+open("data/compare3.md", "w", encoding="utf-8").write("\n".join(lines))
 print("\n".join(lines))
