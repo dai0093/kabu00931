@@ -15,7 +15,7 @@ def universe():
     return u
 
 
-def load(period="1y", codes=None, size=100, wait=5):
+def load(period="1y", codes=None, size=100, wait=5, adjust=True):
     """日足を小分けに取得（レート制限対策）。失敗分は1回だけ再試行。{code: DataFrame}"""
     todo, out = list(codes or universe()), {}
     for attempt in range(2):
@@ -24,7 +24,7 @@ def load(period="1y", codes=None, size=100, wait=5):
             chunk = [f"{c}.T" for c in todo[k:k + size]]
             try:
                 raw = yf.download(chunk, period=period, group_by="ticker",
-                                  auto_adjust=True, threads=True, progress=False)
+                                  auto_adjust=adjust, threads=True, progress=False)
             except Exception:
                 failed += [t[:-2] for t in chunk]; time.sleep(60); continue
             for t in chunk:

@@ -21,7 +21,7 @@ JST = timezone(timedelta(hours=9))
 os.makedirs("data", exist_ok=True)
 
 NAMES = universe()
-prices = load("1y")
+prices = load("1y", adjust=False)   # 証券会社の画面と同じ「実際の株価」（配当調整なし）
 # 場中（15:45より前）に動いた場合は、未確定の当日足を捨てて前日の確定足で判定する
 _now = datetime.now(JST)
 if _now.hour * 60 + _now.minute < 15 * 60 + 45:
@@ -71,7 +71,7 @@ import yfinance as yf
 _extra = [c for c in HELD if c not in frames]
 if _extra:
     _raw = yf.download([f"{c}.T" for c in _extra], period="1y", group_by="ticker",
-                       auto_adjust=True, progress=False)
+                       auto_adjust=False, progress=False)
     for c in _extra:
         try:
             frames[c] = add_indicators(_raw[f"{c}.T"].dropna(subset=["Close"]))
