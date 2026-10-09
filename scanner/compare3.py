@@ -40,7 +40,16 @@ def download(codes):
     return out
 
 
-names = all_codes()
+import traceback, os
+os.makedirs("data", exist_ok=True)
+log = open("data/compare3_log.txt", "w", encoding="utf-8")
+try:
+    names = all_codes()
+    log.write(f"JPX一覧OK {len(names)}\n")
+except Exception:
+    log.write("JPX一覧の取得失敗→4桁コード総当たりに切替\n" + traceback.format_exc())
+    names = {str(c): str(c) for c in range(1300, 10000)}
+log.flush()
 print("内国株式", len(names))
 raw = download(names)
 frames = {}
@@ -49,6 +58,7 @@ for c, df in raw.items():
     if d["turnover20"].max() >= MIN_TURNOVER:     # 5年間で一度でも10億円以上になった銘柄
         frames[c] = d
 print("取得", len(raw), "流動性あり", len(frames))
+log.write(f"取得 {len(raw)} 流動性あり {len(frames)}\n"); log.flush()
 
 cands = []
 for code, d in frames.items():
@@ -122,7 +132,7 @@ for park in (True, False):
 json.dump(res, open("data/compare3.json", "w", encoding="utf-8"), ensure_ascii=False, indent=1)
 json.dump({c: names[c] for c in frames}, open("data/universe_all.json", "w", encoding="utf-8"),
           ensure_ascii=False)
-lines = [f"対象 {len(frames)}銘柄（内国株式 {len(names)} のうち売買代金10億円以上）",
+lines = [f"対象 {len(frames)}銘柄（候補 {len(names)} のうち売買代金10億円以上）",
          f"日経平均を700万円で5年保有: {bench:+,.0f}円", "",
          f"全シグナル {len(cands)} → 資金制約で実行 {len(trades)}回",
          f"予測出来た {len(wins)} / 出来なかった {len(trades)-len(wins)}",
