@@ -1,1 +1,19 @@
-[]
+[
+ {
+  "date": "2026-10-09",
+  "code": "4493",
+  "name": "サイバーセキュリティクラウド",
+  "vol_ratio": 3.22,
+  "entry": 3725,
+  "stop": 3236,
+  "target": 4459,
+  "shares": 100,
+  "cost": 372500,
+  "risk_yen": 48900,
+  "risk_per_share": 489,
+  "by_risk": 100,
+  "by_cash": 300,
+  "method": "高値更新",
+  "status": "pending"
+ }
+]
