@@ -103,7 +103,9 @@ track = {"closed": len(closed), "hit": sum(h["hit"] for h in closed),
 out = {"updated": datetime.now(JST).strftime("%Y-%m-%d %H:%M"),
        "market_date": last_date, "method": "高値更新（売買代金100億円以上・東証全銘柄）＋待機資金は日経平均ETF",
        "signals": today, "sells": sells, "held_sells": held_sells, "held": HELD, "quotes": quotes, "track": track,
-       "open": [h for h in history if h.get("status") == "open"]}
+       "open": [h for h in history if h.get("status") == "open"],
+       # 直近5営業日の候補：翌日以降に買った場合も購入記録を入力できるようにする
+       "recent": [h for h in history if h["date"] in sorted({x["date"] for x in history})[-5:]]}
 json.dump(out, open("data/signals.json", "w", encoding="utf-8"), ensure_ascii=False, indent=1)
 
 # ダッシュボード用ローソク足（直近90営業日）：全銘柄＋保有銘柄＋ETF(1321)＋日経平均

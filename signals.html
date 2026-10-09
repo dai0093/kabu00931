@@ -92,16 +92,16 @@ const cl=n=>n>0?'up':n<0?'dn':'';
 function load(){try{return Object.assign({hold:[],done:[],skip:[],etf:0},JSON.parse(localStorage.getItem(K))||{})}catch(e){return{hold:[],done:[],skip:[],etf:0}}}
 function save(b){try{localStorage.setItem(K,JSON.stringify(b))}catch(e){}}
 async function get(u){try{const r=await fetch(u+'?t='+Date.now());return r.ok?r.json():null}catch(e){return null}}
-let S=null,C=null,BT=null,CH=[],lastW=0;
+let S=null,C=null,BT=null,REC=[],CH=[],lastW=0;
 const bars=c=>C&&C.candles&&C.candles[c]||[];
 const last=c=>{const b=bars(c);return b.length?b[b.length-1][4]:null};
 const prev=c=>{const b=bars(c);return b.length>1?b[b.length-2][4]:null};
 const sma25=c=>S&&S.quotes&&S.quotes[c]?S.quotes[c].sma25:null;
 function toggle(id){document.getElementById(id).classList.toggle('on')}
 
-function buy(i){const t=S.signals[i],b=load(),p=+v('bp'+i),s=+v('bs'+i);if(!p||!s)return;
+function buy(i){const t=REC[i],b=load(),p=+v('bp'+i),s=+v('bs'+i);if(!p||!s)return;
  b.hold.push({code:t.code,name:t.name,date:t.date,buyDate:S.market_date,regDate:new Date().toISOString().slice(0,10),price:p,shares:s,stop:t.stop});save(b);render()}
-function skip(i){const t=S.signals[i],b=load();b.skip.push(t.date+t.code);save(b);render()}
+function skip(i){const t=REC[i],b=load();b.skip.push(t.date+t.code);save(b);render()}
 function sell(j){const b=load(),h=b.hold[j],p=+v('sp'+j);if(!p)return;
  b.done.unshift({...h,sell:p,sellDate:new Date().toISOString().slice(0,10),pnl:(p-h.price)*h.shares});b.hold.splice(j,1);save(b);render()}
 function fix(j){const b=load(),h=b.hold[j],p=+v('ep'+j),s=+v('es'+j);if(!p||!s)return;
@@ -112,6 +112,9 @@ function add(j){const b=load(),h=b.hold[j],p=+v('ap'+j),s=+v('as'+j);if(!p||!s)r
 function applySplit(j,dt,r){const b=load(),h=b.hold[j];
  h.price=Math.round(h.price/r*10)/10;h.shares=Math.round(h.shares*r);(h.splitsDone=h.splitsDone||[]).push(dt);save(b);render()}
 function skipSplit(j,dt){const b=load(),h=b.hold[j];(h.splitsDone=h.splitsDone||[]).push(dt);save(b);render()}
+/* 購入記録：単価×株数＝金額。金額を直したら単価を逆算 */
+function calcAmt(i){const p=+v('bp'+i),s=+v('bs'+i);document.getElementById('ba'+i).value=p&&s?Math.round(p*s):''}
+function calcPx(i){const a=+v('ba'+i),s=+v('bs'+i);if(a&&s)document.getElementById('bp'+i).value=Math.round(a/s*10)/10}
 function delHold(j){if(!confirm('この保有記録を削除しますか？'))return;const b=load();b.hold.splice(j,1);save(b);render()}
 function undoSell(k){if(!confirm('この売却記録を取り消して、保有中に戻しますか？'))return;
  const b=load(),d=b.done.splice(k,1)[0];delete d.sell;delete d.sellDate;delete d.pnl;b.hold.push(d);save(b);render()}
@@ -193,20 +196,28 @@ function render(){
    <label>株数（口数）</label><input id="rs${c}" type="number" inputmode="numeric">
    <div class="btns"><button class="pri" onclick="reg('${c}')">登録</button></div>
 </div>`}).join('');
- // 買い候補
- const sg=(S&&S.signals||[]).map((t,i)=>({t,i})).filter(({t})=>!b.skip.includes(t.date+t.code)&&!b.hold.some(h=>h.code===t.code&&h.date===t.date));
- document.getElementById('sig').innerHTML=!sg.length?'<div class="panel empty">本日は買い候補なし</div>':sg.map(({t,i})=>{charts.push(['cs'+i,t.code,null,null,t.stop]);
+ // 買い候補（直近5営業日。未記録・未見送りのものに購入入力欄を表示）
+ REC=(S&&(S.recent||S.signals))||[];
+ const sg=REC.map((t,i)=>({t,i})).filter(({t})=>!b.skip.includes(t.date+t.code)&&!b.hold.some(h=>h.code===t.code&&h.date===t.date)&&!b.done.some(h=>h.code===t.code&&h.date===t.date))
+  .sort((x,y)=>y.t.date.localeCompare(x.t.date));
+ document.getElementById('sig').innerHTML=!sg.length?'<div class="panel empty">買い候補なし</div>':sg.map(({t,i})=>{charts.push(['cs'+i,t.code,null,null,t.stop]);
+  const old=t.date!==(S&&S.market_date);
   return `<div class="panel"><div class="ttl"><span class="nm">${t.code}　${t.name}</span><span class="badge b-buy">買い候補 ${t.shares.toLocaleString()}株</span></div>
+   <div class="note">${t.date} の終値で判定${old?'（過去の候補：買った場合だけ記録してください）':''}</div>
    <canvas id="cs${i}"></canvas>
    <div class="row"><span>指値（買い）</span><b>${yen(t.entry)}</b></div>
    <div class="row"><span>損切り（点線）</span><b>${yen(t.stop)}</b></div>
    <div class="row"><span>ETFを売る額</span><b>${yen(t.cost)}</b></div>
    <div class="row"><span>最大損失</span><b>${yen(t.risk_yen)}</b></div>
    <div class="note">株数＝70,000÷(${fmt(t.entry)}−${fmt(t.stop)}) → ${t.by_risk.toLocaleString()}株、1,400,000÷${fmt(t.entry)} → ${t.by_cash.toLocaleString()}株 の小さい方</div>
-   <div class="btns"><button class="pri" onclick="toggle('f${i}')">買った</button><button onclick="skip(${i})">見送り</button></div>
-   <div class="form" id="f${i}"><label>約定した値段（円）</label><input id="bp${i}" type="number" inputmode="numeric" value="${t.entry}">
-    <label>株数</label><input id="bs${i}" type="number" inputmode="numeric" step="100" value="${t.shares}">
-    <div class="btns"><button class="pri" onclick="buy(${i})">記録する</button></div></div></div>`}).join('');
+   <div class="panel" style="margin:12px 0 0;background:var(--panel2)">
+    <b>購入したら入力</b>
+    <label>約定単価（円）</label><input id="bp${i}" type="number" inputmode="decimal" value="${t.entry}" oninput="calcAmt(${i})">
+    <label>株数（口数）</label><input id="bs${i}" type="number" inputmode="numeric" step="100" value="${t.shares}" oninput="calcAmt(${i})">
+    <label>購入金額（円）＝ 単価 × 株数</label><input id="ba${i}" type="number" inputmode="numeric" value="${Math.round(t.entry*t.shares)}" oninput="calcPx(${i})">
+    <div class="note">購入金額を直接入れると、単価 ＝ 金額 ÷ 株数 で自動計算します</div>
+    <div class="btns"><button class="pri" onclick="buy(${i})">購入を記録</button><button onclick="skip(${i})">見送り</button></div>
+   </div></div>`}).join('');
  // ETF
  const e=last('1321');charts.push(['ce','1321',null,null,null]);
  document.getElementById('etf').innerHTML=`<canvas id="ce"></canvas>
