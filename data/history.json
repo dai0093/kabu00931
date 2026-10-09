@@ -15,5 +15,39 @@
   "by_cash": 300,
   "method": "高値更新",
   "status": "pending"
+ },
+ {
+  "date": "2026-10-09",
+  "code": "2914",
+  "name": "日本たばこ産業",
+  "vol_ratio": 2.06,
+  "entry": 7230,
+  "stop": 6967,
+  "target": 7624,
+  "shares": 100,
+  "cost": 723000,
+  "risk_yen": 26300,
+  "risk_per_share": 263,
+  "by_risk": 200,
+  "by_cash": 100,
+  "method": "高値更新",
+  "status": "pending"
+ },
+ {
+  "date": "2026-10-09",
+  "code": "4704",
+  "name": "トレンドマイクロ",
+  "vol_ratio": 2.04,
+  "entry": 7587,
+  "stop": 7140,
+  "target": 8257,
+  "shares": 100,
+  "cost": 758700,
+  "risk_yen": 44700,
+  "risk_per_share": 447,
+  "by_risk": 100,
+  "by_cash": 100,
+  "method": "高値更新",
+  "status": "pending"
  }
 ]
