@@ -22,6 +22,11 @@ os.makedirs("data", exist_ok=True)
 
 NAMES = universe()
 prices = load("1y")
+# 場中（15:45より前）に動いた場合は、未確定の当日足を捨てて前日の確定足で判定する
+_now = datetime.now(JST)
+if _now.hour * 60 + _now.minute < 15 * 60 + 45:
+    _today = _now.strftime("%Y-%m-%d")
+    prices = {c: df[df.index.strftime("%Y-%m-%d") < _today] for c, df in prices.items()}
 frames = {c: add_indicators(df) for c, df in prices.items()}
 last_date = max(str(d.index[-1].date()) for d in frames.values())
 
