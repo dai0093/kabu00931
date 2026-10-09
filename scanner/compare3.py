@@ -68,7 +68,7 @@ except Exception:
 log.flush()
 print("内国株式", len(names))
 # 1段目：直近1か月で売買代金の平均が5億円以上の銘柄に絞る
-recent = download(names, "1mo")
+recent = download(names, "1mo", size=100, wait=15)
 liquid = [c for c, df in recent.items() if (df.Close * df.Volume).mean() >= MIN_TURNOVER / 2]
 log.write(f"直近1か月取得 {len(recent)} / 売買代金5億円以上 {len(liquid)}\n"); log.flush()
 # 2段目：絞った銘柄だけ5年分
