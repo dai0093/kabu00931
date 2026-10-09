@@ -100,7 +100,7 @@ const sma25=c=>S&&S.quotes&&S.quotes[c]?S.quotes[c].sma25:null;
 function toggle(id){document.getElementById(id).classList.toggle('on')}
 
 function buy(i){const t=S.signals[i],b=load(),p=+v('bp'+i),s=+v('bs'+i);if(!p||!s)return;
- b.hold.push({code:t.code,name:t.name,date:t.date,buyDate:S.market_date,price:p,shares:s,stop:t.stop});save(b);render()}
+ b.hold.push({code:t.code,name:t.name,date:t.date,buyDate:S.market_date,regDate:new Date().toISOString().slice(0,10),price:p,shares:s,stop:t.stop});save(b);render()}
 function skip(i){const t=S.signals[i],b=load();b.skip.push(t.date+t.code);save(b);render()}
 function sell(j){const b=load(),h=b.hold[j],p=+v('sp'+j);if(!p)return;
  b.done.unshift({...h,sell:p,sellDate:new Date().toISOString().slice(0,10),pnl:(p-h.price)*h.shares});b.hold.splice(j,1);save(b);render()}
@@ -109,12 +109,15 @@ function fix(j){const b=load(),h=b.hold[j],p=+v('ep'+j),s=+v('es'+j);if(!p||!s)r
 function add(j){const b=load(),h=b.hold[j],p=+v('ap'+j),s=+v('as'+j);if(!p||!s)return;
  (h.adds=h.adds||[]).push({price:p,shares:s,date:new Date().toISOString().slice(0,10),before:[h.price,h.shares]});
  h.price=Math.round((h.price*h.shares+p*s)/(h.shares+s)*10)/10;h.shares+=s;save(b);render()}
+function applySplit(j,dt,r){const b=load(),h=b.hold[j];
+ h.price=Math.round(h.price/r*10)/10;h.shares=Math.round(h.shares*r);(h.splitsDone=h.splitsDone||[]).push(dt);save(b);render()}
+function skipSplit(j,dt){const b=load(),h=b.hold[j];(h.splitsDone=h.splitsDone||[]).push(dt);save(b);render()}
 function delHold(j){if(!confirm('この保有記録を削除しますか？'))return;const b=load();b.hold.splice(j,1);save(b);render()}
 function undoSell(k){if(!confirm('この売却記録を取り消して、保有中に戻しますか？'))return;
  const b=load(),d=b.done.splice(k,1)[0];delete d.sell;delete d.sellDate;delete d.pnl;b.hold.push(d);save(b);render()}
 function reg(c){const b=load(),p=+v('rp'+c),s=+v('rs'+c);if(!p||!s)return;
  const q=S.quotes[c]||{},cur=q.close||p;
- b.hold.push({code:c,name:(C.names||{})[c]||c,date:'',buyDate:'',price:p,shares:s,stop:0});save(b);render()}
+ b.hold.push({code:c,name:(C.names||{})[c]||c,date:'',buyDate:'',regDate:new Date().toISOString().slice(0,10),price:p,shares:s,stop:0});save(b);render()}
 function setEtf(){const b=load();b.etf=+v('etfu')||0;save(b);render()}
 const v=id=>document.getElementById(id).value;
 
@@ -166,6 +169,11 @@ function render(){
    <div class="row"><span>計算</span><b>(${c?fmt(c):'--'} − ${fmt(h.price)}) × ${h.shares.toLocaleString()}</b></div>
    ${h.stop?`<div class="row"><span>損切り（点線）</span><b>${yen(h.stop)}</b></div>
    <div class="row"><span>25日線（割ったら売り）</span><b>${sma25(h.code)?yen(sma25(h.code)):'--'}</b></div>`:'<div class="note">以前から保有の銘柄のため、売り指示は出しません（検証で予測出来なかったため）</div>'}
+   ${((S&&S.splits&&S.splits[h.code])||[]).filter(([dt])=>!(h.splitsDone||[]).includes(dt)&&(!h.regDate||h.regDate<dt)).map(([dt,r])=>`
+    <div class="panel alert" style="margin:10px 0 0"><b>株式分割（${dt}、1株→${r}株）</b>
+     <div class="note">分割前の値で登録している場合は反映してください<br>
+      取得単価 ${fmt(h.price)} ÷ ${r} ＝ ${fmt(h.price/r)}円<br>株数 ${h.shares.toLocaleString()} × ${r} ＝ ${Math.round(h.shares*r).toLocaleString()}株</div>
+     <div class="btns"><button class="pri" onclick="applySplit(${j},'${dt}',${r})">反映する</button><button onclick="skipSplit(${j},'${dt}')">反映済み</button></div></div>`).join('')}
    ${(h.adds||[]).length?`<div class="note">買い増し履歴：${h.adds.map(a=>`${a.date} ${fmt(a.price)}円×${a.shares.toLocaleString()}`).join('、')}</div>`:''}
    <div class="btns"><button class="sel" onclick="toggle('s${j}')">売った</button><button onclick="toggle('a${j}')">買い増し</button><button onclick="toggle('e${j}')">修正</button></div>
    <div class="form" id="a${j}"><label>買い増しの値段（円）</label><input id="ap${j}" type="number" inputmode="decimal" value="${c||''}">

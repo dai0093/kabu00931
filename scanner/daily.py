@@ -3,6 +3,7 @@
 - 過去の候補：保有中なら毎日「売るべきか」を判定し、売り指示も通知
 - 成否（予測出来た／出来なかった）は data/history.json で追跡"""
 import json
+import pandas as pd
 import os
 import urllib.parse
 import urllib.request
@@ -120,6 +121,20 @@ for sym, key in (("1321.T", "1321"), ("^N225", "N225")):
         candles[key] = _bars(x.dropna(subset=["Close"]))
     except Exception as e:
         print(sym, "取得失敗", e)
+# 株式分割の履歴（直近1年）：保有株の取得単価・株数を分割後に直すために使う
+splits = {}
+for c in sorted(_show):
+    try:
+        sp = yf.Ticker(f"{c}.T").splits
+        sp = sp[sp.index >= sp.index.max() - pd.Timedelta(days=365)] if len(sp) else sp
+        if len(sp):
+            splits[c] = [[str(i.date()), float(r)] for i, r in sp.items()]
+    except Exception as e:
+        print(c, "分割情報の取得失敗", e)
+out["splits"] = splits
+json.dump(out, open("data/signals.json", "w", encoding="utf-8"), ensure_ascii=False, indent=1)
+print("splits", splits)
+
 names = dict(NAMES, **HELD, **{"1321": "日経225ETF", "N225": "日経平均"})
 json.dump({"names": names, "candles": candles},
           open("data/candles.json", "w", encoding="utf-8"), ensure_ascii=False, separators=(",", ":"))
