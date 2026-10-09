@@ -8,7 +8,9 @@ import urllib.parse
 import urllib.request
 from datetime import datetime, timezone, timedelta
 from core import add_indicators, plan
-from data import load
+from data import load, universe
+import strategy
+strategy.MIN_TURNOVER = 100e8   # 検証3で日経に勝った基準：20日平均売買代金100億円以上
 from strategy import is_breakout, simulate_trend
 from universe import STOCKS
 from holdings import HELD
@@ -18,6 +20,7 @@ APP_URL = "https://dai0093.github.io/kabu00931/signals.html"
 JST = timezone(timedelta(hours=9))
 os.makedirs("data", exist_ok=True)
 
+NAMES = universe()
 prices = load("1y")
 frames = {c: add_indicators(df) for c, df in prices.items()}
 last_date = max(str(d.index[-1].date()) for d in frames.values())
@@ -30,7 +33,7 @@ for code, d in frames.items():
         continue
     p = plan(d.Close.iloc[i], d.atr.iloc[i])
     if p:
-        today.append({"date": last_date, "code": code, "name": STOCKS[code],
+        today.append({"date": last_date, "code": code, "name": NAMES.get(code, code),
                       "vol_ratio": round(float(d.Volume.iloc[i] / d.vol20.iloc[i]), 2), **p})
 today.sort(key=lambda t: -t["vol_ratio"])
 today = today[:5]
@@ -92,7 +95,7 @@ closed = [h for h in history if h.get("status") == "closed"]
 track = {"closed": len(closed), "hit": sum(h["hit"] for h in closed),
          "pnl": round(sum(h["pnl"] for h in closed))}
 out = {"updated": datetime.now(JST).strftime("%Y-%m-%d %H:%M"),
-       "market_date": last_date, "method": "高値更新＋待機資金は日経平均ETF",
+       "market_date": last_date, "method": "高値更新（売買代金100億円以上・東証全銘柄）＋待機資金は日経平均ETF",
        "signals": today, "sells": sells, "held_sells": held_sells, "held": HELD, "quotes": quotes, "track": track,
        "open": [h for h in history if h.get("status") == "open"]}
 json.dump(out, open("data/signals.json", "w", encoding="utf-8"), ensure_ascii=False, indent=1)
@@ -102,7 +105,9 @@ def _bars(df):
     df = df.tail(90)
     return [[str(x.date()), round(float(r.Open), 1), round(float(r.High), 1),
              round(float(r.Low), 1), round(float(r.Close), 1)] for x, r in df.iterrows()]
-candles = {c: _bars(d) for c, d in frames.items()}
+# 表示に使う銘柄だけ（候補・保有・主要93）に絞ってファイルを軽くする
+_show = set(STOCKS) | set(HELD) | {t["code"] for t in today} | {h["code"] for h in history}
+candles = {c: _bars(d) for c, d in frames.items() if c in _show}
 for sym, key in (("1321.T", "1321"), ("^N225", "N225")):
     try:
         x = yf.download(sym, period="6mo", auto_adjust=False, progress=False)
@@ -110,7 +115,7 @@ for sym, key in (("1321.T", "1321"), ("^N225", "N225")):
         candles[key] = _bars(x.dropna(subset=["Close"]))
     except Exception as e:
         print(sym, "取得失敗", e)
-names = dict(STOCKS, **HELD, **{"1321": "日経225ETF", "N225": "日経平均"})
+names = dict(NAMES, **HELD, **{"1321": "日経225ETF", "N225": "日経平均"})
 json.dump({"names": names, "candles": candles},
           open("data/candles.json", "w", encoding="utf-8"), ensure_ascii=False, separators=(",", ":"))
 

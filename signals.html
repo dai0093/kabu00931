@@ -198,7 +198,7 @@ function render(){
    <div class="row"><span>予測出来た</span><b class="up">${w}回</b></div><div class="row"><span>予測出来なかった</span><b class="dn">${b.done.length-w}回</b></div>`+
   b.done.slice(0,20).map(d=>`<div class="row"><span>${d.name}　<span class="note">${d.sellDate}</span></span><b class="${cl(d.pnl)}">${sgn(d.pnl)}</b></div>`).join('');
  // 検証
- const r=BT&&BT.results&&BT.results['主要93×高値更新×待機資金を日経運用'];
+ const r=BT&&BT.results&&BT.results['100億'];if(r&&BT.bench_profit==null)BT.bench_profit=0;
  document.getElementById('bt').innerHTML=r?`
   <div class="row"><span>この方式の5年の利益</span><b class="up">${sgn(r.profit)}</b></div>
   <div class="row"><span>日経平均を持つだけ</span><b>${sgn(BT.bench_profit)}</b></div>
@@ -209,7 +209,7 @@ function render(){
 }
 
 (async()=>{
- [S,C,BT]=await Promise.all([get('data/signals.json'),get('data/candles.json'),get('data/compare2.json')]);
+ [S,C,BT]=await Promise.all([get('data/signals.json'),get('data/candles.json'),get('data/compare3.json')]);
  if(S){const [y,m,d]=S.market_date.split('-');document.getElementById('hdate').textContent=`${+m}月${+d}日`;
   document.getElementById('hst').textContent='✓ 判定完了';document.getElementById('hupd').textContent=S.updated.slice(11);
   const ns=S.signals.length,nl=(S.sells||[]).length;
