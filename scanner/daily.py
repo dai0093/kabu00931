@@ -126,7 +126,7 @@ splits = {}
 for c in sorted(_show):
     try:
         sp = yf.Ticker(f"{c}.T").splits
-        sp = sp[sp.index >= sp.index.max() - pd.Timedelta(days=365)] if len(sp) else sp
+        sp = sp[sp.index >= pd.Timestamp.now(tz=sp.index.tz) - pd.Timedelta(days=365)] if len(sp) else sp
         if len(sp):
             splits[c] = [[str(i.date()), float(r)] for i, r in sp.items()]
     except Exception as e:
