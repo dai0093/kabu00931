@@ -203,7 +203,7 @@ function render(){
  const rk=(lab,val,stt,form)=>`<div class="row"><span>${lab}</span><b>${val==null?'—':form(val)}<span class="pill p-${stt||'ok'}">${RL[stt]||'—'}</span></b></div>`;
  document.getElementById('risk').innerHTML=!R||!R.values?'<div class="empty">市場リスクのデータなし</div>':`
   <div class="ttl"><span class="nm">市場リスク</span><span class="badge ${R.off?'b-buy':'b-sell'}">${R.off?'リスクオフ：新規の買いを停止':'平常：買い候補を出します'}</span></div>
-  <div class="note">${R.date} 時点。リスクオフ＝VIX25超が3日連続、またはHY OASが20日で+0.5pt以上</div>
+  <div class="note">${R.date} 時点。リスクオフ＝VIX25超が3日連続（過去5年の検証で採用した条件）。下の他の指標は参考表示</div>
   ${rk('VIX',R.values.vix,R.state.vix,x=>x.toFixed(1))}
   ${rk('HY OAS（20日変化）',R.values.hy_20,R.state.hy_jump,x=>(x>0?'+':'')+x.toFixed(2)+'pt')}
   ${rk('米10年金利',R.values.us10,R.state.us10,x=>x.toFixed(2)+'%')}

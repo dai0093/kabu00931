@@ -69,7 +69,7 @@ def state(r):
     return s
 
 
-USE_HY = True
+USE_HY = False   # HY OASはGitHubからFREDに接続できず未検証のため、判定には使わない
 
 
 def risk_off(r):
