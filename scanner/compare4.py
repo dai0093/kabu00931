@@ -12,6 +12,7 @@ from core import plan, add_indicators, CAPITAL, MAX_POSITIONS
 from data import load
 import strategy
 from strategy import is_breakout, simulate_trend
+import risk as R
 from risk import factors, risk_off, state
 
 strategy.MIN_TURNOVER = 100e8
@@ -145,21 +146,28 @@ def run(name, block=False, half=False, avoid=False, exit_all=False):
             "years": {y: round(v) for y, v in sorted(yrs.items())}}
 
 
+hy_ok = F["hy"].notna().sum()
+print("HY OASの日数", hy_ok)
+R.USE_HY = False
+roff = {d: risk_off(F.loc[d]) for d in F.index}
+resV = [run("A 連携なし"), run("B1 VIXのみでリスクオフ時は買わない", block=True)]
+R.USE_HY = True
+roff = {d: risk_off(F.loc[d]) for d in F.index}
+resH = [run("B2 VIX＋HY OASでリスクオフ時は買わない", block=True),
+        run("C2 VIX＋HY OASで半分", half=True)]
+res = resV + resH
 roff_days = sum(roff.values())
-res = [run("A 連携なし"), run("B リスクオフ中は買わない", block=True),
-       run("C リスクオフ中は半分", half=True), run("D 弱い銘柄を除外", avoid=True),
-       run("E B＋リスクオフで全売却・現金退避", block=True, exit_all=True),
-       run("F D＋B", block=True, avoid=True)]
-# リスクオフ期間の一覧（いつ点灯したか）
 spans, on = [], None
 for d in F.index:
     if roff[d] and on is None:
         on = d
     if not roff[d] and on is not None:
         spans.append(f"{on.date()}〜{d.date()}"); on = None
-json.dump({"risk_off_days": roff_days, "spans": spans, "results": res},
+json.dump({"hy_days": int(hy_ok), "hy_start": str(F["hy"].first_valid_index()), "risk_off_days": roff_days,
+           "spans": spans, "results": res},
           open("data/compare4.json", "w", encoding="utf-8"), ensure_ascii=False, indent=1)
-lines = [f"リスクオフ日数 {roff_days}（期間 {spans}）", f"日経平均保有 {res[0]['bench']:+,}円", ""]
+lines = [f"HY OAS {hy_ok}日分（開始 {F['hy'].first_valid_index()}）", f"VIX＋HYのリスクオフ日数 {roff_days}（{spans}）",
+         f"日経平均保有 {res[0]['bench']:+,}円", ""]
 for r in res:
     lines.append(f"## {r['name']}\n- 最終利益 {r['profit']:+,} / 日経比 {r['vs_nikkei']:+,} / 最大落ち込み {r['mdd']:,}"
                  f"\n- 取引{r['n']} 出来た{r['hit']} 出来なかった{r['miss']} PF{r['pf']}\n- 年別 {r['years']}\n")

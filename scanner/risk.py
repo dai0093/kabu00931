@@ -8,9 +8,17 @@ import yfinance as yf
 
 
 def _fred(sid):
+    import time
     url = f"https://fred.stlouisfed.org/graph/fredgraph.csv?id={sid}"
-    req = urllib.request.Request(url, headers={"User-Agent": "Mozilla/5.0"})
-    df = pd.read_csv(io.BytesIO(urllib.request.urlopen(req, timeout=60).read()))
+    req = urllib.request.Request(url, headers={"User-Agent": "Mozilla/5.0 (X11; Linux x86_64)"})
+    for k in range(4):
+        try:
+            body = urllib.request.urlopen(req, timeout=180).read(); break
+        except Exception as e:
+            print("FRED再試行", sid, k, e); time.sleep(20)
+    else:
+        raise RuntimeError("FRED取得失敗")
+    df = pd.read_csv(io.BytesIO(body))
     df.columns = ["date", sid]
     df["date"] = pd.to_datetime(df["date"])
     df[sid] = pd.to_numeric(df[sid], errors="coerce")
@@ -54,13 +62,17 @@ def state(r):
          "hy": lv(r.hy, 3.00, 2.90), "nfci": lv(r.nfci, 0, -0.20),
          "vix": "lit" if r.vix_d >= 3 else "near" if r.vix >= 25 else "ok"}
     # 変化幅（急変）：水準に関係なく直近20営業日の悪化を見る
-    s["hy_jump"] = "lit" if r.hy_20 >= 0.50 else "near" if r.hy_20 >= 0.30 else "ok"
+    s["hy_jump"] = "na" if pd.isna(r.hy_20) else "lit" if r.hy_20 >= 0.50 else "near" if r.hy_20 >= 0.30 else "ok"
     s["us10_jump"] = "lit" if r.us10_20 >= 0.40 else "near" if r.us10_20 >= 0.25 else "ok"
     s["oil_jump"] = "lit" if r.brent_20 >= 0.20 else "near" if r.brent_20 >= 0.10 else "ok"
     s["yen_jump"] = "lit" if r.yen_20 <= -0.05 else "near" if r.yen_20 <= -0.03 else "ok"
     return s
 
 
+USE_HY = True
+
+
 def risk_off(r):
-    """急変型のリスクオフ：VIX25超が3日連続、またはHY OASが20日で+50bp以上"""
-    return bool(r.vix_d >= 3 or (not pd.isna(r.hy_20) and r.hy_20 >= 0.50))
+    """急変型のリスクオフ：VIX25超が3日連続、またはHY OASが20日で+50bp以上（USE_HY=Falseなら VIXのみ）"""
+    hy = USE_HY and not pd.isna(r.hy_20) and r.hy_20 >= 0.50
+    return bool(r.vix_d >= 3 or hy)
