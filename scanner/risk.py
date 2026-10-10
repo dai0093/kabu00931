@@ -71,7 +71,7 @@ def state(r):
     s["us10_jump"] = "lit" if r.us10_20 >= 0.40 else "near" if r.us10_20 >= 0.25 else "ok"
     s["oil_jump"] = "lit" if r.brent_20 >= 0.20 else "near" if r.brent_20 >= 0.10 else "ok"
     s["yen_jump"] = "lit" if r.yen_20 <= -0.05 else "near" if r.yen_20 <= -0.03 else "ok"
-    s["credit"] = "na" if pd.isna(r.credit_20) else "lit" if r.credit_20 <= -CREDIT_TH else "near" if r.credit_20 <= -CREDIT_TH * 0.6 else "ok"
+    s["credit"] = "na" if pd.isna(r.credit_20) else "lit" if r.credit_20 <= -0.03 else "near" if r.credit_20 <= -0.02 else "ok"   # 表示用（判定には不使用）
     return s
 
 

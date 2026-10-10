@@ -205,7 +205,7 @@ function render(){
   <div class="ttl"><span class="nm">市場リスク</span><span class="badge ${R.off?'b-buy':'b-sell'}">${R.off?'リスクオフ：新規の買いを停止':'平常：買い候補を出します'}</span></div>
   <div class="note">${R.date} 時点。リスクオフ＝VIX25超が3日連続（過去5年の検証で採用した条件）。下の他の指標は参考表示</div>
   ${rk('VIX',R.values.vix,R.state.vix,x=>x.toFixed(1))}
-  ${rk('HY OAS（20日変化）',R.values.hy_20,R.state.hy_jump,x=>(x>0?'+':'')+x.toFixed(2)+'pt')}
+  ${rk('信用（HYG÷IEF 20日変化・参考）',R.values.credit_20,R.state.credit,x=>(x>0?'+':'')+(x*100).toFixed(1)+'%')}
   ${rk('米10年金利',R.values.us10,R.state.us10,x=>x.toFixed(2)+'%')}
   ${rk('Brent原油（20日変化）',R.values.brent_20,R.state.oil_jump,x=>(x>0?'+':'')+(x*100).toFixed(1)+'%')}
   ${rk('ドル円（20日変化）',R.values.yen_20,R.state.yen_jump,x=>(x>0?'+':'')+(x*100).toFixed(1)+'%')}

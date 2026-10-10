@@ -53,7 +53,7 @@ try:
     risk = {"off": risk_off(_r), "date": str(_F.index[-1].date()), "state": risk_state(_r),
             "values": {k: (None if pd.isna(_r[k]) else round(float(_r[k]), 3))
                        for k in ("vix", "vix_d", "us10", "us10_20", "hy", "hy_20", "nfci",
-                                 "brent", "brent_20", "usdjpy", "yen_20")}}
+                                 "brent", "brent_20", "usdjpy", "yen_20", "credit_20")}}
 except Exception as e:
     print("リスク指標の取得失敗", e)
 blocked = []
