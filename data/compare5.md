@@ -1,9 +1,3 @@
-
-1 Failed download:
-['186A.T']: OperationalError('database is locked')
-銘柄 873 指標 2020-10-09 〜 2026-10-09 HY開始 None
-シグナル 1560
-感応度で除外対象 26
 日経平均保有 +9,956,035円
 HYG/IEFの20日変化 最小 -6.8%
 
