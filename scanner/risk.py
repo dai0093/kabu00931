@@ -32,13 +32,15 @@ def _yf(sym, period):
     return x.dropna()
 
 
-def factors(period="6y"):
+def factors(period="6y", fred=False):
     """日次の指標表（営業日ベース、欠損は直前値で補完）"""
     f = pd.DataFrame({"vix": _yf("^VIX", period), "us10": _yf("^TNX", period),
                       "brent": _yf("BZ=F", period), "usdjpy": _yf("JPY=X", period),
                       "n225": _yf("^N225", period),
                       "hyg": _yf("HYG", period), "ief": _yf("IEF", period)})
     for sid, k in (("BAMLH0A0HYM2", "hy"), ("NFCI", "nfci")):
+        if not fred:   # GitHubからFREDは接続できないため既定では取得しない
+            f[k] = float("nan"); continue
         try:
             f = f.join(_fred(sid).rename(k), how="left")
         except Exception as e:
