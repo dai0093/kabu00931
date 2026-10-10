@@ -170,3 +170,4 @@ for k, v in spans_all.items():
     lines.append(f"{k} の期間: {v}")
 open("data/compare5.md", "w", encoding="utf-8").write("\n".join(lines))
 print("\n".join(lines))
+# rerun
