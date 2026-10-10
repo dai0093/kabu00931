@@ -247,18 +247,20 @@ function render(){
    <div class="row"><span>予測出来た</span><b class="up">${w}回</b></div><div class="row"><span>予測出来なかった</span><b class="dn">${b.done.length-w}回</b></div>`+
   b.done.slice(0,20).map((d,k)=>`<div class="row"><span>${d.name}　<span class="note">${d.sellDate}</span></span><b class="${cl(d.pnl)}">${sgn(d.pnl)}</b></div><div style="text-align:right"><button style="flex:none;padding:4px 12px;font-size:13px" onclick="undoSell(${k})">取消</button></div>`).join('');
  // 検証
- const r=BT&&BT.results&&BT.results['100億'];if(r&&BT.bench_profit==null)BT.bench_profit=0;
- document.getElementById('bt').innerHTML=r?`
-  <div class="row"><span>この方式の5年の利益</span><b class="up">${sgn(r.profit)}</b></div>
-  <div class="row"><span>日経平均を持つだけ</span><b>${sgn(BT.bench_profit)}</b></div>
-  <div class="row"><span>差（日経に勝った分）</span><b class="${cl(r.profit-BT.bench_profit)}">${sgn(r.profit-BT.bench_profit)}</b></div>
-  <div class="row"><span>予測出来た / 出来なかった</span><b>${r.hit}回 / ${r.miss}回</b></div>
-  <div class="row"><span>最大の落ち込み</span><b class="dn">${yen(r.mdd)}</b></div>`:'<div class="empty">検証データなし</div>';
+ const row=BT&&BT.rows&&BT.rows.find(x=>x.cfg==='100億・VIXあり');
+ const T=row&&row.test;
+ document.getElementById('bt').innerHTML=T?`
+  <div class="note">税金・手数料・厳しい約定込み。条件は前半（〜2023年）だけで選び、後半（2024年〜）で試した結果</div>
+  <div class="row"><span>後半の利益</span><b class="up">${sgn(T.profit)}</b></div>
+  <div class="row"><span>日経平均を持つだけ</span><b>${sgn(T.bench)}</b></div>
+  <div class="row"><span>差（日経に勝った分）</span><b class="${cl(T.vs)}">${sgn(T.vs)}</b></div>
+  <div class="row"><span>予測出来た / 出来なかった</span><b>${T.hit}回 / ${T.miss}回</b></div>
+  <div class="row"><span>最大の落ち込み</span><b class="dn">${yen(T.mdd)}</b></div>`:'<div class="empty">検証データなし</div>';
  CH=charts;lastW=innerWidth;drawCharts();
 }
 
 (async()=>{
- [S,C,BT]=await Promise.all([get('data/signals.json'),get('data/candles.json'),get('data/compare3.json')]);
+ [S,C,BT]=await Promise.all([get('data/signals.json'),get('data/candles.json'),get('data/compare6.json')]);
  if(S){const [y,m,d]=S.market_date.split('-');document.getElementById('hdate').textContent=`${+m}月${+d}日`;
   document.getElementById('hst').textContent='✓ 判定完了';document.getElementById('hupd').textContent=S.updated.slice(11);
   const ns=S.signals.length,nl=(S.sells||[]).length;
