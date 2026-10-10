@@ -23,6 +23,7 @@ for c, df in raw.items():
     df = df.copy(); df.index = pd.to_datetime(df.index).tz_localize(None)
     frames[c] = add_indicators(df)
 F = factors("6y")
+import risk as R
 print("銘柄", len(frames), "指標", F.index[0].date(), "〜", F.index[-1].date(),
       "HY開始", F["hy"].first_valid_index())
 roff = {d: risk_off(F.loc[d]) for d in F.index}
@@ -146,30 +147,26 @@ def run(name, block=False, half=False, avoid=False, exit_all=False):
             "years": {y: round(v) for y, v in sorted(yrs.items())}}
 
 
-hy_ok = F["hy"].notna().sum()
-print("HY OASの日数", hy_ok)
-R.USE_HY = False
-roff = {d: risk_off(F.loc[d]) for d in F.index}
-resV = [run("A 連携なし"), run("B1 VIXのみでリスクオフ時は買わない", block=True)]
-R.USE_HY = True
-roff = {d: risk_off(F.loc[d]) for d in F.index}
-resH = [run("B2 VIX＋HY OASでリスクオフ時は買わない", block=True),
-        run("C2 VIX＋HY OASで半分", half=True)]
-res = resV + resH
-roff_days = sum(roff.values())
-spans, on = [], None
-for d in F.index:
-    if roff[d] and on is None:
-        on = d
-    if not roff[d] and on is not None:
-        spans.append(f"{on.date()}〜{d.date()}"); on = None
-json.dump({"hy_days": int(hy_ok), "hy_start": str(F["hy"].first_valid_index()), "risk_off_days": roff_days,
-           "spans": spans, "results": res},
-          open("data/compare4.json", "w", encoding="utf-8"), ensure_ascii=False, indent=1)
-lines = [f"HY OAS {hy_ok}日分（開始 {F['hy'].first_valid_index()}）", f"VIX＋HYのリスクオフ日数 {roff_days}（{spans}）",
-         f"日経平均保有 {res[0]['bench']:+,}円", ""]
+res, spans_all = [], {}
+for th in (0.0, 0.02, 0.03, 0.04):
+    R.CREDIT_TH = th
+    roff = {d: risk_off(F.loc[d]) for d in F.index}
+    name = "B VIXのみ" if th == 0 else f"B VIX＋信用（HYG/IEFが20日で−{th*100:.0f}%）"
+    r = run(name, block=True); r["roff_days"] = sum(roff.values()); res.append(r)
+    sp, on = [], None
+    for d in F.index:
+        if roff[d] and on is None: on = d
+        if not roff[d] and on is not None: sp.append(f"{on.date()}〜{d.date()}"); on = None
+    spans_all[name] = sp
+R.CREDIT_TH = 0.0
+roff = {d: False for d in F.index}
+res.insert(0, run("A 連携なし"))
+json.dump({"results": res, "spans": spans_all}, open("data/compare5.json", "w", encoding="utf-8"), ensure_ascii=False, indent=1)
+lines = [f"日経平均保有 {res[0]['bench']:+,}円", f"HYG/IEFの20日変化 最小 {F.credit_20.min()*100:.1f}%", ""]
 for r in res:
-    lines.append(f"## {r['name']}\n- 最終利益 {r['profit']:+,} / 日経比 {r['vs_nikkei']:+,} / 最大落ち込み {r['mdd']:,}"
+    lines.append(f"## {r['name']}（リスクオフ {r.get('roff_days',0)}日）\n- 最終利益 {r['profit']:+,} / 日経比 {r['vs_nikkei']:+,} / 最大落ち込み {r['mdd']:,}"
                  f"\n- 取引{r['n']} 出来た{r['hit']} 出来なかった{r['miss']} PF{r['pf']}\n- 年別 {r['years']}\n")
-open("data/compare4.md", "w", encoding="utf-8").write("\n".join(lines))
+for k, v in spans_all.items():
+    lines.append(f"{k} の期間: {v}")
+open("data/compare5.md", "w", encoding="utf-8").write("\n".join(lines))
 print("\n".join(lines))

@@ -36,7 +36,8 @@ def factors(period="6y"):
     """日次の指標表（営業日ベース、欠損は直前値で補完）"""
     f = pd.DataFrame({"vix": _yf("^VIX", period), "us10": _yf("^TNX", period),
                       "brent": _yf("BZ=F", period), "usdjpy": _yf("JPY=X", period),
-                      "n225": _yf("^N225", period)})
+                      "n225": _yf("^N225", period),
+                      "hyg": _yf("HYG", period), "ief": _yf("IEF", period)})
     for sid, k in (("BAMLH0A0HYM2", "hy"), ("NFCI", "nfci")):
         try:
             f = f.join(_fred(sid).rename(k), how="left")
@@ -52,6 +53,8 @@ def factors(period="6y"):
     f["us10_20"] = f["us10"] - f["us10"].shift(20)
     f["brent_20"] = f["brent"] / f["brent"].shift(20) - 1
     f["yen_20"] = f["usdjpy"] / f["usdjpy"].shift(20) - 1
+    # 信用不安の代わり：ハイイールド債ETF÷米国債ETF の20日変化（下がるほど信用不安）
+    f["credit_20"] = (f["hyg"] / f["ief"]) / (f["hyg"] / f["ief"]).shift(20) - 1
     return f
 
 
@@ -66,13 +69,16 @@ def state(r):
     s["us10_jump"] = "lit" if r.us10_20 >= 0.40 else "near" if r.us10_20 >= 0.25 else "ok"
     s["oil_jump"] = "lit" if r.brent_20 >= 0.20 else "near" if r.brent_20 >= 0.10 else "ok"
     s["yen_jump"] = "lit" if r.yen_20 <= -0.05 else "near" if r.yen_20 <= -0.03 else "ok"
+    s["credit"] = "na" if pd.isna(r.credit_20) else "lit" if r.credit_20 <= -CREDIT_TH else "near" if r.credit_20 <= -CREDIT_TH * 0.6 else "ok"
     return s
 
 
+CREDIT_TH = 0.0    # 0なら信用（HYG/IEF）条件を使わない。検証5の結果で決める
 USE_HY = False   # HY OASはGitHubからFREDに接続できず未検証のため、判定には使わない
 
 
 def risk_off(r):
     """急変型のリスクオフ：VIX25超が3日連続、またはHY OASが20日で+50bp以上（USE_HY=Falseなら VIXのみ）"""
     hy = USE_HY and not pd.isna(r.hy_20) and r.hy_20 >= 0.50
-    return bool(r.vix_d >= 3 or hy)
+    cr = CREDIT_TH > 0 and not pd.isna(r.credit_20) and r.credit_20 <= -CREDIT_TH
+    return bool(r.vix_d >= 3 or hy or cr)
