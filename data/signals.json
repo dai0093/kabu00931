@@ -1,5 +1,34 @@
 {
- "updated": "2026-10-10 07:26",
+ "risk": {
+  "off": false,
+  "date": "2026-10-09",
+  "state": {
+   "brent": "ok",
+   "us10": "lit",
+   "hy": "na",
+   "nfci": "na",
+   "vix": "ok",
+   "hy_jump": "ok",
+   "us10_jump": "near",
+   "oil_jump": "ok",
+   "yen_jump": "ok"
+  },
+  "values": {
+   "vix": 14.84,
+   "vix_d": 0.0,
+   "us10": 5.244,
+   "us10_20": 0.269,
+   "hy": null,
+   "hy_20": null,
+   "nfci": null,
+   "brent": 104.72,
+   "brent_20": 0.001,
+   "usdjpy": 158.246,
+   "yen_20": 0.024
+  }
+ },
+ "blocked": [],
+ "updated": "2026-10-10 19:27",
  "market_date": "2026-10-09",
  "method": "高値更新（売買代金100億円以上・東証全銘柄）＋待機資金は日経平均ETF",
  "signals": [
