@@ -45,6 +45,7 @@ input{width:100%;font:inherit;font-size:18px;padding:10px;border-radius:8px;bord
 .empty{text-align:center;color:var(--sub);padding:14px 4px;font-size:15px}
 .note{font-size:13px;color:var(--sub);line-height:1.8}
 .alert{border:2px solid var(--up)}
+.pill{font-size:12px;font-weight:700;padding:1px 8px;border-radius:10px;margin-left:6px}.p-lit{background:var(--up);color:#fff}.p-near{background:#e8b04b;color:#16212b}.p-ok{background:var(--panel2);color:var(--sub)}
 </style>
 </head>
 <body>
@@ -56,6 +57,7 @@ input{width:100%;font:inherit;font-size:18px;padding:10px;border-radius:8px;bord
 </div>
 
 <div class="panel notice" id="notice"></div>
+<div class="panel" id="risk"></div>
 
 <div class="grid">
  <div class="panel" style="margin:0">
@@ -196,6 +198,18 @@ function render(){
    <label>株数（口数）</label><input id="rs${c}" type="number" inputmode="numeric">
    <div class="btns"><button class="pri" onclick="reg('${c}')">登録</button></div>
 </div>`}).join('');
+ // 市場リスク
+ const R=S&&S.risk;const RL={lit:'点灯',near:'接近',ok:'平常',na:'—'};
+ const rk=(lab,val,stt,form)=>`<div class="row"><span>${lab}</span><b>${val==null?'—':form(val)}<span class="pill p-${stt||'ok'}">${RL[stt]||'—'}</span></b></div>`;
+ document.getElementById('risk').innerHTML=!R||!R.values?'<div class="empty">市場リスクのデータなし</div>':`
+  <div class="ttl"><span class="nm">市場リスク</span><span class="badge ${R.off?'b-buy':'b-sell'}">${R.off?'リスクオフ：新規の買いを停止':'平常：買い候補を出します'}</span></div>
+  <div class="note">${R.date} 時点。リスクオフ＝VIX25超が3日連続、またはHY OASが20日で+0.5pt以上</div>
+  ${rk('VIX',R.values.vix,R.state.vix,x=>x.toFixed(1))}
+  ${rk('HY OAS（20日変化）',R.values.hy_20,R.state.hy_jump,x=>(x>0?'+':'')+x.toFixed(2)+'pt')}
+  ${rk('米10年金利',R.values.us10,R.state.us10,x=>x.toFixed(2)+'%')}
+  ${rk('Brent原油（20日変化）',R.values.brent_20,R.state.oil_jump,x=>(x>0?'+':'')+(x*100).toFixed(1)+'%')}
+  ${rk('ドル円（20日変化）',R.values.yen_20,R.state.yen_jump,x=>(x>0?'+':'')+(x*100).toFixed(1)+'%')}
+  ${(S.blocked||[]).length?`<div class="note">リスクオフで見送った候補：${S.blocked.map(t=>t.name).join('、')}</div>`:''}`;
  // 買い候補（直近5営業日。未記録・未見送りのものに購入入力欄を表示）
  REC=(S&&(S.recent||S.signals))||[];
  const sg=REC.map((t,i)=>({t,i})).filter(({t})=>!b.skip.includes(t.date+t.code)&&!b.hold.some(h=>h.code===t.code&&h.date===t.date)&&!b.done.some(h=>h.code===t.code&&h.date===t.date))

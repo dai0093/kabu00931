@@ -44,6 +44,22 @@ for code, d in frames.items():
 today.sort(key=lambda t: -t["vol_ratio"])
 today = today[:5]
 
+# 市場リスク連携（検証4で採用：リスクオフ中は新規の買いを止める）
+from risk import factors, state as risk_state, risk_off
+risk = {"off": False}
+try:
+    _F = factors("1y")
+    _r = _F.iloc[-1]
+    risk = {"off": risk_off(_r), "date": str(_F.index[-1].date()), "state": risk_state(_r),
+            "values": {k: (None if pd.isna(_r[k]) else round(float(_r[k]), 3))
+                       for k in ("vix", "vix_d", "us10", "us10_20", "hy", "hy_20", "nfci",
+                                 "brent", "brent_20", "usdjpy", "yen_20")}}
+except Exception as e:
+    print("リスク指標の取得失敗", e)
+blocked = []
+if risk.get("off"):
+    blocked, today = today, []
+
 # 2) 過去候補の追跡と売り判定
 hist_path = "data/history.json"
 history = json.load(open(hist_path, encoding="utf-8")) if os.path.exists(hist_path) else []
@@ -100,7 +116,7 @@ json.dump(history, open(hist_path, "w", encoding="utf-8"), ensure_ascii=False, i
 closed = [h for h in history if h.get("status") == "closed"]
 track = {"closed": len(closed), "hit": sum(h["hit"] for h in closed),
          "pnl": round(sum(h["pnl"] for h in closed))}
-out = {"updated": datetime.now(JST).strftime("%Y-%m-%d %H:%M"),
+out = {"risk": risk, "blocked": blocked, "updated": datetime.now(JST).strftime("%Y-%m-%d %H:%M"),
        "market_date": last_date, "method": "高値更新（売買代金100億円以上・東証全銘柄）＋待機資金は日経平均ETF",
        "signals": today, "sells": sells, "held_sells": held_sells, "held": HELD, "quotes": quotes, "track": track,
        "open": [h for h in history if h.get("status") == "open"],
@@ -146,6 +162,10 @@ if not NTFY_TOPIC:
     print("NTFY_TOPIC未設定のため通知をスキップ")
     raise SystemExit(0)
 parts = []
+if risk.get("off"):
+    parts.append("【市場リスク】リスクオフ中のため新規の買いを停止"
+                 f"（VIX {risk['values']['vix']}・HY OAS 20日変化 {risk['values']['hy_20']}pt）"
+                 + (f"\n見送った候補：{'、'.join(t['name'] for t in blocked)}" if blocked else ""))
 for t in today:
     parts.append(f"【買い】{t['name']}({t['code']}) {t['shares']}株\n"
                  f"指値 {t['entry']:,}円 / 損切り {t['stop']:,}円\n"
