@@ -1,0 +1,26 @@
+name: compare4
+on:
+  push:
+    paths: ["scanner/compare4.py"]
+  workflow_dispatch:
+permissions:
+  contents: write
+concurrency:
+  group: data-write
+  cancel-in-progress: true
+jobs:
+  scan:
+    runs-on: ubuntu-latest
+    timeout-minutes: 90
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: { python-version: "3.11" }
+      - run: pip install yfinance pandas xlrd openpyxl
+      - run: python scanner/compare4.py 2>&1 | tee data/compare4_run.txt; exit ${PIPESTATUS[0]}
+        shell: bash
+      - if: always()
+        run: |
+          git config user.name "kabu-bot"
+          git config user.email "kabu-bot@users.noreply.github.com"
+          git add data && git commit -m "compare4 $(date +%F)" && git pull --rebase && git push || echo "no change"
