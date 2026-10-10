@@ -8,10 +8,11 @@
    "hy": "na",
    "nfci": "na",
    "vix": "ok",
-   "hy_jump": "ok",
+   "hy_jump": "na",
    "us10_jump": "near",
    "oil_jump": "ok",
-   "yen_jump": "ok"
+   "yen_jump": "ok",
+   "credit": "ok"
   },
   "values": {
    "vix": 14.84,
@@ -24,11 +25,12 @@
    "brent": 104.72,
    "brent_20": 0.001,
    "usdjpy": 158.246,
-   "yen_20": 0.024
+   "yen_20": 0.024,
+   "credit_20": 0.0
   }
  },
  "blocked": [],
- "updated": "2026-10-10 19:27",
+ "updated": "2026-10-10 22:23",
  "market_date": "2026-10-09",
  "method": "高値更新（売買代金100億円以上・東証全銘柄）＋待機資金は日経平均ETF",
  "signals": [
