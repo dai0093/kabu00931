@@ -1,0 +1,13 @@
+name: morning-reminder
+on:
+  schedule:
+    - cron: "53 22 * * 0-4"   # 平日 7:53 JST（UTCでは前日22:53）
+  workflow_dispatch:
+jobs:
+  remind:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - run: python3 scanner/morning.py
+        env:
+          NTFY_TOPIC: ${{ secrets.NTFY_TOPIC }}

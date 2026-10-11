@@ -31,6 +31,16 @@ if _now.hour * 60 + _now.minute < 15 * 60 + 45:
 frames = {c: add_indicators(df) for c, df in prices.items()}
 last_date = max(str(d.index[-1].date()) for d in frames.values())
 
+# 定時実行は1日3回（遅延対策）。同じ終値で判定済みなら、2回目以降は何もしない（休日も同じ理由で停止）
+try:
+    _prev = json.load(open("data/signals.json", encoding="utf-8"))
+except Exception:
+    _prev = {}
+if os.environ.get("GITHUB_EVENT_NAME") == "schedule" and _prev.get("market_date") == last_date \
+        and _prev.get("final"):
+    print("判定済みのためスキップ", last_date)
+    raise SystemExit(0)
+
 # 1) 今日の買い候補
 today = []
 for code, d in frames.items():
@@ -116,7 +126,8 @@ json.dump(history, open(hist_path, "w", encoding="utf-8"), ensure_ascii=False, i
 closed = [h for h in history if h.get("status") == "closed"]
 track = {"closed": len(closed), "hit": sum(h["hit"] for h in closed),
          "pnl": round(sum(h["pnl"] for h in closed))}
-out = {"risk": risk, "blocked": blocked, "updated": datetime.now(JST).strftime("%Y-%m-%d %H:%M"),
+out = {"final": last_date < datetime.now(JST).strftime("%Y-%m-%d") or datetime.now(JST).hour * 60 + datetime.now(JST).minute >= 15 * 60 + 45,
+       "risk": risk, "blocked": blocked, "updated": datetime.now(JST).strftime("%Y-%m-%d %H:%M"),
        "market_date": last_date, "method": "高値更新（売買代金100億円以上・東証全銘柄）＋待機資金は日経平均ETF",
        "signals": today, "sells": sells, "held_sells": held_sells, "held": HELD, "quotes": quotes, "track": track,
        "open": [h for h in history if h.get("status") == "open"],

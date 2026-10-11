@@ -2,6 +2,8 @@ name: daily-scan
 on:
   schedule:
     - cron: "27 7 * * 1-5"   # 平日 16:27 JST
+    - cron: "13 8 * * 1-5"   # 平日 17:13 JST（遅延・失敗時の予備）
+    - cron: "7 9 * * 1-5"    # 平日 18:07 JST（予備）
   workflow_dispatch:
   push:
     paths: ["scanner/daily.py", ".github/workflows/daily.yml"]
