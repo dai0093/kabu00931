@@ -1,0 +1,54 @@
+{
+ "start": "2026-10-09",
+ "curve": [
+  {
+   "date": "2026-10-09",
+   "value": 7000000,
+   "nikkei": 7000000
+  }
+ ],
+ "trades": [
+  {
+   "date": "2026-10-09",
+   "code": "4493",
+   "name": "サイバーセキュリティクラウド",
+   "entry": 3725,
+   "stop": 3236,
+   "shares": 100,
+   "status": "待ち",
+   "taken": false
+  },
+  {
+   "date": "2026-10-09",
+   "code": "2914",
+   "name": "日本たばこ産業",
+   "entry": 7230,
+   "stop": 6967,
+   "shares": 100,
+   "status": "待ち",
+   "taken": false
+  },
+  {
+   "date": "2026-10-09",
+   "code": "4704",
+   "name": "トレンドマイクロ",
+   "entry": 7587,
+   "stop": 7140,
+   "shares": 100,
+   "status": "待ち",
+   "taken": false
+  }
+ ],
+ "closed": 0,
+ "hit": 0,
+ "miss": 0,
+ "pf": null,
+ "realized": 0,
+ "tax_est": 0,
+ "expect": {
+  "win_rate": 35.2,
+  "pf": 1.76,
+  "trades_per_year": 58.5,
+  "excess_per_year": 718786
+ }
+}
