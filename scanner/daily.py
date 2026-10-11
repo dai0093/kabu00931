@@ -161,6 +161,13 @@ for c in sorted(_show):
     except Exception as e:
         print(c, "分割情報の取得失敗", e)
 out["splits"] = splits
+# 試運転：通知どおりに売買していたら、の成績
+try:
+    import paper
+    json.dump(paper.build(history, frames), open("data/paper.json", "w", encoding="utf-8"),
+              ensure_ascii=False, indent=1)
+except Exception as e:
+    print("試運転の計算失敗", e)
 json.dump(out, open("data/signals.json", "w", encoding="utf-8"), ensure_ascii=False, indent=1)
 print("splits", splits)
 

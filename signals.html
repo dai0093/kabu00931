@@ -73,6 +73,7 @@ input{width:100%;font:inherit;font-size:18px;padding:10px;border-radius:8px;bord
 <h2>今日の買い候補</h2><div id="sig"></div>
 <h2>日経225ETF（待機資金）</h2><div class="panel" id="etf"></div>
 <h2>売却済み</h2><div class="panel" id="done"></div>
+<h2>試運転（通知どおりに売買した場合）</h2><div class="panel" id="paper"></div>
 <h2>過去5年の検証</h2><div class="panel" id="bt"></div>
 <h2>使い方</h2>
 <div class="panel note">
@@ -94,7 +95,7 @@ const cl=n=>n>0?'up':n<0?'dn':'';
 function load(){try{return Object.assign({hold:[],done:[],skip:[],etf:0},JSON.parse(localStorage.getItem(K))||{})}catch(e){return{hold:[],done:[],skip:[],etf:0}}}
 function save(b){try{localStorage.setItem(K,JSON.stringify(b))}catch(e){}}
 async function get(u){try{const r=await fetch(u+'?t='+Date.now());return r.ok?r.json():null}catch(e){return null}}
-let S=null,C=null,BT=null,REC=[],CH=[],lastW=0;
+let S=null,C=null,BT=null,PP=null,REC=[],CH=[],lastW=0;
 const bars=c=>C&&C.candles&&C.candles[c]||[];
 const last=c=>{const b=bars(c);return b.length?b[b.length-1][4]:null};
 const prev=c=>{const b=bars(c);return b.length>1?b[b.length-2][4]:null};
@@ -247,6 +248,22 @@ function render(){
    <div class="row"><span>予測出来た</span><b class="up">${w}回</b></div><div class="row"><span>予測出来なかった</span><b class="dn">${b.done.length-w}回</b></div>`+
   b.done.slice(0,20).map((d,k)=>`<div class="row"><span>${d.name}　<span class="note">${d.sellDate}</span></span><b class="${cl(d.pnl)}">${sgn(d.pnl)}</b></div><div style="text-align:right"><button style="flex:none;padding:4px 12px;font-size:13px" onclick="undoSell(${k})">取消</button></div>`).join('');
  // 検証
+ // 試運転
+ const P=PP,pe=document.getElementById('paper');
+ if(!P||!P.curve||!P.curve.length){pe.innerHTML='<div class="empty">試運転のデータはまだありません</div>'}else{
+  const L=P.curve[P.curve.length-1],own=L.value-CAP,nk=L.nikkei-CAP,E=P.expect;
+  const wr=P.closed?P.hit/P.closed*100:null;
+  pe.innerHTML=`<div class="note">${P.start} から開始。検証と同じ条件（厳しい約定・手数料込み、税金は見込み）</div>
+   <div class="row"><span>試運転の損益</span><b class="${cl(own)}">${sgn(own)}</b></div>
+   <div class="row"><span>日経平均を持つだけ</span><b class="${cl(nk)}">${sgn(nk)}</b></div>
+   <div class="row"><span>差</span><b class="${cl(own-nk)}">${sgn(own-nk)}</b></div>
+   <div class="row"><span>決済した取引</span><b>${P.closed}回</b></div>
+   <div class="row"><span>予測出来た / 出来なかった</span><b>${P.hit}回 / ${P.miss}回</b></div>
+   <div class="row"><span>勝率（検証の目安 ${E.win_rate}%）</span><b>${wr==null?'—':wr.toFixed(1)+'%'}</b></div>
+   <div class="row"><span>PF（検証の目安 ${E.pf}）</span><b>${P.pf??'—'}</b></div>
+   <div class="row"><span>税金の見込み</span><b>${yen(P.tax_est)}</b></div>
+   <div class="note">検証では年に約${E.trades_per_year}回の取引でした。20〜30回たまるまでは、勝率やPFが目安から外れても偶然の範囲です</div>`+
+   P.trades.slice(-10).reverse().map(t=>`<div class="row"><span>${t.name}<br><span class="note">${t.date}・${t.taken===false&&t.status!=='不成立'&&t.status!=='待ち'?'枠が埋まり見送り':t.status}${t.why?'（'+t.why+'）':''}</span></span><b class="${cl(t.pnl||0)}">${t.pnl!=null?sgn(t.pnl):t.last?'評価 '+sgn((t.last-t.buy)*t.shares):'—'}</b></div>`).join('')}
  const row=BT&&BT.rows&&BT.rows.find(x=>x.cfg==='100億・VIXあり');
  const T=row&&row.test;
  document.getElementById('bt').innerHTML=T?`
@@ -260,7 +277,7 @@ function render(){
 }
 
 (async()=>{
- [S,C,BT]=await Promise.all([get('data/signals.json'),get('data/candles.json'),get('data/compare6.json')]);
+ [S,C,BT,PP]=await Promise.all([get('data/signals.json'),get('data/candles.json'),get('data/compare6.json'),get('data/paper.json')]);
  if(S){const [y,m,d]=S.market_date.split('-');document.getElementById('hdate').textContent=`${+m}月${+d}日`;
   document.getElementById('hst').textContent='✓ 判定完了';document.getElementById('hupd').textContent=S.updated.slice(11);
   const ns=S.signals.length,nl=(S.sells||[]).length;
