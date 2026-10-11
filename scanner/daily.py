@@ -206,3 +206,4 @@ req = urllib.request.Request(f"https://ntfy.sh/{NTFY_TOPIC}?{q}",
 urllib.request.urlopen(req, timeout=30)
 print(title)
 print(body)
+# paper

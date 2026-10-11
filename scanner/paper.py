@@ -64,8 +64,10 @@ def build(history, frames):
             open_pos.append(t)
         taken.append(t)
     # 資産推移（待機資金は1321の実際の値動き）
-    etf = yf.download("1321.T", start=START, auto_adjust=False, progress=False)["Close"].squeeze()
-    n225 = yf.download("^N225", start=START, auto_adjust=False, progress=False)["Close"].squeeze()
+    def _close(sym):   # 1日分しかない時もSeriesのまま扱う
+        x = yf.download(sym, start=START, auto_adjust=False, progress=False)["Close"]
+        return x.iloc[:, 0] if isinstance(x, pd.DataFrame) else x
+    etf, n225 = _close("1321.T"), _close("^N225")
     idle, curve = float(CAPITAL), []
     held = []
     prev = None
