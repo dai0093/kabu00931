@@ -166,8 +166,10 @@ try:
     import paper
     json.dump(paper.build(history, frames), open("data/paper.json", "w", encoding="utf-8"),
               ensure_ascii=False, indent=1)
-except Exception as e:
-    print("試運転の計算失敗", e)
+except Exception:
+    import traceback
+    open("data/paper_error.txt", "w").write(traceback.format_exc())
+    print("試運転の計算失敗", traceback.format_exc())
 json.dump(out, open("data/signals.json", "w", encoding="utf-8"), ensure_ascii=False, indent=1)
 print("splits", splits)
 
