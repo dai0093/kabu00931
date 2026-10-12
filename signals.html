@@ -58,6 +58,7 @@ input{width:100%;font:inherit;font-size:18px;padding:10px;border-radius:8px;bord
 
 <div class="panel notice" id="notice"></div>
 <div class="panel" id="risk"></div>
+<h2 id="logic">ロジックツリー（市場リスクダッシュボード）</h2><div class="panel" id="lt"></div>
 
 <div class="grid">
  <div class="panel" style="margin:0">
@@ -95,7 +96,7 @@ const cl=n=>n>0?'up':n<0?'dn':'';
 function load(){try{return Object.assign({hold:[],done:[],skip:[],etf:0},JSON.parse(localStorage.getItem(K))||{})}catch(e){return{hold:[],done:[],skip:[],etf:0}}}
 function save(b){try{localStorage.setItem(K,JSON.stringify(b))}catch(e){}}
 async function get(u){try{const r=await fetch(u+'?t='+Date.now());return r.ok?r.json():null}catch(e){return null}}
-let S=null,C=null,BT=null,PP=null,REC=[],CH=[],lastW=0;
+let S=null,C=null,BT=null,PP=null,LT=null,REC=[],CH=[],lastW=0;
 const bars=c=>C&&C.candles&&C.candles[c]||[];
 const last=c=>{const b=bars(c);return b.length?b[b.length-1][4]:null};
 const prev=c=>{const b=bars(c);return b.length>1?b[b.length-2][4]:null};
@@ -248,6 +249,23 @@ function render(){
    <div class="row"><span>予測出来た</span><b class="up">${w}回</b></div><div class="row"><span>予測出来なかった</span><b class="dn">${b.done.length-w}回</b></div>`+
   b.done.slice(0,20).map((d,k)=>`<div class="row"><span>${d.name}　<span class="note">${d.sellDate}</span></span><b class="${cl(d.pnl)}">${sgn(d.pnl)}</b></div><div style="text-align:right"><button style="flex:none;padding:4px 12px;font-size:13px" onclick="undoSell(${k})">取消</button></div>`).join('');
  // 検証
+ // ロジックツリー
+ const lt=document.getElementById('lt');
+ if(!LT){lt.innerHTML='<div class="empty">ロジックツリーのデータなし</div>'}else{
+  const hrs=(Date.now()-Date.parse(LT.updatedAt))/36e5,LB={lit:'点灯',near:'接近',ok:'未点灯',na:'未取得'};
+  const LN={origin:'起点',trans:'信用',fund:'資金',market:'市場'};
+  lt.innerHTML=`<div class="ttl"><span class="nm">段階 ${LT.phase}：${LT.phaseName}</span></div>
+   <div class="note">${LT.phaseDesc}</div>
+   <div style="display:flex;gap:4px;margin:10px 0">${[0,1,2,3,4,5].map(i=>`<i style="flex:1;height:7px;border-radius:4px;background:${i<=LT.phase?'#e8b04b':'var(--panel2)'}"></i>`).join('')}</div>
+   <div class="note">更新 ${LT.updatedAt.replace('T',' ').slice(0,16)}${hrs>30?'　<b style="color:var(--up)">30時間以上更新されていません</b>':''}</div>
+   ${Object.keys(LN).map(k=>`<div class="row"><span><b>${LN[k]}</b>　${LT.counts[k][0]} / ${LT.counts[k][1]} 点灯</span><span></span></div>
+     ${LT.layers[k].map(([n,st])=>`<div class="row" style="padding-left:12px"><span>${n}</span><b><span class="pill p-${st==='na'?'ok':st}">${LB[st]}</span></b></div>`).join('')}`).join('')}
+   <div class="note" style="margin-top:10px"><b>4資産への経路</b></div>
+   ${LT.assets.map(x=>`<div class="row"><span><b>${x.name}</b><br><span class="note">${x.text}</span></span><b style="white-space:nowrap">${x.dir}</b></div>`).join('')}
+   <div class="note" style="margin-top:10px"><b>直近の事象</b></div>
+   ${LT.events.slice(0,3).map(e=>`<div class="row"><span><span class="pill p-${e.state==='実行済み'?'lit':e.state==='接近'?'near':'ok'}" style="margin:0 6px 0 0">${e.state}</span>${e.date}<br>${e.title}<br><span class="note">${e.impact}</span></span></div>`).join('')}
+   ${LT.stale.length?`<div class="note">期限切れ ${LT.stale.length}系列：${LT.stale.map(x=>x.name).join('、')}（判定には使われていますが最新ではありません）</div>`:''}
+   <div class="note"><a href="${LT.source}" style="color:var(--dn)">市場リスクダッシュボードで詳細を見る</a></div>`}
  // 試運転
  const P=PP,pe=document.getElementById('paper');
  if(!P||!P.curve||!P.curve.length){pe.innerHTML='<div class="empty">試運転のデータはまだありません</div>'}else{
@@ -277,7 +295,7 @@ function render(){
 }
 
 (async()=>{
- [S,C,BT,PP]=await Promise.all([get('data/signals.json'),get('data/candles.json'),get('data/compare6.json'),get('data/paper.json')]);
+ [S,C,BT,PP,LT]=await Promise.all([get('data/signals.json'),get('data/candles.json'),get('data/compare6.json'),get('data/paper.json'),get('data/logic_tree.json')]);
  if(S){const [y,m,d]=S.market_date.split('-');document.getElementById('hdate').textContent=`${+m}月${+d}日`;
   document.getElementById('hst').textContent='✓ 判定完了';document.getElementById('hupd').textContent=S.updated.slice(11);
   const ns=S.signals.length,nl=(S.sells||[]).length;
