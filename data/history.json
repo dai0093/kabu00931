@@ -14,7 +14,7 @@
   "by_risk": 100,
   "by_cash": 300,
   "method": "高値更新",
-  "status": "pending"
+  "status": "unfilled"
  },
  {
   "date": "2026-10-09",
@@ -31,7 +31,7 @@
   "by_risk": 200,
   "by_cash": 100,
   "method": "高値更新",
-  "status": "pending"
+  "status": "open"
  },
  {
   "date": "2026-10-09",
@@ -45,6 +45,40 @@
   "cost": 758700,
   "risk_yen": 44700,
   "risk_per_share": 447,
+  "by_risk": 100,
+  "by_cash": 100,
+  "method": "高値更新",
+  "status": "open"
+ },
+ {
+  "date": "2026-10-13",
+  "code": "4493",
+  "name": "サイバーセキュリティクラウド",
+  "vol_ratio": 2.54,
+  "entry": 4180,
+  "stop": 3608,
+  "target": 5039,
+  "shares": 100,
+  "cost": 418000,
+  "risk_yen": 57200,
+  "risk_per_share": 572,
+  "by_risk": 100,
+  "by_cash": 300,
+  "method": "高値更新",
+  "status": "pending"
+ },
+ {
+  "date": "2026-10-13",
+  "code": "9104",
+  "name": "商船三井",
+  "vol_ratio": 1.54,
+  "entry": 7557,
+  "stop": 7165,
+  "target": 8145,
+  "shares": 100,
+  "cost": 755700,
+  "risk_yen": 39200,
+  "risk_per_share": 392,
   "by_risk": 100,
   "by_cash": 100,
   "method": "高値更新",
