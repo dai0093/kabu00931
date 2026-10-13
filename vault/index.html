@@ -91,6 +91,12 @@ select{padding:10px;border-radius:8px;border:1px solid var(--line);background:va
 <div class="msg" id="mPk"></div>
 </div>
 <div class="c">
+<h2>信頼済み端末</h2>
+<p class="sub" id="trState"></p>
+<button id="bTrust">この端末を信頼する</button>
+<div class="msg" id="mTr"></div>
+</div>
+<div class="c">
 <h2>バックアップ</h2>
 <p class="sub">暗号化したままの文字列です。鍵がないと誰も読めません。メモ帳などに保存してください。</p>
 <div class="row"><button id="bExp">暗号文をコピー</button><button id="bImpShow">暗号文から復元</button></div>
@@ -163,11 +169,12 @@ function pkState(){$('pkState').textContent=meta.pk?'登録済み。パスフレ
 
 /* 自動施錠 */
 function lock(){dk=null;data=null;clearTimeout(timer);$('total').textContent='—';init()}
+document.addEventListener('visibilitychange',()=>{if(!document.hidden&&!dk)autoUnlock()});
 function bump(){clearTimeout(timer);if(dk)timer=setTimeout(lock,180000)}
 ['pointerdown','keydown','scroll'].forEach(e=>addEventListener(e,bump,{passive:true}));
 document.addEventListener('visibilitychange',()=>{if(document.hidden&&dk)lock()});
 $('bLock').onclick=lock;
-function enter(){show('vMain');pkState();render();bump()}
+function enter(){show('vMain');pkState();trState();render();bump()}
 
 /* CSV */
 function parseCSV(t){const rows=[];let r=[],f='',q=false;for(let i=0;i<t.length;i++){const c=t[i];
@@ -212,7 +219,20 @@ $('bExp').onclick=async()=>{const s=JSON.stringify(meta),m=$('mBk');try{await na
 $('bImpShow').onclick=()=>{$('bk').hidden=false;$('bk').value='';$('bImp').hidden=false;$('bk').focus()};
 $('bImp').onclick=()=>{const m=$('mBk');try{const o=JSON.parse($('bk').value);if(!o.wp||!o.ct)throw 0;meta=o;save();m.textContent='';$('bk').hidden=true;$('bImp').hidden=true;lock()}
  catch(e){m.className='msg err';m.textContent='バックアップの文字列として読み取れません'}};
-init();
+
+/* 信頼済み端末：取り出し不可の鍵をIndexedDBに置き、データ鍵を包んで保存 */
+function idb(){return new Promise((ok,ng)=>{const r=indexedDB.open('vault_dev',1);r.onupgradeneeded=()=>r.result.createObjectStore('k');r.onsuccess=()=>ok(r.result);r.onerror=()=>ng(r.error)})}
+async function idbDo(mode,fn){const db=await idb();return new Promise((ok,ng)=>{const t=db.transaction('k',mode),st=t.objectStore('k'),r=fn(st);t.oncomplete=()=>ok(r&&r.result);t.onerror=()=>ng(t.error)})}
+async function trustOn(){const k=await crypto.subtle.generateKey({name:'AES-KW',length:256},false,['wrapKey','unwrapKey']);
+ await idbDo('readwrite',st=>st.put(k,'dev'));meta.tw=await wrap(k);save()}
+async function trustOff(){try{await idbDo('readwrite',st=>st.delete('dev'))}catch(e){}delete meta.tw;save()}
+async function autoUnlock(){if(!meta||!meta.tw)return false;try{const k=await idbDo('readonly',st=>st.get('dev'));if(!k)return false;
+ dk=await unwrap(meta.tw,k);await open_();enter();return true}catch(e){dk=null;return false}}
+function trState(){const on=!!meta.tw;$('trState').textContent=on?'信頼済み。この端末では開くと自動で解錠します。スマホの画面ロックが実質の鍵になります':'未設定。毎回パスキーかパスフレーズで解錠します';
+ $('bTrust').textContent=on?'信頼を解除する':'この端末を信頼する'}
+$('bTrust').onclick=async()=>{const m=$('mTr');try{if(meta.tw){await trustOff();m.className='msg';m.textContent='解除しました'}else{await trustOn();m.className='msg okc';m.textContent='設定しました'}trState()}
+ catch(e){m.className='msg err';m.textContent='このブラウザでは設定できませんでした'}};
+(async()=>{init();await autoUnlock()})();
 </script>
 
 </body></html>
