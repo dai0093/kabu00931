@@ -16,22 +16,22 @@
    "credit": "ok"
   },
   "values": {
-   "vix": 15.37,
+   "vix": 15.36,
    "vix_d": 0.0,
    "us10": 5.24,
    "us10_20": 0.244,
    "hy": null,
    "hy_20": null,
    "nfci": null,
-   "brent": 104.86,
+   "brent": 104.83,
    "brent_20": -0.036,
-   "usdjpy": 158.088,
+   "usdjpy": 158.045,
    "yen_20": 0.024,
    "credit_20": 0.001
   }
  },
  "blocked": [],
- "updated": "2026-10-13 18:42",
+ "updated": "2026-10-13 18:49",
  "market_date": "2026-10-13",
  "method": "高値更新（売買代金100億円以上・東証全銘柄）＋待機資金は日経平均ETF",
  "signals": [
