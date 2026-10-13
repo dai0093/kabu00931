@@ -14,7 +14,9 @@ import strategy
 strategy.MIN_TURNOVER = 100e8   # 検証3で日経に勝った基準：20日平均売買代金100億円以上
 from strategy import is_breakout, simulate_trend
 from universe import STOCKS
-from holdings import HELD
+from private import holdings, encrypt
+_H = holdings()                       # Secret「HOLDINGS」から（公開リポジトリには置かない）
+HELD = {c: v[0] for c, v in _H.items()}
 
 NTFY_TOPIC = os.environ.get("NTFY_TOPIC", "")  # GitHubのSecretから読む
 APP_URL = "https://dai0093.github.io/kabu00931/signals.html"
@@ -116,8 +118,10 @@ for c, nm in HELD.items():
         held_sells.append({"code": c, "name": nm, "close": round(float(r.Close)),
                            "sma25": round(float(r.sma25))})
 
-# ダッシュボード用：全銘柄の最新終値と25日線（保有株の損益・売り判定に使う）
+# ダッシュボード用：監視対象の最新終値と25日線（保有株だけの銘柄は公開ファイルに出さない）
 for code, d in frames.items():
+    if code in _extra:
+        continue
     last = d.iloc[-1]
     quotes[code] = {"close": round(float(last.Close)), "sma25": round(float(last.sma25)),
                     "atr": round(float(last.atr), 1)}
@@ -129,7 +133,7 @@ track = {"closed": len(closed), "hit": sum(h["hit"] for h in closed),
 out = {"final": last_date < datetime.now(JST).strftime("%Y-%m-%d") or datetime.now(JST).hour * 60 + datetime.now(JST).minute >= 15 * 60 + 45,
        "risk": risk, "blocked": blocked, "updated": datetime.now(JST).strftime("%Y-%m-%d %H:%M"),
        "market_date": last_date, "method": "高値更新（売買代金100億円以上・東証全銘柄）＋待機資金は日経平均ETF",
-       "signals": today, "sells": sells, "held_sells": held_sells, "held": HELD, "quotes": quotes, "track": track,
+       "signals": today, "sells": sells, "quotes": quotes, "track": track,
        "open": [h for h in history if h.get("status") == "open"],
        # 直近5営業日の候補：翌日以降に買った場合も購入記録を入力できるようにする
        "recent": [h for h in history if h["date"] in sorted({x["date"] for x in history})[-5:]]}
@@ -141,7 +145,7 @@ def _bars(df):
     return [[str(x.date()), round(float(r.Open), 1), round(float(r.High), 1),
              round(float(r.Low), 1), round(float(r.Close), 1)] for x, r in df.iterrows()]
 # 表示に使う銘柄だけ（候補・保有・主要93）に絞ってファイルを軽くする
-_show = set(STOCKS) | set(HELD) | {t["code"] for t in today} | {h["code"] for h in history}
+_show = set(STOCKS) | {t["code"] for t in today} | {h["code"] for h in history}
 candles = {c: _bars(d) for c, d in frames.items() if c in _show}
 for sym, key in (("1321.T", "1321"), ("^N225", "N225")):
     try:
@@ -173,9 +177,35 @@ except Exception:
 json.dump(out, open("data/signals.json", "w", encoding="utf-8"), ensure_ascii=False, indent=1)
 print("splits", splits)
 
-names = dict(NAMES, **HELD, **{"1321": "日経225ETF", "N225": "日経平均"})
+names = dict(NAMES, **{"1321": "日経225ETF", "N225": "日経平均"})
 json.dump({"names": names, "candles": candles},
           open("data/candles.json", "w", encoding="utf-8"), ensure_ascii=False, separators=(",", ":"))
+
+# 個人データ（保有銘柄・株数・株価・チャート・分割）は暗号化して保存
+try:
+    _priv = {"held": [], "candles": {}, "splits": {}, "etf_units": 0}
+    for c, (nm, sh) in _H.items():
+        if c == "1321":
+            _priv["etf_units"] = sh
+            continue
+        d = frames.get(c)
+        q = {"code": c, "name": nm, "shares": sh}
+        if d is not None and len(d) > 1:
+            q.update(close=round(float(d.Close.iloc[-1]), 1), prev=round(float(d.Close.iloc[-2]), 1),
+                     sma25=round(float(d.sma25.iloc[-1]), 1))
+            _priv["candles"][c] = _bars(d)
+        _priv["held"].append(q)
+        try:
+            sp = yf.Ticker(f"{c}.T").splits
+            sp = sp[sp.index >= pd.Timestamp.now(tz=sp.index.tz) - pd.Timedelta(days=365)] if len(sp) else sp
+            if len(sp):
+                _priv["splits"][c] = [[str(i.date()), float(r)] for i, r in sp.items()]
+        except Exception:
+            pass
+    if _H:
+        encrypt(_priv)
+except Exception as e:
+    print("個人データの暗号化に失敗", e)
 
 # 3) 通知
 if not NTFY_TOPIC:
