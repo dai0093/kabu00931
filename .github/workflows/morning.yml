@@ -3,6 +3,8 @@ on:
   schedule:
     - cron: "53 22 * * 0-4"   # 平日 7:53 JST（UTCでは前日22:53）
   workflow_dispatch:
+  push:
+    paths: [".github/workflows/morning.yml"]
 jobs:
   remind:
     runs-on: ubuntu-latest
