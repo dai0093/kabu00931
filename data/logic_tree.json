@@ -1,6 +1,6 @@
 {
- "updatedAt": "2026-10-12T06:53:00+09:00",
- "builtAt": "2026-10-12T11:22+09:00",
+ "updatedAt": "2026-10-13T13:40:00+09:00",
+ "builtAt": "2026-10-13T13:19+09:00",
  "phase": 2,
  "phaseName": "通り道の予兆",
  "phaseDesc": "信用層に1つ点灯。",
@@ -30,7 +30,7 @@
    ],
    [
     "原油",
-    "ok"
+    "near"
    ],
    [
     "日米金利",
@@ -84,12 +84,12 @@
   {
    "name": "日経平均",
    "dir": "中立",
-   "text": "リヤド空港への連日の攻撃、フーシ派のサウジ東部石油施設攻撃の主張（未確認）、ホルムズでのタンカー被弾継続で、週明けは原油高・リスク回避が重荷。日本10年3%台・日銀追加利上げ観測も逆風、ドル円158円台の円安は支え"
+   "text": "Brentが106ドル台（接近域）へ反発、リヤドへの攻撃継続とサウジの報復表明、IRGCのタンカー攻撃主張で原油・リスク回避が重荷。日本10年3%台・日銀追加利上げ観測も逆風、ドル円158円台の円安は支え"
   },
   {
    "name": "米国株",
    "dir": "中立",
-   "text": "HY OASが3%超（20日+45bp）で信用層が点灯、米10年5.24%も逆風。週末の中東激化（リヤド空港への再攻撃、米軍の封鎖突破船攻撃、米のフーシ派攻撃参加の検討）で原油経由の下振れリスク"
+   "text": "HY OASが3%超（20日+45bp）で信用層が点灯、米10年5.24%も逆風。10/12はS&P −0.06%・Nasdaq −0.44%で半導体主導の下落。今週の大手銀決算・CPI（10/14）が次の確認点"
   },
   {
    "name": "200A",
@@ -98,17 +98,17 @@
   },
   {
    "name": "SOXL",
-   "dir": "中立〜やや上",
-   "text": "半導体業績は堅調だが日次3倍で増幅。金利高止まりと信用スプレッド拡大に弱い"
+   "dir": "中立",
+   "text": "半導体業績は堅調だが、10/12はSOX −2.67%で3週間ぶり安値圏、SOXL −8.16%。日次3倍で増幅され、原油高→金利上振れと信用スプレッド拡大に弱い"
   }
  ],
  "values": {
   "vix": {
-   "value": 14.84,
+   "value": 15.21,
    "unit": "",
-   "observedAt": "2026-10-09",
-   "change": "−3.7%",
-   "source": "https://finance.yahoo.com/markets/live/stock-market-today-friday-october-9-dow-sp-500-nasdaq-080148117.html"
+   "observedAt": "2026-10-12",
+   "change": "+2.5%",
+   "source": "https://finance.yahoo.com/quote/%5EVIX/"
   },
   "us10": {
    "value": 5.24,
@@ -125,11 +125,11 @@
    "source": "https://tradingeconomics.com/japan/government-bond-yield"
   },
   "brent": {
-   "value": 104.43,
+   "value": 106.65,
    "unit": "$",
-   "observedAt": "2026-10-09",
-   "change": "+0.14%（先物。FRED現物10/6は$125.44）",
-   "source": "https://tradingeconomics.com/commodity/brent-crude-oil"
+   "observedAt": "2026-10-12",
+   "change": "+1.8%（12月限清算値。ゼレンスキー氏がエネルギー停戦に懐疑、湾岸リスクで反発）",
+   "source": "https://www.rigzone.com/news/brent_tops_106_as_supply_risks_intensify-12-oct-2026-184830-article"
   },
   "hy": {
    "value": 3.15,
@@ -160,14 +160,29 @@
    "source": "https://fred.stlouisfed.org/series/NFCI"
   },
   "usdjpy": {
-   "value": 158.23,
+   "value": 158.56,
    "unit": "円",
-   "observedAt": "2026-10-09",
-   "change": "+0.22%",
+   "observedAt": "2026-10-12",
+   "change": "+0.18%（日米祝日で薄商い）",
    "source": "https://tradingeconomics.com/japan/currency"
   }
  },
  "stale": [
+  {
+   "name": "米10年金利",
+   "observedAt": "2026-10-09",
+   "freq": "日次"
+  },
+  {
+   "name": "日本10年金利",
+   "observedAt": "2026-10-09",
+   "freq": "日次"
+  },
+  {
+   "name": "米10年−2年",
+   "observedAt": "2026-10-09",
+   "freq": "日次"
+  },
   {
    "name": "HY OAS",
    "observedAt": "2026-10-08",
@@ -189,6 +204,11 @@
    "freq": "月次"
   },
   {
+   "name": "MND 30年固定",
+   "observedAt": "2026-10-09",
+   "freq": "日次"
+  },
+  {
    "name": "MBA購入申請",
    "observedAt": "2026-10-02",
    "freq": "週次"
@@ -205,115 +225,115 @@
   },
   {
    "name": "MBB OAS（MBS代理）",
-   "observedAt": "2026-10-08",
+   "observedAt": "2026-10-09",
    "freq": "日次"
   }
  ],
  "events": [
+  {
+   "date": "2026-10-13",
+   "title": "IMF国際金融安定性報告：AI投資・利益の減速時、レバレッジ（デリバティブ・証拠金融資）を通じた強制売却と市場全体の変動増幅を警告。ハイパースケーラーは世界の投資適格債発行の約10%（2024年は1%未満）。ストレス試験では世界の銀行資産の22%（2025年試験は18%）が資本面で「弱い」、銀行全体の資本は「堅固」と評価",
+   "state": "接近",
+   "impact": "監督上の警告・ストレス試算で、実際の損失・清算の確認ではない（AI→銀行の既存「接近」と同じ経路のため二重加算しない）。AI投資鈍化→半導体需要期待の低下→レバレッジ解消で SOXL に増幅、200A は半導体安・設備投資期待の低下で間接マイナス、米国株は AI集中株の調整が信用・証拠金経由で波及、日経平均は半導体・米国株との連動で間接マイナス。公表は10/13 12:19 JST（Reuters配信）",
+   "source": "https://www.investing.com/news/economy-news/imf-cites-ai-slowdown-spiking-yields-as-looming-global-market-risks-4945345"
+  },
+  {
+   "date": "2026-10-12",
+   "title": "米投資適格CDS指数がイラン戦争開始以来の高水準に（Reuters）。AI投資向けの大量起債で借入コストが上昇",
+   "state": "実行済み",
+   "impact": "信用層の悪化兆候。HY OAS点灯と合わせ米国株・SOXLの逆風。今週の米大手銀決算（10/13〜）・CPI（10/14）が次の確認点",
+   "source": "https://www.brecorder.com/news/40443766/shares-cautious-in-asia-as-earnings-loom-oil-slips"
+  },
+  {
+   "date": "2026-10-12",
+   "title": "IRGC、2日間でスーパータンカー3隻を攻撃し、10/12にも1隻が炎上したと主張（UKMTOは10/12の攻撃を報告せず、独立確認なし）",
+   "state": "接近",
+   "impact": "主張段階。確認されれば通航・保険料リスクの再上昇で原油高→米金利・インフレ経由で日経平均・米国株、高ベータのSOXLに逆風",
+   "source": "https://www.cbsnews.com/live-updates/iran-war-us-trump-saudi-arabia-houthi/"
+  },
+  {
+   "date": "2026-10-12",
+   "title": "リヤドで空襲警報後に爆発音、サウジ主導連合が弾道ミサイルを迎撃と発表。フーシ派はリヤド空港への弾道ミサイル攻撃とハミス・ムシャイトへの無人機攻撃を主張。リヤド空港の閉鎖は延長",
+   "state": "実行済み",
+   "impact": "サウジ中枢への攻撃が4日以上継続（被害は不明）。湾岸リスクの長期化で原油の上振れ要因、米金利・インフレ経由で日経平均・米国株・SOXLの重荷",
+   "source": "https://www.cbsnews.com/live-updates/iran-war-us-trump-saudi-arabia-houthi/"
+  },
+  {
+   "date": "2026-10-12",
+   "title": "サウジのアブドルアジーズ・エネルギー相、攻撃に「同等に重大な」対応をすると表明",
+   "state": "予告",
+   "impact": "報復の発言段階で実行の確認ではない。実行されれば紅海・湾岸の軍事リスク拡大で原油高→日経平均・米国株・SOXLに逆風",
+   "source": "https://www.cbsnews.com/live-updates/iran-war-us-trump-saudi-arabia-houthi/"
+  },
+  {
+   "date": "2026-10-12",
+   "title": "フーシ派、サヌアへの夜間空爆をサウジの攻撃と非難（フーシ派保健省は1人死亡・12人負傷と発表、サウジは未確認）",
+   "state": "接近",
+   "impact": "サウジの報復開始の可能性を示す主張段階。応酬が拡大すれば原油・運賃の上振れで米金利・株式の逆風",
+   "source": "https://www.cbsnews.com/live-updates/iran-war-us-trump-saudi-arabia-houthi/"
+  },
+  {
+   "date": "2026-10-12",
+   "title": "ゼレンスキー大統領、トランプ氏発表のエネルギー停戦に懐疑を示しロシアへの攻撃を継続すると表明。ロシアが合意後もエネルギー施設を攻撃したとも主張",
+   "state": "接近",
+   "impact": "10/11の停戦発表（予告）の実効性に疑問。原油は朝方の下落から反転しBrent 106.65ドル（+1.8%）で清算、黒海・ロシア製品の供給懸念が残り米金利・株式の重荷",
+   "source": "https://qz.com/oil-prices-rebound-trump-russia-ukraine-energy-ceasefire-101226"
+  },
+  {
+   "date": "2026-10-12",
+   "title": "SOX −2.67%（12,236.79、3週間ぶり安値圏）、SOXL −8.16%。韓国半導体株安と原油高による利上げ懸念でMicron −3.9%、SK hynix ADR −4.0%、Nvidia −1.3%",
+   "state": "実行済み",
+   "impact": "SOXLに直撃（日次3倍）。Nasdaq −0.44%。200Aも半導体比率次第で連動しやすい。原油高→金利経路が半導体の重荷",
+   "source": "https://en.fnnews.com/news/202610130518302889"
+  },
+  {
+   "date": "2026-10-11",
+   "title": "イラン最高安全保障委員会のレザイー書記、ホルムズ再開に関する米側回答を「不十分」と拒否。7条件が満たされるまで海峡は再開せず交渉もしないと表明（ホワイトハウスは即時コメントなし）",
+   "state": "予告",
+   "impact": "発言段階で新たな攻撃・封鎖強化の確認ではないが、早期再開期待が後退。原油の下値を支え、米金利・インフレ経由で日経平均・米国株、高ベータのSOXLの重荷",
+   "source": "https://www.jpost.com/middle-east/iran-news/article-911369"
+  },
+  {
+   "date": "2026-10-11",
+   "title": "オマーン・ソハール錨地付近でタンカーが無人機に被弾（UKMTO、当局が乗員退避を支援。攻撃主体は未特定）",
+   "state": "実行済み",
+   "impact": "攻撃がホルムズ海峡の外、オマーン湾側の錨地に拡大。保険料・運賃・原油の上振れ要因で、米金利・インフレ経由で日経平均・米国株、高ベータのSOXLに逆風",
+   "source": "https://seatrade-maritime.com/security/iran-hits-tanker-in-sohar-and-two-in-hormuz-us-disables-bulker"
+  },
+  {
+   "date": "2026-10-11",
+   "title": "トランプ大統領、ロシアとウクライナがエネルギー施設への攻撃停止で合意したと発表（ゼレンスキー氏は詳細を未確認としつつ支持、ロシアはコメントなし）",
+   "state": "予告",
+   "impact": "当事国の確認がない発表段階（9月中旬の同様の発表も未確認）。実効性があれば黒海・ロシア石油製品の供給懸念が後退し原油・ディーゼルの下押し要因、10/12アジア時間のBrentは約1.5%安",
+   "source": "https://www.cnn.com/2026/10/11/politics/trump-ukraine-russia-energy-ceasefire"
+  },
+  {
+   "date": "2026-10-11",
+   "title": "訂正：10/10のリヤド空港攻撃はフーシ派が実行を主張（死者13人・負傷300人超と主張）。10/9発表のロシア産ディーゼル供給は30万トン（約225万バレル）、11月に50万トン追加とされる",
+   "state": "訂正",
+   "impact": "10/10事象の攻撃主体はフーシ派の主張で確定。10/9事象の「約2,250万バレル」は約225万バレルの誤り（世界のディーゼル消費は日量約2,900万バレル）で、燃料価格の緩和効果は限定的",
+   "source": "https://www.brecorder.com/news/40443764/oil-falls-on-hopes-russia-ukraine-energy-ceasefire-will-boost-supplies"
+  },
+  {
+   "date": "2026-10-11",
+   "title": "IEAビロル事務局長、ディーゼル追加放出の要否検討と、未実施の加盟国に放出の前倒しを要請",
+   "state": "予告",
+   "impact": "追加放出は決定ではない。実行されれば燃料価格・インフレ圧力の緩和で米金利の上振れを抑える方向",
+   "source": "https://www.brecorder.com/news/40443764/oil-falls-on-hopes-russia-ukraine-energy-ceasefire-will-boost-supplies"
+  },
+  {
+   "date": "2026-10-11",
+   "title": "FT・モルガンスタンレー集計：9月の世界AI関連債発行は230億ドル（6月1,130億ドルから約8割減）、米IGのAI関連発行は9月ゼロ。Oracle「Project Jupiter」向け約180億ドル融資は額面89〜91セントで、銀行の売却が難航",
+   "state": "実行済み",
+   "impact": "AI投資の資金調達コスト上昇と銀行の引受在庫リスク。デフォルトではない。AI→銀行経路の監視材料で、SOXL・200A・米国株の重荷になり得る",
+   "source": "https://kucoin.com/news/flash/ai-debt-issuance-drops-80-to-23b-oracle-loans-trade-below-par"
+  },
   {
    "date": "2026-10-11",
    "title": "リヤド・キング・ハーリド空港の旅客ターミナルに再び飛翔体が着弾し負傷者（サウジ主導連合発表、空港は閉鎖継続）。10/10の攻撃はサウジ当局が死者12人・負傷約300人と発表、印大使館発表で死者13人に",
    "state": "実行済み",
    "impact": "リヤド空港への攻撃は水曜以降連日。サウジは迎撃ミサイル不足で仏英等に防空支援を要請と報道。湾岸リスクの長期化で原油・米金利の上振れ要因、日経平均・米国株・SOXLの重荷",
    "source": "https://www.deseret.com/u-s-world/2026/10/11/houthis-strike-airport-in-riyadh-saudi-arabia-again/"
-  },
-  {
-   "date": "2026-10-11",
-   "title": "フーシ派、ダンマームのキング・ファハド空港とサウジ東部の石油・ガス施設を攻撃したと主張（サウジ側の確認なし）",
-   "state": "接近",
-   "impact": "主張段階だが東部の石油インフラが標的に。確認されれば供給懸念で原油急伸→インフレ・金利経由で日経平均・米国株、高ベータのSOXLに逆風",
-   "source": "https://www.deseret.com/u-s-world/2026/10/11/houthis-strike-airport-in-riyadh-saudi-arabia-again/"
-  },
-  {
-   "date": "2026-10-11",
-   "title": "ホルムズで出航中のタンカーが未確認の飛翔体で被弾（UKMTO、乗員無事）。10/10夜にも別の出航タンカーが被弾・火災。攻撃主体は未特定",
-   "state": "実行済み",
-   "impact": "通航リスクが週末も継続。原油・運賃・保険料の高止まりで米金利・インフレ経由の株式逆風",
-   "source": "https://gcaptain.com/more-tankers-hit-in-hormuz-as-u-s-strikes-cargo-ship"
-  },
-  {
-   "date": "2026-10-10",
-   "title": "米軍、オマーン湾で封鎖突破を図ったパナマ籍貨物船Ocean Molicaを戦闘機で攻撃し航行不能に（CENTCOM発表、負傷者なし）",
-   "state": "実行済み",
-   "impact": "対イラン海上封鎖の執行が強化。イラン側の報復・海峡外での船舶攻撃リスクが上昇し、原油高経由で日経平均・米国株の重荷",
-   "source": "https://gcaptain.com/more-tankers-hit-in-hormuz-as-u-s-strikes-cargo-ship"
-  },
-  {
-   "date": "2026-10-10",
-   "title": "リヤド・キング・ハーリド空港が再び攻撃され運航停止（Reuters：関係者情報で12人死亡、サウジ当局は死者数未発表）",
-   "state": "実行済み",
-   "impact": "フーシ派の攻撃がサウジ中枢へ拡大し湾岸リスクのプレミアム上昇。週明けの原油・米金利の上振れ要因で、日経平均・米国株の重荷。今回の攻撃主体はフーシ派の声明待ち",
-   "source": "https://www.cbsnews.com/live-updates/iran-war-trump-us-elections-saudi-arabia-yemen-houthis/"
-  },
-  {
-   "date": "2026-10-10",
-   "title": "トランプ大統領、サウジと共にフーシ派攻撃に加わる可能性と対イラン攻撃見送りの再検討に言及",
-   "state": "予告",
-   "impact": "決定ではない。実行されれば紅海・湾岸の軍事リスク拡大で原油高→インフレ・金利経由で米国株・日経平均、高ベータのSOXLに逆風",
-   "source": "https://www.cbsnews.com/live-updates/iran-war-trump-us-elections-saudi-arabia-yemen-houthis/"
-  },
-  {
-   "date": "2026-10-10",
-   "title": "IRGC、無許可航路で出たスーパータンカーが機雷に触れ爆発と主張（船名・位置不明、独立確認なし）",
-   "state": "接近",
-   "impact": "未確認の主張だが機雷リスクが意識されれば保険料・運賃・原油の上振れ要因。日経平均・米国株に原油経由で波及",
-   "source": "https://www.iranintl.com/en/liveblog/202610105959"
-  },
-  {
-   "date": "2026-10-09",
-   "title": "IRGCがタンカーSun Shineを攻撃と主張、UKMTOはUAE沖でLPG船の被弾を報告。IRGCは海峡外でも船舶を追撃と警告",
-   "state": "実行済み",
-   "impact": "Sun Shine攻撃はIRGC主張のみ、LPG船被弾はUKMTO報告。海峡外への攻撃拡大は警告段階。原油・LNG高止まりで米金利・インフレ経由の株式逆風",
-   "source": "https://www.euronews.com/2026/10/09/irans-irgc-strikes-tanker-and-threatens-to-target-vessels-beyond-hormuz"
-  },
-  {
-   "date": "2026-10-09",
-   "title": "ドイツがディーゼル・原油・灯油を最大1,500万バレル放出",
-   "state": "緩和",
-   "impact": "燃料価格の上振れを一部抑制。原油・金利の上振れ緩和要因",
-   "source": "https://www.cbsnews.com/live-updates/iran-war-trump-us-elections-saudi-arabia-yemen-houthis/"
-  },
-  {
-   "date": "2026-10-09",
-   "title": "トランプ大統領、中間選挙前はイランを再攻撃しないと発言",
-   "state": "予告",
-   "impact": "原油の上振れ圧力をやや和らげる発言。実際の通航回復・攻撃停止の確認ではない",
-   "source": "https://tradingeconomics.com/commodity/brent-crude-oil"
-  },
-  {
-   "date": "2026-10-09",
-   "title": "米財務省がロシア産ディーゼル約2,250万バレルの一時ライセンスを発行",
-   "state": "緩和",
-   "impact": "燃料価格・インフレ圧力の緩和。Brentは104ドル近辺で横ばい",
-   "source": "https://tradingeconomics.com/commodity/brent-crude-oil"
-  },
-  {
-   "date": "2026-10-09",
-   "title": "日銀・佐藤審議委員が段階的な追加利上げを支持と発言",
-   "state": "予告",
-   "impact": "追加利上げ観測を補強。円金利上昇は日経平均・200Aの逆風、ドル円158円台の円安抑制要因",
-   "source": "https://tradingeconomics.com/japan/government-bond-yield"
-  },
-  {
-   "date": "2026-10-08",
-   "title": "フーシ派がリヤド・アブハ両空港を攻撃、サウジ航空当局は3人死亡・36人負傷と発表",
-   "state": "実行済み",
-   "impact": "紅海からサウジ本土へ攻撃が拡大。湾岸供給・航空の混乱で原油高リスク、日経平均・米国株の重荷",
-   "source": "https://aerocorner.com/news/houthi-attacks-abha-riyadh-airports-three-killed/"
-  },
-  {
-   "date": "2026-10-08",
-   "title": "ホルムズ通航が2カ月ぶり低水準（Kpler）、9/28〜10/2のタンカー攻撃は開戦以来最多の12件（JMIC）",
-   "state": "実行済み",
-   "impact": "原油流量は戦前の74%。原油高・インフレ経由で米金利上昇圧力、日経平均・米国株の重荷",
-   "source": "https://oilprice.com/Latest-Energy-News/World-News/Hormuz-Tanker-Traffic-Hits-Two-Month-Low-as-Attacks-Surge.html"
-  },
-  {
-   "date": "2026-10-08",
-   "title": "サムスン7〜9月営業益107.4兆ウォンの過去最高見通し、TSMC 9月売上+54.6%",
-   "state": "実行済み",
-   "impact": "メモリ・AI需要は堅調でSOXL・200Aの支え。ただし10/8はTSM −3.1%、OpenAI収益懸念でNasdaq −1.25%と反応は売り",
-   "source": "https://finance.yahoo.com/markets/stocks/articles/mu-tsm-stocks-dip-overnight-072645570.html"
   }
  ],
  "source": "https://claude.ai/artifact/KJPgY7LSb8DMsdXt2A1Gst"
