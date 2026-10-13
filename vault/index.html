@@ -1,0 +1,218 @@
+<!doctype html>
+<html lang="ja"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><meta name="robots" content="noindex">
+<style>[hidden]{display:none!important}body{margin:0}</style>
+<title>資産金庫</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Zen+Kaku+Gothic+New:wght@400;700&family=IBM+Plex+Mono:wght@500&display=swap">
+<style>
+/* layout: single column, mobile-first, lock screen → vault */
+:root{--bg:#eef2f1;--card:#ffffff;--fg:#14211f;--mute:#5b6b68;--line:#d3dcda;--ac:#0d6b5e;--acfg:#fff;--warn:#a5481a;--ok:#1d7a3a;
+--f:"Zen Kaku Gothic New","Hiragino Sans","Noto Sans JP",sans-serif;--m:"IBM Plex Mono",ui-monospace,monospace}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0f1716;--card:#18221f;--fg:#e4ecea;--mute:#93a39f;--line:#2b3936;--ac:#3fb39f;--acfg:#06120f;--warn:#e08a5b;--ok:#5cc47a;color-scheme:dark}}
+:root[data-theme="dark"]{--bg:#0f1716;--card:#18221f;--fg:#e4ecea;--mute:#93a39f;--line:#2b3936;--ac:#3fb39f;--acfg:#06120f;--warn:#e08a5b;--ok:#5cc47a;color-scheme:dark}
+body{background:var(--bg);color:var(--fg);font-family:var(--f);font-size:15px;line-height:1.6}
+.w{max-width:560px;margin:0 auto;padding:20px 16px 48px;display:flex;flex-direction:column;gap:16px}
+h1{font-size:22px;margin:0}h2{font-size:16px;margin:0 0 8px}
+.sub{color:var(--mute);font-size:13px;margin:0}
+.c{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:16px;display:flex;flex-direction:column;gap:10px}
+label{font-size:13px;color:var(--mute)}
+input[type=password],input[type=text],textarea{width:100%;box-sizing:border-box;padding:12px;border:1px solid var(--line);border-radius:8px;background:var(--bg);color:var(--fg);font:inherit}
+textarea{font-family:var(--m);font-size:12px;min-height:90px}
+button{padding:12px 14px;border-radius:8px;border:1px solid var(--line);background:var(--card);color:var(--fg);font:inherit;font-weight:700;cursor:pointer}
+button.p{background:var(--ac);color:var(--acfg);border-color:var(--ac)}
+button:focus-visible,input:focus-visible{outline:2px solid var(--ac);outline-offset:2px}
+.row{display:flex;gap:8px;flex-wrap:wrap}.row>*{flex:1 1 140px}
+.msg{font-size:13px;min-height:1em}.err{color:var(--warn)}.okc{color:var(--ok)}
+.key{font-family:var(--m);font-size:15px;letter-spacing:.04em;word-break:break-all;padding:12px;border:1px dashed var(--warn);border-radius:8px}
+.big{font-family:var(--m);font-size:28px;font-variant-numeric:tabular-nums}
+.li{display:flex;justify-content:space-between;gap:12px;padding:8px 0;border-bottom:1px solid var(--line);font-size:14px}
+.li:last-child{border:0}.li span:last-child{font-family:var(--m);font-variant-numeric:tabular-nums;white-space:nowrap}
+.neg{color:var(--warn)}.pos{color:var(--ok)}
+.chip{display:inline-block;font-size:12px;padding:2px 8px;border-radius:99px;border:1px solid var(--line);color:var(--mute)}
+.top{display:flex;justify-content:space-between;align-items:center;gap:8px}
+select{padding:10px;border-radius:8px;border:1px solid var(--line);background:var(--bg);color:var(--fg);font:inherit}
+</style>
+
+</head><body>
+<div class="w">
+<div class="top"><div><h1>資産金庫</h1><p class="sub">端末内で暗号化して保存する資産管理</p></div><span class="chip" id="st">施錠中</span></div>
+
+<!-- 初期設定 -->
+<section id="vSetup" class="c" hidden>
+<h2>初期設定</h2>
+<p class="sub">データは端末内でAES-256-GCMで暗号化します。パスフレーズは12文字以上にしてください。</p>
+<label for="sp1">パスフレーズ</label><input id="sp1" type="password" autocomplete="new-password">
+<label for="sp2">確認</label><input id="sp2" type="password" autocomplete="new-password">
+<button class="p" id="bSetup">金庫を作成</button>
+<div class="msg" id="mSetup"></div>
+</section>
+
+<!-- 復旧キー表示 -->
+<section id="vRec" class="c" hidden>
+<h2>復旧キー（この1回だけ表示）</h2>
+<p class="sub">紙に書き写して保管してください。パスフレーズとパスキーの両方を失ったとき、これだけが解錠手段です。</p>
+<div class="key" id="recKey"></div>
+<button class="p" id="bRecDone">書き写した</button>
+</section>
+
+<!-- 解錠 -->
+<section id="vLock" class="c" hidden>
+<h2>解錠</h2>
+<button class="p" id="bPk" hidden>パスキーで解錠</button>
+<label for="up">パスフレーズ または 復旧キー</label><input id="up" type="password" autocomplete="current-password">
+<button id="bUnlock">解錠</button>
+<div class="msg" id="mLock"></div>
+</section>
+
+<!-- 本体 -->
+<section id="vMain" hidden style="display:flex;flex-direction:column;gap:16px">
+<div class="c">
+<div class="top"><h2>総資産</h2><span class="sub" id="asOf"></span></div>
+<div class="big" id="total">—</div>
+<div id="breakdown"></div>
+</div>
+<div class="c">
+<div class="top"><h2>月別収支</h2><select id="mon" aria-label="月を選択"></select></div>
+<div class="li"><span>収入</span><span id="inc" class="pos">—</span></div>
+<div class="li"><span>支出</span><span id="exp" class="neg">—</span></div>
+<div class="li"><span>差引</span><span id="net">—</span></div>
+<h2 style="margin-top:8px">支出の大項目</h2>
+<div id="cats"></div>
+</div>
+<div class="c">
+<h2>マネーフォワードCSVを読み込む</h2>
+<p class="sub">入出金CSV・資産推移CSVのどちらも読み込めます。文字コードはShift_JIS/UTF-8を自動判定し、同じIDの明細は重複登録しません。</p>
+<input type="file" id="csv" accept=".csv,text/csv" multiple aria-label="CSVファイル">
+<div class="msg" id="mCsv"></div>
+</div>
+<div class="c">
+<h2>パスキー</h2>
+<p class="sub" id="pkState"></p>
+<button id="bPkReg">この端末のパスキーを登録</button>
+<div class="msg" id="mPk"></div>
+</div>
+<div class="c">
+<h2>バックアップ</h2>
+<p class="sub">暗号化したままの文字列です。鍵がないと誰も読めません。メモ帳などに保存してください。</p>
+<div class="row"><button id="bExp">暗号文をコピー</button><button id="bImpShow">暗号文から復元</button></div>
+<textarea id="bk" hidden aria-label="バックアップ文字列"></textarea>
+<button id="bImp" hidden>この暗号文で置き換える</button>
+<div class="msg" id="mBk"></div>
+</div>
+<div class="row"><button class="p" id="bLock">今すぐ施錠</button></div>
+<p class="sub" id="auto">無操作3分で自動施錠します</p>
+</section>
+</div>
+
+<script>
+const $=id=>document.getElementById(id),te=new TextEncoder(),td=new TextDecoder();
+const b64=u=>btoa(String.fromCharCode(...new Uint8Array(u))),ub64=s=>Uint8Array.from(atob(s),c=>c.charCodeAt(0));
+const S='vault_v1';let meta=null,dk=null,data=null,timer=null;
+const load=()=>{try{return JSON.parse(localStorage.getItem(S))}catch(e){return null}};
+const save=()=>{try{localStorage.setItem(S,JSON.stringify(meta));return true}catch(e){return false}};
+const rnd=n=>crypto.getRandomValues(new Uint8Array(n));
+async function kekPass(pw,salt){const k=await crypto.subtle.importKey('raw',te.encode(pw.normalize('NFKC')),'PBKDF2',false,['deriveKey']);
+ return crypto.subtle.deriveKey({name:'PBKDF2',salt,iterations:600000,hash:'SHA-256'},k,{name:'AES-KW',length:256},false,['wrapKey','unwrapKey'])}
+async function kekRaw(bytes,salt){const k=await crypto.subtle.importKey('raw',bytes,'HKDF',false,['deriveKey']);
+ return crypto.subtle.deriveKey({name:'HKDF',hash:'SHA-256',salt,info:te.encode('vault-kek')},k,{name:'AES-KW',length:256},false,['wrapKey','unwrapKey'])}
+const wrap=async(kek)=>b64(await crypto.subtle.wrapKey('raw',dk,kek,'AES-KW'));
+const unwrap=(w,kek)=>crypto.subtle.unwrapKey('raw',ub64(w),kek,'AES-KW',{name:'AES-GCM'},true,['encrypt','decrypt']);
+async function seal(){const iv=rnd(12);meta.iv=b64(iv);meta.ct=b64(await crypto.subtle.encrypt({name:'AES-GCM',iv},dk,te.encode(JSON.stringify(data))));save()}
+async function open_(){data=JSON.parse(td.decode(await crypto.subtle.decrypt({name:'AES-GCM',iv:ub64(meta.iv)},dk,ub64(meta.ct))))}
+const recFmt=b=>[...b].map(x=>x.toString(16).padStart(2,'0')).join('').toUpperCase().match(/.{4}/g).join('-');
+const recParse=s=>{const h=s.replace(/[^0-9a-f]/gi,'');return h.length===32?Uint8Array.from(h.match(/../g),x=>parseInt(x,16)):null};
+
+function show(v){['vSetup','vRec','vLock','vMain'].forEach(x=>$(x).hidden=x!==v);$('st').textContent=v==='vMain'?'解錠中':'施錠中'}
+function init(){meta=load();if(!meta){show('vSetup');return}show('vLock');$('bPk').hidden=!meta.pk}
+
+$('bSetup').onclick=async()=>{const a=$('sp1').value,b=$('sp2').value,m=$('mSetup');
+ if(a.length<12){m.className='msg err';m.textContent='12文字以上にしてください';return}
+ if(a!==b){m.className='msg err';m.textContent='確認用と一致しません';return}
+ m.className='msg';m.textContent='鍵を生成しています…';
+ dk=await crypto.subtle.generateKey({name:'AES-GCM',length:256},true,['encrypt','decrypt']);
+ const ps=rnd(16),rs=rnd(16),rk=rnd(16);
+ meta={v:1,ps:b64(ps),rs:b64(rs),wp:await wrap(await kekPass(a,ps)),wr:await wrap(await kekRaw(rk,rs)),pk:null};
+ data={tx:{},assets:[]};await seal();$('sp1').value=$('sp2').value='';
+ $('recKey').textContent=recFmt(rk);show('vRec')};
+$('bRecDone').onclick=()=>{$('recKey').textContent='';enter()};
+
+$('bUnlock').onclick=async()=>{const v=$('up').value,m=$('mLock');m.className='msg';m.textContent='確認しています…';
+ try{const r=recParse(v);
+  if(r&&v.includes('-')){dk=await unwrap(meta.wr,await kekRaw(r,ub64(meta.rs)))}
+  else{dk=await unwrap(meta.wp,await kekPass(v,ub64(meta.ps)))}
+  await open_();$('up').value='';m.textContent='';enter()}
+ catch(e){dk=null;await new Promise(r=>setTimeout(r,1500));m.className='msg err';m.textContent='鍵が一致しません。入力を確認してください'}};
+$('up').onkeydown=e=>{if(e.key==='Enter')$('bUnlock').click()};
+
+/* パスキー（WebAuthn PRF） */
+async function pkGet(){const c=await navigator.credentials.get({publicKey:{challenge:rnd(32),allowCredentials:[{type:'public-key',id:ub64(meta.pk.id)}],userVerification:'required',
+ extensions:{prf:{eval:{first:ub64(meta.pk.salt)}}}}});const r=c.getClientExtensionResults();
+ if(!r.prf||!r.prf.results)throw new Error('noprf');return new Uint8Array(r.prf.results.first)}
+$('bPkReg').onclick=async()=>{const m=$('mPk');m.className='msg';
+ if(!window.PublicKeyCredential){m.className='msg err';m.textContent='この表示環境ではパスキーを使えません';return}
+ try{m.textContent='端末の認証を待っています…';
+  const c=await navigator.credentials.create({publicKey:{challenge:rnd(32),rp:{name:'資産金庫'},user:{id:rnd(16),name:'vault',displayName:'資産金庫'},
+   pubKeyCredParams:[{type:'public-key',alg:-7},{type:'public-key',alg:-257}],authenticatorSelection:{residentKey:'required',userVerification:'required'},extensions:{prf:{}}}});
+  if(!c.getClientExtensionResults().prf?.enabled)throw new Error('noprf');
+  const salt=rnd(32);meta.pk={id:b64(c.rawId),salt:b64(salt),s2:b64(rnd(16))};
+  const out=await pkGet();meta.pk.w=await wrap(await kekRaw(out,ub64(meta.pk.s2)));save();
+  m.className='msg okc';m.textContent='登録しました。次回からパスキーで解錠できます';pkState()}
+ catch(e){meta.pk=null;m.className='msg err';m.textContent=e.message==='noprf'?'この端末・ブラウザはPRF拡張に対応していません。パスフレーズで運用してください':'登録できませんでした（表示環境がパスキーを許可していない可能性があります）'}};
+$('bPk').onclick=async()=>{const m=$('mLock');try{const out=await pkGet();dk=await unwrap(meta.pk.w,await kekRaw(out,ub64(meta.pk.s2)));await open_();enter()}
+ catch(e){m.className='msg err';m.textContent='パスキーで解錠できませんでした。パスフレーズを使ってください'}};
+function pkState(){$('pkState').textContent=meta.pk?'登録済み。パスフレーズと復旧キーも引き続き使えます':'未登録。対応端末ならパスフレーズより安全に解錠できます'}
+
+/* 自動施錠 */
+function lock(){dk=null;data=null;clearTimeout(timer);$('total').textContent='—';init()}
+function bump(){clearTimeout(timer);if(dk)timer=setTimeout(lock,180000)}
+['pointerdown','keydown','scroll'].forEach(e=>addEventListener(e,bump,{passive:true}));
+document.addEventListener('visibilitychange',()=>{if(document.hidden&&dk)lock()});
+$('bLock').onclick=lock;
+function enter(){show('vMain');pkState();render();bump()}
+
+/* CSV */
+function parseCSV(t){const rows=[];let r=[],f='',q=false;for(let i=0;i<t.length;i++){const c=t[i];
+ if(q){if(c==='"'){if(t[i+1]==='"'){f+='"';i++}else q=false}else f+=c}
+ else if(c==='"')q=true;else if(c===','){r.push(f);f=''}else if(c==='\n'||c==='\r'){if(c==='\r'&&t[i+1]==='\n')i++;r.push(f);rows.push(r);r=[];f=''}else f+=c}
+ if(f||r.length){r.push(f);rows.push(r)}return rows.filter(x=>x.some(y=>y.trim()))}
+function decode(buf){const u=new Uint8Array(buf);try{return new TextDecoder('utf-8',{fatal:true}).decode(u).replace(/^﻿/,'')}catch(e){return new TextDecoder('shift_jis').decode(u)}}
+const num=s=>Number(String(s).replace(/[,円\s]/g,''))||0;
+const ymd=s=>s.replace(/\//g,'-').replace(/-(\d)(?=-|$)/g,'-0$1');
+$('csv').onchange=async e=>{const m=$('mCsv');let addT=0,dup=0,addA=0,bad=0;
+ for(const f of e.target.files){const rows=parseCSV(decode(await f.arrayBuffer()));if(!rows.length)continue;const h=rows[0].map(x=>x.trim());
+  const ix=n=>h.findIndex(x=>x.startsWith(n));
+  if(ix('内容')>=0&&ix('金額')>=0){const I={k:ix('計算対象'),d:ix('日付'),n:ix('内容'),a:ix('金額'),b:ix('保有金融機関'),c:ix('大項目'),c2:ix('中項目'),t:ix('振替'),id:ix('ID')};
+   for(const r of rows.slice(1)){const id=I.id>=0&&r[I.id]?r[I.id]:[r[I.d],r[I.n],r[I.a],r[I.b]].join('|');
+    if(data.tx[id]){dup++;continue}
+    data.tx[id]={d:ymd(r[I.d]||''),n:r[I.n]||'',a:num(r[I.a]),b:r[I.b]||'',c:r[I.c]||'未分類',c2:r[I.c2]||'',x:(I.k>=0&&r[I.k]==='0')||(I.t>=0&&r[I.t]==='1')};addT++}}
+  else if(ix('日付')===0&&ix('合計')>=0){const cols=h.slice(1);
+   for(const r of rows.slice(1)){const d=ymd(r[0]);if(data.assets.some(a=>a.d===d))continue;
+    const o={d,v:{}};cols.forEach((c,i)=>o.v[c.replace(/（円）|\(円\)/,'')]=num(r[i+1]));data.assets.push(o);addA++}}
+  else bad++}
+ data.assets.sort((a,b)=>a.d<b.d?1:-1);await seal();render();e.target.value='';
+ m.className='msg okc';m.textContent=`明細 ${addT}件追加（重複 ${dup}件を除外）、資産推移 ${addA}日分追加`+(bad?`。形式を判別できないファイルが${bad}件ありました`:'')};
+
+const yen=n=>(n<0?'−':'')+'¥'+Math.abs(Math.round(n)).toLocaleString('ja-JP');
+function render(){if(!data)return;const a=data.assets[0];
+ if(a){$('total').textContent=yen(a.v['合計']||0);$('asOf').textContent=a.d+' 時点';
+  $('breakdown').innerHTML=Object.entries(a.v).filter(([k,v])=>k!=='合計'&&v).map(([k,v])=>`<div class="li"><span>${esc(k)}</span><span>${yen(v)}</span></div>`).join('')}
+ else{$('total').textContent='—';$('asOf').textContent='';$('breakdown').innerHTML='<p class="sub">資産推移CSVを読み込むと表示されます</p>'}
+ const tx=Object.values(data.tx).filter(t=>!t.x);const ms=[...new Set(tx.map(t=>t.d.slice(0,7)))].sort().reverse();
+ const sel=$('mon'),cur=sel.value;sel.innerHTML=ms.map(x=>`<option>${x}</option>`).join('')||'<option>データなし</option>';if(ms.includes(cur))sel.value=cur;month()}
+function month(){const mo=$('mon').value,tx=Object.values(data.tx).filter(t=>!t.x&&t.d.startsWith(mo));
+ const inc=tx.filter(t=>t.a>0).reduce((s,t)=>s+t.a,0),ex=tx.filter(t=>t.a<0).reduce((s,t)=>s+t.a,0);
+ $('inc').textContent=yen(inc);$('exp').textContent=yen(ex);$('net').textContent=yen(inc+ex);$('net').className=inc+ex<0?'neg':'pos';
+ const g={};tx.filter(t=>t.a<0).forEach(t=>g[t.c]=(g[t.c]||0)+t.a);
+ $('cats').innerHTML=Object.entries(g).sort((a,b)=>a[1]-b[1]).map(([k,v])=>`<div class="li"><span>${esc(k)}</span><span>${yen(v)}</span></div>`).join('')||'<p class="sub">入出金CSVを読み込むと表示されます</p>'}
+$('mon').onchange=month;
+const esc=s=>String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+
+/* バックアップ */
+$('bExp').onclick=async()=>{const s=JSON.stringify(meta),m=$('mBk');try{await navigator.clipboard.writeText(s);m.className='msg okc';m.textContent='コピーしました'}
+ catch(e){$('bk').hidden=false;$('bk').value=s;$('bk').select();m.className='msg';m.textContent='自動コピーできないため、表示した文字列を長押しでコピーしてください'}};
+$('bImpShow').onclick=()=>{$('bk').hidden=false;$('bk').value='';$('bImp').hidden=false;$('bk').focus()};
+$('bImp').onclick=()=>{const m=$('mBk');try{const o=JSON.parse($('bk').value);if(!o.wp||!o.ct)throw 0;meta=o;save();m.textContent='';$('bk').hidden=true;$('bImp').hidden=true;lock()}
+ catch(e){m.className='msg err';m.textContent='バックアップの文字列として読み取れません'}};
+init();
+</script>
+
+</body></html>
