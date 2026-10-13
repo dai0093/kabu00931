@@ -1,6 +1,6 @@
 {
- "updatedAt": "2026-10-13T13:40:00+09:00",
- "builtAt": "2026-10-13T13:19+09:00",
+ "updatedAt": "2026-10-14T08:02:00+09:00",
+ "builtAt": "2026-10-14T08:09+09:00",
  "phase": 2,
  "phaseName": "通り道の予兆",
  "phaseDesc": "信用層に1つ点灯。",
@@ -84,73 +84,73 @@
   {
    "name": "日経平均",
    "dir": "中立",
-   "text": "Brentが106ドル台（接近域）へ反発、リヤドへの攻撃継続とサウジの報復表明、IRGCのタンカー攻撃主張で原油・リスク回避が重荷。日本10年3%台・日銀追加利上げ観測も逆風、ドル円158円台の円安は支え"
+   "text": "10/13はアジア半導体急落を受け1,253円安（−1.82%）の67,777円で終了、TOPIXは+0.14%で半導体以外は底堅い。同日夜の米国はS&P −0.02%と小動きだがメモリ株安が継続。Brentは105.69ドル（−0.9%）、ホルムズ・サウジへの攻撃とサウジの報復は継続。日本10年3.00%と日銀追加利上げ観測も逆風、ドル円158円台の円安は支え"
   },
   {
    "name": "米国株",
    "dir": "中立",
-   "text": "HY OASが3%超（20日+45bp）で信用層が点灯、米10年5.24%も逆風。10/12はS&P −0.06%・Nasdaq −0.44%で半導体主導の下落。今週の大手銀決算・CPI（10/14）が次の確認点"
+   "text": "10/13はS&P −0.02%・Nasdaq −0.15%。大手銀決算はJPMが予想未達、ゴールドマン・ウェルズは予想超えで、与信費用は減少。HY OASは3.11%（20日+40bp）で信用層は点灯継続、米10年5.22%も逆風。CPI（10/14）が次の確認点"
   },
   {
    "name": "200A",
    "dir": "中立",
-   "text": "サムスン・TSMCの好調なメモリ/AI需要が支え。固有騰落率は米指数から算出しない"
+   "text": "サムスン・TSMCの好調なメモリ/AI需要が支えだが、10/13は中国CXMTの次世代DRAM報道とAI投資の資金制約懸念でサムスン −8%・SK hynix −8.9%、東京でもキオクシア −13.3%・東京エレクトロン −7.2%。米国でもMicronが2日続落。CXMTの量産実績は未確認。固有騰落率は米指数から算出しない"
   },
   {
    "name": "SOXL",
    "dir": "中立",
-   "text": "半導体業績は堅調だが、10/12はSOX −2.67%で3週間ぶり安値圏、SOXL −8.16%。日次3倍で増幅され、原油高→金利上振れと信用スプレッド拡大に弱い"
+   "text": "10/12はSOX −2.67%・SOXL −8.16%、10/13は米国でもメモリ株安が継続（Micron取引時間中約−4.5%）。Broadcom CEOのAI投資「カジノ」発言も重荷。日次3倍で増幅され、原油高→金利上振れと信用スプレッド拡大にも弱い"
   }
  ],
  "values": {
   "vix": {
-   "value": 15.21,
+   "value": 15.28,
    "unit": "",
-   "observedAt": "2026-10-12",
-   "change": "+2.5%",
+   "observedAt": "2026-10-13",
+   "change": "+0.46%",
    "source": "https://finance.yahoo.com/quote/%5EVIX/"
   },
   "us10": {
-   "value": 5.24,
+   "value": 5.22,
    "unit": "%",
-   "observedAt": "2026-10-09",
-   "change": "20日 +28bp／5日 −4bp",
-   "source": "https://home.treasury.gov/resource-center/data-chart-center/interest-rates/TextView?type=daily_treasury_yield_curve&field_tdr_date_value_month=202610"
+   "observedAt": "2026-10-13",
+   "change": "20日 +25bp／5日 −9bp（10/12は米債券市場休場）",
+   "source": "https://tradingeconomics.com/united-states/government-bond-yield"
   },
   "jgb10": {
-   "value": 3.02,
+   "value": 3.0,
    "unit": "%",
-   "observedAt": "2026-10-09",
-   "change": "−0.07pt",
+   "observedAt": "2026-10-13",
+   "change": "−0.01pt（約3週間ぶり低水準。9月企業物価+6.8%は予想7.6%を下回る）",
    "source": "https://tradingeconomics.com/japan/government-bond-yield"
   },
   "brent": {
-   "value": 106.65,
+   "value": 105.69,
    "unit": "$",
-   "observedAt": "2026-10-12",
-   "change": "+1.8%（12月限清算値。ゼレンスキー氏がエネルギー停戦に懐疑、湾岸リスクで反発）",
-   "source": "https://www.rigzone.com/news/brent_tops_106_as_supply_risks_intensify-12-oct-2026-184830-article"
+   "observedAt": "2026-10-13",
+   "change": "−0.90%（清算値。3日続伸後の利益確定、ロシア産ディーゼル合意が上値を抑制）",
+   "source": "https://www.rigzone.com/news/brent_steady_amid_middle_east_tensions-13-oct-2026-184841-article"
   },
   "hy": {
-   "value": 3.15,
+   "value": 3.11,
    "unit": "%",
-   "observedAt": "2026-10-08",
-   "change": "20日 +45bp／5日 −9bp",
+   "observedAt": "2026-10-12",
+   "change": "20日 +40bp／5日 −1bp",
    "source": "https://fred.stlouisfed.org/series/BAMLH0A0HYM2"
   },
   "ig": {
-   "value": 0.82,
+   "value": 0.83,
    "unit": "%",
-   "observedAt": "2026-10-08",
-   "change": "5日 −4bp",
+   "observedAt": "2026-10-12",
+   "change": "5日 −1bp",
    "source": "https://fred.stlouisfed.org/series/BAMLC0A0CM"
   },
   "t10y2y": {
-   "value": 0.44,
+   "value": 0.42,
    "unit": "%",
-   "observedAt": "2026-10-09",
-   "change": "前日 0.47（2年4.80%）",
-   "source": "https://home.treasury.gov/resource-center/data-chart-center/interest-rates/TextView?type=daily_treasury_yield_curve&field_tdr_date_value_month=202610"
+   "observedAt": "2026-10-13",
+   "change": "前回 0.44（10/9）、2年4.80%",
+   "source": "https://tradingeconomics.com/united-states/government-bond-yield"
   },
   "nfci": {
    "value": -0.494,
@@ -160,39 +160,14 @@
    "source": "https://fred.stlouisfed.org/series/NFCI"
   },
   "usdjpy": {
-   "value": 158.56,
+   "value": 158.29,
    "unit": "円",
-   "observedAt": "2026-10-12",
-   "change": "+0.18%（日米祝日で薄商い）",
+   "observedAt": "2026-10-13",
+   "change": "−0.20%（連休明けの薄商い）",
    "source": "https://tradingeconomics.com/japan/currency"
   }
  },
  "stale": [
-  {
-   "name": "米10年金利",
-   "observedAt": "2026-10-09",
-   "freq": "日次"
-  },
-  {
-   "name": "日本10年金利",
-   "observedAt": "2026-10-09",
-   "freq": "日次"
-  },
-  {
-   "name": "米10年−2年",
-   "observedAt": "2026-10-09",
-   "freq": "日次"
-  },
-  {
-   "name": "HY OAS",
-   "observedAt": "2026-10-08",
-   "freq": "日次"
-  },
-  {
-   "name": "IG OAS",
-   "observedAt": "2026-10-08",
-   "freq": "日次"
-  },
   {
    "name": "NFCI",
    "observedAt": "2026-10-02",
@@ -238,102 +213,102 @@
    "source": "https://www.investing.com/news/economy-news/imf-cites-ai-slowdown-spiking-yields-as-looming-global-market-risks-4945345"
   },
   {
-   "date": "2026-10-12",
-   "title": "米投資適格CDS指数がイラン戦争開始以来の高水準に（Reuters）。AI投資向けの大量起債で借入コストが上昇",
+   "date": "2026-10-13",
+   "title": "アジア半導体株が急落：KOSPI −7.2%（韓国取引所がSIDECAR発動）、SK hynix −8.9%、サムスン −8%、TSMC −1.6%、日経平均は連休明けに取引時間中−2.7%。中国CXMTの次世代4F² DRAM開発報道と、AI投資の資金制約懸念（Broadcom・IntelのCEO発言）が売り材料",
    "state": "実行済み",
-   "impact": "信用層の悪化兆候。HY OAS点灯と合わせ米国株・SOXLの逆風。今週の米大手銀決算（10/13〜）・CPI（10/14）が次の確認点",
-   "source": "https://www.brecorder.com/news/40443766/shares-cautious-in-asia-as-earnings-loom-oil-slips"
+   "impact": "メモリ競争激化とAI設備投資の資金制約懸念でSOXL（日次3倍）・200Aに直撃しやすい。日経平均は半導体・ソフトバンク安で下押し、米国株は10/12のSOX −2.67%に続く半導体安の継続リスク",
+   "source": "https://za.investing.com/news/stock-market-news/asia-stocks-slide-as-china-chip-threat-hits-samsung-sk-hynix-oil-retreats-4500867"
   },
   {
-   "date": "2026-10-12",
-   "title": "IRGC、2日間でスーパータンカー3隻を攻撃し、10/12にも1隻が炎上したと主張（UKMTOは10/12の攻撃を報告せず、独立確認なし）",
-   "state": "接近",
-   "impact": "主張段階。確認されれば通航・保険料リスクの再上昇で原油高→米金利・インフレ経由で日経平均・米国株、高ベータのSOXLに逆風",
-   "source": "https://www.cbsnews.com/live-updates/iran-war-us-trump-saudi-arabia-houthi/"
-  },
-  {
-   "date": "2026-10-12",
-   "title": "リヤドで空襲警報後に爆発音、サウジ主導連合が弾道ミサイルを迎撃と発表。フーシ派はリヤド空港への弾道ミサイル攻撃とハミス・ムシャイトへの無人機攻撃を主張。リヤド空港の閉鎖は延長",
-   "state": "実行済み",
-   "impact": "サウジ中枢への攻撃が4日以上継続（被害は不明）。湾岸リスクの長期化で原油の上振れ要因、米金利・インフレ経由で日経平均・米国株・SOXLの重荷",
-   "source": "https://www.cbsnews.com/live-updates/iran-war-us-trump-saudi-arabia-houthi/"
-  },
-  {
-   "date": "2026-10-12",
-   "title": "サウジのアブドルアジーズ・エネルギー相、攻撃に「同等に重大な」対応をすると表明",
+   "date": "2026-10-13",
+   "title": "IRGC司令官顧問ナグディ氏、ホルムズは閉鎖中でオマーン沿岸沿いの航路も「違法」として閉鎖すると発言（Fars報道）。イラン軍参謀総長サイヤリ氏は再攻撃を警告",
    "state": "予告",
-   "impact": "報復の発言段階で実行の確認ではない。実行されれば紅海・湾岸の軍事リスク拡大で原油高→日経平均・米国株・SOXLに逆風",
+   "impact": "発言段階で新たな封鎖実行の確認ではない。実行されれば迂回航路も制約され原油・運賃上振れ→米金利・インフレ経由で日経平均・米国株・SOXLに逆風",
+   "source": "https://www.thenationalnews.com/news/gulf/2026/10/13/strait-of-hormuz-attacks-surge-as-iran-steps-up-campaign-against-us-backed-oil-shipping/"
+  },
+  {
+   "date": "2026-10-13",
+   "title": "サウジ主導連合、ハミス・ムシャイトを狙った弾道ミサイル2発を迎撃と発表（被害報告なし）。リヤド・キング・ハーリド空港の運航停止は10/17深夜まで延長、フーシ派報道官は各国航空会社にサウジ空港（メッカ・メディナ除く）への運航を避けるよう警告",
+   "state": "実行済み",
+   "impact": "サウジ本土への攻撃が連日継続し湾岸リスクが長期化。原油の下値を支え、米金利・インフレ経由で日経平均・米国株、高ベータのSOXLの重荷",
+   "source": "https://www.thenationalnews.com/news/gulf/2026/10/13/saudi-arabia-vows-to-remain-strong-after-deadly-houthi-attacks/"
+  },
+  {
+   "date": "2026-10-13",
+   "title": "日銀・植田総裁、追加利上げの時期とペースは卸売物価の上昇が消費者物価・家計支出に波及する度合い次第と発言（9月企業物価+6.8%、予想7.6%を下回る）",
+   "state": "予告",
+   "impact": "利上げ決定ではなく、10月会合での利上げは不確実（市場は12月〜1月を意識）。日本10年は3.00%で点灯域の境界。円金利上昇は日経平均・200Aの逆風、ドル円158円台の円安抑制要因",
+   "source": "https://tradingeconomics.com/japan/government-bond-yield"
+  },
+  {
+   "date": "2026-10-13",
+   "title": "東京市場終値：日経平均は1,253円安（−1.82%）の67,777円（取引時間中は1,900円超安）。キオクシア −13.3%、東京エレクトロン −7.2%、アドバンテストも大幅安。TOPIXは+0.14%と小幅高",
+   "state": "実行済み",
+   "impact": "同日のアジア半導体急落（既存事象）の東京での着地。半導体以外へ買いが分散しTOPIXは底堅く選別色。200Aは国内半導体株安の直撃、日経平均は値がさ半導体株経由で下押し、SOXLは同日夜の米半導体の反応が次の確認点",
+   "source": "https://finance.biggo.com/news/d0aec5eb-d062-407f-932b-8446a9b213ab"
+  },
+  {
+   "date": "2026-10-13",
+   "title": "UKMTO、ホルムズ海峡でタンカーとコンテナ船が出所不明の飛翔体で被弾と報告（被害・死傷は不明、調査中）",
+   "state": "実行済み",
+   "impact": "海峡内の商船攻撃が連日継続。原油・運賃・保険料の上振れ要因で、米金利・インフレ経由で日経平均・米国株・SOXLに逆風",
    "source": "https://www.cbsnews.com/live-updates/iran-war-us-trump-saudi-arabia-houthi/"
   },
   {
-   "date": "2026-10-12",
-   "title": "フーシ派、サヌアへの夜間空爆をサウジの攻撃と非難（フーシ派保健省は1人死亡・12人負傷と発表、サウジは未確認）",
-   "state": "接近",
-   "impact": "サウジの報復開始の可能性を示す主張段階。応酬が拡大すれば原油・運賃の上振れで米金利・株式の逆風",
+   "date": "2026-10-13",
+   "title": "イラン政府、オマーンと一時的な船舶航路で合意（理解）に達したと表明。詳細は調整中",
+   "state": "予告",
+   "impact": "イラン側の発表段階で実際の通航回復の確認ではなく、同日のIRGC側近の「オマーン沿岸航路も閉鎖」発言とも食い違う。実現すれば通航量回復→原油下押しで日経平均・米国株の支え",
    "source": "https://www.cbsnews.com/live-updates/iran-war-us-trump-saudi-arabia-houthi/"
   },
   {
-   "date": "2026-10-12",
-   "title": "ゼレンスキー大統領、トランプ氏発表のエネルギー停戦に懐疑を示しロシアへの攻撃を継続すると表明。ロシアが合意後もエネルギー施設を攻撃したとも主張",
-   "state": "接近",
-   "impact": "10/11の停戦発表（予告）の実効性に疑問。原油は朝方の下落から反転しBrent 106.65ドル（+1.8%）で清算、黒海・ロシア製品の供給懸念が残り米金利・株式の重荷",
-   "source": "https://qz.com/oil-prices-rebound-trump-russia-ukraine-energy-ceasefire-101226"
-  },
-  {
-   "date": "2026-10-12",
-   "title": "SOX −2.67%（12,236.79、3週間ぶり安値圏）、SOXL −8.16%。韓国半導体株安と原油高による利上げ懸念でMicron −3.9%、SK hynix ADR −4.0%、Nvidia −1.3%",
+   "date": "2026-10-13",
+   "title": "サウジ主導連合、サヌアを含むイエメン西部の石油施設への攻撃を確認（10/12のフーシ派主張を当局側が裏付け）。フーシ派のサリー報道官はサヌアが攻撃されればアラムコ施設とリヤド空港を狙うと警告",
    "state": "実行済み",
-   "impact": "SOXLに直撃（日次3倍）。Nasdaq −0.44%。200Aも半導体比率次第で連動しやすい。原油高→金利経路が半導体の重荷",
-   "source": "https://en.fnnews.com/news/202610130518302889"
+   "impact": "サウジの報復が実行段階に入り応酬が拡大（フーシ派の報復は警告段階）。アラムコ施設が標的になれば供給懸念で原油急伸→米金利・インフレ経由で日経平均・米国株、高ベータのSOXLに逆風",
+   "source": "https://www.cbsnews.com/live-updates/iran-war-us-trump-saudi-arabia-houthi/"
   },
   {
-   "date": "2026-10-11",
-   "title": "イラン最高安全保障委員会のレザイー書記、ホルムズ再開に関する米側回答を「不十分」と拒否。7条件が満たされるまで海峡は再開せず交渉もしないと表明（ホワイトハウスは即時コメントなし）",
-   "state": "予告",
-   "impact": "発言段階で新たな攻撃・封鎖強化の確認ではないが、早期再開期待が後退。原油の下値を支え、米金利・インフレ経由で日経平均・米国株、高ベータのSOXLの重荷",
-   "source": "https://www.jpost.com/middle-east/iran-news/article-911369"
-  },
-  {
-   "date": "2026-10-11",
-   "title": "オマーン・ソハール錨地付近でタンカーが無人機に被弾（UKMTO、当局が乗員退避を支援。攻撃主体は未特定）",
+   "date": "2026-10-13",
+   "title": "サウジ主導連合、フーシ派の弾道ミサイル2発・無人機2機・巡航ミサイル3発を迎撃と発表（ダーランの住宅地に破片落下との報道）。米国務省は職員のサウジ空港利用を事前承認制とし、英国はリヤド等への不要不急の渡航中止を勧告",
    "state": "実行済み",
-   "impact": "攻撃がホルムズ海峡の外、オマーン湾側の錨地に拡大。保険料・運賃・原油の上振れ要因で、米金利・インフレ経由で日経平均・米国株、高ベータのSOXLに逆風",
-   "source": "https://seatrade-maritime.com/security/iran-hits-tanker-in-sohar-and-two-in-hormuz-us-disables-bulker"
+   "impact": "攻撃がサウジ東部（ダーラン）まで連日継続し、各国が渡航制限を強化。湾岸リスクの長期化で原油の下値を支え、日経平均・米国株・SOXLの重荷",
+   "source": "https://www.cbsnews.com/live-updates/iran-war-us-trump-saudi-arabia-houthi/"
   },
   {
-   "date": "2026-10-11",
-   "title": "トランプ大統領、ロシアとウクライナがエネルギー施設への攻撃停止で合意したと発表（ゼレンスキー氏は詳細を未確認としつつ支持、ロシアはコメントなし）",
-   "state": "予告",
-   "impact": "当事国の確認がない発表段階（9月中旬の同様の発表も未確認）。実効性があれば黒海・ロシア石油製品の供給懸念が後退し原油・ディーゼルの下押し要因、10/12アジア時間のBrentは約1.5%安",
-   "source": "https://www.cnn.com/2026/10/11/politics/trump-ukraine-russia-energy-ceasefire"
+   "date": "2026-10-13",
+   "title": "OPEC月報：9月のOPEC+原油生産は日量95.6万バレル増の3,075万バレル（サウジ+74.4万の800万、イラク+38.6万）。2026年の需要増見通しを日量40万→20万バレルに下方修正",
+   "state": "実行済み",
+   "impact": "サウジ・イラクの実生産は回復方向で供給面の緩和材料、需要見通しの下方修正も原油の上値抑制要因。ただし基準比なお日量545万バレル低く、ホルムズ次第。原油→インフレ・米金利経由で日経平均・米国株に波及",
+   "source": "https://easternherald.com/2026/10/13/opec-oil-demand-forecast-2027-cut/"
   },
   {
-   "date": "2026-10-11",
-   "title": "訂正：10/10のリヤド空港攻撃はフーシ派が実行を主張（死者13人・負傷300人超と主張）。10/9発表のロシア産ディーゼル供給は30万トン（約225万バレル）、11月に50万トン追加とされる",
+   "date": "2026-10-13",
+   "title": "訂正：トランプ大統領、ロシア・ウクライナ双方ともエネルギー施設への攻撃停止をまだ約束していないと認める（10/11の「停戦合意」発表）",
    "state": "訂正",
-   "impact": "10/10事象の攻撃主体はフーシ派の主張で確定。10/9事象の「約2,250万バレル」は約225万バレルの誤り（世界のディーゼル消費は日量約2,900万バレル）で、燃料価格の緩和効果は限定的",
-   "source": "https://www.brecorder.com/news/40443764/oil-falls-on-hopes-russia-ukraine-energy-ceasefire-will-boost-supplies"
+   "impact": "10/11の停戦発表（予告）は合意として未成立。黒海・ロシア石油製品の供給懸念は残り、原油の下値を支える。米金利・インフレ経由で日経平均・米国株の重荷",
+   "source": "https://www.rigzone.com/news/brent_steady_amid_middle_east_tensions-13-oct-2026-184841-article"
   },
   {
-   "date": "2026-10-11",
-   "title": "IEAビロル事務局長、ディーゼル追加放出の要否検討と、未実施の加盟国に放出の前倒しを要請",
-   "state": "予告",
-   "impact": "追加放出は決定ではない。実行されれば燃料価格・インフレ圧力の緩和で米金利の上振れを抑える方向",
-   "source": "https://www.brecorder.com/news/40443764/oil-falls-on-hopes-russia-ukraine-energy-ceasefire-will-boost-supplies"
-  },
-  {
-   "date": "2026-10-11",
-   "title": "FT・モルガンスタンレー集計：9月の世界AI関連債発行は230億ドル（6月1,130億ドルから約8割減）、米IGのAI関連発行は9月ゼロ。Oracle「Project Jupiter」向け約180億ドル融資は額面89〜91セントで、銀行の売却が難航",
+   "date": "2026-10-13",
+   "title": "米大手銀7〜9月期決算：JPMはEPS 5.57ドルで予想5.90ドルを下回る（有価証券売却損6.58億ドル、与信費用は前年比−19%の27億ドル）。ゴールドマンは純利益52.9億ドルで予想を大幅超過（株式トレーディング+72%）、ウェルズも予想超え",
    "state": "実行済み",
-   "impact": "AI投資の資金調達コスト上昇と銀行の引受在庫リスク。デフォルトではない。AI→銀行経路の監視材料で、SOXL・200A・米国株の重荷になり得る",
-   "source": "https://kucoin.com/news/flash/ai-debt-issuance-drops-80-to-23b-oracle-loans-trade-below-par"
+   "impact": "与信費用は減少し、報道ベースで私募信用・AI関連の損失計上は確認されていない（AI→銀行の監視は継続）。S&P −0.02%と市場全体への波及は限定的。米国株・日経平均には信用不安の拡大材料とならず",
+   "source": "https://www.benzinga.com/markets/earnings/26/10/62321579/jpmorgan-ceo-jamie-dimon-sounds-alarm-on-inflation-rising-rates-and-economic-risks"
   },
   {
-   "date": "2026-10-11",
-   "title": "リヤド・キング・ハーリド空港の旅客ターミナルに再び飛翔体が着弾し負傷者（サウジ主導連合発表、空港は閉鎖継続）。10/10の攻撃はサウジ当局が死者12人・負傷約300人と発表、印大使館発表で死者13人に",
+   "date": "2026-10-13",
+   "title": "米国市場でもメモリ株安が2日目：Micronは取引時間中に約4.5%安（10/12は−3.9%）。Broadcomのホック・タンCEOは10/12、AI投資を「カジノ」に例え、資本へのアクセスがAI成長の最大の制約になり得ると発言",
    "state": "実行済み",
-   "impact": "リヤド空港への攻撃は水曜以降連日。サウジは迎撃ミサイル不足で仏英等に防空支援を要請と報道。湾岸リスクの長期化で原油・米金利の上振れ要因、日経平均・米国株・SOXLの重荷",
-   "source": "https://www.deseret.com/u-s-world/2026/10/11/houthis-strike-airport-in-riyadh-saudi-arabia-again/"
+   "impact": "中国CXMTの競争懸念とAI投資の資金制約懸念が米国にも波及。SOXL（日次3倍）に直撃しやすく、Nasdaq −0.15%。200Aは国内半導体株との連動で重荷",
+   "source": "https://finance.yahoo.com/markets/stocks/articles/china-cxmt-broadcom-ceo-rattle-173756730.html"
+  },
+  {
+   "date": "2026-10-13",
+   "title": "フーシ派のミサイル攻撃でダーランのサウジアラムコ本社敷地が被弾し一部で火災（Bloomberg：関係者情報、鎮火済み）。エネルギー省は管理棟の限定的な火災で負傷者なしと説明。原因は迎撃破片の可能性もあり被害程度は不明",
+   "state": "実行済み",
+   "impact": "フーシ派が警告していたアラムコ施設への攻撃が現実化（生産・輸出設備への被害は未確認）。サウジ本土のエネルギー拠点リスクが上昇し原油の下値を支え、米金利・インフレ経由で日経平均・米国株、高ベータのSOXLの重荷",
+   "source": "https://www.worldoil.com/news/2026/10/13/aramco-s-dhahran-headquarters-hit-during-houthi-missile-attack-on-saudi-arabia/"
   }
  ],
  "source": "https://claude.ai/artifact/KJPgY7LSb8DMsdXt2A1Gst"
