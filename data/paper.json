@@ -8,8 +8,8 @@
   },
   {
    "date": "2026-10-13",
-   "value": 6871712,
-   "nikkei": 6872901
+   "value": 6878235,
+   "nikkei": 7000000
   }
  ],
  "trades": [
@@ -20,7 +20,7 @@
    "entry": 3725,
    "stop": 3236,
    "shares": 100,
-   "status": "不成立",
+   "status": "待ち",
    "taken": false
   },
   {
@@ -30,11 +30,8 @@
    "entry": 7230,
    "stop": 6967,
    "shares": 100,
-   "status": "保有中",
-   "buy": 7237.23,
-   "entry_date": "2026-10-13",
-   "last": 7319.0,
-   "taken": true
+   "status": "待ち",
+   "taken": false
   },
   {
    "date": "2026-10-09",
@@ -42,29 +39,6 @@
    "name": "トレンドマイクロ",
    "entry": 7587,
    "stop": 7140,
-   "shares": 100,
-   "status": "保有中",
-   "buy": 7594.5869999999995,
-   "entry_date": "2026-10-13",
-   "last": 7455.0,
-   "taken": true
-  },
-  {
-   "date": "2026-10-13",
-   "code": "4493",
-   "name": "サイバーセキュリティクラウド",
-   "entry": 4180,
-   "stop": 3608,
-   "shares": 100,
-   "status": "待ち",
-   "taken": false
-  },
-  {
-   "date": "2026-10-13",
-   "code": "9104",
-   "name": "商船三井",
-   "entry": 7557,
-   "stop": 7165,
    "shares": 100,
    "status": "待ち",
    "taken": false

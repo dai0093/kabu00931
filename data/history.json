@@ -31,7 +31,7 @@
   "by_risk": 200,
   "by_cash": 100,
   "method": "高値更新",
-  "status": "open"
+  "status": "pending"
  },
  {
   "date": "2026-10-09",
@@ -48,7 +48,7 @@
   "by_risk": 100,
   "by_cash": 100,
   "method": "高値更新",
-  "status": "open"
+  "status": "pending"
  },
  {
   "date": "2026-10-13",
