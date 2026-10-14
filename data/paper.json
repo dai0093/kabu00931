@@ -8,8 +8,13 @@
   },
   {
    "date": "2026-10-13",
-   "value": 6878235,
-   "nikkei": 7000000
+   "value": 6871712,
+   "nikkei": 6872901
+  },
+  {
+   "date": "2026-10-14",
+   "value": 6834123,
+   "nikkei": 6869531
   }
  ],
  "trades": [
@@ -20,7 +25,7 @@
    "entry": 3725,
    "stop": 3236,
    "shares": 100,
-   "status": "待ち",
+   "status": "不成立",
    "taken": false
   },
   {
@@ -30,8 +35,11 @@
    "entry": 7230,
    "stop": 6967,
    "shares": 100,
-   "status": "待ち",
-   "taken": false
+   "status": "保有中",
+   "buy": 7237.23,
+   "entry_date": "2026-10-13",
+   "last": 7335.0,
+   "taken": true
   },
   {
    "date": "2026-10-09",
@@ -40,15 +48,47 @@
    "entry": 7587,
    "stop": 7140,
    "shares": 100,
-   "status": "待ち",
-   "taken": false
+   "status": "保有中",
+   "buy": 7594.5869999999995,
+   "entry_date": "2026-10-13",
+   "last": 7394.0,
+   "taken": true
+  },
+  {
+   "date": "2026-10-13",
+   "code": "4493",
+   "name": "サイバーセキュリティクラウド",
+   "entry": 4180,
+   "stop": 3608,
+   "shares": 100,
+   "status": "決済",
+   "buy": 4044.0399999999995,
+   "sell": 3604.392,
+   "why": "損切り",
+   "entry_date": "2026-10-14",
+   "exit_date": "2026-10-14",
+   "pnl": -43964.79999999997,
+   "taken": true
+  },
+  {
+   "date": "2026-10-13",
+   "code": "9104",
+   "name": "商船三井",
+   "entry": 7557,
+   "stop": 7165,
+   "shares": 100,
+   "status": "保有中",
+   "buy": 7564.556999999999,
+   "entry_date": "2026-10-14",
+   "last": 7658.0,
+   "taken": true
   }
  ],
- "closed": 0,
+ "closed": 1,
  "hit": 0,
- "miss": 0,
- "pf": null,
- "realized": 0,
+ "miss": 1,
+ "pf": 0.0,
+ "realized": -43965,
  "tax_est": 0,
  "expect": {
   "win_rate": 35.2,

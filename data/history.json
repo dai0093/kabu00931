@@ -31,7 +31,7 @@
   "by_risk": 200,
   "by_cash": 100,
   "method": "高値更新",
-  "status": "pending"
+  "status": "open"
  },
  {
   "date": "2026-10-09",
@@ -48,7 +48,7 @@
   "by_risk": 100,
   "by_cash": 100,
   "method": "高値更新",
-  "status": "pending"
+  "status": "open"
  },
  {
   "date": "2026-10-13",
@@ -65,7 +65,14 @@
   "by_risk": 100,
   "by_cash": 300,
   "method": "高値更新",
-  "status": "pending"
+  "status": "closed",
+  "buy": 4040.0,
+  "sell": 3608.0,
+  "entry_date": "2026-10-14",
+  "exit_date": "2026-10-14",
+  "reason": "損切り",
+  "pnl": -43200.0,
+  "hit": false
  },
  {
   "date": "2026-10-13",
@@ -82,6 +89,6 @@
   "by_risk": 100,
   "by_cash": 100,
   "method": "高値更新",
-  "status": "pending"
+  "status": "open"
  }
 ]
