@@ -60,6 +60,7 @@ input{width:100%;font:inherit;font-size:18px;padding:10px;border-radius:8px;bord
 
 <div class="panel" id="lock" style="display:none"></div>
 <div class="panel notice" id="notice"></div>
+<div class="panel" id="guard"></div>
 <div class="panel" id="risk"></div>
 <h2 id="logic">ロジックツリー（市場リスクダッシュボード）</h2><div class="panel" id="lt"></div>
 
@@ -99,7 +100,7 @@ const cl=n=>n>0?'up':n<0?'dn':'';
 function load(){try{return Object.assign({hold:[],done:[],skip:[],etf:0},JSON.parse(localStorage.getItem(K))||{})}catch(e){return{hold:[],done:[],skip:[],etf:0}}}
 function save(b){try{localStorage.setItem(K,JSON.stringify(b))}catch(e){}}
 async function get(u){try{const r=await fetch(u+'?t='+Date.now());return r.ok?r.json():null}catch(e){return null}}
-let S=null,C=null,BT=null,PP=null,LT=null,REC=[],CH=[],lastW=0;
+let S=null,C=null,BT=null,PP=null,LT=null,MG=null,REC=[],CH=[],lastW=0;
 const bars=c=>C&&C.candles&&C.candles[c]||[];
 const last=c=>{const b=bars(c);return b.length?b[b.length-1][4]:null};
 const prev=c=>{const b=bars(c);return b.length>1?b[b.length-2][4]:null};
@@ -229,6 +230,20 @@ function render(){
    <label>株数（口数）</label><input id="rs${c}" type="number" inputmode="numeric" value="${+h.shares||''}">
    <div class="btns"><button class="pri" onclick="reg('${c}')">登録</button></div>
 </div>`}).join('');
+ // 暴落よけ（検証8・10・11・12）
+ {const G=S&&S.etf_stop,M=MG||{},td=new Date(Date.now()+9*36e5).toISOString().slice(0,10),mt=M.date===td;
+  const warn=mt&&(M.sox_alert||M.term_alert);
+  document.getElementById('guard').className='panel'+(warn?' alert':'');
+  document.getElementById('guard').innerHTML=`<div class="ttl"><span class="nm">暴落よけ</span><span class="badge ${warn?'b-buy':'b-sell'}">${warn?'今日は警戒':'平常'}</span></div>
+  ${G?`<div class="row"><span>1321 逆指値（前日終値×0.985）</span><b>${yen(G.stop)}</b></div>
+  <div class="row"><span>計算</span><b>${G.close.toLocaleString()} × 0.985 = ${G.stop.toLocaleString()}</b></div>
+  <div class="note">寄り前に売りの逆指値を入れる。発動したら15:25までに引け成行で買い戻し（検証10：2017〜の暴落40日すべてで損失を約半分に）</div>`:'<div class="empty">逆指値のデータなし</div>'}
+  ${mt?`<div class="row"><span>前夜SOX（${esc(M.us_date||'')}）</span><b>${(M.sox1*100).toFixed(1)}%<span class="pill p-${M.sox_alert?'lit':'ok'}">${M.sox_alert?'暴落警戒':'平常'}</span></b></div>
+  <div class="row"><span>VIX÷VIX3M</span><b>${M.term.toFixed(2)}<span class="pill p-${M.term_alert?'lit':'ok'}">${M.term_alert?'前日警戒':'平常'}</span></b></div>
+  ${M.sox_alert?'<div class="note"><b>暴落警戒</b>：寄り付きでETF・保有株を売り、大引けで買い戻すかを判断（検証8：後半の暴落の55%で事前に点灯）</div>':''}
+  ${M.term_alert?'<div class="note"><b>前日警戒</b>：今日15:25までに引けで売り、明日の引けで買い戻すかを判断（検証11：翌日−2%以下の確率 普段5%→25%）</div>':''}`
+  :'<div class="note">今朝の米国市場の判定はまだありません（朝5:37〜7:23に更新）</div>'}
+  ${(S&&S.events||[]).length?'<div class="note"><b>米国の重要指標</b>（予想の向きでは売買しない：検証12）<br>'+S.events.map(e=>esc(e).replace(/\n/g,'<br>')).join('<br>')+'</div>':''}`;}
  // 市場リスク
  const R=S&&S.risk;const RL={lit:'点灯',near:'接近',ok:'平常',na:'—'};
  const rk=(lab,val,stt,form)=>`<div class="row"><span>${lab}</span><b>${val==null?'—':form(val)}<span class="pill p-${stt||'ok'}">${RL[stt]||'—'}</span></b></div>`;
@@ -324,7 +339,7 @@ function render(){
 }
 
 (async()=>{
- [S,C,BT,PP,LT]=await Promise.all([get('data/signals.json'),get('data/candles.json'),get('data/compare6.json'),get('data/paper.json'),get('data/logic_tree.json')]);
+ [S,C,BT,PP,LT,MG]=await Promise.all([get('data/signals.json'),get('data/candles.json'),get('data/compare6.json'),get('data/paper.json'),get('data/logic_tree.json'),get('data/morning.json')]);
  if(S){const [y,m,d]=S.market_date.split('-');document.getElementById('hdate').textContent=`${+m}月${+d}日`;
   document.getElementById('hst').textContent='✓ 判定完了';document.getElementById('hupd').textContent=S.updated.slice(11);
   const ns=S.signals.length,nl=(S.sells||[]).length;

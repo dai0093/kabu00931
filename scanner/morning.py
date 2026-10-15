@@ -33,6 +33,9 @@ try:
     sox1, vix1 = c / p - 1, vc / vp - 1
     fresh = (datetime.now(JST).date() - d).days <= 4
     line = f"前夜の米国（{d}）：SOX {sox1*100:+.1f}% / VIX {vc:.1f}（前日比 {vix1*100:+.0f}%）/ VIX÷VIX3M {term:.2f}"
+    json.dump({"date": today, "us_date": str(d), "sox1": round(sox1, 4), "vix": round(vc, 2), "term": round(term, 3),
+               "sox_alert": bool(fresh and sox1 <= -0.03), "term_alert": bool(term >= 1.06)},
+              open("data/morning.json", "w"), ensure_ascii=False)
     if fresh and sox1 <= -0.03:
         alert = ("【暴落警戒】" + line + "\n検証8：この条件の日は日経の寄り〜大引けが平均で大きく下落。"
                  "寄り付きでETF・保有株を売り、大引けで買い戻す判断材料に（最終判断はご自身で）")
