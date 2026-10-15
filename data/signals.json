@@ -16,17 +16,17 @@
    "credit": "ok"
   },
   "values": {
-   "vix": 17.36,
+   "vix": 17.6,
    "vix_d": 0.0,
    "us10": 5.19,
    "us10_20": 0.243,
    "hy": null,
    "hy_20": null,
    "nfci": null,
-   "brent": 103.95,
-   "brent_20": -0.008,
-   "usdjpy": 157.7,
-   "yen_20": 0.011,
+   "brent": 104.37,
+   "brent_20": -0.004,
+   "usdjpy": 157.829,
+   "yen_20": 0.012,
    "credit_20": -0.008
   },
   "weak": {
@@ -37,7 +37,7 @@
   }
  },
  "blocked": [],
- "updated": "2026-10-15 18:31",
+ "updated": "2026-10-15 19:45",
  "market_date": "2026-10-15",
  "method": "高値更新（売買代金100億円以上・東証全銘柄）＋待機資金は日経平均ETF",
  "signals": [
@@ -54,7 +54,11 @@
    "risk_yen": 52600,
    "risk_per_share": 263,
    "by_risk": 200,
-   "by_cash": 200
+   "by_cash": 200,
+   "crash_p": 0.215,
+   "crash_thr": 0.582,
+   "crash_out": false,
+   "crash_why": "5日騰落 +10% / 値幅(ATR) 2.7% / 25日線乖離 +15%"
   },
   {
    "date": "2026-10-15",
@@ -69,7 +73,11 @@
    "risk_yen": 50400,
    "risk_per_share": 252,
    "by_risk": 200,
-   "by_cash": 200
+   "by_cash": 200,
+   "crash_p": 0.214,
+   "crash_thr": 0.582,
+   "crash_out": false,
+   "crash_why": "5日騰落 +7% / 値幅(ATR) 2.0% / 25日線乖離 +6%"
   },
   {
    "date": "2026-10-15",
@@ -84,7 +92,11 @@
    "risk_yen": 54800,
    "risk_per_share": 274,
    "by_risk": 200,
-   "by_cash": 200
+   "by_cash": 200,
+   "crash_p": 0.22,
+   "crash_thr": 0.582,
+   "crash_out": false,
+   "crash_why": "5日騰落 +9% / 値幅(ATR) 2.2% / 25日線乖離 +9%"
   },
   {
    "date": "2026-10-15",
@@ -99,9 +111,14 @@
    "risk_yen": 27300,
    "risk_per_share": 273,
    "by_risk": 200,
-   "by_cash": 100
+   "by_cash": 100,
+   "crash_p": 0.206,
+   "crash_thr": 0.582,
+   "crash_out": false,
+   "crash_why": "5日騰落 +7% / 値幅(ATR) 1.8% / 25日線乖離 +8%"
   }
  ],
+ "crash_out": [],
  "sells": [],
  "quotes": {
   "7203": {
