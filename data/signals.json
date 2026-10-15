@@ -16,22 +16,28 @@
    "credit": "ok"
   },
   "values": {
-   "vix": 17.38,
+   "vix": 17.36,
    "vix_d": 0.0,
    "us10": 5.19,
    "us10_20": 0.243,
    "hy": null,
    "hy_20": null,
    "nfci": null,
-   "brent": 104.16,
-   "brent_20": -0.006,
-   "usdjpy": 157.869,
-   "yen_20": 0.012,
+   "brent": 103.95,
+   "brent_20": -0.008,
+   "usdjpy": 157.7,
+   "yen_20": 0.011,
    "credit_20": -0.008
+  },
+  "weak": {
+   "n225_5d": -0.0669,
+   "on": true,
+   "last": 64426,
+   "prev5": 69042
   }
  },
  "blocked": [],
- "updated": "2026-10-15 18:19",
+ "updated": "2026-10-15 18:31",
  "market_date": "2026-10-15",
  "method": "高値更新（売買代金100億円以上・東証全銘柄）＋待機資金は日経平均ETF",
  "signals": [
