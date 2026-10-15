@@ -23,9 +23,16 @@ try:
         x = yf.download(sym, period="10d", auto_adjust=False, progress=False)["Close"].squeeze().dropna()
         return x.index[-1].date(), float(x.iloc[-1]), float(x.iloc[-2])
     d, c, p = last2("^SOX"); vd, vc, vp = last2("^VIX")
+    _, v3, _ = last2("^VIX3M")
+    term = vc / v3
+    # 検証11：単独指標で唯一、学習・試験とも成績がプラス（VIX÷VIX3M ≧ 1.06＝短期の恐怖が中期を上回る）
+    if term >= 1.06:
+        parts.append(f"【前日警戒】VIX÷VIX3M = {vc:.1f}÷{v3:.1f} = {term:.2f}（1.06以上）\n"
+                     "検証11：翌日−2%以下の確率 普段5%→25%。今日15:25までに引けでETFを売り、明日の引けで買い戻す判断材料に")
+        alert = alert or "term"
     sox1, vix1 = c / p - 1, vc / vp - 1
     fresh = (datetime.now(JST).date() - d).days <= 4
-    line = f"前夜の米国（{d}）：SOX {sox1*100:+.1f}% / VIX {vc:.1f}（前日比 {vix1*100:+.0f}%）"
+    line = f"前夜の米国（{d}）：SOX {sox1*100:+.1f}% / VIX {vc:.1f}（前日比 {vix1*100:+.0f}%）/ VIX÷VIX3M {term:.2f}"
     if fresh and sox1 <= -0.03:
         alert = ("【暴落警戒】" + line + "\n検証8：この条件の日は日経の寄り〜大引けが平均で大きく下落。"
                  "寄り付きでETF・保有株を売り、大引けで買い戻す判断材料に（最終判断はご自身で）")
