@@ -54,6 +54,16 @@ for code, d in frames.items():
         today.append({"date": last_date, "code": code, "name": NAMES.get(code, code),
                       "vol_ratio": round(float(d.Volume.iloc[i] / d.vol20.iloc[i]), 2), **p})
 today.sort(key=lambda t: -t["vol_ratio"])
+# 急落予測（検証13）：5日以内に−10%以上の急落確率が除外ライン以上の候補は外す（上位5件に絞る前に判定）
+crash_out = []
+try:
+    import crashrisk
+    from risk import factors as _fac
+    crashrisk.score(today, frames, _fac("1y")["n225"].dropna())
+    crash_out = [t for t in today if t.get("crash_out")]
+    today = [t for t in today if not t.get("crash_out")]
+except Exception as e:
+    import traceback; print("急落予測の失敗", traceback.format_exc())
 today = today[:5]
 
 # 市場リスク連携（検証4で採用：リスクオフ中は新規の買いを止める）
@@ -142,7 +152,7 @@ track = {"closed": len(closed), "hit": sum(h["hit"] for h in closed),
 out = {"final": last_date < datetime.now(JST).strftime("%Y-%m-%d") or datetime.now(JST).hour * 60 + datetime.now(JST).minute >= 15 * 60 + 45,
        "risk": risk, "blocked": blocked, "updated": datetime.now(JST).strftime("%Y-%m-%d %H:%M"),
        "market_date": last_date, "method": "高値更新（売買代金100億円以上・東証全銘柄）＋待機資金は日経平均ETF",
-       "signals": today, "sells": sells, "quotes": quotes, "track": track,
+       "signals": today, "crash_out": crash_out, "sells": sells, "quotes": quotes, "track": track,
        "open": [h for h in history if h.get("status") == "open"],
        # 直近5営業日の候補：翌日以降に買った場合も購入記録を入力できるようにする
        "recent": [h for h in history if h["date"] in sorted({x["date"] for x in history})[-5:]]}
@@ -228,10 +238,14 @@ if risk.get("off"):
 if weak and weak["on"] and today:
     parts.append(f"【地合い注意・見送り推奨】日経5日騰落 {weak['last']:,} ÷ {weak['prev5']:,} − 1 = {weak['n225_5d']*100:+.1f}%\n"
                  "検証7：マイナスの日の買いを見送ると成績が改善（前半+30万円・後半+147万円）。下の候補は買わない判断を推奨")
+if crash_out:
+    parts.append("【急落リスクで除外】" + "、".join(f"{t['name']}({t['code']}) 急落確率{t['crash_p']*100:.0f}%" for t in crash_out[:5])
+                 + f"\n検証13：5日以内に−10%以上の急落確率が {crash_out[0]['crash_thr']*100:.0f}%以上の候補は除外")
 for t in today:
     parts.append(f"【買い】{t['name']}({t['code']}) {t['shares']}株\n"
                  f"指値 {t['entry']:,}円 / 損切り {t['stop']:,}円\n"
-                 f"ETFを {t['cost']:,}円分 売って資金にする\n"
+                 + (f"急落確率 {t['crash_p']*100:.0f}%（除外ライン {t['crash_thr']*100:.0f}%）\n" if "crash_p" in t else "")
+                 + f"ETFを {t['cost']:,}円分 売って資金にする\n"
                  f"売り：損切りか、終値が25日線を割った翌日の寄り")
 for h in sells:
     parts.append(f"【売り】{h['name']}({h['code']})\n{h['sell_signal']}\n売った代金はETFに戻す")
