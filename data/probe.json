@@ -1,56 +1,38 @@
 {
- "cleveland_page": {
-  "status": 200,
-  "len": 197337,
-  "head": "\r\n\r\n<!DOCTYPE html>\r\n<html lang=\"en\">\r\n<head>\r\n\r\n    <base href=\"https://www.clevelandfed.org/\" />\r\n<link href=\"/-/media/project/clevelandfedtenant/clevelandfedsite/cfedbootstrap-4/cfedbootstrap-4/styles/bootstrap-grid.css\" rel=\"stylesheet\">            <meta name=\"X-Akamai-Edgescape\" content=\"georegion=289,country_code=US,region_code=WA,city=QUINCY,dma=881,areacode=509,county=GRANT,fips=53025,lat="
+ "56": {
+  "len": 73728,
+  "head": "{\"next_page_cursor\":\"eyJ0aW1lIjoiMjAwMS0wOS0wMVQwOTowMDowMFoiLCJpZCI6NjkyMTR9\",\"occurrences\":[{\"actual\":0.3,\"actual_to_forecast\":\"positive\",\"event_id\":56,\"forecast\":0.2,\"occurrence_id\":557978,\"occurrence_time\":\"2026-10-14T12:30:00Z\",\"precision\":1,\"preliminary\":false,\"previous\":0.3,\"reference_period\":\"Sep\",\"revised_to_previous\":\"neutral\",\"unit\":\"%\"},{\"actual\":0.3,\"actual_to_forecast\":\"positive\",\"event_id\":56,\"forecast\":0.2,\"occurrence_id\":555916,\"occurrence_time\":\"2026-09-11T12:30:00Z\",\"precision\":1,\"preliminary\":false,\"previous\":0.2,\"reference_period\":\"Aug\",\"revised_to_previous\":\"neutral\",\"uni"
  },
- "cleveland_json1": {
-  "status": 200,
-  "len": 4999584,
-  "head": "[\r\n{\r\n\"chart\": {\r\n\"_comment\": \"2026-10-14 00:00\",\r\n\"caption\": \"Inflation Nowcasting\",\r\n\"subcaption\": \"2013:Q3\",\r\n\"yaxisname\": \"Quarterly Annualized Percent Change\",\r\n\"legendnumcolumns\": \"4\",\r\n\"labelpadding\": \"10\",\r\n\"showvalues\": \"0\",\r\n\"showexportdatamenuitem\": \"1\",\r\n\"showtooltip\": \"1\",\r\n\"basefont\": \"Helvetica\",\r\n\"bgalpha\": \"0\",\r\n\"showborder\": \"0\"\r\n},\r\n\"categories\": [\r\n{\r\n\"category\": [\r\n{\"label\": \""
+ "733": {
+  "len": 74594,
+  "head": "{\"next_page_cursor\":\"eyJ0aW1lIjoiMjAwMS0xMC0wMVQwOTowMDowMFoiLCJpZCI6MTU3Nzg2fQ==\",\"occurrences\":[{\"actual\":3.7,\"actual_to_forecast\":\"positive\",\"event_id\":733,\"forecast\":3.6,\"occurrence_id\":557980,\"occurrence_time\":\"2026-10-14T12:30:00Z\",\"precision\":1,\"preliminary\":false,\"previous\":3.4,\"reference_period\":\"Sep\",\"revised_to_previous\":\"neutral\",\"unit\":\"%\"},{\"actual\":3.4,\"actual_to_forecast\":\"neutral\",\"event_id\":733,\"forecast\":3.4,\"occurrence_id\":555915,\"occurrence_time\":\"2026-09-11T12:30:00Z\",\"precision\":1,\"preliminary\":false,\"previous\":3.4,\"reference_period\":\"Aug\",\"revised_to_previous\":\"neutral\""
  },
- "cleveland_json2": {
-  "status": 200,
-  "len": 7645271,
-  "head": "[\r\n{\r\n\"chart\": {\r\n\"_comment\": \"2026-10-14 00:00\",\r\n\"caption\": \"Inflation Nowcasting\",\r\n\"subcaption\": \"2013-7\",\r\n\"yaxisname\": \"Month-over-month percent change\",\r\n\"legendnumcolumns\": \"4\",\r\n\"labelpadding\": \"10\",\r\n\"showvalues\": \"0\",\r\n\"showexportdatamenuitem\": \"1\",\r\n\"showtooltip\": \"1\",\r\n\"basefont\": \"Helvetica\",\r\n\"bgalpha\": \"0\",\r\n\"showborder\": \"0\"\r\n},\r\n\"categories\": [\r\n{\r\n\"category\": [\r\n{\"label\": \"08/20"
+ "227": {
+  "len": 80334,
+  "head": "{\"next_page_cursor\":\"eyJ0aW1lIjoiMjAwMS0xMS0wMlQxMjozMDowMFoiLCJpZCI6NjI4MTB9\",\"occurrences\":[{\"actual\":29,\"actual_to_forecast\":\"negative\",\"event_id\":227,\"forecast\":89,\"occurrence_id\":557300,\"occurrence_time\":\"2026-10-02T12:30:00Z\",\"precision\":0,\"preliminary\":false,\"previous\":133,\"previous_revised_from\":162,\"reference_period\":\"Sep\",\"revised_to_previous\":\"negative\",\"unit\":\"K\"},{\"actual\":162,\"actual_to_forecast\":\"positive\",\"event_id\":227,\"forecast\":55,\"occurrence_id\":555500,\"occurrence_time\":\"2026-09-04T12:30:00Z\",\"precision\":0,\"preliminary\":false,\"previous\":21,\"previous_revised_from\":-23,\"refer"
  },
- "ff_cpi": {
-  "status": 200,
-  "len": 103495,
-  "head": "<!DOCTYPE html> <html class=\"no-js\" lang=\"en\"> <head> <base href=\"https://www.forexfactory.com\"> <meta charset=\"windows-1252\"> <meta property=\"og:title\" content=\"US CPI m/m\" /> <meta property=\"og:description\" content=\"Consumer prices account for a majority of overall inflation. Inflation is important to currency valuation because rising prices lead the central bank to raise interest rates out of r"
+ "300": {
+  "len": 74070,
+  "head": "{\"next_page_cursor\":\"eyJ0aW1lIjoiMjAwMS0xMC0wMVQxMjozMDowMFoiLCJpZCI6NjE3NzR9\",\"occurrences\":[{\"actual\":4.2,\"actual_to_forecast\":\"negative\",\"event_id\":300,\"forecast\":4.1,\"occurrence_id\":557301,\"occurrence_time\":\"2026-10-02T12:30:00Z\",\"precision\":1,\"preliminary\":false,\"previous\":4.1,\"reference_period\":\"Sep\",\"revised_to_previous\":\"neutral\",\"unit\":\"%\"},{\"actual\":4.1,\"actual_to_forecast\":\"neutral\",\"event_id\":300,\"forecast\":4.1,\"occurrence_id\":555503,\"occurrence_time\":\"2026-09-04T12:30:00Z\",\"precision\":1,\"preliminary\":false,\"previous\":4.1,\"reference_period\":\"Aug\",\"revised_to_previous\":\"neutral\",\"un"
  },
- "nowflation_dates": {
-  "status": 200,
-  "len": 16681,
-  "head": "<!doctype html>\n<html lang=\"en\">\n  <head>\n    <meta charset=\"UTF-8\" />\n    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\" />\n    <title>CPI Release Dates 2026: Next Report Nov 10, 8:30 AM ET | Nowflation</title>\n    <meta name=\"description\" content=\"The CPI for October 2026 is released November 10, 2026 at 8:30 AM ET. Full BLS schedule, .ics calendar, every past print vs con"
+ "61": {
+  "len": 74597,
+  "head": "{\"next_page_cursor\":\"eyJ0aW1lIjoiMjAwMS0xMS0wMVQwOTowMDowMFoiLCJpZCI6NzAyMTB9\",\"occurrences\":[{\"actual_to_forecast\":\"neutral\",\"event_id\":61,\"occurrence_id\":558919,\"occurrence_time\":\"2026-10-29T12:30:00Z\",\"precision\":1,\"preliminary\":false,\"previous\":0.2,\"reference_period\":\"Sep\",\"revised_to_previous\":\"neutral\",\"unit\":\"%\"},{\"actual\":0.2,\"actual_to_forecast\":\"negative\",\"event_id\":61,\"forecast\":0.3,\"occurrence_id\":557117,\"occurrence_time\":\"2026-09-30T12:30:00Z\",\"precision\":1,\"preliminary\":false,\"previous\":0.1,\"previous_revised_from\":0.2,\"reference_period\":\"Aug\",\"revised_to_previous\":\"negative\",\"uni"
  },
- "nowflation_sep": {
-  "status": 200,
-  "len": 10375,
-  "head": "<!doctype html>\n<html lang=\"en\">\n  <head>\n    <meta charset=\"UTF-8\" />\n    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\" />\n    <title>September 2026 CPI Report: 3.7% — Sealed Forecast 3.56% vs Consensus 3.6%, Who Called It | Nowflation</title>\n    <meta name=\"description\" content=\"September 2026 CPI printed 3.7% YoY (released Oct 14). Nowflation's sealed forecast 3.56%, "
+ "173": {
+  "len": 71673,
+  "head": "{\"next_page_cursor\":\"eyJ0aW1lIjoiMjAwMS0xMi0wMVQwOTowMDowMFoiLCJpZCI6ODkyMDZ9\",\"occurrences\":[{\"actual_to_forecast\":\"neutral\",\"event_id\":173,\"occurrence_id\":559211,\"occurrence_time\":\"2026-11-02T15:00:00Z\",\"precision\":1,\"preliminary\":false,\"previous\":54.5,\"reference_period\":\"Oct\",\"revised_to_previous\":\"neutral\"},{\"actual\":54.5,\"actual_to_forecast\":\"negative\",\"event_id\":173,\"forecast\":54.8,\"occurrence_id\":557228,\"occurrence_time\":\"2026-10-01T14:00:00Z\",\"precision\":1,\"preliminary\":false,\"previous\":54.6,\"reference_period\":\"Sep\",\"revised_to_previous\":\"neutral\"},{\"actual\":54.6,\"actual_to_forecast\":\""
  },
- "te_cpi": {
-  "status": 200,
-  "len": 360036,
-  "head": "\r\n<!doctype html>\r\n<html >\r\n<head id=\"ctl00_Head1\"><meta charset=\"utf-8\" /><title>\r\n\tUnited States Core Inflation Rate MoM\r\n</title><meta id=\"metaDesc\" name=\"description\" content=\"Core Inflation Rate MoM in the United States remained unchanged at 0.30 percent in September. This page includes a chart with historical data for the United States Core Inflation Rate MoM.\" /><meta id=\"metaKeyword\" name="
+ "256": {
+  "len": 79123,
+  "head": "{\"next_page_cursor\":\"eyJ0aW1lIjoiMjAwMS0xMC0wMVQwOTowMDowMFoiLCJpZCI6OTc1Njd9\",\"occurrences\":[{\"actual_to_forecast\":\"neutral\",\"event_id\":256,\"forecast\":0.3,\"occurrence_id\":558082,\"occurrence_time\":\"2026-10-15T12:30:00Z\",\"precision\":1,\"preliminary\":false,\"previous\":1.2,\"reference_period\":\"Sep\",\"revised_to_previous\":\"neutral\",\"unit\":\"%\"},{\"actual\":1.2,\"actual_to_forecast\":\"positive\",\"event_id\":256,\"forecast\":0.8,\"occurrence_id\":556266,\"occurrence_time\":\"2026-09-16T12:30:00Z\",\"precision\":1,\"preliminary\":false,\"previous\":-0.5,\"previous_revised_from\":-0.6,\"reference_period\":\"Aug\",\"revised_to_previo"
  },
- "investing_cpi": {
-  "status": 200,
-  "len": 1028141,
-  "head": "<!DOCTYPE html><html lang=\"en\" dir=\"ltr\" class=\"html\"><head><meta charSet=\"utf-8\" data-next-head=\"\"/><meta name=\"viewport\" content=\"initial-scale=1.0,width=device-width\" data-next-head=\"\"/><script src=\"https://cookie-cdn.cookiepro.com/scripttemplates/otSDKStub.js\" data-domain-script=\"265d5ac2-7d0c-4675-bf4d-421a61fb482e\" async=\"\" amp=\"true\"></script><link rel=\"preconnect\" href=\"https://geolocation"
+ "238": {
+  "len": 57347,
+  "head": "{\"next_page_cursor\":null,\"occurrences\":[{\"actual_to_forecast\":\"neutral\",\"event_id\":238,\"forecast\":0.6,\"occurrence_id\":558088,\"occurrence_time\":\"2026-10-15T12:30:00Z\",\"precision\":1,\"preliminary\":false,\"previous\":0.4,\"reference_period\":\"Sep\",\"revised_to_previous\":\"neutral\",\"unit\":\"%\"},{\"actual\":0.4,\"actual_to_forecast\":\"neutral\",\"event_id\":238,\"forecast\":0.4,\"occurrence_id\":555845,\"occurrence_time\":\"2026-09-10T12:30:00Z\",\"precision\":1,\"preliminary\":false,\"previous\":0.1,\"previous_revised_from\":0,\"reference_period\":\"Aug\",\"revised_to_previous\":\"positive\",\"unit\":\"%\"},{\"actual\":0,\"actual_to_forecast\""
  },
- "bls_api": {
-  "status": 200,
-  "len": 3118,
-  "head": "{\"status\":\"REQUEST_SUCCEEDED\",\"responseTime\":104,\"message\":[],\"Results\":{\n\"series\":\n[{\"seriesID\":\"CUSR0000SA0L1E\",\"data\":[{\"year\":\"2026\",\"period\":\"M09\",\"periodName\":\"September\",\"latest\":\"true\",\"value\":\"338.896\",\"footnotes\":[{}]},{\"year\":\"2026\",\"period\":\"M08\",\"periodName\":\"August\",\"value\":\"337.765\",\"footnotes\":[{}]},{\"year\":\"2026\",\"period\":\"M07\",\"periodName\":\"July\",\"value\":\"336.789\",\"footnotes\":[{}"
- },
- "fred_alfred": {
-  "err": "The read operation timed out"
- },
- "mql5_cpi": {
-  "err": "HTTP Error 404: Not Found"
- },
- "fxstreet_cal": {
-  "err": "HTTP Error 404: Not Found"
+ "168": {
+  "len": 67322,
+  "head": "{\"next_page_cursor\":\"eyJ0aW1lIjoiMTk4My0wOC0xMVQxODowMDowMFoiLCJpZCI6MzI2NTg0fQ==\",\"occurrences\":[{\"actual_to_forecast\":\"neutral\",\"event_id\":168,\"occurrence_id\":544760,\"occurrence_time\":\"2027-12-08T18:00:00Z\",\"precision\":2,\"preliminary\":false,\"revised_to_previous\":\"neutral\",\"unit\":\"%\"},{\"actual_to_forecast\":\"neutral\",\"event_id\":168,\"occurrence_id\":544757,\"occurrence_time\":\"2027-10-27T18:00:00Z\",\"precision\":2,\"preliminary\":false,\"revised_to_previous\":\"neutral\",\"unit\":\"%\"},{\"actual_to_forecast\":\"neutral\",\"event_id\":168,\"occurrence_id\":544756,\"occurrence_time\":\"2027-09-15T18:00:00Z\",\"precision\":2"
  }
 }
