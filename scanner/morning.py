@@ -41,11 +41,13 @@ for t in s.get("signals", []):
     parts.append(f"【買い・指値】{t['name']}({t['code']}) {t['shares']}株\n"
                  f"指値 {t['entry']:,}円 → 約定したら損切り {t['stop']:,}円 の逆指値\n"
                  f"ETFを {t['cost']:,}円分 売って資金にする")
+if s.get("etf_stop"):
+    parts.append(f"【逆指値の確認】1321：{s['etf_stop']['stop']:,}円 以下で売り（寄り前に入っているか確認）")
 for h in s.get("sells", []):
     parts.append(f"【売り・寄り】{h['name']}({h['code']})：{h.get('sell_signal','')}")
 if s.get("market_date") and s["market_date"] >= today:
     parts.insert(0, "※判定が今日の日付です。場中の判定ではないか確認してください")
-if s.get("signals") or s.get("sells") or risk.get("off") or alert:
+if s.get("signals") or s.get("sells") or risk.get("off") or alert or s.get("etf_stop"):
     body = "\n\n".join(parts)
     title = f"今日の注文（{s.get('market_date')}終値で判定）"
 else:

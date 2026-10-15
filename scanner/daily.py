@@ -225,9 +225,19 @@ for h in sells:
     parts.append(f"【売り】{h['name']}({h['code']})\n{h['sell_signal']}\n売った代金はETFに戻す")
 for h in []:  # 保有株への25日線ルールは検証で「予測出来なかった」ため通知しない（held_check参照）
     parts.append(f"【保有株・売り】{h['name']}({h['code']})\n終値 {h['close']:,}円 が25日線 {h['sma25']:,}円 を下回った → 明日の寄りで売り")
+# 暴落よけ（検証10で採用）：ETF(1321)に前日終値 −1.5% の逆指値。発動したらその日の大引けで買い戻す
+try:
+    _e = candles["1321"][-1][4]
+    _sp = int(_e * 0.985)
+    out["etf_stop"] = {"close": _e, "stop": _sp}
+    json.dump(out, open("data/signals.json", "w", encoding="utf-8"), ensure_ascii=False, indent=1)
+    parts.append(f"【暴落よけ・逆指値】日経225ETF(1321) 終値 {_e:,.0f}円 → 明日 {_sp:,}円 以下で売りの逆指値\n"
+                 f"発動したら、その日の15:25までに引け成行で買い戻し")
+except Exception as e:
+    print("逆指値の計算失敗", e)
 if parts:
     body = "\n\n".join(parts)
-    title = f"買い{len(today)}件・売り{len(sells)}件（{last_date}）"
+    title = f"買い{len(today)}件・売り{len(sells)}件・逆指値（{last_date}）"
 else:
     body, title = "本日は売買なし。ETFのまま保有", f"判定完了（{last_date}）"
 q = urllib.parse.urlencode({"title": title, "click": APP_URL})
