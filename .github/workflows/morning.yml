@@ -1,15 +1,25 @@
 name: morning-reminder
 on:
   schedule:
-    - cron: "53 22 * * 0-4"   # 平日 7:53 JST（UTCでは前日22:53）
+    - cron: "37 20 * * 0-4"   # 5:37 JST
+    - cron: "11 21 * * 0-4"   # 6:11 JST
+    - cron: "43 21 * * 0-4"   # 6:43 JST
+    - cron: "23 22 * * 0-4"   # 7:23 JST（遅延対策で4回。最初の1回だけ送る）
   workflow_dispatch:
   push:
-    paths: [".github/workflows/morning.yml"]
+    paths: [".github/workflows/morning.yml", "scanner/morning.py"]
+permissions:
+  contents: write
 jobs:
   remind:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+      - run: pip install yfinance pandas
       - run: python3 scanner/morning.py
         env:
           NTFY_TOPIC: ${{ secrets.NTFY_TOPIC }}
+      - run: |
+          git config user.name "kabu-bot"
+          git config user.email "kabu-bot@users.noreply.github.com"
+          git add data/morning_sent.txt && git commit -m "morning sent" && git pull --rebase && git push || echo "no change"
