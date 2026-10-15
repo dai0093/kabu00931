@@ -1,4 +1,4 @@
-"""検証8：暴落の事前警告（後出しなし）
+"""検証8（寄りで売る現実の計算）：暴落の事前警告（後出しなし）
 前日までに分かる情報だけで「明日は日経を持たない（現金）」と判断できたか。
 - 暴落日：日経平均の1日騰落 −3%以下
 - 警告候補（東京の寄り付き前に分かるもの）：
@@ -15,11 +15,16 @@ def get(s):
     return x["Close"].dropna()
 
 nk, sox, vix, tnx = get("^N225"), get("^SOX"), get("^VIX"), get("^TNX")
+_o = yf.download("^N225", start="2003-01-01", auto_adjust=False, progress=False)
+_o.columns = [c[0] if isinstance(c, tuple) else c for c in _o.columns]
+_o.index = pd.to_datetime(_o.index).tz_localize(None)
+nko = _o["Open"].reindex(nk.index)
 if tnx.median() > 20: tnx = tnx / 10
 # 東京の日 t の寄り付き前に分かる米国の値 = t より前の最後の米国終値
 us = pd.DataFrame({"sox": sox, "vix": vix, "tnx": tnx}).ffill()
 f = pd.DataFrame(index=nk.index)
 f["ret"] = nk.pct_change()
+f["gap"] = nko / nk.shift(1) - 1   # 寄り付きで売っても避けられない部分
 prev = lambda s: s.reindex(f.index, method=None).pipe(lambda _: s)
 def asof_before(s):
     idx = s.index.searchsorted(f.index, side="left") - 1
@@ -62,13 +67,14 @@ def evaluate(sig, a, b):
     on = int(s.sum())
     # ETF保有、警告の日は現金。切替の度に手数料
     sw = s.astype(int).diff().abs().fillna(0)
-    strat = ((1 + g.ret.where(~s, 0.0) - sw * FEE).prod())
+    day = g.ret.where(~s, g.gap) - s.astype(int) * 2 * FEE   # 警告日：寄りで売り・大引けで買い戻し
+    strat = (1 + day).prod()
     bh = (1 + g.ret).prod()
     # 最大落ち込み
-    eq = (1 + g.ret.where(~s, 0.0) - sw * FEE).cumprod(); mdd = float((eq / eq.cummax() - 1).min())
+    eq = (1 + day).cumprod(); mdd = float((eq / eq.cummax() - 1).min())
     eqb = (1 + g.ret).cumprod(); mddb = float((eqb / eqb.cummax() - 1).min())
     return {"crash": nc, "caught": hit, "alarms": on, "precision": hit / on if on else 0,
-            "avoided_loss": float(g.ret[s & crash].sum()), "missed_gain": float(g.ret[s & (g.ret > 0)].sum()),
+            "avoided": float((g.ret - g.gap)[s & crash].mean()) if hit else 0.0, "avoided_loss": float(g.ret[s & crash].sum()), "missed_gain": float(g.ret[s & (g.ret > 0)].sum()),
             "strat": strat - 1, "bh": bh - 1, "mdd": mdd, "mddb": mddb}
 
 TR, TE, END = pd.Timestamp("2005-01-01"), pd.Timestamp("2017-01-01"), f.index[-1] + pd.Timedelta(days=1)
@@ -84,6 +90,7 @@ for nm, sig, a, b in rows:
         L.append(f"{lab}：暴落{r['crash']}日中 事前警告{r['caught']}日（{r['caught']/max(r['crash'],1)*100:.0f}%）"
                  f"／警告{r['alarms']}日のうち当たり{r['precision']*100:.0f}%"
                  f"／ETFのみ {r['bh']*100:+.1f}% → 警告で現金 {r['strat']*100:+.1f}%（差 {(r['strat']-r['bh'])*100:+.1f}pt）"
+                 f"／暴落日に避けられた幅 平均{r['avoided']*100:.1f}%"
                  f"／最大落ち込み {r['mddb']*100:.1f}% → {r['mdd']*100:.1f}%")
 best = rows[0]
 L += ["", f"学習で一番良かった：{best[0]} → 試験の差 {(best[3]['strat']-best[3]['bh'])*100:+.1f}pt → "
@@ -93,9 +100,9 @@ L.append("\n## 直近の大きな下落日に警告が出ていたか")
 big = f[f.ret <= -0.03].tail(12)
 for dt, r in big.iterrows():
     on = [nm for nm, sig, a, b in rows[:5] if sig.get(dt, False)]
-    L.append(f"{dt.date()} 日経{r.ret*100:+.1f}% SOX前夜{r.sox1*100:+.1f}% VIX{r.vix:.1f}（前日比{r.vix1*100:+.0f}%） 25日線{'下' if r.nk_below else '上'} → 上位5条件の警告：{'、'.join(on) or 'なし'}")
+    L.append(f"{dt.date()} 日経{r.ret*100:+.1f}%（寄り{r.gap*100:+.1f}%） SOX前夜{r.sox1*100:+.1f}% VIX{r.vix:.1f}（前日比{r.vix1*100:+.0f}%） 25日線{'下' if r.nk_below else '上'} → 上位5条件の警告：{'、'.join(on) or 'なし'}")
 for dt in f.index[-4:]:
     r = f.loc[dt]
-    L.append(f"{dt.date()} 日経{r.ret*100:+.1f}% SOX前夜{r.sox1*100:+.1f}% VIX{r.vix:.1f}（前日比{r.vix1*100:+.0f}%） 米10年5日{r.tnx5:+.2f} 25日線{'下' if r.nk_below else '上'}")
+    L.append(f"{dt.date()} 日経{r.ret*100:+.1f}%（寄り{r.gap*100:+.1f}%） SOX前夜{r.sox1*100:+.1f}% VIX{r.vix:.1f}（前日比{r.vix1*100:+.0f}%） 米10年5日{r.tnx5:+.2f} 25日線{'下' if r.nk_below else '上'}")
 open("data/compare8.md", "w", encoding="utf-8").write("\n".join(L) + "\n")
 print("\n".join(L))
