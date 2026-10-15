@@ -75,6 +75,16 @@ input{width:100%;font:inherit;font-size:18px;padding:10px;border-radius:8px;bord
 
 <div id="sells"></div>
 <h2>保有中</h2><div id="hold"></div><div id="unreg"></div>
+<div class="panel"><div class="ttl"><span class="nm">購入した銘柄を手動で追加</span></div>
+ <label>銘柄コード（例 7203・338A）</label><input id="mc" maxlength="4" autocapitalize="characters" oninput="mName()">
+ <div class="note" id="mn">コードを入れると銘柄名を表示します</div>
+ <label>約定単価（円）</label><input id="mp" type="number" inputmode="decimal" oninput="mCalc()">
+ <label>株数（口数）</label><input id="ms" type="number" inputmode="numeric" value="100" oninput="mCalc()">
+ <label>購入日</label><input id="md" type="date">
+ <label>損切り（円・任意）</label><input id="mx" type="number" inputmode="decimal">
+ <div class="note" id="mt">購入金額 ＝ 単価 × 株数</div>
+ <div class="btns"><button class="pri" onclick="manualAdd()">保有に追加</button></div>
+ <div class="note">同じ銘柄を保有中なら買い増しとして平均単価で合算します</div></div>
 <h2>今日の買い候補</h2><div id="sig"></div>
 <h2>日経225ETF（待機資金）</h2><div class="panel" id="etf"></div>
 <h2>売却済み</h2><div class="panel" id="done"></div>
@@ -135,6 +145,18 @@ function undoSell(k){if(!confirm('この売却記録を取り消して、保有�
 function reg(c){const b=load(),p=+v('rp'+c),s=+v('rs'+c);if(!p||!s)return;
  const q=S.quotes[c]||{},cur=q.close||p;
  b.hold.push({code:c,name:(C.names||{})[c]||c,date:'',buyDate:'',regDate:new Date().toISOString().slice(0,10),price:p,shares:s,stop:0});save(b);render()}
+function mName(){const c=v('mc').trim().toUpperCase(),n=(C&&C.names||{})[c],q=S&&S.quotes[c];
+ document.getElementById('mn').textContent=!/^[0-9A-Z]{4}$/.test(c)?'コードは4文字（数字・英大文字）':n?`${n}${q&&q.close?'　終値 '+q.close.toLocaleString()+'円':''}`:'監視外の銘柄です（名前・終値は表示できませんが追加できます）'}
+function mCalc(){const p=+v('mp'),s=+v('ms');document.getElementById('mt').textContent=p&&s?`購入金額 ＝ ${p.toLocaleString()} × ${s.toLocaleString()} ＝ ${Math.round(p*s).toLocaleString()}円`:'購入金額 ＝ 単価 × 株数'}
+function manualAdd(){const c=v('mc').trim().toUpperCase(),p=+v('mp'),s=+v('ms'),d=v('md')||new Date(Date.now()+9*36e5).toISOString().slice(0,10),x=+v('mx')||0;
+ if(!/^[0-9A-Z]{4}$/.test(c)){alert('銘柄コードは4文字で入力してください');return}
+ if(!(p>0)||!(s>0)){alert('単価と株数を入力してください');return}
+ const b=load(),j=b.hold.findIndex(h=>h.code===c);
+ if(j>=0){const o=b.hold[j],ns=o.shares+s;
+  if(!confirm(`${o.name}を保有中です。買い増しとして合算します。\n平均単価 ＝ (${o.price}×${o.shares} ＋ ${p}×${s}) ÷ ${ns} ＝ ${((o.price*o.shares+p*s)/ns).toFixed(1)}円`))return;
+  o.price=Math.round((o.price*o.shares+p*s)/ns*10)/10;o.shares=ns;if(x)o.stop=x}
+ else b.hold.push({code:c,name:(C&&C.names||{})[c]||c,date:d,buyDate:d,regDate:new Date().toISOString().slice(0,10),price:p,shares:s,stop:x,manual:true});
+ save(b);['mc','mp','mx'].forEach(i=>document.getElementById(i).value='');render()}
 function setEtf(){const b=load();b.etf=+v('etfu')||0;save(b);render()}
 const v=id=>document.getElementById(id).value;
 /* 外部由来の文字（ニュース見出し・銘柄名など）は必ずエスケープしてから表示する */
