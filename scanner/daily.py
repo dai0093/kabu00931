@@ -68,6 +68,15 @@ try:
                                  "brent", "brent_20", "usdjpy", "yen_20", "credit_20")}}
 except Exception as e:
     print("リスク指標の取得失敗", e)
+# 地合いの注意（検証7：日経5日騰落が0%以上の時だけ買う → 前半+301,379円・後半+1,465,745円 改善）
+weak = None
+try:
+    _n = _F["n225"].dropna()
+    _n5 = float(_n.iloc[-1] / _n.iloc[-6] - 1)
+    weak = {"n225_5d": round(_n5, 4), "on": _n5 < 0, "last": round(float(_n.iloc[-1])), "prev5": round(float(_n.iloc[-6]))}
+except Exception as e:
+    print("日経5日騰落の計算失敗", e)
+risk["weak"] = weak
 blocked = []
 if risk.get("off"):
     blocked, today = today, []
@@ -216,6 +225,9 @@ if risk.get("off"):
     parts.append("【市場リスク】リスクオフ中のため新規の買いを停止"
                  f"（VIX {risk['values']['vix']}・HY OAS 20日変化 {risk['values']['hy_20']}pt）"
                  + (f"\n見送った候補：{'、'.join(t['name'] for t in blocked)}" if blocked else ""))
+if weak and weak["on"] and today:
+    parts.append(f"【地合い注意・見送り推奨】日経5日騰落 {weak['last']:,} ÷ {weak['prev5']:,} − 1 = {weak['n225_5d']*100:+.1f}%\n"
+                 "検証7：マイナスの日の買いを見送ると成績が改善（前半+30万円・後半+147万円）。下の候補は買わない判断を推奨")
 for t in today:
     parts.append(f"【買い】{t['name']}({t['code']}) {t['shares']}株\n"
                  f"指値 {t['entry']:,}円 / 損切り {t['stop']:,}円\n"

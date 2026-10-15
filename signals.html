@@ -260,7 +260,8 @@ function render(){
  REC=(S&&(S.recent||S.signals))||[];
  const sg=REC.map((t,i)=>({t,i})).filter(({t})=>!b.skip.includes(t.date+t.code)&&!b.hold.some(h=>h.code===t.code&&h.date===t.date)&&!b.done.some(h=>h.code===t.code&&h.date===t.date))
   .sort((x,y)=>y.t.date.localeCompare(x.t.date));
- document.getElementById('sig').innerHTML=!sg.length?'<div class="panel empty">買い候補なし</div>':sg.map(({t,i})=>{charts.push(['cs'+i,t.code,null,null,t.stop]);
+ const W=S&&S.risk&&S.risk.weak;
+ document.getElementById('sig').innerHTML=(W&&W.on&&sg.length?`<div class="panel alert"><div class="ttl"><span class="nm">地合い注意</span><span class="badge b-buy">見送り推奨</span></div><div class="row"><span>日経5日騰落</span><b>${W.last.toLocaleString()} ÷ ${W.prev5.toLocaleString()} − 1 = ${(W.n225_5d*100).toFixed(1)}%</b></div><div class="note">検証7：日経5日騰落がマイナスの日の買いを見送ると、前半+301,379円・後半+1,465,745円 改善。最終判断はご自身で</div></div>`:'')+(!sg.length?'<div class="panel empty">買い候補なし</div>':sg.map(({t,i})=>{charts.push(['cs'+i,t.code,null,null,t.stop]);
   const old=t.date!==(S&&S.market_date);
   return `<div class="panel"><div class="ttl"><span class="nm">${esc(t.code)}　${esc(t.name)}</span><span class="badge b-buy">買い候補 ${t.shares.toLocaleString()}株</span></div>
    <div class="note">${t.date} の終値で判定${old?'（過去の候補：買った場合だけ記録してください）':''}</div>
@@ -277,7 +278,7 @@ function render(){
     <label>購入金額（円）＝ 単価 × 株数</label><input id="ba${i}" type="number" inputmode="numeric" value="${Math.round(t.entry*t.shares)}" oninput="calcPx(${i})">
     <div class="note">購入金額を直接入れると、単価 ＝ 金額 ÷ 株数 で自動計算します</div>
     <div class="btns"><button class="pri" onclick="buy(${i})">購入を記録</button><button onclick="skip(${i})">見送り</button></div>
-   </div></div>`}).join('');
+   </div></div>`}).join(''));
  // ETF
  const e=last('1321');charts.push(['ce','1321',null,null,null]);
  document.getElementById('etf').innerHTML=`<canvas id="ce"></canvas>

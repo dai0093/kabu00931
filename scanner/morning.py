@@ -56,6 +56,9 @@ except Exception as e:
 risk = s.get("risk", {})
 if risk.get("off"):
     parts.append("市場リスク：リスクオフ中（新規の買いは停止）")
+_w = (risk or {}).get("weak") or {}
+if _w.get("on") and s.get("signals"):
+    parts.append(f"【地合い注意・見送り推奨】日経5日騰落 {_w['n225_5d']*100:+.1f}%（検証7：見送りで成績改善）")
 for t in s.get("signals", []):
     parts.append(f"【買い・指値】{t['name']}({t['code']}) {t['shares']}株\n"
                  f"指値 {t['entry']:,}円 → 約定したら損切り {t['stop']:,}円 の逆指値\n"
