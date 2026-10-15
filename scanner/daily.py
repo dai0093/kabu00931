@@ -144,6 +144,17 @@ for code, d in frames.items():
     last = d.iloc[-1]
     quotes[code] = {"close": round(float(last.Close)), "sma25": round(float(last.sma25)),
                     "atr": round(float(last.atr), 1)}
+# 全銘柄・保有株の急落確率（検証13のモデル。保有株への当てはまりは検証14で確認）
+try:
+    import crashrisk
+    from risk import factors as _fac2
+    _cr = [{"code": c} for c, d in frames.items() if len(d) >= 90 and str(d.index[-1].date()) == last_date]
+    crashrisk.score(_cr, frames, _fac2("1y")["n225"].dropna())
+    CRASH = {t["code"]: t for t in _cr}
+    for c, q in quotes.items():
+        if c in CRASH: q["crash_p"] = CRASH[c]["crash_p"]; q["crash_why"] = CRASH[c]["crash_why"]
+except Exception:
+    import traceback; print("保有株の急落確率の失敗", traceback.format_exc()); CRASH = {}
 json.dump(history, open(hist_path, "w", encoding="utf-8"), ensure_ascii=False, indent=1)
 
 closed = [h for h in history if h.get("status") == "closed"]
@@ -212,6 +223,8 @@ try:
         if d is not None and len(d) > 1:
             q.update(close=round(float(d.Close.iloc[-1]), 1), prev=round(float(d.Close.iloc[-2]), 1),
                      sma25=round(float(d.sma25.iloc[-1]), 1))
+            if c in CRASH:
+                q.update(crash_p=CRASH[c]["crash_p"], crash_why=CRASH[c]["crash_why"])
             _priv["candles"][c] = _bars(d)
         _priv["held"].append(q)
         try:

@@ -74,7 +74,7 @@ input{width:100%;font:inherit;font-size:18px;padding:10px;border-radius:8px;bord
 </div>
 
 <div id="sells"></div>
-<h2>保有中</h2><div id="hold"></div><div id="unreg"></div>
+<h2>保有中</h2><div id="crashsum"></div><div id="hold"></div><div id="unreg"></div>
 <div class="panel"><div class="ttl"><span class="nm">購入した銘柄を手動で追加</span></div>
  <label>銘柄コード（例 7203・338A）</label><input id="mc" maxlength="4" autocapitalize="characters" oninput="mName()">
  <div class="note" id="mn">コードを入れると銘柄名を表示します</div>
@@ -188,7 +188,7 @@ async function decryptPriv(pass){
 }
 function applyPriv(){if(!PV||!S)return;
  C.candles=Object.assign({},C.candles,PV.candles);C.names=C.names||{};
- PV.held.forEach(h=>{C.names[h.code]=h.name;if(h.close!=null)S.quotes[h.code]={close:h.close,sma25:h.sma25}});
+ PV.held.forEach(h=>{C.names[h.code]=h.name;if(h.close!=null)S.quotes[h.code]={close:h.close,sma25:h.sma25,crash_p:h.crash_p,crash_why:h.crash_why}});
  S.splits=Object.assign({},S.splits,PV.splits);
  const b=load();if(!b.etf&&PV.etf_units){b.etf=PV.etf_units;save(b)}}
 async function unlock(pass,remember){
@@ -240,12 +240,21 @@ function render(){
   return `<div class="panel alert"><div class="ttl"><span class="nm">${esc(h.name)}</span><span class="badge b-sell">明日の寄りで売り</span></div>
    <div class="note">${c<=h.stop?`終値 ${yen(c)} が損切り ${yen(h.stop)} 以下`:`終値 ${yen(c)} が25日線 ${yen(m)} を下回った`}</div></div>`}).join(''):'';
  // 保有中
+ const CT=((S&&S.signals||[]).find(t=>t.crash_thr)||{}).crash_thr||0.582;
+ window.crashRow=c=>{const q=S&&S.quotes[c];if(!q||q.crash_p==null)return '<div class="row"><span>急落確率（5日以内に−10%）</span><b>--</b></div>';
+  const p=q.crash_p,st=p>=CT?'lit':p>=CT*0.7?'near':'ok';
+  return `<div class="row"><span>急落確率（5日以内に−10%）<br><span class="note">${esc(q.crash_why||'')}</span></span><b>${(p*100).toFixed(0)}%<span class="pill p-${st}">${st==='lit'?'高い':st==='near'?'やや高い':'平常'}</span></b></div>`};
+ {const L=b.hold.filter(h=>S&&S.quotes[h.code]&&S.quotes[h.code].crash_p!=null).sort((x,y)=>S.quotes[y.code].crash_p-S.quotes[x.code].crash_p);
+  document.getElementById('crashsum').innerHTML=!L.length?'':`<div class="panel"><div class="ttl"><span class="nm">保有株の急落確率（高い順）</span></div>`+
+   L.map(h=>{const p=S.quotes[h.code].crash_p;return `<div class="row"><span>${esc(h.code)} ${esc(h.name)}</span><b class="${p>=CT?'up':''}">${(p*100).toFixed(0)}%</b></div>`}).join('')+
+   `<div class="note">買った後5日以内に−10%以上下がる確率（検証13のモデル）。${(CT*100).toFixed(0)}%以上が「高い」＝買い候補なら除外する水準。売るかどうかの判断材料</div></div>`}
  document.getElementById('hold').innerHTML=!b.hold.length?'<div class="panel empty">保有中の株はありません</div>':b.hold.map((h,j)=>{
   const c=last(h.code),pl=c?(c-h.price)*h.shares:0;charts.push(['cv'+j,h.code,h.buyDate||h.date||'0',h.price,h.stop||null]);
   return `<div class="panel"><div class="ttl"><span class="nm">${esc(h.code)}　${esc(h.name)}</span><span class="side"><u>現物買い</u> ${h.shares.toLocaleString()}株</span></div>
    <canvas id="cv${j}"></canvas>
    <div class="pl ${cl(pl)}">${sgn(pl)}</div>
    <div class="row"><span>計算</span><b>(${c?fmt(c):'--'} − ${fmt(h.price)}) × ${h.shares.toLocaleString()}</b></div>
+   ${crashRow(h.code)}
    ${h.stop?`<div class="row"><span>損切り（点線）</span><b>${yen(h.stop)}</b></div>
    <div class="row"><span>25日線（割ったら売り）</span><b>${sma25(h.code)?yen(sma25(h.code)):'--'}</b></div>`:'<div class="note">以前から保有の銘柄のため、売り指示は出しません（検証で予測出来なかったため）</div>'}
    ${((S&&S.splits&&S.splits[h.code])||[]).filter(([dt])=>!(h.splitsDone||[]).includes(dt)&&(!h.regDate||h.regDate<dt)).map(([dt,r])=>`
