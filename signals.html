@@ -97,7 +97,13 @@ const yen=n=>(n<0?'−':'')+fmt(Math.abs(n))+'円';
 const sgn=n=>(n>0?'+':n<0?'−':'')+fmt(Math.abs(n))+'円';
 const pc=n=>(n>0?'+':'')+n.toFixed(1)+'%';
 const cl=n=>n>0?'up':n<0?'dn':'';
-function load(){try{return Object.assign({hold:[],done:[],skip:[],etf:0},JSON.parse(localStorage.getItem(K))||{})}catch(e){return{hold:[],done:[],skip:[],etf:0}}}
+function dedup(a,f){const s=new Set();return (a||[]).filter(x=>{const k=f(x);if(s.has(k))return false;s.add(k);return true})}
+function load(){let b;try{b=Object.assign({hold:[],done:[],skip:[],etf:0},JSON.parse(localStorage.getItem(K))||{})}catch(e){b={hold:[],done:[],skip:[],etf:0}}
+ const n=b.hold.length+b.done.length;
+ b.hold=dedup(b.hold,x=>[x.code,x.date,x.price,x.shares].join('|'));
+ b.done=dedup(b.done,x=>[x.code,x.date,x.price,x.shares,x.sell,x.sellDate].join('|'));
+ if(b.hold.length+b.done.length!==n)save(b);return b}
+function soldRecently(b,c){const lim=new Date(Date.now()-60*864e5).toISOString().slice(0,10);return b.done.some(d=>d.code===c&&(d.sellDate||'')>=lim)}
 function save(b){try{localStorage.setItem(K,JSON.stringify(b))}catch(e){}}
 async function get(u){try{const r=await fetch(u+'?t='+Date.now());return r.ok?r.json():null}catch(e){return null}}
 let S=null,C=null,BT=null,PP=null,LT=null,MG=null,REC=[],CH=[],lastW=0;
@@ -223,7 +229,7 @@ function render(){
    <div class="form" id="s${j}"><label>売った値段（円）</label><input id="sp${j}" type="number" inputmode="numeric" value="${c||''}">
     <div class="btns"><button class="sel" onclick="sell(${j})">記録する</button></div></div></div>`}).join('');
  // 未登録の保有株（取得単価と株数の入力）
- const un=((PV&&PV.held)||[]).filter(h=>!b.hold.some(x=>x.code===h.code));
+ const un=((PV&&PV.held)||[]).filter(h=>!b.hold.some(x=>x.code===h.code)&&!soldRecently(b,h.code));
  document.getElementById('unreg').innerHTML=!un.length?'':'<h2>未登録の保有株（取得単価を入力）</h2>'+un.map(h=>{const c=esc(h.code),q=S.quotes[h.code]||{};
   return `<div class="panel"><div class="ttl"><span class="nm">${c}　${esc(h.name)}</span><span class="side">終値 ${q.close?yen(q.close):'--'}</span></div>
    <label>取得単価（円）</label><input id="rp${c}" type="number" inputmode="decimal">
@@ -258,7 +264,9 @@ function render(){
   ${(S.blocked||[]).length?`<div class="note">リスクオフで見送った候補：${S.blocked.map(t=>esc(t.name)).join('、')}</div>`:''}`;
  // 買い候補（直近5営業日。未記録・未見送りのものに購入入力欄を表示）
  REC=(S&&(S.recent||S.signals))||[];
- const sg=REC.map((t,i)=>({t,i})).filter(({t})=>!b.skip.includes(t.date+t.code)&&!b.hold.some(h=>h.code===t.code&&h.date===t.date)&&!b.done.some(h=>h.code===t.code&&h.date===t.date))
+ const heldC=new Set([...b.hold.map(h=>h.code),...((PV&&PV.held)||[]).filter(h=>!soldRecently(b,h.code)).map(h=>h.code)]);
+ const latest={};REC.forEach(t=>{if(!latest[t.code]||t.date>latest[t.code])latest[t.code]=t.date});
+ const sg=REC.map((t,i)=>({t,i})).filter(({t})=>latest[t.code]===t.date&&!heldC.has(t.code)&&!b.skip.includes(t.date+t.code)&&!b.done.some(h=>h.code===t.code&&h.date===t.date))
   .sort((x,y)=>y.t.date.localeCompare(x.t.date));
  const W=S&&S.risk&&S.risk.weak;
  document.getElementById('sig').innerHTML=(W&&W.on&&sg.length?`<div class="panel alert"><div class="ttl"><span class="nm">地合い注意</span><span class="badge b-buy">見送り推奨</span></div><div class="row"><span>日経5日騰落</span><b>${W.last.toLocaleString()} ÷ ${W.prev5.toLocaleString()} − 1 = ${(W.n225_5d*100).toFixed(1)}%</b></div><div class="note">検証7：日経5日騰落がマイナスの日の買いを見送ると、前半+301,379円・後半+1,465,745円 改善。最終判断はご自身で</div></div>`:'')+(!sg.length?'<div class="panel empty">買い候補なし</div>':sg.map(({t,i})=>{charts.push(['cs'+i,t.code,null,null,t.stop]);
@@ -326,7 +334,7 @@ function render(){
    <div class="row"><span>PF（検証の目安 ${E.pf}）</span><b>${P.pf??'—'}</b></div>
    <div class="row"><span>税金の見込み</span><b>${yen(P.tax_est)}</b></div>
    <div class="note">検証では年に約${E.trades_per_year}回の取引でした。20〜30回たまるまでは、勝率やPFが目安から外れても偶然の範囲です</div>`+
-   P.trades.slice(-10).reverse().map(t=>`<div class="row"><span>${esc(t.name)}<br><span class="note">${t.date}・${t.taken===false&&t.status!=='不成立'&&t.status!=='待ち'?'枠が埋まり見送り':t.status}${t.why?'（'+t.why+'）':''}</span></span><b class="${cl(t.pnl||0)}">${t.pnl!=null?sgn(t.pnl):t.last?'評価 '+sgn((t.last-t.buy)*t.shares):'—'}</b></div>`).join('')}
+   dedup(P.trades.filter(t=>t.status!=='不成立').reverse(),t=>t.code).slice(0,10).map(t=>`<div class="row"><span>${esc(t.name)}<br><span class="note">${t.date}・${t.taken===false&&t.status!=='不成立'&&t.status!=='待ち'?'枠が埋まり見送り':t.status}${t.why?'（'+t.why+'）':''}</span></span><b class="${cl(t.pnl||0)}">${t.pnl!=null?sgn(t.pnl):t.last?'評価 '+sgn((t.last-t.buy)*t.shares):'—'}</b></div>`).join('')}
  const row=BT&&BT.rows&&BT.rows.find(x=>x.cfg==='100億・VIXあり');
  const T=row&&row.test;
  document.getElementById('bt').innerHTML=T?`
