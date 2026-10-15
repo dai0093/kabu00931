@@ -41,6 +41,15 @@ try:
         parts.append(line + " → 暴落警戒なし")
 except Exception as e:
     parts.append(f"前夜の米国市場の取得に失敗（{e}）")
+ev_lines = []
+try:
+    import events
+    ev_lines = events.upcoming(30)
+    if ev_lines:
+        parts.append("【今夜〜明朝の米国指標】（判断は今日15:25の引けまで）\n" + "\n".join(ev_lines)
+                     + "\n※予想やナウキャストで上振れ／下振れの向きは当てられない（検証12）。逆指値で備える")
+except Exception as e:
+    parts.append(f"指標予定の取得に失敗（{e}）")
 risk = s.get("risk", {})
 if risk.get("off"):
     parts.append("市場リスク：リスクオフ中（新規の買いは停止）")
@@ -54,7 +63,7 @@ for h in s.get("sells", []):
     parts.append(f"【売り・寄り】{h['name']}({h['code']})：{h.get('sell_signal','')}")
 if s.get("market_date") and s["market_date"] >= today:
     parts.insert(0, "※判定が今日の日付です。場中の判定ではないか確認してください")
-if s.get("signals") or s.get("sells") or risk.get("off") or alert or s.get("etf_stop"):
+if s.get("signals") or s.get("sells") or risk.get("off") or alert or s.get("etf_stop") or ev_lines:
     body = "\n\n".join(parts)
     title = f"今日の注文（{s.get('market_date')}終値で判定）"
 else:

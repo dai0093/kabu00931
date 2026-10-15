@@ -225,6 +225,15 @@ for h in sells:
     parts.append(f"【売り】{h['name']}({h['code']})\n{h['sell_signal']}\n売った代金はETFに戻す")
 for h in []:  # 保有株への25日線ルールは検証で「予測出来なかった」ため通知しない（held_check参照）
     parts.append(f"【保有株・売り】{h['name']}({h['code']})\n終値 {h['close']:,}円 が25日線 {h['sma25']:,}円 を下回った → 明日の寄りで売り")
+# 明日の夜までの米国指標（検証12：事前予測値で向きは当てられないため、情報として表示）
+try:
+    import events
+    _ev = events.upcoming(40)
+    out["events"] = _ev
+    if _ev:
+        parts.append("【明日の夜までの米国指標】\n" + "\n".join(_ev))
+except Exception as e:
+    print("指標予定の取得失敗", e)
 # 暴落よけ（検証10で採用）：ETF(1321)に前日終値 −1.5% の逆指値。発動したらその日の大引けで買い戻す
 try:
     _e = candles["1321"][-1][4]
