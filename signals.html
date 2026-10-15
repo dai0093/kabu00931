@@ -241,13 +241,15 @@ function render(){
    <div class="note">${c<=h.stop?`終値 ${yen(c)} が損切り ${yen(h.stop)} 以下`:`終値 ${yen(c)} が25日線 ${yen(m)} を下回った`}</div></div>`}).join(''):'';
  // 保有中
  const CT=((S&&S.signals||[]).find(t=>t.crash_thr)||{}).crash_thr||0.582;
- window.crashRow=c=>{const q=S&&S.quotes[c];if(!q||q.crash_p==null)return '<div class="row"><span>急落確率（5日以内に−10%）</span><b>--</b></div>';
+ // モデルの数値は順位付け用（学習で急落を重く数えたため高めに出る）。実際の急落率は検証14の10段階表で換算
+ window.realRate=p=>{const B=[[.09,1.0],[.13,2.1],[.17,4.3],[.21,5.2],[.26,7.2],[.32,8.0],[.41,10.4],[.54,11.7],[.76,13.9],[1.01,27.2]];return B.find(b=>p<b[0])[1]};
+ window.crashRow=c=>{const q=S&&S.quotes[c];if(!q||q.crash_p==null)return '<div class="row"><span>急落リスク（5日以内に−10%）</span><b>--</b></div>';
   const p=q.crash_p,st=p>=CT?'lit':p>=CT*0.7?'near':'ok';
-  return `<div class="row"><span>急落確率（5日以内に−10%）<br><span class="note">${esc(q.crash_why||'')}</span></span><b>${(p*100).toFixed(0)}%<span class="pill p-${st}">${st==='lit'?'高い':st==='near'?'やや高い':'平常'}</span></b></div>`};
+  return `<div class="row"><span>急落リスク（5日以内に−10%）<br><span class="note">スコア ${(p*100).toFixed(0)} → 過去の実際の急落率 ${realRate(p)}%（普段9.1%）<br>${esc(q.crash_why||'')}</span></span><b>${realRate(p)}%<span class="pill p-${st}">${st==='lit'?'高い':st==='near'?'やや高い':'平常'}</span></b></div>`};
  {const L=b.hold.filter(h=>S&&S.quotes[h.code]&&S.quotes[h.code].crash_p!=null).sort((x,y)=>S.quotes[y.code].crash_p-S.quotes[x.code].crash_p);
-  document.getElementById('crashsum').innerHTML=!L.length?'':`<div class="panel"><div class="ttl"><span class="nm">保有株の急落確率（高い順）</span></div>`+
-   L.map(h=>{const p=S.quotes[h.code].crash_p;return `<div class="row"><span>${esc(h.code)} ${esc(h.name)}</span><b class="${p>=CT?'up':''}">${(p*100).toFixed(0)}%</b></div>`}).join('')+
-   `<div class="note">買った後5日以内に−10%以上下がる確率（検証13のモデル）。${(CT*100).toFixed(0)}%以上が「高い」＝買い候補なら除外する水準。売るかどうかの判断材料</div></div>`}
+  document.getElementById('crashsum').innerHTML=!L.length?'':`<div class="panel"><div class="ttl"><span class="nm">保有株の急落リスク（高い順）</span></div>`+
+   L.map(h=>{const p=S.quotes[h.code].crash_p;return `<div class="row"><span>${esc(h.code)} ${esc(h.name)}</span><b class="${p>=CT?'up':''}">${realRate(p)}%<span class="note">（スコア${(p*100).toFixed(0)}）</span></b></div>`}).join('')+
+   `<div class="note">5日以内に−10%以上下がった過去の実際の割合（検証14：2024年〜の全銘柄28,939件。普段9.1%、スコア上位10%では27.2%）。スコア${(CT*100).toFixed(0)}以上は買い候補なら除外する水準。売るかどうかの判断材料</div></div>`}
  document.getElementById('hold').innerHTML=!b.hold.length?'<div class="panel empty">保有中の株はありません</div>':b.hold.map((h,j)=>{
   const c=last(h.code),pl=c?(c-h.price)*h.shares:0;charts.push(['cv'+j,h.code,h.buyDate||h.date||'0',h.price,h.stop||null]);
   return `<div class="panel"><div class="ttl"><span class="nm">${esc(h.code)}　${esc(h.name)}</span><span class="side"><u>現物買い</u> ${h.shares.toLocaleString()}株</span></div>
@@ -317,7 +319,7 @@ function render(){
  const CO=(S&&S.crash_out)||[];
  document.getElementById('sig').innerHTML=(CO.length?`<div class="panel"><div class="ttl"><span class="nm">急落リスクで除外</span><span class="badge b-sell">${CO.length}件</span></div>`+CO.map(t=>`<div class="row"><span>${esc(t.code)} ${esc(t.name)}<br><span class="note">${esc(t.crash_why||'')}</span></span><b>${(t.crash_p*100).toFixed(0)}%</b></div>`).join('')+`<div class="note">検証13：買った後5日以内に−10%以上の急落確率が${(CO[0].crash_thr*100).toFixed(0)}%以上は除外（2023〜の検証で日経比 +1,780,441円、急落率 12.8%→8.4%）</div></div>`:'')+(W&&W.on&&sg.length?`<div class="panel alert"><div class="ttl"><span class="nm">地合い注意</span><span class="badge b-buy">見送り推奨</span></div><div class="row"><span>日経5日騰落</span><b>${W.last.toLocaleString()} ÷ ${W.prev5.toLocaleString()} − 1 = ${(W.n225_5d*100).toFixed(1)}%</b></div><div class="note">検証7：日経5日騰落がマイナスの日の買いを見送ると、前半+301,379円・後半+1,465,745円 改善。最終判断はご自身で</div></div>`:'')+(!sg.length?'<div class="panel empty">買い候補なし</div>':sg.map(({t,i})=>{charts.push(['cs'+i,t.code,null,null,t.stop]);
   const old=t.date!==(S&&S.market_date);
-  return `<div class="panel"><div class="ttl"><span class="nm">${esc(t.code)}　${esc(t.name)}</span><span class="badge b-buy">買い候補 ${t.shares.toLocaleString()}株</span></div>${t.crash_p!=null?`<div class="row"><span>急落確率（5日以内に−10%）</span><b>${(t.crash_p*100).toFixed(0)}%<span class="pill p-ok">除外ライン ${(t.crash_thr*100).toFixed(0)}%</span></b></div>`:''}
+  return `<div class="panel"><div class="ttl"><span class="nm">${esc(t.code)}　${esc(t.name)}</span><span class="badge b-buy">買い候補 ${t.shares.toLocaleString()}株</span></div>${t.crash_p!=null?`<div class="row"><span>急落リスク（5日以内に−10%）<br><span class="note">スコア ${(t.crash_p*100).toFixed(0)}（除外ライン ${(t.crash_thr*100).toFixed(0)}）</span></span><b>${realRate(t.crash_p)}%</b></div>`:''}
    <div class="note">${t.date} の終値で判定${old?'（過去の候補：買った場合だけ記録してください）':''}</div>
    <canvas id="cs${i}"></canvas>
    <div class="row"><span>指値（買い）</span><b>${yen(t.entry)}</b></div>
