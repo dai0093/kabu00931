@@ -85,6 +85,10 @@ input{width:100%;font:inherit;font-size:18px;padding:10px;border-radius:8px;bord
  <div class="note" id="mt">購入金額 ＝ 単価 × 株数</div>
  <div class="btns"><button class="pri" onclick="manualAdd()">保有に追加</button></div>
  <div class="note">同じ銘柄を保有中なら買い増しとして平均単価で合算します</div></div>
+<div class="panel"><div class="ttl"><span class="nm">証券会社の一覧から一括追加</span></div>
+ <div class="note">1行に「コード 取得単価 株数」。株数を省くと、暗号化された保有データの株数を使います</div>
+ <textarea id="bulk" rows="6" style="width:100%;font-size:16px;background:var(--panel2);color:var(--ink);border:1px solid var(--line);border-radius:8px;padding:8px" placeholder="4062 10926&#10;8316 3404 100"></textarea>
+ <div class="btns"><button class="pri" onclick="bulkAdd()">一括追加</button></div><div class="note" id="bulkr"></div></div>
 <h2>今日の買い候補</h2><div id="sig"></div>
 <h2>日経225ETF（待機資金）</h2><div class="panel" id="etf"></div>
 <h2>売却済み</h2><div class="panel" id="done"></div>
@@ -157,6 +161,16 @@ function manualAdd(){const c=v('mc').trim().toUpperCase(),p=+v('mp'),s=+v('ms'),
   o.price=Math.round((o.price*o.shares+p*s)/ns*10)/10;o.shares=ns;if(x)o.stop=x}
  else b.hold.push({code:c,name:(C&&C.names||{})[c]||c,date:d,buyDate:d,regDate:new Date().toISOString().slice(0,10),price:p,shares:s,stop:x,manual:true});
  save(b);['mc','mp','mx'].forEach(i=>document.getElementById(i).value='');render()}
+function bulkAdd(){const b=load(),out=[],ng=[],pv={};((PV&&PV.held)||[]).forEach(x=>pv[x.code]=x);
+ v('bulk').split(/\n/).map(l=>l.trim()).filter(Boolean).forEach(l=>{const m=l.toUpperCase().replace(/,/g,'').match(/^([0-9A-Z]{4})\s+([\d.]+)(?:\s+(\d+))?/);
+  if(!m){ng.push(l+'（形式が違う）');return}const c=m[1],p=+m[2];let s=m[3]?+m[3]:(pv[c]?+pv[c].shares:0);
+  if(c==='1321'){ng.push('1321は「日経225ETF（待機資金）」の口数欄で管理');return}
+  if(!s){ng.push(c+'（株数が不明。「コード 単価 株数」で入力）');return}
+  const nm=(pv[c]&&pv[c].name)||(C&&C.names||{})[c]||c,j=b.hold.findIndex(x=>x.code===c);
+  if(j>=0){b.hold[j].price=p;b.hold[j].shares=s;out.push(nm+'（単価を更新）')}
+  else{b.hold.push({code:c,name:nm,date:'',buyDate:'',regDate:new Date().toISOString().slice(0,10),price:p,shares:s,stop:0,manual:true});out.push(nm)}});
+ save(b);document.getElementById('bulkr').innerHTML=`追加・更新 ${out.length}件：${esc(out.join('、'))}`+(ng.length?`<br>未処理 ${ng.length}件：${esc(ng.join('、'))}`:'');
+ if(out.length)document.getElementById('bulk').value='';render()}
 function setEtf(){const b=load();b.etf=+v('etfu')||0;save(b);render()}
 const v=id=>document.getElementById(id).value;
 /* 外部由来の文字（ニュース見出し・銘柄名など）は必ずエスケープしてから表示する */
