@@ -1,0 +1,56 @@
+{
+ "cleveland_page": {
+  "status": 200,
+  "len": 197337,
+  "head": "\r\n\r\n<!DOCTYPE html>\r\n<html lang=\"en\">\r\n<head>\r\n\r\n    <base href=\"https://www.clevelandfed.org/\" />\r\n<link href=\"/-/media/project/clevelandfedtenant/clevelandfedsite/cfedbootstrap-4/cfedbootstrap-4/styles/bootstrap-grid.css\" rel=\"stylesheet\">            <meta name=\"X-Akamai-Edgescape\" content=\"georegion=289,country_code=US,region_code=WA,city=QUINCY,dma=881,areacode=509,county=GRANT,fips=53025,lat="
+ },
+ "cleveland_json1": {
+  "status": 200,
+  "len": 4999584,
+  "head": "[\r\n{\r\n\"chart\": {\r\n\"_comment\": \"2026-10-14 00:00\",\r\n\"caption\": \"Inflation Nowcasting\",\r\n\"subcaption\": \"2013:Q3\",\r\n\"yaxisname\": \"Quarterly Annualized Percent Change\",\r\n\"legendnumcolumns\": \"4\",\r\n\"labelpadding\": \"10\",\r\n\"showvalues\": \"0\",\r\n\"showexportdatamenuitem\": \"1\",\r\n\"showtooltip\": \"1\",\r\n\"basefont\": \"Helvetica\",\r\n\"bgalpha\": \"0\",\r\n\"showborder\": \"0\"\r\n},\r\n\"categories\": [\r\n{\r\n\"category\": [\r\n{\"label\": \""
+ },
+ "cleveland_json2": {
+  "status": 200,
+  "len": 7645271,
+  "head": "[\r\n{\r\n\"chart\": {\r\n\"_comment\": \"2026-10-14 00:00\",\r\n\"caption\": \"Inflation Nowcasting\",\r\n\"subcaption\": \"2013-7\",\r\n\"yaxisname\": \"Month-over-month percent change\",\r\n\"legendnumcolumns\": \"4\",\r\n\"labelpadding\": \"10\",\r\n\"showvalues\": \"0\",\r\n\"showexportdatamenuitem\": \"1\",\r\n\"showtooltip\": \"1\",\r\n\"basefont\": \"Helvetica\",\r\n\"bgalpha\": \"0\",\r\n\"showborder\": \"0\"\r\n},\r\n\"categories\": [\r\n{\r\n\"category\": [\r\n{\"label\": \"08/20"
+ },
+ "ff_cpi": {
+  "status": 200,
+  "len": 103495,
+  "head": "<!DOCTYPE html> <html class=\"no-js\" lang=\"en\"> <head> <base href=\"https://www.forexfactory.com\"> <meta charset=\"windows-1252\"> <meta property=\"og:title\" content=\"US CPI m/m\" /> <meta property=\"og:description\" content=\"Consumer prices account for a majority of overall inflation. Inflation is important to currency valuation because rising prices lead the central bank to raise interest rates out of r"
+ },
+ "nowflation_dates": {
+  "status": 200,
+  "len": 16681,
+  "head": "<!doctype html>\n<html lang=\"en\">\n  <head>\n    <meta charset=\"UTF-8\" />\n    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\" />\n    <title>CPI Release Dates 2026: Next Report Nov 10, 8:30 AM ET | Nowflation</title>\n    <meta name=\"description\" content=\"The CPI for October 2026 is released November 10, 2026 at 8:30 AM ET. Full BLS schedule, .ics calendar, every past print vs con"
+ },
+ "nowflation_sep": {
+  "status": 200,
+  "len": 10375,
+  "head": "<!doctype html>\n<html lang=\"en\">\n  <head>\n    <meta charset=\"UTF-8\" />\n    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\" />\n    <title>September 2026 CPI Report: 3.7% — Sealed Forecast 3.56% vs Consensus 3.6%, Who Called It | Nowflation</title>\n    <meta name=\"description\" content=\"September 2026 CPI printed 3.7% YoY (released Oct 14). Nowflation's sealed forecast 3.56%, "
+ },
+ "te_cpi": {
+  "status": 200,
+  "len": 360036,
+  "head": "\r\n<!doctype html>\r\n<html >\r\n<head id=\"ctl00_Head1\"><meta charset=\"utf-8\" /><title>\r\n\tUnited States Core Inflation Rate MoM\r\n</title><meta id=\"metaDesc\" name=\"description\" content=\"Core Inflation Rate MoM in the United States remained unchanged at 0.30 percent in September. This page includes a chart with historical data for the United States Core Inflation Rate MoM.\" /><meta id=\"metaKeyword\" name="
+ },
+ "investing_cpi": {
+  "status": 200,
+  "len": 1028141,
+  "head": "<!DOCTYPE html><html lang=\"en\" dir=\"ltr\" class=\"html\"><head><meta charSet=\"utf-8\" data-next-head=\"\"/><meta name=\"viewport\" content=\"initial-scale=1.0,width=device-width\" data-next-head=\"\"/><script src=\"https://cookie-cdn.cookiepro.com/scripttemplates/otSDKStub.js\" data-domain-script=\"265d5ac2-7d0c-4675-bf4d-421a61fb482e\" async=\"\" amp=\"true\"></script><link rel=\"preconnect\" href=\"https://geolocation"
+ },
+ "bls_api": {
+  "status": 200,
+  "len": 3118,
+  "head": "{\"status\":\"REQUEST_SUCCEEDED\",\"responseTime\":104,\"message\":[],\"Results\":{\n\"series\":\n[{\"seriesID\":\"CUSR0000SA0L1E\",\"data\":[{\"year\":\"2026\",\"period\":\"M09\",\"periodName\":\"September\",\"latest\":\"true\",\"value\":\"338.896\",\"footnotes\":[{}]},{\"year\":\"2026\",\"period\":\"M08\",\"periodName\":\"August\",\"value\":\"337.765\",\"footnotes\":[{}]},{\"year\":\"2026\",\"period\":\"M07\",\"periodName\":\"July\",\"value\":\"336.789\",\"footnotes\":[{}"
+ },
+ "fred_alfred": {
+  "err": "The read operation timed out"
+ },
+ "mql5_cpi": {
+  "err": "HTTP Error 404: Not Found"
+ },
+ "fxstreet_cal": {
+  "err": "HTTP Error 404: Not Found"
+ }
+}
