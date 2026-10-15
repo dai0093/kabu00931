@@ -1,0 +1,92 @@
+[
+ {
+  "jst": "2026-10-15 21:30:00",
+  "name": "PPI 前月比",
+  "forecast": 0.6,
+  "previous": 0.4
+ },
+ {
+  "jst": "2026-10-15 21:30:00",
+  "name": "小売売上高",
+  "forecast": 0.3,
+  "previous": 1.2
+ },
+ {
+  "jst": "2026-10-29 03:00:00",
+  "name": "FOMC 政策金利",
+  "forecast": null,
+  "previous": 4.0
+ },
+ {
+  "jst": "2026-10-29 21:30:00",
+  "name": "コアPCE 前月比",
+  "forecast": null,
+  "previous": 0.2
+ },
+ {
+  "jst": "2026-11-03 00:00:00",
+  "name": "ISM製造業",
+  "forecast": null,
+  "previous": 54.5
+ },
+ {
+  "jst": "2026-11-04 22:15:00",
+  "name": "ADP雇用者数",
+  "forecast": null,
+  "previous": 90
+ },
+ {
+  "jst": "2026-12-10 04:00:00",
+  "name": "FOMC 政策金利",
+  "forecast": null,
+  "previous": null
+ },
+ {
+  "jst": "2027-01-28 03:00:00",
+  "name": "FOMC 政策金利",
+  "forecast": null,
+  "previous": null
+ },
+ {
+  "jst": "2027-03-18 03:00:00",
+  "name": "FOMC 政策金利",
+  "forecast": null,
+  "previous": null
+ },
+ {
+  "jst": "2027-04-29 03:00:00",
+  "name": "FOMC 政策金利",
+  "forecast": null,
+  "previous": null
+ },
+ {
+  "jst": "2027-06-10 03:00:00",
+  "name": "FOMC 政策金利",
+  "forecast": null,
+  "previous": null
+ },
+ {
+  "jst": "2027-07-29 03:00:00",
+  "name": "FOMC 政策金利",
+  "forecast": null,
+  "previous": null
+ },
+ {
+  "jst": "2027-09-16 03:00:00",
+  "name": "FOMC 政策金利",
+  "forecast": null,
+  "previous": null
+ },
+ {
+  "jst": "2027-10-28 03:00:00",
+  "name": "FOMC 政策金利",
+  "forecast": null,
+  "previous": null
+ },
+ {
+  "jst": "2027-12-09 03:00:00",
+  "name": "FOMC 政策金利",
+  "forecast": null,
+  "previous": null
+ }
+]
