@@ -15,6 +15,11 @@
    "date": "2026-10-14",
    "value": 6834123,
    "nikkei": 6869531
+  },
+  {
+   "date": "2026-10-15",
+   "value": 6569026,
+   "nikkei": 6533038
   }
  ],
  "trades": [
@@ -38,7 +43,7 @@
    "status": "保有中",
    "buy": 7237.23,
    "entry_date": "2026-10-13",
-   "last": 7335.0,
+   "last": 7500.0,
    "taken": true
   },
   {
@@ -48,10 +53,13 @@
    "entry": 7587,
    "stop": 7140,
    "shares": 100,
-   "status": "保有中",
+   "status": "決済",
    "buy": 7594.5869999999995,
+   "sell": 7108.884,
+   "why": "損切り",
    "entry_date": "2026-10-13",
-   "last": 7394.0,
+   "exit_date": "2026-10-15",
+   "pnl": -48570.29999999995,
    "taken": true
   },
   {
@@ -80,15 +88,55 @@
    "status": "保有中",
    "buy": 7564.556999999999,
    "entry_date": "2026-10-14",
-   "last": 7658.0,
+   "last": 7297.0,
    "taken": true
+  },
+  {
+   "date": "2026-10-15",
+   "code": "7453",
+   "name": "良品計画",
+   "entry": 4804,
+   "stop": 4541,
+   "shares": 200,
+   "status": "待ち",
+   "taken": false
+  },
+  {
+   "date": "2026-10-15",
+   "code": "4502",
+   "name": "武田薬品工業",
+   "entry": 6183,
+   "stop": 5931,
+   "shares": 200,
+   "status": "待ち",
+   "taken": false
+  },
+  {
+   "date": "2026-10-15",
+   "code": "7832",
+   "name": "バンダイナムコホールディングス",
+   "entry": 6119,
+   "stop": 5845,
+   "shares": 200,
+   "status": "待ち",
+   "taken": false
+  },
+  {
+   "date": "2026-10-15",
+   "code": "2914",
+   "name": "日本たばこ産業",
+   "entry": 7500,
+   "stop": 7227,
+   "shares": 100,
+   "status": "待ち",
+   "taken": false
   }
  ],
- "closed": 1,
+ "closed": 2,
  "hit": 0,
- "miss": 1,
+ "miss": 2,
  "pf": 0.0,
- "realized": -43965,
+ "realized": -92535,
  "tax_est": 0,
  "expect": {
   "win_rate": 35.2,
