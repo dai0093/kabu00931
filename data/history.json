@@ -113,7 +113,7 @@
   "by_risk": 200,
   "by_cash": 200,
   "method": "高値更新",
-  "status": "pending"
+  "status": "open"
  },
  {
   "date": "2026-10-15",
@@ -130,7 +130,7 @@
   "by_risk": 200,
   "by_cash": 200,
   "method": "高値更新",
-  "status": "pending"
+  "status": "unfilled"
  },
  {
   "date": "2026-10-15",
@@ -147,7 +147,7 @@
   "by_risk": 200,
   "by_cash": 200,
   "method": "高値更新",
-  "status": "pending"
+  "status": "unfilled"
  },
  {
   "date": "2026-10-15",
@@ -163,6 +163,48 @@
   "risk_per_share": 273,
   "by_risk": 200,
   "by_cash": 100,
+  "method": "高値更新",
+  "status": "open"
+ },
+ {
+  "date": "2026-10-16",
+  "code": "6701",
+  "name": "日本電気",
+  "vol_ratio": 1.73,
+  "entry": 5390,
+  "stop": 5127,
+  "target": 5784,
+  "shares": 200,
+  "cost": 1078000,
+  "risk_yen": 52600,
+  "risk_per_share": 263,
+  "by_risk": 200,
+  "by_cash": 200,
+  "crash_p": 0.171,
+  "crash_thr": 0.582,
+  "crash_out": false,
+  "crash_why": "5日騰落 +6% / 値幅(ATR) 2.4% / 25日線乖離 +10%",
+  "method": "高値更新",
+  "status": "pending"
+ },
+ {
+  "date": "2026-10-16",
+  "code": "4307",
+  "name": "野村総合研究所",
+  "vol_ratio": 1.66,
+  "entry": 5953,
+  "stop": 5604,
+  "target": 6477,
+  "shares": 200,
+  "cost": 1190600,
+  "risk_yen": 69800,
+  "risk_per_share": 349,
+  "by_risk": 200,
+  "by_cash": 200,
+  "crash_p": 0.237,
+  "crash_thr": 0.582,
+  "crash_out": false,
+  "crash_why": "5日騰落 +11% / 値幅(ATR) 2.9% / 25日線乖離 +15%",
   "method": "高値更新",
   "status": "pending"
  }
