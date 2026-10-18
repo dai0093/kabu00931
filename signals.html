@@ -398,7 +398,11 @@ function render(){
 (async()=>{
  [S,C,BT,PP,LT,MG]=await Promise.all([get('data/signals.json'),get('data/candles.json'),get('data/compare6.json'),get('data/paper.json'),get('data/logic_tree.json'),get('data/morning.json')]);
  if(S){const [y,m,d]=S.market_date.split('-');document.getElementById('hdate').textContent=`${+m}月${+d}日`;
-  document.getElementById('hst').textContent='✓ 判定完了';document.getElementById('hupd').textContent=S.updated.slice(11);
+  document.getElementById('hst').textContent='✓ 判定完了';{const W='日月火水木金土',u=new Date(S.updated.replace(' ','T')+':00+09:00'),md=new Date(S.market_date+'T00:00:00+09:00');
+  let n=new Date(md.getTime()+864e5);while([0,6].includes(n.getUTCDay()===undefined?0:new Date(n.getTime()+9*36e5).getUTCDay()))n=new Date(n.getTime()+864e5);
+  const f=x=>{const j=new Date(x.getTime()+9*36e5);return `${j.getUTCMonth()+1}/${j.getUTCDate()}(${W[j.getUTCDay()]})`};
+  document.getElementById('hupd').textContent=`${f(u)} ${S.updated.slice(11)}`;
+  document.getElementById('hst').textContent=`✓ ${f(md)}終値で判定済み・次回は${f(n)}夕方`;}
   const ns=S.signals.length,nl=(S.sells||[]).length;
   document.getElementById('notice').innerHTML=`${S.updated}<b>${ns||nl?`買い候補 ${ns}件・売り ${nl}件`:'本日は売買なし。ETFのまま保有'}</b>`}
  else document.getElementById('notice').innerHTML='<b>まだ判定データがありません</b>';
