@@ -29,7 +29,13 @@ def _yf(sym, period):
     x = yf.download(sym, period=period, auto_adjust=False, progress=False)["Close"]
     x = x.squeeze()
     x.index = pd.to_datetime(x.index).tz_localize(None)
-    return x.dropna()
+    x = x.dropna()
+    # 米国の値は、その日の取引が終わった日本時間 翌朝6時以降に確定。未確定の当日分は捨てる
+    if not sym.endswith(".T") and sym != "^N225":
+        from datetime import datetime, timedelta, timezone
+        cut = (datetime.now(timezone(timedelta(hours=9))) - timedelta(hours=6)).date()
+        x = x[x.index.date < cut]
+    return x
 
 
 def factors(period="6y", fred=False):
