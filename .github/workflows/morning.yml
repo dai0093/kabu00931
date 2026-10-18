@@ -7,7 +7,7 @@ on:
     - cron: "23 22 * * 0-4"   # 7:23 JST（遅延対策で4回。最初の1回だけ送る）
   workflow_dispatch:
   push:
-    paths: [".github/workflows/morning.yml", "scanner/morning.py"]
+    paths: [".github/workflows/morning.yml", "scanner/morning.py", "scanner/risk_refresh.py", "scanner/risk.py"]
 permissions:
   contents: write
 jobs:
@@ -16,10 +16,13 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - run: pip install yfinance pandas
+      - run: python3 scanner/risk_refresh.py || echo "市場リスク更新失敗"
+        working-directory: .
+        env: { PYTHONPATH: scanner }
       - run: python3 scanner/morning.py
         env:
           NTFY_TOPIC: ${{ secrets.NTFY_TOPIC }}
       - run: |
           git config user.name "kabu-bot"
           git config user.email "kabu-bot@users.noreply.github.com"
-          git add data/morning_sent.txt data/morning.json && git commit -m "morning sent" && git pull --rebase && git push || echo "no change"
+          git add data/morning_sent.txt data/morning.json data/signals.json && git commit -m "morning sent" && git pull --rebase && git push || echo "no change"

@@ -38,6 +38,7 @@ def factors(period="6y", fred=False):
                       "brent": _yf("BZ=F", period), "usdjpy": _yf("JPY=X", period),
                       "n225": _yf("^N225", period),
                       "hyg": _yf("HYG", period), "ief": _yf("IEF", period)})
+    asof = {k: (str(f[k].dropna().index[-1].date()) if f[k].notna().any() else None) for k in f.columns}
     for sid, k in (("BAMLH0A0HYM2", "hy"), ("NFCI", "nfci")):
         if not fred:   # GitHubからFREDは接続できないため既定では取得しない
             f[k] = float("nan"); continue
@@ -57,7 +58,20 @@ def factors(period="6y", fred=False):
     f["yen_20"] = f["usdjpy"] / f["usdjpy"].shift(20) - 1
     # 信用不安の代わり：ハイイールド債ETF÷米国債ETF の20日変化（下がるほど信用不安）
     f["credit_20"] = (f["hyg"] / f["ief"]) / (f["hyg"] / f["ief"]).shift(20) - 1
+    f.attrs["asof"] = asof   # 各系列の実際の最終観測日（日本の営業日で前方補完した日付と区別する）
     return f
+
+
+def snapshot(period="1y"):
+    """signals.json の risk ブロック。日付はVIXの実際の観測日（米国の取引日）を使う。"""
+    F = factors(period)
+    asof = F.attrs.get("asof", {})
+    vd = asof.get("vix")
+    r = F.loc[:vd].iloc[-1] if vd else F.iloc[-1]   # VIXの観測日の行で判定（日本の営業日の補完行を使わない）
+    return F, {"off": risk_off(r), "date": vd or str(F.index[-1].date()), "asof": asof, "state": state(r),
+               "values": {k: (None if pd.isna(r[k]) else round(float(r[k]), 3))
+                          for k in ("vix", "vix_d", "us10", "us10_20", "hy", "hy_20", "nfci",
+                                    "brent", "brent_20", "usdjpy", "yen_20", "credit_20")}}
 
 
 def state(r):

@@ -70,12 +70,8 @@ today = today[:5]
 from risk import factors, state as risk_state, risk_off
 risk = {"off": False}
 try:
-    _F = factors("1y")
-    _r = _F.iloc[-1]
-    risk = {"off": risk_off(_r), "date": str(_F.index[-1].date()), "state": risk_state(_r),
-            "values": {k: (None if pd.isna(_r[k]) else round(float(_r[k]), 3))
-                       for k in ("vix", "vix_d", "us10", "us10_20", "hy", "hy_20", "nfci",
-                                 "brent", "brent_20", "usdjpy", "yen_20", "credit_20")}}
+    from risk import snapshot
+    _F, risk = snapshot("1y")
 except Exception as e:
     print("リスク指標の取得失敗", e)
 # 地合いの注意（検証7：日経5日騰落が0%以上の時だけ買う → 前半+301,379円・後半+1,465,745円 改善）
