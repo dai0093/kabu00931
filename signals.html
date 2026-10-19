@@ -165,8 +165,9 @@ function bulkAdd(){const b=load(),out=[],ng=[],pv={};((PV&&PV.held)||[]).forEach
  v('bulk').split(/\n/).map(l=>l.trim()).filter(Boolean).forEach(l=>{const m=l.toUpperCase().replace(/,/g,'').match(/^([0-9A-Z]{4})\s+([\d.]+)(?:\s+(\d+))?/);
   if(!m){ng.push(l+'（形式が違う）');return}const c=m[1],p=+m[2];let s=m[3]?+m[3]:(pv[c]?+pv[c].shares:0);
   if(c==='1321'){ng.push('1321は「日経225ETF（待機資金）」の口数欄で管理');return}
-  if(!s){ng.push(c+'（株数が不明。「コード 単価 株数」で入力）');return}
   const nm=(pv[c]&&pv[c].name)||(C&&C.names||{})[c]||c,j=b.hold.findIndex(x=>x.code===c);
+  if(!s&&j>=0)s=b.hold[j].shares;
+  if(!s){ng.push(c+'（株数が不明。「コード 単価 株数」で入力）');return}
   if(j>=0){b.hold[j].price=p;b.hold[j].shares=s;out.push(nm+'（単価を更新）')}
   else{b.hold.push({code:c,name:nm,date:'',buyDate:'',regDate:new Date().toISOString().slice(0,10),price:p,shares:s,stop:0,manual:true});out.push(nm)}});
  save(b);document.getElementById('bulkr').innerHTML=`追加・更新 ${out.length}件：${esc(out.join('、'))}`+(ng.length?`<br>未処理 ${ng.length}件：${esc(ng.join('、'))}`:'');
