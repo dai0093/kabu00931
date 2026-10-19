@@ -38,6 +38,11 @@ try:
     _prev = json.load(open("data/signals.json", encoding="utf-8"))
 except Exception:
     _prev = {}
+# 取得失敗（レート制限など）で古いデータしか取れなかった時は、新しい判定を古いもので上書きしない
+_n_last = sum(str(d.index[-1].date()) == last_date for d in frames.values())
+if _prev.get("market_date", "") > last_date or _n_last < 0.5 * len(frames):
+    print("取得データが古い／不足のため上書きしない", last_date, _prev.get("market_date"), _n_last, len(frames))
+    raise SystemExit(0)
 if os.environ.get("GITHUB_EVENT_NAME") == "schedule" and _prev.get("market_date") == last_date \
         and _prev.get("final"):
     print("判定済みのためスキップ", last_date)
