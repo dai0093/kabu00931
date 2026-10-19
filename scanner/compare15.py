@@ -67,6 +67,7 @@ nkr = n225.pct_change(); soxr = sox.pct_change()
 def before(s, dt):
     i = s.index.searchsorted(dt, side="right") - 1
     return float(s.iloc[i]) if i >= 0 else np.nan
+_sm = pd.concat([frames[c].Close.pct_change() for c in ("8035", "6857") if c in frames], axis=1).mean(axis=1)
 pool = []
 for code, d in frames.items():
     rr = d.Close.pct_change()
@@ -92,7 +93,7 @@ for code, d in frames.items():
             "vr": float(r.Volume / r.vol20), "to": float(np.log(r.turnover20)),
             "hi250": float(r.Close / d.High.iloc[max(0, i-250):i+1].max() - 1),
             "upstreak": int((rr.iloc[i-4:i+1] > 0).sum()), "vol20": float(rr.iloc[i-19:i+1].std() * np.sqrt(252)),
-            "beta_nk": beta_nk, "beta_sox": beta_sox, "corr_sox": float(w.corr(sx)), "newhi": bool(r.Close > d.High.iloc[max(0,i-250):i].max()) and i >= 250,
+            "beta_nk": beta_nk, "beta_sox": beta_sox, "corr_sox": float(w.corr(_sm.reindex(w.index))), "newhi": bool(r.Close > d.High.iloc[max(0,i-250):i].max()) and i >= 250,
             "mkt5": float(nn.iloc[-1] / nn.iloc[-6] - 1), "mkt_ma25": float(nn.iloc[-1] / nn.tail(25).mean() - 1),
             "sox1": before(soxr, dt), "term": before(vix, dt) / before(vix3, dt)})
 pool.sort(key=lambda t: (t["date"], -t["vr"]))
@@ -143,12 +144,12 @@ END = n225.index[-1] + pd.Timedelta(days=1)
 P = pd.DataFrame(pool)
 tr, te = P[P.date < SPLIT], P[P.date >= SPLIT]
 L = [f"候補 {len(P)}件（学習 {len(tr)} / 試験 {len(te)}）。新高値＝終値が過去250営業日の高値超え", 
-     f"新高値の割合：{P.newhi.mean()*100:.1f}% / 半導体連動（SOXとの相関）中央値 {P.corr_sox.median():.2f}", ""]
+     f"新高値の割合：{P.newhi.mean()*100:.1f}% / 半導体連動（東エレク・アドバンテストとの同日相関）中央値 {P.corr_sox.median():.2f}", ""]
 for lab, g in (("新高値", te[te.newhi]), ("60日高値のみ", te[~te.newhi])):
     w = (g.pnl > 0).mean(); gp = g.pnl[g.pnl > 0].sum(); gl = -g.pnl[g.pnl <= 0].sum()
     L.append(f"試験 {lab}：{len(g)}件 勝率{w*100:.1f}% PF{gp/gl if gl else 0:.2f} 平均{g.ret.mean()*100:+.2f}% 急落率{g.crash.mean()*100:.1f}%")
-for th in (0.3, 0.4, 0.5):
-    for lab, g in ((f"SOX相関≧{th}", te[te.corr_sox >= th]), (f"SOX相関<{th}", te[te.corr_sox < th])):
+for th in (0.4, 0.5, 0.6):
+    for lab, g in ((f"半導体相関≧{th}", te[te.corr_sox >= th]), (f"半導体相関<{th}", te[te.corr_sox < th])):
         w = (g.pnl > 0).mean(); gp = g.pnl[g.pnl > 0].sum(); gl = -g.pnl[g.pnl <= 0].sum()
         L.append(f"試験 {lab}：{len(g)}件 勝率{w*100:.1f}% PF{gp/gl if gl else 0:.2f} 平均{g.ret.mean()*100:+.2f}% 急落率{g.crash.mean()*100:.1f}%")
 L.append("")
@@ -160,10 +161,10 @@ def run_with(order_newhi, flt):
     pool = base_pool
     return a, b
 cfgs = [("今の方式", False, lambda t: True), ("新高値を優先", True, lambda t: True), ("新高値のみ", False, lambda t: t["newhi"])]
-for th in (0.3, 0.4, 0.5):
-    cfgs += [(f"半導体連動（SOX相関≧{th}）を除外", False, lambda t, th=th: not (t["corr_sox"] >= th)),
-             (f"新高値を優先＋SOX相関≧{th}を除外", True, lambda t, th=th: not (t["corr_sox"] >= th)),
-             (f"新高値のみ＋SOX相関≧{th}を除外", False, lambda t, th=th: t["newhi"] and not (t["corr_sox"] >= th))]
+for th in (0.4, 0.5, 0.6):
+    cfgs += [(f"半導体連動（半導体相関≧{th}）を除外", False, lambda t, th=th: not (t["corr_sox"] >= th)),
+             (f"新高値を優先＋半導体相関≧{th}を除外", True, lambda t, th=th: not (t["corr_sox"] >= th)),
+             (f"新高値のみ＋半導体相関≧{th}を除外", False, lambda t, th=th: t["newhi"] and not (t["corr_sox"] >= th))]
 res = [(nm,) + run_with(o, f) for nm, o, f in cfgs]
 b0a, b0b = res[0][1], res[0][2]
 L.append("## 条件ごと（学習 2022-2023 → 試験 2024-）日経比と基準比")
