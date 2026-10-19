@@ -122,7 +122,7 @@ function save(b){try{localStorage.setItem(K,JSON.stringify(b))}catch(e){}}
 async function get(u){try{const r=await fetch(u+'?t='+Date.now());return r.ok?r.json():null}catch(e){return null}}
 let S=null,C=null,BT=null,PP=null,LT=null,MG=null,REC=[],CH=[],lastW=0;
 const bars=c=>C&&C.candles&&C.candles[c]||[];
-const last=c=>{const b=bars(c);return b.length?b[b.length-1][4]:null};
+const last=c=>{const b=bars(c);if(b.length)return b[b.length-1][4];const q=S&&S.quotes&&S.quotes[c];return q&&q.close?q.close:null};
 const prev=c=>{const b=bars(c);return b.length>1?b[b.length-2][4]:null};
 const sma25=c=>S&&S.quotes&&S.quotes[c]?S.quotes[c].sma25:null;
 function toggle(id){document.getElementById(id).classList.toggle('on')}
@@ -202,7 +202,7 @@ async function unlock(pass,remember){
 function lockNow(){try{localStorage.removeItem(PK)}catch(e){}location.reload()}
 
 /* ローソク足：陽線=赤、陰線=青。▲買い、▽現在、白線で結ぶ。点線=損切り */
-function chart(cv,code,buyDate,buyPx,stop){
+function chart(cv,code,buyDate,buyPx,stop){if(!bars(code).length){cv.style.display='none';return}
  const d=bars(code).slice(-60); if(!d.length)return;
  const dpr=window.devicePixelRatio||1,W=cv.clientWidth,H=cv.clientHeight;
  cv.width=W*dpr;cv.height=H*dpr;const g=cv.getContext('2d');g.scale(dpr,dpr);
