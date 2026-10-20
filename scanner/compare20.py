@@ -37,7 +37,8 @@ for Yr in [v for v in yrs if v >= 2012]:
     ptr = pd.Series(m.predict_proba(X[tr].fillna(med))[:, 1], index=cal[tr])
     P[te] = m.predict_proba(X[te].fillna(med))[:, 1]
     THR[Yr] = (ptr.quantile(0.80), ptr.quantile(0.95))
-th80 = pd.Series({d: THR[d.year][0] for d in cal if d.year in THR}); th95 = pd.Series({d: THR[d.year][1] for d in cal if d.year in THR}).reindex(cal)
+th80 = pd.Series({d: THR[d.year][0] for d in cal if d.year in THR}).reindex(cal)
+th95 = pd.Series({d: THR[d.year][1] for d in cal if d.year in THR}).reindex(cal)
 oos = P.notna() & valid
 print(f"検証期間 {cal[oos][0].date()}〜{cal[oos][-1].date()}  営業日{int(oos.sum())}  平均発生率 {y[oos].mean()*100:.1f}%")
 print(f"AUC {roc_auc_score(y[oos], P[oos]):.3f}")
