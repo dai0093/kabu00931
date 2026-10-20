@@ -23,6 +23,7 @@ X["nk_r5"] = nk.pct_change(5) * 100; X["nk_r20"] = nk.pct_change(20) * 100; X["n
 X["sox_r5"] = sox.pct_change(5) * 100; X["sox_dd"] = (sox / sox.rolling(252, min_periods=120).max() - 1) * 100
 X["vix"] = vix; X["vix_term"] = vix / v3; X["tnx"] = tnx; X["tnx_d20"] = tnx.diff(20)
 X["brent_d20"] = brent.pct_change(20) * 100; X["cred_d20"] = (hyg / ief).pct_change(20) * 100
+X = X.replace([np.inf, -np.inf], np.nan)
 y = Y["C_10日内-7%"].astype(float)
 ok = valid.copy()
 yrs = sorted(set(cal[ok].year)); P = pd.Series(np.nan, index=cal); THR = {}
@@ -30,7 +31,7 @@ for Yr in [v for v in yrs if v >= 2012]:
     tr = ok & (cal.year < Yr - 0) & (cal <= pd.Timestamp(Yr, 1, 1) - pd.Timedelta(days=15))  # 学習の結果ラベルが翌年に食い込まないよう15日空ける
     te = ok & (cal.year == Yr) | (pd.Series(cal.year == Yr, index=cal) & (cal > nk.index[valid][-1]))
     te = pd.Series(cal.year == Yr, index=cal)
-    med = X[tr].median()
+    med = X[tr].median().fillna(0)
     m = make_pipeline(StandardScaler(), LogisticRegression(C=0.05, class_weight="balanced", max_iter=500))
     m.fit(X[tr].fillna(med), y[tr])
     ptr = pd.Series(m.predict_proba(X[tr].fillna(med))[:, 1], index=cal[tr])
