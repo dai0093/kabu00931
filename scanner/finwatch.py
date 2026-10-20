@@ -57,7 +57,7 @@ groups = {}
 for g in dict.fromkeys(x[0] for x in L):
     r = [x for x in rows if x["g"] == g]
     if r:
-        groups[g] = {"n": len(r), "med_d1": round(st.median(x["d1"] for x in r), 1),
+        groups[g] = {"n": len(r), "med_dd": round(st.median(x["dd"] for x in r), 1), "med_d1": round(st.median(x["d1"] for x in r), 1),
                      "med_d5": round(st.median(x["d5"] for x in r), 1),
                      "n_flag": sum(1 for x in r if x["flag"])}
 flagged = sorted([x for x in rows if x["flag"]], key=lambda x: x["dd"])
@@ -66,8 +66,14 @@ out = {"updatedAt": datetime.now(JST).isoformat(timespec="minutes"), "th": TH, "
        "note": "非上場の運用会社（Cerberus, Golub本体, Sixth Street等）は報道監視。名簿は data/finwatch_source.txt"}
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 import fintree
+try:
+    _s = yf.download("^SOX", period="1mo", auto_adjust=False, progress=False)["Close"].squeeze().dropna()
+    sox5 = float((_s.iloc[-1] / _s.iloc[-6] - 1) * 100)
+except Exception:
+    sox5 = None
 tst, thit = fintree.state(groups)
-out["tree"] = {"state": tst, "hits": thit}
+strong, swhy = fintree.strong(groups, sox5)
+out["tree"] = {"state": tst, "hits": thit, "strong": strong, "strong_why": swhy, "sox5": None if sox5 is None else round(sox5, 1)}
 try:
     prev_tree = json.load(open("data/finwatch.json")).get("tree", {}).get("state", "ok")
 except Exception:
@@ -87,16 +93,21 @@ prev = json.load(open(SENT)) if os.path.exists(SENT) else {"names": []}
 new = [n for n in out["flagged"] if n not in prev["names"]]
 TOPIC = os.environ.get("NTFY_TOPIC")
 dk = [g for g, v in groups.items() if v["n_flag"] >= max(2, v["n"] // 4)]
+prev_strong = False
+try:
+    prev_strong = json.load(open("data/finwatch_sent.json")).get("strong", False)
+except Exception:
+    pass
 RANK = {"ok": 0, "near": 1, "lit": 2}
-if TOPIC and RANK[tst] > RANK[prev_tree] and "--no-notify" not in sys.argv:
+if TOPIC and (RANK[tst] > RANK[prev_tree] or (strong and not prev_strong)) and "--no-notify" not in sys.argv:
     q = urllib.parse.urlencode({"title": f"【ロジックツリー】金融機関株価が{'点灯' if tst=='lit' else '接近'}", "priority": "4",
                                 "click": "https://dai0093.github.io/kabu00931/signals.html"})
-    urllib.request.urlopen(urllib.request.Request(f"https://ntfy.sh/{TOPIC}?{q}", data=("\n".join(thit) + ("\n売りの検討：日経関連・半導体ETFの縮小を検討（自動売買はしません。判断は富士さん）" if tst=="lit" else "") + "\n根拠：検証16（10営業日内に日経-7%の発生率が平均の約" + ("3" if tst=="lit" else "2") + "倍）").encode("utf-8"), method="POST"), timeout=30)
+    urllib.request.urlopen(urllib.request.Request(f"https://ntfy.sh/{TOPIC}?{q}", data=("\n".join(thit) + ("\n【強警戒】" + "／".join(swhy) + "\n縮小の検討：日経関連・半導体ETFを半分程度に（自動売買はしません。判断は富士さん）" if strong else "") + "\n根拠：検証16（10営業日内に日経-7%の発生率が平均の約" + ("3" if tst=="lit" else "2") + "倍）").encode("utf-8"), method="POST"), timeout=30)
 if TOPIC and (new and (len(new) >= 2 or dk)) and "--no-notify" not in sys.argv:
     body = "新しく警戒：" + "、".join(new[:10]) + ("\n群で警戒：" + "、".join(dk) if dk else "") + \
            "\n閾値：1日≤-4% / 5日≤-8% / 60日高値比≤-20%（暫定）"
     q = urllib.parse.urlencode({"title": "【金融機関 株価警戒】", "priority": "4",
                                 "click": "https://dai0093.github.io/kabu00931/signals.html"})
     urllib.request.urlopen(urllib.request.Request(f"https://ntfy.sh/{TOPIC}?{q}", data=body.encode("utf-8"), method="POST"), timeout=30)
-json.dump({"names": out["flagged"], "at": out["updatedAt"]}, open(SENT, "w"), ensure_ascii=False)
+json.dump({"names": out["flagged"], "at": out["updatedAt"], "strong": strong}, open(SENT, "w"), ensure_ascii=False)
 # run 2026-10-20_16:25:10

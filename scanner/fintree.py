@@ -26,3 +26,16 @@ def apply(tree, st):
     tree["phase"] = ph
     tree["counts"] = {k: [c(k), len(tree["layers"][k])] for k in ("origin", "trans", "fund", "market")}
     return tree
+
+# 強警戒（検証21）：前半で決めた基準（下）のうち、2群（欧州銀・米銀・邦銀）以上が同時、または基準＋SOX5日≤-4.35%。
+# 後半（未見）で10営業日内に日経-7%の発生率が約3割（平均の約5倍、ただし信号は少数日）。
+BASE = [("欧州銀", "med_d1", -6), ("欧州銀", "med_d5", -15), ("米銀", "med_d1", -5), ("米銀", "med_d5", -10),
+        ("日本", "med_d1", -5), ("日本", "med_d5", -10), ("日本", "med_dd", -25)]
+def strong(groups, sox5=None):
+    g = {GN.get(k, k): v for k, v in groups.items()}
+    hit = [(n, m, t) for n, m, t in BASE if n in g and g[n].get(m) is not None and g[n][m] <= t]
+    ngrp = len({n for n, _, _ in hit})
+    why = []
+    if ngrp >= 2: why.append(f"{ngrp}群が同時（" + "・".join(sorted({n for n, _, _ in hit})) + "）")
+    if hit and sox5 is not None and sox5 <= -4.35: why.append(f"基準点灯＋SOX5日{sox5:.1f}%")
+    return bool(why), why
