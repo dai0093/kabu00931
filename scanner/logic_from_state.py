@@ -25,6 +25,9 @@ RULE = {
     "nfci": lambda v: "lit" if v >= 0 else "near" if v >= -0.20 else "ok",
     "vix": lambda v: "lit" if (val("vixd") or 0) >= 3 else "near" if v >= 25 else "ok",
     "pcdef": lambda v: "lit" if v >= 6.0 else "near" if v >= 5.5 else "ok",
+    "nkf": lambda v: "lit" if v <= -2.5 else "near" if v <= -1.5 else "ok",
+    "soxdd": lambda v: "lit" if v <= -20 else "near" if v <= -10 else "ok",
+    "frspread": lambda v: "lit" if v >= 150 else "near" if v >= 120 else "ok",
 }
 st = lambda k: "na" if val(k) is None or k not in RULE else RULE[k](val(k))
 a, b = st("us10"), st("jgb10")
@@ -34,9 +37,10 @@ L = {"origin": [["地政学", "lit" if f.get("geo") else "ok"], ["原油", st("b
                 ["AI債務", "lit" if f.get("ai") else "ok"],
                 ["私募信用", "lit" if (f.get("gate") or st("pcdef") == "lit") else st("pcdef")]],
      "trans": [["HY OAS", st("hy")], ["IG OAS", st("ig")], ["AI→銀行", "near" if f.get("aibank") else "ok"],
+               ["欧州ソブリン", st("frspread")],
                ["逆イールド", st("t10y2y")]],
      "fund": [["NFCI", st("nfci")], ["生保", "lit" if f.get("ins") else "ok"]],
-     "market": [["VIX", st("vix")]]}
+     "market": [["VIX", st("vix")], ["日経先物", st("nkf")], ["SOX下落", st("soxdd")]]}
 c = lambda k: sum(1 for x in L[k] if x[1] == "lit")
 r, t, fu, mk = c("origin"), c("trans"), c("fund"), c("market")
 ph = 0
