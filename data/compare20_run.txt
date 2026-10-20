@@ -1,15 +1,19 @@
 検証期間 2012-01-04〜2026-10-19  営業日3617  平均発生率 5.9%
 AUC 0.570
-Traceback (most recent call last):
-  File "/home/runner/work/kabu00931/kabu00931/scanner/compare20.py", line 45, in <module>
-    s = (P >= th) & oos
-         ^^^^^^^
-  File "/opt/hostedtoolcache/Python/3.11.17/x64/lib/python3.11/site-packages/pandas/core/ops/common.py", line 85, in new_method
-    return method(self, other)
-           ^^^^^^^^^^^^^^^^^^^
-  File "/opt/hostedtoolcache/Python/3.11.17/x64/lib/python3.11/site-packages/pandas/core/arraylike.py", line 62, in __ge__
-    return self._cmp_method(other, operator.ge)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/opt/hostedtoolcache/Python/3.11.17/x64/lib/python3.11/site-packages/pandas/core/series.py", line 6730, in _cmp_method
-    raise ValueError("Can only compare identically-labeled Series objects")
-ValueError: Can only compare identically-labeled Series objects
+上位20%（学習期間で決めた閾値）: 389日 発生12%（×2.0）
+上位5%（学習期間で決めた閾値）: 118日 発生14%（×2.3）
+
+## 検証期間全体（コスト込み）
+①持ちっぱなし: 累積+658% 最大下落-32% ／ 縮小していた日0%
+②単独条件→全額現金(5日): 累積+536% 最大下落-34% ／ 縮小していた日9%
+③組み合わせ上位20%→50%(10日): 累積+376% 最大下落-26% ／ 縮小していた日32%
+④2段階(上位5%→0%、上位20%→50%): 累積+192% 最大下落-28% ／ 縮小していた日32%
+
+## 局面別
+コロナ 2020-01〜04  ①持 累積-16% 最大下落-31% ／ ②単 累積-7% 最大下落-7% ／ ③組 累積-11% 最大下落-20% ／ ④2 累積-9% 最大下落-10%
+2022年  ①持 累積-9% 最大下落-16% ／ ②単 累積-6% 最大下落-12% ／ ③組 累積-8% 最大下落-12% ／ ④2 累積-14% 最大下落-17%
+2024-07〜09  ①持 累積-4% 最大下落-25% ／ ②単 累積-20% 最大下落-28% ／ ③組 累積-2% 最大下落-17% ／ ④2 累積-13% 最大下落-18%
+2025-03〜05  ①持 累積+2% 最大下落-18% ／ ②単 累積-7% 最大下落-12% ／ ③組 累積+1% 最大下落-9% ／ ④2 累積-5% 最大下落-7%
+2026-09〜10  ①持 累積-3% 最大下落-9% ／ ②単 累積-3% 最大下落-9% ／ ③組 累積-3% 最大下落-9% ／ ④2 累積-3% 最大下落-9%
+
+今日(最新)の確率: 0.649 上位20%閾値 0.569 上位5%閾値 0.783 → 上位20%
