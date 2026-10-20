@@ -24,6 +24,24 @@ def apply(tree, st):
     if fu: ph = 4
     if fu and mk >= 2: ph = 5
     tree["phase"] = ph
+    # 資産ごとの段階（暫定・未検証）：資産に関係する項目だけで同じ計算をする
+    AS = {"日経平均": None,
+          "200A（半導体）": {"origin": ["地政学", "日米金利", "AI債務"], "trans": ["HY OAS", "AI→銀行", "金融機関株価"], "fund": None, "market": None},
+          "SOXL": {"origin": ["日米金利", "AI債務"], "trans": ["HY OAS", "IG OAS"], "fund": None, "market": ["VIX", "SOX下落"]}}
+    by = {}
+    for an, sel in AS.items():
+        ly = {k: [x for x in v if sel is None or sel.get(k) is None or x[0] in sel[k]] for k, v in tree["layers"].items()}
+        cc = lambda k: sum(1 for x in ly[k] if x[1] == "lit")
+        r2, t2, f2, m2 = cc("origin"), cc("trans"), cc("fund"), cc("market")
+        p2 = 0
+        if r2: p2 = 1
+        if t2 >= 1: p2 = 2
+        if t2 >= 2: p2 = 3
+        if f2: p2 = 4
+        if f2 and m2 >= 2: p2 = 5
+        by[an] = {"phase": p2, "lit": {"起点": r2, "信用": t2, "資金": f2, "市場": m2}, "items": sum(len(v) for v in ly.values())}
+    tree["byAsset"] = by
+    tree["byAssetNote"] = "資産ごとの段階は暫定。どの項目をどの資産に関係づけるかの根拠は未検証"
     tree["counts"] = {k: [c(k), len(tree["layers"][k])] for k in ("origin", "trans", "fund", "market")}
     return tree
 

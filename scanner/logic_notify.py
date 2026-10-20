@@ -11,7 +11,7 @@ import urllib.request
 
 TOPIC = os.environ.get("NTFY_TOPIC", "")
 LINK = "https://dai0093.github.io/kabu00931/signals.html#logic"
-LAB = {"lit": "点灯", "near": "接近", "ok": "未点灯", "na": "未取得"}
+LAB = {"lit": "点灯", "near": "接近", "ok": "未点灯", "na": "未取得", "stale": "期限切れ"}
 
 cur = json.load(open("data/logic_tree.json", encoding="utf-8"))
 try:

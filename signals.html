@@ -362,19 +362,20 @@ function render(){
  // ロジックツリー
  const lt=document.getElementById('lt');
  if(!LT){lt.innerHTML='<div class="empty">ロジックツリーのデータなし</div>'}else{
-  const hrs=(Date.now()-Date.parse(LT.updatedAt))/36e5,LB={lit:'点灯',near:'接近',ok:'未点灯',na:'未取得'};
+  const hrs=(Date.now()-Date.parse(LT.updatedAt))/36e5,LB={lit:'点灯',near:'接近',ok:'未点灯',na:'未取得',stale:'期限切れ'};
   const LN={origin:'起点',trans:'信用',fund:'資金',market:'市場'};
   lt.innerHTML=`<div class="ttl"><span class="nm">段階 ${LT.phase}：${esc(LT.phaseName)}</span></div>
    <div class="note">${esc(LT.phaseDesc)}</div>
    <div style="display:flex;gap:4px;margin:10px 0">${[0,1,2,3,4,5].map(i=>`<i style="flex:1;height:7px;border-radius:4px;background:${i<=LT.phase?'#e8b04b':'var(--panel2)'}"></i>`).join('')}</div>
    <div class="note">更新 ${esc(LT.updatedAt.replace('T',' ').slice(0,16))}${hrs>30?'　<b style="color:var(--up)">30時間以上更新されていません</b>':''}</div>
    ${Object.keys(LN).map(k=>`<div class="row"><span><b>${LN[k]}</b>　${LT.counts[k][0]} / ${LT.counts[k][1]} 点灯</span><span></span></div>
-     ${LT.layers[k].map(([n,st])=>`<div class="row" style="padding-left:12px"><span>${esc(n)}</span><b><span class="pill p-${st==='na'?'ok':esc(st)}">${LB[st]}</span></b></div>`).join('')}`).join('')}
+     ${LT.layers[k].map(([n,st])=>`<div class="row" style="padding-left:12px"><span>${esc(n)}</span><b><span class="pill p-${st==='na'||st==='stale'?'ok':esc(st)}">${LB[st]}</span></b></div>`).join('')}`).join('')}
    <div class="note" style="margin-top:10px"><b>4資産への経路</b></div>
    ${LT.assets.map(x=>`<div class="row"><span><b>${esc(x.name)}</b><br><span class="note">${esc(x.text)}</span></span><b style="white-space:nowrap">${esc(x.dir)}</b></div>`).join('')}
    <div class="note" style="margin-top:10px"><b>直近の事象</b></div>
    ${LT.events.slice(0,3).map(e=>`<div class="row"><span><span class="pill p-${e.state==='実行済み'?'lit':e.state==='接近'?'near':'ok'}" style="margin:0 6px 0 0">${esc(e.state)}</span>${esc(e.date)}<br>${esc(e.title)}<br><span class="note">${esc(e.impact)}</span></span></div>`).join('')}
-   ${LT.stale.length?`<div class="note">期限切れ ${LT.stale.length}系列：${LT.stale.map(x=>esc(x.name)).join('、')}（判定には使われていますが最新ではありません）</div>`:''}
+   ${LT.byAsset?`<div class="note" style="margin-top:8px"><b>資産ごとの段階（暫定）</b></div>${Object.entries(LT.byAsset).map(([n,v])=>`<div class="row"><span>${esc(n)}</span><b>段階${v.phase}　<span class="note">起点${v.lit['起点']}・信用${v.lit['信用']}・資金${v.lit['資金']}・市場${v.lit['市場']}</span></b></div>`).join('')}<div class="note">${esc(LT.byAssetNote||'')}</div>`:''}
+   ${LT.stale.length?`<div class="note">期限切れ ${LT.stale.length}系列：${LT.stale.map(x=>esc(x.name)).join('、')}（未点灯の項目は「期限切れ」と表示し、安全とは扱いません）</div>`:''}
    <div class="note"><a href="${safeUrl(LT.source)}" rel="noopener noreferrer" style="color:var(--dn)">市場リスクダッシュボードで詳細を見る</a></div>`}
  // 試運転
  const P=PP,pe=document.getElementById('paper');

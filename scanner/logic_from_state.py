@@ -57,6 +57,7 @@ PH = [["通常監視", "起点は点灯していません。"], ["起点発生",
 LIM = {"日次": 3, "週次": 9, "月次": 40, "四半期": 120}
 today = datetime.now(JST).date()
 stale = []
+stale_ids = set()
 for s in S["series"]:
     try:
         age = (today - datetime.strptime(s["observedAt"], "%Y-%m-%d").date()).days
@@ -64,12 +65,24 @@ for s in S["series"]:
         age = 9999
     if age > LIM.get(s.get("freq"), 30):
         stale.append({"name": s["name"], "observedAt": s.get("observedAt"), "freq": s.get("freq")})
+        stale_ids.add(s["id"])
 
+# 期限切れの扱い（仕様書の課題1）：古い値で「未点灯」を安全の根拠にしない。
+#  未点灯＋期限切れ → 「期限切れ」（判定不能。安全とは表示しない）／点灯・接近＋期限切れ → 状態は保持（自動解除しない）
+ITEM_SER = {"原油": ["brent"], "日米金利": ["us10", "jgb10"], "私募信用": ["pcdef"], "HY OAS": ["hy"], "IG OAS": ["ig"], "逆イールド": ["t10y2y"],
+            "NFCI": ["nfci"], "VIX": ["vix"], "日経先物": ["nkf"], "SOX下落": ["soxdd"], "欧州ソブリン": ["frspread"]}
+unjudged, held = [], []
+for ly in L:
+    for it in L[ly]:
+        ids = ITEM_SER.get(it[0])
+        if ids and all(i in stale_ids for i in ids if i in ser):
+            if it[1] == "ok": it[1] = "stale"; unjudged.append(it[0])
+            elif it[1] in ("lit", "near"): held.append(it[0])
 out = {"updatedAt": S.get("updatedAt"), "builtAt": datetime.now(JST).isoformat(timespec="minutes"),
        "phase": ph, "phaseName": PH[ph][0], "phaseDesc": PH[ph][1],
        "counts": {"origin": [r, len(L["origin"])], "trans": [t, len(L["trans"])],
                   "fund": [fu, len(L["fund"])], "market": [mk, len(L["market"])]},
-       "layers": L, "assets": S.get("assets", []),
+       "layers": L, "unjudged": unjudged, "held": held, "assets": S.get("assets", []),
        "values": {k: {"value": ser[k]["value"], "unit": ser[k].get("unit", ""), "observedAt": ser[k].get("observedAt"),
                       "change": ser[k].get("change", ""), "source": ser[k].get("source", "")}
                   for k in ("vix", "us10", "jgb10", "brent", "hy", "ig", "t10y2y", "nfci", "usdjpy") if k in ser},
@@ -84,6 +97,8 @@ try:
     out = fintree.apply(out, fintree.state(_fw["groups"])[0])
     ph = out["phase"]; r, t, fu, mk = (out["counts"][k][0] for k in ("origin", "trans", "fund", "market"))
     out["phaseName"], out["phaseDesc"] = PH[ph]
+    if unjudged or held:
+        out["phaseDesc"] += (f"　※期限切れで判定不能：{'、'.join(unjudged)}（未点灯と扱わない）" if unjudged else "") + (f"　※期限切れのまま点灯・接近を保持：{'、'.join(held)}" if held else "")
 except Exception as _e:
     print("金融機関株価の反映なし", _e)
 json.dump(out, open("data/logic_tree.json", "w", encoding="utf-8"), ensure_ascii=False, indent=1)

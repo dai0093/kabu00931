@@ -1,9 +1,9 @@
 {
  "updatedAt": "2026-10-20T14:55:00+09:00",
- "builtAt": "2026-10-20T16:23+09:00",
+ "builtAt": "2026-10-20T21:33+09:00",
  "phase": 2,
  "phaseName": "通り道の予兆",
- "phaseDesc": "信用層に1つ点灯。",
+ "phaseDesc": "信用層に1つ点灯。　※期限切れで判定不能：IG OAS、逆イールド、NFCI、VIX（未点灯と扱わない）　※期限切れのまま点灯・接近を保持：私募信用、HY OAS、日経先物",
  "counts": {
   "origin": [
    4,
@@ -52,7 +52,7 @@
    ],
    [
     "IG OAS",
-    "ok"
+    "stale"
    ],
    [
     "AI→銀行",
@@ -64,7 +64,7 @@
    ],
    [
     "逆イールド",
-    "ok"
+    "stale"
    ],
    [
     "金融機関株価",
@@ -74,7 +74,7 @@
   "fund": [
    [
     "NFCI",
-    "ok"
+    "stale"
    ],
    [
     "生保",
@@ -84,7 +84,7 @@
   "market": [
    [
     "VIX",
-    "ok"
+    "stale"
    ],
    [
     "日経先物",
@@ -96,6 +96,17 @@
    ]
   ]
  },
+ "unjudged": [
+  "IG OAS",
+  "逆イールド",
+  "NFCI",
+  "VIX"
+ ],
+ "held": [
+  "私募信用",
+  "HY OAS",
+  "日経先物"
+ ],
  "assets": [
   {
    "name": "日経平均",
@@ -347,5 +358,38 @@
    "source": "https://www.cnbc.com/2026/10/18/iran-us-war-rezaei-operational-plan-shipping-attacks.html"
   }
  ],
- "source": "https://claude.ai/artifact/KJPgY7LSb8DMsdXt2A1Gst"
+ "source": "https://claude.ai/artifact/KJPgY7LSb8DMsdXt2A1Gst",
+ "byAsset": {
+  "日経平均": {
+   "phase": 2,
+   "lit": {
+    "起点": 4,
+    "信用": 1,
+    "資金": 0,
+    "市場": 2
+   },
+   "items": 16
+  },
+  "200A（半導体）": {
+   "phase": 2,
+   "lit": {
+    "起点": 3,
+    "信用": 1,
+    "資金": 0,
+    "市場": 2
+   },
+   "items": 11
+  },
+  "SOXL": {
+   "phase": 2,
+   "lit": {
+    "起点": 2,
+    "信用": 1,
+    "資金": 0,
+    "市場": 1
+   },
+   "items": 8
+  }
+ },
+ "byAssetNote": "資産ごとの段階は暫定。どの項目をどの資産に関係づけるかの根拠は未検証"
 }
