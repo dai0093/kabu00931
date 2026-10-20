@@ -51,3 +51,4 @@ if "t10y2y" not in out:
 out["_at"] = datetime.now(JST).isoformat(timespec="minutes")
 json.dump(out, open("data/series_live.json", "w", encoding="utf-8"), ensure_ascii=False, indent=1)
 print({k: (v["value"], v["observedAt"]) for k, v in out.items() if k != "_at"})
+# run 21:50:50
