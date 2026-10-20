@@ -61,6 +61,7 @@ input{width:100%;font:inherit;font-size:18px;padding:10px;border-radius:8px;bord
 <div class="panel" id="lock" style="display:none"></div>
 <div class="panel notice" id="notice"></div>
 <div class="panel" id="guard"></div>
+<div class="panel" id="finw"></div>
 <div class="panel" id="risk"></div>
 <h2 id="logic">ロジックツリー（市場リスクダッシュボード）</h2><div class="panel" id="lt"></div>
 
@@ -284,6 +285,13 @@ function render(){
    <label>株数（口数）</label><input id="rs${c}" type="number" inputmode="numeric" value="${+h.shares||''}">
    <div class="btns"><button class="pri" onclick="reg('${c}')">登録</button></div>
 </div>`}).join('');
+ // 金融機関の株価監視（私募信用運用会社・G-SIB・BDC）
+ {const e=document.getElementById('finw');if(FW&&FW.rows){const fl=FW.rows.filter(x=>x.flag.length).sort((a,b)=>a.dd-b.dd);
+  e.className='panel'+(fl.length>=3?' alert':'');
+  e.innerHTML=`<div class="ttl"><span class="nm">金融機関の株価</span><span class="badge ${fl.length?'b-buy':'b-sell'}">警戒${fl.length}／${FW.rows.length}</span></div>
+  ${Object.entries(FW.groups).map(([g,v])=>`<div class="row"><span>${esc(g)}（${v.n}社）</span><b>前日 ${v.med_d1}% ／ 5日 ${v.med_d5}%${v.n_flag?` <span class="pill p-lit">警戒${v.n_flag}</span>`:''}</b></div>`).join('')}
+  ${fl.slice(0,8).map(x=>`<div class="row"><span>${esc(x.name)}</span><b>${x.d1}% ／ ${x.d5}% ／ 高値比${x.dd}%</b></div>`).join('')}
+  <div class="note">中央値。警戒＝前日≤${FW.th.d1}% か 5日≤${FW.th.d5}% か 60日高値比≤${FW.th.dd}%（暫定値）。更新 ${esc(FW.updatedAt)}。非上場の運用会社は報道監視</div>`}else e.style.display='none'}
  // 暴落よけ（検証8・10・11・12）
  {const G=S&&S.etf_stop,M=MG||{},td=new Date(Date.now()+9*36e5).toISOString().slice(0,10),mt=M.date===td;
   const warn=mt&&(M.sox_alert||M.term_alert);
@@ -397,7 +405,7 @@ function render(){
 }
 
 (async()=>{
- [S,C,BT,PP,LT,MG]=await Promise.all([get('data/signals.json'),get('data/candles.json'),get('data/compare6.json'),get('data/paper.json'),get('data/logic_tree.json'),get('data/morning.json')]);
+ [S,C,BT,PP,LT,MG,FW]=await Promise.all([get('data/signals.json'),get('data/candles.json'),get('data/compare6.json'),get('data/paper.json'),get('data/logic_tree.json'),get('data/morning.json'),get('data/finwatch.json')]);
  if(S){const [y,m,d]=S.market_date.split('-');document.getElementById('hdate').textContent=`${+m}月${+d}日`;
   document.getElementById('hst').textContent='✓ 判定完了';{const W='日月火水木金土',u=new Date(S.updated.replace(' ','T')+':00+09:00'),md=new Date(S.market_date+'T00:00:00+09:00');
   let n=new Date(md.getTime()+864e5);while([0,6].includes(n.getUTCDay()===undefined?0:new Date(n.getTime()+9*36e5).getUTCDay()))n=new Date(n.getTime()+864e5);

@@ -1,0 +1,637 @@
+プライベートクレジット運用会社・大手証券／投資銀行 調査一覧
+調査基準日：2026年10月20日（日本時間）
+形式：UTF-8 テキスト
+
+【収録範囲と「漏れなく」の扱い】
+金融危機の波及経路を把握するため、プライベートクレジットの運用主体と、リーマン・ブラザーズ型の証券・市場取引を担う金融機関を収録した。
+「リーマンと同レベル」に世界共通の数値基準はないため、現在の金融機関には次の客観的な名簿を採用する。
+・FSB公表の2025年G-SIB全29銀行グループ。当日時点では2026年版の公表前。
+・NY連銀の2026年10月16日変更後のプライマリーディーラー全25主体。
+・上記名簿外の補足として、アジア太平洋等の大手証券・金融機関を別記。
+この2つの公式名簿については全件を収録した。ただしG-SIBは銀行の制度上の区分であり、リーマンとの規模・破綻確率の同一性を意味しない。プライマリーディーラーも重要な市場参加者の名簿であり、全社が同じ規模ではない。
+
+プライベートクレジットについては、世界の全運用会社・各国子会社・全ファンドを網羅する統一公的登録簿を今回の調査では確保できていない。そのため「世界の全社を漏れなく」とは保証しない。確認できた主要な会社・事業部門・運用ブランドを71項目収録した。これは独立した71企業グループという意味ではない。
+子会社・部門・旧ブランドを含み、グループ重複を明記した。各項目の出典は主に公式の事業説明・買収発表。
+規模順位、危険度順位、破綻予測の一覧ではない。上場運用会社の株価と、傘下ファンドの損失・償還制限、親銀行の信用力は別々に評価する必要がある。
+ファンド運用資産残高（AUM）は顧客資産を含み、運用会社の自己資産やリーマンの貸借対照表総資産とは直接比較できない。
+
+【用語】
+・プライベートクレジット：公募債券市場や通常の銀行貸出以外を通じて供給される私募融資・債務投資。直接融資のほか、不動産、インフラ、資産担保金融等を含むことがある。
+・運用会社：投資家から預かった資金を運用する主体。
+・ファンド／BDC：融資資産を保有する投資主体。親運用会社と同一ではない。
+・ソブリン：国家・政府。ソブリン債は国の債務、SWFは政府系運用基金。
+・G-SIB：国際金融システム上重要な銀行グループ。
+・プライマリーディーラー：NY連銀と金融政策上の市場取引を行う取引先。
+
+============================================================
+1. プライベートクレジットの主要運用主体・ブランド：71項目
+============================================================
+注：国・地域は主な活動地域の目安。法的な本店所在地の統一比較ではない。
+掲載名が運用会社、部門、ブランドのどれであるかは説明欄を参照。
+番号順は規模順位ではない。
+
+01. アレス / Ares Management
+地域：米国
+概要：企業直接融資・資産担保金融。上場運用会社 ARES。
+出典：https://www.ares.com/businesses-and-products/our-businesses/credit
+
+02. アポロ / Apollo Global Management
+地域：米国
+概要：企業融資・投資適格私募債・資産担保金融。APO。
+出典：https://www.apollo.com/strategies/asset-management/credit
+
+03. ブラックストーン / Blackstone / BXCI
+地域：米国
+概要：企業直接融資・インフラ・保険向け運用。BX。BXCIは事業部門。
+出典：https://www.blackstone.com/our-businesses/credit-and-insurance-bxci/
+
+04. KKR / KKR Credit
+地域：米国
+概要：優先・劣後融資、資産担保金融。KKR。
+出典：https://www.kkr.com/invest/credit
+
+05. ブルー・アウル / Blue Owl Capital
+地域：米国
+概要：企業直接融資、技術企業融資、資産担保金融。OWL。
+出典：https://www.blueowl.com/credit
+
+06. ブラックロック / BlackRock
+地域：米国
+概要：HPS・成長企業向け融資等を含む運用グループ。BLK。
+出典：https://www.blackrock.com/corporate/newsroom/media/press-releases/blackrock-acquires-hps-investment-partners
+
+07. HPS / HPS Investment Partners
+地域：米国
+概要：企業私募融資。2025年7月ブラックロックによる買収完了。前項とグループ重複。
+出典：https://www.hpspartners.com/our-solutions/corporate-private-credit
+
+08. クレオス / Kreos Capital / BlackRock Growth Debt
+地域：欧州
+概要：成長企業向け融資。2023年ブラックロックに買収。親会社と重複。
+出典：https://www.blackrock.com/institutions/en-global/kreoscapital
+
+09. ブルックフィールド / Brookfield Credit
+地域：カナダ・世界
+概要：企業融資・実物資産融資・資産担保金融等のグループ。
+出典：https://www.brookfield.com/about-us/capabilities/credit
+
+10. オークツリー / Oaktree Capital Management
+地域：米国
+概要：プライベートクレジット・特殊状況・不良債権。ブルックフィールド系。
+出典：https://www.oaktreecapital.com/strategies/credit
+
+11. カーライル / Carlyle Global Credit
+地域：米国
+概要：企業直接融資・資産担保金融・実物資産クレジット。CG。
+出典：https://www.carlyle.com/our-firm/global-credit
+
+12. TPGアンジェロ・ゴードン / TPG Angelo Gordon
+地域：米国
+概要：企業クレジット・直接融資・ストラクチャードクレジット。TPG傘下。
+出典：https://www.tpg.com/news-and-insights/tpg-completes-acquisition-of-angelo-gordon?stream=business
+
+13. ツイン・ブルック / Twin Brook
+地域：米国
+概要：中小・中堅企業への直接融資。TPG Angelo Gordon系で前項と重複。
+出典：https://www.tpg.com/news-and-insights/navigating-the-future-of-credit-markets-perspectives-from-tpg-angelo-gordon-and-twin-brook
+
+14. ベイン・キャピタル / Bain Capital Credit / Special Situations
+地域：米国・世界
+概要：企業クレジット・特殊状況投資・柔軟な資金供給。
+出典：https://www.baincapital.com/business
+
+15. アンタレス / Antares Capital
+地域：米国
+概要：PE傘下の中堅企業への優先担保付融資。CPP Investmentsが支援。
+出典：https://www.antares.com/our-platform/private-credit/
+
+16. ゴラブ / Golub Capital
+地域：米国
+概要：PE傘下企業向け直接融資。運用会社とGolub Capital BDCは別主体。
+出典：https://golubcapital.com/for-investors/private-credit/
+
+17. シックス・ストリート / Sixth Street
+地域：米国・欧州
+概要：中堅・大企業向け直接融資、買収・成長・救済資金。
+出典：https://sixthstreet.com/direct-lending/
+
+18. フォートレス / Fortress Investment Group
+地域：米国・世界
+概要：企業直接融資、資産担保金融、特殊状況等。
+出典：https://www.fortress.com/what-we-do/corporate-credit
+
+19. サーベラス / Cerberus Capital Management / Cerberus Business Finance
+地域：米国
+概要：中堅企業向け優先担保付融資等。
+出典：https://www.cerberus.com/investment-platforms/direct-lending/
+
+20. センターブリッジ / Centerbridge Partners
+地域：米国
+概要：直接融資、特殊状況、保険向けクレジット等。
+出典：https://www.centerbridge.com/private-credit
+
+21. オーク・ヒル / Oak Hill Advisors / OHA
+地域：米国・欧州
+概要：私募融資・企業クレジット。T. Rowe Price傘下。
+出典：https://www.oakhilladvisors.com/strategies/
+
+22. BSP / Benefit Street Partners
+地域：米国・欧州
+概要：直接融資・不動産・資産担保金融等。Franklin Templeton傘下。旧Alcentraは2026年BSPブランドへ統合。
+出典：https://www.bspcredit.com/us/news-and-insights/press-releases/franklin-templeton-aligns-alternative-credit-firms-under-bsp-brand/
+
+23. アペラ / Apera Asset Management
+地域：欧州
+概要：欧州企業への直接融資。BSP / Franklin Templeton系。
+出典：https://www.bspcredit.com/international/about-us/overview/
+
+24. チャーチル / Churchill Asset Management
+地域：米国
+概要：中堅企業融資。Nuveen Private Capitalの構成会社。
+出典：https://www.churchillam.com/
+
+25. アークモント / Arcmont Asset Management
+地域：欧州
+概要：欧州企業向け資金供給。ChurchillとNuveen Private Capitalを構成。
+出典：https://www.churchillam.com/who-we-are/
+
+26. ベアリングス / Barings
+地域：米国・世界
+概要：直接融資・私募債・インフラ融資。MassMutual傘下。
+出典：https://www.barings.com/en-us/guest/strategies/private-credit
+
+27. PGIM / PGIM Private Capital等
+地域：米国・世界
+概要：私募融資・中堅企業直接融資等。Prudential Financial系。
+出典：https://www.pgim.com/us/en/institutional/about/newsroom/press-releases/pgim-to-acquire-remaining-interest-in-deerpath-capital
+
+28. ディアパス / Deerpath Capital
+地域：米国
+概要：小規模中堅企業向け優先融資。PGIM系。2026年7月に残余25%取得で合意、当該発表時点では承認条件付き。完了と混同しない。
+出典：https://www.deerpathcapital.com/firm/
+
+29. PIMCO / PIMCO
+地域：米国・世界
+概要：企業・不動産・資産担保分野等のプライベートクレジット。
+出典：https://www.pimco.com/us/en/investment-strategies/alternative-investments
+
+30. アリアンツGI / Allianz Global Investors
+地域：欧州・世界
+概要：プライベートデットの運用・セカンダリー投資。PIMCOとは運用主体が異なる。
+出典：https://www.allianzgi.com/en/press-centre/media/press-releases/05122025-allianzgis-second-private-debt-secondaries-fund-holds-first-close-at-eur-1-2-billion
+
+31. ゴールドマン・サックスAM / Goldman Sachs Asset Management
+地域：米国・世界
+概要：銀行グループ傘下の私募融資運用。銀行グループ欄と重複。
+出典：https://www.goldmansachs.com/insights/articles/private-credits-outlook-amid-rising-volatility
+
+32. モルガン・スタンレーPC / Morgan Stanley Private Credit
+地域：米国・欧州
+概要：中堅企業への直接融資・機動的企業クレジット。銀行グループ欄と重複。
+出典：https://www.morganstanley.com/im/private-credit.html
+
+33. JPモルガンAM / J.P. Morgan Asset Management
+地域：米国・世界
+概要：企業・不動産融資、特殊状況、クレジットセカンダリー等。銀行グループ欄と重複。
+出典：https://am.jpmorgan.com/us/en/asset-management/institutional/investment-strategies/alternatives/private-credit/
+
+34. ニューバーガー / Neuberger Berman / Neuberger
+地域：米国・世界
+概要：企業直接融資、資本ソリューション、資産担保金融。
+出典：https://www.nb.com/what-we-do/private-markets-and-alternatives/private-credit
+
+35. ニュー・マウンテン / New Mountain Capital
+地域：米国
+概要：中堅企業向け企業融資。
+出典：https://www.newmountaincapital.com/our-strategies/credit/
+
+36. ケイン・アンダーソン / Kayne Anderson
+地域：米国
+概要：中堅企業向け直接融資、不動産・インフラ融資。
+出典：https://www.kayneanderson.com/credit/
+
+37. クレセント / Crescent Capital Group
+地域：米国・欧州
+概要：中堅企業向け優先・劣後融資。
+出典：https://www.crescentcap.com/private-credit/
+
+38. シルバー・ポイント / Silver Point Capital
+地域：米国
+概要：企業への直接融資、特殊状況等。
+出典：https://www.silverpointcapital.com/our-strategies/direct-lending/
+
+39. H.I.G.ホワイトホース / H.I.G. WhiteHorse
+地域：米国・欧州
+概要：H.I.G. Capital系の企業直接融資。
+出典：https://hig.com/news/h-i-g-whitehorse-europe-hires-andy-armah-kwantreng-and-marimba-odundo-mendez-to-lead-its-uk-direct-lending-platform/
+
+40. SVP / Strategic Value Partners
+地域：米国・欧州
+概要：私募クレジット・特殊状況・再建投資。
+出典：https://www.svpglobal.com/investment-platform/
+
+41. デビッドソン・ケンプナー / Davidson Kempner
+地域：米国・世界
+概要：企業私募融資・構造化金融・特殊状況。
+出典：https://www.davidsonkempner.com/approach
+
+42. ヴァルデ / Värde Partners
+地域：米国・欧州・アジア
+概要：資産担保金融・不動産融資・アジア私募融資等。
+出典：https://varde.com/
+
+43. キャッスルレイク / Castlelake
+地域：米国・世界
+概要：航空機・消費者金融等の資産担保型プライベートクレジット。
+出典：https://www.castlelake.com/
+
+44. アンカレッジ / Anchorage Capital Group / Anchorage Capital Advisors
+地域：米国・欧州
+概要：クレジット・特殊状況・非流動資産。別法人・旧来ファンドの区分に注意。
+出典：https://anchoragecap.com/
+
+45. モンロー / Monroe Capital
+地域：米国
+概要：小規模中堅企業融資、資産担保金融等。
+出典：https://monroecap.com/about-us-2/
+
+46. ICG / Intermediate Capital Group / ICG
+地域：欧州・北米等
+概要：優先融資・中堅企業私募融資。
+出典：https://www.icgam.com/what-we-do/private-debt/
+
+47. CVCクレジット / CVC Credit
+地域：欧州・北米
+概要：企業直接融資・資本ソリューション。
+出典：https://www.cvc.com/strategies/credit/private-credit/
+
+48. CVCマラソン / CVC Marathon / 旧Marathon Asset Management
+地域：米国・世界
+概要：資産担保金融・不動産・機動的クレジット。CVCが2026年買収完了。前項とグループ重複。
+出典：https://www.cvc.com/media/news/2026/completion-of-cvc-s-acquisition-of-marathon-asset-management/
+
+49. ヘイフィン / Hayfin Capital Management
+地域：欧州
+概要：企業直接融資・特殊状況・医療・海運金融。
+出典：https://www.hayfin.com/strategies/private-credit/
+
+50. ペンバートン / Pemberton Asset Management
+地域：欧州
+概要：企業直接融資、NAV・GP向け資金供給等。
+出典：https://pembertonam.com/about-us/
+
+51. アルディアン / Ardian
+地域：欧州
+概要：中堅企業直接融資、NAV金融。
+出典：https://www.ardian.com/expertise/credit/private-credit
+
+52. ティケオー / Tikehau Capital
+地域：欧州・世界
+概要：企業融資・クレジットセカンダリー・特殊状況等。
+出典：https://www.tikehaucapital.com/en/expertise/credit
+
+53. ブリッジポイント / Bridgepoint Credit
+地域：欧州
+概要：企業直接融資・クレジット機会投資。
+出典：https://www.bridgepointgroup.com/investment-strategies/credit
+
+54. ペルミラ / Permira Credit
+地域：欧州
+概要：直接融資・戦略的クレジット機会等。
+出典：https://www.permira.com/contact-us/permira-credit
+
+55. ユーラゼオ / Eurazeo
+地域：欧州
+概要：中小・中堅企業の直接融資・資産担保金融。
+出典：https://www.eurazeo.com/en/businesses/private-debt
+
+56. M&G / M&G Investments
+地域：欧州
+概要：企業直接融資・分散型私募融資等。
+出典：https://www.mandg.com/investments/professional-investor/en-lu/solutions/investment-options/private-markets
+
+57. Pキャピタル / P Capital Partners / PCP
+地域：北欧・欧州
+概要：企業直接融資。M&Gの私募資産プラットフォームに掲載。前項と関連。
+出典：https://www.mandg.com/investments/professional-investor/en-lu/solutions/investment-options/private-markets
+
+58. キャプザ / CAPZA
+地域：欧州
+概要：中小・中堅企業向け優先・ユニトランシェ融資。BNP Paribas Asset Management Alts系。
+出典：https://capza.co/
+
+59. カルテシア / Kartesia
+地域：欧州
+概要：小規模中堅企業への私募融資。
+出典：https://kartesia.com/
+
+60. ミュジニッチ / Muzinich & Co.
+地域：欧州・アジア・米国
+概要：中小企業への直接融資・協調融資・航空機金融。
+出典：https://www.muzinich.com/private-markets/private-debt
+
+61. パーク・スクエア / Park Square Capital
+地域：欧州
+概要：プライベートデット・優先および劣後融資分野。
+出典：https://www.parksquarecapital.com/perspectives/
+
+62. パートナーズ・グループ / Partners Group
+地域：スイス・世界
+概要：企業への優先・劣後直接融資等。
+出典：https://www.partnersgroup.com/
+
+63. アダムズ・ストリート / Adams Street Partners
+地域：米国・世界
+概要：PE関連取引の優先・劣後融資等。
+出典：https://www.adamsstreetpartners.com/strategies/private-credit/
+
+64. ハミルトン・レーン / Hamilton Lane
+地域：米国・世界
+概要：直接クレジット共同投資・複数運用会社への投資等。全てを自行組成する貸し手とは区別。
+出典：https://www.hamiltonlane.com/en-us/strategies/direct-credit-investments
+
+65. ステップストーン / StepStone Group
+地域：米国・世界
+概要：企業・不動産・インフラ等の私募債務投資・運用助言。
+出典：https://www.stepstonegroup.com/what-we-do/asset-classes/private-debt/
+
+66. チェイン / Cheyne Capital
+地域：欧州
+概要：不動産融資、企業の特殊状況資金供給。
+出典：https://www.cheynecapital.com/investment-strategies/real-estate/what-we-do/
+
+67. ケネディ・ウィルソン / Kennedy Wilson
+地域：米国・欧州
+概要：不動産担保融資・建設・つなぎ融資。一般企業融資中心の会社とは分野が異なる。
+出典：https://www.kennedywilson.com/us-commercial-real-estate-debt
+
+68. PAG / PAG Credit & Markets
+地域：アジア太平洋
+概要：企業向け私募融資・資金供給。
+出典：https://www.pag.com/en/credit-markets/
+
+69. シータウン / SeaTown
+地域：アジア太平洋
+概要：企業向け私募融資。2026年10月にSeviora内の運用会社統合計画が公表。
+出典：https://www.seatowninternational.com/fund/seatown-private-credit-fund/
+
+70. メトリクス / Metrics Credit Partners
+地域：豪州・NZ等
+概要：ノンバンク企業融資・私募クレジット。
+出典：https://www.metrics.com.au/about-us
+
+71. チャレンジャーIM / Challenger Investment Management
+地域：豪州等
+概要：公募・私募クレジット運用。Fidanteの販売・提携運用会社網とは区別。
+出典：https://www.challenger.com.au/individual/what-we-offer/managed-investments
+
+============================================================
+2. 大手銀行・投資銀行：G-SIB全29グループ
+============================================================
+採用名簿：FSB「2025 List of Global Systemically Important Banks」
+公表日：2025年11月27日。基礎データは2024年末。
+2026年版は2026年11月公表予定とされており、今回採用していない。
+証券子会社、資産運用部門、保険会社の各リスクを親グループに整理する際の基礎名簿。
+BNY・State Street等の保管決済中心の銀行も含むため、全社がリーマン型投資銀行という意味ではない。
+出典：https://www.fsb.org/2025/11/2025-list-of-global-systemically-important-banks-g-sibs/
+公式名簿PDF：https://www.fsb.org/uploads/P271125.pdf
+
+01. JPモルガン・チェース / JPMorgan Chase（米国）
+02. バンク・オブ・アメリカ / BofA Securities・Merrill系 / Bank of America（米国）
+03. シティグループ / Citigroup（米国）
+04. ゴールドマン・サックス / Goldman Sachs（米国）
+05. モルガン・スタンレー / Morgan Stanley（米国）
+06. ウェルズ・ファーゴ / Wells Fargo（米国）
+07. BNY / ニューヨーク・メロン / Bank of New York Mellon（米国）
+08. ステート・ストリート / State Street（米国）
+09. HSBC / HSBC（英国）
+10. バークレイズ / Barclays（英国）
+11. スタンダード・チャータード / Standard Chartered（英国）
+12. BNPパリバ / BNP Paribas（フランス）
+13. クレディ・アグリコル・グループ / Groupe Crédit Agricole（フランス）
+14. BPCE / Natixis系 / Groupe BPCE（フランス）
+15. ソシエテ・ジェネラル / Société Générale（フランス）
+16. ドイツ銀行 / Deutsche Bank（ドイツ）
+17. ING / ING（オランダ）
+18. UBS / UBS（スイス）
+19. サンタンデール / Santander（スペイン）
+20. RBC / カナダロイヤル銀行 / Royal Bank of Canada（カナダ）
+21. TD / トロント・ドミニオン銀行 / Toronto Dominion（カナダ）
+22. 三菱UFJフィナンシャル・グループ / Mitsubishi UFJ Financial Group（日本）
+23. みずほフィナンシャルグループ / Mizuho Financial Group（日本）
+24. 三井住友フィナンシャルグループ / Sumitomo Mitsui Financial Group（日本）
+25. 中国工商銀行 / Industrial and Commercial Bank of China（中国）
+26. 中国農業銀行 / Agricultural Bank of China（中国）
+27. 中国銀行 / Bank of China（中国）
+28. 中国建設銀行 / China Construction Bank（中国）
+29. 交通銀行 / Bank of Communications（中国）
+
+============================================================
+3. 大手証券・市場取引主体：NY連銀プライマリーディーラー全25主体
+============================================================
+2026年10月16日付の改訂を反映。
+出典：https://www.newyorkfed.org/newsevents/news/markets/2026/an261016p
+更新履歴：https://www.newyorkfed.org/markets/primarydealers
+同じ親銀行グループが第2章にも登場する。件数は単純合算しない。
+以下は銀行グループ全体ではなく、指定された法人・支店・代理店の正式名。
+
+01. ASL Capital Markets Inc.
+02. Bank of Montreal, Chicago Branch
+03. Bank of Nova Scotia, New York Agency
+04. BNP Paribas Securities Corp.
+05. Barclays Capital Inc.
+06. BofA Securities, Inc.
+07. Cantor Fitzgerald & Co.
+08. Citigroup Global Markets Inc.
+09. Daiwa Capital Markets America Inc.
+10. Deutsche Bank Securities Inc.
+11. Goldman Sachs & Co. LLC
+12. HSBC Securities (USA) Inc.
+13. Jefferies LLC
+14. J.P. Morgan Securities LLC
+15. Mizuho Securities USA LLC
+16. Morgan Stanley & Co. LLC
+17. MUFG Securities Americas Inc.
+18. Nomura Securities International, Inc.
+19. RBC Capital Markets, LLC
+20. Santander US Capital Markets LLC
+21. SMBC Nikko Securities America, Inc.
+22. Societe Generale, New York Branch
+23. TD Securities (USA) LLC
+24. UBS Securities LLC
+25. Wells Fargo Securities, LLC
+
+名簿変更に関する補足：
+・MUFG Securities Americasは2026年1月15日に追加。
+・SMBC Nikko Securities Americaは2025年1月31日に追加。
+・NatWest Markets Securities Inc.は2026年10月16日に指定先から離脱。離脱を倒産・業務停止と解釈しない。
+・Credit Suisse AG, New York Branchは2023年6月30日に名簿から削除。旧Credit Suisseを現在の独立親グループとして重複計上しない。
+・日本の証券グループでは野村、大和もこの名簿に含まれる。日本の3メガバンクだけでは大手証券の監視対象をカバーできない。
+
+============================================================
+4. 公式名簿外の補足：地域の大手証券・市場金融主体
+============================================================
+以下は補足例であり、全地域・全証券会社を網羅する名簿ではない。
+
+01. NatWest / NatWest Markets（英国）
+    前章の指定先から離脱したが、英国の銀行・市場取引グループとして別途把握する。
+    出典：https://www.newyorkfed.org/newsevents/news/markets/2026/an261016p
+02. Macquarie Group（マッコーリー、豪州）
+    商品・為替・金利・クレジット取引、ファンド金融、資産金融等。
+    出典：https://www.macquarie.com/nz/en/about/company/commodities-and-global-markets.html
+03. CITIC Securities（中信証券、中国）
+    投資銀行、債券・株式取引、資産運用等。
+    出典：https://www.citics.citic/newsite/en/
+04. CSC Financial / China Securities（中信建投証券、中国）
+    投資銀行、取引・機関投資家向け業務、資産運用等。CITIC Securitiesとは別主体。
+    出典：https://www.citic.com/en/our_business/financial_services/
+05. Guotai Haitong Securities（国泰海通証券、中国）
+    2025年に国泰君安と海通証券が合併して成立。旧2社を独立した現行会社として重複計上しない。
+    出典：https://www.gtht.com/investor-relations/intro
+
+============================================================
+5. 2008年前後の主要投資銀行と、危機の起点・増幅に関わった主体
+============================================================
+前提：危機はリーマン1社から突然始まったわけではない。
+米住宅ローンの信用悪化が先行し、証券化商品の損失や短期資金調達への不信を通じて波及した。
+リーマン破綻は2008年9月の危機を急激に増幅した主要事件。
+参照：https://www.federalreservehistory.org/essays/great-recession-and-its-aftermath
+
+【当時の米大手独立投資銀行5社】
+01. Lehman Brothers（リーマン・ブラザーズ）
+    2008年9月15日、持株会社が破産申請。現在の独立した通常営業の大手投資銀行とは区別。
+02. Bear Stearns（ベアー・スターンズ）
+    2008年春、FRBの支援を伴いJPMorgan Chaseに買収された。
+03. Merrill Lynch（メリルリンチ）
+    危機下でBank of Americaへの売却に合意し、2009年に買収完了。
+04. Goldman Sachs（ゴールドマン・サックス）
+    2008年9月に銀行持株会社への移行が承認された。
+05. Morgan Stanley（モルガン・スタンレー）
+    同じく2008年9月に銀行持株会社への移行が承認された。
+
+出典：
+https://www.federalreservehistory.org/essays/support-for-specific-institutions
+https://www.federalreserve.gov/newsevents/pressreleases/bcreg20080921a.htm
+https://investor.bankofamerica.com/regulatory-and-other-filings/select-sec-filings/content/0000950123-09-000010/y73597exv99w1.htm
+https://www.federalreservehistory.org/essays/great-recession-and-its-aftermath
+
+【証券会社以外の主要な関連主体】
+06. AIG
+    保険・金融サービス会社。2008年9月にFRBの支援を受けた。
+07. Citigroup
+    大手銀行。危機時に個別の公的支援策の対象となった。
+08. Bank of America
+    大手銀行。Merrill Lynch買収を行い、危機時には個別支援策の対象にもなった。
+09. Washington Mutual Bank
+    預金取扱銀行。2008年9月25日に閉鎖され、銀行事業・預金はJPMorgan Chaseが引き受けた。
+10. Fannie Mae
+    住宅金融の政府支援企業。2008年9月にconservatorship（当局管理）入り。
+11. Freddie Mac
+    同じく住宅金融の政府支援企業。2008年9月にconservatorship入り。
+12. Reserve Primary Fund
+    証券会社ではなくMMF。リーマン関連損失を受け基準価額1ドルの維持ができず、MMF市場への不信が拡大。
+
+出典：
+https://www.federalreservehistory.org/essays/support-for-specific-institutions
+https://www.fdic.gov/resources/resolutions/bank-failures/in-brief/2008
+https://www.fhfa.gov/conservatorship/history
+
+【その他、当時の信用危機を調べる際の追加確認先】
+Countrywide Financial、New Century Financial、Wachovia、RBS、HBOS、Northern Rock、
+UBS、Credit Suisse、Fortis、Dexia、Hypo Real Estate、IKB、Ambac、MBIA等。
+この追加列挙は歴史調査用の索引であり、各社の経緯・当時の損失・現時点の法的承継先までを本資料で個別確定した一覧ではない。
+住宅ローン会社、銀行、金融保証会社が混在するため「リーマンと同じ証券会社」として扱わない。
+
+============================================================
+6. ソブリン・政府系ファンドとの関係
+============================================================
+国家そのもの、政府系ファンド、民間運用会社は別主体。
+ソブリン債の価格下落と、政府系ファンドが保有する私募融資の損失は同一ではない。
+
+01. Mubadala Investment Company（ムバダラ、UAE・アブダビ）
+    政府系投資主体。私募クレジットやFortressとの共同投資を展開。
+    出典：https://annual2025.mubadala.com/en/key-investment-highlights
+02. GIC（シンガポール）
+    政府資金を運用する主体。ファンド投資および企業の優先・劣後債務への投資を行う。
+    出典：https://report.gic.com.sg/managing-the-portfolio.html
+    政府との関係：https://www.gic.com.sg/who-we-are/faqs/
+03. Abu Dhabi Investment Authority / ADIA（アブダビ投資庁）
+    政府系ファンド。Cheyneの欧州不動産融資への出資例が報じられている。
+    出典：https://www.reuters.com/business/finance/cheyne-capital-wins-investment-abu-dhabis-adia-real-estate-debt-fund-2024-03-12/
+
+世界の政府系ファンド全件を列挙した章ではなく、本調査で私募融資への関与を確認した例。
+政府系ファンドの出資があっても、個別ファンドへの政府保証を意味しない。
+
+============================================================
+7. 買収・旧名称・親子関係を整理する際の要点
+============================================================
+・Blackstone（BX）とBlackRock（BLK）は別会社。
+・BlackRock、HPS、Kreosを3つの独立した親企業グループとして足さない。
+・BrookfieldとOaktreeを完全に無関係な運用会社として扱わない。
+・TPG Angelo GordonとTwin Brookを親子関係なしに集計しない。
+・旧AlcentraはBSPブランドへ統合済み。BSP・Alcentra・Aperaのグループ関係に注意。
+・ChurchillとArcmontはNuveen Private Capitalを構成。
+・PGIMとDeerpathの関係、および買収「合意」と「完了」を区別。
+・CVC Marathonは旧Marathon Asset Management。CVC Creditと同じグループ。
+・CAPZAは現在BNP Paribas Asset Management Altsの一部と公式に説明。
+・SeaTownは2026年10月8日にSeviora内の運用会社統合計画が公表されている。ブランド消滅・法的統合完了と断定しない。
+・SSG CapitalはAresが買収済みで、現行Aresのアジア事業と切り離して独立親会社扱いしない。
+・Credit Suisseを現行の独立した大手銀行グループとして扱わない。
+・国泰君安と海通証券を現在の国泰海通証券とは別の独立グループとして重複集計しない。
+
+追加出典：
+https://www.ares.com/who-we-are/our-story
+https://www.seatowninternational.com/newsroom/
+
+============================================================
+8. 金融危機との比較に必要な確認項目
+============================================================
+この資料は会社の名簿であり、各社の足元の健全性比較は実施していない。
+名簿から危機監視へ進む場合は、最低限以下を別途収集する。
+
+A. ファンド・融資資産
+・延滞、利払い停止（non-accrual）、債務不履行、条件変更を伴う再編。
+・利息を現金で受け取らず元本に加えるPIKの比率と増減。
+・NAVの評価減、第三者評価、株価とNAVの乖離。
+・特定の借り手・ソフトウェア・AI設備・不動産等への集中。
+・償還請求と実際の買戻し額、契約上の制限と臨時停止の区別。
+・ファンド借入、CLO、NAVローン等の多層的な借入。
+
+B. 運用会社・親グループ
+・自己資金による投資額、保証・支援義務、手数料収入の減少。
+・親会社の資産と顧客ファンドの資産を分ける。
+・ファンド損失が親会社損失に波及する法的経路を確認する。
+
+C. 銀行・証券会社
+・ファンド向け融資、融資枠、倉庫融資、レポ、デリバティブ、TRS。
+・ヘッジ相手先の支払能力、担保不足、追加証拠金。
+・短期調達依存、資金繰り、資本比率、格付け。
+・ソブリン債・商業不動産・私募融資の複合損失。
+
+2008年の投資銀行は短期資金の借換え停止が重要な波及経路だった。
+現在の私募融資には長期の閉鎖型資金もある一方、半流動型商品、多層借入、評価の遅れ、銀行との結び付きが問題になり得る。
+会社名の一致や運用残高だけで「次のリーマン」とは判定できない。
+参照：IMF Global Financial Stability Report, April 2024, Chapter 2
+https://www.imf.org/en/publications/gfsr/issues/2024/04/16/global-financial-stability-report-april-2024
+
+============================================================
+9. 収録件数・更新基準
+============================================================
+・プライベートクレジット：71項目（会社・部門・ブランド。親子重複あり）。
+・G-SIB：公式名簿全29銀行グループ。
+・NY連銀プライマリーディーラー：改訂後の公式名簿全25主体。
+・名簿外の地域補足：5項目。
+・2008年関連の本文：12主体＋歴史調査用追加索引。
+・ソブリン関連：関与を確認した3主体。
+章をまたいだ親子・同一主体の重複があるため、総企業数として合算しない。
+
+未収録となり得る範囲：
+小規模・地域特化の運用会社、各国の証券会社全社、各ファンド・SPV、ベンチャーデット会社全社、
+不動産・インフラ融資専業者全社、保険会社・再保険会社全社、政府系ファンド全社。
+したがって本資料は「主要機関を広く収録し、指定した2つの公式名簿を全件照合した一覧」である。
+
+更新時は、FSB年次名簿、NY連銀の追加・削除履歴、各社の買収完了発表、旧ブランドの統合を優先して確認する。
+出典の公表日と調査基準日は異なる。公式ページ上の資産残高も四半期末等の数字であり、10月20日のリアルタイム残高を意味しない。
+
+以上
+
