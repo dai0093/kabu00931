@@ -13,6 +13,19 @@ src = open(sys.argv[1], encoding="utf-8").read()
 m = re.search(r'<script id="state" type="application/json">\s*(\{.*?\})\s*</script>', src, re.S)
 S = json.loads(m.group(1) if m else src)
 
+# 元の状態を保存（Actionsが自動取得値を重ねて再計算できるように）。株ツール側で期限切れ系列を自動更新するため。
+import os
+if m and os.path.isdir("data"):
+    json.dump(S, open("data/risk_state.json", "w", encoding="utf-8"), ensure_ascii=False)
+# 自動取得した新しい値（scanner/series_refresh.py）で、観測日が新しい系列だけ上書き。取れなかった系列は触らない。
+try:
+    _live = json.load(open("data/series_live.json", encoding="utf-8"))
+    for _s in S["series"]:
+        _l = _live.get(_s["id"])
+        if _l and str(_l["observedAt"]) > str(_s.get("observedAt", "")):
+            _s.update({k: _l[k] for k in ("value", "observedAt", "change", "source")})
+except Exception:
+    pass
 ser = {s["id"]: s for s in S["series"]}
 val = lambda k: ser[k]["value"] if k in ser and isinstance(ser[k].get("value"), (int, float)) else None
 RULE = {

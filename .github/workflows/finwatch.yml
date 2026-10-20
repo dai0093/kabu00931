@@ -7,7 +7,7 @@ on:
     - cron: "10 22 * * 1-5"   # 7:10 JST
   workflow_dispatch:
   push:
-    paths: [".github/workflows/finwatch.yml", "scanner/finwatch.py"]
+    paths: [".github/workflows/finwatch.yml", "scanner/finwatch.py", "scanner/series_refresh.py", "scanner/logic_from_state.py"]
 permissions:
   contents: write
 concurrency: data-write
@@ -17,10 +17,12 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - run: pip install yfinance pandas
+      - run: python3 scanner/series_refresh.py || echo "系列更新失敗"
+      - run: python3 scanner/logic_from_state.py data/risk_state.json || echo "ロジックツリー再計算失敗"
       - run: python3 scanner/finwatch.py
         env:
           NTFY_TOPIC: ${{ secrets.NTFY_TOPIC }}
       - run: |
           git config user.name "kabu-bot"
           git config user.email "kabu-bot@users.noreply.github.com"
-          git add data/finwatch.json data/finwatch_sent.json data/logic_tree.json && git commit -m "finwatch" && git pull --rebase && git push || echo "no change"
+          git add data/finwatch.json data/finwatch_sent.json data/logic_tree.json data/series_live.json && git commit -m "finwatch" && git pull --rebase && git push || echo "no change"
