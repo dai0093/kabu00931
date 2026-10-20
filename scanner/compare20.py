@@ -37,7 +37,7 @@ for Yr in [v for v in yrs if v >= 2012]:
     ptr = pd.Series(m.predict_proba(X[tr].fillna(med))[:, 1], index=cal[tr])
     P[te] = m.predict_proba(X[te].fillna(med))[:, 1]
     THR[Yr] = (ptr.quantile(0.80), ptr.quantile(0.95))
-th80 = pd.Series({d: THR[d.year][0] for d in cal if d.year in THR}); th95 = pd.Series({d: THR[d.year][1] for d in cal if d.year in THR})
+th80 = pd.Series({d: THR[d.year][0] for d in cal if d.year in THR}); th95 = pd.Series({d: THR[d.year][1] for d in cal if d.year in THR}).reindex(cal)
 oos = P.notna() & valid
 print(f"検証期間 {cal[oos][0].date()}〜{cal[oos][-1].date()}  営業日{int(oos.sum())}  平均発生率 {y[oos].mean()*100:.1f}%")
 print(f"AUC {roc_auc_score(y[oos], P[oos]):.3f}")
@@ -74,4 +74,4 @@ print("\n## 局面別")
 for nm, a, b in (("コロナ 2020-01〜04", "2020-01-15", "2020-04-30"), ("2022年", "2022-01-01", "2022-12-31"), ("2024-07〜09", "2024-07-01", "2024-09-30"),
                  ("2025-03〜05", "2025-03-01", "2025-05-31"), ("2026-09〜10", "2026-09-01", "2026-10-20")):
     print(nm + "  " + " ／ ".join(f"{k[:2]} {stats(run(e), a, b)}" for k, e in strats.items()))
-print("\n今日(最新)の確率:", f"{P.dropna().iloc[-1]:.3f}", "上位20%閾値", f"{th80.iloc[-1]:.3f}", "上位5%閾値", f"{th95.iloc[-1]:.3f}", "→", "上位5%" if P.dropna().iloc[-1] >= th95.iloc[-1] else "上位20%" if P.dropna().iloc[-1] >= th80.iloc[-1] else "通常")
+print("\n今日(最新)の確率:", f"{P.dropna().iloc[-1]:.3f}", "上位20%閾値", f"{th80.dropna().iloc[-1]:.3f}", "上位5%閾値", f"{th95.dropna().iloc[-1]:.3f}", "→", "上位5%" if P.dropna().iloc[-1] >= th95.dropna().iloc[-1] else "上位20%" if P.dropna().iloc[-1] >= th80.dropna().iloc[-1] else "通常")
