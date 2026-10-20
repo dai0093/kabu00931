@@ -14,6 +14,7 @@ concurrency: data-write
 jobs:
   run:
     runs-on: ubuntu-latest
+    timeout-minutes: 8
     steps:
       - uses: actions/checkout@v4
       - run: pip install yfinance pandas

@@ -7,7 +7,7 @@ from zoneinfo import ZoneInfo
 import pandas as pd, yfinance as yf
 warnings.filterwarnings("ignore")
 JST = timezone(timedelta(hours=9)); out = {}
-def get(u, t=90):
+def get(u, t=25):
     return urllib.request.urlopen(urllib.request.Request(u, headers={"User-Agent": "Mozilla/5.0"}), timeout=t).read().decode("utf-8", "ignore")
 def settled(s):
     n = datetime.now(ZoneInfo("America/New_York"))
@@ -26,9 +26,9 @@ try:
 except Exception as e:
     print("Yahoo失敗", e)
 def fred(i):
-    for k in range(2):
+    for k in range(1):
         try:
-            d = pd.read_csv(io.StringIO(get(f"https://fred.stlouisfed.org/graph/fredgraph.csv?id={i}", 120)))
+            d = pd.read_csv(io.StringIO(get(f"https://fred.stlouisfed.org/graph/fredgraph.csv?id={i}", 20)))
             d.index = pd.to_datetime(d.iloc[:, 0]); s = pd.to_numeric(d.iloc[:, 1], errors="coerce").dropna()
             if len(s): return s
         except Exception as e:
