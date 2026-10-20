@@ -91,7 +91,7 @@ RANK = {"ok": 0, "near": 1, "lit": 2}
 if TOPIC and RANK[tst] > RANK[prev_tree] and "--no-notify" not in sys.argv:
     q = urllib.parse.urlencode({"title": f"【ロジックツリー】金融機関株価が{'点灯' if tst=='lit' else '接近'}", "priority": "4",
                                 "click": "https://dai0093.github.io/kabu00931/signals.html"})
-    urllib.request.urlopen(urllib.request.Request(f"https://ntfy.sh/{TOPIC}?{q}", data=("\n".join(thit) + "\n根拠：検証16（10営業日内に日経-7%の発生率が平均の約" + ("3" if tst=="lit" else "2") + "倍）").encode("utf-8"), method="POST"), timeout=30)
+    urllib.request.urlopen(urllib.request.Request(f"https://ntfy.sh/{TOPIC}?{q}", data=("\n".join(thit) + ("\n売りの検討：日経関連・半導体ETFの縮小を検討（自動売買はしません。判断は富士さん）" if tst=="lit" else "") + "\n根拠：検証16（10営業日内に日経-7%の発生率が平均の約" + ("3" if tst=="lit" else "2") + "倍）").encode("utf-8"), method="POST"), timeout=30)
 if TOPIC and (new and (len(new) >= 2 or dk)) and "--no-notify" not in sys.argv:
     body = "新しく警戒：" + "、".join(new[:10]) + ("\n群で警戒：" + "、".join(dk) if dk else "") + \
            "\n閾値：1日≤-4% / 5日≤-8% / 60日高値比≤-20%（暫定）"
