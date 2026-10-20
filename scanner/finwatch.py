@@ -38,10 +38,21 @@ L = [
 L = [x for x in L if x[2] != "NMRK"]   # 参考枠は外す
 tick = [x[2] for x in L]
 df = yf.download(tick, period="6mo", auto_adjust=False, progress=False, threads=True)["Close"]
+from zoneinfo import ZoneInfo
+CUT = {".L": ("Europe/London", 17.5), ".PA": ("Europe/Paris", 18.0), ".DE": ("Europe/Berlin", 18.0), ".AS": ("Europe/Amsterdam", 18.0),
+       ".SW": ("Europe/Zurich", 18.0), ".MC": ("Europe/Madrid", 18.0), ".T": ("Asia/Tokyo", 15.75), ".HK": ("Asia/Hong_Kong", 16.75),
+       ".SS": ("Asia/Shanghai", 15.5), ".AX": ("Australia/Sydney", 16.75)}
+def settled(s, t):
+    """取引時間中の未確定バーを落とす（確定終値だけで判定する）"""
+    tz, cut = next((v for k, v in CUT.items() if t.endswith(k)), ("America/New_York", 16.5))
+    now = datetime.now(ZoneInfo(tz))
+    if len(s) and s.index[-1].date() == now.date() and now.hour + now.minute / 60 < cut:
+        return s.iloc[:-1]
+    return s
 rows, bad = [], []
 for g, nm, t in L:
     try:
-        s = df[t].dropna()
+        s = settled(df[t].dropna(), t)
         if len(s) < 25: raise ValueError("bars")
         c = float(s.iloc[-1]); d1 = (c / float(s.iloc[-2]) - 1) * 100; d5 = (c / float(s.iloc[-6]) - 1) * 100
         hi = float(s.iloc[-60:].max()); dd = (c / hi - 1) * 100
@@ -67,7 +78,7 @@ out = {"updatedAt": datetime.now(JST).isoformat(timespec="minutes"), "th": TH, "
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 import fintree
 try:
-    _s = yf.download("^SOX", period="1mo", auto_adjust=False, progress=False)["Close"].squeeze().dropna()
+    _s = settled(yf.download("^SOX", period="1mo", auto_adjust=False, progress=False)["Close"].squeeze().dropna(), "^SOX")
     sox5 = float((_s.iloc[-1] / _s.iloc[-6] - 1) * 100)
 except Exception:
     sox5 = None
