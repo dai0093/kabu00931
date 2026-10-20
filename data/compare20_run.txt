@@ -1,0 +1,28 @@
+Traceback (most recent call last):
+  File "/home/runner/work/kabu00931/kabu00931/scanner/compare20.py", line 35, in <module>
+    m.fit(X[tr].fillna(med), y[tr])
+  File "/opt/hostedtoolcache/Python/3.11.17/x64/lib/python3.11/site-packages/sklearn/base.py", line 1403, in wrapper
+    return fit_method(estimator, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/hostedtoolcache/Python/3.11.17/x64/lib/python3.11/site-packages/sklearn/pipeline.py", line 645, in fit
+    self._final_estimator.fit(Xt, y, **last_step_params["fit"])
+  File "/opt/hostedtoolcache/Python/3.11.17/x64/lib/python3.11/site-packages/sklearn/base.py", line 1403, in wrapper
+    return fit_method(estimator, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/hostedtoolcache/Python/3.11.17/x64/lib/python3.11/site-packages/sklearn/linear_model/_logistic.py", line 1437, in fit
+    X, y = validate_data(
+           ^^^^^^^^^^^^^^
+  File "/opt/hostedtoolcache/Python/3.11.17/x64/lib/python3.11/site-packages/sklearn/utils/validation.py", line 3058, in validate_data
+    X, y = check_X_y(X, y, **check_params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/hostedtoolcache/Python/3.11.17/x64/lib/python3.11/site-packages/sklearn/utils/validation.py", line 1330, in check_X_y
+    X = check_array(
+        ^^^^^^^^^^^^
+  File "/opt/hostedtoolcache/Python/3.11.17/x64/lib/python3.11/site-packages/sklearn/utils/validation.py", line 1090, in check_array
+    _assert_all_finite(
+  File "/opt/hostedtoolcache/Python/3.11.17/x64/lib/python3.11/site-packages/sklearn/utils/validation.py", line 137, in _assert_all_finite
+    _assert_all_finite_element_wise(
+  File "/opt/hostedtoolcache/Python/3.11.17/x64/lib/python3.11/site-packages/sklearn/utils/validation.py", line 186, in _assert_all_finite_element_wise
+    raise ValueError(msg_err)
+ValueError: Input X contains NaN.
+LogisticRegression does not accept missing values encoded as NaN natively. For supervised learning, you might want to consider sklearn.ensemble.HistGradientBoostingClassifier and Regressor which accept missing values encoded as NaNs natively. Alternatively, it is possible to preprocess the data, for instance by using an imputer transformer in a pipeline or drop samples with missing values. See https://scikit-learn.org/stable/modules/impute.html You can find a list of all estimators that handle NaN values at the following page: https://scikit-learn.org/stable/modules/impute.html#estimators-that-handle-nan-values
