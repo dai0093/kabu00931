@@ -99,3 +99,4 @@ if TOPIC and (new and (len(new) >= 2 or dk)) and "--no-notify" not in sys.argv:
                                 "click": "https://dai0093.github.io/kabu00931/signals.html"})
     urllib.request.urlopen(urllib.request.Request(f"https://ntfy.sh/{TOPIC}?{q}", data=body.encode("utf-8"), method="POST"), timeout=30)
 json.dump({"names": out["flagged"], "at": out["updatedAt"]}, open(SENT, "w"), ensure_ascii=False)
+# run 2026-10-20_16:25:10
