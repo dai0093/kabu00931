@@ -20,7 +20,7 @@
    "vix": "ok",
    "hy_jump": "na",
    "us10_jump": "ok",
-   "oil_jump": "ok",
+   "oil_jump": "near",
    "yen_jump": "ok",
    "credit": "ok"
   },
@@ -32,10 +32,10 @@
    "hy": null,
    "hy_20": null,
    "nfci": null,
-   "brent": 109.12,
-   "brent_20": 0.099,
-   "usdjpy": 158.14,
-   "yen_20": 0.005,
+   "brent": 109.27,
+   "brent_20": 0.101,
+   "usdjpy": 158.523,
+   "yen_20": 0.007,
    "credit_20": -0.014
   },
   "weak": {
@@ -44,7 +44,7 @@
    "last": 64075,
    "prev5": 67778
   },
-  "refreshed": "2026-10-21 06:57"
+  "refreshed": "2026-10-21 08:22"
  },
  "blocked": [],
  "updated": "2026-10-20 16:28",
