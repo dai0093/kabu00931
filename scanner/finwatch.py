@@ -64,6 +64,19 @@ flagged = sorted([x for x in rows if x["flag"]], key=lambda x: x["dd"])
 out = {"updatedAt": datetime.now(JST).isoformat(timespec="minutes"), "th": TH, "groups": groups,
        "rows": rows, "flagged": [f'{x["name"]}({x["t"]})' for x in flagged], "missing": bad,
        "note": "非上場の運用会社（Cerberus, Golub本体, Sixth Street等）は報道監視。名簿は data/finwatch_source.txt"}
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+import fintree
+tst, thit = fintree.state(groups)
+out["tree"] = {"state": tst, "hits": thit}
+try:
+    prev_tree = json.load(open("data/finwatch.json")).get("tree", {}).get("state", "ok")
+except Exception:
+    prev_tree = "ok"
+try:
+    lt = json.load(open("data/logic_tree.json"))
+    json.dump(fintree.apply(lt, tst), open("data/logic_tree.json", "w"), ensure_ascii=False, indent=1)
+except Exception as e:
+    print("logic_tree反映失敗", e)
 json.dump(out, open("data/finwatch.json", "w", encoding="utf-8"), ensure_ascii=False, indent=1)
 print(f"取得{len(rows)}/{len(L)}  警戒{len(flagged)}  欠損{bad}")
 for g, v in groups.items(): print(g, v)
@@ -74,6 +87,11 @@ prev = json.load(open(SENT)) if os.path.exists(SENT) else {"names": []}
 new = [n for n in out["flagged"] if n not in prev["names"]]
 TOPIC = os.environ.get("NTFY_TOPIC")
 dk = [g for g, v in groups.items() if v["n_flag"] >= max(2, v["n"] // 4)]
+RANK = {"ok": 0, "near": 1, "lit": 2}
+if TOPIC and RANK[tst] > RANK[prev_tree] and "--no-notify" not in sys.argv:
+    q = urllib.parse.urlencode({"title": f"【ロジックツリー】金融機関株価が{'点灯' if tst=='lit' else '接近'}", "priority": "4",
+                                "click": "https://dai0093.github.io/kabu00931/signals.html"})
+    urllib.request.urlopen(urllib.request.Request(f"https://ntfy.sh/{TOPIC}?{q}", data=("\n".join(thit) + "\n根拠：検証16（10営業日内に日経-7%の発生率が平均の約" + ("3" if tst=="lit" else "2") + "倍）").encode("utf-8"), method="POST"), timeout=30)
 if TOPIC and (new and (len(new) >= 2 or dk)) and "--no-notify" not in sys.argv:
     body = "新しく警戒：" + "、".join(new[:10]) + ("\n群で警戒：" + "、".join(dk) if dk else "") + \
            "\n閾値：1日≤-4% / 5日≤-8% / 60日高値比≤-20%（暫定）"

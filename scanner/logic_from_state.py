@@ -76,5 +76,15 @@ out = {"updatedAt": S.get("updatedAt"), "builtAt": datetime.now(JST).isoformat(t
        "stale": stale,
        "events": sorted(S.get("events", []), key=lambda e: e.get("date", ""), reverse=True)[:15],
        "source": "https://claude.ai/artifact/KJPgY7LSb8DMsdXt2A1Gst"}
+try:
+    import os
+    sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+    import fintree
+    _fw = json.load(open("data/finwatch.json"))
+    out = fintree.apply(out, fintree.state(_fw["groups"])[0])
+    ph = out["phase"]; r, t, fu, mk = (out["counts"][k][0] for k in ("origin", "trans", "fund", "market"))
+    out["phaseName"], out["phaseDesc"] = PH[ph]
+except Exception as _e:
+    print("金融機関株価の反映なし", _e)
 json.dump(out, open("data/logic_tree.json", "w", encoding="utf-8"), ensure_ascii=False, indent=1)
 print(f"段階{ph}：{PH[ph][0]}  起点{r} 信用{t} 資金{fu} 市場{mk}  期限切れ{len(stale)}系列")

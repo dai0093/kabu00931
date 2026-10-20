@@ -60,3 +60,21 @@ for yn, y in Y.items():
 open("data/compare16.md", "w").write("\n".join(lines))
 json.dump({"rules": rules, "all": out}, open("data/compare16.json", "w"), ensure_ascii=False, default=float)
 print("\n".join(lines))
+
+# ---- 合成判定（ロジックツリーに入れる判定そのもの）の検証 ----
+LITR = [("EU", "d5", -15), ("US", "d1", -5), ("US", "d5", -10), ("JP", "d5", -10)]
+NEARR = [("PC", "d5", -8), ("EU", "d1", -3), ("EU", "d5", -8), ("US", "d5", -5), ("JP", "d5", -6)]
+def anyr(R):
+    m = pd.Series(False, index=cal)
+    for g, c, th in R: m |= (F[g][c] <= th).fillna(False)
+    return m
+lit, near = anyr(LITR), anyr(NEARR) & ~anyr(LITR)
+lines2 = ["\n## 合成判定（点灯＝点灯条件のどれか／接近＝接近条件のみ）"]
+for yn, y in Y.items():
+    for nm, sig in (("点灯", lit), ("接近", near)):
+        s = []
+        for lab, half in (("前半", valid & (nk.index <= mid)), ("後半", valid & (nk.index > mid))):
+            m = sig & half; n = int(m.sum()); b = float(y[half].mean())
+            s.append(f"{lab} n={n} 発生{(y[m].mean()*100 if n else 0):.0f}%(×{(y[m].mean()/b if n and b else 0):.1f})")
+        lines2.append(f"{yn} {nm}: " + " / ".join(s))
+open("data/compare16.md", "a").write("\n".join(lines2)); print("\n".join(lines2))
