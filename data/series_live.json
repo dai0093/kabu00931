@@ -1,27 +1,27 @@
 {
  "vix": {
-  "value": 17.31,
-  "observedAt": "2026-10-20",
-  "change": "前日比 -1.13（Yahoo確定終値）",
+  "value": 16.68,
+  "observedAt": "2026-10-21",
+  "change": "前日比 -0.63（Yahoo確定終値）",
   "source": "https://finance.yahoo.com/quote/%5EVIX/"
  },
  "vixd": {
   "value": 0,
-  "observedAt": "2026-10-20",
+  "observedAt": "2026-10-21",
   "change": "VIX25以上の連続日数（確定終値から計算）",
   "source": "https://finance.yahoo.com/quote/%5EVIX/"
  },
  "us10": {
-  "value": 5.117,
-  "observedAt": "2026-10-20",
-  "change": "前日比 -0.019（Yahoo確定終値）",
+  "value": 5.146,
+  "observedAt": "2026-10-21",
+  "change": "前日比 +0.029（Yahoo確定終値）",
   "source": "https://finance.yahoo.com/quote/%5ETNX/"
  },
  "t10y2y": {
-  "value": 0.33,
-  "observedAt": "2026-10-20",
+  "value": 0.32,
+  "observedAt": "2026-10-21",
   "change": "財務省の利回り曲線（10年−2年）",
   "source": "https://home.treasury.gov/resource-center/data-chart-center/interest-rates/TextView?type=daily_treasury_yield_curve"
  },
- "_at": "2026-10-21T22:17+09:00"
+ "_at": "2026-10-22T06:59+09:00"
 }
