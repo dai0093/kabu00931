@@ -1,12 +1,12 @@
 {
  "updatedAt": "2026-10-22T12:20:00+09:00",
- "builtAt": "2026-10-22T22:14+09:00",
+ "builtAt": "2026-10-23T06:32+09:00",
  "phase": 3,
  "phaseName": "通り道が開通",
- "phaseDesc": "信用層に2つ以上点灯。　※期限切れのまま点灯・接近を保持：私募信用",
+ "phaseDesc": "信用層に2つ以上点灯。　※期限切れで判定不能：IG OAS（未点灯と扱わない）　※期限切れのまま点灯・接近を保持：私募信用、HY OAS",
  "counts": {
   "origin": [
-   4,
+   3,
    5
   ],
   "trans": [
@@ -34,7 +34,7 @@
    ],
    [
     "日米金利",
-    "lit"
+    "near"
    ],
    [
     "AI債務",
@@ -52,7 +52,7 @@
    ],
    [
     "IG OAS",
-    "ok"
+    "stale"
    ],
    [
     "AI→銀行",
@@ -96,9 +96,12 @@
    ]
   ]
  },
- "unjudged": [],
+ "unjudged": [
+  "IG OAS"
+ ],
  "held": [
-  "私募信用"
+  "私募信用",
+  "HY OAS"
  ],
  "assets": [
   {
@@ -124,18 +127,18 @@
  ],
  "values": {
   "vix": {
-   "value": 16.68,
+   "value": 19.03,
    "unit": "",
-   "observedAt": "2026-10-21",
-   "change": "−0.63（CFD基準の終値、取引所公式値と差の可能性）",
-   "source": "https://tradingeconomics.com/united-states/stock-market"
+   "observedAt": "2026-10-22",
+   "change": "前日比 +2.35（Yahoo確定終値）",
+   "source": "https://finance.yahoo.com/quote/%5EVIX/"
   },
   "us10": {
-   "value": 5.15,
+   "value": 4.953,
    "unit": "%",
-   "observedAt": "2026-10-21",
-   "change": "5.145%、前日比 約+3bp／5日 −4.5bp（10/14 5.19%）／20日 +18.5bp（9/22 4.96%、いずれも米財務省パー利回り）",
-   "source": "https://investrade.com/market-review-october-21-2026/"
+   "observedAt": "2026-10-22",
+   "change": "前日比 -0.193（Yahoo確定終値）",
+   "source": "https://finance.yahoo.com/quote/%5ETNX/"
   },
   "jgb10": {
    "value": 2.9,
@@ -166,11 +169,11 @@
    "source": "https://fred.stlouisfed.org/data/BAMLC0A0CM"
   },
   "t10y2y": {
-   "value": 0.32,
+   "value": 0.31,
    "unit": "%",
-   "observedAt": "2026-10-21",
-   "change": "市場終値ベース 10年5.145%−2年4.823%（前日 財務省パー0.33、−1bp）",
-   "source": "https://investrade.com/market-review-october-21-2026/"
+   "observedAt": "2026-10-22",
+   "change": "財務省の利回り曲線（10年−2年）",
+   "source": "https://home.treasury.gov/resource-center/data-chart-center/interest-rates/TextView?type=daily_treasury_yield_curve"
   },
   "nfci": {
    "value": -0.496,
@@ -188,6 +191,16 @@
   }
  },
  "stale": [
+  {
+   "name": "HY OAS",
+   "observedAt": "2026-10-19",
+   "freq": "日次"
+  },
+  {
+   "name": "IG OAS",
+   "observedAt": "2026-10-19",
+   "freq": "日次"
+  },
   {
    "name": "私募信用デフォルト率",
    "observedAt": "2026-08-31",
@@ -306,7 +319,7 @@
   "日経平均": {
    "phase": 3,
    "lit": {
-    "起点": 4,
+    "起点": 3,
     "信用": 2,
     "資金": 0,
     "市場": 1
@@ -316,7 +329,7 @@
   "200A（半導体）": {
    "phase": 2,
    "lit": {
-    "起点": 3,
+    "起点": 2,
     "信用": 1,
     "資金": 0,
     "市場": 1
@@ -326,7 +339,7 @@
   "SOXL": {
    "phase": 2,
    "lit": {
-    "起点": 2,
+    "起点": 1,
     "信用": 1,
     "資金": 0,
     "市場": 1
