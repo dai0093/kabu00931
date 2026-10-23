@@ -91,7 +91,7 @@ out["tree"] = {"state": tst, "hits": thit, "strong": strong, "strong_why": swhy,
 if INTRA:
     # 速報：ロジックツリー・確定データには触れない。変化があった時だけ【未確定】と明記して通知
     jp, eu, us = (groups.get(k, {}) for k in ("日本", "欧州銀", "米銀"))
-    hot = [f"{k} 1日{v['med_d1']}%" for k, v in groups.items() if k in ("日本", "欧州銀", "米銀") and v["med_d1"] <= -3]
+    hot = [f"{k} 1日{v['med_d1']}%" for k, v in groups.items() if k in ("日本", "欧州銀", "米銀") and v["med_d1"] <= (-4 if k == "日本" else -3)]
     sig = "|".join([tst, str(strong)] + hot)
     SI = "data/finwatch_intraday.json"
     try: prev_sig = json.load(open(SI)).get("sent_sig", "")
@@ -100,7 +100,7 @@ if INTRA:
     TOPIC = os.environ.get("NTFY_TOPIC")
     if TOPIC and (tst != "ok" or strong or hot) and sig != prev_sig:
         body = "【未確定の途中値】引けで変わる可能性あり\n" + "\n".join(f"{k}: 1日{v['med_d1']}% / 5日{v['med_d5']}%" for k, v in groups.items() if k in ("日本", "欧州銀", "米銀")) + \
-               f"\nSOX5日 {out['tree']['sox5']}%  状態:{tst}" + ("\n【強警戒（未確定）】" + "／".join(swhy) if strong else "")
+               f"\nSOX5日 {out['tree']['sox5']}%  状態:{tst}" + ("\n【強警戒（未確定）】" + "／".join(swhy) if strong else "") + ("\n銀行群 1日≤-4%：検証（後半）で10営業日内に日経-7%が約29%（平常の約4.7倍）。外れる確率が約7割あります。縮小の検討：日経関連・半導体を半分程度に（判断は富士さん）" if groups.get("日本", {}).get("med_d1", 0) <= -4 else "")
         q = urllib.parse.urlencode({"title": "【速報・未確定】金融機関株価", "priority": "4", "click": "https://dai0093.github.io/kabu00931/signals.html"})
         urllib.request.urlopen(urllib.request.Request(f"https://ntfy.sh/{TOPIC}?{q}", data=body.encode("utf-8"), method="POST"), timeout=30)
         sent = sig

@@ -290,6 +290,15 @@ function render(){
   e.className='panel'+(fl.length>=3?' alert':'');
   e.innerHTML=`<div class="ttl"><span class="nm">金融機関の株価</span><span class="badge ${fl.length?'b-buy':'b-sell'}">警戒${fl.length}／${FW.rows.length}</span></div>
   ${Object.entries(FW.groups).map(([g,v])=>`<div class="row"><span>${esc(g)}（${v.n}社）</span><b>前日 ${v.med_d1}% ／ 5日 ${v.med_d5}%${v.n_flag?` <span class="pill p-lit">警戒${v.n_flag}</span>`:''}</b></div>`).join('')}
+  ${(()=>{const D=(FI&&FI.updatedAt>FW.updatedAt)?FI:FW,g=D.groups||{},jp=g['日本']||{},eu=g['欧州銀']||{},us=g['米銀']||{},sx=D.tree&&D.tree.sox5,hit=[],ok=[];
+   const T=(c,a,b)=>(c?hit:ok).push(a+(c?'':'（'+b+'）'));
+   T(jp.med_d1<=-4,'銀行群 1日≤−4%（過去の後半で約29%・平常の約4.7倍）：現在'+jp.med_d1+'%','現在'+jp.med_d1+'%');
+   T(jp.med_d1<=-5,'邦銀 1日≤−5%（強警戒の条件）：現在'+jp.med_d1+'%','現在'+jp.med_d1+'%');
+   T(jp.med_d5<=-6,'邦銀 5日≤−6%（接近）：現在'+jp.med_d5+'%','現在'+jp.med_d5+'%');
+   T(eu.med_d1<=-3,'欧州銀 1日≤−3%（接近）：現在'+eu.med_d1+'%','現在'+eu.med_d1+'%');
+   T(us.med_d1<=-5,'米銀 1日≤−5%（点灯）：現在'+us.med_d1+'%','現在'+us.med_d1+'%');
+   T(sx!=null&&sx<=-4.35,'SOX 5日≤−4.35%：現在'+sx+'%','現在'+sx+'%');
+   return `<div class="row"><span><b>検知済み</b>${D===FI?'（途中値・未確定）':''}</span><b>${hit.length?hit.map(esc).join('<br>'):'なし'}</b></div><div class="row"><span><b>未検知</b></span><b>${ok.length?ok.map(esc).join('<br>'):'なし'}</b></div><div class="row"><span><b>監視外</b></span><b>原油先物・為替・暗号資産・非上場の運用会社（報道のみ）・個別の強制清算。「未検知」は「安全」の意味ではありません</b></div>`})()}
   ${fl.slice(0,8).map(x=>`<div class="row"><span>${esc(x.name)}</span><b>${x.d1}% ／ ${x.d5}% ／ 高値比${x.dd}%</b></div>`).join('')}
   <div class="note">中央値。警戒＝前日≤${FW.th.d1}% か 5日≤${FW.th.d5}% か 60日高値比≤${FW.th.dd}%（暫定値）。更新 ${esc(FW.updatedAt)}。非上場の運用会社は報道監視</div>`}else e.style.display='none'}
  // 暴落よけ（検証8・10・11・12）
@@ -406,7 +415,7 @@ function render(){
 }
 
 (async()=>{
- [S,C,BT,PP,LT,MG,FW]=await Promise.all([get('data/signals.json'),get('data/candles.json'),get('data/compare6.json'),get('data/paper.json'),get('data/logic_tree.json'),get('data/morning.json'),get('data/finwatch.json')]);
+ [S,C,BT,PP,LT,MG,FW,FI]=await Promise.all([get('data/signals.json'),get('data/candles.json'),get('data/compare6.json'),get('data/paper.json'),get('data/logic_tree.json'),get('data/morning.json'),get('data/finwatch.json'),get('data/finwatch_intraday.json')]);
  if(S){const [y,m,d]=S.market_date.split('-');document.getElementById('hdate').textContent=`${+m}月${+d}日`;
   document.getElementById('hst').textContent='✓ 判定完了';{const W='日月火水木金土',u=new Date(S.updated.replace(' ','T')+':00+09:00'),md=new Date(S.market_date+'T00:00:00+09:00');
   let n=new Date(md.getTime()+864e5);while([0,6].includes(n.getUTCDay()===undefined?0:new Date(n.getTime()+9*36e5).getUTCDay()))n=new Date(n.getTime()+864e5);
