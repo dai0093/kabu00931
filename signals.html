@@ -62,6 +62,7 @@ input{width:100%;font:inherit;font-size:18px;padding:10px;border-radius:8px;bord
 <div class="panel notice" id="notice"></div>
 <div class="panel" id="guard"></div>
 <div class="panel" id="finw"></div>
+<div class="panel" id="fcst"></div>
 <div class="panel" id="risk"></div>
 <h2 id="logic">ロジックツリー（市場リスクダッシュボード）</h2><div class="panel" id="lt"></div>
 
@@ -301,6 +302,24 @@ function render(){
    return `<div class="row"><span><b>検知済み</b>${D===FI?'（途中値・未確定）':''}</span><b>${hit.length?hit.map(esc).join('<br>'):'なし'}</b></div><div class="row"><span><b>未検知</b></span><b>${ok.length?ok.map(esc).join('<br>'):'なし'}</b></div><div class="row"><span><b>監視外</b></span><b>原油先物・為替・暗号資産・非上場の運用会社（報道のみ）・個別の強制清算。「未検知」は「安全」の意味ではありません</b></div>`})()}
   ${fl.slice(0,8).map(x=>`<div class="row"><span>${esc(x.name)}</span><b>${x.d1}% ／ ${x.d5}% ／ 高値比${x.dd}%</b></div>`).join('')}
   <div class="note">中央値。警戒＝前日≤${FW.th.d1}% か 5日≤${FW.th.d5}% か 60日高値比≤${FW.th.dd}%（暫定値）。更新 ${esc(FW.updatedAt)}。非上場の運用会社は報道監視</div>`}else e.style.display='none'}
+ // 日経の持ち続けた場合の分布予測（検証24）
+ {const e=document.getElementById('fcst');if(FC&&FC.horizons){const H=Object.keys(FC.horizons).map(Number),W=330,Ht=210,L=38,R=8,T=10,B=22,all=[];
+  H.forEach(h=>['0.05','0.95'].forEach(q=>{all.push(FC.uncond[h][q],FC.horizons[h][q])}));
+  const lo=Math.min(-20,Math.floor(Math.min(...all)/10)*10),hi=Math.max(20,Math.ceil(Math.max(...all)/10)*10),X=h=>L+(W-L-R)*h/120,Y=v=>T+(Ht-T-B)*(hi-v)/(hi-lo);
+  const poly=(a,b,k)=>H.map(h=>X(h)+','+Y(FC[k][h][a])).join(' ')+' '+H.slice().reverse().map(h=>X(h)+','+Y(FC[k][h][b])).join(' ');
+  const line=(q,k)=>H.map(h=>X(h)+','+Y(FC[k][h][q])).join(' ');
+  let g='';for(let v=lo;v<=hi;v+=10)g+=`<line x1="${L}" x2="${W-R}" y1="${Y(v)}" y2="${Y(v)}" stroke="#8884" stroke-width="${v===0?1.2:.5}"/><text x="${L-4}" y="${Y(v)+3}" font-size="9" text-anchor="end" fill="currentColor">${v}%</text>`;
+  [0,20,60,120].forEach(h=>g+=`<text x="${X(h)}" y="${Ht-6}" font-size="9" text-anchor="middle" fill="currentColor">${h?h+'日':'今'}</text>`);
+  const v=FC.validation||{},c120=v['120']||{},cl=Math.round(FC.close),lv=(r)=>Math.round(cl*(1+r/100)).toLocaleString();
+  const u=FC.uncond['60'],u1=FC.uncond['120'];
+  e.innerHTML=`<div class="ttl"><span class="nm">日経平均を持ち続けた場合（分布予測）</span><span class="badge b-sell">参考</span></div>
+  <svg viewBox="0 0 ${W} ${Ht}" width="100%" style="max-width:420px"><polygon points="${poly('0.05','0.95','uncond')}" fill="#4a90d933"/><polygon points="${poly('0.25','0.75','uncond')}" fill="#4a90d955"/><polyline points="${line('0.5','uncond')}" fill="none" stroke="#4a90d9" stroke-width="2"/>
+  <polyline points="${line('0.05','horizons')}" fill="none" stroke="#d94a4a" stroke-width="1.5" stroke-dasharray="4 3"/><polyline points="${line('0.95','horizons')}" fill="none" stroke="#d94a4a" stroke-width="1.5" stroke-dasharray="4 3"/>${g}</svg>
+  <div class="row"><span>青（無条件・過去全体）</span><b>中央値と、25〜75%・5〜95%の範囲</b></div>
+  <div class="row"><span>赤の点線（機械学習）</span><b>今の状態を入れた5%点と95%点</b></div>
+  <div class="row"><span>60日後（約3か月）</span><b>5%点 ${u['0.05']}%（約${lv(u['0.05'])}円）／中央値 ${u['0.5']}%／95%点 ${u['0.95']}%</b></div>
+  <div class="row"><span>120日後（約6か月）</span><b>5%点 ${u1['0.05']}%（約${lv(u1['0.05'])}円）／中央値 ${u1['0.5']}%</b></div>
+  <div class="note">起点 ${esc(FC.asOf)} 終値 ${cl.toLocaleString()}円。<b>機械学習は検証で予測出来なかった</b>：先読みなしの検証で、無条件の分布より精度が上がらず、範囲が実際を含んだ割合は90%に対し83〜87%（無条件は91〜93%）。赤の点線（特に90・120日の5%点）は信用しないでください。青が信頼できる範囲ですが、「今の状態」は反映していません。予測ではなく、過去の分布です。</div>`}else e.style.display='none'}
  // 暴落よけ（検証8・10・11・12）
  {const G=S&&S.etf_stop,M=MG||{},td=new Date(Date.now()+9*36e5).toISOString().slice(0,10),mt=M.date===td;
   const warn=mt&&(M.sox_alert||M.term_alert);
@@ -415,7 +434,7 @@ function render(){
 }
 
 (async()=>{
- [S,C,BT,PP,LT,MG,FW,FI]=await Promise.all([get('data/signals.json'),get('data/candles.json'),get('data/compare6.json'),get('data/paper.json'),get('data/logic_tree.json'),get('data/morning.json'),get('data/finwatch.json'),get('data/finwatch_intraday.json')]);
+ [S,C,BT,PP,LT,MG,FW,FI,FC]=await Promise.all([get('data/signals.json'),get('data/candles.json'),get('data/compare6.json'),get('data/paper.json'),get('data/logic_tree.json'),get('data/morning.json'),get('data/finwatch.json'),get('data/finwatch_intraday.json'),get('data/forecast.json')]);
  if(S){const [y,m,d]=S.market_date.split('-');document.getElementById('hdate').textContent=`${+m}月${+d}日`;
   document.getElementById('hst').textContent='✓ 判定完了';{const W='日月火水木金土',u=new Date(S.updated.replace(' ','T')+':00+09:00'),md=new Date(S.market_date+'T00:00:00+09:00');
   let n=new Date(md.getTime()+864e5);while([0,6].includes(n.getUTCDay()===undefined?0:new Date(n.getTime()+9*36e5).getUTCDay()))n=new Date(n.getTime()+864e5);
