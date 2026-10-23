@@ -96,7 +96,14 @@
   "by_risk": 100,
   "by_cash": 100,
   "method": "高値更新",
-  "status": "open"
+  "status": "closed",
+  "buy": 7557.0,
+  "sell": 7165.0,
+  "entry_date": "2026-10-14",
+  "exit_date": "2026-10-23",
+  "reason": "損切り",
+  "pnl": -39200.0,
+  "hit": false
  },
  {
   "date": "2026-10-15",
