@@ -1,0 +1,28 @@
+name: finwatch-intraday
+on:
+  schedule:
+    - cron: "35 0 * * 1-5"    # 9:35 JST（寄り付き後）
+    - cron: "10 2 * * 1-5"    # 11:10 JST（前場終盤）
+    - cron: "30 5 * * 1-5"    # 14:30 JST（後場）
+    - cron: "40 9 * * 1-5"    # 18:40 JST（欧州の取引中）
+  workflow_dispatch:
+  push:
+    paths: [".github/workflows/finwatch_intraday.yml"]
+permissions:
+  contents: write
+concurrency: data-write
+jobs:
+  run:
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@v4
+      - run: pip install yfinance pandas
+      - run: python3 scanner/finwatch.py
+        env:
+          INTRADAY: "1"
+          NTFY_TOPIC: ${{ secrets.NTFY_TOPIC }}
+      - run: |
+          git config user.name "kabu-bot"
+          git config user.email "kabu-bot@users.noreply.github.com"
+          git add data/finwatch_intraday.json && git commit -m "finwatch intraday (provisional)" && git pull --rebase && git push || echo "no change"

@@ -42,8 +42,11 @@ from zoneinfo import ZoneInfo
 CUT = {".L": ("Europe/London", 17.5), ".PA": ("Europe/Paris", 18.0), ".DE": ("Europe/Berlin", 18.0), ".AS": ("Europe/Amsterdam", 18.0),
        ".SW": ("Europe/Zurich", 18.0), ".MC": ("Europe/Madrid", 18.0), ".T": ("Asia/Tokyo", 15.75), ".HK": ("Asia/Hong_Kong", 16.75),
        ".SS": ("Asia/Shanghai", 15.5), ".AX": ("Australia/Sydney", 16.75)}
+INTRA = os.environ.get("INTRADAY") == "1"   # 速報モード：未確定の途中値で判定し、data/finwatch_intraday.json にだけ書く
 def settled(s, t):
     """取引時間中の未確定バーを落とす（確定終値だけで判定する）"""
+    if INTRA:
+        return s
     tz, cut = next((v for k, v in CUT.items() if t.endswith(k)), ("America/New_York", 16.5))
     now = datetime.now(ZoneInfo(tz))
     if len(s) and s.index[-1].date() == now.date() and now.hour + now.minute / 60 < cut:
@@ -85,6 +88,26 @@ except Exception:
 tst, thit = fintree.state(groups)
 strong, swhy = fintree.strong(groups, sox5)
 out["tree"] = {"state": tst, "hits": thit, "strong": strong, "strong_why": swhy, "sox5": None if sox5 is None else round(sox5, 1)}
+if INTRA:
+    # 速報：ロジックツリー・確定データには触れない。変化があった時だけ【未確定】と明記して通知
+    jp, eu, us = (groups.get(k, {}) for k in ("日本", "欧州銀", "米銀"))
+    hot = [f"{k} 1日{v['med_d1']}%" for k, v in groups.items() if k in ("日本", "欧州銀", "米銀") and v["med_d1"] <= -3]
+    sig = "|".join([tst, str(strong)] + hot)
+    SI = "data/finwatch_intraday.json"
+    try: prev_sig = json.load(open(SI)).get("sent_sig", "")
+    except Exception: prev_sig = ""
+    sent = prev_sig
+    TOPIC = os.environ.get("NTFY_TOPIC")
+    if TOPIC and (tst != "ok" or strong or hot) and sig != prev_sig:
+        body = "【未確定の途中値】引けで変わる可能性あり\n" + "\n".join(f"{k}: 1日{v['med_d1']}% / 5日{v['med_d5']}%" for k, v in groups.items() if k in ("日本", "欧州銀", "米銀")) + \
+               f"\nSOX5日 {out['tree']['sox5']}%  状態:{tst}" + ("\n【強警戒（未確定）】" + "／".join(swhy) if strong else "")
+        q = urllib.parse.urlencode({"title": "【速報・未確定】金融機関株価", "priority": "4", "click": "https://dai0093.github.io/kabu00931/signals.html"})
+        urllib.request.urlopen(urllib.request.Request(f"https://ntfy.sh/{TOPIC}?{q}", data=body.encode("utf-8"), method="POST"), timeout=30)
+        sent = sig
+    out["sent_sig"] = sent; out["provisional"] = True
+    json.dump(out, open(SI, "w", encoding="utf-8"), ensure_ascii=False, indent=1)
+    print("速報モード", tst, strong, hot, {k: (v["med_d1"], v["med_d5"]) for k, v in groups.items()})
+    sys.exit(0)
 try:
     prev_tree = json.load(open("data/finwatch.json")).get("tree", {}).get("state", "ok")
 except Exception:
