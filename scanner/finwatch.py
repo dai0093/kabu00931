@@ -171,6 +171,23 @@ try:
     print("防御方針C", target, "本日", _hist[-1]["score"], "10日最大", sh, dfn["note"])
 except Exception as _e:
     print("防御方針C失敗", repr(_e))
+
+try:
+    _AS = [("日本株","1306.T","TOPIX連動ETF"),("米国株","SPY","S&P500"),("米国債","IEF","米国債7-10年"),("日本国債","2510.T","国内債券ETF"),("金","GLD","金"),("REIT","1343.T","東証REIT ETF"),("先進国株","EFA","先進国株(米除く)")]
+    _ao = []
+    for _n, _t, _d in _AS:
+        try:
+            _s = yf.Ticker(_t).history(period="6mo")["Close"].dropna()
+            _s = _s[_s.index.map(lambda x: x.date()) <= datetime.now(JST).date()]
+            _r = lambda k: round(float(_s.iloc[-1] / _s.iloc[-1 - k] - 1) * 100, 2) if len(_s) > k else None
+            _dd = round(float(_s.iloc[-1] / _s.tail(60).max() - 1) * 100, 2)
+            _ao.append({"name": _n, "ticker": _t, "desc": _d, "date": str(_s.index[-1].date()), "d1": _r(1), "d5": _r(5), "d21": _r(21), "dd60": _dd})
+        except Exception as _e2:
+            _ao.append({"name": _n, "ticker": _t, "desc": _d, "error": repr(_e2)[:80]})
+    json.dump({"updatedAt": datetime.now(JST).isoformat(timespec="minutes"), "items": _ao}, open("data/assets.json", "w", encoding="utf-8"), ensure_ascii=False, indent=1)
+    print("資産別", [(a["name"], a.get("d21")) for a in _ao])
+except Exception as _e:
+    print("資産別失敗", repr(_e))
 try:
     prev_tree = json.load(open("data/finwatch.json")).get("tree", {}).get("state", "ok")
     if prev_tree not in ("ok", "near", "lit"): prev_tree = "ok"
@@ -215,3 +232,4 @@ json.dump({"names": out["flagged"], "at": out["updatedAt"], "strong": strong}, o
 # run 2026-10-22T05:32:24
 # run 2026-10-22T21:30:37
 # run 2026-10-24T00:58:38
+# run assets

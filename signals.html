@@ -62,6 +62,7 @@ input{width:100%;font:inherit;font-size:18px;padding:10px;border-radius:8px;bord
 <div class="panel notice" id="notice"></div>
 <div class="panel" id="guard"></div>
 <div class="panel" id="defn"></div>
+<div class="panel" id="assets"></div>
 <div class="panel" id="finw"></div>
 <div class="panel" id="fcst"></div>
 <div class="panel" id="risk"></div>
@@ -287,14 +288,17 @@ function render(){
    <label>株数（口数）</label><input id="rs${c}" type="number" inputmode="numeric" value="${+h.shares||''}">
    <div class="btns"><button class="pri" onclick="reg('${c}')">登録</button></div>
 </div>`}).join('');
+
+ {const e=document.getElementById('assets');if(e&&AS&&AS.items){const f=v=>v==null?'--':(v>0?'+':'')+v.toFixed(1)+'%',c=v=>v==null?'':v<=-3?' style="color:#ff6b6b"':'';
+  e.innerHTML=`<div class="ttl"><span class="nm">資産別の動き（売る候補の確認）</span></div>`+AS.items.map(a=>a.error?`<div class="row"><span>${esc(a.name)}</span><b>取得失敗</b></div>`:`<div class="row"><span>${esc(a.name)}<br><small>${esc(a.desc)} ${esc(a.ticker)}</small></span><b>1日 <span${c(a.d1)}>${f(a.d1)}</span><br>5日 <span${c(a.d5)}>${f(a.d5)}</span><br>1か月 <span${c(a.d21)}>${f(a.d21)}</span><br>直近高値から <span${c(a.dd60)}>${f(a.dd60)}</span></b></div>`).join('')+`<div class="note">赤＝−3%以下。<b>どの資産を売るべきかを決めるルールはまだ検証していません</b>（検証済みなのは日経・半導体・銀行株への上の方針だけ）。債券と金が同時に下がる局面もあります。更新 ${esc(AS.updatedAt)}</div>`}}
  // 防御方針C（検証28）：持ち高の目安
  {const e=document.getElementById('defn'),D=(DI&&DF&&DI.updatedAt>DF.updatedAt)?DI:(DF||DI);if(D){const p=Math.round(D.target*100),fl=Object.entries((D.today||{}).flags||{}),col=p===100?'b-sell':'b-buy';
   e.className='panel'+(p<100?' alert':'');
-  e.innerHTML=`<div class="ttl"><span class="nm">防御方針C：持ち高の目安</span><span class="badge ${col}">${p}%</span></div>
-  <div class="row"><span>目安</span><b>${p===100?'通常（全額）':p===0?'全額現金の位置':'通常の'+p+'%まで縮小の位置'}${D.provisional?'（途中値・未確定）':''}</b></div>
-  <div class="row"><span>直近10営業日の最大信号本数</span><b>${D.hold10_max}本（本日${D.score_today}本）</b></div>
+  e.innerHTML=`<div class="ttl"><span class="nm">いま株をどれだけ持ってよいか</span><span class="badge ${col}">${p}%</span></div>
+  <div class="row"><span>結論</span><b>${p===100?'今まで通り持ってよい':p===0?'全部売って現金にする状態':'持ち株を'+p+'%まで減らす（'+(100-p)+'%売る）'}${D.provisional?'（途中値・未確定）':''}</b></div>
+  <div class="row"><span>危険信号（6種類中）の最大点灯数／直近10営業日</span><b>${D.hold10_max}本（本日${D.score_today}本）</b></div>
   ${fl.map(([k,v])=>`<div class="row"><span>${esc(k)}</span><b>${v?'<span class="pill p-lit">該当</span>':'未該当'}</b></div>`).join('')}
-  <div class="row"><span>直近の本数</span><b>${(D.history||[]).slice(-10).map(h=>h.date.slice(5)+':'+h.score).join('　')}</b></div>
+  <div class="row"><span>日ごとの点灯数</span><b>${(D.history||[]).slice(-10).map(h=>h.date.slice(5)+' '+h.score+'本').join('<br>')}</b></div>
   ${D.note?`<div class="row"><span>注意</span><b>${esc(D.note)}</b></div>`:''}
   <div class="note">1本以上→50%、2本以上→25%、3本以上→0%（最後に鳴ってから10営業日は維持）。バックテスト（1997年〜）：急落40件の最悪損失 −44%→−8%、平均 −12.9%→−3.7%。<b>代償：後半（2012〜）の上昇は約8割逃す</b>（累積+219%→+47%）。予測ではなく「鳴ってから反応」する方針で、鳴る前の急落は防げません。売買は富士さんが判断（自動売買なし）。更新 ${esc(D.updatedAt)}</div>`}else e.style.display='none'}
  // 金融機関の株価監視（私募信用運用会社・G-SIB・BDC）
@@ -445,7 +449,7 @@ function render(){
 }
 
 (async()=>{
- [S,C,BT,PP,LT,MG,FW,FI,FC,DF,DI]=await Promise.all([get('data/signals.json'),get('data/candles.json'),get('data/compare6.json'),get('data/paper.json'),get('data/logic_tree.json'),get('data/morning.json'),get('data/finwatch.json'),get('data/finwatch_intraday.json'),get('data/forecast.json'),get('data/defense.json'),get('data/defense_intraday.json')]);
+ [S,C,BT,PP,LT,MG,FW,FI,FC,DF,DI,AS]=await Promise.all([get('data/signals.json'),get('data/candles.json'),get('data/compare6.json'),get('data/paper.json'),get('data/logic_tree.json'),get('data/morning.json'),get('data/finwatch.json'),get('data/finwatch_intraday.json'),get('data/forecast.json'),get('data/defense.json'),get('data/defense_intraday.json'),get('data/assets.json')]);
  if(S){const [y,m,d]=S.market_date.split('-');document.getElementById('hdate').textContent=`${+m}月${+d}日`;
   document.getElementById('hst').textContent='✓ 判定完了';{const W='日月火水木金土',u=new Date(S.updated.replace(' ','T')+':00+09:00'),md=new Date(S.market_date+'T00:00:00+09:00');
   let n=new Date(md.getTime()+864e5);while([0,6].includes(n.getUTCDay()===undefined?0:new Date(n.getTime()+9*36e5).getUTCDay()))n=new Date(n.getTime()+864e5);
