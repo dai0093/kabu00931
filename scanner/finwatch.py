@@ -5,6 +5,7 @@ data/finwatch_source.txt（富士さん提供の名簿、2026-10-20）を元に�
 import json, os, re, sys, urllib.parse, urllib.request
 from datetime import datetime, timedelta, timezone
 import yfinance as yf
+import pandas as pd
 
 JST = timezone(timedelta(hours=9))
 TH = {"d1": -4.0, "d5": -8.0, "dd": -20.0}   # 暫定：1日≤-4%、5日≤-8%、60日高値から≤-20%
@@ -52,11 +53,29 @@ def settled(s, t):
     if len(s) and s.index[-1].date() == now.date() and now.hour + now.minute / 60 < cut:
         return s.iloc[:-1]
     return s
-rows, bad = [], []
+from datetime import timedelta
+def expected_date(t):
+    """その市場で、いま確定しているはずの最新の営業日（祝日は考慮しない＝祝日は誤って期限切れと出る場合あり）"""
+    tz, cut = next((v for k, v in CUT.items() if t.endswith(k)), ("America/New_York", 16.5))
+    now = datetime.now(ZoneInfo(tz)); d = now.date()
+    if now.hour + now.minute / 60 < cut: d -= timedelta(days=1)
+    while d.weekday() >= 5: d -= timedelta(days=1)
+    return d
+rows, bad, stale = [], [], []
 for g, nm, t in L:
     try:
         s = settled(df[t].dropna(), t)
         if len(s) < 25: raise ValueError("bars")
+        if not INTRA and s.index[-1].date() < expected_date(t):
+            # Yahooが最新日の足を返さないことがある → 個別に取り直し、それでも古ければ「期限切れ」として記録
+            try:
+                h = yf.Ticker(t).history(period="1mo", auto_adjust=False)["Close"].dropna(); h.index = pd.to_datetime(h.index).tz_localize(None)
+                h2 = settled(h, t)
+                if len(h2) >= 25 and h2.index[-1] > s.index[-1]:
+                    s = pd.concat([s[s.index < h2.index[0]], h2]) if False else h2.combine_first(s)
+            except Exception:
+                pass
+            if s.index[-1].date() < expected_date(t): stale.append(t)
         c = float(s.iloc[-1]); d1 = (c / float(s.iloc[-2]) - 1) * 100; d5 = (c / float(s.iloc[-6]) - 1) * 100
         hi = float(s.iloc[-60:].max()); dd = (c / hi - 1) * 100
         flag = [k for k, v, th in (("1日", d1, TH["d1"]), ("5日", d5, TH["d5"]), ("高値比", dd, TH["dd"])) if v <= th]
@@ -86,6 +105,9 @@ try:
 except Exception:
     sox5 = None
 tst, thit = fintree.state(groups)
+stale_groups = [g for g in groups if sum(1 for x in rows if x["g"] == g and x["t"] in stale) >= max(1, groups[g]["n"] // 2)]
+out["stale"] = stale; out["stale_groups"] = stale_groups
+if tst == "ok" and any(g in ("欧州銀", "米銀", "日本") for g in stale_groups): tst = "stale"
 strong, swhy = fintree.strong(groups, sox5)
 out["tree"] = {"state": tst, "hits": thit, "strong": strong, "strong_why": swhy, "sox5": None if sox5 is None else round(sox5, 1)}
 if INTRA:
@@ -110,6 +132,7 @@ if INTRA:
     sys.exit(0)
 try:
     prev_tree = json.load(open("data/finwatch.json")).get("tree", {}).get("state", "ok")
+    if prev_tree not in ("ok", "near", "lit"): prev_tree = "ok"
 except Exception:
     prev_tree = "ok"
 try:
@@ -132,7 +155,7 @@ try:
     prev_strong = json.load(open("data/finwatch_sent.json")).get("strong", False)
 except Exception:
     pass
-RANK = {"ok": 0, "near": 1, "lit": 2}
+RANK = {"ok": 0, "stale": 0, "near": 1, "lit": 2}
 if TOPIC and (RANK[tst] > RANK[prev_tree] or (strong and not prev_strong)) and "--no-notify" not in sys.argv:
     q = urllib.parse.urlencode({"title": f"【ロジックツリー】金融機関株価が{'点灯' if tst=='lit' else '接近'}", "priority": "4",
                                 "click": "https://dai0093.github.io/kabu00931/signals.html"})
