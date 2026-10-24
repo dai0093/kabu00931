@@ -177,11 +177,11 @@ try:
     _ao = []
     for _n, _t, _d in _AS:
         try:
-            _s = yf.Ticker(_t).history(period="6mo")["Close"].dropna()
+            _s = yf.Ticker(_t).history(period="2y")["Close"].dropna()
             _s = _s[_s.index.map(lambda x: x.date()) <= datetime.now(JST).date()]
             _r = lambda k: round(float(_s.iloc[-1] / _s.iloc[-1 - k] - 1) * 100, 2) if len(_s) > k else None
             _dd = round(float(_s.iloc[-1] / _s.tail(60).max() - 1) * 100, 2)
-            _ao.append({"name": _n, "ticker": _t, "desc": _d, "date": str(_s.index[-1].date()), "d1": _r(1), "d5": _r(5), "d21": _r(21), "dd60": _dd})
+            _ao.append({"name": _n, "ticker": _t, "desc": _d, "date": str(_s.index[-1].date()), "d1": _r(1), "d5": _r(5), "d21": _r(21), "dd60": _dd, "ma200": round(float(_s.iloc[-1] / _s.tail(200).mean() - 1) * 100, 2) if len(_s) >= 200 else None})
         except Exception as _e2:
             _ao.append({"name": _n, "ticker": _t, "desc": _d, "error": repr(_e2)[:80]})
     json.dump({"updatedAt": datetime.now(JST).isoformat(timespec="minutes"), "items": _ao}, open("data/assets.json", "w", encoding="utf-8"), ensure_ascii=False, indent=1)
@@ -232,4 +232,4 @@ json.dump({"names": out["flagged"], "at": out["updatedAt"], "strong": strong}, o
 # run 2026-10-22T05:32:24
 # run 2026-10-22T21:30:37
 # run 2026-10-24T00:58:38
-# run assets
+# run assets2
