@@ -130,6 +130,47 @@ if INTRA:
     json.dump(out, open(SI, "w", encoding="utf-8"), ensure_ascii=False, indent=1)
     print("速報モード", tst, strong, hot, {k: (v["med_d1"], v["med_d5"]) for k, v in groups.items()})
     sys.exit(0)
+# ---- 防御方針C（検証28）：広い信号の本数→持ち高の目安。鳴ってから10営業日は維持。自動売買はしない ----
+try:
+    import statistics as _st
+    _px = yf.download(["^N225", "^SOX"], period="9mo", auto_adjust=False, progress=False)["Close"]
+    nk_s = settled(_px["^N225"].dropna(), "N225.T"); sx_s = settled(_px["^SOX"].dropna(), "^SOX")
+    _ser = {tt: settled(df[tt].dropna(), tt) for _, _, tt in L if tt in df}
+    _gof = {tt: g for g, _, tt in L}
+    def _grp_at(d):
+        acc = {}
+        for tt, s in _ser.items():
+            s = s[s.index <= d]
+            if len(s) < 25: continue
+            c = float(s.iloc[-1]); acc.setdefault(_gof[tt], []).append(((c / float(s.iloc[-2]) - 1) * 100, (c / float(s.iloc[-6]) - 1) * 100, (c / float(s.iloc[-60:].max()) - 1) * 100))
+        return {g: tuple(_st.median(v[i] for v in vs) for i in range(3)) for g, vs in acc.items()}
+    _hist, _today = [], {}
+    for d in list(nk_s.index[-12:]):
+        i = nk_s.index.get_loc(d); r1 = (nk_s.iloc[i] / nk_s.iloc[i - 1] - 1) * 100; r5 = (nk_s.iloc[i] / nk_s.iloc[i - 5] - 1) * 100
+        pv = sx_s[sx_s.index < d]; sp = (pv.iloc[-1] / pv.iloc[-2] - 1) * 100
+        G = _grp_at(d); jp = G.get("日本", (0, 0, 0)); eu = G.get("欧州銀", (0, 0, 0)); us_ = G.get("米銀", (0, 0, 0))
+        basef = eu[0] <= -6 or eu[1] <= -15 or us_[0] <= -5 or us_[1] <= -10 or jp[0] <= -5 or jp[1] <= -10 or jp[2] <= -25
+        fl = {"日経1日≤-2%": r1 <= -2, "日経1日≤-3%": r1 <= -3, "日経5日≤-5%": r5 <= -5, "SOX前夜≤-4%": sp <= -4, "銀行群1日≤-4%": jp[0] <= -4, "金融機関基準": bool(basef)}
+        _hist.append({"date": str(d.date()), "score": int(sum(fl.values()))}); _today = {"flags": {k: bool(v) for k, v in fl.items()}, "nk1": round(float(r1), 2), "nk5": round(float(r5), 2), "sox_prev": round(float(sp), 2), "jp_d1": round(jp[0], 1)}
+    sh = max(h["score"] for h in _hist[-10:])
+    target = 0.0 if sh >= 3 else 0.25 if sh >= 2 else 0.5 if sh >= 1 else 1.0
+    stale_us = [x for x in stale if not x.endswith((".T", ".SS", ".HK"))]
+    dfn = {"asOf": _hist[-1]["date"], "updatedAt": datetime.now(JST).isoformat(timespec="minutes"), "provisional": bool(INTRA), "policy": "C", "target": target,
+           "score_today": _hist[-1]["score"], "hold10_max": sh, "history": _hist, "today": _today,
+           "note": ("米欧の一部が未更新（" + str(len(stale_us)) + "銘柄）。金融機関の信号が実際より弱く出ている可能性" if stale_us else "")}
+    json.dump(dfn, open("data/defense_intraday.json" if INTRA else "data/defense.json", "w", encoding="utf-8"), ensure_ascii=False, indent=1)
+    _DS = "data/defense_sent.json"
+    try: _prev = json.load(open(_DS)).get("target", None)
+    except Exception: _prev = None
+    _TOP = os.environ.get("NTFY_TOPIC")
+    if _TOP and _prev is not None and abs(_prev - target) > 1e-9 and "--no-notify" not in sys.argv:
+        _body = f"持ち高の目安 {int(_prev*100)}% → {int(target*100)}%\n直近10営業日の最大信号本数 {sh}本（本日{_hist[-1]['score']}本）" + ("\n【未確定の途中値】" if INTRA else "") + ("\n" + dfn["note"] if dfn["note"] else "") + "\n自動売買はしません。判断は富士さん。検証：急落40件の最悪損失 -44%→-8%、後半の上昇は約8割逃す"
+        _q = urllib.parse.urlencode({"title": "【防御方針C】持ち高の目安が変わりました", "priority": "4", "click": "https://dai0093.github.io/kabu00931/signals.html"})
+        urllib.request.urlopen(urllib.request.Request(f"https://ntfy.sh/{_TOP}?{_q}", data=_body.encode("utf-8"), method="POST"), timeout=30)
+    if _prev != target or not INTRA: json.dump({"target": target, "at": dfn["updatedAt"]}, open(_DS, "w"))
+    print("防御方針C", target, "本日", _hist[-1]["score"], "10日最大", sh, dfn["note"])
+except Exception as _e:
+    print("防御方針C失敗", repr(_e))
 try:
     prev_tree = json.load(open("data/finwatch.json")).get("tree", {}).get("state", "ok")
     if prev_tree not in ("ok", "near", "lit"): prev_tree = "ok"
