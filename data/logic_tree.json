@@ -1,6 +1,6 @@
 {
  "updatedAt": "2026-10-23T12:20:36+09:00",
- "builtAt": "2026-10-23T21:54+09:00",
+ "builtAt": "2026-10-24T09:33+09:00",
  "phase": 3,
  "phaseName": "通り道が開通",
  "phaseDesc": "信用層に2つ以上点灯。　※期限切れのまま点灯・接近を保持：私募信用",
@@ -124,18 +124,18 @@
  ],
  "values": {
   "vix": {
-   "value": 19.03,
+   "value": 19.45,
    "unit": "",
-   "observedAt": "2026-10-22",
-   "change": "+2.35（+14.1%）",
-   "source": "https://finance.yahoo.com/markets/live/stock-market-today-thursday-october-22-dow-sp-500-nasdaq-tesla-meta-112217857.html"
+   "observedAt": "2026-10-23",
+   "change": "前日比 +0.42（Yahoo確定終値）",
+   "source": "https://finance.yahoo.com/quote/%5EVIX/"
   },
   "us10": {
-   "value": 4.95,
+   "value": 4.988,
    "unit": "%",
-   "observedAt": "2026-10-22",
-   "change": "4.953%、前日比 約−19bp（5.146%→、9/23以来の5%割れ）／5日 約−12bp（10/15 約5.07%）／20日 約−16bp（Trading Economics月間変化）。株安・中東緊張で債券買い",
-   "source": "https://tradingeconomics.com/united-states/government-bond-yield"
+   "observedAt": "2026-10-23",
+   "change": "前日比 +0.035（Yahoo確定終値）",
+   "source": "https://finance.yahoo.com/quote/%5ETNX/"
   },
   "jgb10": {
    "value": 2.88,
@@ -168,7 +168,7 @@
   "t10y2y": {
    "value": 0.31,
    "unit": "%",
-   "observedAt": "2026-10-22",
+   "observedAt": "2026-10-23",
    "change": "財務省の利回り曲線（10年−2年）",
    "source": "https://home.treasury.gov/resource-center/data-chart-center/interest-rates/TextView?type=daily_treasury_yield_curve"
   },
@@ -192,6 +192,16 @@
    "name": "私募信用デフォルト率",
    "observedAt": "2026-08-31",
    "freq": "月次"
+  },
+  {
+   "name": "MND 30年固定",
+   "observedAt": "2026-10-20",
+   "freq": "日次"
+  },
+  {
+   "name": "MBB OAS（MBS代理）",
+   "observedAt": "2026-10-20",
+   "freq": "日次"
   }
  ],
  "events": [
