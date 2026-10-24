@@ -156,7 +156,7 @@ try:
     target = 0.0 if sh >= 3 else 0.25 if sh >= 2 else 0.5 if sh >= 1 else 1.0
     stale_us = [x for x in stale if not x.endswith((".T", ".SS", ".HK"))]
     dfn = {"asOf": _hist[-1]["date"], "updatedAt": datetime.now(JST).isoformat(timespec="minutes"), "provisional": bool(INTRA), "policy": "C", "target": target,
-           "score_today": _hist[-1]["score"], "hold10_max": sh, "history": _hist, "today": _today,
+           "score_today": _hist[-1]["score"], "hold10_max": sh, "history": _hist, "dbg_nk": {str(k.date()): round(float(v), 2) for k, v in nk_s.tail(8).items()}, "dbg_sox": {str(k.date()): round(float(v), 2) for k, v in sx_s.tail(6).items()}, "today": _today,
            "note": ("米欧の一部が未更新（" + str(len(stale_us)) + "銘柄）。金融機関の信号が実際より弱く出ている可能性" if stale_us else "")}
     json.dump(dfn, open("data/defense_intraday.json" if INTRA else "data/defense.json", "w", encoding="utf-8"), ensure_ascii=False, indent=1)
     _DS = "data/defense_sent.json"
