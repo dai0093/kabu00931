@@ -48,6 +48,16 @@ input{width:100%;font:inherit;font-size:18px;padding:10px;border-radius:8px;bord
 .note{font-size:13px;color:var(--sub);line-height:1.8}
 .alert{border:2px solid var(--up)}
 .pill{font-size:12px;font-weight:700;padding:1px 8px;border-radius:10px;margin-left:6px}.p-lit{background:var(--up);color:#fff}.p-near{background:#e8b04b;color:#16212b}.p-ok{background:var(--panel2);color:var(--sub)}
+
+#concl .big{font-size:56px;font-weight:800;line-height:1.1;font-variant-numeric:tabular-nums}
+#concl .lead{font-size:18px;font-weight:700;margin:2px 0 6px}
+#concl .cr{display:flex;justify-content:space-between;align-items:center;gap:10px;padding:11px 0;border-top:1px solid var(--line)}
+#concl .cr b{font-size:16px}#concl .cr .d{font-size:13px;color:var(--sub);margin-top:2px}
+#concl .cr .v{text-align:right;font-size:16px;font-weight:700;white-space:nowrap}
+[data-fold]>.ttl{cursor:pointer}
+[data-fold]>.ttl::after{content:"＋";margin-left:10px;color:var(--sub)}
+[data-fold][data-open]>.ttl::after{content:"－"}
+[data-fold]:not([data-open])>:not(.ttl){display:none}
 </style>
 </head>
 <body>
@@ -58,14 +68,15 @@ input{width:100%;font:inherit;font-size:18px;padding:10px;border-radius:8px;bord
  <div class="upd">最終更新<br><span id="hupd">--</span></div>
 </div>
 
+<div class="panel" id="concl"></div>
 <div class="panel" id="lock" style="display:none"></div>
 <div class="panel notice" id="notice"></div>
 <div class="panel" id="guard"></div>
-<div class="panel" id="defn"></div>
-<div class="panel" id="assets"></div>
-<div class="panel" id="finw"></div>
-<div class="panel" id="fcst"></div>
-<div class="panel" id="risk"></div>
+<div class="panel" id="defn" data-fold></div>
+<div class="panel" id="assets" data-fold></div>
+<div class="panel" id="finw" data-fold></div>
+<div class="panel" id="fcst" data-fold></div>
+<div class="panel" id="risk" data-fold></div>
 <h2 id="logic">ロジックツリー（市場リスクダッシュボード）</h2><div class="panel" id="lt"></div>
 
 <div class="grid">
@@ -291,6 +302,29 @@ function render(){
 
  {const e=document.getElementById('assets');if(e&&AS&&AS.items){const f=v=>v==null?'--':(v>0?'+':'')+v.toFixed(1)+'%',c=v=>v==null?'':v<=-3?' style="color:#ff6b6b"':'';
   e.innerHTML=`<div class="ttl"><span class="nm">資産別の動き（売る候補の確認）</span></div>`+AS.items.map(a=>a.error?`<div class="row"><span>${esc(a.name)}</span><b>取得失敗</b></div>`:`<div class="row"><span>${esc(a.name)}<br><small>${esc(a.desc)} ${esc(a.ticker)}</small></span><b>1日 <span${c(a.d1)}>${f(a.d1)}</span><br>5日 <span${c(a.d5)}>${f(a.d5)}</span><br>1か月 <span${c(a.d21)}>${f(a.d21)}</span><br>直近高値から <span${c(a.dd60)}>${f(a.dd60)}</span><br>200日線 ${a.ma200==null?'--':a.ma200<0?'<span class="pill p-lit">割れ</span> '+f(a.ma200):'上 '+f(a.ma200)}</b></div>`).join('')+`<div class="note">赤＝−3%以下。検証29：200日線割れで売るルールは、日本株・米国株・先進国株で最大下落を大きく減らしました（日本株−82%→−34%）。金・REIT・債券には不向きでした。予測ではなく、割れてから反応するルールです。更新 ${esc(AS.updatedAt)}</div>`}}
+
+ // 結論カード：防御方針C＋資産別の判定を、一番上にまとめる
+ {const e=document.getElementById('concl'),D=(DI&&DF&&DI.updatedAt>DF.updatedAt)?DI:(DF||DI);
+  if(e&&D){const pc=Math.round(D.target*100),tg=D.target;
+   const G={nk:['日経関連（1321など）',['1321','1570','1358','1360','1365','1579','285A']],semi:['半導体（4062・200Aなど）',['4062','200A','6857','8035','6920','6146','6723','6526','7735']],bank:['銀行株（1615など）',['1615','8306','8316','8411','8308','8309','8354','7186']]};
+   const own={};
+   ((PV&&PV.held)||[]).forEach(x=>{if(!soldRecently(b,x.code)&&x.shares)own[x.code]=+x.shares});
+   b.hold.forEach(x=>{own[x.code]=+x.shares});
+   if(b.etf)own['1321']=b.etf;
+   let tot=0,selltot=0,known=Object.keys(own).length>0,rows='';
+   Object.values(G).forEach(([nm,codes])=>{let v=0,items=[];codes.forEach(c=>{if(own[c]){const px=last(c);if(px){const a=px*own[c];v+=a;items.push(c)}}});
+    tot+=v;const s=v*(1-tg);selltot+=s;
+    rows+=`<div class="cr"><div><b>${nm}</b><div class="d">${v?(pc===100?'持ち続けてよい':'目安 '+yen(v*tg)+' まで減らす'):'持っている分を確認'}</div></div><div class="v">${pc===100?'保持':v?yen(s)+'<br><span style="font-size:12px;font-weight:400;color:var(--sub)">売る</span>':(pc===0?'全部売る':(100-pc)+'%売る')}</div></div>`});
+   const A=(AS&&AS.items)||[];
+   const ma=n=>{const a=A.find(x=>x.name===n);return a&&a.ma200!=null?a.ma200:null};
+   [['日本株（上記以外）','日本株'],['米国株','米国株'],['先進国株','先進国株']].forEach(([lab,n])=>{const m=ma(n);
+    rows+=`<div class="cr"><div><b>${lab}</b><div class="d">${m==null?'200日線を取得できず':'200日線の'+(m>=0?'上（+':'下（')+m.toFixed(1)+'%）'+(m>=0&&m<1?'。線すれすれ':'')}</div></div><div class="v">${m==null?'--':m>=0?'保持':'割れ'}</div></div>`});
+   rows+=`<div class="cr"><div><b>金・REIT・債券</b><div class="d">売りが有効というルールが見つかっていません</div></div><div class="v" style="color:var(--sub)">判定なし</div></div>`;
+   e.className='panel'+(pc<100?' alert':'');
+   e.innerHTML=`<div class="note">日経関連・半導体・銀行を、いま持ってよい割合</div><div class="big ${pc<100?'up':''}">${pc}%</div><div class="lead">${pc===100?'今まで通り持ってよい':pc===0?'全部売って現金にする状態':'持ち株を'+pc+'%まで減らす（'+(100-pc)+'%売る）'}</div>
+   ${known&&tot?`<div class="row"><span>この3分野の保有</span><b>${yen(tot)}</b></div><div class="row"><span>売る目安の合計</span><b class="up">${yen(selltot)}</b></div>`:'<div class="note">保有を登録すると、売る金額が出ます</div>'}
+   ${rows}
+   <div class="note" style="margin-top:8px">判定は${esc(D.asOf)}終値${D.provisional?'（途中値）':''}。直近10営業日の最大点灯数 ${D.hold10_max}本（本日${D.score_today}本）。${D.note?esc(D.note)+'。':''}予測ではなく、鳴ってから反応する方針です。後半の上昇の約8割を逃す代わりに、急落時の最悪損失が −44%→−8% になりました。売買は富士さんの判断です。詳しい内訳は下の各項目を開いてください。</div>`}}
  // 防御方針C（検証28）：持ち高の目安
  {const e=document.getElementById('defn'),D=(DI&&DF&&DI.updatedAt>DF.updatedAt)?DI:(DF||DI);if(D){const p=Math.round(D.target*100),fl=Object.entries((D.today||{}).flags||{}),col=p===100?'b-sell':'b-buy';
   e.className='panel'+(p<100?' alert':'');
@@ -466,6 +500,7 @@ function render(){
 function drawCharts(){requestAnimationFrame(()=>CH.forEach(([id,...a])=>{const el=document.getElementById(id);if(el)chart(el,...a)}))}
 /* キーボード表示で高さが変わっても描き直さない。横幅が変わった時だけチャートを再描画 */
 addEventListener('resize',()=>{if(innerWidth!==lastW){lastW=innerWidth;drawCharts()}});
+document.addEventListener('click',e=>{const t=e.target.closest('[data-fold]>.ttl');if(t){const p=t.parentElement;if(p.hasAttribute('data-open'))p.removeAttribute('data-open');else p.setAttribute('data-open','')}});
 if('serviceWorker' in navigator)navigator.serviceWorker.register('sw.js').catch(()=>{});
 </script>
 </body>
