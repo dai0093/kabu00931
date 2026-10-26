@@ -5,27 +5,24 @@
    −2%以下の日 145日（年13.7日）翌日 平均+0.19% 上昇の割合54% ／ 新高値の日 281日 20日後 平均+1.25%（全日 +1.08%）
 
 === B 季節性 ===
-Traceback (most recent call last):
-  File "pandas/_libs/tslibs/offsets.pyx", line 7998, in pandas._libs.tslibs.offsets.to_offset
-  File "pandas/_libs/tslibs/offsets.pyx", line 7863, in pandas._libs.tslibs.offsets._validate_to_offset_alias
-ValueError: 'M' is no longer supported for offsets. Please use 'ME' instead.
+月 | 前半 平均%（上昇した年の割合） | 後半 平均%（上昇した年の割合） | 同じ向き
+1月 | -1.58%（60%）| +0.71%（55%）| ×
+2月 | +1.78%（64%）| -0.27%（55%）| ×
+3月 | +1.50%（55%）| -1.56%（45%）| ×
+4月 | +1.68%（55%）| +2.54%（64%）| ○
+5月 | -0.77%（55%）| +2.88%（82%）| ×
+6月 | +0.65%（64%）| +1.55%（73%）| ○
+7月 | +0.34%（55%）| -0.21%（45%）| ×
+8月 | -2.04%（36%）| +1.17%（64%）| ×
+9月 | +0.17%（55%）| +0.96%（64%）| ○
+10月 | -0.97%（55%）| +2.15%（55%）| ×
+11月 | +1.79%（50%）| +2.75%（73%）| ○
+12月 | +4.59%（80%）| -0.26%（64%）| ×
+月別平均の順位相関（前半と後半） -0.21（12か月。0.58以上で有意の目安）  同じ向きの月 4/12
+急落40件の開始月  前半: {1: np.int64(1), 2: np.int64(4), 4: np.int64(1), 5: np.int64(4), 6: np.int64(3), 7: np.int64(1), 8: np.int64(2), 9: np.int64(4), 10: np.int64(1), 12: np.int64(2)}  後半: {1: np.int64(2), 2: np.int64(2), 3: np.int64(2), 4: np.int64(1), 6: np.int64(2), 7: np.int64(2), 9: np.int64(2), 10: np.int64(2), 12: np.int64(2)}
 
-During handling of the above exception, another exception occurred:
-
-Traceback (most recent call last):
-  File "/home/runner/work/kabu00931/kabu00931/scanner/compare33.py", line 27, in <module>
-    mo = nk_.resample("M").last().pct_change().dropna()
-         ^^^^^^^^^^^^^^^^^
-  File "/opt/hostedtoolcache/Python/3.11.17/x64/lib/python3.11/site-packages/pandas/core/generic.py", line 9759, in resample
-    return get_resampler(
-           ^^^^^^^^^^^^^^
-  File "/opt/hostedtoolcache/Python/3.11.17/x64/lib/python3.11/site-packages/pandas/core/resample.py", line 2378, in get_resampler
-    tg = TimeGrouper(obj, **kwds)  # type: ignore[arg-type]
-         ^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/opt/hostedtoolcache/Python/3.11.17/x64/lib/python3.11/site-packages/pandas/core/resample.py", line 2464, in __init__
-    freq = to_offset(freq)
-           ^^^^^^^^^^^^^^^
-  File "pandas/_libs/tslibs/offsets.pyx", line 7903, in pandas._libs.tslibs.offsets.to_offset
-  File "pandas/_libs/tslibs/offsets.pyx", line 8048, in pandas._libs.tslibs.offsets.to_offset
-  File "pandas/_libs/tslibs/offsets.pyx", line 7809, in pandas._libs.tslibs.offsets.raise_invalid_freq
-ValueError: Invalid frequency: M. Failed to parse with error message: ValueError("'M' is no longer supported for offsets. Please use 'ME' instead.")
+=== C 関連性 ===
+前半: 日経当日×SOX前夜 相関 +0.42 ／ 日経×ドル円(当日) +0.18 ／ 日経×VIX前日変化 -0.40 ／ VIX平均 19.7
+   SOX前夜≤−4%の日 54日：日経の当日 平均-2.47% 下落の割合89% ／ 通常日 平均+0.08%
+後半: 日経当日×SOX前夜 相関 +0.42 ／ 日経×ドル円(当日) +0.24 ／ 日経×VIX前日変化 -0.36 ／ VIX平均 18.4
+   SOX前夜≤−4%の日 106日：日経の当日 平均-1.61% 下落の割合83% ／ 通常日 平均+0.12%
