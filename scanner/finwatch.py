@@ -157,8 +157,27 @@ try:
     stale_us = [x for x in stale if not x.endswith((".T", ".SS", ".HK"))]
     _sox5 = float((sx_s.iloc[-1] / sx_s.iloc[-6] - 1) * 100)
     _reb = {"sox5": round(_sox5, 2), "on": bool(_sox5 >= 5 and _hist[-1]["score"] == 0 and sh > 0), "rule": "SOX5日≥+5%かつ当日の信号0本（検証31：前半・後半とも20日後の日経が上昇）"}
+    try:
+        _ohlc = yf.download("^N225", period="3y", auto_adjust=False, progress=False)
+        _ohlc.columns = [c[0] if isinstance(c, tuple) else c for c in _ohlc.columns]
+        _ohlc.index = pd.to_datetime(_ohlc.index).tz_localize(None)
+        _wk = _ohlc.resample("W-FRI").agg({"High": "max", "Low": "min", "Close": "last"}).dropna()
+        _H, _L, _C = _wk.High.values, _wk.Low.values, _wk.Close.values; _pk = _peak = None
+        _peak, _pki, _m = _H[0], 0, None
+        for _i in range(1, len(_wk)):
+            if _H[_i] >= _peak: _peak, _pki, _m = _H[_i], _i, None; continue
+            if _m is None or _L[_i] < _L[_m]: _m = _i
+        _dd_now = (_C[-1] / _peak - 1) * 100
+        _bt = {"peak": round(float(_peak), 0), "close": round(float(_C[-1]), 0), "dd": round(float(_dd_now), 1), "line10": round(float(_peak * 0.9), 0), "active": False,
+               "rule": "検証35：高値から−10%以下の局面で、週足の終値が戻り高値を上抜けると、26週後の騰落の中央値は+7〜11%（的中は基準の2倍強）。件数が少なく、動画の94%は再現できず"}
+        if _m is not None and _L[_m] / _peak - 1 <= -0.10:
+            _lo = max(_pki, _m - 8); _reb = float(_H[_lo:_m].max()) if _m > _lo else None
+            _bt.update(active=True, valley=round(float(_L[_m]), 0), valleyDate=str(_wk.index[_m].date()), reb=None if _reb is None else round(_reb, 0),
+                       above=bool(_reb is not None and _C[-1] > _reb and len(_wk) - 1 > _m), toReb=None if _reb is None else round(float((_reb / _C[-1] - 1) * 100), 1))
+    except Exception as _eb:
+        _bt = {"error": repr(_eb)[:80]}
     dfn = {"asOf": _hist[-1]["date"], "updatedAt": datetime.now(JST).isoformat(timespec="minutes"), "provisional": bool(INTRA), "policy": "C", "target": target,
-           "score_today": _hist[-1]["score"], "hold10_max": sh, "rebound": _reb, "history": _hist, "dbg_nk": {str(k.date()): round(float(v), 2) for k, v in nk_s.tail(8).items()}, "dbg_sox": {str(k.date()): round(float(v), 2) for k, v in sx_s.tail(6).items()}, "today": _today,
+           "score_today": _hist[-1]["score"], "hold10_max": sh, "rebound": _reb, "bottom": _bt, "history": _hist, "dbg_nk": {str(k.date()): round(float(v), 2) for k, v in nk_s.tail(8).items()}, "dbg_sox": {str(k.date()): round(float(v), 2) for k, v in sx_s.tail(6).items()}, "today": _today,
            "note": ("米欧の一部が未更新（" + str(len(stale_us)) + "銘柄）。金融機関の信号が実際より弱く出ている可能性" if stale_us else "")}
     json.dump(dfn, open("data/defense_intraday.json" if INTRA else "data/defense.json", "w", encoding="utf-8"), ensure_ascii=False, indent=1)
     _DS = "data/defense_sent.json"
@@ -239,5 +258,5 @@ json.dump({"names": out["flagged"], "at": out["updatedAt"], "strong": strong}, o
 # run 2026-10-22T05:32:24
 # run 2026-10-22T21:30:37
 # run 2026-10-24T00:58:38
-# run rebound
+# run bottom
 # run 2026-10-26 06:57 JST
