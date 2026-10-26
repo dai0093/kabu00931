@@ -155,8 +155,10 @@ try:
     sh = max(h["score"] for h in _hist[-10:])
     target = 0.0 if sh >= 3 else 0.25 if sh >= 2 else 0.5 if sh >= 1 else 1.0
     stale_us = [x for x in stale if not x.endswith((".T", ".SS", ".HK"))]
+    _sox5 = float((sx_s.iloc[-1] / sx_s.iloc[-6] - 1) * 100)
+    _reb = {"sox5": round(_sox5, 2), "on": bool(_sox5 >= 5 and _hist[-1]["score"] == 0 and sh > 0), "rule": "SOX5日≥+5%かつ当日の信号0本（検証31：前半・後半とも20日後の日経が上昇）"}
     dfn = {"asOf": _hist[-1]["date"], "updatedAt": datetime.now(JST).isoformat(timespec="minutes"), "provisional": bool(INTRA), "policy": "C", "target": target,
-           "score_today": _hist[-1]["score"], "hold10_max": sh, "history": _hist, "dbg_nk": {str(k.date()): round(float(v), 2) for k, v in nk_s.tail(8).items()}, "dbg_sox": {str(k.date()): round(float(v), 2) for k, v in sx_s.tail(6).items()}, "today": _today,
+           "score_today": _hist[-1]["score"], "hold10_max": sh, "rebound": _reb, "history": _hist, "dbg_nk": {str(k.date()): round(float(v), 2) for k, v in nk_s.tail(8).items()}, "dbg_sox": {str(k.date()): round(float(v), 2) for k, v in sx_s.tail(6).items()}, "today": _today,
            "note": ("米欧の一部が未更新（" + str(len(stale_us)) + "銘柄）。金融機関の信号が実際より弱く出ている可能性" if stale_us else "")}
     json.dump(dfn, open("data/defense_intraday.json" if INTRA else "data/defense.json", "w", encoding="utf-8"), ensure_ascii=False, indent=1)
     _DS = "data/defense_sent.json"
@@ -167,7 +169,12 @@ try:
         _body = f"持ち高の目安 {int(_prev*100)}% → {int(target*100)}%\n直近10営業日の最大信号本数 {sh}本（本日{_hist[-1]['score']}本）" + ("\n【未確定の途中値】" if INTRA else "") + ("\n" + dfn["note"] if dfn["note"] else "") + "\n自動売買はしません。判断は富士さん。検証：急落40件の最悪損失 -44%→-8%、後半の上昇は約8割逃す"
         _q = urllib.parse.urlencode({"title": "【防御方針C】持ち高の目安が変わりました", "priority": "4", "click": "https://dai0093.github.io/kabu00931/signals.html"})
         urllib.request.urlopen(urllib.request.Request(f"https://ntfy.sh/{_TOP}?{_q}", data=_body.encode("utf-8"), method="POST"), timeout=30)
-    if _prev != target or not INTRA: json.dump({"target": target, "at": dfn["updatedAt"]}, open(_DS, "w"))
+    try: _prev_reb = json.load(open(_DS)).get("reb", False)
+    except Exception: _prev_reb = False
+    if _TOP and _reb["on"] and not _prev_reb and not INTRA and "--no-notify" not in sys.argv:
+        _q2 = urllib.parse.urlencode({"title": "【戻りの合図】SOX5日が+5%以上", "priority": "3", "click": "https://dai0093.github.io/kabu00931/signals.html"})
+        urllib.request.urlopen(urllib.request.Request(f"https://ntfy.sh/{_TOP}?{_q2}", data=f"SOX5日 {_reb['sox5']:+.1f}%・当日の危険信号0本。防御中のため、戻してよい合図です。\n検証31：合図の日の20日後の日経は平均+1.9%（合図なし+0.2〜0.7%）。ただし戻した後の最悪損失は−8%→−12.5%に広がります。判断は富士さん。".encode("utf-8"), method="POST"), timeout=30)
+    if (not INTRA) or _prev != target: json.dump({"target": target, "at": dfn["updatedAt"], "reb": bool(_reb["on"]) if not INTRA else _prev_reb}, open(_DS, "w"))
     print("防御方針C", target, "本日", _hist[-1]["score"], "10日最大", sh, dfn["note"])
 except Exception as _e:
     print("防御方針C失敗", repr(_e))
@@ -232,5 +239,5 @@ json.dump({"names": out["flagged"], "at": out["updatedAt"], "strong": strong}, o
 # run 2026-10-22T05:32:24
 # run 2026-10-22T21:30:37
 # run 2026-10-24T00:58:38
-# run assets2
+# run rebound
 # run 2026-10-26 06:57 JST

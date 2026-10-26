@@ -322,6 +322,7 @@ function render(){
    rows+=`<div class="cr"><div><b>金・REIT・債券</b><div class="d">売りが有効というルールが見つかっていません</div></div><div class="v" style="color:var(--sub)">判定なし</div></div>`;
    e.className='panel'+(pc<100?' alert':'');
    e.innerHTML=`<div class="note">日経関連・半導体・銀行を、いま持ってよい割合</div><div class="big ${pc<100?'up':''}">${pc}%</div><div class="lead">${pc===100?'今まで通り持ってよい':pc===0?'全部売って現金にする状態':'持ち株を'+pc+'%まで減らす（'+(100-pc)+'%売る）'}</div>
+   ${D.rebound?`<div class="row"><span>戻りの合図（SOX5日≥+5%）</span><b>${D.rebound.on?'<span class="pill p-lit">出ています</span>':'出ていません'}（SOX5日 ${D.rebound.sox5>0?'+':''}${D.rebound.sox5}%）</b></div>`+(D.rebound.on?'<div class="note">防御中でも戻してよい合図です（検証31）。戻すと、急落時の最悪損失は−8%→−12.5%に広がります。</div>':''):''}
    ${known&&tot?`<div class="row"><span>この3分野の保有</span><b>${yen(tot)}</b></div><div class="row"><span>売る目安の合計</span><b class="up">${yen(selltot)}</b></div>`:'<div class="note">保有を登録すると、売る金額が出ます</div>'}
    ${rows}
    <div class="note" style="margin-top:8px">判定は${esc(D.asOf)}終値${D.provisional?'（途中値）':''}。直近10営業日の最大点灯数 ${D.hold10_max}本（本日${D.score_today}本）。${D.note?esc(D.note)+'。':''}予測ではなく、鳴ってから反応する方針です。後半の上昇の約8割を逃す代わりに、急落時の最悪損失が −44%→−8% になりました。売買は富士さんの判断です。詳しい内訳は下の各項目を開いてください。</div>`}}
