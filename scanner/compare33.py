@@ -24,7 +24,7 @@ for k, m in H.items():
     print(f"{k}: 年率リターン {((1+r).prod()**(252/n)-1)*100:+.1f}% 年率ボラ {r.std()*np.sqrt(252)*100:.1f}% 日次自己相関 {ac1:+.3f} 5日→次5日の相関 {ac5:+.3f}")
     print(f"   −2%以下の日 {int(big.sum())}日（年{big.sum()/(n/252):.1f}日）翌日 平均{nxt[big].mean()*100:+.2f}% 上昇の割合{(nxt[big]>0).mean()*100:.0f}% ／ 新高値の日 {int(hi.sum())}日 20日後 平均{f20[hi].mean()*100:+.2f}%（全日 {f20.mean()*100:+.2f}%）")
 print("\n=== B 季節性 ===")
-mo = nk_.resample("M").last().pct_change().dropna()
+mo = nk_.resample("ME").last().pct_change().dropna()
 tab = {}
 for k, lo, hi_ in (("前半", None, mid), ("後半", mid, None)):
     s = mo[lo:hi_] if lo else mo[:hi_]
