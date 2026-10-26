@@ -1,11 +1,16 @@
 {
  "asOf": "2026-10-26",
- "updatedAt": "2026-10-26T18:23+09:00",
+ "updatedAt": "2026-10-26T19:52+09:00",
  "provisional": false,
  "policy": "C",
  "target": 0.0,
  "score_today": 0,
  "hold10_max": 4,
+ "rebound": {
+  "sox5": -3.21,
+  "on": false,
+  "rule": "SOX5日≥+5%かつ当日の信号0本（検証31：前半・後半とも20日後の日経が上昇）"
+ },
  "history": [
   {
    "date": "2026-10-08",
