@@ -2,7 +2,7 @@
 対象：東証の流動性のある873銘柄（data/universe_all.json）、5年分の日足（配当調整あり）。前半＝〜2023-12、後半＝2024-01〜。
 右肩上がり：終値>200日線、200日線が20日前より上、250日リターン≥+20%、25日線>75日線。
 ブレイク直前：終値が直近250日高値（当日除く）の−3%以内で、まだ更新していない。直近20日の値幅が終値の15%以内（値幅が縮んでいる）。20日平均売買代金30億円以上。
-評価（信号日の翌営業日の始値で買う想定、0.2%のずれ込み）：20営業日後の騰落／250日高値を20日以内に更新した割合／同じ日の全銘柄平均との差／日経との差。
+評価（信号日の翌営業日の始値で買う想定、0.2%のずれ込み）：20営業日後の騰落／250日高値を20日以内に更新した割合／同じ日の同日の全銘柄中央値との差／日経との差。
 比較：①右肩上がりだが高値から−10%以上離れた銘柄 ②全銘柄 ③既存の「60日高値更新」の日。最後に、今日の該当銘柄を data/prebreak.json に書く。"""
 import json, sys, warnings
 import numpy as np, pandas as pd
@@ -36,7 +36,8 @@ for c, df in raw.items():
         cur.append({"code": c, "name": NAMES.get(c, c), "close": round(float(C.iloc[-1]), 1), "toHigh": round(float((hi250.iloc[-1] / C.iloc[-1] - 1) * 100), 1),
                     "ret250": round(float((C.iloc[-1] / C.iloc[-251] - 1) * 100), 1), "rng20": round(float(rng20.iloc[-1] * 100), 1), "to20": round(float(to20.iloc[-1] / 1e8), 1)})
 D = pd.concat(rows); D = D[D.index >= D.index.min() + pd.Timedelta(days=370)]
-mkt = D.groupby(level=0)["f20"].mean()
+D = D[D["f20"].isna() | ((D["f20"] > -0.9) & (D["f20"] < 3))]   # 始値の異常値（分割の反映ずれ等）を除外
+mkt = D.groupby(level=0)["f20"].median()
 D["ex"] = D["f20"] - mkt.reindex(D.index).values
 print(f"銘柄 {D['c'].nunique()}  期間 {D.index.min().date()}〜{D.index.max().date()}")
 def rep(lbl, m, per):
@@ -47,7 +48,7 @@ def rep(lbl, m, per):
     for dt, r in x.iterrows():
         if r["c"] not in last or (dt - last[r["c"]]).days > 8: n_ep += 1
         last[r["c"]] = dt
-    print(f"  {lbl}: 信号日 {len(x)}（独立の件 約{n_ep}）20日後 平均{x['f20'].mean()*100:+.2f}% 中央{x['f20'].median()*100:+.2f}% 上昇{(x['f20']>0).mean()*100:.0f}% 全銘柄平均との差 {x['ex'].mean()*100:+.2f}% 20日以内に高値更新 {x['hit'].astype(float).mean()*100:.0f}% −10%以下{(x['f20']<=-0.10).mean()*100:.0f}%")
+    print(f"  {lbl}: 信号日 {len(x)}（独立の件 約{n_ep}）20日後 平均{x['f20'].mean()*100:+.2f}% 中央{x['f20'].median()*100:+.2f}% 上昇{(x['f20']>0).mean()*100:.0f}% 同日の全銘柄中央値との差 {x['ex'].mean()*100:+.2f}% 20日以内に高値更新 {x['hit'].astype(float).mean()*100:.0f}% −10%以下{(x['f20']<=-0.10).mean()*100:.0f}%")
 for lbl, per in (("前半（〜2023）", D.index < MID), ("後半（2024〜）", D.index >= MID)):
     print(lbl)
     rep("右肩上がり＋ブレイク直前", D["pre"], per)
