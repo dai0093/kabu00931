@@ -179,7 +179,13 @@ try:
     dfn = {"asOf": _hist[-1]["date"], "updatedAt": datetime.now(JST).isoformat(timespec="minutes"), "provisional": bool(INTRA), "policy": "C", "target": target,
            "score_today": _hist[-1]["score"], "hold10_max": sh, "rebound": _reb, "bottom": _bt, "history": _hist, "dbg_nk": {str(k.date()): round(float(v), 2) for k, v in nk_s.tail(8).items()}, "dbg_sox": {str(k.date()): round(float(v), 2) for k, v in sx_s.tail(6).items()}, "today": _today,
            "note": ("米欧の一部が未更新（" + str(len(stale_us)) + "銘柄）。金融機関の信号が実際より弱く出ている可能性" if stale_us else "")}
-    json.dump(dfn, open("data/defense_intraday.json" if INTRA else "data/defense.json", "w", encoding="utf-8"), ensure_ascii=False, indent=1)
+    _fn = "data/defense_intraday.json" if INTRA else "data/defense.json"
+    try:
+        _old = json.load(open(_fn, encoding="utf-8"))
+        if _old.get("asOf", "") > dfn["asOf"]:  # Yahoo欠損で日付が後戻りした場合は前回の判定を残す
+            dfn = _old; dfn["note"] = "Yahooの日経データが一時的に欠けたため、前回の判定を維持（" + dfn["asOf"] + "）"
+    except Exception: pass
+    json.dump(dfn, open(_fn, "w", encoding="utf-8"), ensure_ascii=False, indent=1)
     _DS = "data/defense_sent.json"
     try: _prev = json.load(open(_DS)).get("target", None)
     except Exception: _prev = None
