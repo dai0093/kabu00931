@@ -1,9 +1,9 @@
 {
  "updatedAt": "2026-10-26T12:20:00+09:00",
- "builtAt": "2026-10-26T23:37+09:00",
+ "builtAt": "2026-10-27T06:55+09:00",
  "phase": 3,
  "phaseName": "通り道が開通",
- "phaseDesc": "信用層に2つ以上点灯。　※期限切れで判定不能：IG OAS、NFCI（未点灯と扱わない）　※期限切れのまま点灯・接近を保持：私募信用、HY OAS",
+ "phaseDesc": "信用層に2つ以上点灯。　※期限切れで判定不能：IG OAS、NFCI（未点灯と扱わない）　※期限切れのまま点灯・接近を保持：原油、私募信用、HY OAS、欧州ソブリン、SOX下落",
  "counts": {
   "origin": [
    4,
@@ -101,8 +101,11 @@
   "NFCI"
  ],
  "held": [
+  "原油",
   "私募信用",
-  "HY OAS"
+  "HY OAS",
+  "欧州ソブリン",
+  "SOX下落"
  ],
  "assets": [
   {
@@ -128,18 +131,18 @@
  ],
  "values": {
   "vix": {
-   "value": 19.45,
+   "value": 18.39,
    "unit": "",
-   "observedAt": "2026-10-23",
-   "change": "+0.42（+2.21%）",
-   "source": "https://finance.yahoo.com/markets/live/stock-market-today-friday-october-23-dow-sp-500-nasdaq-tesla-meta-093000521.html"
+   "observedAt": "2026-10-26",
+   "change": "前日比 -1.06（Yahoo確定終値）",
+   "source": "https://finance.yahoo.com/quote/%5EVIX/"
   },
   "us10": {
-   "value": 4.99,
+   "value": 4.986,
    "unit": "%",
-   "observedAt": "2026-10-23",
-   "change": "4.988%、前日比 約+3.5bp（Yahoo）／5日 約−10bp（10/16 FRED 5.09%）／20日 約−20bp（Trading Economics月間変化）。原油高で小幅反発",
-   "source": "https://finance.yahoo.com/markets/live/stock-market-today-friday-october-23-dow-sp-500-nasdaq-tesla-meta-093000521.html"
+   "observedAt": "2026-10-26",
+   "change": "前日比 -0.002（Yahoo確定終値）",
+   "source": "https://finance.yahoo.com/quote/%5ETNX/"
   },
   "jgb10": {
    "value": 2.8,
@@ -170,11 +173,11 @@
    "source": "https://fred.stlouisfed.org/data/BAMLC0A0CM"
   },
   "t10y2y": {
-   "value": 0.31,
+   "value": 0.32,
    "unit": "%",
-   "observedAt": "2026-10-23",
-   "change": "前日 0.31（横ばい）",
-   "source": "https://fred.stlouisfed.org/series/T10Y2Y"
+   "observedAt": "2026-10-26",
+   "change": "財務省の利回り曲線（10年−2年）",
+   "source": "https://home.treasury.gov/resource-center/data-chart-center/interest-rates/TextView?type=daily_treasury_yield_curve"
   },
   "nfci": {
    "value": -0.496,
@@ -192,6 +195,41 @@
   }
  },
  "stale": [
+  {
+   "name": "Nasdaq",
+   "observedAt": "2026-10-23",
+   "freq": "日次"
+  },
+  {
+   "name": "S&P 500",
+   "observedAt": "2026-10-23",
+   "freq": "日次"
+  },
+  {
+   "name": "SOX指数",
+   "observedAt": "2026-10-23",
+   "freq": "日次"
+  },
+  {
+   "name": "SOX 52週高値からの下落率",
+   "observedAt": "2026-10-23",
+   "freq": "日次"
+  },
+  {
+   "name": "日本10年金利",
+   "observedAt": "2026-10-23",
+   "freq": "日次"
+  },
+  {
+   "name": "ドル円",
+   "observedAt": "2026-10-23",
+   "freq": "日次"
+  },
+  {
+   "name": "Brent原油",
+   "observedAt": "2026-10-23",
+   "freq": "日次"
+  },
   {
    "name": "HY OAS",
    "observedAt": "2026-10-22",
@@ -225,6 +263,11 @@
   {
    "name": "MBB OAS（MBS代理）",
    "observedAt": "2026-10-22",
+   "freq": "日次"
+  },
+  {
+   "name": "仏10年−独10年 国債利回り差",
+   "observedAt": "2026-10-23",
    "freq": "日次"
   }
  ],
