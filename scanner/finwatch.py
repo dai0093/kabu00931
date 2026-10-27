@@ -171,9 +171,9 @@ try:
         _bt = {"peak": round(float(_peak), 0), "close": round(float(_C[-1]), 0), "dd": round(float(_dd_now), 1), "line10": round(float(_peak * 0.9), 0), "active": False,
                "rule": "検証35：高値から−10%以下の局面で、週足の終値が戻り高値を上抜けると、26週後の騰落の中央値は+7〜11%（的中は基準の2倍強）。件数が少なく、動画の94%は再現できず"}
         if _m is not None and _L[_m] / _peak - 1 <= -0.10:
-            _lo = max(_pki, _m - 8); _reb = float(_H[_lo:_m].max()) if _m > _lo else None
-            _bt.update(active=True, valley=round(float(_L[_m]), 0), valleyDate=str(_wk.index[_m].date()), reb=None if _reb is None else round(_reb, 0),
-                       above=bool(_reb is not None and _C[-1] > _reb and len(_wk) - 1 > _m), toReb=None if _reb is None else round(float((_reb / _C[-1] - 1) * 100), 1))
+            _lo = max(_pki, _m - 8); _rh = float(_H[_lo:_m].max()) if _m > _lo else None
+            _bt.update(active=True, valley=round(float(_L[_m]), 0), valleyDate=str(_wk.index[_m].date()), reb=None if _rh is None else round(_rh, 0),
+                       above=bool(_rh is not None and _C[-1] > _rh and len(_wk) - 1 > _m), toReb=None if _rh is None else round(float((_rh / _C[-1] - 1) * 100), 1))
     except Exception as _eb:
         _bt = {"error": repr(_eb)[:80]}
     dfn = {"asOf": _hist[-1]["date"], "updatedAt": datetime.now(JST).isoformat(timespec="minutes"), "provisional": bool(INTRA), "policy": "C", "target": target,
@@ -267,3 +267,4 @@ json.dump({"names": out["flagged"], "at": out["updatedAt"], "strong": strong}, o
 # run bottom
 # run 2026-10-26 06:57 JST
 # fix asof
+# run reb
