@@ -13,7 +13,7 @@
    "ief": "2026-10-26"
   },
   "state": {
-   "brent": "near",
+   "brent": "lit",
    "us10": "near",
    "hy": "na",
    "nfci": "na",
@@ -32,8 +32,8 @@
    "hy": null,
    "hy_20": null,
    "nfci": null,
-   "brent": 109.9,
-   "brent_20": 0.071,
+   "brent": 110.5,
+   "brent_20": 0.077,
    "usdjpy": 157.528,
    "yen_20": 0.001,
    "credit_20": -0.02
@@ -44,7 +44,7 @@
    "last": 63268,
    "prev5": 64075
   },
-  "refreshed": "2026-10-28 09:44"
+  "refreshed": "2026-10-28 10:29"
  },
  "blocked": [],
  "updated": "2026-10-27 16:29",
