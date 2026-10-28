@@ -1,12 +1,12 @@
 {
  "updatedAt": "2026-10-28T12:30:00+09:00",
- "builtAt": "2026-10-28T23:34+09:00",
+ "builtAt": "2026-10-29T06:58+09:00",
  "phase": 3,
  "phaseName": "通り道が開通",
  "phaseDesc": "信用層に2つ以上点灯。　※期限切れで判定不能：NFCI（未点灯と扱わない）　※期限切れのまま点灯・接近を保持：私募信用",
  "counts": {
   "origin": [
-   4,
+   5,
    5
   ],
   "trans": [
@@ -34,7 +34,7 @@
    ],
    [
     "日米金利",
-    "near"
+    "lit"
    ],
    [
     "AI債務",
@@ -126,18 +126,18 @@
  ],
  "values": {
   "vix": {
-   "value": 17.52,
+   "value": 16.91,
    "unit": "",
-   "observedAt": "2026-10-27",
-   "change": "−0.87（−4.73%）",
-   "source": "https://finance.yahoo.com/markets/live/stock-market-today-tuesday-october-27-dow-sp-500-nasdaq-081901995.html"
+   "observedAt": "2026-10-28",
+   "change": "前日比 -0.61（Yahoo確定終値）",
+   "source": "https://finance.yahoo.com/quote/%5EVIX/"
   },
   "us10": {
-   "value": 4.99,
+   "value": 5.045,
    "unit": "%",
-   "observedAt": "2026-10-27",
-   "change": "4.992%、前日比 約+0.6bp／5日 約−13bp（10/20 約5.12%）／20日は9/29値を未確認（判定不能）",
-   "source": "https://investrade.com/market-review-october-27-2026/"
+   "observedAt": "2026-10-28",
+   "change": "前日比 +0.052（Yahoo確定終値）",
+   "source": "https://finance.yahoo.com/quote/%5ETNX/"
   },
   "jgb10": {
    "value": 2.79,
@@ -168,11 +168,11 @@
    "source": "https://fred.stlouisfed.org/data/BAMLC0A0CM"
   },
   "t10y2y": {
-   "value": 0.26,
+   "value": 0.38,
    "unit": "%",
-   "observedAt": "2026-10-27",
-   "change": "2年4.735%（+2.6bp）・10年4.992%から算出、前回0.27（10/26）から小幅平坦化",
-   "source": "https://investrade.com/market-review-october-27-2026/"
+   "observedAt": "2026-10-28",
+   "change": "財務省の利回り曲線（10年−2年）",
+   "source": "https://home.treasury.gov/resource-center/data-chart-center/interest-rates/TextView?type=daily_treasury_yield_curve"
   },
   "nfci": {
    "value": -0.496,
@@ -209,6 +209,16 @@
    "name": "MBB OAS（MBS代理）",
    "observedAt": "2026-10-23",
    "freq": "日次"
+  },
+  {
+   "name": "住宅一般延滞率",
+   "observedAt": "2026-06-30",
+   "freq": "四半期"
+  },
+  {
+   "name": "カード一般延滞率",
+   "observedAt": "2026-06-30",
+   "freq": "四半期"
   }
  ],
  "events": [
@@ -323,7 +333,7 @@
   "日経平均": {
    "phase": 3,
    "lit": {
-    "起点": 4,
+    "起点": 5,
     "信用": 2,
     "資金": 0,
     "市場": 1
@@ -333,7 +343,7 @@
   "200A（半導体）": {
    "phase": 2,
    "lit": {
-    "起点": 2,
+    "起点": 3,
     "信用": 1,
     "資金": 0,
     "市場": 1
@@ -343,7 +353,7 @@
   "SOXL": {
    "phase": 2,
    "lit": {
-    "起点": 1,
+    "起点": 2,
     "信用": 1,
     "資金": 0,
     "市場": 1
