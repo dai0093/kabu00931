@@ -1,6 +1,6 @@
 {
  "updatedAt": "2026-10-30T06:57:11+09:00",
- "builtAt": "2026-10-30T06:57+09:00",
+ "builtAt": "2026-10-30T07:02+09:00",
  "phase": 3,
  "phaseName": "通り道が開通",
  "phaseDesc": "信用層に2つ以上点灯。　※期限切れのまま点灯・接近を保持：私募信用",
@@ -166,11 +166,11 @@
    "source": "https://fred.stlouisfed.org/data/BAMLC0A0CM"
   },
   "t10y2y": {
-   "value": 0.32,
+   "value": 0.37,
    "unit": "%",
-   "observedAt": "2026-10-28",
-   "change": "2年4.7245%（−1.25bp）・10年5.0404%から算出、前回0.26（10/27）からスティープ化",
-   "source": "https://www.louisvelazquez.com/investinglive-americas-fx-news-wrap-28-oct-fed-holds-rates-yield-curve-steepens-as-big-tech-earnings-diverge/"
+   "observedAt": "2026-10-29",
+   "change": "財務省の利回り曲線（10年−2年）",
+   "source": "https://home.treasury.gov/resource-center/data-chart-center/interest-rates/TextView?type=daily_treasury_yield_curve"
   },
   "nfci": {
    "value": -0.487,
