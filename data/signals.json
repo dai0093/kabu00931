@@ -2,48 +2,49 @@
  "final": true,
  "risk": {
   "off": false,
-  "date": "2026-10-28",
+  "date": "2026-10-29",
   "asof": {
-   "vix": "2026-10-28",
-   "us10": "2026-10-28",
-   "brent": "2026-10-28",
-   "usdjpy": "2026-10-28",
-   "n225": "2026-10-29",
-   "hyg": "2026-10-28",
-   "ief": "2026-10-28"
+   "vix": "2026-10-29",
+   "us10": "2026-10-29",
+   "brent": "2026-10-29",
+   "usdjpy": "2026-10-29",
+   "n225": "2026-10-28",
+   "hyg": "2026-10-29",
+   "ief": "2026-10-29"
   },
   "state": {
    "brent": "lit",
-   "us10": "lit",
+   "us10": "near",
    "hy": "na",
    "nfci": "na",
    "vix": "ok",
    "hy_jump": "na",
    "us10_jump": "ok",
-   "oil_jump": "near",
+   "oil_jump": "ok",
    "yen_jump": "ok",
    "credit": "ok"
   },
   "values": {
-   "vix": 16.91,
+   "vix": 17.2,
    "vix_d": 0.0,
-   "us10": 5.045,
+   "us10": 4.989,
    "us10_20": -0.248,
    "hy": null,
    "hy_20": null,
    "nfci": null,
-   "brent": 115.32,
-   "brent_20": 0.114,
-   "usdjpy": 157.993,
-   "yen_20": 0.004,
-   "credit_20": -0.012
+   "brent": 111.54,
+   "brent_20": 0.09,
+   "usdjpy": 157.66,
+   "yen_20": 0.001,
+   "credit_20": -0.013
   },
   "weak": {
    "n225_5d": 0.0278,
    "on": false,
    "last": 64659,
    "prev5": 62908
-  }
+  },
+  "refreshed": "2026-10-30 06:58"
  },
  "blocked": [],
  "updated": "2026-10-29 16:28",
