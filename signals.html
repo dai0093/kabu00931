@@ -401,7 +401,7 @@ function render(){
  REC=(S&&(S.recent||S.signals))||[];
  const heldC=new Set([...b.hold.map(h=>h.code),...((PV&&PV.held)||[]).filter(h=>!soldRecently(b,h.code)).map(h=>h.code)]);
  const latest={};REC.forEach(t=>{if(!latest[t.code]||t.date>latest[t.code])latest[t.code]=t.date});
- const sg=REC.map((t,i)=>({t,i})).filter(({t})=>latest[t.code]===t.date&&!heldC.has(t.code)&&!b.skip.includes(t.date+t.code)&&!b.done.some(h=>h.code===t.code&&h.date===t.date))
+ const sg=REC.map((t,i)=>({t,i})).filter(({t})=>latest[t.code]===t.date&&!heldC.has(t.code)&&t.status!=='closed'&&!(S.quotes&&S.quotes[t.code]&&S.quotes[t.code].close<=t.stop)&&!b.skip.includes(t.date+t.code)&&!b.done.some(h=>h.code===t.code&&h.date===t.date))
   .sort((x,y)=>y.t.date.localeCompare(x.t.date));
  const W=S&&S.risk&&S.risk.weak;
  const CO=(S&&S.crash_out)||[];
