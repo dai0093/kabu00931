@@ -192,7 +192,14 @@
   "crash_out": false,
   "crash_why": "5日騰落 +6% / 値幅(ATR) 2.4% / 25日線乖離 +10%",
   "method": "高値更新",
-  "status": "open"
+  "status": "closed",
+  "buy": 5251.0,
+  "sell": 4950.0,
+  "entry_date": "2026-10-19",
+  "exit_date": "2026-10-29",
+  "reason": "損切り",
+  "pnl": -60200.0,
+  "hit": false
  },
  {
   "date": "2026-10-16",
