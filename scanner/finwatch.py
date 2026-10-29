@@ -130,6 +130,28 @@ if INTRA:
     json.dump(out, open(SI, "w", encoding="utf-8"), ensure_ascii=False, indent=1)
     print("速報モード", tst, strong, hot, {k: (v["med_d1"], v["med_d5"]) for k, v in groups.items()})
     sys.exit(0)
+# ---- 検証37：米大型株の時間外急落（−5%以下）→ 当日の東京の半導体は下がりやすい（6割程度・注意のみ。目標%には入れない） ----
+try:
+    _AH = ["GOOGL","NVDA","MSFT","AAPL","AMZN","META","INTC","AMD","AVGO","QCOM","MU","TXN","AMAT","LRCX","KLAC","ORCL","CSCO","IBM"]
+    _hx = yf.download(_AH, period="5d", interval="1h", prepost=True, auto_adjust=False, progress=False)["Close"]
+    _dx = yf.download(_AH, period="5d", auto_adjust=False, progress=False)["Close"]
+    _ah = []
+    for _t in _AH:
+        try:
+            _last = float(_hx[_t].dropna().iloc[-1]); _cl = float(_dx[_t].dropna().iloc[-1]); _r = (_last / _cl - 1) * 100
+            if _r <= -5: _ah.append(f"{_t} {_r:+.1f}%")
+        except Exception: pass
+    _AHF = "data/ah_sent.json"
+    try: _pa = json.load(open(_AHF)).get("sig", "")
+    except Exception: _pa = ""
+    _sg = ",".join(sorted(x.split()[0] for x in _ah))
+    if _ah and _sg != _pa and os.environ.get("NTFY_TOPIC") and "--no-notify" not in sys.argv:
+        _q = urllib.parse.urlencode({"title": "【注意】米大型株が時間外で急落", "priority": "3", "click": "https://dai0093.github.io/kabu00931/signals.html"})
+        _b = "、".join(_ah) + "\n検証37：当日の東京エレクトロン・アドバンテストは下落しやすい（前半・後半とも6割程度。逆に上がる日も4割）。暴落の予兆ではない（検証38）。"
+        urllib.request.urlopen(urllib.request.Request(f"https://ntfy.sh/{os.environ['NTFY_TOPIC']}?{_q}", data=_b.encode("utf-8"), method="POST"), timeout=30)
+    json.dump({"sig": _sg, "items": _ah, "at": datetime.now(JST).isoformat(timespec="minutes")}, open(_AHF, "w"), ensure_ascii=False)
+except Exception as _e:
+    print("AH check skip", repr(_e)[:80])
 # ---- 防御方針C（検証28）：広い信号の本数→持ち高の目安。鳴ってから10営業日は維持。自動売買はしない ----
 try:
     import statistics as _st
