@@ -1,6 +1,6 @@
 {
- "updatedAt": "2026-10-28T12:30:00+09:00",
- "builtAt": "2026-10-29T10:46+09:00",
+ "updatedAt": "2026-10-29T12:18:32+09:00",
+ "builtAt": "2026-10-29T12:18+09:00",
  "phase": 3,
  "phaseName": "通り道が開通",
  "phaseDesc": "信用層に2つ以上点灯。　※期限切れで判定不能：NFCI（未点灯と扱わない）　※期限切れのまま点灯・接近を保持：私募信用",
@@ -52,7 +52,7 @@
    ],
    [
     "IG OAS",
-    "near"
+    "ok"
    ],
    [
     "AI→銀行",
@@ -68,7 +68,7 @@
    ],
    [
     "金融機関株価",
-    "stale"
+    "ok"
    ]
   ],
   "fund": [
@@ -129,50 +129,50 @@
    "value": 16.91,
    "unit": "",
    "observedAt": "2026-10-28",
-   "change": "前日比 -0.61（Yahoo確定終値）",
-   "source": "https://finance.yahoo.com/quote/%5EVIX/"
+   "change": "−0.61（−3.48%）",
+   "source": "https://finance.yahoo.com/markets/live/stock-market-today-wednesday-october-28-dow-sp-500-nasdaq-fed-meeting-decision-big-tech-earnings-130508769.html"
   },
   "us10": {
-   "value": 5.045,
+   "value": 5.04,
    "unit": "%",
    "observedAt": "2026-10-28",
-   "change": "前日比 +0.052（Yahoo確定終値）",
-   "source": "https://finance.yahoo.com/quote/%5ETNX/"
+   "change": "5.040%、前日比 +4.7bp／5日 約−10bp（10/21 5.145%）／20日は9/30値を未確認（判定不能）",
+   "source": "https://www.louisvelazquez.com/investinglive-americas-fx-news-wrap-28-oct-fed-holds-rates-yield-curve-steepens-as-big-tech-earnings-diverge/"
   },
   "jgb10": {
-   "value": 2.79,
+   "value": 2.825,
    "unit": "%",
-   "observedAt": "2026-10-27",
-   "change": "前日比 約+0.005pt（ほぼ横ばい、1か月で約−0.31pt）",
-   "source": "https://tradingeconomics.com/japan/government-bond-yield"
+   "observedAt": "2026-10-28",
+   "change": "新発10年 2.825%に上昇（前回2.79%前後）。日銀会合（10/29〜30）を控える",
+   "source": "https://www.shinmai.co.jp/news/article/gfkn2026102801001226"
   },
   "brent": {
-   "value": 113.88,
+   "value": 115.32,
    "unit": "$",
-   "observedAt": "2026-10-27",
-   "change": "清算113.88ドル（−1.93ドル、−1.67%）。WTIは99.90ドル（−1.83%）で100ドル割れ。テヘラン協議継続への期待で下落、フーシ派はラス・タヌラ製油所攻撃を主張（未確認）",
-   "source": "https://investrade.com/market-review-october-27-2026/"
+   "observedAt": "2026-10-28",
+   "change": "清算115.32ドル（+1.44ドル、+1.3%）。WTIは102.78ドル（+2.9%）。EIA原油在庫−190万バレル、ラス・タヌラ付近の火災、WSJの米攻撃準備報道",
+   "source": "https://www.rigzone.com/news/oil_rises_with_iran_attack_report_israeli_election_in_focus-28-oct-2026-184958-article"
   },
   "hy": {
-   "value": 3.3,
+   "value": 3.18,
    "unit": "%",
-   "observedAt": "2026-10-26",
-   "change": "20日 +28bp（9/28 3.02%）／5日 +1bp（10/19 3.29%）。前日3.38%から−8bp",
+   "observedAt": "2026-10-27",
+   "change": "20日 +10bp（9/29 3.08%）／5日 −15bp（10/20 3.33%）。前日3.30%から−12bp",
    "source": "https://fred.stlouisfed.org/data/BAMLH0A0HYM2"
   },
   "ig": {
-   "value": 0.9,
+   "value": 0.88,
    "unit": "%",
-   "observedAt": "2026-10-26",
-   "change": "5日 +3bp（10/19 0.87%）、前日0.91%（−1bp）",
+   "observedAt": "2026-10-27",
+   "change": "5日 +1bp（10/20 0.87%）、前日0.90%（−2bp）",
    "source": "https://fred.stlouisfed.org/data/BAMLC0A0CM"
   },
   "t10y2y": {
-   "value": 0.38,
+   "value": 0.32,
    "unit": "%",
    "observedAt": "2026-10-28",
-   "change": "財務省の利回り曲線（10年−2年）",
-   "source": "https://home.treasury.gov/resource-center/data-chart-center/interest-rates/TextView?type=daily_treasury_yield_curve"
+   "change": "2年4.7245%（−1.25bp）・10年5.0404%から算出、前回0.26（10/27）からスティープ化",
+   "source": "https://www.louisvelazquez.com/investinglive-americas-fx-news-wrap-28-oct-fed-holds-rates-yield-curve-steepens-as-big-tech-earnings-diverge/"
   },
   "nfci": {
    "value": -0.496,
@@ -182,11 +182,11 @@
    "source": "https://fred.stlouisfed.org/series/nfci"
   },
   "usdjpy": {
-   "value": 157.86,
+   "value": 157.94,
    "unit": "円",
-   "observedAt": "2026-10-27",
-   "change": "+0.37円（NY終値）。FOMC（〜10/28）・日銀会合（10/29〜30）待ち",
-   "source": "https://investrade.com/market-review-october-27-2026/"
+   "observedAt": "2026-10-28",
+   "change": "前日比ほぼ横ばい（NY）。片山財務相が断固たる措置を辞さずと発言（介入は未実施）。日銀会合は10/30結果",
+   "source": "https://www.louisvelazquez.com/investinglive-americas-fx-news-wrap-28-oct-fed-holds-rates-yield-curve-steepens-as-big-tech-earnings-diverge/"
   }
  },
  "stale": [
@@ -199,11 +199,6 @@
    "name": "私募信用デフォルト率",
    "observedAt": "2026-08-31",
    "freq": "月次"
-  },
-  {
-   "name": "MBA購入申請",
-   "observedAt": "2026-10-16",
-   "freq": "週次"
   },
   {
    "name": "MBB OAS（MBS代理）",
@@ -222,6 +217,76 @@
   }
  ],
  "events": [
+  {
+   "date": "2026-10-29",
+   "title": "東京市場（10/29）前場途中：日経平均は寄り付き64,126円25銭（+172円）で3日続伸スタート、10時30分時点で64,462円09銭（+507円90銭）。TOPIXは3,991.84（+0.13）とほぼ横ばい。寄り付きは非鉄金属・鉱業・石油石炭が上昇、売買代金上位ではアドバンテスト・キオクシアHD・ソフトバンクG・フジクラ、メガバンク（みずほ・三菱UFJ・三井住友・りそな）が買われた。前夜の米SOX +1.75%が支え。日銀会合は10/29〜30",
+   "state": "実行済み",
+   "impact": "半導体・AI値がさ株主導で日経平均・200Aは続伸、TOPIXは横ばいで偏りが続く。メガバンクは寄り付き時点で上昇側で、銀行群の急落は確認されない。アルファベット時間外急落（約−9〜11%との報道）の影響は寄り付きの強さからは限定的に見える（前場終値は未確認）。東京前場の業種別騰落・銀行指数の数値は取得できず（判定不能）。10/29の欧州ソブリン（仏独スプレッド）・Brent・欧州銀行株の新規値は今回確認できず、系列は据え置き",
+   "source": "https://www.oanda.jp/lab-education/market_news/kn_2026102902000061/"
+  },
+  {
+   "date": "2026-10-28",
+   "title": "FOMC、政策金利3.75〜4.00%で据え置き（10対2、クック理事とハマック総裁は0.25pt利上げを主張）。ウォーシュ議長はインフレは高すぎるとしつつ追加情報を待つ姿勢。12月利上げ確率は約87%（前日約78%）との集計",
+   "state": "実行済み",
+   "impact": "据え置きは予想通りだが利上げ派2人の反対で高金利長期化の観測が強まり、米10年は5.04%（+4.7bp）へ上昇。金利経由で米国株・200A・SOXLのバリュエーションの重荷、ドル高・円安は日経平均の輸出株には支え。12月利上げは観測段階",
+   "source": "https://www.economies.com/stocks/united-states-news/wall-street-ends-mixed-as-fed-holds-rates-and-december-hike-expectations-rise-50373"
+  },
+  {
+   "date": "2026-10-28",
+   "title": "米国株終値（10/28）：ダウ +0.19%（52,475.10）、S&P +0.28%（7,743.98）、Nasdaq +0.27%（26,549.85）。SOXは+1.75%の11,674（4日続伸、22/30銘柄上昇）、SKハイニックスADR +13.3%、オラクル +10.6%、マイクロン +4.7%。VIXは16.91、WTIは100ドル台を回復",
+   "state": "実行済み",
+   "impact": "SOXは52週高値比で約−20.3%まで戻し、SOXL・200A・日経平均の半導体株の支え。ただし引け後のアルファベット急落が10/29の東京の重荷になり得る。信用・銀行損失の確認ではない",
+   "source": "https://www.tradingkey.com/analysis/stocks/us-stocks/262249004-us-stock-market-close-oracle-sk-hynix-fed-hold-sox-tradingkey"
+  },
+  {
+   "date": "2026-10-28",
+   "title": "アルファベット7〜9月期：売上1,275.8億ドル（+25%）、Google Cloud 307.1億ドル（+103%）だがEPS 2.12ドルで予想（約2.99ドル）を下回る（保有株式の評価損87億ドル）。株価は時間外で約−9%。マイクロソフト7〜9月期は売上922.8億ドル・EPS 4.89ドルと予想を上回り、Azure +48%で時間外約+4%",
+   "state": "実行済み",
+   "impact": "クラウド・AI需要は強いが、巨大テックの利益の質への疑問で評価が割れた。アルファベットの下落は米国株（Nasdaq）とAI関連の日経平均・200Aの重荷、Azure・Google Cloudの伸びはAI設備投資の継続を示し半導体需要（SOXL）の支え。夜間先物の2時値はこの決算前",
+   "source": "https://moneycheck.com/alphabet-goog-shares-plunge-8-9-after-hours-despite-google-cloud-revenue-doubling-to-30-7-billion/"
+  },
+  {
+   "date": "2026-10-28",
+   "title": "SKハイニックス7〜9月期：売上104.6兆ウォン（+328%）、営業利益83.3兆ウォン（+632%、営業利益率80%）と過去最高。2026年の株主還元は約100兆ウォン（配当30兆・自社株買い消却60兆以上）。需要超過は2030年まで続くと表明",
+   "state": "実行済み",
+   "impact": "メモリ・HBMの需給逼迫と価格の強さを確認する材料で、SOX・SOXL・200A（半導体比率が高い銘柄）の支え。『2030年まで不足』は会社の見通しで、Acer等の反対意見もある",
+   "source": "https://thenextweb.com/news/sk-hynix-q3-2026-record-profit-memory-shortage-2030"
+  },
+  {
+   "date": "2026-10-28",
+   "title": "東京市場終値（10/28）：日経平均は685円82銭高（+1.08%）の63,954円19銭と続伸（一時64,300円超）、TOPIXは5.66pt安の3,991.71と安値引けで小反落。ガラス土石・非鉄・電気機器が上昇、保険・食料品・石油石炭が下落。プライム売買代金は約8.07兆円。引け後のアドバンテスト決算は今期最終益を12%上方修正（7,415億円、3期連続最高益）。日経先物日中は64,530円（+1,030円）",
+   "state": "実行済み",
+   "impact": "半導体・AIの値がさ株主導で日経平均・200Aは上昇、値下がり銘柄が多くTOPIXは下落と偏りが続く。アドバンテストの上方修正は10/29の半導体株の支えだが、アルファベットの時間外急落とは綱引き。銀行業の動きは記事に記載なし（判定不能）",
+   "source": "https://www.oanda.jp/lab-education/market_news/mn_1041040_202610281759/"
+  },
+  {
+   "date": "2026-10-28",
+   "title": "原油：Brentは+1.3%の115.32ドル、WTIは+2.9%の102.78ドルで清算。フーシ派の攻撃後にサウジのラス・タヌラ・ターミナル付近で火災が発生し、関係者によると鎮火（被害規模は不明）。連合軍はターイフ向けの弾道ミサイルを迎撃、フーシ派はアブハ空港への無人機攻撃を主張（未確認）。EIA原油在庫は−190万バレル（予想は横ばい）",
+   "state": "実行済み",
+   "impact": "10/27の『主張』段階だったラス・タヌラ攻撃は火災の発生が関係者ベースで確認された（施設被害・供給への影響は未確認）。Brentは点灯域（110ドル超）で再上昇し、インフレ・米金利経由で日経平均・米国株、高ベータのSOXLに逆風",
+   "source": "https://www.rigzone.com/news/oil_rises_with_iran_attack_report_israeli_election_in_focus-28-oct-2026-184958-article"
+  },
+  {
+   "date": "2026-10-28",
+   "title": "WSJ：米国が湾岸諸国に、中間選挙（11/3）後の『短期集中』の対イラン作戦に備えるよう伝えたと報道（トランプ氏は未決定、Foxに『決断の時が近い』）。カタールの仲介者がイランに新たな合意案を提示し、イランは週内に回答の見通し（Reuters）。イラン国営メディアは米国が封鎖を解けば4〜5日でホルムズ通航を再開できると表明、CENTCOMは主要航路は安全と反論",
+   "state": "予告",
+   "impact": "報道・発言・提案段階で、攻撃も合意も決定していない。攻撃なら原油急伸で日経平均・米国株・SOXL・200Aに逆風、合意・再開なら原油下落で支え。11/3前後が分岐点",
+   "source": "https://www.thenationalnews.com/business/energy/2026/10/28/oil-prices-up-due-to-houthi-strikes-and-us-threat-to-renew-iran-war/"
+  },
+  {
+   "date": "2026-10-28",
+   "title": "イラン軍、ホルムズ東部の制限海域を位置信号を切って通航しようとしたタンカーが機雷に触れ火災・損傷したと主張（10/27、RIA経由）。独立確認なし。国際海事機関（IMO）は10/27に航路に機雷があり安全を保証できないと表明",
+   "state": "接近",
+   "impact": "被弾は主張段階（10/20・10/23の主張と同じ扱い）。通航・保険料の高止まりで原油の下値を支え、日経平均・米国株・SOXLの重荷",
+   "source": "https://news.sbs.co.kr/english/article.do?news_id=N1008817939"
+  },
+  {
+   "date": "2026-10-28",
+   "title": "片山財務相、為替市場で必要なら断固たる措置をとる用意があり『今この瞬間も含め』高い緊張感で注視と発言（10/27）。介入は未実施。日銀は10/30に政策金利1.25%据え置き予想、12月利上げは約8割織り込み",
+   "state": "予告",
+   "impact": "発言段階で介入の確認ではない（160円が目安との見方）。介入・利上げ示唆で円高に振れれば日経平均の輸出株に逆風、200Aにも円金利上昇の重荷。日本10年は2.825%に上昇",
+   "source": "https://www.tradingpedia.com/2026/10/28/eur-jpy-drops-as-intervention-jitters-and-boj-lift-yen/"
+  },
   {
    "date": "2026-10-28",
    "title": "東京市場前場（10/28）：日経平均は798円73銭高（+1.26%）の64,067円10銭と続伸（10時43分に64,260円86銭まで上昇）。TOPIXは0.84pt安の3,996.53と3日ぶりに小反落。アドバンテスト・東京エレクトロン・ソフトバンクGが指数を押し上げた一方、33業種中25業種が下落（保険・食料品が軟調）。プライムは値上がり491・値下がり1,028銘柄、売買代金は約3.83兆円",
@@ -256,76 +321,6 @@
    "state": "実行済み",
    "impact": "AI投資の資金を借入でなく株式で賄う動きで、債務・CDS面の圧力はやや和らぐ一方、供給者（半導体）が顧客に出資する循環構造と希薄化への疑問が残る（William Blair等）。半導体需要の裏付けとしてSOXL・200Aの支えだが、持続性は未確認。AI→銀行の根拠にしない",
    "source": "https://invezz.com/news/2026/10/27/nvidia-to-invest-3b-in-meta-as-ai-spending-drives-97-5b-fundraising/"
-  },
-  {
-   "date": "2026-10-27",
-   "title": "フーシ派（サリー報道官）、サウジ東部州のラス・タヌラ製油所（サウジ最大）を弾道ミサイルで攻撃し大規模火災を起こしたと主張。サウジ当局は即時コメントなし。連合軍は同日、無人機4機・弾道ミサイル3発を迎撃と発表",
-   "state": "接近",
-   "impact": "被害は主張段階で未確認。サウジ東部の石油中枢が標的で、確認されれば原油急伸→インフレ・米金利経由で日経平均・米国株・SOXLに逆風。10/27のBrentは協議期待で113.88ドル（−1.67%）と下落したが点灯域（110ドル超）は維持",
-   "source": "https://www.aa.com.tr/en/middle-east/yemen-s-houthis-claim-missile-attack-on-saudi-arabia-s-ras-tanura-oil-refinery/4102578"
-  },
-  {
-   "date": "2026-10-27",
-   "title": "イランの最高指導者モジタバ・ハメネイ師、最高安全保障委員会のレザイー書記との会談で『戦争終結にはイランの条件が満たされる必要がある』と表明（Tasnim）。イランのペルシャ湾海峡庁は韓国Sinokorの船舶に通航違反を理由に11/1から『法的措置』と警告、仲介国カタールはイランに湾岸諸国への威嚇停止と海峡開放を要求",
-   "state": "予告",
-   "impact": "発言・警告段階で合意も新たな封鎖措置も決定していない。条件（全戦線の停戦・凍結資金・海上封鎖解除）は従来どおりで打開の兆しは乏しい。ホルムズ通航の不確実性が続き原油の下値を支え、日経平均・米国株・SOXLの重荷",
-   "source": "https://www.equitypandit.com/iran-leader-sets-conditions-to-end-war-as-hormuz-stays-in-focus/"
-  },
-  {
-   "date": "2026-10-27",
-   "title": "東京市場終値（10/27）：日経平均は1,078円72銭高（+1.73%）の63,268円37銭と4日ぶり急反発（一時約1,500円高、後場は伸び悩み）。TOPIXは24.39pt高の3,997.37。非鉄金属・電気機器・銀行が上昇、不動産・医薬品・陸運が下落。アドバンテストとソフトバンクGの2銘柄で約772円押し上げ。値上がり704・値下がり798銘柄、プライム売買代金は約6.94兆円",
-   "state": "実行済み",
-   "impact": "米SOX高とAnthropicの目論見書で半導体・AI株が主導し、200A・日経平均が反発。ただし値下がり銘柄が多く値がさ株主導の偏った上昇。メガバンクは堅調（銀行業は上昇業種）で、銀行群の下げは一服。夜間先物は64,420円（+920円）",
-   "source": "https://minkabu.jp/news/4643223"
-  },
-  {
-   "date": "2026-10-27",
-   "title": "東京市場前場（10/27）：日経平均は1,191円64銭高（+1.9%）の63,381円29銭と4日ぶり反発（一時1,495円高、6万3000円台を回復）。TOPIXは23.19pt高の3,996.17。非鉄金属・電気機器・ガラス土石が上昇、不動産・医薬品・陸運が下落。売買代金は概算3.42兆円。日経先物は63,470円（+1,270円）。前夜の米SOX急反発とAnthropicの目論見書公表を受けAI・半導体株に買い（アドバンテスト等）",
-   "state": "実行済み",
-   "impact": "3日続落（約2,400円安）後の売り一巡と米半導体高で、200A・日経平均に支え。ただしTOPIXの上げは小さく値がさ株主導の反発。銀行株の個別の動きは記事に記載なし（判定不能）。原油高・中東情勢の不透明感、米長期金利の底堅さは残り、午後・大引けは未確認。FOMC（10/27〜28）・日銀（10/29〜30）・アドバンテスト決算（10/28）が次の確認点",
-   "source": "https://www.oanda.jp/lab-education/market_news/mn_1040766_202610271157/"
-  },
-  {
-   "date": "2026-10-26",
-   "title": "米国株終値（10/26）の確定：SOXは+2.82%の11,083.47（構成30銘柄すべて上昇）。SKハイニックス+4.09%、WDC+3.63%、マイクロン+2.98%、シーゲイト+2.18%。テスラは+5.21%（バークレイズが投資判断を『オーバーウェイト』に引き上げ）。前日報告の『SOX約3%上昇、終値未確認』を確定",
-   "state": "訂正",
-   "impact": "52週高値比は約−24.4%（10/23の−26.4%から戻る）。10/22の−6.72%の下げの約4割を戻した水準でSOXL・200Aの支えだが、高値圏には遠い。メモリ株の上昇は需給逼迫観測と整合するが、DRAM現物価格の最新値は今回確認できず（判定不能）。バークレイズのテスラ格上げは同社の調査報道（PRA）とは別件",
-   "source": "https://tradingkey.com/jp/analysis/stocks/us-stocks/262240371-us-stock-close-nasdaq-anthropic-ipo-s1-semiconductor-ai-tradingkey"
-  },
-  {
-   "date": "2026-10-26",
-   "title": "東京市場終値（10/26）：日経平均は503円51銭安の62,189円65銭と3日続落（後場安値で引け、約3か月ぶり安値）。TOPIXは7.17pt高の3,972.98と反発。鉱業・石油石炭・卸売が上昇、非鉄金属・電気機器・証券が下落。アドバンテスト・東京エレクトロンは3%超安。プライム売買代金は約6.64兆円。日経先物（日中）は62,200円（−710円）",
-   "state": "実行済み",
-   "impact": "半導体・AI株の売りが値がさ株経由で日経平均と200Aを押し下げ、資源・内需株が支えたTOPIXとは強弱が割れた。銀行株の個別の動きは記事に記載なし（判定不能）。下値の目安として23日安値61,462円・200日線61,524円が意識される。夜間先物は62,890円（+690円）まで戻した",
-   "source": "https://www.oanda.jp/lab-education/market_news/mn_1040611_202610261753/"
-  },
-  {
-   "date": "2026-10-26",
-   "title": "米国株：ダウ +0.28%（52,361.58）、S&P +0.70%（7,676.77）、Nasdaq +0.82%（26,169.38）。AnthropicがNasdaq上場（ティッカーANT）の目論見書を提出（株数・価格は未定）、AI株に買い：エヌビディア+2.39%、マイクロン約+3%、CoreWeaveは下落から約+6%へ反転、SOXは3%前後の上昇（終値は未確認）。VIXは18.39、米10年は4.986%",
-   "state": "実行済み",
-   "impact": "前週の半導体急落からの反発でSOXL・200Aの支え、10/27の東京も夜間先物高で反発の公算。ただしAI投資の借入依存への警戒は続き（Reuters）、上場は申請段階で価格・調達額は未決定。今週はFOMC（10/27〜28）とMicrosoft・Alphabet・Amazon決算が次の確認点",
-   "source": "https://finance.yahoo.com/markets/live/stock-market-today-monday-october-26-dow-sp-500-nasdaq-101153035.html"
-  },
-  {
-   "date": "2026-10-26",
-   "title": "テヘランでサウジ国防相・パキスタン陸軍参謀長・トルコ情報機関トップがイラン指導部と会談し、安全保障協議の継続で合意（IRIB）。ペゼシュキアン大統領は地域の団結につながる『あらゆる合意』を支持すると表明。Brentは115.81ドル（−0.8%）、WTIは101.76ドル（−1.5%）で清算",
-   "state": "予告",
-   "impact": "協議継続の合意で、停戦・ホルムズ再開・封鎖解除の取り決めではない。原油は一時110ドル近辺まで下げたが清算は115ドル台（点灯域110ドル超）を維持。合意に進めば原油下落でインフレ・米金利の重荷が後退し日経平均・米国株・SOXLの支え、決裂なら逆",
-   "source": "https://www.rigzone.com/news/oil_dips_from_6_month_high_as_officials_meet_in_tehran-26-oct-2026-184936-article"
-  },
-  {
-   "date": "2026-10-26",
-   "title": "フーシ派、週末にサウジの東西原油パイプライン（ペトロライン）のポンプ場とリヤド空港を攻撃したと主張。サウジは日曜にミサイル・無人機を追加で迎撃と発表。ワシントン近東政策研究所のデータでは10月はホルムズ周辺の商船攻撃が最悪の月、UAE沖の被弾タンカーからの油流出も拡大",
-   "state": "接近",
-   "impact": "パイプライン攻撃は主張段階で被害未確認。東西パイプラインはホルムズ迂回輸出（ヤンブー）の要で、確認されれば供給懸念で原油急伸→インフレ・米金利経由で日経平均・米国株・SOXLに逆風",
-   "source": "https://www.geo.tv/latest/688405-oil-slips-2-a-barrel-but-stays-near-six-month-highs-on-saudi-attacks"
-  },
-  {
-   "date": "2026-10-26",
-   "title": "仏国債の売りが一服：仏10年は4.976%（−4.5bp、10/22の5.1415%は2002年以来の高水準）、対独スプレッドは−5bpの約161bp（Reuters）。ムーディーズがAa3据え置き（10/23）を受けた反応。独10年は3.357%",
-   "state": "緩和",
-   "impact": "欧州ソブリン不安は一段落したが、スプレッドは2011年以来の高水準圏で、格付けは2027年予算成立が前提のまま。欧州銀行株・ユーロ経由の米国株・日経平均（銀行株）への重荷はやや後退",
-   "source": "https://www.bnnbloomberg.ca/business/economics/2026/10/26/french-bond-selloff-eases-as-country-spared-ratings-downgrade/"
   }
  ],
  "source": "https://claude.ai/artifact/KJPgY7LSb8DMsdXt2A1Gst",
