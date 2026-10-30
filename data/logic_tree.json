@@ -1,6 +1,6 @@
 {
  "updatedAt": "2026-10-30T12:40:00+09:00",
- "builtAt": "2026-10-30T23:35+09:00",
+ "builtAt": "2026-10-31T06:26+09:00",
  "phase": 3,
  "phaseName": "通り道が開通",
  "phaseDesc": "信用層に2つ以上点灯。　※期限切れのまま点灯・接近を保持：私募信用",
@@ -124,18 +124,18 @@
  ],
  "values": {
   "vix": {
-   "value": 17.2,
+   "value": 19.42,
    "unit": "",
-   "observedAt": "2026-10-29",
-   "change": "+0.29（+1.71%）",
-   "source": "https://finance.yahoo.com/markets/live/stock-market-today-thursday-october-29-dow-sp-500-nasdaq-alphabet-microsoft-earnings-130305714.html"
+   "observedAt": "2026-10-30",
+   "change": "前日比 +2.22（Yahoo確定終値）",
+   "source": "https://finance.yahoo.com/quote/%5EVIX/"
   },
   "us10": {
-   "value": 4.99,
+   "value": 4.929,
    "unit": "%",
-   "observedAt": "2026-10-29",
-   "change": "4.989%、前日比 −5.6bp／5日 +3bp（10/22 4.96%、財務省CMT）／20日 −30bp（9/30 5.29%、財務省CMT）",
-   "source": "https://finance.yahoo.com/markets/live/stock-market-today-thursday-october-29-dow-sp-500-nasdaq-alphabet-microsoft-earnings-130305714.html"
+   "observedAt": "2026-10-30",
+   "change": "前日比 -0.060（Yahoo確定終値）",
+   "source": "https://finance.yahoo.com/quote/%5ETNX/"
   },
   "jgb10": {
    "value": 2.831,
@@ -166,9 +166,9 @@
    "source": "https://fred.stlouisfed.org/data/BAMLC0A0CM"
   },
   "t10y2y": {
-   "value": 0.37,
+   "value": 0.38,
    "unit": "%",
-   "observedAt": "2026-10-29",
+   "observedAt": "2026-10-30",
    "change": "財務省の利回り曲線（10年−2年）",
    "source": "https://home.treasury.gov/resource-center/data-chart-center/interest-rates/TextView?type=daily_treasury_yield_curve"
   },
