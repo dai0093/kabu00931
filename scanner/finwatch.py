@@ -33,6 +33,7 @@ L = [
  ("加豪銀", "マッコーリー", "MQG.AX"),
  ("日本", "三菱UFJ", "8306.T"), ("日本", "みずほ", "8411.T"), ("日本", "三井住友", "8316.T"),
  ("日本", "野村", "8604.T"), ("日本", "大和証券G", "8601.T"),
+ ("日本その他", "SBI HD", "8473.T"), ("日本その他", "銀行業ETF", "1615.T"), ("日本その他", "ゆうちょ銀行", "7182.T"), ("日本その他", "りそな", "8308.T"), ("日本その他", "コンコルディア", "7186.T"),
  ("中国", "中国工商銀行", "1398.HK"), ("中国", "中国農業銀行", "1288.HK"), ("中国", "中国銀行", "3988.HK"),
  ("中国", "中国建設銀行", "0939.HK"), ("中国", "交通銀行", "3328.HK"), ("中国", "中信証券", "600030.SS"),
 ]
@@ -104,6 +105,18 @@ try:
     sox5 = float((_s.iloc[-1] / _s.iloc[-6] - 1) * 100)
 except Exception:
     sox5 = None
+# 信用（社債）の代替：FREDのHY/IG OASが取れないため、社債ETF÷米国債ETFの比で毎日見る（閾値は未検証。表示のみ）
+try:
+    _cx = yf.download(["HYG", "LQD", "IEF"], period="1y", auto_adjust=True, progress=False)["Close"].dropna()
+    _cr = {}
+    for _k in ("HYG", "LQD"):
+        _q = _cx[_k] / _cx["IEF"]
+        _cr[_k] = {"d5": round(float((_q.iloc[-1] / _q.iloc[-6] - 1) * 100), 2), "d20": round(float((_q.iloc[-1] / _q.iloc[-21] - 1) * 100), 2),
+                   "dd": round(float((_q.iloc[-1] / _q.iloc[-250:].max() - 1) * 100), 2)}
+    out["credit"] = {"date": str(_cx.index[-1].date()), **_cr,
+                     "rule": "HYG＝ハイイールド社債、LQD＝投資適格社債。米国債(IEF)に対する比が下がる＝社債が売られている（信用の悪化）。HY/IG OASの代わり。閾値は未検証"}
+except Exception as _e:
+    out["credit"] = {"error": repr(_e)[:80]}
 tst, thit = fintree.state(groups)
 stale_groups = [g for g in groups if sum(1 for x in rows if x["g"] == g and x["t"] in stale) >= max(1, groups[g]["n"] // 2)]
 out["stale"] = stale; out["stale_groups"] = stale_groups
