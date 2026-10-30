@@ -173,6 +173,21 @@ try:
     import statistics as _st
     _px = yf.download(["^N225", "^SOX"], period="9mo", auto_adjust=False, progress=False)["Close"]
     nk_s = settled(_px["^N225"].dropna(), "N225.T"); sx_s = settled(_px["^SOX"].dropna(), "^SOX")
+    # Yahooの日経が最新日を欠く時は、日経連動ETF(1321)の騰落で補う（欠損で判定が止まるのを防ぐ）
+    try:
+        _n2 = yf.download("^N225", period="1mo", auto_adjust=False, progress=False)["Close"].squeeze().dropna()
+        _n2.index = pd.to_datetime(_n2.index).tz_localize(None); _n2 = settled(_n2, "N225.T")
+        nk_s.index = pd.to_datetime(nk_s.index).tz_localize(None)
+        for _d, _v in _n2.items():
+            if _d not in nk_s.index: nk_s.loc[_d] = _v
+        _e = yf.download("1321.T", period="1mo", auto_adjust=False, progress=False)["Close"].squeeze().dropna()
+        _e.index = pd.to_datetime(_e.index).tz_localize(None); _e = settled(_e, "1321.T"); nk_s = nk_s.sort_index()
+        for _d in _e.index[_e.index > nk_s.index[-1]]:
+            _p = _e.index[_e.index < _d][-1]
+            if _p in nk_s.index: nk_s.loc[_d] = float(nk_s[_p]) * float(_e[_d] / _e[_p])
+        nk_s = nk_s.sort_index()
+    except Exception as _en:
+        print("日経補完失敗", repr(_en)[:80])
     _ser = {tt: settled(df[tt].dropna(), tt) for _, _, tt in L if tt in df}
     _gof = {tt: g for g, _, tt in L}
     def _grp_at(d):
