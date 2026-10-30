@@ -138,7 +138,10 @@ try:
     _ah = []
     for _t in _AH:
         try:
-            _last = float(_hx[_t].dropna().iloc[-1]); _cl = float(_dx[_t].dropna().iloc[-1]); _r = (_last / _cl - 1) * 100
+            _h = _hx[_t].dropna(); _ix = _h.index.tz_convert("America/New_York") if _h.index.tz is not None else _h.index.tz_localize("UTC").tz_convert("America/New_York")
+            _hm = _ix.hour * 60 + _ix.minute; _reg = _h[(_hm >= 570) & (_hm < 960)]
+            if not len(_reg) or _h.index[-1] <= _reg.index[-1]: continue  # 引け後のバーがなければ判定しない
+            _cl = float(_reg.iloc[-1]); _last = float(_h.iloc[-1]); _r = (_last / _cl - 1) * 100  # 同じ日の通常取引の最後の値と比べる
             if _r <= -5: _ah.append(f"{_t} {_r:+.1f}%")
         except Exception: pass
     _AHF = "data/ah_sent.json"
