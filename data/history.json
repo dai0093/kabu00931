@@ -171,7 +171,14 @@
   "by_risk": 200,
   "by_cash": 100,
   "method": "高値更新",
-  "status": "open"
+  "status": "closed",
+  "buy": 7463.0,
+  "sell": 7227.0,
+  "entry_date": "2026-10-16",
+  "exit_date": "2026-10-30",
+  "reason": "損切り",
+  "pnl": -23600.0,
+  "hit": false
  },
  {
   "date": "2026-10-16",
@@ -221,5 +228,47 @@
   "crash_why": "5日騰落 +11% / 値幅(ATR) 2.9% / 25日線乖離 +15%",
   "method": "高値更新",
   "status": "open"
+ },
+ {
+  "date": "2026-10-30",
+  "code": "4661",
+  "name": "オリエンタルランド",
+  "vol_ratio": 2.45,
+  "entry": 3438,
+  "stop": 3254,
+  "target": 3714,
+  "shares": 300,
+  "cost": 1031400,
+  "risk_yen": 55200,
+  "risk_per_share": 184,
+  "by_risk": 300,
+  "by_cash": 400,
+  "crash_p": 0.288,
+  "crash_thr": 0.582,
+  "crash_out": false,
+  "crash_why": "5日騰落 +5% / 値幅(ATR) 2.7% / 25日線乖離 +12%",
+  "method": "高値更新",
+  "status": "pending"
+ },
+ {
+  "date": "2026-10-30",
+  "code": "4502",
+  "name": "武田薬品工業",
+  "vol_ratio": 1.64,
+  "entry": 6651,
+  "stop": 6346,
+  "target": 7108,
+  "shares": 200,
+  "cost": 1330200,
+  "risk_yen": 61000,
+  "risk_per_share": 305,
+  "by_risk": 200,
+  "by_cash": 200,
+  "crash_p": 0.273,
+  "crash_thr": 0.582,
+  "crash_out": false,
+  "crash_why": "5日騰落 +4% / 値幅(ATR) 2.3% / 25日線乖離 +10%",
+  "method": "高値更新",
+  "status": "pending"
  }
 ]
