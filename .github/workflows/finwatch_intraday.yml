@@ -22,10 +22,13 @@ jobs:
         env:
           INTRADAY: "1"
           NTFY_TOPIC: ${{ secrets.NTFY_TOPIC }}
+      - run: python3 scanner/health.py || echo health失敗
+        env:
+          NTFY_TOPIC: ${{ secrets.NTFY_TOPIC }}
       - run: |
           git config user.name "kabu-bot"
           git config user.email "kabu-bot@users.noreply.github.com"
-          for f in data/finwatch_intraday.json data/assets.json data/ah_sent.json data/defense.json data/defense_intraday.json data/defense_sent.json; do [ -f $f ] && git add $f; done; git diff --cached --quiet && echo nochange ||  git commit -m "finwatch intraday (provisional)" && git pull --rebase && git push || echo "no change"
+          for f in data/finwatch_intraday.json data/assets.json data/ah_sent.json data/health.json data/defense.json data/defense_intraday.json data/defense_sent.json; do [ -f $f ] && git add $f; done; git diff --cached --quiet && echo nochange ||  git commit -m "finwatch intraday (provisional)" && git pull --rebase && git push || echo "no change"
 # run 2026-10-23T01:02:42
 # run 2026-10-23T01:35:18
 # run 2026-10-24T06:38:16

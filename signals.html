@@ -68,6 +68,7 @@ input{width:100%;font:inherit;font-size:18px;padding:10px;border-radius:8px;bord
  <div class="upd">最終更新<br><span id="hupd">--</span></div>
 </div>
 
+<div class="panel alert" id="hlth" style="display:none"></div>
 <div class="panel" id="concl"></div>
 <div class="panel" id="lock" style="display:none"></div>
 <div class="panel notice" id="notice"></div>
@@ -329,6 +330,7 @@ function render(){
    ${known&&tot?`<div class="row"><span>この3分野の保有</span><b>${yen(tot)}</b></div><div class="row"><span>売る目安の合計</span><b class="up">${yen(selltot)}</b></div>`:'<div class="note">保有を登録すると、売る金額が出ます</div>'}
    ${rows}
    <div class="note" style="margin-top:8px">判定は${esc(D.asOf)}終値${D.provisional?'（途中値）':''}。直近10営業日の最大点灯数 ${D.hold10_max}本（本日${D.score_today}本）。${D.note?esc(D.note)+'。':''}予測ではなく、鳴ってから反応する方針です。後半の上昇の約8割を逃す代わりに、急落時の最悪損失が −44%→−8% になりました。売買は富士さんの判断です。詳しい内訳は下の各項目を開いてください。</div>`}}
+ {const e=document.getElementById('hlth');if(HL&&HL.problems&&HL.problems.length){e.style.display='';e.innerHTML=`<div class="ttl"><span class="nm">⚠ データが不完全です</span></div>`+HL.problems.map(p=>`<div class="row"><span>${esc(p)}</span></div>`).join('')+`<div class="note">この状態の判定は、実際より危険を弱く出している可能性があります。確認 ${esc(HL.at)}</div>`}}
  // 防御方針C（検証28）：持ち高の目安
  {const e=document.getElementById('defn'),D=(DI&&DF&&DI.updatedAt>DF.updatedAt)?DI:(DF||DI);if(D){const p=Math.round(D.target*100),fl=Object.entries((D.today||{}).flags||{}),col=p===100?'b-sell':'b-buy';
   e.className='panel'+(p<100?' alert':'');
@@ -487,7 +489,7 @@ function render(){
 }
 
 (async()=>{
- [S,C,BT,PP,LT,MG,FW,FI,FC,DF,DI,AS]=await Promise.all([get('data/signals.json'),get('data/candles.json'),get('data/compare6.json'),get('data/paper.json'),get('data/logic_tree.json'),get('data/morning.json'),get('data/finwatch.json'),get('data/finwatch_intraday.json'),get('data/forecast.json'),get('data/defense.json'),get('data/defense_intraday.json'),get('data/assets.json')]);
+ [S,C,BT,PP,LT,MG,FW,FI,FC,DF,DI,AS,HL]=await Promise.all([get('data/signals.json'),get('data/candles.json'),get('data/compare6.json'),get('data/paper.json'),get('data/logic_tree.json'),get('data/morning.json'),get('data/finwatch.json'),get('data/finwatch_intraday.json'),get('data/forecast.json'),get('data/defense.json'),get('data/defense_intraday.json'),get('data/assets.json'),get('data/health.json')]);
  if(S){const [y,m,d]=S.market_date.split('-');document.getElementById('hdate').textContent=`${+m}月${+d}日`;
   document.getElementById('hst').textContent='✓ 判定完了';{const W='日月火水木金土',u=new Date(S.updated.replace(' ','T')+':00+09:00'),md=new Date(S.market_date+'T00:00:00+09:00');
   let n=new Date(md.getTime()+864e5);while([0,6].includes(n.getUTCDay()===undefined?0:new Date(n.getTime()+9*36e5).getUTCDay()))n=new Date(n.getTime()+864e5);
