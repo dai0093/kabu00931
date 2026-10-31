@@ -83,6 +83,22 @@ out = {"asOf": asof, "for": nxt, "close": round(float(C.iloc[-2]), 0), "prob": P
        "updatedAt": datetime.now(JST).isoformat(timespec="minutes"),
        "features": {k: round(float(v), 4) for k, v in today.iloc[0].items()},
        "rule": "今日の終値から、その期間内に一度でもその下落幅に達する確率。前半で学習し後半で当たったもの（ok）だけを判定に使う"}
+# 群集心理（検証41：前半・後半とも同じ向きだったものだけ）
+try:
+    _v = yf.download("1321.T", start="2015-01-01", auto_adjust=False, progress=False); _v.columns = [c[0] if isinstance(c, tuple) else c for c in _v.columns]
+    _vt = (_v["Volume"] * _v["Close"]); _vr = _vt.rolling(5).mean() / _vt.rolling(60).mean()
+    _dd = C_f.diff(); _u = _dd.clip(lower=0).rolling(14).mean(); _w = (-_dd.clip(upper=0)).rolling(14).mean(); _rsi = 100 - 100 / (1 + _u / _w)
+    _vs = V / V.rolling(20).mean() - 1
+    def _q(s, x): s = s.dropna(); return round(float((s <= x).mean() * 100), 0)
+    out["crowd"] = [
+        {"name": "出来高の急増（群集の売買の殺到）", "value": round(float(_vr.dropna().iloc[-1]), 2), "pct": _q(_vr, _vr.dropna().iloc[-1]), "unit": "倍（5日÷60日）", "risk": bool(_vr.dropna().iloc[-1] >= _vr.dropna().quantile(.8)),
+         "rule": "上位20%の日は5日以内−5%が 前半14.1%・後半9.4%（下位20%は4.4%・5.3%）"},
+        {"name": "VIXの急騰（恐怖の連鎖）", "value": round(float(_vs.dropna().iloc[-1] * 100), 1), "pct": _q(_vs, _vs.dropna().iloc[-1]), "unit": "%（20日平均比）", "risk": bool(_vs.dropna().iloc[-1] >= _vs.dropna().quantile(.8)),
+         "rule": "上位20%の日は 前半13.7%・後半11.3%（下位20%は8.7%・4.1%）"},
+        {"name": "売られ過ぎ（RSI14が低い）", "value": round(float(_rsi.dropna().iloc[-1]), 1), "pct": _q(_rsi, _rsi.dropna().iloc[-1]), "unit": "", "risk": bool(_rsi.dropna().iloc[-1] <= _rsi.dropna().quantile(.2)),
+         "rule": "下位20%の日は 前半12.6%・後半9.8%（上位20%は4.4%・5.0%）。下げは下げを呼ぶ。買い過熱の後の暴落は、検証では確認できず"}]
+except Exception as _x:
+    out["crowd"] = []; print("crowd失敗", _x)
 json.dump(out, open("data/outlook.json", "w", encoding="utf-8"), ensure_ascii=False, indent=1)
 # 記録と採点
 try: LG = json.load(open("data/outlook_log.json", encoding="utf-8"))
