@@ -5,6 +5,7 @@ on:
     - cron: "40 3 * * 1-5"    # 12:40 JST（前場後）
     - cron: "50 7 * * 1-5"    # 16:50 JST（東京引け後・欧州寄り付き）
     - cron: "10 22 * * 1-5"   # 7:10 JST
+    - cron: "10 1 * * 6,0"    # 土日10:10 JST（遅れて届く米欧の終値を取り直す）
   workflow_dispatch:
   push:
     paths: [".github/workflows/finwatch.yml", "scanner/finwatch.py", "scanner/series_refresh.py", "scanner/logic_from_state.py"]
