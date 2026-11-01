@@ -1,0 +1,60 @@
+/opt/hostedtoolcache/Python/3.11.17/x64/lib/python3.11/site-packages/yfinance/utils.py:568: Pandas4Warning: The inplace keyword in DataFrame.sort_index is deprecated and will be removed in a future version (PDEP-8).
+See https://pandas.pydata.org/docs/dev/whatsnew/v3.1.0.html#deprecation-inplace for more details.
+  quotes.sort_index(inplace=True)
+/opt/hostedtoolcache/Python/3.11.17/x64/lib/python3.11/site-packages/yfinance/multi.py:220: Pandas4Warning: The inplace keyword in DataFrame.rename is deprecated and will be removed in a future version (PDEP-8).
+See https://pandas.pydata.org/docs/dev/whatsnew/v3.1.0.html#deprecation-inplace for more details.
+  data.rename(columns=ctx.isins, inplace=True)
+/opt/hostedtoolcache/Python/3.11.17/x64/lib/python3.11/site-packages/yfinance/multi.py:224: Pandas4Warning: The inplace keyword in DataFrame.sort_index is deprecated and will be removed in a future version (PDEP-8).
+See https://pandas.pydata.org/docs/dev/whatsnew/v3.1.0.html#deprecation-inplace for more details.
+  data.sort_index(level=0, axis=1, inplace=True)
+/opt/hostedtoolcache/Python/3.11.17/x64/lib/python3.11/site-packages/yfinance/utils.py:568: Pandas4Warning: The inplace keyword in DataFrame.sort_index is deprecated and will be removed in a future version (PDEP-8).
+See https://pandas.pydata.org/docs/dev/whatsnew/v3.1.0.html#deprecation-inplace for more details.
+  quotes.sort_index(inplace=True)
+/opt/hostedtoolcache/Python/3.11.17/x64/lib/python3.11/site-packages/yfinance/multi.py:220: Pandas4Warning: The inplace keyword in DataFrame.rename is deprecated and will be removed in a future version (PDEP-8).
+See https://pandas.pydata.org/docs/dev/whatsnew/v3.1.0.html#deprecation-inplace for more details.
+  data.rename(columns=ctx.isins, inplace=True)
+/opt/hostedtoolcache/Python/3.11.17/x64/lib/python3.11/site-packages/yfinance/multi.py:224: Pandas4Warning: The inplace keyword in DataFrame.sort_index is deprecated and will be removed in a future version (PDEP-8).
+See https://pandas.pydata.org/docs/dev/whatsnew/v3.1.0.html#deprecation-inplace for more details.
+  data.sort_index(level=0, axis=1, inplace=True)
+/opt/hostedtoolcache/Python/3.11.17/x64/lib/python3.11/site-packages/yfinance/utils.py:568: Pandas4Warning: The inplace keyword in DataFrame.sort_index is deprecated and will be removed in a future version (PDEP-8).
+See https://pandas.pydata.org/docs/dev/whatsnew/v3.1.0.html#deprecation-inplace for more details.
+  quotes.sort_index(inplace=True)
+/opt/hostedtoolcache/Python/3.11.17/x64/lib/python3.11/site-packages/yfinance/multi.py:220: Pandas4Warning: The inplace keyword in DataFrame.rename is deprecated and will be removed in a future version (PDEP-8).
+See https://pandas.pydata.org/docs/dev/whatsnew/v3.1.0.html#deprecation-inplace for more details.
+  data.rename(columns=ctx.isins, inplace=True)
+/opt/hostedtoolcache/Python/3.11.17/x64/lib/python3.11/site-packages/yfinance/multi.py:224: Pandas4Warning: The inplace keyword in DataFrame.sort_index is deprecated and will be removed in a future version (PDEP-8).
+See https://pandas.pydata.org/docs/dev/whatsnew/v3.1.0.html#deprecation-inplace for more details.
+  data.sort_index(level=0, axis=1, inplace=True)
+/opt/hostedtoolcache/Python/3.11.17/x64/lib/python3.11/site-packages/yfinance/utils.py:568: Pandas4Warning: The inplace keyword in DataFrame.sort_index is deprecated and will be removed in a future version (PDEP-8).
+See https://pandas.pydata.org/docs/dev/whatsnew/v3.1.0.html#deprecation-inplace for more details.
+  quotes.sort_index(inplace=True)
+/opt/hostedtoolcache/Python/3.11.17/x64/lib/python3.11/site-packages/yfinance/multi.py:220: Pandas4Warning: The inplace keyword in DataFrame.rename is deprecated and will be removed in a future version (PDEP-8).
+See https://pandas.pydata.org/docs/dev/whatsnew/v3.1.0.html#deprecation-inplace for more details.
+  data.rename(columns=ctx.isins, inplace=True)
+/opt/hostedtoolcache/Python/3.11.17/x64/lib/python3.11/site-packages/yfinance/multi.py:224: Pandas4Warning: The inplace keyword in DataFrame.sort_index is deprecated and will be removed in a future version (PDEP-8).
+See https://pandas.pydata.org/docs/dev/whatsnew/v3.1.0.html#deprecation-inplace for more details.
+  data.sort_index(level=0, axis=1, inplace=True)
+
+=== 金（GC=F）2026-10-30 終値 3,898.9 ===
+1年騰落 -2.9%  1年高値 5,318.4（2026-01-29）から -26.7%  20日 -6.3%  200日線比 -13.7%
+  持ちっぱなし: 前半 +472%・最大下落-30%  後半 +149%・最大下落-41%
+  200日線割れで売る: 前半 +261%・最大下落-23%  後半 +93%・最大下落-33%
+  高値−20%で売り、200日線回復で買い戻す: 前半 +314%・最大下落-42%  後半 +114%・最大下落-38%
+
+=== 銀（SI=F）2026-10-30 終値 49.3 ===
+1年騰落 +1.8%  1年高値 115.1（2026-01-26）から -57.2%  20日 -17.8%  200日線比 -30.5%
+  持ちっぱなし: 前半 +465%・最大下落-58%  後半 +77%・最大下落-68%
+  200日線割れで売る: 前半 +170%・最大下落-49%  後半 +28%・最大下落-54%
+  高値−20%で売り、200日線回復で買い戻す: 前半 +472%・最大下落-36%  後半 +24%・最大下落-63%
+
+=== プラチナ（PL=F）2026-10-30 終値 1,436.0 ===
+1年騰落 -10.7%  1年高値 2,852.4（2026-01-26）から -49.7%  20日 -14.7%  200日線比 -24.0%
+  持ちっぱなし: 前半 +226%・最大下落-65%  後半 +3%・最大下落-66%
+  200日線割れで売る: 前半 +56%・最大下落-54%  後半 -51%・最大下落-74%
+  高値−20%で売り、200日線回復で買い戻す: 前半 +93%・最大下落-54%  後半 -40%・最大下落-71%
+
+=== パラジウム（PA=F）2026-10-30 終値 987.7 ===
+1年騰落 -32.4%  1年高値 2,169.9（2026-01-26）から -54.5%  20日 -14.9%  200日線比 -30.1%
+  持ちっぱなし: 前半 +48%・最大下落-86%  後半 +51%・最大下落-72%
+  200日線割れで売る: 前半 +153%・最大下落-56%  後半 -13%・最大下落-75%
+  高値−20%で売り、200日線回復で買い戻す: 前半 +250%・最大下落-61%  後半 +86%・最大下落-64%
