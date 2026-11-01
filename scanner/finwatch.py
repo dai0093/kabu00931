@@ -258,7 +258,7 @@ except Exception as _e:
     print("防御方針C失敗", repr(_e)); import traceback; open("data/defense_err.txt", "w").write(datetime.now(JST).isoformat() + "\n" + traceback.format_exc())
 
 try:
-    _AS = [("日本株","1306.T","TOPIX連動ETF"),("米国株","SPY","S&P500"),("米国債","IEF","米国債7-10年"),("日本国債","2510.T","国内債券ETF"),("金","GLD","金"),("REIT","1343.T","東証REIT ETF"),("先進国株","EFA","先進国株(米除く)")]
+    _AS = [("日本株","1306.T","TOPIX連動ETF"),("米国株","SPY","S&P500"),("米国債","IEF","米国債7-10年"),("日本国債","2510.T","国内債券ETF"),("金","GLD","金"),("銀","SLV","銀"),("プラチナ","PPLT","プラチナ"),("REIT","1343.T","東証REIT ETF"),("先進国株","EFA","先進国株(米除く)")]
     _ao = []
     for _n, _t, _d in _AS:
         try:

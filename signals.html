@@ -320,7 +320,9 @@ function render(){
    const ma=n=>{const a=A.find(x=>x.name===n);return a&&a.ma200!=null?a.ma200:null};
    [['日本株（上記以外）','日本株'],['米国株','米国株'],['先進国株','先進国株']].forEach(([lab,n])=>{const m=ma(n);
     rows+=`<div class="cr"><div><b>${lab}</b><div class="d">${m==null?'200日線を取得できず':'200日線の'+(m>=0?'上（+':'下（')+m.toFixed(1)+'%）'+(m>=0&&m<1?'。線すれすれ':'')}</div></div><div class="v">${m==null?'--':m>=0?'保持':'割れ'}</div></div>`});
-   rows+=`<div class="cr"><div><b>金・REIT・債券</b><div class="d">売りが有効というルールが見つかっていません</div></div><div class="v" style="color:var(--sub)">判定なし</div></div>`;
+   [['金','金'],['銀','銀']].forEach(([lab,n])=>{const m=ma(n);
+    rows+=`<div class="cr"><div><b>${lab}（200日線ルール・暴落回避向け）</b><div class="d">${m==null?'200日線を取得できず':'200日線の'+(m>=0?'上（+':'下（')+m.toFixed(1)+'%）'}。検証42：最大下落が前半・後半とも縮小（利益は減る）</div></div><div class="v">${m==null?'--':m>=0?'保持':'持たない'}</div></div>`});
+   rows+=`<div class="cr"><div><b>プラチナ・REIT・債券</b><div class="d">下げを避ける検証済みのルールなし（プラチナは200日線ルールで後半悪化）</div></div><div class="v" style="color:var(--sub)">判定なし</div></div>`;
    e.className='panel'+(pc<100?' alert':'');
    e.innerHTML=`<div class="note">日経関連・半導体・銀行を、いま持ってよい割合</div><div class="big ${pc<100?'up':''}">${pc}%</div><div class="lead">${pc===100?'今まで通り持ってよい':pc===0?'全部売って現金にする状態':'持ち株を'+pc+'%まで減らす（'+(100-pc)+'%売る）'}</div>
    ${(()=>{const sx=Object.entries(D.dbg_sox||{});if(sx.length<2)return '';const [d1,v1]=sx[sx.length-1],[,v0]=sx[sx.length-2],r=(v1/v0-1)*100;if(d1<D.asOf||r>-4)return '';return `<div class="row"><span>次の東京の取引日に点灯見込み</span><b class="up">SOX前夜≤-4%（${d1} SOX ${r.toFixed(1)}%）</b></div><div class="note">東京の取引が始まると信号に加わります。日経がその日−2%以下なら2本で25%、−3%以下なら3本で0%です</div>`})()}
