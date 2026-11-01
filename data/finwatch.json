@@ -1,5 +1,5 @@
 {
- "updatedAt": "2026-11-01T13:58+09:00",
+ "updatedAt": "2026-11-01T14:01+09:00",
  "th": {
   "d1": -4.0,
   "d5": -8.0,
@@ -862,8 +862,7 @@
  ],
  "missing": [
   "KW",
-  "BK",
-  "KN.PA"
+  "BK"
  ],
  "note": "非上場の運用会社（Cerberus, Golub本体, Sixth Street等）は報道監視。名簿は data/finwatch_source.txt",
  "credit": {
