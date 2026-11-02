@@ -1,9 +1,9 @@
 {
  "updatedAt": "2026-11-03T06:56:00+09:00",
- "builtAt": "2026-11-03T06:56+09:00",
+ "builtAt": "2026-11-03T06:58+09:00",
  "phase": 3,
  "phaseName": "通り道が開通",
- "phaseDesc": "信用層に2つ以上点灯。　※期限切れで判定不能：逆イールド、NFCI（未点灯と扱わない）　※期限切れのまま点灯・接近を保持：私募信用、HY OAS、IG OAS、欧州ソブリン、SOX下落",
+ "phaseDesc": "信用層に2つ以上点灯。　※期限切れで判定不能：NFCI（未点灯と扱わない）　※期限切れのまま点灯・接近を保持：私募信用、HY OAS、IG OAS、欧州ソブリン、SOX下落",
  "counts": {
   "origin": [
    3,
@@ -64,7 +64,7 @@
    ],
    [
     "逆イールド",
-    "stale"
+    "ok"
    ],
    [
     "金融機関株価",
@@ -97,7 +97,6 @@
   ]
  },
  "unjudged": [
-  "逆イールド",
   "NFCI"
  ],
  "held": [
@@ -173,11 +172,11 @@
    "source": "https://fred.stlouisfed.org/data/BAMLC0A0CM"
   },
   "t10y2y": {
-   "value": 0.35,
+   "value": 0.32,
    "unit": "%",
-   "observedAt": "2026-10-30",
-   "change": "2年4.579%（−7.5bp）・10年4.928%から算出。前回0.32（10/28）からスティープ化",
-   "source": "https://investrade.com/market-review-october-30-2026/"
+   "observedAt": "2026-11-02",
+   "change": "財務省の利回り曲線（10年−2年）",
+   "source": "https://home.treasury.gov/resource-center/data-chart-center/interest-rates/TextView?type=daily_treasury_yield_curve"
   },
   "nfci": {
    "value": -0.487,
@@ -207,11 +206,6 @@
   },
   {
    "name": "日本10年金利",
-   "observedAt": "2026-10-30",
-   "freq": "日次"
-  },
-  {
-   "name": "米10年−2年",
    "observedAt": "2026-10-30",
    "freq": "日次"
   },
