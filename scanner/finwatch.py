@@ -142,7 +142,7 @@ if INTRA:
     out["sent_sig"] = sent; out["provisional"] = True
     json.dump(out, open(SI, "w", encoding="utf-8"), ensure_ascii=False, indent=1)
     print("速報モード", tst, strong, hot, {k: (v["med_d1"], v["med_d5"]) for k, v in groups.items()})
-    sys.exit(0)
+    pass  # 速報モードでも防御判定（途中値）まで計算してから終える
 # ---- 検証37：米大型株の時間外急落（−5%以下）→ 当日の東京の半導体は下がりやすい（6割程度・注意のみ。目標%には入れない） ----
 try:
     _AH = ["GOOGL","NVDA","MSFT","AAPL","AMZN","META","INTC","AMD","AVGO","QCOM","MU","TXN","AMAT","LRCX","KLAC","ORCL","CSCO","IBM"]
@@ -256,6 +256,8 @@ try:
     print("防御方針C", target, "本日", _hist[-1]["score"], "10日最大", sh, dfn["note"])
 except Exception as _e:
     print("防御方針C失敗", repr(_e)); import traceback; open("data/defense_err.txt", "w").write(datetime.now(JST).isoformat() + "\n" + traceback.format_exc())
+if INTRA:
+    sys.exit(0)
 
 try:
     _AS = [("日本株","1306.T","TOPIX連動ETF"),("米国株","SPY","S&P500"),("米国債","IEF","米国債7-10年"),("日本国債","2510.T","国内債券ETF"),("金","GLD","金"),("銀","SLV","銀"),("プラチナ","PPLT","プラチナ"),("REIT","1343.T","東証REIT ETF"),("先進国株","EFA","先進国株(米除く)")]
