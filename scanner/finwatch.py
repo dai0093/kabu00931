@@ -168,7 +168,7 @@ try:
     json.dump({"sig": _sg, "items": _ah, "at": datetime.now(JST).isoformat(timespec="minutes")}, open(_AHF, "w"), ensure_ascii=False)
 except Exception as _e:
     print("AH check skip", repr(_e)[:80])
-# ---- 防御方針C（検証28）：広い信号の本数→持ち高の目安。鳴ってから10営業日は維持。自動売買はしない ----
+# ---- 防御方針C（検証28）：広い信号の本数→持ち高の目安。鳴ってから20営業日は維持（検証44）。自動売買はしない ----
 try:
     import statistics as _st
     _px = yf.download(["^N225", "^SOX"], period="9mo", auto_adjust=False, progress=False)["Close"]
@@ -198,15 +198,18 @@ try:
             c = float(s.iloc[-1]); acc.setdefault(_gof[tt], []).append(((c / float(s.iloc[-2]) - 1) * 100, (c / float(s.iloc[-6]) - 1) * 100, (c / float(s.iloc[-60:].max()) - 1) * 100))
         return {g: tuple(_st.median(v[i] for v in vs) for i in range(3)) for g, vs in acc.items()}
     _hist, _today = [], {}
-    for d in list(nk_s.index[-12:]):
+    for d in list(nk_s.index[-22:]):
         i = nk_s.index.get_loc(d); r1 = (nk_s.iloc[i] / nk_s.iloc[i - 1] - 1) * 100; r5 = (nk_s.iloc[i] / nk_s.iloc[i - 5] - 1) * 100
         pv = sx_s[sx_s.index < d]; sp = (pv.iloc[-1] / pv.iloc[-2] - 1) * 100
         G = _grp_at(d); jp = G.get("日本", (0, 0, 0)); eu = G.get("欧州銀", (0, 0, 0)); us_ = G.get("米銀", (0, 0, 0))
         basef = eu[0] <= -6 or eu[1] <= -15 or us_[0] <= -5 or us_[1] <= -10 or jp[0] <= -5 or jp[1] <= -10 or jp[2] <= -25
         fl = {"日経1日≤-2%": r1 <= -2, "日経1日≤-3%": r1 <= -3, "日経5日≤-5%": r5 <= -5, "SOX前夜≤-4%": sp <= -4, "銀行群1日≤-4%": jp[0] <= -4, "金融機関基準": bool(basef)}
         _hist.append({"date": str(d.date()), "score": int(sum(fl.values()))}); _today = {"flags": {k: bool(v) for k, v in fl.items()}, "nk1": round(float(r1), 2), "nk5": round(float(r5), 2), "sox_prev": round(float(sp), 2), "jp_d1": round(jp[0], 1)}
-    sh = max(h["score"] for h in _hist[-10:])
+    sh = max(h["score"] for h in _hist[-20:])   # 検証44：維持を10→20営業日に延長（前半・後半とも最大下落が縮小）
     target = 0.0 if sh >= 3 else 0.25 if sh >= 2 else 0.5 if sh >= 1 else 1.0
+    _cd20 = ((out.get("credit") or {}).get("HYG") or {}).get("d20")
+    _ccap = _cd20 is not None and _cd20 <= -2.0   # 検証44：社債(HYG÷IEF)20日≤−2%の間は0%
+    if _ccap: target = 0.0
     stale_us = [x for x in stale if not x.endswith((".T", ".SS", ".HK"))]
     _sox5 = float((sx_s.iloc[-1] / sx_s.iloc[-6] - 1) * 100)
     _reb = {"sox5": round(_sox5, 2), "on": bool(_sox5 >= 5 and _hist[-1]["score"] == 0 and sh > 0), "rule": "SOX5日≥+5%かつ当日の信号0本（検証31：前半・後半とも20日後の日経が上昇）"}
@@ -230,7 +233,7 @@ try:
     except Exception as _eb:
         _bt = {"error": repr(_eb)[:80]}
     dfn = {"asOf": _hist[-1]["date"], "updatedAt": datetime.now(JST).isoformat(timespec="minutes"), "provisional": bool(INTRA), "policy": "C", "target": target,
-           "score_today": _hist[-1]["score"], "hold10_max": sh, "rebound": _reb, "bottom": _bt, "history": _hist, "dbg_nk": {str(k.date()): round(float(v), 2) for k, v in nk_s.tail(8).items()}, "dbg_sox": {str(k.date()): round(float(v), 2) for k, v in sx_s.tail(6).items()}, "today": _today,
+           "score_today": _hist[-1]["score"], "hold10_max": sh, "hold_days": 20, "credit_cap": bool(_ccap), "credit_d20": _cd20, "rebound": _reb, "bottom": _bt, "history": _hist, "dbg_nk": {str(k.date()): round(float(v), 2) for k, v in nk_s.tail(8).items()}, "dbg_sox": {str(k.date()): round(float(v), 2) for k, v in sx_s.tail(6).items()}, "today": _today,
            "note": ("米欧の一部が未更新（" + str(len(stale_us)) + "銘柄）。金融機関の信号が実際より弱く出ている可能性" if stale_us else "")}
     _fn = "data/defense_intraday.json" if INTRA else "data/defense.json"
     try:
@@ -244,7 +247,7 @@ try:
     except Exception: _prev = None
     _TOP = os.environ.get("NTFY_TOPIC")
     if _TOP and _prev is not None and abs(_prev - target) > 1e-9 and "--no-notify" not in sys.argv:
-        _body = f"持ち高の目安 {int(_prev*100)}% → {int(target*100)}%\n直近10営業日の最大信号本数 {sh}本（本日{_hist[-1]['score']}本）" + ("\n【未確定の途中値】" if INTRA else "") + ("\n" + dfn["note"] if dfn["note"] else "") + "\n自動売買はしません。判断は富士さん。検証：急落40件の最悪損失 -44%→-8%、後半の上昇は約8割逃す"
+        _body = f"持ち高の目安 {int(_prev*100)}% → {int(target*100)}%\n直近20営業日の最大信号本数 {sh}本（本日{_hist[-1]['score']}本）" + ("\n【未確定の途中値】" if INTRA else "") + ("\n" + dfn["note"] if dfn["note"] else "") + "\n自動売買はしません。判断は富士さん。検証：急落40件の最悪損失 -44%→-8%、後半の上昇は約8割逃す"
         _q = urllib.parse.urlencode({"title": "【防御方針C】持ち高の目安が変わりました", "priority": "4", "click": "https://dai0093.github.io/kabu00931/signals.html"})
         urllib.request.urlopen(urllib.request.Request(f"https://ntfy.sh/{_TOP}?{_q}", data=_body.encode("utf-8"), method="POST"), timeout=30)
     try: _prev_reb = json.load(open(_DS)).get("reb", False)
