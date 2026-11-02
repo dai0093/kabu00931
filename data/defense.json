@@ -1,11 +1,14 @@
 {
  "asOf": "2026-11-02",
- "updatedAt": "2026-11-03T02:29+09:00",
+ "updatedAt": "2026-11-03T05:34+09:00",
  "provisional": false,
  "policy": "C",
- "target": 0.5,
+ "target": 0.0,
  "score_today": 1,
- "hold10_max": 1,
+ "hold10_max": 4,
+ "hold_days": 20,
+ "credit_cap": true,
+ "credit_d20": -2.82,
  "rebound": {
   "sox5": -0.84,
   "on": false,
@@ -25,6 +28,46 @@
   "toReb": 15.1
  },
  "history": [
+  {
+   "date": "2026-10-01",
+   "score": 0
+  },
+  {
+   "date": "2026-10-02",
+   "score": 0
+  },
+  {
+   "date": "2026-10-05",
+   "score": 0
+  },
+  {
+   "date": "2026-10-06",
+   "score": 0
+  },
+  {
+   "date": "2026-10-07",
+   "score": 0
+  },
+  {
+   "date": "2026-10-08",
+   "score": 0
+  },
+  {
+   "date": "2026-10-09",
+   "score": 0
+  },
+  {
+   "date": "2026-10-13",
+   "score": 0
+  },
+  {
+   "date": "2026-10-14",
+   "score": 0
+  },
+  {
+   "date": "2026-10-15",
+   "score": 4
+  },
   {
    "date": "2026-10-16",
    "score": 1
