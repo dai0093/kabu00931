@@ -248,7 +248,7 @@
   "crash_out": false,
   "crash_why": "5日騰落 +5% / 値幅(ATR) 2.7% / 25日線乖離 +12%",
   "method": "高値更新",
-  "status": "pending"
+  "status": "unfilled"
  },
  {
   "date": "2026-10-30",
@@ -269,6 +269,6 @@
   "crash_out": false,
   "crash_why": "5日騰落 +4% / 値幅(ATR) 2.3% / 25日線乖離 +10%",
   "method": "高値更新",
-  "status": "pending"
+  "status": "open"
  }
 ]
