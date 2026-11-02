@@ -246,8 +246,35 @@ try:
     try: _prev = json.load(open(_DS)).get("target", None)
     except Exception: _prev = None
     _TOP = os.environ.get("NTFY_TOPIC")
+    # 判定が緩む（持ち高を増やす）時は、下げが続いている兆候を必ず並べる（2026-11-03 追加）
+    _warn = []
+    if _prev is not None and target > _prev + 1e-9:
+        try:
+            if _bt.get("active") and not _bt.get("above"): _warn.append(f"日経は週足の戻り高値{int(_bt['reb']):,}円の下（高値から{_bt['dd']}%）")
+            if float(nk_s.iloc[-1]) < float(nk_s.iloc[-25:].mean()): _warn.append("日経が25日線の下")
+            if _cd20 is not None and _cd20 < 0: _warn.append(f"社債(HYG÷米国債)20日 {_cd20}%（売られている）")
+            if _sox5 < 0: _warn.append(f"SOX5日 {_sox5:+.1f}%")
+            _ol = json.load(open("data/outlook.json", encoding="utf-8"))
+            if _ol["prob"]["5d_-5"] >= 1.5 * _ol["base"]["5d_-5"]: _warn.append(f"5日以内−5%の確率 {_ol['prob']['5d_-5']*100:.0f}%（ふだん{_ol['base']['5d_-5']*100:.0f}%）")
+        except Exception as _xw: _warn.append("確認できない項目あり " + repr(_xw)[:40])
+    dfn["loosen_warn"] = _warn
+    json.dump(dfn, open(_fn, "w", encoding="utf-8"), ensure_ascii=False, indent=1)
+    # 判定の成績記録：目安が変わった日と、その後の日経
+    if not INTRA:
+        try: _TR = json.load(open("data/defense_track.json", encoding="utf-8"))
+        except Exception: _TR = []
+        if _prev is not None and abs(_prev - target) > 1e-9 and (not _TR or _TR[-1]["date"] != dfn["asOf"] or _TR[-1]["to"] != target):
+            _TR.append({"date": dfn["asOf"], "from": _prev, "to": target, "nk": round(float(nk_s.iloc[-1]), 0), "warn": _warn})
+        _ix = {str(k.date()): i for i, k in enumerate(nk_s.index)}
+        for _t in _TR:
+            _i = _ix.get(_t["date"])
+            if _i is None: continue
+            for _h in (5, 20):
+                if _i + _h < len(nk_s): _t[f"r{_h}"] = round(float(nk_s.iloc[_i + _h] / nk_s.iloc[_i] - 1) * 100, 2)
+            _t["now"] = round(float(nk_s.iloc[-1] / nk_s.iloc[_i] - 1) * 100, 2)
+        json.dump(_TR[-60:], open("data/defense_track.json", "w", encoding="utf-8"), ensure_ascii=False, indent=1)
     if _TOP and _prev is not None and abs(_prev - target) > 1e-9 and "--no-notify" not in sys.argv:
-        _body = f"持ち高の目安 {int(_prev*100)}% → {int(target*100)}%\n直近20営業日の最大信号本数 {sh}本（本日{_hist[-1]['score']}本）" + ("\n【未確定の途中値】" if INTRA else "") + ("\n" + dfn["note"] if dfn["note"] else "") + "\n自動売買はしません。判断は富士さん。検証：急落40件の最悪損失 -44%→-8%、後半の上昇は約8割逃す"
+        _body = ("【注意】戻す方向の変更ですが、下げが続いている兆候があります：\n・" + "\n・".join(_warn) + "\n\n" if _warn else "") + f"持ち高の目安 {int(_prev*100)}% → {int(target*100)}%\n直近20営業日の最大信号本数 {sh}本（本日{_hist[-1]['score']}本）" + ("\n【未確定の途中値】" if INTRA else "") + ("\n" + dfn["note"] if dfn["note"] else "") + "\n自動売買はしません。判断は富士さん。検証：急落40件の最悪損失 -44%→-8%、後半の上昇は約8割逃す"
         _q = urllib.parse.urlencode({"title": "【防御方針C】持ち高の目安が変わりました", "priority": "4", "click": "https://dai0093.github.io/kabu00931/signals.html"})
         urllib.request.urlopen(urllib.request.Request(f"https://ntfy.sh/{_TOP}?{_q}", data=_body.encode("utf-8"), method="POST"), timeout=30)
     try: _prev_reb = json.load(open(_DS)).get("reb", False)
