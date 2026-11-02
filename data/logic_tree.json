@@ -1,9 +1,9 @@
 {
  "updatedAt": "2026-11-02T12:40:00+09:00",
- "builtAt": "2026-11-02T20:42+09:00",
+ "builtAt": "2026-11-03T02:29+09:00",
  "phase": 3,
  "phaseName": "通り道が開通",
- "phaseDesc": "信用層に2つ以上点灯。　※期限切れで判定不能：IG OAS、NFCI（未点灯と扱わない）　※期限切れのまま点灯・接近を保持：私募信用、HY OAS",
+ "phaseDesc": "信用層に2つ以上点灯。　※期限切れで判定不能：IG OAS、逆イールド、NFCI、VIX（未点灯と扱わない）　※期限切れのまま点灯・接近を保持：日米金利、私募信用、HY OAS、欧州ソブリン、SOX下落",
  "counts": {
   "origin": [
    4,
@@ -64,11 +64,11 @@
    ],
    [
     "逆イールド",
-    "ok"
+    "stale"
    ],
    [
     "金融機関株価",
-    "ok"
+    "stale"
    ]
   ],
   "fund": [
@@ -84,7 +84,7 @@
   "market": [
    [
     "VIX",
-    "ok"
+    "stale"
    ],
    [
     "日経先物",
@@ -98,11 +98,16 @@
  },
  "unjudged": [
   "IG OAS",
-  "NFCI"
+  "逆イールド",
+  "NFCI",
+  "VIX"
  ],
  "held": [
+  "日米金利",
   "私募信用",
-  "HY OAS"
+  "HY OAS",
+  "欧州ソブリン",
+  "SOX下落"
  ],
  "assets": [
   {
@@ -193,6 +198,56 @@
  },
  "stale": [
   {
+   "name": "Nasdaq",
+   "observedAt": "2026-10-30",
+   "freq": "日次"
+  },
+  {
+   "name": "S&P 500",
+   "observedAt": "2026-10-30",
+   "freq": "日次"
+  },
+  {
+   "name": "VIX",
+   "observedAt": "2026-10-30",
+   "freq": "日次"
+  },
+  {
+   "name": "SOX指数",
+   "observedAt": "2026-10-30",
+   "freq": "日次"
+  },
+  {
+   "name": "SOX 52週高値からの下落率",
+   "observedAt": "2026-10-30",
+   "freq": "日次"
+  },
+  {
+   "name": "VIX25超の連続日数",
+   "observedAt": "2026-10-30",
+   "freq": "日次"
+  },
+  {
+   "name": "米10年金利",
+   "observedAt": "2026-10-30",
+   "freq": "日次"
+  },
+  {
+   "name": "日本10年金利",
+   "observedAt": "2026-10-30",
+   "freq": "日次"
+  },
+  {
+   "name": "米10年−2年",
+   "observedAt": "2026-10-30",
+   "freq": "日次"
+  },
+  {
+   "name": "ドル円",
+   "observedAt": "2026-10-30",
+   "freq": "日次"
+  },
+  {
    "name": "HY OAS",
    "observedAt": "2026-10-29",
    "freq": "日次"
@@ -213,6 +268,11 @@
    "freq": "月次"
   },
   {
+   "name": "MND 30年固定",
+   "observedAt": "2026-10-30",
+   "freq": "日次"
+  },
+  {
    "name": "MBA購入申請",
    "observedAt": "2026-10-23",
    "freq": "週次"
@@ -231,6 +291,11 @@
    "name": "カード一般延滞率",
    "observedAt": "2026-06-30",
    "freq": "四半期"
+  },
+  {
+   "name": "仏10年−独10年 国債利回り差",
+   "observedAt": "2026-10-30",
+   "freq": "日次"
   }
  ],
  "events": [
