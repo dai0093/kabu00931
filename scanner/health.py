@@ -27,6 +27,11 @@ if F:
     try:
         if (now - datetime.fromisoformat(F["updatedAt"])).total_seconds() > 36 * 3600: P.append(f"金融機関の更新が止まっている（{F['updatedAt']}）")
     except Exception: pass
+FI = ld("data/finwatch_intraday.json")
+if FI and now.weekday() < 5 and 10 <= now.hour < 16:
+    try:
+        if (now - datetime.fromisoformat(FI["updatedAt"])).total_seconds() > 2.5 * 3600: P.append(f"取引時間中の途中判定が止まっている（最後 {FI['updatedAt'][5:16]}）")
+    except Exception: pass
 T = ld("data/logic_tree.json")
 if T:
     if T.get("held"): P.append("ロジックツリーで古い値のまま点灯保持：" + "、".join(T["held"]))
