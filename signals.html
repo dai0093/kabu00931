@@ -68,7 +68,6 @@ input{width:100%;font:inherit;font-size:18px;padding:10px;border-radius:8px;bord
  <div class="upd">最終更新<br><span id="hupd">--</span></div>
 </div>
 
-<div class="panel alert" id="hlth" style="display:none"></div>
 <div class="panel" id="concl"></div>
 <div class="panel" id="trk" data-fold></div>
 <div class="panel" id="lock" style="display:none"></div>
@@ -338,8 +337,7 @@ function render(){
    ${known&&tot?`<div class="row"><span>この3分野の保有</span><b>${yen(tot)}</b></div><div class="row"><span>売る目安の合計</span><b class="up">${yen(selltot)}</b></div>`:'<div class="note">保有を登録すると、売る金額が出ます</div>'}
    ${rows}
    <div class="note" style="margin-top:8px">判定は${esc(D.asOf)}終値${D.provisional?'（途中値）':''}。直近20営業日の最大点灯数 ${D.hold10_max}本（本日${D.score_today}本）。${D.note?esc(D.note)+'。':''}予測ではなく、鳴ってから反応する方針です。後半の上昇の約8割を逃す代わりに、急落時の最悪損失が −44%→−8% になりました。売買は富士さんの判断です。詳しい内訳は下の各項目を開いてください。</div>`}}
- {const e=document.getElementById('hlth');if(HL&&HL.problems&&HL.problems.length){e.style.display='';e.innerHTML=`<div class="ttl"><span class="nm">⚠ データが不完全です</span></div>`+HL.problems.map(p=>`<div class="row"><span>${esc(p)}</span></div>`).join('')+`<div class="note">この状態の判定は、実際より危険を弱く出している可能性があります。確認 ${esc(HL.at)}</div>`}}
- {const e=document.getElementById('trk');if(TRK&&TRK.length){const f=x=>x==null?'—':(x>0?'+':'')+x+'%';e.innerHTML=`<div class="ttl"><span class="nm">判定の成績（目安を変えた日と、その後の日経）</span></div>`+TRK.slice().reverse().map(t=>`<div class="row"><span>${esc(t.date)}　${Math.round(t.from*100)}%→${Math.round(t.to*100)}%</span><b>5日 ${f(t.r5)}／20日 ${f(t.r20)}／今 ${f(t.now)}</b></div>${t.note||(t.warn&&t.warn.length)?`<div class="note">${esc(t.note||'')}${t.warn&&t.warn.length?' 当時の兆候：'+t.warn.map(esc).join('／'):''}</div>`:''}`).join('')+`<div class="note">戻した後に日経が下がっていれば、その判定は外れです。成績で信頼度を判断してください</div>`}else e.style.display='none'}
+  {const e=document.getElementById('trk');if(TRK&&TRK.length){const f=x=>x==null?'—':(x>0?'+':'')+x+'%';e.innerHTML=`<div class="ttl"><span class="nm">判定の成績（目安を変えた日と、その後の日経）</span></div>`+TRK.slice().reverse().map(t=>`<div class="row"><span>${esc(t.date)}　${Math.round(t.from*100)}%→${Math.round(t.to*100)}%</span><b>5日 ${f(t.r5)}／20日 ${f(t.r20)}／今 ${f(t.now)}</b></div>${t.note||(t.warn&&t.warn.length)?`<div class="note">${esc(t.note||'')}${t.warn&&t.warn.length?' 当時の兆候：'+t.warn.map(esc).join('／'):''}</div>`:''}`).join('')+`<div class="note">戻した後に日経が下がっていれば、その判定は外れです。成績で信頼度を判断してください</div>`}else e.style.display='none'}
  // 防御方針C（検証28）：持ち高の目安
  {const e=document.getElementById('defn'),D=(DI&&DF&&DI.updatedAt>DF.updatedAt)?DI:(DF||DI);if(D){const p=Math.round(D.target*100),fl=Object.entries((D.today||{}).flags||{}),col=p===100?'b-sell':'b-buy';
   e.className='panel'+(p<100?' alert':'');

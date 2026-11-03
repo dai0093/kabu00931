@@ -48,6 +48,36 @@ if "t10y2y" not in out:
                                           "change": "財務省の利回り曲線（10年−2年）", "source": "https://home.treasury.gov/resource-center/data-chart-center/interest-rates/TextView?type=daily_treasury_yield_curve"}
     except Exception as e:
         print("財務省失敗", str(e)[:80])
+
+# ---- 2026-11-04 追加：手入力・FREDの代わりにYahooから自動で取る（検証46） ----
+def yy(t, per="3y", adj=False):
+    x = yf.download(t, period=per, auto_adjust=adj, progress=False)["Close"].squeeze().dropna()
+    x.index = pd.to_datetime(x.index).tz_localize(None); return settled(x)
+try:
+    sx = yy("^SOX", "2y"); dd = float((sx.iloc[-1] / sx.iloc[-250:].max() - 1) * 100)
+    out["soxdd"] = {"value": round(dd, 1), "observedAt": str(sx.index[-1].date()), "change": "250日高値比（Yahoo）", "source": "https://finance.yahoo.com/quote/%5ESOX/"}
+    out["sox"] = {"value": round(float(sx.iloc[-1]), 2), "observedAt": str(sx.index[-1].date()), "change": "", "source": "https://finance.yahoo.com/quote/%5ESOX/"}
+except Exception as e: print("SOX失敗", e)
+try:
+    nf = yy("NKD=F", "3mo"); out["nkf"] = {"value": round(float((nf.iloc[-1] / nf.iloc[-2] - 1) * 100), 2), "observedAt": str(nf.index[-1].date()), "change": "CME日経先物 前日比%（Yahoo）", "source": "https://finance.yahoo.com/quote/NKD%3DF/"}
+except Exception as e: print("日経先物失敗", e)
+try:
+    hy = yy("HYG", "4y", True) / yy("IEF", "4y", True); vix = yy("^VIX", "4y"); bk = yy("^BKX", "4y")
+    h20 = hy.pct_change(20); b20 = bk.pct_change(20)
+    z = lambda s: (s - s.rolling(500, min_periods=250).mean()) / s.rolling(500, min_periods=250).std()
+    fs = ((z(vix) + z(-h20) + z(-b20)) / 3).dropna()
+    out["hy_px"] = {"value": round(float(h20.dropna().iloc[-1] * 100), 2), "observedAt": str(h20.dropna().index[-1].date()), "change": "HYG÷IEF 20日変化%（HY OASの代替・検証46）", "source": "https://finance.yahoo.com/quote/HYG/"}
+    out["nfci_px"] = {"value": round(float(fs.iloc[-1]), 2), "observedAt": str(fs.index[-1].date()), "change": "金融ストレス合成（VIX・社債・米銀のzスコア平均、NFCIの代替・検証46）", "source": "https://finance.yahoo.com/quote/%5EVIX/"}
+    pcm = pd.concat([yy(t, "3mo").pct_change(5) for t in ("BX", "APO", "KKR", "ARES")], axis=1).median(axis=1).dropna()
+    out["pc_px"] = {"value": round(float(pcm.iloc[-1] * 100), 2), "observedAt": str(pcm.index[-1].date()), "change": "私募信用運用会社株（BX・APO・KKR・ARES）5日中央値%（代替・検証46）", "source": "https://finance.yahoo.com/quote/BX/"}
+except Exception as e: print("代替指標失敗", e)
+try:  # 欧州ソブリン：ECBの長期金利（月次）で仏−独スプレッド
+    def ecb(c):
+        d = pd.read_csv(io.StringIO(get(f"https://data-api.ecb.europa.eu/service/data/IRS/M.{c}.L.L40.CI.0000.EUR.N.Z?format=csvdata&lastNObservations=3")))
+        return d[["TIME_PERIOD", "OBS_VALUE"]].dropna().iloc[-1]
+    fr, de = ecb("FR"), ecb("DE")
+    out["frspread_m"] = {"value": round((float(fr.OBS_VALUE) - float(de.OBS_VALUE)) * 100, 1), "observedAt": str(fr.TIME_PERIOD) + "-28", "change": "仏−独10年 月次平均（ECB）", "source": "https://data.ecb.europa.eu/"}
+except Exception as e: print("ECB失敗", str(e)[:80])
 out["_at"] = datetime.now(JST).isoformat(timespec="minutes")
 json.dump(out, open("data/series_live.json", "w", encoding="utf-8"), ensure_ascii=False, indent=1)
 print({k: (v["value"], v["observedAt"]) for k, v in out.items() if k != "_at"})

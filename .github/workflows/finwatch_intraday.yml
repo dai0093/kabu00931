@@ -26,7 +26,7 @@ jobs:
     timeout-minutes: 8
     steps:
       - uses: actions/checkout@v4
-      - run: pip install yfinance pandas
+      - run: pip install yfinance pandas jpholiday
       - run: python3 scanner/finwatch.py
         env:
           INTRADAY: "1"

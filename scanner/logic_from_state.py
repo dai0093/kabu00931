@@ -91,6 +91,38 @@ for ly in L:
         if ids and all(i in stale_ids for i in ids if i in ser):
             if it[1] == "ok": it[1] = "stale"; unjudged.append(it[0])
             elif it[1] in ("lit", "near"): held.append(it[0])
+# ---- 期限切れ・取得不能の項目を、検証46で確認した代替指標で置き換える（2026-11-04） ----
+try:
+    _px = json.load(open("data/series_live.json", encoding="utf-8"))
+    def _setv(name, stv, why):
+        for ly in L:
+            for it in L[ly]:
+                if it[0] == name:
+                    it[1] = stv; it.append(why)
+                    if name in unjudged: unjudged.remove(name)
+                    if name in held: held.remove(name)
+    if "hy_px" in _px and ("hy" in stale_ids or "hy" not in ser):
+        v = _px["hy_px"]["value"]; _setv("HY OAS", "lit" if v <= -2 else "near" if v <= -1 else "ok", f"代替：HYG÷IEF 20日 {v}%（≤−2%点灯・≤−1%接近、検証46で予測出来た）")
+    if "nfci_px" in _px and ("nfci" in stale_ids or "nfci" not in ser):
+        v = _px["nfci_px"]["value"]; _setv("NFCI", "lit" if v >= 1.5 else "near" if v >= 1.0 else "ok", f"代替：金融ストレス合成 {v}（≥1.5点灯・≥1.0接近、検証46で予測出来た）")
+    if "pc_px" in _px and not S["flags"].get("gate") and ("pcdef" in stale_ids or "pcdef" not in ser):
+        v = _px["pc_px"]["value"]; _setv("私募信用", "lit" if v <= -8 else "near" if v <= -5 else "ok", f"代替：私募信用運用会社株5日 {v}%（≤−8%点灯・≤−5%接近、検証46で予測出来た）")
+    if "ig" in stale_ids or "ig" not in ser:   # IG OASは代替が検証を通らなかったため項目から外す
+        L["trans"] = [it for it in L["trans"] if it[0] != "IG OAS"]
+        if "IG OAS" in unjudged: unjudged.remove("IG OAS")
+        if "IG OAS" in held: held.remove("IG OAS")
+    if "frspread" in stale_ids and "frspread_m" in _px:
+        v = _px["frspread_m"]["value"]; _setv("欧州ソブリン", RULE["frspread"](v), f"ECB月次 仏−独 {v}bp")
+    c = lambda k: sum(1 for x in L[k] if x[1] == "lit")
+    r, t, fu, mk = c("origin"), c("trans"), c("fund"), c("market")
+    ph = 0
+    if r: ph = 1
+    if t >= 1: ph = 2
+    if t >= 2: ph = 3
+    if fu: ph = 4
+    if fu and mk >= 2: ph = 5
+except Exception as _e:
+    print("代替の反映失敗", _e)
 out = {"updatedAt": S.get("updatedAt"), "builtAt": datetime.now(JST).isoformat(timespec="minutes"),
        "phase": ph, "phaseName": PH[ph][0], "phaseDesc": PH[ph][1],
        "counts": {"origin": [r, len(L["origin"])], "trans": [t, len(L["trans"])],

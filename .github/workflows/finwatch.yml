@@ -18,7 +18,7 @@ jobs:
     timeout-minutes: 8
     steps:
       - uses: actions/checkout@v4
-      - run: pip install yfinance pandas scikit-learn
+      - run: pip install yfinance pandas scikit-learn jpholiday
       - run: python3 scanner/series_refresh.py || echo "系列更新失敗"
       - run: python3 scanner/logic_from_state.py data/risk_state.json || echo "ロジックツリー再計算失敗"
       - run: python3 scanner/finwatch.py

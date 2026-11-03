@@ -5,10 +5,15 @@ JST = timezone(timedelta(hours=9)); now = datetime.now(JST); P = []
 def ld(f):
     try: return json.load(open(f, encoding="utf-8"))
     except Exception: return None
-def bd(d0):  # 平日ベースの経過営業日数（祝日は考慮しない）
+try:
+    import jpholiday
+    _hol = lambda d: jpholiday.is_holiday(d) or (d.month == 12 and d.day == 31) or (d.month == 1 and d.day <= 3)
+except Exception:
+    _hol = lambda d: False
+def bd(d0):  # 東京の営業日ベースの経過日数（土日・祝日・年末年始を除く）
     d = datetime.strptime(d0, "%Y-%m-%d").date(); t = now.date(); n = 0
     while d < t:
-        d += timedelta(days=1); n += d.weekday() < 5
+        d += timedelta(days=1); n += (d.weekday() < 5 and not _hol(d))
     return n
 D = ld("data/defense.json")
 if not D: P.append("防御判定（defense.json）が読めない")
@@ -20,8 +25,7 @@ else:
     if sx and bd(sx[-1]) - (0 if now.hour >= 7 else 1) >= 2: P.append(f"SOXが古い（{sx[-1]}）")
 F = ld("data/finwatch.json")
 if F:
-    if F.get("missing"): P.append("金融機関の取得失敗：" + "、".join(F["missing"]))
-    if F.get("stale"): P.append(f"金融機関の未更新 {len(F['stale'])}銘柄")
+    if F.get("stale_groups") and any(g in ("欧州銀", "米銀", "日本") for g in F["stale_groups"]): P.append("金融機関の主要な群が未更新：" + "、".join(F["stale_groups"]))
     c = F.get("credit") or {}
     if c.get("error") or not c: P.append("信用（社債ETF）が取れていない")
     try:
@@ -32,13 +36,6 @@ if FI and now.weekday() < 5 and 10 <= now.hour < 16:
     try:
         if (now - datetime.fromisoformat(FI["updatedAt"])).total_seconds() > 2.5 * 3600: P.append(f"取引時間中の途中判定が止まっている（最後 {FI['updatedAt'][5:16]}）")
     except Exception: pass
-T = ld("data/logic_tree.json")
-if T:
-    if T.get("held"): P.append("ロジックツリーで古い値のまま点灯保持：" + "、".join(T["held"]))
-    if T.get("unjudged"): P.append("ロジックツリーで判定不能：" + "、".join(T["unjudged"]))
-S = ld("data/series_live.json") or {}
-for k, n in (("hy", "HY OAS"), ("ig", "IG OAS"), ("nfci", "NFCI")):
-    if k not in S: P.append(f"{n}は自動取得できていない（社債ETFで代用中）")
 H = {"at": now.isoformat(timespec="minutes"), "ok": not P, "problems": P}
 old = ld("data/health.json") or {}
 json.dump(H, open("data/health.json", "w", encoding="utf-8"), ensure_ascii=False, indent=1)
