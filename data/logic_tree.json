@@ -1,6 +1,6 @@
 {
  "updatedAt": "2026-11-03T12:13:00+09:00",
- "builtAt": "2026-11-04T00:31+09:00",
+ "builtAt": "2026-11-04T06:59+09:00",
  "phase": 3,
  "phaseName": "通り道が開通",
  "phaseDesc": "信用層に2つ以上点灯。　※期限切れで判定不能：NFCI（未点灯と扱わない）　※期限切れのまま点灯・接近を保持：私募信用、HY OAS、IG OAS、欧州ソブリン、日経先物、SOX下落",
@@ -131,18 +131,18 @@
  ],
  "values": {
   "vix": {
-   "value": 21.15,
+   "value": 20.83,
    "unit": "",
-   "observedAt": "2026-11-02",
-   "change": "+1.73（+8.90%）",
-   "source": "https://finance.yahoo.com/markets/live/stock-market-today-monday-november-2-dow-sp-500-nasdaq-091835095.html"
+   "observedAt": "2026-11-03",
+   "change": "前日比 -0.32（Yahoo確定終値）",
+   "source": "https://finance.yahoo.com/quote/%5EVIX/"
   },
   "us10": {
-   "value": 4.89,
+   "value": 4.952,
    "unit": "%",
-   "observedAt": "2026-11-02",
-   "change": "4.894%、前日比 −3.5bp／5日 −10bp（10/26 4.986%）／20日 約−35bp（21営業日前の10/1 5.24%比。20営業日前の10/5の値は未確認）",
-   "source": "https://finance.yahoo.com/markets/live/stock-market-today-monday-november-2-dow-sp-500-nasdaq-091835095.html"
+   "observedAt": "2026-11-03",
+   "change": "前日比 +0.058（Yahoo確定終値）",
+   "source": "https://finance.yahoo.com/quote/%5ETNX/"
   },
   "jgb10": {
    "value": 2.77,
@@ -173,9 +173,9 @@
    "source": "https://fred.stlouisfed.org/data/BAMLC0A0CM"
   },
   "t10y2y": {
-   "value": 0.32,
+   "value": 0.34,
    "unit": "%",
-   "observedAt": "2026-11-02",
+   "observedAt": "2026-11-03",
    "change": "財務省の利回り曲線（10年−2年）",
    "source": "https://home.treasury.gov/resource-center/data-chart-center/interest-rates/TextView?type=daily_treasury_yield_curve"
   },
