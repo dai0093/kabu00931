@@ -60,7 +60,14 @@ def expected_date(t):
     tz, cut = next((v for k, v in CUT.items() if t.endswith(k)), ("America/New_York", 16.5))
     now = datetime.now(ZoneInfo(tz)); d = now.date()
     if now.hour + now.minute / 60 < cut: d -= timedelta(days=1)
-    while d.weekday() >= 5: d -= timedelta(days=1)
+    def _h(x):
+        try:
+            import holidays as _H
+            cc = "JP" if t.endswith(".T") else "US" if "." not in t else None
+            return cc is not None and x in _H.country_holidays(cc, years=x.year)
+        except Exception:
+            return False
+    while d.weekday() >= 5 or _h(d): d -= timedelta(days=1)
     return d
 rows, bad, stale = [], [], []
 for g, nm, t in L:
