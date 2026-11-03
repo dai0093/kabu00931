@@ -1,5 +1,5 @@
 {
- "updatedAt": "2026-11-04T07:41+09:00",
+ "updatedAt": "2026-11-04T07:59+09:00",
  "th": {
   "d1": -4.0,
   "d5": -8.0,
@@ -7,10 +7,10 @@
  },
  "groups": {
   "PC": {
-   "n": 23,
-   "med_dd": -10.2,
-   "med_d1": -0.2,
-   "med_d5": 4.4,
+   "n": 22,
+   "med_dd": -10.1,
+   "med_d1": -0.1,
+   "med_d5": 4.0,
    "n_flag": 3
   },
   "BDC": {
@@ -64,17 +64,6 @@
   }
  },
  "rows": [
-  {
-   "g": "PC",
-   "name": "アレス",
-   "t": "ARES",
-   "date": "2026-11-03",
-   "close": 128.93,
-   "d1": -3.0,
-   "d5": 5.5,
-   "dd": -13.7,
-   "flag": []
-  },
   {
    "g": "PC",
    "name": "アポロ",
@@ -869,7 +858,9 @@
   "HSBC(HSBA.L)",
   "NatWest(NWG.L)"
  ],
- "missing": [],
+ "missing": [
+  "ARES"
+ ],
  "note": "非上場の運用会社（Cerberus, Golub本体, Sixth Street等）は報道監視。名簿は data/finwatch_source.txt",
  "credit": {
   "date": "2026-11-03",
