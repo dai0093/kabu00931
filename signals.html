@@ -460,12 +460,24 @@ function render(){
  if(!LT){lt.innerHTML='<div class="empty">ロジックツリーのデータなし</div>'}else{
   const hrs=(Date.now()-Date.parse(LT.updatedAt))/36e5,LB={lit:'点灯',near:'接近',ok:'未点灯',na:'未取得',stale:'期限切れ'};
   const LN={origin:'起点',trans:'信用',fund:'資金',market:'市場'};
-  lt.innerHTML=`<div class="ttl"><span class="nm">段階 ${LT.phase}：${esc(LT.phaseName)}</span></div>
-   <div class="note">${esc(LT.phaseDesc)}</div>
-   <div style="display:flex;gap:4px;margin:10px 0">${[0,1,2,3,4,5].map(i=>`<i style="flex:1;height:7px;border-radius:4px;background:${i<=LT.phase?'#e8b04b':'var(--panel2)'}"></i>`).join('')}</div>
-   <div class="note">更新 ${esc(LT.updatedAt.replace('T',' ').slice(0,16))}${hrs>30?'　<b style="color:var(--up)">30時間以上更新されていません</b>':''}</div>
-   ${Object.keys(LN).map(k=>`<div class="row"><span><b>${LN[k]}</b>　${LT.counts[k][0]} / ${LT.counts[k][1]} 点灯</span><span></span></div>
-     ${LT.layers[k].map(([n,st])=>`<div class="row" style="padding-left:12px"><span>${esc(n)}</span><b><span class="pill p-${st==='na'||st==='stale'?'ok':esc(st)}">${LB[st]}</span></b></div>`).join('')}`).join('')}
+  const ST={};Object.values(LT.layers).forEach(a=>a.forEach(([n,st,why])=>{ST[n]={st,why}}));
+  const PATHS=[
+   {nm:'2008型（信用の伝播）',d:'私募信用の評価減が社債・銀行・保険に広がり、資金が詰まって強制売却',n:['私募信用','HY OAS','金融機関株価','生保','NFCI','VIX']},
+   {nm:'鉄道型（AIの過剰投資）',d:'AI設備投資の借金が膨らみ、AI株が崩れ、貸し手の銀行・社債に波及',n:['AI債務','SOX下落','AI→銀行','HY OAS','金融機関株価']},
+   {nm:'1987型（金利ショック→機械的な売り）',d:'金利の急上昇をきっかけに恐怖指数が跳ね、先物主導で一斉に売られる',n:['日米金利','VIX','日経先物']},
+   {nm:'地政学・エネルギー',d:'戦争・海峡封鎖で原油が上がり、インフレと金利上昇を通じて株安',n:['地政学','原油','日米金利','VIX']}];
+  const sc=x=>x==='lit'?1:x==='near'?.5:0,col=x=>x==='lit'?'#e5534b':x==='near'?'#e8b04b':x==='stale'||x==='na'?'#556':'var(--panel2)';
+  PATHS.forEach(P=>{P.st=P.n.map(n=>(ST[n]||{st:'na'}).st);P.v=P.st.reduce((a,x)=>a+sc(x),0)/P.n.length;let k=0;while(k<P.st.length&&P.st[k]==='lit')k++;P.reach=k});
+  const top=PATHS.slice().sort((a,b)=>b.v-a.v)[0];
+  lt.innerHTML=`<div class="ttl"><span class="nm">暴落への経路：最も進んでいるのは「${esc(top.nm)}」</span></div>
+   <div class="note">各経路の点が左から順に点灯するほど、暴落（右端）に近い。赤＝点灯、黄＝接近、灰＝データなし。更新 ${esc((LT.builtAt||LT.updatedAt).replace('T',' ').slice(0,16))}</div>
+   ${PATHS.map(P=>`<div style="margin:12px 0 4px"><b>${esc(P.nm)}</b>　<span class="${P.v>=.5?'up':''}">${Math.round(P.v*100)}%進行</span></div>
+     <div class="note">${esc(P.d)}</div>
+     <div style="display:flex;gap:3px;margin:6px 0">${P.st.map(x=>`<i style="flex:1;height:8px;border-radius:4px;background:${col(x)}"></i>`).join('')}<i style="flex:1;height:8px;border-radius:4px;border:1px dashed #e5534b"></i></div>
+     <div class="note">${P.n.map((n,q)=>`<span style="color:${P.st[q]==='lit'?'#e5534b':P.st[q]==='near'?'#e8b04b':'inherit'}">${esc(n)}</span>`).join(' → ')} → <b>暴落</b></div>`).join('')}
+   <div class="note" style="margin-top:10px">経路の割り当ては設計上の想定（2026/9の3層モデル）で、経路ごとの進行度と暴落の関係はまだ検証していません。検証済みの判定は最上部の「持ってよい割合」です</div>
+   <details style="margin-top:8px"><summary class="note">項目ごとの状態と根拠</summary>
+   ${Object.values(LT.layers).flat().map(([n,st,why])=>`<div class="row"><span>${esc(n)}${why?`<br><span class="note">${esc(why)}</span>`:''}</span><b><span class="pill p-${st==='na'||st==='stale'?'ok':esc(st)}">${LB[st]}</span></b></div>`).join('')}</details>
    <div class="note" style="margin-top:10px"><b>4資産への経路</b></div>
    ${LT.assets.map(x=>`<div class="row"><span><b>${esc(x.name)}</b><br><span class="note">${esc(x.text)}</span></span><b style="white-space:nowrap">${esc(x.dir)}</b></div>`).join('')}
    <div class="note" style="margin-top:10px"><b>直近の事象</b></div>
