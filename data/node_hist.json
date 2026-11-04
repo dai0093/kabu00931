@@ -1,0 +1,59 @@
+{
+ "start": "2026-10-12",
+ "nodes": {
+  "地政学": {
+   "st": "lit",
+   "since": "2026-10-12",
+   "lit_since": "2026-10-12",
+   "before_start": true
+  },
+  "日米金利": {
+   "st": "near",
+   "since": "2026-10-12",
+   "lit_since": null,
+   "before_start": true
+  },
+  "AI債務": {
+   "st": "lit",
+   "since": "2026-10-12",
+   "lit_since": "2026-10-12",
+   "before_start": true
+  },
+  "HY OAS": {
+   "st": "lit",
+   "since": "2026-10-12",
+   "lit_since": "2026-10-12",
+   "before_start": true
+  },
+  "IG OAS": {
+   "st": "near",
+   "since": "2026-11-02",
+   "lit_since": null,
+   "before_start": false
+  },
+  "AI→銀行": {
+   "st": "near",
+   "since": "2026-10-12",
+   "lit_since": null,
+   "before_start": true
+  },
+  "欧州ソブリン": {
+   "st": "lit",
+   "since": "2026-11-04",
+   "lit_since": "2026-11-04",
+   "before_start": false
+  },
+  "NFCI": {
+   "st": "near",
+   "since": "2026-11-04",
+   "lit_since": null,
+   "before_start": false
+  },
+  "SOX下落": {
+   "st": "lit",
+   "since": "2026-10-20",
+   "lit_since": "2026-10-20",
+   "before_start": false
+  }
+ }
+}

@@ -147,4 +147,22 @@ try:
 except Exception as _e:
     print("金融機関株価の反映なし", _e)
 json.dump(out, open("data/logic_tree.json", "w", encoding="utf-8"), ensure_ascii=False, indent=1)
+# 項目ごとの点灯・接近の開始日（経過日数の表示用）
+try:
+    try: NH = json.load(open("data/node_hist.json", encoding="utf-8"))
+    except Exception: NH = {"start": datetime.now(JST).date().isoformat(), "nodes": {}}
+    today_s = datetime.now(JST).date().isoformat(); nodes = NH.setdefault("nodes", {}); seen = set()
+    for ly in out["layers"].values():
+        for it in ly:
+            n, stv = it[0], it[1]; seen.add(n); r = nodes.get(n)
+            if stv in ("lit", "near"):
+                if r is None: r = nodes[n] = {"since": today_s, "lit_since": None, "before_start": False}
+                if stv == "lit" and not r.get("lit_since"): r["lit_since"] = today_s
+                if stv == "near": r["lit_since"] = None
+                r["st"] = stv
+            elif stv == "ok": nodes.pop(n, None)
+    for n in [k for k in nodes if k not in seen]: nodes.pop(n)
+    json.dump(NH, open("data/node_hist.json", "w", encoding="utf-8"), ensure_ascii=False, indent=1)
+except Exception as _e:
+    print("node_hist失敗", _e)
 print(f"段階{ph}：{PH[ph][0]}  起点{r} 信用{t} 資金{fu} 市場{mk}  期限切れ{len(stale)}系列")

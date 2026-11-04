@@ -31,4 +31,4 @@ jobs:
       - run: |
           git config user.name "kabu-bot"
           git config user.email "kabu-bot@users.noreply.github.com"
-          for f in data/finwatch.json data/finwatch_sent.json data/logic_tree.json data/series_live.json data/assets.json data/ah_sent.json data/defense.json data/defense_intraday.json data/defense_sent.json data/defense_err.txt data/health.json data/outlook.json data/outlook_log.json data/defense_track.json; do [ -f $f ] && git add $f; done; git diff --cached --quiet && echo nochange ||  git commit -m "finwatch" && git pull --rebase -X theirs && git push || echo "no change"
+          for f in data/finwatch.json data/finwatch_sent.json data/logic_tree.json data/node_hist.json data/series_live.json data/assets.json data/ah_sent.json data/defense.json data/defense_intraday.json data/defense_sent.json data/defense_err.txt data/health.json data/outlook.json data/outlook_log.json data/defense_track.json; do [ -f $f ] && git add $f; done; git diff --cached --quiet && echo nochange ||  git commit -m "finwatch" && git pull --rebase -X theirs && git push || echo "no change"
