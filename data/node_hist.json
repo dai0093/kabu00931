@@ -43,12 +43,6 @@
    "lit_since": "2026-11-04",
    "before_start": false
   },
-  "NFCI": {
-   "st": "near",
-   "since": "2026-11-04",
-   "lit_since": null,
-   "before_start": false
-  },
   "SOX下落": {
    "st": "lit",
    "since": "2026-10-20",
