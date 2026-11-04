@@ -477,6 +477,7 @@ function render(){
    ${PATHS.map(P=>`<div style="margin:12px 0 4px"><b>${esc(P.nm)}</b>　<span class="${P.v>=.5?'up':''}">${Math.round(P.v*100)}%進行</span></div>
      <div class="note">${esc(P.d)}</div>
      <div style="display:flex;gap:3px;margin:6px 0">${P.st.map(x=>`<i style="flex:1;height:8px;border-radius:4px;background:${col(x)}"></i>`).join('')}<i style="flex:1;height:8px;border-radius:4px;border:1px dashed #e5534b"></i></div>
+     ${(()=>{const H=PHI&&PHI.paths&&Object.entries(PHI.paths).find(([k])=>P.nm.startsWith(k.slice(0,3)));if(!H)return '';const h=H[1];return `<div class="note" style="margin-top:4px">過去（2008〜、代替できる項目：${h.nodes.map(esc).join('・')}）の段の移り方　今は段${h.stage_now??'—'}／${h.nodes.length}</div>`+h.trans.map(t=>`<div class="row" style="padding-left:8px"><span${h.stage_now===t.from?' class="up"':''}>段${t.from}→${t.to}（${t.n}回）</span><b style="font-weight:400">次の段まで中央値${t.days_med??'—'}日・60日内に${t.p60}%進行・日経−10%以下${t.nk10}%</b></div>`).join('')})()}
      <div class="note">${P.n.map((n,q)=>`<span style="color:${P.st[q]==='lit'?'#e5534b':P.st[q]==='near'?'#e8b04b':'inherit'}">${esc(n)}</span>`).join(' → ')} → <b>暴落</b></div>`).join('')}
    <div class="note" style="margin-top:10px">検証47：2008型だけがリーマン級（60日−20%）の確率を前半・後半とも上げた。鉄道型・1987型・地政学は、進行度が高くても暴落の確率は上がらなかった（予測出来なかった）。地政学・AI債務・AI→銀行は履歴がなく検証から除外。検証済みの判定は最上部の「持ってよい割合」です</div>
    <details style="margin-top:8px"><summary class="note">項目ごとの状態と根拠</summary>
@@ -517,7 +518,7 @@ function render(){
 }
 
 (async()=>{
- [S,C,BT,PP,LT,MG,FW,FI,FC,DF,DI,AS,HL,OL,TRK]=await Promise.all([get('data/signals.json'),get('data/candles.json'),get('data/compare6.json'),get('data/paper.json'),get('data/logic_tree.json'),get('data/morning.json'),get('data/finwatch.json'),get('data/finwatch_intraday.json'),get('data/forecast.json'),get('data/defense.json'),get('data/defense_intraday.json'),get('data/assets.json'),get('data/health.json'),get('data/outlook.json'),get('data/defense_track.json')]);
+ [S,C,BT,PP,LT,MG,FW,FI,FC,DF,DI,AS,HL,OL,TRK,PHI]=await Promise.all([get('data/signals.json'),get('data/candles.json'),get('data/compare6.json'),get('data/paper.json'),get('data/logic_tree.json'),get('data/morning.json'),get('data/finwatch.json'),get('data/finwatch_intraday.json'),get('data/forecast.json'),get('data/defense.json'),get('data/defense_intraday.json'),get('data/assets.json'),get('data/health.json'),get('data/outlook.json'),get('data/defense_track.json'),get('data/path_hist.json')]);
  if(S){const [y,m,d]=S.market_date.split('-');document.getElementById('hdate').textContent=`${+m}月${+d}日`;
   document.getElementById('hst').textContent='✓ 判定完了';{const W='日月火水木金土',u=new Date(S.updated.replace(' ','T')+':00+09:00'),md=new Date(S.market_date+'T00:00:00+09:00');
   let n=new Date(md.getTime()+864e5);while([0,6].includes(n.getUTCDay()===undefined?0:new Date(n.getTime()+9*36e5).getUTCDay()))n=new Date(n.getTime()+864e5);
