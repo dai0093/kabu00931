@@ -339,11 +339,14 @@ function render(){
    ${rows}
    <div class="note" style="margin-top:8px">判定は${esc(D.asOf)}終値${D.provisional?'（途中値）':''}。直近20営業日の最大点灯数 ${D.hold10_max}本（本日${D.score_today}本）。${D.note?esc(D.note)+'。':''}予測ではなく、鳴ってから反応する方針です。後半の上昇の約8割を逃す代わりに、急落時の最悪損失が −44%→−8% になりました。売買は富士さんの判断です。詳しい内訳は下の各項目を開いてください。</div>`}}
   {const e=document.getElementById('trk');if(TRK&&TRK.length){const f=x=>x==null?'—':(x>0?'+':'')+x+'%';e.innerHTML=`<div class="ttl"><span class="nm">判定の成績（目安を変えた日と、その後の日経）</span></div>`+TRK.slice().reverse().map(t=>`<div class="row"><span>${esc(t.date)}　${Math.round(t.from*100)}%→${Math.round(t.to*100)}%</span><b>5日 ${f(t.r5)}／20日 ${f(t.r20)}／今 ${f(t.now)}</b></div>${t.note||(t.warn&&t.warn.length)?`<div class="note">${esc(t.note||'')}${t.warn&&t.warn.length?' 当時の兆候：'+t.warn.map(esc).join('／'):''}</div>`:''}`).join('')+`<div class="note">戻した後に日経が下がっていれば、その判定は外れです。成績で信頼度を判断してください</div>`}else e.style.display='none'}
- {const e=document.getElementById('rtop'),D=(DI&&DF&&DI.updatedAt>DF.updatedAt)?DI:(DF||DI);if(OL&&OL.prob&&D){const p=OL.prob['5d_-5'],b=OL.base['5d_-5'],x=p/b,lv=x>=2?['高','up']:x>=1.4?['やや高','up']:['ふつう',''];
-  const nk=Object.values(D.dbg_nk||{}),c=nk[nk.length-1],c5=nk.length>=5?nk[nk.length-5]:null,f=v=>Math.round(v).toLocaleString();
-  const lim=D.target===0?`<div class="row"><span>回避のリミット</span><b class="up">すでに撤退の時点（目安0%）</b></div><div class="note">次に東京の取引ができる日の寄り付きで、日経関連・半導体・銀行の残りを売る</div>`
-   :`<div class="row"><span>回避のリミット（次の信号）</span><b class="up">日経 ${f(c*0.98)}円（−2%）</b></div><div class="row"><span>さらに下の段階</span><b>${f(c*0.97)}円（−3%）${c5?'／5日で−5%：'+f(c5*0.95)+'円':''}</b></div><div class="note">この値を引けで割ると信号が増え、持ってよい割合が下がる。下げ始めてからでは遅れるため、近づいたら先に減らしてよい</div>`;
-  e.className='panel'+(x>=1.4?' alert':'');e.innerHTML=`<div class="note">危険率（5営業日以内に日経−5%になる確率）</div><div class="big ${lv[1]}">${Math.round(p*100)}%</div><div class="lead">ふだんの${x.toFixed(1)}倍（ふだん ${Math.round(b*100)}%）：${lv[0]}</div>${lim}<div class="note">検証40で前半学習・後半で当たった確率。${esc(OL.for)}の取引に向けた値。日経 ${f(OL.close)}円から</div>`}else e.style.display='none'}
+ {const e=document.getElementById('rtop'),D=(DI&&DF&&DI.updatedAt>DF.updatedAt)?DI:(DF||DI);if(D){
+  const tg=Math.round(D.target*100),sc=100-tg,f=v=>Math.round(v).toLocaleString(),B=D.bottom||{},T=D.today||{};
+  const why=[];if(D.hold10_max>=1)why.push(`危険信号 最大${D.hold10_max}本（直近20営業日）、本日${D.score_today}本`);if(D.credit_cap)why.push(`社債(HYG÷米国債)20日 ${D.credit_d20}%：信用が悪化`);if(B.dd!=null)why.push(`日経は週足の高値から${B.dd}%`);if(T.nk1!=null)why.push(`日経 本日${T.nk1>0?'+':''}${T.nk1}%${D.provisional?'（途中値）':''}`);
+  const lab=sc>=100?'撤退（全部売る）':sc>=75?'高（25%まで減らす）':sc>=50?'注意（半分に減らす）':'平常';
+  const lim=tg===0?`<div class="row"><span>回避のリミット</span><b class="up">いま（今日の引けまで）</b></div><div class="note">日経関連・半導体・銀行の残りを売る。すでに撤退の判定が出ています</div>`
+   :`<div class="row"><span>回避のリミット（次の信号）</span><b class="up">日経 ${f(Object.values(D.dbg_nk||{}).slice(-1)[0]*0.98)}円（−2%）</b></div>`;
+  e.className='panel'+(sc>=50?' alert':'');
+  e.innerHTML=`<div class="note">危険度（検証済みの判定から）</div><div class="big ${sc>=50?'up':''}">${sc}<span style="font-size:.4em">／100</span></div><div class="lead">${lab}</div>${why.map(w=>`<div class="note">・${esc(w)}</div>`).join('')}${lim}${OL&&OL.prob?`<div class="note" style="margin-top:6px">参考：ここからさらに5営業日以内に−5%下がる確率 ${Math.round(OL.prob['5d_-5']*100)}%（ふだん${Math.round(OL.base['5d_-5']*100)}%）。すでに起きた下げは含まない</div>`:''}<div class="note">判定 ${esc(D.asOf)}${D.provisional?'（途中値 '+esc((D.updatedAt||'').slice(11,16))+'）':''}</div>`}else e.style.display='none'}
  // 防御方針C（検証28）：持ち高の目安
  {const e=document.getElementById('defn'),D=(DI&&DF&&DI.updatedAt>DF.updatedAt)?DI:(DF||DI);if(D){const p=Math.round(D.target*100),fl=Object.entries((D.today||{}).flags||{}),col=p===100?'b-sell':'b-buy';
   e.className='panel'+(p<100?' alert':'');
