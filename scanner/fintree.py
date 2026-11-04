@@ -11,10 +11,10 @@ def state(groups):
     hit = lambda L: [f"{n}{'前日' if m=='med_d1' else '5日'}{g[n][m]}%≤{t}%" for n, m, t in L if n in g and g[n][m] <= t]
     lit, near = hit(LIT), hit(NEAR)
     return ("lit" if lit else "near" if near else "ok"), lit or near
-def apply(tree, st):
+def apply(tree, st, note=""):
     """logic_tree.json の信用層に枝を入れ、段階を再計算（ロジックは logic_from_state.py と同じ）"""
     tr = [x for x in tree["layers"]["trans"] if x[0] != "金融機関株価"]
-    tr.append(["金融機関株価", st]); tree["layers"]["trans"] = tr
+    tr.append(["金融機関株価", st] + ([note] if note else [])); tree["layers"]["trans"] = tr
     c = lambda k: sum(1 for x in tree["layers"][k] if x[1] == "lit")
     r, t, fu, mk = c("origin"), c("trans"), c("fund"), c("market")
     ph = 0

@@ -481,20 +481,21 @@ function render(){
   const top=PATHS.slice().sort((a,b)=>b.score-a.score)[0];
   const W=110,G=18,PX=118,PW=140,RH=74,maxN=Math.max(...PATHS.map(P=>P.n.length)),SW=PX+PW+G+maxN*(W+G)+90,SH=PATHS.length*RH+30;
   const box=(x,y,w,h,f,st,t1,t2,t3)=>`<rect x="${x}" y="${y}" width="${w}" height="${h}" rx="6" fill="${f}" stroke="${st}" stroke-width="${st==='#e5534b'?2:1}"/><text x="${x+w/2}" y="${y+16}" text-anchor="middle" font-size="11" fill="#fff" font-weight="700">${esc(t1)}</text>${t2?`<text x="${x+w/2}" y="${y+31}" text-anchor="middle" font-size="10" fill="#ddd">${esc(t2)}</text>`:''}${t3?`<text x="${x+w/2}" y="${y+45}" text-anchor="middle" font-size="10" fill="#ffd27a">${esc(t3)}</text>`:''}`;
-  let svg='',cy=SH/2;
+  let svg='',cy=SH/2;const POS={};
   svg+=box(4,cy-26,100,52,'#3a1d24','#e5534b','日経の暴落','（リーマン級）','');
   PATHS.forEach((P,r)=>{const y=14+r*RH,my=y+26,isTop=P===top,ec=isTop?'#e5534b':'#4a5878',ew=isTop?3:1.2;
     svg+=`<path d="M104 ${cy} C ${PX-6} ${cy}, ${PX-14} ${my}, ${PX} ${my}" stroke="${ec}" stroke-width="${ew}" fill="none"/>`;
     svg+=box(PX,y,PW,52,isTop?'#4a1f26':'#1d2a44',isTop?'#e5534b':'#4a5878',P.nm.replace(/（.*$/,''),`進行${Math.round(P.v*100)}%・段${P.stage}/${P.n.length}`,P.tr?`次へ60日内${P.tr.p60}%`:'');
     let x=PX+PW+G;P.n.forEach((n,q)=>{const st=P.st[q],f=st==='lit'?'#7a2a2e':st==='near'?'#6b5520':'#1a2236',sc2=st==='lit'?'#e5534b':st==='near'?'#e8b04b':'#3a4560',h=NHN[n];
-      const lab=st==='lit'?`点灯 ${h?dd(h.lit_since||h.since)+'日目'+(h.before_start?'以上':''):''}`:st==='near'?`接近 ${h?dd(h.since)+'日目'+(h.before_start?'以上':''):''}`:st==='stale'||st==='na'?'データなし':'未点灯';
+      const lab=st==='lit'?`点灯 ${h?dd(h.lit_since||h.since)+'日目'+(h.before_start?'以上':''):''}`:st==='near'?`接近 ${h?dd(h.since)+'日目'+(h.before_start?'以上':''):''}`:st==='stale'||st==='na'?'取得待ち':'未点灯';
       const nx=q===P.nextIdx&&P.eta?(P.eta.includes('停滞')?'停滞中':`予定 ${P.eta}`):'';
-      svg+=`<line x1="${x-G}" y1="${my}" x2="${x}" y2="${my}" stroke="${st==='lit'&&(q===0||P.st[q-1]==='lit')?ec:'#4a5878'}" stroke-width="${st==='lit'?ew:1}" marker-end="url(#ar)"/>`+box(x,y,W,52,f,sc2,n,lab,nx);x+=W+G});
+      svg+=`<line x1="${x-G}" y1="${my}" x2="${x}" y2="${my}" stroke="${st==='lit'&&(q===0||P.st[q-1]==='lit')?ec:'#4a5878'}" stroke-width="${st==='lit'?ew:1}" marker-end="url(#ar)"/>`+box(x,y,W,52,f,sc2,n,lab,nx);(POS[n]=POS[n]||[]).push([x+W/2,y,st]);x+=W+G});
     svg+=`<line x1="${x-G}" y1="${my}" x2="${x}" y2="${my}" stroke="#e5534b" stroke-dasharray="3 3" marker-end="url(#ar)"/>`+box(x,y+8,70,36,'#2a1418','#e5534b','暴落','','')});
+  let links='';Object.entries(POS).forEach(([n,a])=>{if(a.length<2)return;for(let k=1;k<a.length;k++){const [x1,y1,st]=a[k-1],[x2,y2]=a[k],c=st==='lit'?'#e5534b':st==='near'?'#e8b04b':'#7d8aa8';links+=`<path d="M${x1} ${y1+52} C ${x1+30} ${(y1+52+y2)/2}, ${x2+30} ${(y1+52+y2)/2}, ${x2} ${y2}" stroke="${c}" stroke-width="1.6" stroke-dasharray="4 3" fill="none" opacity=".9"/><text x="${Math.max(x1,x2)+34}" y="${(y1+52+y2)/2+3}" font-size="9" fill="${c}">共通：${esc(n)}</text>`}});svg=links+svg;
   lt.innerHTML=`<div class="ttl"><span class="nm">暴落への経路：いま強く動いているのは「${esc(top.nm)}」</span></div>
    <div class="note">段${top.stage}/${top.n.length}（進行${Math.round(top.v*100)}%）。${top.tr?`過去${top.tr.n}回、この段から次の段へは中央値${top.tr.days_med??'—'}営業日、60日以内に${top.tr.p60}%が進行。`:''}${top.eta?`次の段（${esc(top.n[top.nextIdx]||'')}）：${top.eta}`:''}</div>
-   <div style="overflow-x:auto;margin:8px -4px"><svg width="${SW}" height="${SH}" style="font-family:inherit"><defs><marker id="ar" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 z" fill="#7d8aa8"/></marker></defs>${svg}</svg></div>
-   <div class="note">横にスクロールできます。赤＝点灯、黄＝接近。「○日目」は点灯・接近してからの日数（記録開始${esc((NH&&NH.start)||'')}より前からの場合は「以上」）。確率・日数・予定は2008年以降の代替データでの段の移り方（検証49）。更新 ${esc((LT.builtAt||LT.updatedAt).replace('T',' ').slice(0,16))}</div>
+   <div style="overflow-x:auto;margin:8px -4px"><svg width="${SW}" height="${SH}" style="font-family:inherit"><defs><marker id="ar" markerUnits="userSpaceOnUse" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 z" fill="#7d8aa8"/></marker></defs>${svg}</svg></div>
+   <div class="note">横にスクロールできます。赤＝点灯、黄＝接近。点線＝別の経路と共通の項目（そこで経路が合流・乗り換え）。「○日目」は点灯・接近してからの日数（記録開始${esc((NH&&NH.start)||'')}より前からの場合は「以上」）。確率・日数・予定は2008年以降の代替データでの段の移り方（検証49）。更新 ${esc((LT.builtAt||LT.updatedAt).replace('T',' ').slice(0,16))}</div>
    ${PATHS.map(P=>`<div class="row"><span>${esc(P.nm)}</span><b style="font-weight:400">段${P.stage}/${P.n.length}${P.tr?`・次へ60日内${P.tr.p60}%・中央値${P.tr.days_med??'—'}日`:''}${P.eta?`・${P.eta}`:''}</b></div>`).join('')}
    <div class="note" style="margin-top:10px">検証47：2008型だけがリーマン級（60日−20%）の確率を前半・後半とも上げた。鉄道型・1987型・地政学は、進行度が高くても暴落の確率は上がらなかった（予測出来なかった）。地政学・AI債務・AI→銀行は履歴がなく検証から除外。検証済みの判定は最上部の「持ってよい割合」です</div>
    <details style="margin-top:8px"><summary class="note">項目ごとの状態と根拠</summary>

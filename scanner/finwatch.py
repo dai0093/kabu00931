@@ -127,7 +127,8 @@ except Exception as _e:
 tst, thit = fintree.state(groups)
 stale_groups = [g for g in groups if sum(1 for x in rows if x["g"] == g and x["t"] in stale) >= max(1, groups[g]["n"] // 2)]
 out["stale"] = stale; out["stale_groups"] = stale_groups
-if tst == "ok" and any(g in ("欧州銀", "米銀", "日本") for g in stale_groups): tst = "stale"
+# 一部の群が未更新でも「データなし」にしない：取れている値と前日値で判定し、注記を付ける
+_stale_note = ("未更新の群あり（" + "、".join(stale_groups) + "：前日までの値で判定）") if stale_groups else ""
 strong, swhy = fintree.strong(groups, sox5)
 out["tree"] = {"state": tst, "hits": thit, "strong": strong, "strong_why": swhy, "sox5": None if sox5 is None else round(sox5, 1)}
 if INTRA:
@@ -319,7 +320,7 @@ except Exception:
     prev_tree = "ok"
 try:
     lt = json.load(open("data/logic_tree.json"))
-    json.dump(fintree.apply(lt, tst), open("data/logic_tree.json", "w"), ensure_ascii=False, indent=1)
+    json.dump(fintree.apply(lt, tst, _stale_note), open("data/logic_tree.json", "w"), ensure_ascii=False, indent=1)
 except Exception as e:
     print("logic_tree反映失敗", e)
 json.dump(out, open("data/finwatch.json", "w", encoding="utf-8"), ensure_ascii=False, indent=1)
