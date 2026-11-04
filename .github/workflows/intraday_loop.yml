@@ -1,0 +1,42 @@
+name: intraday-loop
+# GitHubの定時実行は取りこぼしが多いため、1回起動したら取引時間中は約20分おきに途中判定を繰り返す
+on:
+  schedule:
+    - cron: "50 23 * * 0-4"   # 8:50 JST
+    - cron: "33 1 * * 1-5"    # 10:33 JST（予備）
+    - cron: "7 3 * * 1-5"     # 12:07 JST（予備）
+    - cron: "41 4 * * 1-5"    # 13:41 JST（予備）
+  workflow_dispatch:
+  push:
+    paths: [".github/workflows/intraday_loop.yml"]
+permissions:
+  contents: write
+concurrency:
+  group: intraday-loop
+  cancel-in-progress: false
+jobs:
+  loop:
+    runs-on: ubuntu-latest
+    timeout-minutes: 420
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: { python-version: "3.11" }
+      - run: pip install yfinance pandas jpholiday holidays
+      - name: 取引時間中くり返し
+        env:
+          INTRADAY: "1"
+          NTFY_TOPIC: ${{ secrets.NTFY_TOPIC }}
+        run: |
+          git config user.name "kabu-bot"
+          git config user.email "kabu-bot@users.noreply.github.com"
+          while true; do
+            H=$(TZ=Asia/Tokyo date +%H%M); D=$(TZ=Asia/Tokyo date +%u)
+            if [ "$D" -ge 6 ] || [ "$H" -gt 1535 ]; then echo "取引時間外のため終了 $H"; break; fi
+            git pull -q --rebase -X theirs || true
+            python3 scanner/finwatch.py || echo 失敗
+            python3 scanner/health.py || echo health失敗
+            for f in data/finwatch_intraday.json data/assets.json data/ah_sent.json data/health.json data/defense_intraday.json data/defense_sent.json; do [ -f $f ] && git add $f; done
+            git diff --cached --quiet || { git commit -qm "intraday loop $H" && git pull -q --rebase -X theirs && git push -q; } || echo push失敗
+            sleep 1200
+          done
