@@ -527,6 +527,9 @@ function render(){
    <div class="row"><span>試運転の損益</span><b class="${cl(own)}">${sgn(own)}</b></div>
    <div class="row"><span>日経平均を持つだけ</span><b class="${cl(nk)}">${sgn(nk)}</b></div>
    <div class="row"><span>差</span><b class="${cl(own-nk)}">${sgn(own-nk)}</b></div>
+   ${L.value_def!=null?`<div class="row"><span>防御方針Cに従った場合（待機資金を目安%に連動、防御中は新規買いなし）</span><b class="${cl(L.value_def-CAP)}">${sgn(L.value_def-CAP)}</b></div>`:''}
+   <div class="row"><span>現金のまま</span><b>0円</b></div>
+   <div class="note">待機資金を日経ETF(1321)で持つ設計のため、下げ相場では日経と一緒に下がります。防御方針Cの目安%とつなげた場合の結果を併記しています</div>
    <div class="row"><span>決済した取引</span><b>${P.closed}回</b></div>
    <div class="row"><span>予測出来た / 出来なかった</span><b>${P.hit}回 / ${P.miss}回</b></div>
    <div class="row"><span>勝率（検証の目安 ${E.win_rate}%）</span><b>${wr==null?'—':wr.toFixed(1)+'%'}</b></div>

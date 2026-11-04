@@ -69,12 +69,26 @@ def build(history, frames):
         return x.iloc[:, 0] if isinstance(x, pd.DataFrame) else x
     etf, n225 = _close("1321.T"), _close("^N225")
     idle, curve = float(CAPITAL), []
+    # 防御方針Cに従って待機資金のETFを減らした場合（目安%を翌営業日から適用）。目安は defense.json の信号履歴から再計算
+    try:
+        import json as _j
+        _D = _j.load(open("data/defense.json", encoding="utf-8")); _H = _D.get("history", [])
+        _sc = {h["date"]: h["score"] for h in _H}; _ds = sorted(_sc)
+        def _tg(d):
+            past = [x for x in _ds if x <= d][-20:]
+            sh = max([_sc[x] for x in past], default=0)
+            t = 0.0 if sh >= 3 else 0.25 if sh >= 2 else 0.5 if sh >= 1 else 1.0
+            return t
+    except Exception:
+        _tg = lambda d: 1.0
+    idle_c, tprev = float(CAPITAL), 1.0
     held = []
     prev = None
     for dt, px in etf.items():
         ds = str(dt.date())
         if prev is not None:
             idle *= float(px) / prev
+            idle_c = idle_c * (1 + tprev * (float(px) / prev - 1))
         prev = float(px)
         for t in taken:
             if t.get("taken") and t.get("entry_date") == ds:
@@ -82,7 +96,8 @@ def build(history, frames):
             if t.get("taken") and t.get("exit_date") == ds:
                 v = t["sell"] * t["shares"]; idle += v * (1 - ETF_FEE); held = [h for h in held if h is not t]
         val = sum(float(frames[h["code"]].Close.asof(dt)) * h["shares"] for h in held)
-        curve.append({"date": ds, "value": round(idle + val),
+        tprev = _tg(ds)
+        curve.append({"date": ds, "value": round(idle + val), "value_def": round(idle_c), "target": tprev,
                       "nikkei": round(CAPITAL * float(n225.asof(dt)) / float(n225.iloc[0]))})
     closed = [t for t in taken if t.get("taken") and t["status"] == "決済"]
     wins = [t for t in closed if t["pnl"] > 0]
