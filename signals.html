@@ -395,18 +395,18 @@ function render(){
  {const G=S&&S.etf_stop,M=MG||{},td=new Date(Date.now()+9*36e5).toISOString().slice(0,10),mt=M.date===td;
   const warn=mt&&(M.sox_alert||M.term_alert);
   document.getElementById('guard').className='panel'+(warn?' alert':'');
-  document.getElementById('guard').innerHTML=`<div class="ttl"><span class="nm">暴落よけ</span><span class="badge ${warn?'b-buy':'b-sell'}">${warn?'今日は警戒':'平常'}</span></div>
+  document.getElementById('guard').innerHTML=`<div class="ttl"><span class="nm">暴落よけ</span><span class="badge ${warn||(DF&&DF.target<1)?'b-buy':'b-sell'}">${(DF&&DF.target===0)?'防御0%：ETFも売却済みの状態':warn?'今日は警戒':(DF&&DF.target<1)?'防御中':'該当なし'}</span></div>
   ${G?`<div class="row"><span>1321 逆指値（前日終値×0.985）</span><b>${yen(G.stop)}</b></div>
   <div class="row"><span>計算</span><b>${G.close.toLocaleString()} × 0.985 = ${G.stop.toLocaleString()}</b></div>
   <div class="note">寄り前に売りの逆指値を入れる。発動したら15:25までに引け成行で買い戻し（検証10：2017〜の暴落40日すべてで損失を約半分に）</div>`:'<div class="empty">逆指値のデータなし</div>'}
-  ${mt?`<div class="row"><span>前夜SOX（${esc(M.us_date||'')}）</span><b>${(M.sox1*100).toFixed(1)}%<span class="pill p-${M.sox_alert?'lit':'ok'}">${M.sox_alert?'暴落警戒':'平常'}</span></b></div>
-  <div class="row"><span>VIX÷VIX3M</span><b>${M.term.toFixed(2)}<span class="pill p-${M.term_alert?'lit':'ok'}">${M.term_alert?'前日警戒':'平常'}</span></b></div>
+  ${mt?`<div class="row"><span>前夜SOX（${esc(M.us_date||'')}）</span><b>${(M.sox1*100).toFixed(1)}%<span class="pill p-${M.sox_alert?'lit':'ok'}">${M.sox_alert?'暴落警戒':'該当なし'}</span></b></div>
+  <div class="row"><span>VIX÷VIX3M</span><b>${M.term.toFixed(2)}<span class="pill p-${M.term_alert?'lit':'ok'}">${M.term_alert?'前日警戒':'該当なし'}</span></b></div>
   ${M.sox_alert?'<div class="note"><b>暴落警戒</b>：寄り付きでETF・保有株を売り、大引けで買い戻すかを判断（検証8：後半の暴落の55%で事前に点灯）</div>':''}
   ${M.term_alert?'<div class="note"><b>前日警戒</b>：今日15:25までに引けで売り、明日の引けで買い戻すかを判断（検証11：翌日−2%以下の確率 普段5%→25%）</div>':''}`
   :'<div class="note">今朝の米国市場の判定はまだありません（朝5:37〜7:23に更新）</div>'}
   ${(S&&S.events||[]).length?'<div class="note"><b>米国の重要指標</b>（予想の向きでは売買しない：検証12）<br>'+S.events.map(e=>esc(e).replace(/\n/g,'<br>')).join('<br>')+'</div>':''}`;}
  // 市場リスク
- const R=S&&S.risk;const RL={lit:'点灯',near:'接近',ok:'平常',na:'—'};
+ const R=S&&S.risk;const RL={lit:'点灯',near:'接近',ok:'未点灯',na:'—'};
  const rk=(lab,val,stt,form)=>`<div class="row"><span>${lab}</span><b>${val==null?'—':form(val)}<span class="pill p-${stt||'ok'}">${RL[stt]||'—'}</span></b></div>`;
  document.getElementById('risk').innerHTML=!R||!R.values?'<div class="empty">市場リスクのデータなし</div>':`
   <div class="ttl"><span class="nm">市場リスク</span><span class="badge ${R.off?'b-buy':'b-sell'}">${R.off?'リスクオフ：新規の買いを停止':(DF&&DF.target===0)?'防御0%：新規の買いなし':(DF&&DF.target<1)?'防御中：買いは控えめに':'平常：買い候補を出します'}</span></div>
@@ -525,7 +525,7 @@ function render(){
   document.getElementById('hupd').textContent=`${f(u)} ${S.updated.slice(11)}`;
   document.getElementById('hst').textContent=`✓ ${f(md)}終値で判定済み・次回は${f(n)}夕方`;}
   const ns=S.signals.length,nl=(S.sells||[]).length;
-  document.getElementById('notice').innerHTML=`${S.updated}<b>${ns||nl?`買い候補 ${ns}件・売り ${nl}件`:'本日は売買なし。ETFのまま保有'}</b>`}
+  document.getElementById('notice').innerHTML=`${S.updated}<b>${ns||nl?`買い候補 ${ns}件・売り ${nl}件`:((DF&&DF.target===0)?'防御0%：待機用の日経ETF(1321)も持たず現金で待つ':'本日は売買なし。ETFのまま保有')}</b>`}
  else document.getElementById('notice').innerHTML='<b>まだ判定データがありません</b>';
  C=C||{candles:{},names:{}};render();
  let pw=null;try{pw=localStorage.getItem(PK)}catch(e){}

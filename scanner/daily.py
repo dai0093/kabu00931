@@ -288,7 +288,9 @@ if parts:
     body = "\n\n".join(parts)
     title = f"買い{len(today)}件・売り{len(sells)}件・逆指値（{last_date}）"
 else:
-    body, title = "本日は売買なし。ETFのまま保有", f"判定完了（{last_date}）"
+    try: _t0 = json.load(open("data/defense.json"))["target"] == 0
+    except Exception: _t0 = False
+    body, title = ("防御0%：待機用の日経ETF(1321)も持たず現金で待つ" if _t0 else "本日は売買なし。ETFのまま保有"), f"判定完了（{last_date}）"
 q = urllib.parse.urlencode({"title": title, "click": APP_URL})
 req = urllib.request.Request(f"https://ntfy.sh/{NTFY_TOPIC}?{q}",
                              data=body.encode("utf-8"), method="POST")
