@@ -69,6 +69,7 @@ input{width:100%;font:inherit;font-size:18px;padding:10px;border-radius:8px;bord
 </div>
 
 <div class="panel" id="rtop"></div>
+<div class="panel" id="half"></div>
 <div class="panel" id="concl"></div>
 <div class="panel" id="trk" data-fold></div>
 <div class="panel" id="lock" style="display:none"></div>
@@ -347,6 +348,15 @@ function render(){
    :`<div class="row"><span>回避のリミット（次の信号）</span><b class="up">日経 ${f(Object.values(D.dbg_nk||{}).slice(-1)[0]*0.98)}円（−2%）</b></div>`;
   e.className='panel'+(sc>=50?' alert':'');
   e.innerHTML=`<div class="note">危険度（検証済みの判定から）</div><div class="big ${sc>=50?'up':''}">${sc}<span style="font-size:.4em">／100</span></div><div class="lead">${lab}</div>${why.map(w=>`<div class="note">・${esc(w)}</div>`).join('')}${lim}${OL&&OL.prob?`<div class="note" style="margin-top:6px">参考：ここからさらに5営業日以内に−5%下がる確率 ${Math.round(OL.prob['5d_-5']*100)}%（ふだん${Math.round(OL.base['5d_-5']*100)}%）。すでに起きた下げは含まない</div>`:''}<div class="note">判定 ${esc(D.asOf)}${D.provisional?'（途中値 '+esc((D.updatedAt||'').slice(11,16))+'）':''}</div>`}else e.style.display='none'}
+ {const e=document.getElementById('half'),D=(DI&&DF&&DI.updatedAt>DF.updatedAt)?DI:(DF||DI);if(D&&NKD){const K=Object.keys(NKD).sort(),v=K.map(k=>NKD[k]),c=v[v.length-1],m200=v.length>=200?v.slice(-200).reduce((a,b)=>a+b,0)/200:null,ab=m200?c>m200:true,tg=ab?Math.round(D.target*100):0;
+  const end=new Date(K[K.length-1]+'T00:00:00+09:00');let n=0;while(n<120){end.setDate(end.getDate()+1);if(end.getDay()%6)n++}
+  e.className='panel'+(tg<100?' alert':'');e.innerHTML=`<div class="ttl"><span class="nm">半期（6か月）の方針：${end.getFullYear()}/${end.getMonth()+1}/${end.getDate()}まで</span></div>
+  <div class="big ${tg<100?'up':''}">${tg}%</div><div class="lead">${tg===0?'現金で待つ（日経関連・半導体・銀行・待機ETFを持たない）':tg===100?'持ってよい':'持ち高を'+tg+'%に'}</div>
+  <div class="note">ルール：防御方針Cの目安に従い、さらに日経が200日線の下なら現金（毎日見直す）。今：日経 ${Math.round(c).toLocaleString()}円・200日線比 ${m200?((c/m200-1)*100).toFixed(1):'—'}%・方針C ${Math.round(D.target*100)}%</div>
+  <div class="row"><span>このルールの半年後（前半／後半）</span><b>平均 +0.7%／+2.8%</b></div>
+  <div class="row"><span>悪い時（下位5%）</span><b>−4.4%／−5.6%</b></div>
+  <div class="row"><span>参考：持ち続けた場合</span><b>平均 +3.4%／+7.2%、悪い時 −23.8%／−10.0%</b></div>
+  <div class="note">検証50：半年の悪い時の損失が、前半・後半とも最も小さい投資ルール（予測出来た）。代わりに平均の利益は持ち続けより小さい。今と同じく高値から−10%以下で始めた半年は、持ち続けの悪い時が前半−37.6%・後半−8.3%</div>`}else e.style.display='none'}
  // 防御方針C（検証28）：持ち高の目安
  {const e=document.getElementById('defn'),D=(DI&&DF&&DI.updatedAt>DF.updatedAt)?DI:(DF||DI);if(D){const p=Math.round(D.target*100),fl=Object.entries((D.today||{}).flags||{}),col=p===100?'b-sell':'b-buy';
   e.className='panel'+(p<100?' alert':'');
