@@ -374,23 +374,34 @@ function render(){
   ${fl.slice(0,8).map(x=>`<div class="row"><span>${esc(x.name)}</span><b>${x.d1}% ／ ${x.d5}% ／ 高値比${x.dd}%</b></div>`).join('')}
   <div class="note">中央値。警戒＝前日≤${FW.th.d1}% か 5日≤${FW.th.d5}% か 60日高値比≤${FW.th.dd}%（暫定値）。更新 ${esc(FW.updatedAt)}。非上場の運用会社は報道監視</div>`}else e.style.display='none'}
  // 日経の持ち続けた場合の分布予測（検証24）
- {const e=document.getElementById('fcst');if(FC&&FC.horizons){const H=Object.keys(FC.horizons).map(Number),W=330,Ht=210,L=38,R=8,T=10,B=22,all=[];
-  H.forEach(h=>['0.05','0.95'].forEach(q=>{all.push(FC.uncond[h][q],FC.horizons[h][q])}));
-  const lo=Math.min(-20,Math.floor(Math.min(...all)/10)*10),hi=Math.max(20,Math.ceil(Math.max(...all)/10)*10),X=h=>L+(W-L-R)*h/120,Y=v=>T+(Ht-T-B)*(hi-v)/(hi-lo);
-  const poly=(a,b,k)=>H.map(h=>X(h)+','+Y(FC[k][h][a])).join(' ')+' '+H.slice().reverse().map(h=>X(h)+','+Y(FC[k][h][b])).join(' ');
-  const line=(q,k)=>H.map(h=>X(h)+','+Y(FC[k][h][q])).join(' ');
-  let g='';for(let v=lo;v<=hi;v+=10)g+=`<line x1="${L}" x2="${W-R}" y1="${Y(v)}" y2="${Y(v)}" stroke="#8884" stroke-width="${v===0?1.2:.5}"/><text x="${L-4}" y="${Y(v)+3}" font-size="9" text-anchor="end" fill="currentColor">${v}%</text>`;
-  [0,20,60,120].forEach(h=>g+=`<text x="${X(h)}" y="${Ht-6}" font-size="9" text-anchor="middle" fill="currentColor">${h?h+'日':'今'}</text>`);
-  const v=FC.validation||{},c120=v['120']||{},cl=Math.round(FC.close),lv=(r)=>Math.round(cl*(1+r/100)).toLocaleString();
-  const u=FC.uncond['60'],u1=FC.uncond['120'];
-  e.innerHTML=`<div class="ttl"><span class="nm">日経平均を持ち続けた場合（分布予測）</span><span class="badge b-sell">参考</span></div>
-  <svg viewBox="0 0 ${W} ${Ht}" width="100%" style="max-width:420px"><polygon points="${poly('0.05','0.95','uncond')}" fill="#4a90d933"/><polygon points="${poly('0.25','0.75','uncond')}" fill="#4a90d955"/><polyline points="${line('0.5','uncond')}" fill="none" stroke="#4a90d9" stroke-width="2"/>
-  <polyline points="${line('0.05','horizons')}" fill="none" stroke="#d94a4a" stroke-width="1.5" stroke-dasharray="4 3"/><polyline points="${line('0.95','horizons')}" fill="none" stroke="#d94a4a" stroke-width="1.5" stroke-dasharray="4 3"/>${g}</svg>
-  <div class="row"><span>青（無条件・過去全体）</span><b>中央値と、25〜75%・5〜95%の範囲</b></div>
-  <div class="row"><span>赤の点線（機械学習）</span><b>今の状態を入れた5%点と95%点</b></div>
-  <div class="row"><span>60日後（約3か月）</span><b>5%点 ${u['0.05']}%（約${lv(u['0.05'])}円）／中央値 ${u['0.5']}%／95%点 ${u['0.95']}%</b></div>
-  <div class="row"><span>120日後（約6か月）</span><b>5%点 ${u1['0.05']}%（約${lv(u1['0.05'])}円）／中央値 ${u1['0.5']}%</b></div>
-  <div class="note">起点 ${esc(FC.asOf)} 終値 ${cl.toLocaleString()}円。<b>機械学習は検証で予測出来なかった</b>：先読みなしの検証で、無条件の分布より精度が上がらず、範囲が実際を含んだ割合は90%に対し83〜87%（無条件は91〜93%）。赤の点線（特に90・120日の5%点）は信用しないでください。青が信頼できる範囲ですが、「今の状態」は反映していません。予測ではなく、過去の分布です。</div>`}else e.style.display='none'}
+ {const e=document.getElementById('fcst');if(FC&&FC.uncond){
+  const DK=NKD?Object.keys(NKD).sort():[],UH=Object.keys(FC.uncond).map(Number).sort((a,b)=>a-b);
+  let base=null;try{base=localStorage.getItem('fcBase')}catch(_){}
+  if(!base||!NKD||!NKD[base])base=DK.length?DK[Math.max(0,DK.length-61)]:FC.asOf;
+  const draw=b=>{const W=330,Ht=220,L=38,R=8,T=10,B=22,i0=DK.indexOf(b),c0=NKD&&NKD[b];
+   const act=i0>=0?DK.slice(i0).map((d,k)=>[k,(NKD[d]/c0-1)*100]).filter(([k])=>k<=120):[];
+   const all=[];UH.forEach(h=>['0.05','0.95'].forEach(q=>all.push(FC.uncond[h][q])));act.forEach(a=>all.push(a[1]));
+   const lo=Math.min(-20,Math.floor(Math.min(...all)/10)*10),hi=Math.max(20,Math.ceil(Math.max(...all)/10)*10),X=h=>L+(W-L-R)*h/120,Y=v=>T+(Ht-T-B)*(hi-v)/(hi-lo);
+   const HH=[0,...UH],q=(h,k)=>h===0?0:FC.uncond[h][k];
+   const poly=(a,c)=>HH.map(h=>X(h)+','+Y(q(h,a))).join(' ')+' '+HH.slice().reverse().map(h=>X(h)+','+Y(q(h,c))).join(' ');
+   const line=k=>HH.map(h=>X(h)+','+Y(q(h,k))).join(' ');
+   let g='';for(let v=lo;v<=hi;v+=10)g+=`<line x1="${L}" x2="${W-R}" y1="${Y(v)}" y2="${Y(v)}" stroke="#8884" stroke-width="${v===0?1.2:.5}"/><text x="${L-4}" y="${Y(v)+3}" font-size="9" text-anchor="end" fill="currentColor">${v}%</text>`;
+   [0,20,60,120].forEach(h=>g+=`<text x="${X(h)}" y="${Ht-6}" font-size="9" text-anchor="middle" fill="currentColor">${h?h+'日':'基準日'}</text>`);
+   const last=act.length?act[act.length-1]:null;let pos='';
+   if(last&&last[0]>0){const h=UH.find(x=>x>=last[0])||120,lw=UH.filter(x=>x<=last[0]).pop()||UH[0],it=(k)=>{const a=lw===h?0:(last[0]-lw)/(h-lw);return q(lw,k)+(q(h,k)-q(lw,k))*a};
+    const r=last[1];pos=r<it('0.05')?'5%点より下（過去の95%より悪い）':r<it('0.25')?'5〜25%点（下位）':r<it('0.75')?'25〜75%点（ふつう）':r<it('0.95')?'75〜95%点（上位）':'95%点より上'}
+   const cl=c0||FC.close,lv=r=>Math.round(cl*(1+r/100)).toLocaleString(),u=FC.uncond['60'],u1=FC.uncond['120'];
+   e.querySelector('#fcbody').innerHTML=`<svg viewBox="0 0 ${W} ${Ht}" width="100%" style="max-width:420px"><polygon points="${poly('0.05','0.95')}" fill="#4a90d933"/><polygon points="${poly('0.25','0.75')}" fill="#4a90d955"/><polyline points="${line('0.5')}" fill="none" stroke="#4a90d9" stroke-width="2"/>${act.length>1?`<polyline points="${act.map(([k,v])=>X(k)+','+Y(v)).join(' ')}" fill="none" stroke="#f2c14e" stroke-width="2.2"/><circle cx="${X(last[0])}" cy="${Y(last[1])}" r="3.5" fill="#f2c14e"/>`:''}${g}</svg>
+    <div class="row"><span>黄（実測）</span><b>${last?`${DK[i0+last[0]]}　${last[0]}営業日で ${last[1]>0?'+':''}${last[1].toFixed(1)}%（${Math.round(NKD[DK[i0+last[0]]]).toLocaleString()}円）`:'—'}</b></div>
+    ${pos?`<div class="row"><span>過去の分布の中の位置</span><b class="${pos.startsWith('5%点より下')||pos.startsWith('5〜25')?'up':''}">${pos}</b></div>`:''}
+    <div class="row"><span>青（過去全体の分布）</span><b>中央値と、25〜75%・5〜95%の範囲</b></div>
+    <div class="row"><span>60日後（約3か月）</span><b>5%点 ${u['0.05']}%（約${lv(u['0.05'])}円）／中央値 ${u['0.5']}%／95%点 ${u['0.95']}%</b></div>
+    <div class="row"><span>120日後（約6か月）</span><b>5%点 ${u1['0.05']}%（約${lv(u1['0.05'])}円）／中央値 ${u1['0.5']}%</b></div>
+    <div class="note">基準日 ${esc(b)} 終値 ${Math.round(cl).toLocaleString()}円から。青は「その日から持ち続けた場合に、過去の日経が実際にとった騰落」の範囲。機械学習の線は検証で予測出来なかったため外しました。</div>`};
+  e.innerHTML=`<div class="ttl"><span class="nm">日経平均を持ち続けた場合（分布と実測）</span><span class="badge b-sell">参考</span></div><div class="row"><span>基準日</span><b><input type="date" id="fcdate" value="${esc(base)}" min="${esc(DK[0]||'')}" max="${esc(DK[DK.length-1]||'')}" style="font-size:15px;padding:4px"></b></div><div id="fcbody"></div>`;
+  const inp=e.querySelector('#fcdate');inp.addEventListener('change',()=>{let d=inp.value;if(!NKD[d]){const k=DK.find(x=>x>=d);if(!k)return;d=k;inp.value=d}try{localStorage.setItem('fcBase',d)}catch(_){}draw(d)});
+  inp.addEventListener('click',ev=>ev.stopPropagation());draw(base)}else e.style.display='none'}
+
  // 暴落よけ（検証8・10・11・12）
  {const G=S&&S.etf_stop,M=MG||{},td=new Date(Date.now()+9*36e5).toISOString().slice(0,10),mt=M.date===td;
   const warn=mt&&(M.sox_alert||M.term_alert);
@@ -536,7 +547,7 @@ function render(){
 }
 
 (async()=>{
- [S,C,BT,PP,LT,MG,FW,FI,FC,DF,DI,AS,HL,OL,TRK,PHI,NH]=await Promise.all([get('data/signals.json'),get('data/candles.json'),get('data/compare6.json'),get('data/paper.json'),get('data/logic_tree.json'),get('data/morning.json'),get('data/finwatch.json'),get('data/finwatch_intraday.json'),get('data/forecast.json'),get('data/defense.json'),get('data/defense_intraday.json'),get('data/assets.json'),get('data/health.json'),get('data/outlook.json'),get('data/defense_track.json'),get('data/path_hist.json'),get('data/node_hist.json')]);
+ [S,C,BT,PP,LT,MG,FW,FI,FC,DF,DI,AS,HL,OL,TRK,PHI,NH,NKD]=await Promise.all([get('data/signals.json'),get('data/candles.json'),get('data/compare6.json'),get('data/paper.json'),get('data/logic_tree.json'),get('data/morning.json'),get('data/finwatch.json'),get('data/finwatch_intraday.json'),get('data/forecast.json'),get('data/defense.json'),get('data/defense_intraday.json'),get('data/assets.json'),get('data/health.json'),get('data/outlook.json'),get('data/defense_track.json'),get('data/path_hist.json'),get('data/node_hist.json'),get('data/nk_daily.json')]);
  if(S){const [y,m,d]=S.market_date.split('-');document.getElementById('hdate').textContent=`${+m}月${+d}日`;
   document.getElementById('hst').textContent='✓ 判定完了';{const W='日月火水木金土',u=new Date(S.updated.replace(' ','T')+':00+09:00'),md=new Date(S.market_date+'T00:00:00+09:00');
   let n=new Date(md.getTime()+864e5);while([0,6].includes(n.getUTCDay()===undefined?0:new Date(n.getTime()+9*36e5).getUTCDay()))n=new Date(n.getTime()+864e5);

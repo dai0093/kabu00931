@@ -275,6 +275,14 @@ try:
     dfn = {"asOf": _hist[-1]["date"], "updatedAt": datetime.now(JST).isoformat(timespec="minutes"), "provisional": bool(INTRA), "policy": "C", "target": target,
            "score_today": _hist[-1]["score"], "hold10_max": sh, "hold_days": 20, "credit_cap": bool(_ccap), "credit_d20": _cd20, "rebound": _reb, "bottom": _bt, "history": _hist, "dbg_nk": {str(k.date()): round(float(v), 2) for k, v in nk_s.tail(8).items()}, "dbg_sox": {str(k.date()): round(float(v), 2) for k, v in sx_s.tail(6).items()}, "today": _today,
            "note": ("米欧の一部が未更新（" + str(len(stale_us)) + "銘柄）。金融機関の信号が実際より弱く出ている可能性" if stale_us else "")}
+    if not INTRA:
+        try:  # 分布予測の実測表示用：日経の日々の終値（2年分）
+            _nd = yf.download("^N225", period="2y", auto_adjust=False, progress=False)["Close"].squeeze().dropna(); _nd.index = pd.to_datetime(_nd.index).tz_localize(None)
+            _nd = settled(_nd, "N225.T")
+            for _d, _v in nk_s.items():
+                if _d not in _nd.index: _nd.loc[_d] = _v
+            json.dump({str(k.date()): round(float(v), 2) for k, v in _nd.sort_index().items()}, open("data/nk_daily.json", "w"))
+        except Exception as _en: print("nk_daily失敗", _en)
     _fn = "data/defense_intraday.json" if INTRA else "data/defense.json"
     try:
         _old = json.load(open(_fn, encoding="utf-8"))
