@@ -70,6 +70,10 @@ def expected_date(t):
     while d.weekday() >= 5 or _h(d): d -= timedelta(days=1)
     return d
 rows, bad, stale = [], [], []
+SUBST = {}   # 代替で補った銘柄 → 補った方法
+ADR = {"HSBA.L": "HSBC", "BARC.L": "BCS", "NWG.L": "NWG", "LLOY.L": "LYG", "DBK.DE": "DB", "INGA.AS": "ING", "UBSG.SW": "UBS",
+       "SAN.MC": "SAN", "BBVA.MC": "BBVA", "BNP.PA": "BNPQY", "GLE.PA": "SCGLY", "ACA.PA": "CRARY", "STAN.L": "SCBFY",
+       "ALV.DE": "ALIZY", "MQG.AX": "MQBKY", "PGHN.SW": "PGPHF", "ICG.L": "ICGUF", "CVC.AS": "CVCCF", "MNG.L": "MGPUF"}
 for g, nm, t in L:
     try:
         s = settled(df[t].dropna(), t)
@@ -83,7 +87,27 @@ for g, nm, t in L:
                     s = pd.concat([s[s.index < h2.index[0]], h2]) if False else h2.combine_first(s)
             except Exception:
                 pass
+            # 代替1：取引所の最新値（fast_info の直近値と前日終値）で今日の足を補う
+            if s.index[-1].date() < expected_date(t):
+                try:
+                    fi = yf.Ticker(t).fast_info; lp, pc = float(fi["last_price"]), float(fi["previous_close"])
+                    if lp > 0 and pc > 0 and abs(pc / float(s.iloc[-1]) - 1) < 0.002:
+                        s = pd.concat([s, pd.Series([lp], index=[pd.Timestamp(expected_date(t))])]); s.attrs["src"] = "最新値"
+                except Exception:
+                    pass
+            # 代替2：米国上場の預託証券（ADR）の騰落で補う（欧州・豪州など）
+            if s.index[-1].date() < expected_date(t) and t in ADR:
+                try:
+                    a = yf.Ticker(ADR[t]).history(period="1mo", auto_adjust=False)["Close"].dropna(); a.index = pd.to_datetime(a.index).tz_localize(None)
+                    a = a[a.index > s.index[-1]]
+                    if len(a):
+                        a0 = yf.Ticker(ADR[t]).history(start=str(s.index[-1].date()), period="1mo", auto_adjust=False)["Close"].dropna()
+                        base = float(a0.iloc[0]); last = float(s.iloc[-1])
+                        s = pd.concat([s, a / base * last]); s.attrs["src"] = "ADR " + ADR[t]
+                except Exception:
+                    pass
             if s.index[-1].date() < expected_date(t): stale.append(t)
+            elif s.attrs.get("src"): SUBST[t] = s.attrs["src"]
         c = float(s.iloc[-1]); d1 = (c / float(s.iloc[-2]) - 1) * 100; d5 = (c / float(s.iloc[-6]) - 1) * 100
         hi = float(s.iloc[-60:].max()); dd = (c / hi - 1) * 100
         flag = [k for k, v, th in (("1日", d1, TH["d1"]), ("5日", d5, TH["d5"]), ("高値比", dd, TH["dd"])) if v <= th]
@@ -126,9 +150,9 @@ except Exception as _e:
     out["credit"] = {"error": repr(_e)[:80]}
 tst, thit = fintree.state(groups)
 stale_groups = [g for g in groups if sum(1 for x in rows if x["g"] == g and x["t"] in stale) >= max(1, groups[g]["n"] // 2)]
-out["stale"] = stale; out["stale_groups"] = stale_groups
+out["stale"] = stale; out["stale_groups"] = stale_groups; out["substituted"] = SUBST
 # 一部の群が未更新でも「データなし」にしない：取れている値と前日値で判定し、注記を付ける
-_stale_note = ("未更新の群あり（" + "、".join(stale_groups) + "：前日までの値で判定）") if stale_groups else ""
+_stale_note = (("未更新の群あり（" + "、".join(stale_groups) + "：前日までの値で判定）") if stale_groups else "") + ((" 代替で補った" + str(len(SUBST)) + "銘柄（最新値・ADR）") if SUBST else "")
 strong, swhy = fintree.strong(groups, sox5)
 out["tree"] = {"state": tst, "hits": thit, "strong": strong, "strong_why": swhy, "sox5": None if sox5 is None else round(sox5, 1)}
 if INTRA:
@@ -181,6 +205,14 @@ try:
     import statistics as _st
     _px = yf.download(["^N225", "^SOX"], period="9mo", auto_adjust=False, progress=False)["Close"]
     nk_s = settled(_px["^N225"].dropna(), "N225.T"); sx_s = settled(_px["^SOX"].dropna(), "^SOX")
+    try:  # SOXの最新日が欠けたら、半導体ETF(SOXX)の騰落で補う
+        _sx2 = settled(yf.download("SOXX", period="1mo", auto_adjust=False, progress=False)["Close"].squeeze().dropna(), "SOXX")
+        sx_s.index = pd.to_datetime(sx_s.index).tz_localize(None); _sx2.index = pd.to_datetime(_sx2.index).tz_localize(None)
+        for _d in _sx2.index[_sx2.index > sx_s.index[-1]]:
+            _p = _sx2.index[_sx2.index < _d][-1]
+            if _p in sx_s.index: sx_s.loc[_d] = float(sx_s[_p]) * float(_sx2[_d] / _sx2[_p])
+        sx_s = sx_s.sort_index()
+    except Exception as _es: print("SOX補完失敗", _es)
     # Yahooの日経が最新日を欠く時は、日経連動ETF(1321)の騰落で補う（欠損で判定が止まるのを防ぐ）
     try:
         _n2 = yf.download("^N225", period="1mo", auto_adjust=False, progress=False)["Close"].squeeze().dropna()
