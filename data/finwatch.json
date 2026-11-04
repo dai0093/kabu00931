@@ -1,5 +1,5 @@
 {
- "updatedAt": "2026-11-04T16:22+09:00",
+ "updatedAt": "2026-11-04T16:29+09:00",
  "th": {
   "d1": -4.0,
   "d5": -8.0,
@@ -904,7 +904,7 @@
   "欧州銀"
  ],
  "tree": {
-  "state": "stale",
+  "state": "ok",
   "hits": [],
   "strong": false,
   "strong_why": [],
