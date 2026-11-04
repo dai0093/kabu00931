@@ -462,7 +462,7 @@ function render(){
   const LN={origin:'起点',trans:'信用',fund:'資金',market:'市場'};
   const ST={};Object.values(LT.layers).forEach(a=>a.forEach(([n,st,why])=>{ST[n]={st,why}}));
   const PATHS=[
-   {nm:'2008型（信用の伝播）',d:'私募信用の評価減が社債・銀行・保険に広がり、資金が詰まって強制売却',n:['私募信用','HY OAS','金融機関株価','生保','NFCI','VIX']},
+   {nm:'2008型（信用の伝播）',d:'私募信用の評価減が社債・銀行・保険に広がり、資金が詰まって強制売却。検証47：進行度50%以上で60日以内の日経−20%が前半13.9%・後半6.8%（ふだん7.9%・3.7%）＝リーマン級の確率が約1.8倍（予測出来た）。ただし暴落の直前〜当日に上がる（早期警報ではない）',n:['私募信用','HY OAS','金融機関株価','生保','NFCI','VIX']},
    {nm:'鉄道型（AIの過剰投資）',d:'AI設備投資の借金が膨らみ、AI株が崩れ、貸し手の銀行・社債に波及',n:['AI債務','SOX下落','AI→銀行','HY OAS','金融機関株価']},
    {nm:'1987型（金利ショック→機械的な売り）',d:'金利の急上昇をきっかけに恐怖指数が跳ね、先物主導で一斉に売られる',n:['日米金利','VIX','日経先物']},
    {nm:'地政学・エネルギー',d:'戦争・海峡封鎖で原油が上がり、インフレと金利上昇を通じて株安',n:['地政学','原油','日米金利','VIX']}];
@@ -475,7 +475,7 @@ function render(){
      <div class="note">${esc(P.d)}</div>
      <div style="display:flex;gap:3px;margin:6px 0">${P.st.map(x=>`<i style="flex:1;height:8px;border-radius:4px;background:${col(x)}"></i>`).join('')}<i style="flex:1;height:8px;border-radius:4px;border:1px dashed #e5534b"></i></div>
      <div class="note">${P.n.map((n,q)=>`<span style="color:${P.st[q]==='lit'?'#e5534b':P.st[q]==='near'?'#e8b04b':'inherit'}">${esc(n)}</span>`).join(' → ')} → <b>暴落</b></div>`).join('')}
-   <div class="note" style="margin-top:10px">経路の割り当ては設計上の想定（2026/9の3層モデル）で、経路ごとの進行度と暴落の関係はまだ検証していません。検証済みの判定は最上部の「持ってよい割合」です</div>
+   <div class="note" style="margin-top:10px">検証47：2008型だけがリーマン級（60日−20%）の確率を前半・後半とも上げた。鉄道型・1987型・地政学は、進行度が高くても暴落の確率は上がらなかった（予測出来なかった）。地政学・AI債務・AI→銀行は履歴がなく検証から除外。検証済みの判定は最上部の「持ってよい割合」です</div>
    <details style="margin-top:8px"><summary class="note">項目ごとの状態と根拠</summary>
    ${Object.values(LT.layers).flat().map(([n,st,why])=>`<div class="row"><span>${esc(n)}${why?`<br><span class="note">${esc(why)}</span>`:''}</span><b><span class="pill p-${st==='na'||st==='stale'?'ok':esc(st)}">${LB[st]}</span></b></div>`).join('')}</details>
    <div class="note" style="margin-top:10px"><b>4資産への経路</b></div>
