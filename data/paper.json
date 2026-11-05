@@ -1,1 +1,367 @@
-{"start": "2026-10-09", "curve": [{"date": "2026-10-09", "value": 7000000, "nikkei": 7000000, "value_def": 7000000, "target": 1.0}, {"date": "2026-10-13", "value": 6871712, "nikkei": 6872901, "value_def": 6872901, "target": 1.0}, {"date": "2026-10-14", "value": 6834123, "nikkei": 6869531, "value_def": 6869531, "target": 1.0}, {"date": "2026-10-15", "value": 6569026, "nikkei": 6533038, "value_def": 6533038, "target": 0.0}, {"date": "2026-10-16", "value": 6612872, "nikkei": 6624133, "value_def": 6533038, "target": 0.0}, {"date": "2026-10-19", "value": 6625973, "nikkei": 6582802, "value_def": 6533038, "target": 0.0}, {"date": "2026-10-20", "value": 6613140, "nikkei": 6497493, "value_def": 6533038, "target": 0.0}, {"date": "2026-10-21", "value": 6646718, "nikkei": 6552841, "value_def": 6533038, "target": 0.0}, {"date": "2026-10-22", "value": 6634297, "nikkei": 6379096, "value_def": 6533038, "target": 0.0}, {"date": "2026-10-23", "value": 6593664, "nikkei": 6357327, "value_def": 6533038, "target": 0.0}, {"date": "2026-10-26", "value": 6612669, "nikkei": 6306269, "value_def": 6533038, "target": 0.0}, {"date": "2026-10-27", "value": 6643686, "nikkei": 6415655, "value_def": 6533038, "target": 0.0}, {"date": "2026-10-28", "value": 6602376, "nikkei": 6485200, "value_def": 6533038, "target": 0.0}, {"date": "2026-10-29", "value": 6541144, "nikkei": 6556718, "value_def": 6533038, "target": 0.0}, {"date": "2026-10-30", "value": 6507512, "nikkei": 6417860, "value_def": 6533038, "target": 0.0}, {"date": "2026-11-02", "value": 6484418, "nikkei": 6396742, "value_def": 6533038, "target": 0.0}, {"date": "2026-11-04", "value": 6434006, "nikkei": 6306165, "value_def": 6533038, "target": 0.0}], "trades": [{"date": "2026-10-09", "code": "4493", "name": "サイバーセキュリティクラウド", "entry": 3725, "stop": 3236, "shares": 100, "status": "不成立", "taken": false}, {"date": "2026-10-09", "code": "2914", "name": "日本たばこ産業", "entry": 7230, "stop": 6967, "shares": 100, "status": "保有中", "buy": 7237.23, "entry_date": "2026-10-13", "last": 7383.0, "taken": true}, {"date": "2026-10-09", "code": "4704", "name": "トレンドマイクロ", "entry": 7587, "stop": 7140, "shares": 100, "status": "決済", "buy": 7594.5869999999995, "sell": 7108.884, "why": "損切り", "entry_date": "2026-10-13", "exit_date": "2026-10-15", "pnl": -48570.29999999995, "taken": true}, {"date": "2026-10-13", "code": "4493", "name": "サイバーセキュリティクラウド", "entry": 4180, "stop": 3608, "shares": 100, "status": "決済", "buy": 4044.0399999999995, "sell": 3604.392, "why": "損切り", "entry_date": "2026-10-14", "exit_date": "2026-10-14", "pnl": -43964.79999999997, "taken": true}, {"date": "2026-10-13", "code": "9104", "name": "商船三井", "entry": 7557, "stop": 7165, "shares": 100, "status": "決済", "buy": 7564.556999999999, "sell": 7157.835, "why": "損切り", "entry_date": "2026-10-14", "exit_date": "2026-10-23", "pnl": -40672.19999999988, "taken": true}, {"date": "2026-10-15", "code": "7453", "name": "良品計画", "entry": 4804, "stop": 4541, "shares": 200, "status": "保有中", "buy": 4808.803999999999, "entry_date": "2026-10-16", "last": 4811.0, "taken": true}, {"date": "2026-10-15", "code": "4502", "name": "武田薬品工業", "entry": 6183, "stop": 5931, "shares": 200, "status": "不成立", "taken": false}, {"date": "2026-10-15", "code": "7832", "name": "バンダイナムコホールディングス", "entry": 6119, "stop": 5845, "shares": 200, "status": "不成立", "taken": false}, {"date": "2026-10-15", "code": "2914", "name": "日本たばこ産業", "entry": 7500, "stop": 7227, "shares": 100, "status": "決済", "buy": 7470.462999999999, "sell": 7219.773, "why": "損切り", "entry_date": "2026-10-16", "exit_date": "2026-10-30", "pnl": -25068.99999999987, "taken": false}, {"date": "2026-10-16", "code": "6701", "name": "日本電気", "entry": 5390, "stop": 5127, "shares": 200, "status": "決済", "buy": 5256.250999999999, "sell": 4945.05, "why": "損切り", "entry_date": "2026-10-19", "exit_date": "2026-10-29", "pnl": -62240.19999999982, "taken": true}, {"date": "2026-10-16", "code": "4307", "name": "野村総合研究所", "entry": 5953, "stop": 5604, "shares": 200, "status": "保有中", "buy": 5858.852999999999, "entry_date": "2026-10-19", "last": 6063.0, "taken": true}, {"date": "2026-10-30", "code": "4661", "name": "オリエンタルランド", "entry": 3438, "stop": 3254, "shares": 300, "status": "不成立", "taken": false}, {"date": "2026-10-30", "code": "4502", "name": "武田薬品工業", "entry": 6651, "stop": 6346, "shares": 200, "status": "保有中", "buy": 6657.650999999999, "entry_date": "2026-11-02", "last": 6588.0, "taken": true}], "closed": 4, "hit": 0, "miss": 4, "pf": 0.0, "realized": -195447, "tax_est": 0, "expect": {"win_rate": 35.2, "pf": 1.76, "trades_per_year": 58.5, "excess_per_year": 718786}}
+{
+ "start": "2026-10-09",
+ "curve": [
+  {
+   "date": "2026-10-09",
+   "value": 7000000,
+   "value_def": 7000000,
+   "target": 1.0,
+   "nikkei": 7000000
+  },
+  {
+   "date": "2026-10-13",
+   "value": 6871712,
+   "value_def": 6878235,
+   "target": 1.0,
+   "nikkei": 6872901
+  },
+  {
+   "date": "2026-10-14",
+   "value": 6834123,
+   "value_def": 6881158,
+   "target": 1.0,
+   "nikkei": 6869531
+  },
+  {
+   "date": "2026-10-15",
+   "value": 6569026,
+   "value_def": 6556777,
+   "target": 0.0,
+   "nikkei": 6533038
+  },
+  {
+   "date": "2026-10-16",
+   "value": 6612872,
+   "value_def": 6556777,
+   "target": 0.0,
+   "nikkei": 6624133
+  },
+  {
+   "date": "2026-10-19",
+   "value": 6625973,
+   "value_def": 6556777,
+   "target": 0.0,
+   "nikkei": 6582802
+  },
+  {
+   "date": "2026-10-20",
+   "value": 6613140,
+   "value_def": 6556777,
+   "target": 0.0,
+   "nikkei": 6497493
+  },
+  {
+   "date": "2026-10-21",
+   "value": 6646718,
+   "value_def": 6556777,
+   "target": 0.0,
+   "nikkei": 6552841
+  },
+  {
+   "date": "2026-10-22",
+   "value": 6634297,
+   "value_def": 6556777,
+   "target": 0.0,
+   "nikkei": 6379096
+  },
+  {
+   "date": "2026-10-23",
+   "value": 6593664,
+   "value_def": 6556777,
+   "target": 0.0,
+   "nikkei": 6357327
+  },
+  {
+   "date": "2026-10-26",
+   "value": 6612669,
+   "value_def": 6556777,
+   "target": 0.0,
+   "nikkei": 6306269
+  },
+  {
+   "date": "2026-10-27",
+   "value": 6643686,
+   "value_def": 6556777,
+   "target": 0.0,
+   "nikkei": 6415655
+  },
+  {
+   "date": "2026-10-28",
+   "value": 6602376,
+   "value_def": 6556777,
+   "target": 0.0,
+   "nikkei": 6485200
+  },
+  {
+   "date": "2026-10-29",
+   "value": 6541144,
+   "value_def": 6556777,
+   "target": 0.0,
+   "nikkei": 6556718
+  },
+  {
+   "date": "2026-10-30",
+   "value": 6507512,
+   "value_def": 6556777,
+   "target": 0.0,
+   "nikkei": 6417860
+  },
+  {
+   "date": "2026-11-02",
+   "value": 6484418,
+   "value_def": 6556777,
+   "target": 0.0,
+   "nikkei": 6396742
+  },
+  {
+   "date": "2026-11-04",
+   "value": 6434006,
+   "value_def": 6556777,
+   "target": 0.0,
+   "nikkei": 6306165
+  },
+  {
+   "date": "2026-11-05",
+   "value": 6580877,
+   "value_def": 6556777,
+   "target": 0.0,
+   "nikkei": 6193533
+  }
+ ],
+ "trades": [
+  {
+   "date": "2026-10-09",
+   "code": "4493",
+   "name": "サイバーセキュリティクラウド",
+   "entry": 3725,
+   "stop": 3236,
+   "shares": 100,
+   "status": "不成立",
+   "taken": false
+  },
+  {
+   "date": "2026-10-09",
+   "code": "2914",
+   "name": "日本たばこ産業",
+   "entry": 7230,
+   "stop": 6967,
+   "shares": 100,
+   "status": "保有中",
+   "buy": 7237.23,
+   "entry_date": "2026-10-13",
+   "last": 7769.0,
+   "taken": true
+  },
+  {
+   "date": "2026-10-09",
+   "code": "4704",
+   "name": "トレンドマイクロ",
+   "entry": 7587,
+   "stop": 7140,
+   "shares": 100,
+   "status": "決済",
+   "buy": 7594.5869999999995,
+   "sell": 7108.884,
+   "why": "損切り",
+   "entry_date": "2026-10-13",
+   "exit_date": "2026-10-15",
+   "pnl": -48570.29999999995,
+   "taken": true
+  },
+  {
+   "date": "2026-10-13",
+   "code": "4493",
+   "name": "サイバーセキュリティクラウド",
+   "entry": 4180,
+   "stop": 3608,
+   "shares": 100,
+   "status": "決済",
+   "buy": 4044.0399999999995,
+   "sell": 3604.392,
+   "why": "損切り",
+   "entry_date": "2026-10-14",
+   "exit_date": "2026-10-14",
+   "pnl": -43964.79999999997,
+   "taken": true
+  },
+  {
+   "date": "2026-10-13",
+   "code": "9104",
+   "name": "商船三井",
+   "entry": 7557,
+   "stop": 7165,
+   "shares": 100,
+   "status": "決済",
+   "buy": 7564.556999999999,
+   "sell": 7157.835,
+   "why": "損切り",
+   "entry_date": "2026-10-14",
+   "exit_date": "2026-10-23",
+   "pnl": -40672.19999999988,
+   "taken": true
+  },
+  {
+   "date": "2026-10-15",
+   "code": "7453",
+   "name": "良品計画",
+   "entry": 4804,
+   "stop": 4541,
+   "shares": 200,
+   "status": "保有中",
+   "buy": 4808.803999999999,
+   "entry_date": "2026-10-16",
+   "last": 5106.0,
+   "taken": true
+  },
+  {
+   "date": "2026-10-15",
+   "code": "4502",
+   "name": "武田薬品工業",
+   "entry": 6183,
+   "stop": 5931,
+   "shares": 200,
+   "status": "不成立",
+   "taken": false
+  },
+  {
+   "date": "2026-10-15",
+   "code": "7832",
+   "name": "バンダイナムコホールディングス",
+   "entry": 6119,
+   "stop": 5845,
+   "shares": 200,
+   "status": "不成立",
+   "taken": false
+  },
+  {
+   "date": "2026-10-15",
+   "code": "2914",
+   "name": "日本たばこ産業",
+   "entry": 7500,
+   "stop": 7227,
+   "shares": 100,
+   "status": "決済",
+   "buy": 7470.462999999999,
+   "sell": 7219.773,
+   "why": "損切り",
+   "entry_date": "2026-10-16",
+   "exit_date": "2026-10-30",
+   "pnl": -25068.99999999987,
+   "taken": false
+  },
+  {
+   "date": "2026-10-16",
+   "code": "6701",
+   "name": "日本電気",
+   "entry": 5390,
+   "stop": 5127,
+   "shares": 200,
+   "status": "決済",
+   "buy": 5256.250999999999,
+   "sell": 4945.05,
+   "why": "損切り",
+   "entry_date": "2026-10-19",
+   "exit_date": "2026-10-29",
+   "pnl": -62240.19999999982,
+   "taken": true
+  },
+  {
+   "date": "2026-10-16",
+   "code": "4307",
+   "name": "野村総合研究所",
+   "entry": 5953,
+   "stop": 5604,
+   "shares": 200,
+   "status": "保有中",
+   "buy": 5858.852999999999,
+   "entry_date": "2026-10-19",
+   "last": 6232.0,
+   "taken": true
+  },
+  {
+   "date": "2026-10-30",
+   "code": "4661",
+   "name": "オリエンタルランド",
+   "entry": 3438,
+   "stop": 3254,
+   "shares": 300,
+   "status": "不成立",
+   "taken": false
+  },
+  {
+   "date": "2026-10-30",
+   "code": "4502",
+   "name": "武田薬品工業",
+   "entry": 6651,
+   "stop": 6346,
+   "shares": 200,
+   "status": "保有中",
+   "buy": 6657.650999999999,
+   "entry_date": "2026-11-02",
+   "last": 6888.0,
+   "taken": true
+  },
+  {
+   "date": "2026-11-05",
+   "code": "7203",
+   "name": "トヨタ自動車",
+   "entry": 3533,
+   "stop": 3344,
+   "shares": 300,
+   "status": "待ち",
+   "taken": false
+  },
+  {
+   "date": "2026-11-05",
+   "code": "7267",
+   "name": "本田技研工業",
+   "entry": 1942,
+   "stop": 1858,
+   "shares": 700,
+   "status": "待ち",
+   "taken": false
+  },
+  {
+   "date": "2026-11-05",
+   "code": "4503",
+   "name": "アステラス製薬",
+   "entry": 2672,
+   "stop": 2525,
+   "shares": 400,
+   "status": "待ち",
+   "taken": false
+  },
+  {
+   "date": "2026-11-05",
+   "code": "6758",
+   "name": "ソニーグループ",
+   "entry": 4211,
+   "stop": 3969,
+   "shares": 200,
+   "status": "待ち",
+   "taken": false
+  },
+  {
+   "date": "2026-11-05",
+   "code": "4452",
+   "name": "花王",
+   "entry": 3891,
+   "stop": 3724,
+   "shares": 300,
+   "status": "待ち",
+   "taken": false
+  }
+ ],
+ "closed": 4,
+ "hit": 0,
+ "miss": 4,
+ "pf": 0.0,
+ "realized": -195447,
+ "tax_est": 0,
+ "expect": {
+  "win_rate": 35.2,
+  "pf": 1.76,
+  "trades_per_year": 58.5,
+  "excess_per_year": 718786
+ }
+}
