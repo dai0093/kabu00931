@@ -48,6 +48,12 @@
    "since": "2026-10-20",
    "lit_since": "2026-10-20",
    "before_start": false
+  },
+  "VIX": {
+   "since": "2026-11-06",
+   "lit_since": null,
+   "before_start": false,
+   "st": "near"
   }
  }
 }
