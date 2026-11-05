@@ -1,12 +1,12 @@
 {
  "updatedAt": "2026-11-05T12:20:00+09:00",
- "builtAt": "2026-11-05T12:13+09:00",
+ "builtAt": "2026-11-05T20:31+09:00",
  "phase": 3,
  "phaseName": "通り道が開通",
- "phaseDesc": "信用層に2つ以上点灯。　※期限切れのまま点灯・接近を保持：私募信用",
+ "phaseDesc": "信用層に2つ以上点灯。",
  "counts": {
   "origin": [
-   3,
+   2,
    5
   ],
   "trans": [
@@ -42,7 +42,8 @@
    ],
    [
     "私募信用",
-    "lit"
+    "ok",
+    "代替：私募信用運用会社株5日 8.56%（≤−8%点灯・≤−5%接近、検証46で予測出来た）"
    ]
   ],
   "trans": [
@@ -97,9 +98,7 @@
   ]
  },
  "unjudged": [],
- "held": [
-  "私募信用"
- ],
+ "held": [],
  "assets": [
   {
    "name": "日経平均",
@@ -166,11 +165,11 @@
    "source": "https://fred.stlouisfed.org/data/BAMLC0A0CM"
   },
   "t10y2y": {
-   "value": 0.34,
+   "value": 0.32,
    "unit": "%",
-   "observedAt": "2026-11-03",
-   "change": "FRED公表値。11/2の0.32から+2bp",
-   "source": "https://fred.stlouisfed.org/series/T10Y2Y"
+   "observedAt": "2026-11-04",
+   "change": "財務省の利回り曲線（10年−2年）",
+   "source": "https://home.treasury.gov/resource-center/data-chart-center/interest-rates/TextView?type=daily_treasury_yield_curve"
   },
   "nfci": {
    "value": -0.459,
@@ -321,7 +320,7 @@
   "日経平均": {
    "phase": 3,
    "lit": {
-    "起点": 3,
+    "起点": 2,
     "信用": 2,
     "資金": 0,
     "市場": 1
