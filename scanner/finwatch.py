@@ -282,6 +282,11 @@ try:
             for _d, _v in nk_s.items():
                 if _d not in _nd.index: _nd.loc[_d] = _v
             json.dump({str(k.date()): round(float(v), 2) for k, v in _nd.sort_index().items()}, open("data/nk_daily.json", "w"))
+            _ix = {}
+            for _t, _n in (("^IXIC", "NASDAQ"), ("^SOX", "SOX"), ("^GSPC", "S&P500")):
+                _z = yf.download(_t, period="2y", auto_adjust=False, progress=False)["Close"].squeeze().dropna(); _z.index = pd.to_datetime(_z.index).tz_localize(None)
+                _ix[_n] = {str(k.date()): round(float(v), 2) for k, v in settled(_z, _t).items()}
+            json.dump(_ix, open("data/idx_daily.json", "w"))
         except Exception as _en: print("nk_daily失敗", _en)
     _fn = "data/defense_intraday.json" if INTRA else "data/defense.json"
     try:
