@@ -101,11 +101,18 @@ try:
                     it[1] = stv; it.append(why)
                     if name in unjudged: unjudged.remove(name)
                     if name in held: held.remove(name)
-    if "hy_px" in _px and ("hy" in stale_ids or "hy" not in ser):
+    RK = {"ok": 0, "near": 1, "lit": 2}
+    def _cur(name):
+        for ly in L.values():
+            for it in ly:
+                if it[0] == name: return it[1]
+        return "ok"
+    def _worse(name, stv): return RK.get(stv, 0) > RK.get(_cur(name), 0) or _cur(name) in ("stale", "na")
+    if "hy_px" in _px and _worse("HY OAS", (lambda v: "lit" if v <= -2 else "near" if v <= -1 else "ok")(_px["hy_px"]["value"])):
         v = _px["hy_px"]["value"]; _setv("HY OAS", "lit" if v <= -2 else "near" if v <= -1 else "ok", f"代替：HYG÷IEF 20日 {v}%（≤−2%点灯・≤−1%接近、検証46で予測出来た）")
-    if "nfci_px" in _px and ("nfci" in stale_ids or "nfci" not in ser):
+    if "nfci_px" in _px and _worse("NFCI", (lambda v: "lit" if v >= 1.5 else "near" if v >= 1.0 else "ok")(_px["nfci_px"]["value"])):
         v = _px["nfci_px"]["value"]; _setv("NFCI", "lit" if v >= 1.5 else "near" if v >= 1.0 else "ok", f"代替：金融ストレス合成 {v}（≥1.5点灯・≥1.0接近、検証46で予測出来た）")
-    if "pc_px" in _px and not S["flags"].get("gate") and ("pcdef" in stale_ids or "pcdef" not in ser):
+    if "pc_px" in _px and not S["flags"].get("gate") and _worse("私募信用", (lambda v: "lit" if v <= -8 else "near" if v <= -5 else "ok")(_px["pc_px"]["value"])):
         v = _px["pc_px"]["value"]; _setv("私募信用", "lit" if v <= -8 else "near" if v <= -5 else "ok", f"代替：私募信用運用会社株5日 {v}%（≤−8%点灯・≤−5%接近、検証46で予測出来た）")
     if "ig" in stale_ids or "ig" not in ser:   # IG OASは代替が検証を通らなかったため項目から外す
         L["trans"] = [it for it in L["trans"] if it[0] != "IG OAS"]
