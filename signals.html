@@ -70,6 +70,7 @@ input{width:100%;font:inherit;font-size:18px;padding:10px;border-radius:8px;bord
 
 <div class="panel" id="rtop"></div>
 <div class="panel" id="half"></div>
+<div class="panel" id="crashcmp" data-fold></div>
 <div class="panel" id="concl"></div>
 <div class="panel" id="trk" data-fold></div>
 <div class="panel" id="lock" style="display:none"></div>
@@ -357,6 +358,29 @@ function render(){
   <div class="row"><span>悪い時（下位5%）</span><b>−4.4%／−5.6%</b></div>
   <div class="row"><span>参考：持ち続けた場合</span><b>平均 +3.4%／+7.2%、悪い時 −23.8%／−10.0%</b></div>
   <div class="note">検証50：半年の悪い時の損失が、前半・後半とも最も小さい投資ルール（予測出来た）。代わりに平均の利益は持ち続けより小さい。今と同じく高値から−10%以下で始めた半年は、持ち続けの悪い時が前半−37.6%・後半−8.3%</div>`}else e.style.display='none'}
+ {const e=document.getElementById('crashcmp');if(NKD){const K=Object.keys(NKD).sort().filter(d=>d>='2026-05-01'),V=K.map(d=>NKD[d]),last=V[V.length-1];
+  const ma=n=>V.map((_,i)=>{const a=Object.keys(NKD).sort(),j=a.indexOf(K[i]);if(j<n-1)return null;let t=0;for(let q=j-n+1;q<=j;q++)t+=NKD[a[q]];return t/n});
+  const m25=ma(25),m75=ma(75),FUT=[30,60,90];
+  const SC=[['itb','① ITバブル崩壊型',[61200,55800,51500],'#ff9900','反発しても61,000円付近で頭打ち→長期下落'],['leh','② リーマン型',[52000,46500,44200],'#ff3366','追証の連鎖で反発なく下落'],['ued','③ 2024年8月型（V字）',[60200,63500,65000],'#33ccff','投げ売りの一巡後に急回復']];
+  let on={};try{on=JSON.parse(localStorage.getItem('ccOn')||'{}')}catch(_){};SC.forEach(x=>{if(on[x[0]]===undefined)on[x[0]]=true});
+  const draw=()=>{const W=360,H=250,L=44,R=8,T=10,B=24,N=K.length,TOT=N+90,all=V.concat([57400],...SC.filter(x=>on[x[0]]).map(x=>x[2]));
+   const lo=Math.floor(Math.min(...all,60520)/5000)*5000-2000,hi=Math.ceil(Math.max(...all)/5000)*5000,X=i=>L+(W-L-R)*i/TOT,Y=v=>T+(H-T-B)*(hi-v)/(hi-lo);
+   let g='';for(let v=Math.ceil(lo/5000)*5000;v<=hi;v+=5000)g+=`<line x1="${L}" x2="${W-R}" y1="${Y(v)}" y2="${Y(v)}" stroke="#8883" stroke-width=".5"/><text x="${L-3}" y="${Y(v)+3}" font-size="8" text-anchor="end" fill="currentColor">${(v/1000).toFixed(0)}千</text>`;
+   [0,Math.floor(N/2),N-1].forEach(i=>g+=`<text x="${X(i)}" y="${H-8}" font-size="8" text-anchor="middle" fill="currentColor">${K[i].slice(5).replace('-','/')}</text>`);
+   g+=`<text x="${X(N-1+60)}" y="${H-8}" font-size="8" text-anchor="middle" fill="currentColor">+60日</text>`;
+   g+=`<rect x="${L}" y="${Y(62530)}" width="${W-L-R}" height="${Y(60520)-Y(62530)}" fill="#ff990022"/><text x="${L+4}" y="${Y(62530)-3}" font-size="8" fill="#e3b341">8月安値60,520〜9月安値62,530円の帯（戻り売りの壁）</text>`;
+   const pl=(a,c,w,d)=>{const pts=a.map((v,i)=>v==null?null:X(i)+','+Y(v)).filter(Boolean).join(' ');return pts?`<polyline points="${pts}" fill="none" stroke="${c}" stroke-width="${w}" ${d?'stroke-dasharray="5 3"':''}/>`:''};
+   let sv=pl(m25,'#d2a8ff',1)+pl(m75,'#58a6ff',1)+pl(V,'#00ff88',2.2);
+   SC.forEach(([id,nm,p,c])=>{if(!on[id])return;const pts=[[N,57400]].concat(p.map((v,q)=>[N+FUT[q],v]));sv+=`<polyline points="${pts.map(([i,v])=>X(i)+','+Y(v)).join(' ')}" fill="none" stroke="${c}" stroke-width="1.8" stroke-dasharray="5 3"/>`});
+   sv+=`<line x1="${X(N-1)}" y1="${Y(last)}" x2="${X(N)}" y2="${Y(57400)}" stroke="#ff5555" stroke-width="2"/><circle cx="${X(N)}" cy="${Y(57400)}" r="3.5" fill="#ff5555"/><text x="${X(N)+4}" y="${Y(57400)+12}" font-size="8" fill="#ff7b72">11/6先物 57,400</text>`;
+   const hi0=Math.max(...V);
+   e.querySelector('#ccbody').innerHTML=`<svg viewBox="0 0 ${W} ${H}" width="100%" style="max-width:520px">${g}${sv}</svg>
+   <div class="row"><span>日経平均（実測、緑）</span><b>${Math.round(last).toLocaleString()}円（${K[N-1]}）・高値${Math.round(hi0).toLocaleString()}円から${((last/hi0-1)*100).toFixed(1)}%</b></div>
+   <div class="row"><span>移動平均（紫25日／青75日）</span><b>${m25[N-1]?Math.round(m25[N-1]).toLocaleString():'—'}円／${m75[N-1]?Math.round(m75[N-1]).toLocaleString():'—'}円</b></div>
+   ${SC.map(([id,nm,p,c,d])=>`<div class="row"><span><label><input type="checkbox" data-id="${id}" ${on[id]?'checked':''}> <span style="color:${c}">${nm}</span></label></span><b>11月中旬 ${p[0].toLocaleString()}／12月上旬 ${p[1].toLocaleString()}／12月下旬 ${p[2].toLocaleString()}円</b></div><div class="note">${d}</div>`).join('')}
+   <div class="note">3つの線は取り込んだ資料の想定（11/6の日経先物57,400円を起点、資料の値のまま）。どれになるかの確率は検証していません（予測出来なかった扱い）。実測は日経平均の終値で、先物ではありません</div>`;
+   e.querySelectorAll('#ccbody input[type=checkbox]').forEach(c=>{c.addEventListener('click',ev=>ev.stopPropagation());c.addEventListener('change',()=>{on[c.dataset.id]=c.checked;try{localStorage.setItem('ccOn',JSON.stringify(on))}catch(_){}draw()})})};
+  e.innerHTML=`<div class="ttl"><span class="nm">暴落の型との比較（ITバブル・リーマン・2024年8月）</span><span class="badge b-sell">参考</span></div><div id="ccbody"></div>`;draw()}else e.style.display='none'}
  // 防御方針C（検証28）：持ち高の目安
  {const e=document.getElementById('defn'),D=(DI&&DF&&DI.updatedAt>DF.updatedAt)?DI:(DF||DI);if(D){const p=Math.round(D.target*100),fl=Object.entries((D.today||{}).flags||{}),col=p===100?'b-sell':'b-buy';
   e.className='panel'+(p<100?' alert':'');
