@@ -54,6 +54,24 @@
    "lit_since": null,
    "before_start": false,
    "st": "near"
+  },
+  "私募信用": {
+   "since": "2026-11-06",
+   "lit_since": "2026-11-06",
+   "before_start": false,
+   "st": "lit"
+  },
+  "金融機関株価": {
+   "since": "2026-11-06",
+   "lit_since": null,
+   "before_start": false,
+   "st": "near"
+  },
+  "NFCI": {
+   "since": "2026-11-06",
+   "lit_since": null,
+   "before_start": false,
+   "st": "near"
   }
  }
 }

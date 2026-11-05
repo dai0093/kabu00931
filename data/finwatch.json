@@ -1,5 +1,5 @@
 {
- "updatedAt": "2026-11-06T06:59+09:00",
+ "updatedAt": "2026-11-06T07:07+09:00",
  "th": {
   "d1": -4.0,
   "d5": -8.0,
@@ -919,8 +919,10 @@
  "stale_groups": [],
  "substituted": {},
  "tree": {
-  "state": "ok",
-  "hits": [],
+  "state": "near",
+  "hits": [
+   "米銀前日-4.7%≤-3%"
+  ],
   "strong": false,
   "strong_why": [],
   "sox5": -21.8
