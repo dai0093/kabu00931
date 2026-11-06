@@ -20,6 +20,15 @@ for c, nm in STOCKS.items():
         if r <= TH: hits.append({"code": c, "name": nm, "r": round(r, 1), "price": round(last), "prev": round(prev)})
     except Exception:
         pass
+    # 今日、他の銘柄は売買があるのにこの銘柄だけ売買が成立していない＝ストップ高・安の気配や売買停止の可能性
+    try:
+        today = datetime.now(JST).date(); ms = m[t].dropna() if t in m else pd.Series(dtype=float)
+        others = m.dropna(how="all").index; trading = len(others) and pd.Timestamp(others[-1]).tz_convert(JST).date() == today
+        if trading and (len(ms) == 0 or pd.Timestamp(ms.index[-1]).tz_convert(JST).date() < today):
+            s = d[t].dropna(); prev = float(s[s.index.date < today].iloc[-1])
+            hits.append({"code": c, "name": nm, "r": -99.0, "price": None, "prev": round(prev), "note": "本日まだ売買不成立（ストップ気配・売買停止の可能性）"})
+    except Exception:
+        pass
 def news(q):
     try:
         u = "https://news.google.com/rss/search?" + urllib.parse.urlencode({"q": q, "hl": "ja", "gl": "JP", "ceid": "JP:ja"})
@@ -37,7 +46,7 @@ json.dump(out, open("data/jumps.json", "w"), ensure_ascii=False, indent=1)
 new = [h for h in hits if h["code"] not in old]
 T = os.environ.get("NTFY_TOPIC")
 if T and new:
-    body = "\n".join(f"{h['name']}({h['code']}) {h['r']}% {h['price']:,}円" + (f"\n  {h['news'][0]['title']}" if h["news"] else "") for h in new)
+    body = "\n".join(f"{h['name']}({h['code']}) " + (h.get("note") or f"{h['r']}% {h['price']:,}円") + (f"\n  {h['news'][0]['title']}" if h["news"] else "") for h in new)
     q = urllib.parse.urlencode({"title": "【個別株の急落】前日比−7%以下", "priority": "4", "click": "https://dai0093.github.io/kabu00931/signals.html"})
     urllib.request.urlopen(urllib.request.Request(f"https://ntfy.sh/{T}?{q}", data=body.encode("utf-8"), method="POST"), timeout=30)
 print(out["at"], [(h["name"], h["r"]) for h in hits])
