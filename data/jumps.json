@@ -1,53 +1,19 @@
 {
- "at": "2026-11-06T20:31+09:00",
+ "at": "2026-11-07T00:26+09:00",
  "th": -7.0,
  "hits": [
   {
    "code": "2914",
    "name": "JT",
-   "r": -99.0,
+   "r": -98.0,
    "price": null,
-   "prev": 7769,
-   "note": "本日まだ売買不成立（ストップ気配・売買停止の可能性）",
+   "prev": null,
+   "note": "見出しで検知（PTS・特別気配など。値段は未確認）",
    "news": [
     {
-     "title": "JT、株価ストップ安気配 ロシア事業に警戒 - 日本経済新聞",
-     "url": "https://news.google.com/rss/articles/CBMibEFVX3lxTE5ydHhTR3FScEhTQTlVQnpZbjNPN3MwdFJCNGR1ejJtM3poZ0llNXVkc3ZoaGJwZkhPLWoxV2szSjNVSVRPQ0N1VUduR0pGNlc1OTVwcEJ6WXMwbUdDQmt6ZXByS2tfLUZUN1ZfdQ?oc=5",
-     "date": "Fri, 06 Nov 2026 02:18:25 GMT"
-    },
-    {
-     "title": "＜特別気配＞ ＪＴ、キオクシア、ＳＢＧが売り気配 - 株探",
-     "url": "https://news.google.com/rss/articles/CBMiYEFVX3lxTE5Sckp3NUhnZFpRZkgtN0h2U08wSURiZ1BoWEhtYXVsR1RlRmZWaVI3ZFZoTU9zUmJELUg2SUw5anI4aHFraDc0RURXaEwtTk1wVkpUSkZFYTNmNDRDcGVaTA?oc=5",
-     "date": "Fri, 06 Nov 2026 00:03:44 GMT"
-    },
-    {
-     "title": "JT株、売り注文殺到 ロシアが「製造4社を一時管理下に」 - 日本経済新聞",
-     "url": "https://news.google.com/rss/articles/CBMibEFVX3lxTE9EclN2cF80bC04ejB6RWhLektpMWZIZWJCVmIzSS16d2l4cG9VVkN3SU5rSjg0aEdRZEVJZVkxT0dHNllSRzZUVXZGcEVQN2ZRODVXSU1wZF9qRXZrTm5zbUN0MkYyN1EyNGJhYw?oc=5",
-     "date": "Fri, 06 Nov 2026 01:40:50 GMT"
-    }
-   ]
-  },
-  {
-   "code": "2914",
-   "name": "JT",
-   "r": -19.3,
-   "price": 6269,
-   "prev": 7769,
-   "news": [
-    {
-     "title": "JT、株価ストップ安気配 ロシア事業に警戒 - 日本経済新聞",
-     "url": "https://news.google.com/rss/articles/CBMibEFVX3lxTE5ydHhTR3FScEhTQTlVQnpZbjNPN3MwdFJCNGR1ejJtM3poZ0llNXVkc3ZoaGJwZkhPLWoxV2szSjNVSVRPQ0N1VUduR0pGNlc1OTVwcEJ6WXMwbUdDQmt6ZXByS2tfLUZUN1ZfdQ?oc=5",
-     "date": "Fri, 06 Nov 2026 02:18:25 GMT"
-    },
-    {
-     "title": "＜特別気配＞ ＪＴ、キオクシア、ＳＢＧが売り気配 - 株探",
-     "url": "https://news.google.com/rss/articles/CBMiYEFVX3lxTE5Sckp3NUhnZFpRZkgtN0h2U08wSURiZ1BoWEhtYXVsR1RlRmZWaVI3ZFZoTU9zUmJELUg2SUw5anI4aHFraDc0RURXaEwtTk1wVkpUSkZFYTNmNDRDcGVaTA?oc=5",
-     "date": "Fri, 06 Nov 2026 00:03:44 GMT"
-    },
-    {
-     "title": "JT株、売り注文殺到 ロシアが「製造4社を一時管理下に」 - 日本経済新聞",
-     "url": "https://news.google.com/rss/articles/CBMibEFVX3lxTE9EclN2cF80bC04ejB6RWhLektpMWZIZWJCVmIzSS16d2l4cG9VVkN3SU5rSjg0aEdRZEVJZVkxT0dHNllSRzZUVXZGcEVQN2ZRODVXSU1wZF9qRXZrTm5zbUN0MkYyN1EyNGJhYw?oc=5",
-     "date": "Fri, 06 Nov 2026 01:40:50 GMT"
+     "title": "JT株価、私設取引でストップ安 ロシアが資産を一時管理下に - 日本経済新聞",
+     "url": "https://news.google.com/rss/articles/CBMibEFVX3lxTE5nZkZXMWMyRklYTjQtaWJDenRYZEprXzdJTWpkdjdEa1ZreldFeHBTbWp3dXpHblRuWjlCQWFRTlRzQllyVnFXSERudm5xSlc0QjZrV21JNmxPb2xZU01QM2QtcGpuRWlPS0djcA?oc=5",
+     "date": "Thu, 05 Nov 2026 13:45:34 GMT"
     }
    ]
   },
@@ -93,9 +59,9 @@
      "date": "Wed, 04 Nov 2026 05:29:18 GMT"
     },
     {
-     "title": "ソフトバンクＧが大幅続落し４０００円を割り込む、米オープンＡＩの企業価値報道も重荷に - 株探",
-     "url": "https://news.google.com/rss/articles/CBMiYEFVX3lxTE1LN2ZEVDgxYjVydnNiSmg4THZTT2lTcjM0Q0NkQ1N2OE9rdm4wRDBTaDNPdmtDQ2t6Tnlsb1dvbmZteElKeFRKbEkyUjlPdjNneDYyeGxQdFZCV05xbFA3MQ?oc=5",
-     "date": "Fri, 23 Oct 2026 07:00:00 GMT"
+     "title": "ソフトバンクGのCDS保証料率が4年ぶり高水準、AI懸念で株価は一時15％超下落 - BigGo ファイナンス",
+     "url": "https://news.google.com/rss/articles/CBMidEFVX3lxTE1tNFZVOVhmVFoydDh2eGl0RE9LNjlGbm9wNXJSbXBiWGdBRW9XOW1td3V0bERvQjV1NzFJNFFTT25yNGxnTkZ6Zmtvck5mRWdvT2xhSTRXZmdyWHZud2xlenZvb1NOczZOckdmMDE1eFlyUjVI?oc=5",
+     "date": "Fri, 06 Nov 2026 05:35:00 GMT"
     }
    ]
   },
@@ -275,9 +241,9 @@
    "prev": 1735,
    "news": [
     {
-     "title": "住友商事、市場が見抜けなかったニッケル撤退 株価上昇率が過去最大 - 日本経済新聞",
-     "url": "https://news.google.com/rss/articles/CBMibEFVX3lxTFBXakV5bzFhVW5ZLVZ3aThIelhZOXYzekF6bzI0NlZvTTFtb2dkYVlzQVNoSW5tb1pKTklnSkItSC1VMDhkWEpCWTN4SXFUdTBXQ2E4dS16aGJQeGpyc2FTWjBBVzYxQkUyVWFhNw?oc=5",
-     "date": "Mon, 18 May 2026 07:00:00 GMT"
+     "title": "決算:住友商事の純利益6700億円、27年3月期に上振れ 実質増配 - 日本経済新聞",
+     "url": "https://news.google.com/rss/articles/CBMibEFVX3lxTE9wQ1NDTmd0NVlVaXcyRTZsY1dGdFJmSEJ5a01lbzFrUU9pOUtPel9Bem9wSGZ6QmxBLWVuQVY3c3RrOHJnYnpCaS1TYjFBdVVEdUJIWlR1OURrYThubVpsNmw2S3g5d0VEXzYyVg?oc=5",
+     "date": "Mon, 02 Nov 2026 07:41:11 GMT"
     },
     {
      "title": "住友商事(株)【8053】：今の株価の理由は？値動きの背景をAIが解説 - Yahoo!ファイナンス",
@@ -352,14 +318,14 @@
      "date": "Fri, 06 Nov 2026 09:03:09 GMT"
     },
     {
+     "title": "決算:オリックスの4〜6月純利益、2.6倍の2808億円 キオクシア株高が寄与 - 日本経済新聞",
+     "url": "https://news.google.com/rss/articles/CBMibEFVX3lxTE5xNGRNVHRjSmZtNno5V2p3Zk55eC1ZUVV4U1ppX0hReWVIN0stejJvamlsVVVDcjRYeHN1Q2QwQjBod0ZzOHlXSHRneWJSMjZ0dWdhcTB0cXNQNXQ3U3B1MXdVR2V2bjExMXZNMw?oc=5",
+     "date": "Thu, 06 Aug 2026 07:00:00 GMT"
+    },
+    {
      "title": "オリックスＦ、今期経常は14％減益へ - 株探",
      "url": "https://news.google.com/rss/articles/CBMiUkFVX3lxTE15OWdXc2tFYkVaUGttQnhzbm9PWTA1NE5KZDcxRjY4WThyYUc3LUhtY1RoT001OTg0Mjh0RTFvQklreWttMXUyeTQ4cElBLVNNeFE?oc=5",
      "date": "Thu, 22 Oct 2026 07:00:00 GMT"
-    },
-    {
-     "title": "オリックス不動産投資法人【8954】：株価・株式情報（夜間PTS含む） - Yahoo!ファイナンス",
-     "url": "https://news.google.com/rss/articles/CBMiUkFVX3lxTFBWNEg0SVJ1X1pZSTdaUVQ1cUdxRGxOUEYtdlBFRmhMUTM2Q2pHQXpnNjRqT2RBWDBmeHFkTXRLVi1feUxyS3JreS1CTFRBYTZzRUE?oc=5",
-     "date": "Thu, 29 Oct 2026 07:00:00 GMT"
     }
    ]
   },
@@ -445,7 +411,7 @@
     {
      "title": "三井不動産ロジスティクスパーク投資法人【3471】：株価・株式情報（夜間PTS含む） - Yahoo!ファイナンス",
      "url": "https://news.google.com/rss/articles/CBMiUkFVX3lxTE81bC1fbUZSZnRmamFaRlNDeV93OG0zWnhxaldBZ1VrVjFkM2xDbjl0VzlkdlRzcS1rREdBWVQxUjVMY1pJV29qYURWQy1TQk51S3c?oc=5",
-     "date": "Fri, 06 Nov 2026 03:28:06 GMT"
+     "date": "Fri, 06 Nov 2026 11:06:09 GMT"
     },
     {
      "title": "三井不動産商業ファンド投資法人【8964】：株価・株式情報（夜間PTS含む） - Yahoo!ファイナンス",
@@ -587,14 +553,14 @@
    "prev": 6232,
    "news": [
     {
-     "title": "野村総合研究所（野村総研）【4307】の日々株価（日足）｜時系列データ｜株探（かぶたん） - 株探",
-     "url": "https://news.google.com/rss/articles/CBMiX0FVX3lxTE1SZEpjVHY4cEZrakZ5bnNLVzZZU1hZeTFNMEFfeTdSQ0ZjdVhtdlQ4NkhINy1kWVJRTFhNempWcmk4OW45SmpRTmlIU05rM0hYanNmbnlTYUZtYUZKMnRv?oc=5",
-     "date": "Wed, 28 Oct 2026 15:00:00 GMT"
-    },
-    {
      "title": "野村総研が年初来高値 株価は「SaaSの死」克服 - 日本経済新聞",
      "url": "https://news.google.com/rss/articles/CBMibEFVX3lxTE43SDlwckFJc2x3cmFUQWo1Tjl1NnAxWTZZeFlGX0J4M2Z6SGItQnM5cmhvdk1tZE12OXVVUjl4NlRtbXVDV2txbzE1MFA0ZzJza2tDenUyeHkycS1zUTFqdGdUXzdjT012VDhIQw?oc=5",
      "date": "Fri, 23 Oct 2026 07:00:00 GMT"
+    },
+    {
+     "title": "野村総合研究所（野村総研）【4307】の日々株価（日足）｜時系列データ｜株探（かぶたん） - 株探",
+     "url": "https://news.google.com/rss/articles/CBMiX0FVX3lxTE1SZEpjVHY4cEZrakZ5bnNLVzZZU1hZeTFNMEFfeTdSQ0ZjdVhtdlQ4NkhINy1kWVJRTFhNempWcmk4OW45SmpRTmlIU05rM0hYanNmbnlTYUZtYUZKMnRv?oc=5",
+     "date": "Wed, 28 Oct 2026 15:00:00 GMT"
     },
     {
      "title": "野村総研が反落､1Q決算は12％最終増益 - 四季報オンライン",
