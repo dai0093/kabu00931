@@ -31,7 +31,14 @@
   "by_risk": 200,
   "by_cash": 100,
   "method": "高値更新",
-  "status": "open"
+  "status": "closed",
+  "buy": 7230.0,
+  "sell": 6269.0,
+  "entry_date": "2026-10-13",
+  "exit_date": "2026-11-06",
+  "reason": "損切り",
+  "pnl": -96100.0,
+  "hit": false
  },
  {
   "date": "2026-10-09",
@@ -290,7 +297,14 @@
   "crash_out": false,
   "crash_why": "5日騰落 +16% / 値幅(ATR) 2.7% / 25日線乖離 +16%",
   "method": "高値更新",
-  "status": "pending"
+  "status": "closed",
+  "buy": 3500.0,
+  "sell": 3344.0,
+  "entry_date": "2026-11-06",
+  "exit_date": "2026-11-06",
+  "reason": "損切り",
+  "pnl": -46800.0,
+  "hit": false
  },
  {
   "date": "2026-11-05",
@@ -311,7 +325,14 @@
   "crash_out": false,
   "crash_why": "5日騰落 +10% / 値幅(ATR) 2.2% / 25日線乖離 +10%",
   "method": "高値更新",
-  "status": "pending"
+  "status": "closed",
+  "buy": 1861.5,
+  "sell": 1858.0,
+  "entry_date": "2026-11-06",
+  "exit_date": "2026-11-06",
+  "reason": "損切り",
+  "pnl": -2450.0,
+  "hit": false
  },
  {
   "date": "2026-11-05",
@@ -332,7 +353,14 @@
   "crash_out": false,
   "crash_why": "5日騰落 +7% / 値幅(ATR) 2.8% / 25日線乖離 +11%",
   "method": "高値更新",
-  "status": "pending"
+  "status": "closed",
+  "buy": 2572.5,
+  "sell": 2525.0,
+  "entry_date": "2026-11-06",
+  "exit_date": "2026-11-06",
+  "reason": "損切り",
+  "pnl": -19000.0,
+  "hit": false
  },
  {
   "date": "2026-11-05",
@@ -353,7 +381,7 @@
   "crash_out": false,
   "crash_why": "5日騰落 +6% / 値幅(ATR) 2.9% / 25日線乖離 +8%",
   "method": "高値更新",
-  "status": "pending"
+  "status": "open"
  },
  {
   "date": "2026-11-05",
@@ -374,6 +402,6 @@
   "crash_out": false,
   "crash_why": "5日騰落 +6% / 値幅(ATR) 2.1% / 25日線乖離 +6%",
   "method": "高値更新",
-  "status": "pending"
+  "status": "open"
  }
 ]
