@@ -99,11 +99,18 @@ try:
          "rule": "下位20%の日は 前半12.6%・後半9.8%（上位20%は4.4%・5.0%）。下げは下げを呼ぶ。買い過熱の後の暴落は、検証では確認できず"}]
 except Exception as _x:
     out["crowd"] = []; print("crowd失敗", _x)
-json.dump(out, open("data/outlook.json", "w", encoding="utf-8"), ensure_ascii=False, indent=1)
+try: _prv = json.load(open("data/outlook.json", encoding="utf-8")).get("asOf", "")
+except Exception: _prv = ""
+if _prv > asof: print("Yahoo欠損で日付が後戻り：画面の確率は前回（" + _prv + "）を維持")  # 2026-11-07修正
+else: json.dump(out, open("data/outlook.json", "w", encoding="utf-8"), ensure_ascii=False, indent=1)
 # 記録と採点
 try: LG = json.load(open("data/outlook_log.json", encoding="utf-8"))
 except Exception: LG = []
-if not LG or LG[-1]["asOf"] != asof: LG.append({"asOf": asof, "close": out["close"], "prob": P})
+# 2026-11-07修正：同じ日付が重複しないよう、同じasOfは最新の値で置き換えて日付順に並べる（Yahooの欠損で日付が行き来すると重複していた）
+_dd = {}
+for e in LG: _dd[e["asOf"]] = e
+_dd[asof] = {"asOf": asof, "close": out["close"], "prob": P}
+LG = [_dd[k] for k in sorted(_dd)]
 cpos = {str(d.date()): i for i, d in enumerate(cal)}
 for e in LG:
     i = cpos.get(e["asOf"]); e.setdefault("result", {})

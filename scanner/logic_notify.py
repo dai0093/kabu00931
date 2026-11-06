@@ -25,7 +25,7 @@ if prev.get("phase") != cur.get("phase"):
     lines.append(f"フェーズ {prev.get('phase', '—')} → {cur['phase']}：{cur.get('phaseName', '')}")
 
 def states(d):
-    return {f"{ly}:{n}": s for ly, items in (d.get("layers") or {}).items() for n, s in items}
+    return {f"{ly}:{it[0]}": it[1] for ly, items in (d.get("layers") or {}).items() for it in items}  # 2026-11-07：3要素（注記付き）にも対応
 p, c = states(prev), states(cur)
 for k, s in c.items():
     if p.get(k) != s and s != "na":

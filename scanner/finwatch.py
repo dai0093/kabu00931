@@ -288,11 +288,13 @@ try:
                 _ix[_n] = {str(k.date()): round(float(v), 2) for k, v in settled(_z, _t).items()}
             json.dump(_ix, open("data/idx_daily.json", "w"))
         except Exception as _en: print("nk_daily失敗", _en)
-    _fn = "data/defense_intraday.json" if INTRA else "data/defense.json"
+    _fn = "data/defense_intraday.json" if INTRA else "data/defense.json"; _kept = False
     try:
         _old = json.load(open(_fn, encoding="utf-8"))
         if _old.get("asOf", "") > dfn["asOf"]:  # Yahoo欠損で日付が後戻りした場合は前回の判定を残す
             dfn = _old; dfn["note"] = "Yahooの日経データが一時的に欠けたため、前回の判定を維持（" + dfn["asOf"] + "）"
+            # 2026-11-07修正：古いデータで計算した目安・戻りの合図で通知や記録をしない（10/29夜に0%→翌朝50%の往復通知が出ていた）
+            _kept = True; target = float(_old.get("target", target)); _reb = _old.get("rebound") or dict(_reb, on=False)
     except Exception: pass
     json.dump(dfn, open(_fn, "w", encoding="utf-8"), ensure_ascii=False, indent=1)
     _DS = "data/defense_sent.json"
@@ -316,7 +318,7 @@ try:
     if not INTRA:
         try: _TR = json.load(open("data/defense_track.json", encoding="utf-8"))
         except Exception: _TR = []
-        if _prev is not None and abs(_prev - target) > 1e-9 and (not _TR or _TR[-1]["date"] != dfn["asOf"] or _TR[-1]["to"] != target):
+        if not _kept and _prev is not None and abs(_prev - target) > 1e-9 and (not _TR or _TR[-1]["date"] != dfn["asOf"] or _TR[-1]["to"] != target):
             _TR.append({"date": dfn["asOf"], "from": _prev, "to": target, "nk": round(float(nk_s.iloc[-1]), 0), "warn": _warn})
         _ix = {str(k.date()): i for i, k in enumerate(nk_s.index)}
         for _t in _TR:
@@ -335,7 +337,7 @@ try:
     if _TOP and _reb["on"] and not _prev_reb and not INTRA and "--no-notify" not in sys.argv:
         _q2 = urllib.parse.urlencode({"title": "【戻りの合図】SOX5日が+5%以上", "priority": "3", "click": "https://dai0093.github.io/kabu00931/signals.html"})
         urllib.request.urlopen(urllib.request.Request(f"https://ntfy.sh/{_TOP}?{_q2}", data=f"SOX5日 {_reb['sox5']:+.1f}%・当日の危険信号0本。防御中のため、戻してよい合図です。\n検証31：合図の日の20日後の日経は平均+1.9%（合図なし+0.2〜0.7%）。ただし戻した後の最悪損失は−8%→−12.5%に広がります。判断は富士さん。".encode("utf-8"), method="POST"), timeout=30)
-    if (not INTRA) or _prev != target: json.dump({"target": target, "at": dfn["updatedAt"], "reb": bool(_reb["on"]) if not INTRA else _prev_reb}, open(_DS, "w"))
+    if not _kept and ((not INTRA) or _prev != target): json.dump({"target": target, "at": dfn["updatedAt"], "reb": bool(_reb["on"]) if not INTRA else _prev_reb}, open(_DS, "w"))
     print("防御方針C", target, "本日", _hist[-1]["score"], "10日最大", sh, dfn["note"])
 except Exception as _e:
     print("防御方針C失敗", repr(_e)); import traceback; open("data/defense_err.txt", "w").write(datetime.now(JST).isoformat() + "\n" + traceback.format_exc())
