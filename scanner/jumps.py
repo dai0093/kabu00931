@@ -41,3 +41,6 @@ if T and new:
     q = urllib.parse.urlencode({"title": "【個別株の急落】前日比−7%以下", "priority": "4", "click": "https://dai0093.github.io/kabu00931/signals.html"})
     urllib.request.urlopen(urllib.request.Request(f"https://ntfy.sh/{T}?{q}", data=body.encode("utf-8"), method="POST"), timeout=30)
 print(out["at"], [(h["name"], h["r"]) for h in hits])
+try:
+    print("JT", float(m["2914.T"].dropna().iloc[-1]), d["2914.T"].dropna().tail(3).to_dict())
+except Exception as e: print("JT取得失敗", e)
