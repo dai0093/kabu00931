@@ -1,0 +1,21 @@
+name: jumps
+on:
+  push:
+    paths: ["scanner/jumps.py", ".github/workflows/jumps.yml"]
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  run:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: { python-version: "3.11" }
+      - run: pip install yfinance pandas
+      - run: python3 scanner/jumps.py
+        env:
+          NTFY_TOPIC: ${{ secrets.NTFY_TOPIC }}
+      - run: |
+          git config user.name "kabu-bot"; git config user.email "kabu-bot@users.noreply.github.com"
+          git add data/jumps.json && git commit -qm "jumps" && git pull -q --rebase -X theirs && git push -q || echo no change
