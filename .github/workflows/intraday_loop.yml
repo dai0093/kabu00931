@@ -36,9 +36,11 @@ jobs:
             git pull -q --rebase -X theirs || true
             python3 scanner/finwatch.py || echo 失敗
             python3 scanner/health.py || echo health失敗
-            for f in data/finwatch_intraday.json data/assets.json data/ah_sent.json data/health.json data/defense_intraday.json data/defense_sent.json; do [ -f $f ] && git add $f; done
+            python3 scanner/jumps.py || echo jumps失敗
+            for f in data/finwatch_intraday.json data/assets.json data/ah_sent.json data/health.json data/defense_intraday.json data/defense_sent.json data/jumps.json; do [ -f $f ] && git add $f; done
             git diff --cached --quiet || { git commit -qm "intraday loop $H" && git pull -q --rebase -X theirs && git push -q; } || echo push失敗
             sleep 1200
           done
 # kick 2026-11-05
 # kick 2026-11-06
+# jumps

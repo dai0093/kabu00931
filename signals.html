@@ -69,6 +69,7 @@ input{width:100%;font:inherit;font-size:18px;padding:10px;border-radius:8px;bord
 </div>
 
 <div class="panel" id="rtop"></div>
+<div class="panel alert" id="jmp" style="display:none"></div>
 <div class="panel" id="half"></div>
 <div class="panel" id="crashcmp"></div>
 <div class="panel" id="concl"></div>
@@ -387,6 +388,7 @@ function render(){
    <div class="note">3つの線は取り込んだ資料の想定（11/6の日経先物57,400円を起点、資料の値のまま）。どれになるかの確率は検証していません（予測出来なかった扱い）。実測は日経平均の終値で、先物ではありません</div>`;
    e.querySelectorAll('#ccbody input[type=checkbox]').forEach(c=>{c.addEventListener('click',ev=>ev.stopPropagation());c.addEventListener('change',()=>{on[c.dataset.id]=c.checked;try{localStorage.setItem('ccOn',JSON.stringify(on))}catch(_){}draw()})})};
   e.innerHTML=`<div class="ttl"><span class="nm">暴落の型との比較（ITバブル・リーマン・2024年8月）</span><span class="badge b-sell">参考</span></div><div id="ccbody"></div>`;draw()}else e.style.display='none'}
+ {const e=document.getElementById('jmp');if(JMP&&JMP.hits&&JMP.hits.length){e.style.display='';e.innerHTML=`<div class="ttl"><span class="nm">個別株の急落（前日比${JMP.th}%以下）</span></div>`+JMP.hits.map(h=>`<div class="row"><span>${esc(h.name)}（${esc(h.code)}）</span><b class="up">${h.r}%　${h.price.toLocaleString()}円</b></div>${(h.news||[]).slice(0,2).map(n=>`<div class="note">・<a href="${esc(n.url)}" target="_blank" rel="noopener">${esc(n.title)}</a></div>`).join('')}`).join('')+`<div class="note">確認 ${esc(JMP.at.replace('T',' '))}。見出しは自動収集で、内容は未確認です</div>`}}
  // 防御方針C（検証28）：持ち高の目安
  {const e=document.getElementById('defn'),D=(DI&&DF&&DI.updatedAt>DF.updatedAt)?DI:(DF||DI);if(D){const p=Math.round(D.target*100),fl=Object.entries((D.today||{}).flags||{}),col=p===100?'b-sell':'b-buy';
   e.className='panel'+(p<100?' alert':'');
@@ -590,7 +592,7 @@ function render(){
 }
 
 (async()=>{
- [S,C,BT,PP,LT,MG,FW,FI,FC,DF,DI,AS,HL,OL,TRK,PHI,NH,NKD,IXD]=await Promise.all([get('data/signals.json'),get('data/candles.json'),get('data/compare6.json'),get('data/paper.json'),get('data/logic_tree.json'),get('data/morning.json'),get('data/finwatch.json'),get('data/finwatch_intraday.json'),get('data/forecast.json'),get('data/defense.json'),get('data/defense_intraday.json'),get('data/assets.json'),get('data/health.json'),get('data/outlook.json'),get('data/defense_track.json'),get('data/path_hist.json'),get('data/node_hist.json'),get('data/nk_daily.json'),get('data/idx_daily.json')]);
+ [S,C,BT,PP,LT,MG,FW,FI,FC,DF,DI,AS,HL,OL,TRK,PHI,NH,NKD,IXD,JMP]=await Promise.all([get('data/signals.json'),get('data/candles.json'),get('data/compare6.json'),get('data/paper.json'),get('data/logic_tree.json'),get('data/morning.json'),get('data/finwatch.json'),get('data/finwatch_intraday.json'),get('data/forecast.json'),get('data/defense.json'),get('data/defense_intraday.json'),get('data/assets.json'),get('data/health.json'),get('data/outlook.json'),get('data/defense_track.json'),get('data/path_hist.json'),get('data/node_hist.json'),get('data/nk_daily.json'),get('data/idx_daily.json'),get('data/jumps.json')]);
  if(S){const [y,m,d]=S.market_date.split('-');document.getElementById('hdate').textContent=`${+m}月${+d}日`;
   document.getElementById('hst').textContent='✓ 判定完了';{const W='日月火水木金土',u=new Date(S.updated.replace(' ','T')+':00+09:00'),md=new Date(S.market_date+'T00:00:00+09:00');
   let n=new Date(md.getTime()+864e5);while([0,6].includes(n.getUTCDay()===undefined?0:new Date(n.getTime()+9*36e5).getUTCDay()))n=new Date(n.getTime()+864e5);
