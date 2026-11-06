@@ -1,12 +1,12 @@
 {
- "at": "2026-11-06T11:14+09:00",
+ "at": "2026-11-06T11:15+09:00",
  "th": -7.0,
  "hits": [
   {
    "code": "9984",
    "name": "ソフトバンクG",
-   "r": -10.3,
-   "price": 3569,
+   "r": -10.2,
+   "price": 3576,
    "prev": 3980,
    "news": [
     {
@@ -29,7 +29,7 @@
   {
    "code": "4005",
    "name": "住友化学",
-   "r": -9.8,
+   "r": -9.9,
    "price": 468,
    "prev": 519,
    "news": [
@@ -53,8 +53,8 @@
   {
    "code": "4568",
    "name": "第一三共",
-   "r": -8.8,
-   "price": 2808,
+   "r": -9.0,
+   "price": 2802,
    "prev": 3078,
    "news": [
     {
@@ -77,8 +77,8 @@
   {
    "code": "8015",
    "name": "豊田通商",
-   "r": -8.8,
-   "price": 6163,
+   "r": -8.9,
+   "price": 6161,
    "prev": 6761,
    "news": [
     {
@@ -101,8 +101,8 @@
   {
    "code": "8031",
    "name": "三井物産",
-   "r": -8.5,
-   "price": 4611,
+   "r": -8.6,
+   "price": 4606,
    "prev": 5039,
    "news": [
     {
@@ -126,7 +126,7 @@
    "code": "5020",
    "name": "ENEOS",
    "r": -8.3,
-   "price": 1173,
+   "price": 1172,
    "prev": 1278,
    "news": [
     {
@@ -147,34 +147,10 @@
    ]
   },
   {
-   "code": "8411",
-   "name": "みずほFG",
-   "r": -8.2,
-   "price": 7109,
-   "prev": 7741,
-   "news": [
-    {
-     "title": "みずほＦＧ－急落 AI投資減速の懸念や長期金利低下など嫌気 銀行株が安い(トレーダーズ・ウェブ) - Yahoo!ファイナンス",
-     "url": "https://news.google.com/rss/articles/CBMihwFBVV95cUxQa1VqWHd0WXJGN2tpS1J5MGpXMkhwLVB6ZzA5bVRTcXZMdlphb3ByemhGMkNnX1hmd3A5Q0FCSW5Fc0ZWRlJZTVZoVkVkbTRxcWpKZHNYUW1nU2haaV9jd1dyUmVGTXludThud2VBcVdaR0ZWdFN6UUU3WHJqR1Qzc3FnYnVVVXM?oc=5",
-     "date": "Fri, 06 Nov 2026 00:25:05 GMT"
-    },
-    {
-     "title": "みずほＦＧなど銀行株が後場一段安、２０年債入札結果を受け国内長期金利の上昇一服シナリオ意識 - 株探",
-     "url": "https://news.google.com/rss/articles/CBMiYEFVX3lxTE1mVU1vYkZITUp2ZUdPR0ZJdEQ2SUxEOEpuRHZJaXFBV25tMTBFYTJVT3p1Q2drd1RUaDZBT0VPQ0d5d3VKMkIxcWFRVzVROTl1U3BrQWxFMDJhX1l1bGtfUw?oc=5",
-     "date": "Tue, 20 Oct 2026 07:00:00 GMT"
-    },
-    {
-     "title": "みずほFG株価反発 19年ぶり高値、日銀の利上げペースの加速観測 - 日本経済新聞",
-     "url": "https://news.google.com/rss/articles/CBMibEFVX3lxTE5INTZxcDB5aU40SWY2YllDT2lkZkNzMWlueGJGUHRYdHM3N3EzZFRGU0J2SnprVTBOaE12T1BVTWVMem9vbnJtYUFfbmE5ODUxc1NqMWpZNlp1elNWTFNJUzZSSmtMWDBZX3JPTQ?oc=5",
-     "date": "Thu, 03 Sep 2026 07:00:00 GMT"
-    }
-   ]
-  },
-  {
    "code": "8053",
    "name": "住友商事",
    "r": -8.2,
-   "price": 1592,
+   "price": 1593,
    "prev": 1735,
    "news": [
     {
@@ -198,7 +174,7 @@
    "code": "8002",
    "name": "丸紅",
    "r": -8.2,
-   "price": 4687,
+   "price": 4690,
    "prev": 5108,
    "news": [
     {
@@ -222,7 +198,7 @@
    "code": "7741",
    "name": "HOYA",
    "r": -8.2,
-   "price": 22095,
+   "price": 22105,
    "prev": 24075,
    "news": [
     {
@@ -243,10 +219,34 @@
    ]
   },
   {
+   "code": "8604",
+   "name": "野村HD",
+   "r": -8.1,
+   "price": 1452,
+   "prev": 1579,
+   "news": [
+    {
+     "title": "野村HD－大和が目標株価引き上げ 「貯蓄から投資の流れ」が加速へ〔DZH 個別株情報〕(時事通信) - Yahoo!ファイナンス",
+     "url": "https://news.google.com/rss/articles/CBMihwFBVV95cUxQb3U3a0pwS3g2bnhQcnhGdTRHSFAta3RsOXhZelo5OUdCU3pJOFRENlpkdFBzeTM0NVNHYldtUi1LTUpZNHI5Q0tYVzk2ZTkyM1JKaXBkMEdMeXY1dldGZTlKenpiSHNvVS1GcHpnRV95N3hlaWZzV0NhazFRMjFnYS0xUk11VTg?oc=5",
+     "date": "Thu, 05 Nov 2026 01:18:52 GMT"
+    },
+    {
+     "title": "野村HD株価反発 4〜9月27%増益、「安定収益拡大はポジティブ」の声 - 日本経済新聞",
+     "url": "https://news.google.com/rss/articles/CBMibEFVX3lxTE1OTldRbXY5NnhJdEcxR01PZjNjaXlfbWdDRlAtSXVrRW1vN1U3NkY1aFFrdktKWWdiaGRoc2xoSnZzNHBZVWFHR0RIaWlDaGR2T3JjaERPdmJQT1FLTTY0VnJpOW9sSjZaYUR3ZQ?oc=5",
+     "date": "Thu, 29 Oct 2026 02:28:49 GMT"
+    },
+    {
+     "title": "野村證券で買われた高配当株人気ランキング（2026年7月-9月） | NOMURA ウェルスタイル – 野村の投資＆マネーライフ - 野村證券",
+     "url": "https://news.google.com/rss/articles/CBMiX0FVX3lxTE5DR1FjUHc1V19HaDJsS1JsdVA5aTR0SUJTdHhvRkRxT18yOEpFRXlxbUJ4Qy1ZQ0FaNFl0WUNENGtNMjJIMmNrUVVYeC1CMEQzdTZpcnBBLXh5RFhpZ3lF?oc=5",
+     "date": "Wed, 14 Oct 2026 07:00:00 GMT"
+    }
+   ]
+  },
+  {
    "code": "6762",
    "name": "TDK",
-   "r": -8.2,
-   "price": 2066,
+   "r": -8.0,
+   "price": 2072,
    "prev": 2252,
    "news": [
     {
@@ -269,8 +269,8 @@
   {
    "code": "7011",
    "name": "三菱重工",
-   "r": -8.2,
-   "price": 2802,
+   "r": -7.9,
+   "price": 2810,
    "prev": 3052,
    "news": [
     {
@@ -291,58 +291,34 @@
    ]
   },
   {
-   "code": "8604",
-   "name": "野村HD",
-   "r": -8.2,
-   "price": 1450,
-   "prev": 1579,
-   "news": [
-    {
-     "title": "野村HD－大和が目標株価引き上げ 「貯蓄から投資の流れ」が加速へ〔DZH 個別株情報〕(時事通信) - Yahoo!ファイナンス",
-     "url": "https://news.google.com/rss/articles/CBMihwFBVV95cUxQb3U3a0pwS3g2bnhQcnhGdTRHSFAta3RsOXhZelo5OUdCU3pJOFRENlpkdFBzeTM0NVNHYldtUi1LTUpZNHI5Q0tYVzk2ZTkyM1JKaXBkMEdMeXY1dldGZTlKenpiSHNvVS1GcHpnRV95N3hlaWZzV0NhazFRMjFnYS0xUk11VTg?oc=5",
-     "date": "Thu, 05 Nov 2026 01:18:52 GMT"
-    },
-    {
-     "title": "野村HD株価反発 4〜9月27%増益、「安定収益拡大はポジティブ」の声 - 日本経済新聞",
-     "url": "https://news.google.com/rss/articles/CBMibEFVX3lxTE1OTldRbXY5NnhJdEcxR01PZjNjaXlfbWdDRlAtSXVrRW1vN1U3NkY1aFFrdktKWWdiaGRoc2xoSnZzNHBZVWFHR0RIaWlDaGR2T3JjaERPdmJQT1FLTTY0VnJpOW9sSjZaYUR3ZQ?oc=5",
-     "date": "Thu, 29 Oct 2026 02:28:49 GMT"
-    },
-    {
-     "title": "野村證券で買われた高配当株人気ランキング（2026年7月-9月） | NOMURA ウェルスタイル – 野村の投資＆マネーライフ - 野村證券",
-     "url": "https://news.google.com/rss/articles/CBMiX0FVX3lxTE5DR1FjUHc1V19HaDJsS1JsdVA5aTR0SUJTdHhvRkRxT18yOEpFRXlxbUJ4Qy1ZQ0FaNFl0WUNENGtNMjJIMmNrUVVYeC1CMEQzdTZpcnBBLXh5RFhpZ3lF?oc=5",
-     "date": "Wed, 14 Oct 2026 07:00:00 GMT"
-    }
-   ]
-  },
-  {
-   "code": "6273",
-   "name": "SMC",
+   "code": "8411",
+   "name": "みずほFG",
    "r": -7.8,
-   "price": 54500,
-   "prev": 59130,
+   "price": 7134,
+   "prev": 7741,
    "news": [
     {
-     "title": "ＳＭＣ(株)【6273】：今の株価の理由は？値動きの背景をAIが解説 - Yahoo!ファイナンス",
-     "url": "https://news.google.com/rss/articles/CBMiX0FVX3lxTFBhQkxub3NXSVF2ZWh4Zm5QcW8tU2xJS3pvQUxVVUtFWTJyMk9MemNxVGdfaWJlNktaTC1wZ0hJTU9xYWk2aUg1R1lXTmNIQXZMeGJCY0RHLXpMVmdhRmhv?oc=5",
-     "date": "Mon, 02 Nov 2026 07:09:29 GMT"
+     "title": "みずほＦＧ－急落 AI投資減速の懸念や長期金利低下など嫌気 銀行株が安い(トレーダーズ・ウェブ) - Yahoo!ファイナンス",
+     "url": "https://news.google.com/rss/articles/CBMihwFBVV95cUxQa1VqWHd0WXJGN2tpS1J5MGpXMkhwLVB6ZzA5bVRTcXZMdlphb3ByemhGMkNnX1hmd3A5Q0FCSW5Fc0ZWRlJZTVZoVkVkbTRxcWpKZHNYUW1nU2haaV9jd1dyUmVGTXludThud2VBcVdaR0ZWdFN6UUU3WHJqR1Qzc3FnYnVVVXM?oc=5",
+     "date": "Fri, 06 Nov 2026 00:25:05 GMT"
     },
     {
-     "title": "SMC、「社員や取引先のための経営」まい進 株価は高値から3割安 - 日本経済新聞",
-     "url": "https://news.google.com/rss/articles/CBMibEFVX3lxTE81REpGNEpPcXlENUowSmw1ZHpVVGVJbTNMYTd2MzF5aGstekZqTFV6c2xxTFRkOEROQ0JES0U0WUVzeFhYdnZkYjBzSzJQOEo1TmYtNVF3eWw5ZFRYZWdDandVTDhERGgyc3QzTg?oc=5",
-     "date": "Fri, 29 May 2026 07:00:00 GMT"
+     "title": "みずほＦＧなど銀行株が後場一段安、２０年債入札結果を受け国内長期金利の上昇一服シナリオ意識 - 株探",
+     "url": "https://news.google.com/rss/articles/CBMiYEFVX3lxTE1mVU1vYkZITUp2ZUdPR0ZJdEQ2SUxEOEpuRHZJaXFBV25tMTBFYTJVT3p1Q2drd1RUaDZBT0VPQ0d5d3VKMkIxcWFRVzVROTl1U3BrQWxFMDJhX1l1bGtfUw?oc=5",
+     "date": "Tue, 20 Oct 2026 07:00:00 GMT"
     },
     {
-     "title": "英ファンドのパリサーがＳＭＣ株取得、6000億円規模の自社株買い要請へ＝書簡 - Reuters",
-     "url": "https://news.google.com/rss/articles/CBMikgFBVV95cUxNZW1VS1M1M0tpRU4wa25FRDBPS250NmRIWnpTWVhJZzJJOE00QzFna1hIZFdndFZVbWMwZTVSaFU0anBWRFlXbHgxWVl4ZXBJRmV5UWw2N0tqaTF2NVFsR2FuT1JmQU5NbFFYS0ZUVXo4UzVlNHlzdjEtenQwUmFkcGw3UU5OeEV4VENqRGVFdFdtUQ?oc=5",
-     "date": "Sun, 26 Apr 2026 07:00:00 GMT"
+     "title": "みずほFG株価反発 19年ぶり高値、日銀の利上げペースの加速観測 - 日本経済新聞",
+     "url": "https://news.google.com/rss/articles/CBMibEFVX3lxTE5INTZxcDB5aU40SWY2YllDT2lkZkNzMWlueGJGUHRYdHM3N3EzZFRGU0J2SnprVTBOaE12T1BVTWVMem9vbnJtYUFfbmE5ODUxc1NqMWpZNlp1elNWTFNJUzZSSmtMWDBZX3JPTQ?oc=5",
+     "date": "Thu, 03 Sep 2026 07:00:00 GMT"
     }
    ]
   },
   {
    "code": "6178",
    "name": "日本郵政",
-   "r": -7.8,
-   "price": 2244,
+   "r": -7.7,
+   "price": 2245,
    "prev": 2433,
    "news": [
     {
@@ -359,30 +335,6 @@
      "title": "日本郵政(株)【JPPHY】：株価・株式情報 - Yahoo!ファイナンス",
      "url": "https://news.google.com/rss/articles/CBMiUEFVX3lxTE9idWpsUkVxeUNvNzYzb2N3T0JjVG5wS0YtZUZWN0NfTTFxeUZTWXdMVUp3bmtlNXVxdjNqVnZyVlFnOTBFVk5RaXJEMXdvMlBG?oc=5",
      "date": "Sat, 31 Oct 2026 07:00:00 GMT"
-    }
-   ]
-  },
-  {
-   "code": "6305",
-   "name": "日立建機",
-   "r": -7.8,
-   "price": 4843,
-   "prev": 5250,
-   "news": [
-    {
-     "title": "【アナリスト評価】日立建機、レーティング強気を継続、目標株価6,300円に引下げ（米系大手証券）(アイフィス株予報) - Yahoo!ファイナンス",
-     "url": "https://news.google.com/rss/articles/CBMihwFBVV95cUxNbGRGekFhLUNBd2doTjYtV095eTF6RmNnajhCajh4NHh3V2pyaXM3dnViR2VUTF9rUlJySTVBSDYzTnlVT2lRNjRnQ3lQOUp1akpBcnE1S3V3SVJnWGo0VWx6djJCNDZpQ2JFM2tpNUt4Y3Vhak8xalEyNVVLZWFONlZnRC1FdWc?oc=5",
-     "date": "Thu, 05 Nov 2026 07:42:52 GMT"
-    },
-    {
-     "title": "日立、日立建機株を全株売却へ 約10%を1000億円規模で - 日本経済新聞",
-     "url": "https://news.google.com/rss/articles/CBMibEFVX3lxTE9hMV9hZlhYcHpoQzdhNmM3Yk1waUpkVXY1MXZYQjZkRVBwWnZRc01qVzRMYlA0eXF2c2JiY1B2elpteDhmZU54SHJ4WGFKT2FkWFJwRVpSLWV2Y29sRWdwV1ZycWZtbW5KWnFwWQ?oc=5",
-     "date": "Tue, 18 Aug 2026 07:00:00 GMT"
-    },
-    {
-     "title": "【コマツ・日立建機vsキャタピラー】日米建機3社の「稼ぐ力」を徹底比較！関税に直撃された日本勢の“値上げ”の行方は？ - ダイヤモンド・オンライン",
-     "url": "https://news.google.com/rss/articles/CBMiTEFVX3lxTE9oTU4zMTJPQkdUcmFReUpTRUJpWHFzUW12TzJsNi1kUmx6S1daYk41eGg2czd3MGRxMkZjRkUtbHNGc3Y4QkUtSjhQM1Y?oc=5",
-     "date": "Wed, 10 Jun 2026 07:00:00 GMT"
     }
    ]
   },
@@ -411,10 +363,58 @@
    ]
   },
   {
+   "code": "6305",
+   "name": "日立建機",
+   "r": -7.7,
+   "price": 4846,
+   "prev": 5250,
+   "news": [
+    {
+     "title": "【アナリスト評価】日立建機、レーティング強気を継続、目標株価6,300円に引下げ（米系大手証券）(アイフィス株予報) - Yahoo!ファイナンス",
+     "url": "https://news.google.com/rss/articles/CBMihwFBVV95cUxNbGRGekFhLUNBd2doTjYtV095eTF6RmNnajhCajh4NHh3V2pyaXM3dnViR2VUTF9rUlJySTVBSDYzTnlVT2lRNjRnQ3lQOUp1akpBcnE1S3V3SVJnWGo0VWx6djJCNDZpQ2JFM2tpNUt4Y3Vhak8xalEyNVVLZWFONlZnRC1FdWc?oc=5",
+     "date": "Thu, 05 Nov 2026 07:42:52 GMT"
+    },
+    {
+     "title": "日立、日立建機株を全株売却へ 約10%を1000億円規模で - 日本経済新聞",
+     "url": "https://news.google.com/rss/articles/CBMibEFVX3lxTE9hMV9hZlhYcHpoQzdhNmM3Yk1waUpkVXY1MXZYQjZkRVBwWnZRc01qVzRMYlA0eXF2c2JiY1B2elpteDhmZU54SHJ4WGFKT2FkWFJwRVpSLWV2Y29sRWdwV1ZycWZtbW5KWnFwWQ?oc=5",
+     "date": "Tue, 18 Aug 2026 07:00:00 GMT"
+    },
+    {
+     "title": "【コマツ・日立建機vsキャタピラー】日米建機3社の「稼ぐ力」を徹底比較！関税に直撃された日本勢の“値上げ”の行方は？ - ダイヤモンド・オンライン",
+     "url": "https://news.google.com/rss/articles/CBMiTEFVX3lxTE9oTU4zMTJPQkdUcmFReUpTRUJpWHFzUW12TzJsNi1kUmx6S1daYk41eGg2czd3MGRxMkZjRkUtbHNGc3Y4QkUtSjhQM1Y?oc=5",
+     "date": "Wed, 10 Jun 2026 07:00:00 GMT"
+    }
+   ]
+  },
+  {
+   "code": "6273",
+   "name": "SMC",
+   "r": -7.6,
+   "price": 54630,
+   "prev": 59130,
+   "news": [
+    {
+     "title": "ＳＭＣ(株)【6273】：今の株価の理由は？値動きの背景をAIが解説 - Yahoo!ファイナンス",
+     "url": "https://news.google.com/rss/articles/CBMiX0FVX3lxTFBhQkxub3NXSVF2ZWh4Zm5QcW8tU2xJS3pvQUxVVUtFWTJyMk9MemNxVGdfaWJlNktaTC1wZ0hJTU9xYWk2aUg1R1lXTmNIQXZMeGJCY0RHLXpMVmdhRmhv?oc=5",
+     "date": "Mon, 02 Nov 2026 07:09:29 GMT"
+    },
+    {
+     "title": "SMC、「社員や取引先のための経営」まい進 株価は高値から3割安 - 日本経済新聞",
+     "url": "https://news.google.com/rss/articles/CBMibEFVX3lxTE81REpGNEpPcXlENUowSmw1ZHpVVGVJbTNMYTd2MzF5aGstekZqTFV6c2xxTFRkOEROQ0JES0U0WUVzeFhYdnZkYjBzSzJQOEo1TmYtNVF3eWw5ZFRYZWdDandVTDhERGgyc3QzTg?oc=5",
+     "date": "Fri, 29 May 2026 07:00:00 GMT"
+    },
+    {
+     "title": "英ファンドのパリサーがＳＭＣ株取得、6000億円規模の自社株買い要請へ＝書簡 - Reuters",
+     "url": "https://news.google.com/rss/articles/CBMikgFBVV95cUxNZW1VS1M1M0tpRU4wa25FRDBPS250NmRIWnpTWVhJZzJJOE00QzFna1hIZFdndFZVbWMwZTVSaFU0anBWRFlXbHgxWVl4ZXBJRmV5UWw2N0tqaTF2NVFsR2FuT1JmQU5NbFFYS0ZUVXo4UzVlNHlzdjEtenQwUmFkcGw3UU5OeEV4VENqRGVFdFdtUQ?oc=5",
+     "date": "Sun, 26 Apr 2026 07:00:00 GMT"
+    }
+   ]
+  },
+  {
    "code": "6752",
    "name": "パナソニック",
-   "r": -7.6,
-   "price": 2928,
+   "r": -7.3,
+   "price": 2936,
    "prev": 3168,
    "news": [
     {
@@ -435,82 +435,10 @@
    ]
   },
   {
-   "code": "6857",
-   "name": "アドバンテスト",
-   "r": -7.5,
-   "price": 27260,
-   "prev": 29485,
-   "news": [
-    {
-     "title": "アドバンテスト株価反落 米民主党躍進でAI規制強まるとの懸念 - 日本経済新聞",
-     "url": "https://news.google.com/rss/articles/CBMibEFVX3lxTE1IVWk5Wm53N21zcTlqTGFraXdXdEJrMHNPMl9GVEJGMGlYZnJWcmZmeWRrX2xwZzF3NHZmSllIUEdqWkFiaTdKS3h0dTVFcTgzU0xXSEh6cEFya0FJZ2J4cDdMSnBOTk1BUDEwSQ?oc=5",
-     "date": "Wed, 04 Nov 2026 01:50:14 GMT"
-    },
-    {
-     "title": "日経平均は703円安でスタート、アドバンテストやフジクラなどが下落／寄り付き概況(フィスコ) - Yahoo!ファイナンス",
-     "url": "https://news.google.com/rss/articles/CBMihwFBVV95cUxPN1A5MXZCSjdrSW9wQ0JLWFlMVFdUSUU1Tm9sVzFlN0tPdlBOV1lVYURaeFlkVERjRWVqSlYtN0YzeXlhb2RrenhEWV9SZkFkSW1oRUNKUVNjRWlwNVpNWFBpS1VDMVNxR0YxQU9GSGtJdjdMNlFYZjB5a1lUb3k1V2VnRkk4QlU?oc=5",
-     "date": "Fri, 06 Nov 2026 00:45:29 GMT"
-    },
-    {
-     "title": "日本株にも米中間選ショック、日経平均は一時３０００円超下落…キオクシアやアドバンテストなど売られる - 読売新聞",
-     "url": "https://news.google.com/rss/articles/CBMiZEFVX3lxTE5xVnN4Qmo4eU1COHhZYmNUeS0wOThiR25GdmlfaFB4ZTVnMmdZTFRTaHpNc1Q5RFBlNWNFRl8xa1pKb0VzQWJkLXNCQVFpSWFSTzhhVlVVcnZEUGp4UlNXcEtpMzc?oc=5",
-     "date": "Wed, 04 Nov 2026 10:53:00 GMT"
-    }
-   ]
-  },
-  {
-   "code": "6981",
-   "name": "村田製作所",
-   "r": -7.4,
-   "price": 4662,
-   "prev": 5032,
-   "news": [
-    {
-     "title": "【アナリスト評価】村田製作所、レーティング強気を継続、目標株価11,300円に引上げ（欧州系大手証券）(アイフィス株予報) - Yahoo!ファイナンス",
-     "url": "https://news.google.com/rss/articles/CBMihwFBVV95cUxPdXlGbXRTSW5hblhNbHZTT2Z4QnZ0UWlZWHpiaEtxeGlnaWNVNWJ3enJnZkZVRFo4QVZoaXpMRDY5RDJ2VXdoOVJXdlhKZ2lGdnlNVWxBODRsT2RSRkFGVENQTWt5VUpORDdPZENtbWZsNjlQUTZMU1dGcmZCdFlKMVpFYTVLYlk?oc=5",
-     "date": "Mon, 02 Nov 2026 09:56:42 GMT"
-    },
-    {
-     "title": "太陽誘電、株価が午後一段高 村田製作所の工場拡張方針で連想買い - 日本経済新聞",
-     "url": "https://news.google.com/rss/articles/CBMibEFVX3lxTE1QNTZrQXp0TVBQOWdVZkdWdGtkZ3lLdDBxci1BUjZyT29kMlpVS1JGb3RlVnJFOW1EVW9HazJyNmVINnVRN1ZaVG9mRnBFTjVxRmo2N3d4c1FUQXROZHAzaEpiUDhHT1JGTmc4OQ?oc=5",
-     "date": "Wed, 14 Oct 2026 07:00:00 GMT"
-    },
-    {
-     "title": "仮想通貨取引所OKX、村田製作所の株価に連動する先物を上場 - JinaCoin",
-     "url": "https://news.google.com/rss/articles/CBMiXEFVX3lxTFAyeno0SUl1NVhPU1NmUDJCSkkweEFmMzI2WURvTzNaUk5Pd1c0Mk5TM3RwWmg1NlpCanlNWjlJTEk0QmNNVHlWYXRHeGVZX2V4eXVkZWhsaFVhR3Nl?oc=5",
-     "date": "Thu, 05 Nov 2026 03:06:04 GMT"
-    }
-   ]
-  },
-  {
-   "code": "6301",
-   "name": "コマツ",
-   "r": -7.4,
-   "price": 5803,
-   "prev": 6269,
-   "news": [
-    {
-     "title": "コマツ株価、午後急落3カ月ぶり安値 業績予想上方修正でも物足りず - 日本経済新聞",
-     "url": "https://news.google.com/rss/articles/CBMibEFVX3lxTE8zaWxLc1FkWW9oNnY2emZDWHFhbE9fV3hfTEpwRzdWU3F2OGg5bEZpaUVwUWRWcTY0UThqOTBKQUtrOVlUZDdQRktpLVRCYUNhU3E2R1pjTXczU1lLRll4VDN3Z2ZXUldBRkxZNQ?oc=5",
-     "date": "Thu, 29 Oct 2026 06:13:08 GMT"
-    },
-    {
-     "title": "コマツ【6301】慎重見通し裏切る上方修正、株価一段高 中東リスクと米国関税影響の影で建機巨頭から「フィジカルAI」銘柄に変貌？（Finasee） - Yahoo!ニュース",
-     "url": "https://news.google.com/rss/articles/CBMif0FVX3lxTE5rVng2Vm81RjdZOEx1Z1NQdW1aX3VIdlVGYlVGRVRyenJ2eUNpZGt0N3Bfb0Fsb29SdEYwcThsaENqX1h4d09wa0VDOWlXSUVGd3NiNG9xNDYxOTcwRG9uQjQ4WTdBeWJfRW1MWVVjcDlCa2thUlNWR05YOWdZSTA?oc=5",
-     "date": "Mon, 10 Aug 2026 07:00:00 GMT"
-    },
-    {
-     "title": "コマツ、2026年度第2四半期売上高が過去最高も株価9.3%急落 執筆 - Investing.com - FX | 株式市場 | ファイナンス | 金融ニュース",
-     "url": "https://news.google.com/rss/articles/CBMib0FVX3lxTFBpakFwRmNCWmpBcVBYZ0tjZ1NGUU03QWZHOU5kSmFXcENXYVU0RVVfeWQ2YmNHZmdxdGhlaGRFLXFKeU4weHJadFZnTVN1b3RCb2FPTzJaQktYMHRmRi1LRnNXbDdFUldKQk0yU1YwSQ?oc=5",
-     "date": "Sun, 01 Nov 2026 11:22:00 GMT"
-    }
-   ]
-  },
-  {
    "code": "8591",
    "name": "オリックス",
    "r": -7.3,
-   "price": 5428,
+   "price": 5429,
    "prev": 5858,
    "news": [
     {
@@ -531,10 +459,34 @@
    ]
   },
   {
+   "code": "6301",
+   "name": "コマツ",
+   "r": -7.3,
+   "price": 5809,
+   "prev": 6269,
+   "news": [
+    {
+     "title": "コマツ株価、午後急落3カ月ぶり安値 業績予想上方修正でも物足りず - 日本経済新聞",
+     "url": "https://news.google.com/rss/articles/CBMibEFVX3lxTE8zaWxLc1FkWW9oNnY2emZDWHFhbE9fV3hfTEpwRzdWU3F2OGg5bEZpaUVwUWRWcTY0UThqOTBKQUtrOVlUZDdQRktpLVRCYUNhU3E2R1pjTXczU1lLRll4VDN3Z2ZXUldBRkxZNQ?oc=5",
+     "date": "Thu, 29 Oct 2026 06:13:08 GMT"
+    },
+    {
+     "title": "コマツ【6301】慎重見通し裏切る上方修正、株価一段高 中東リスクと米国関税影響の影で建機巨頭から「フィジカルAI」銘柄に変貌？（Finasee） - Yahoo!ニュース",
+     "url": "https://news.google.com/rss/articles/CBMif0FVX3lxTE5rVng2Vm81RjdZOEx1Z1NQdW1aX3VIdlVGYlVGRVRyenJ2eUNpZGt0N3Bfb0Fsb29SdEYwcThsaENqX1h4d09wa0VDOWlXSUVGd3NiNG9xNDYxOTcwRG9uQjQ4WTdBeWJfRW1MWVVjcDlCa2thUlNWR05YOWdZSTA?oc=5",
+     "date": "Mon, 10 Aug 2026 07:00:00 GMT"
+    },
+    {
+     "title": "コマツ、2026年度第2四半期売上高が過去最高も株価9.3%急落 執筆 - Investing.com - FX | 株式市場 | ファイナンス | 金融ニュース",
+     "url": "https://news.google.com/rss/articles/CBMib0FVX3lxTFBpakFwRmNCWmpBcVBYZ0tjZ1NGUU03QWZHOU5kSmFXcENXYVU0RVVfeWQ2YmNHZmdxdGhlaGRFLXFKeU4weHJadFZnTVN1b3RCb2FPTzJaQktYMHRmRi1LRnNXbDdFUldKQk0yU1YwSQ?oc=5",
+     "date": "Sun, 01 Nov 2026 11:22:00 GMT"
+    }
+   ]
+  },
+  {
    "code": "8802",
    "name": "三菱地所",
    "r": -7.2,
-   "price": 3967,
+   "price": 3970,
    "prev": 4276,
    "news": [
     {
@@ -551,6 +503,30 @@
      "title": "三菱地所(株)【MITEY】：株価・株式情報 - Yahoo!ファイナンス",
      "url": "https://news.google.com/rss/articles/CBMiUEFVX3lxTE8tNEpEUEpDT1FWU1dIS2dGLVQ4a0p4UWc1bEstZGxPQjUtZTA3NWMzRHg1S2RVckVDOXYxWWJDNnRlVk94cUpleGZTSmxFQWRp?oc=5",
      "date": "Mon, 02 Nov 2026 01:18:56 GMT"
+    }
+   ]
+  },
+  {
+   "code": "6857",
+   "name": "アドバンテスト",
+   "r": -7.1,
+   "price": 27380,
+   "prev": 29485,
+   "news": [
+    {
+     "title": "アドバンテスト株価反落 米民主党躍進でAI規制強まるとの懸念 - 日本経済新聞",
+     "url": "https://news.google.com/rss/articles/CBMibEFVX3lxTE1IVWk5Wm53N21zcTlqTGFraXdXdEJrMHNPMl9GVEJGMGlYZnJWcmZmeWRrX2xwZzF3NHZmSllIUEdqWkFiaTdKS3h0dTVFcTgzU0xXSEh6cEFya0FJZ2J4cDdMSnBOTk1BUDEwSQ?oc=5",
+     "date": "Wed, 04 Nov 2026 01:50:14 GMT"
+    },
+    {
+     "title": "日経平均は703円安でスタート、アドバンテストやフジクラなどが下落／寄り付き概況(フィスコ) - Yahoo!ファイナンス",
+     "url": "https://news.google.com/rss/articles/CBMihwFBVV95cUxPN1A5MXZCSjdrSW9wQ0JLWFlMVFdUSUU1Tm9sVzFlN0tPdlBOV1lVYURaeFlkVERjRWVqSlYtN0YzeXlhb2RrenhEWV9SZkFkSW1oRUNKUVNjRWlwNVpNWFBpS1VDMVNxR0YxQU9GSGtJdjdMNlFYZjB5a1lUb3k1V2VnRkk4QlU?oc=5",
+     "date": "Fri, 06 Nov 2026 00:45:29 GMT"
+    },
+    {
+     "title": "日本株にも米中間選ショック、日経平均は一時３０００円超下落…キオクシアやアドバンテストなど売られる - 読売新聞",
+     "url": "https://news.google.com/rss/articles/CBMiZEFVX3lxTE5xVnN4Qmo4eU1COHhZYmNUeS0wOThiR25GdmlfaFB4ZTVnMmdZTFRTaHpNc1Q5RFBlNWNFRl8xa1pKb0VzQWJkLXNCQVFpSWFSTzhhVlVVcnZEUGp4UlNXcEtpMzc?oc=5",
+     "date": "Wed, 04 Nov 2026 10:53:00 GMT"
     }
    ]
   }
