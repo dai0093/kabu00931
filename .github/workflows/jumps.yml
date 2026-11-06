@@ -1,5 +1,8 @@
 name: jumps
 on:
+  schedule:
+    - cron: "7 9-14 * * 1-5"    # 18:07〜23:07 JST 毎時（夜間PTS・海外ニュース）
+    - cron: "37 15-20 * * 0-4"  # 0:37〜5:37 JST 毎時
   push:
     paths: ["scanner/jumps.py", ".github/workflows/jumps.yml"]
   workflow_dispatch:
