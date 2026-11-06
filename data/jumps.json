@@ -28,6 +28,21 @@
    ]
   },
   {
+   "code": "7974",
+   "name": "任天堂",
+   "r": -98.0,
+   "price": null,
+   "prev": null,
+   "note": "見出しで検知（PTS・特別気配など。値段は未確認）",
+   "news": [
+    {
+     "title": "特別気配＞ 任天堂、ソニーＧ、住友鉱が買い気配(株探ニュース) - Yahoo!ファイナンス",
+     "url": "https://news.google.com/rss/articles/CBMihwFBVV95cUxOSEo1c3NFbkR5QXhkMVJjVUNDcFliYlNPZlJRR3hSQmlRLUY4UDJ2NDMxMUk4Y3hUdWU5ZkZOUFZ2cUNYQWdjTEFhc1VINE1sY2VxdHZ3dTh2RDQwMzRmd2ZicTN1emJjUU4tVVJYd25jV0FiaE5yLUtTLTFBRlo2OUNCTDEyS3c?oc=5",
+     "date": "Thu, 05 Nov 2026 00:04:04 GMT"
+    }
+   ]
+  },
+  {
    "code": "4005",
    "name": "住友化学",
    "r": -9.7,
@@ -54,8 +69,8 @@
   {
    "code": "9984",
    "name": "ソフトバンクG",
-   "r": -9.5,
-   "price": 3601,
+   "r": -9.6,
+   "price": 3596,
    "prev": 3980,
    "news": [
     {
@@ -78,8 +93,8 @@
   {
    "code": "4568",
    "name": "第一三共",
-   "r": -9.1,
-   "price": 2796,
+   "r": -9.2,
+   "price": 2794,
    "prev": 3078,
    "news": [
     {
@@ -102,8 +117,8 @@
   {
    "code": "8031",
    "name": "三井物産",
-   "r": -8.6,
-   "price": 4607,
+   "r": -8.7,
+   "price": 4603,
    "prev": 5039,
    "news": [
     {
@@ -148,34 +163,10 @@
    ]
   },
   {
-   "code": "8015",
-   "name": "豊田通商",
-   "r": -8.4,
-   "price": 6190,
-   "prev": 6761,
-   "news": [
-    {
-     "title": "豊田通商(株)【8015】：今の株価の理由は？値動きの背景をAIが解説 - Yahoo!ファイナンス",
-     "url": "https://news.google.com/rss/articles/CBMiX0FVX3lxTE5HM25zelkzLWdvaHFWNEFBZTUxX2VXZ2w3LUJnejN4aGJCc1BORFNPYU90TGl1Ni00M2Z0SlExa0kybGxxcVpiYjlZeDdva1B3Vy1TTEN6UlhyMjNFNm9Z?oc=5",
-     "date": "Mon, 02 Nov 2026 07:03:50 GMT"
-    },
-    {
-     "title": "豊田通商、税後利益は半期実績で過去最高、18期連続増配へ 資源およびメモリ関連の市況上昇等が寄与 - みんかぶ",
-     "url": "https://news.google.com/rss/articles/CBMiRkFVX3lxTFBncmZFVEVQMWRWa3diaHZEeDlSQXZVZkY2Z3U4aUZRU19oYkRFaXB4cFBXck95WmNUMVpoeTNxNmJiQmRRYWc?oc=5",
-     "date": "Thu, 05 Nov 2026 08:00:01 GMT"
-    },
-    {
-     "title": "豊田通商株に見る「為替離れ」 円高の呪縛、成長力が解く - 日本経済新聞",
-     "url": "https://news.google.com/rss/articles/CBMibEFVX3lxTE5BSGY3Vm1fd3ZrcnpFNDZVVm44dk56SlkzdUxYVDNHMXZiUjkwUnJGMmRTLU1Pb3NIUllGaGFZb2E3Q0pOUFVnbHVDYTZReFducmZWd1JyR2I0Z1JVd2pIV2VwM085djRmUjlrSA?oc=5",
-     "date": "Fri, 11 Sep 2026 07:00:00 GMT"
-    }
-   ]
-  },
-  {
    "code": "8002",
    "name": "丸紅",
-   "r": -8.2,
-   "price": 4688,
+   "r": -8.3,
+   "price": 4683,
    "prev": 5108,
    "news": [
     {
@@ -198,7 +189,7 @@
   {
    "code": "8604",
    "name": "野村HD",
-   "r": -8.0,
+   "r": -8.1,
    "price": 1452,
    "prev": 1579,
    "news": [
@@ -220,34 +211,10 @@
    ]
   },
   {
-   "code": "7741",
-   "name": "HOYA",
-   "r": -7.9,
-   "price": 22180,
-   "prev": 24075,
-   "news": [
-    {
-     "title": "ＨＯＹＡ(株)【7741】：今の株価の理由は？値動きの背景をAIが解説 - Yahoo!ファイナンス",
-     "url": "https://news.google.com/rss/articles/CBMiX0FVX3lxTE56TmVNS055eGppTmxoUm9KU1gweUZTVFNCNDltcnBCQnJzTUtUcGUxanJiLU1ic3hBLTVMb1JFSkwwd2ZJekRHbWh0LWh6OVNCSzNLZGtZbGFSd2xMSzU0?oc=5",
-     "date": "Mon, 02 Nov 2026 07:07:40 GMT"
-    },
-    {
-     "title": "決算:HOYA、自社株買い2000億円 内視鏡の売却など検討開始 - 日本経済新聞",
-     "url": "https://news.google.com/rss/articles/CBMibEFVX3lxTE9kS1Mwd2pqZk5PYjNodVYyTS1laUFvMF9FajBaN1lBdmZDQllocXo1NlZvVnI2d2NGcUVOZ0pMRVoxUGFOZHRoRlotdGZ4bXoxcEMzOXpvVV9EOWdaTmxNaGlLMTlRVVJ2UWpxUg?oc=5",
-     "date": "Fri, 31 Jul 2026 07:00:00 GMT"
-    },
-    {
-     "title": "レーティング情報（目標株価変更・その２）＝キオクシア、ＨＯＹＡなど(ウエルスアドバイザー) - Yahoo!ファイナンス",
-     "url": "https://news.google.com/rss/articles/CBMihwFBVV95cUxOWjV3R0JfWjVLTDBYdW5qbDZTc2JEOWN4ZlFHT0ZnQVd6dzF4Z21odDFaQzBqWTYxYzdNdTRCd2lFM01vQ3FuMmJ3eVEtNDB2bUd5bUlZNjBzZldjVkxGSVRIdWsyaURnWUgtRy03WEFNUGFKRjdudzA0TUZUamtDMjVUbjRKTVk?oc=5",
-     "date": "Mon, 02 Nov 2026 00:25:09 GMT"
-    }
-   ]
-  },
-  {
    "code": "8053",
    "name": "住友商事",
-   "r": -7.8,
-   "price": 1600,
+   "r": -8.0,
+   "price": 1597,
    "prev": 1735,
    "news": [
     {
@@ -268,34 +235,34 @@
    ]
   },
   {
-   "code": "6178",
-   "name": "日本郵政",
-   "r": -7.7,
-   "price": 2246,
-   "prev": 2433,
+   "code": "7741",
+   "name": "HOYA",
+   "r": -7.9,
+   "price": 22165,
+   "prev": 24075,
    "news": [
     {
-     "title": "“最後の隠れた大地主”で「日本郵政株」は好調、それでも残る“不安と課題”（デイリー新潮） - Yahoo!ニュース",
-     "url": "https://news.google.com/rss/articles/CBMif0FVX3lxTFBweFBOWl9rZzBlbkV2VC11SERxSWcxc3dfWUNuNjlnZmtqWGRiaEk2N2lZNmZId0dHdkdRdy1vT3V2X01ZSTQ1SmZfdmZXY1YtSHlWdWdDbU5Nb3VSMUtXb2k5T09oVkczeElxYkVobkowMllROTk0TDdyaVh3eU0?oc=5",
-     "date": "Mon, 02 Nov 2026 02:00:44 GMT"
+     "title": "ＨＯＹＡ(株)【7741】：今の株価の理由は？値動きの背景をAIが解説 - Yahoo!ファイナンス",
+     "url": "https://news.google.com/rss/articles/CBMiX0FVX3lxTE56TmVNS055eGppTmxoUm9KU1gweUZTVFNCNDltcnBCQnJzTUtUcGUxanJiLU1ic3hBLTVMb1JFSkwwd2ZJekRHbWh0LWh6OVNCSzNLZGtZbGFSd2xMSzU0?oc=5",
+     "date": "Mon, 02 Nov 2026 07:07:40 GMT"
     },
     {
-     "title": "目覚め始めた日本郵政株 海外勢、「日本最大級のバリュー株」に注目 - 日本経済新聞",
-     "url": "https://news.google.com/rss/articles/CBMibEFVX3lxTFBiY0tZaTlvczVPQnZrd2VfelVGejBHQWY5a3MxYnNBZ1J4M20xNDhmM1pjOHJPTHprOUFPaWpDUlZDYlBiakZOSXFQYjU0MXpPSzU1YlhUcEd0MmRISDhRNWNEekFsUkRhejVUdg?oc=5",
-     "date": "Wed, 14 Oct 2026 07:00:00 GMT"
+     "title": "決算:HOYA、自社株買い2000億円 内視鏡の売却など検討開始 - 日本経済新聞",
+     "url": "https://news.google.com/rss/articles/CBMibEFVX3lxTE9kS1Mwd2pqZk5PYjNodVYyTS1laUFvMF9FajBaN1lBdmZDQllocXo1NlZvVnI2d2NGcUVOZ0pMRVoxUGFOZHRoRlotdGZ4bXoxcEMzOXpvVV9EOWdaTmxNaGlLMTlRVVJ2UWpxUg?oc=5",
+     "date": "Fri, 31 Jul 2026 07:00:00 GMT"
     },
     {
-     "title": "日本郵政(株)【JPPHY】：株価・株式情報 - Yahoo!ファイナンス",
-     "url": "https://news.google.com/rss/articles/CBMiUEFVX3lxTE9idWpsUkVxeUNvNzYzb2N3T0JjVG5wS0YtZUZWN0NfTTFxeUZTWXdMVUp3bmtlNXVxdjNqVnZyVlFnOTBFVk5RaXJEMXdvMlBG?oc=5",
-     "date": "Sat, 31 Oct 2026 07:00:00 GMT"
+     "title": "レーティング情報（目標株価変更・その２）＝キオクシア、ＨＯＹＡなど(ウエルスアドバイザー) - Yahoo!ファイナンス",
+     "url": "https://news.google.com/rss/articles/CBMihwFBVV95cUxOWjV3R0JfWjVLTDBYdW5qbDZTc2JEOWN4ZlFHT0ZnQVd6dzF4Z21odDFaQzBqWTYxYzdNdTRCd2lFM01vQ3FuMmJ3eVEtNDB2bUd5bUlZNjBzZldjVkxGSVRIdWsyaURnWUgtRy03WEFNUGFKRjdudzA0TUZUamtDMjVUbjRKTVk?oc=5",
+     "date": "Mon, 02 Nov 2026 00:25:09 GMT"
     }
    ]
   },
   {
    "code": "8411",
    "name": "みずほFG",
-   "r": -7.6,
-   "price": 7149,
+   "r": -7.8,
+   "price": 7139,
    "prev": 7741,
    "news": [
     {
@@ -316,10 +283,34 @@
    ]
   },
   {
+   "code": "6178",
+   "name": "日本郵政",
+   "r": -7.8,
+   "price": 2243,
+   "prev": 2433,
+   "news": [
+    {
+     "title": "“最後の隠れた大地主”で「日本郵政株」は好調、それでも残る“不安と課題”（デイリー新潮） - Yahoo!ニュース",
+     "url": "https://news.google.com/rss/articles/CBMif0FVX3lxTFBweFBOWl9rZzBlbkV2VC11SERxSWcxc3dfWUNuNjlnZmtqWGRiaEk2N2lZNmZId0dHdkdRdy1vT3V2X01ZSTQ1SmZfdmZXY1YtSHlWdWdDbU5Nb3VSMUtXb2k5T09oVkczeElxYkVobkowMllROTk0TDdyaVh3eU0?oc=5",
+     "date": "Mon, 02 Nov 2026 02:00:44 GMT"
+    },
+    {
+     "title": "目覚め始めた日本郵政株 海外勢、「日本最大級のバリュー株」に注目 - 日本経済新聞",
+     "url": "https://news.google.com/rss/articles/CBMibEFVX3lxTFBiY0tZaTlvczVPQnZrd2VfelVGejBHQWY5a3MxYnNBZ1J4M20xNDhmM1pjOHJPTHprOUFPaWpDUlZDYlBiakZOSXFQYjU0MXpPSzU1YlhUcEd0MmRISDhRNWNEekFsUkRhejVUdg?oc=5",
+     "date": "Wed, 14 Oct 2026 07:00:00 GMT"
+    },
+    {
+     "title": "日本郵政(株)【JPPHY】：株価・株式情報 - Yahoo!ファイナンス",
+     "url": "https://news.google.com/rss/articles/CBMiUEFVX3lxTE9idWpsUkVxeUNvNzYzb2N3T0JjVG5wS0YtZUZWN0NfTTFxeUZTWXdMVUp3bmtlNXVxdjNqVnZyVlFnOTBFVk5RaXJEMXdvMlBG?oc=5",
+     "date": "Sat, 31 Oct 2026 07:00:00 GMT"
+    }
+   ]
+  },
+  {
    "code": "3407",
    "name": "旭化成",
-   "r": -7.6,
-   "price": 1484,
+   "r": -7.8,
+   "price": 1481,
    "prev": 1606,
    "news": [
     {
@@ -342,8 +333,8 @@
   {
    "code": "6305",
    "name": "日立建機",
-   "r": -7.5,
-   "price": 4856,
+   "r": -7.7,
+   "price": 4847,
    "prev": 5250,
    "news": [
     {
@@ -360,6 +351,30 @@
      "title": "【コマツ・日立建機vsキャタピラー】日米建機3社の「稼ぐ力」を徹底比較！関税に直撃された日本勢の“値上げ”の行方は？ - ダイヤモンド・オンライン",
      "url": "https://news.google.com/rss/articles/CBMiTEFVX3lxTE9oTU4zMTJPQkdUcmFReUpTRUJpWHFzUW12TzJsNi1kUmx6S1daYk41eGg2czd3MGRxMkZjRkUtbHNGc3Y4QkUtSjhQM1Y?oc=5",
      "date": "Wed, 10 Jun 2026 07:00:00 GMT"
+    }
+   ]
+  },
+  {
+   "code": "6301",
+   "name": "コマツ",
+   "r": -7.4,
+   "price": 5806,
+   "prev": 6269,
+   "news": [
+    {
+     "title": "コマツ株価、午後急落3カ月ぶり安値 業績予想上方修正でも物足りず - 日本経済新聞",
+     "url": "https://news.google.com/rss/articles/CBMibEFVX3lxTE8zaWxLc1FkWW9oNnY2emZDWHFhbE9fV3hfTEpwRzdWU3F2OGg5bEZpaUVwUWRWcTY0UThqOTBKQUtrOVlUZDdQRktpLVRCYUNhU3E2R1pjTXczU1lLRll4VDN3Z2ZXUldBRkxZNQ?oc=5",
+     "date": "Thu, 29 Oct 2026 06:13:08 GMT"
+    },
+    {
+     "title": "コマツ【6301】慎重見通し裏切る上方修正、株価一段高 中東リスクと米国関税影響の影で建機巨頭から「フィジカルAI」銘柄に変貌？（Finasee） - Yahoo!ニュース",
+     "url": "https://news.google.com/rss/articles/CBMif0FVX3lxTE5rVng2Vm81RjdZOEx1Z1NQdW1aX3VIdlVGYlVGRVRyenJ2eUNpZGt0N3Bfb0Fsb29SdEYwcThsaENqX1h4d09wa0VDOWlXSUVGd3NiNG9xNDYxOTcwRG9uQjQ4WTdBeWJfRW1MWVVjcDlCa2thUlNWR05YOWdZSTA?oc=5",
+     "date": "Mon, 10 Aug 2026 07:00:00 GMT"
+    },
+    {
+     "title": "コマツ、2026年度第2四半期売上高が過去最高も株価9.3%急落 執筆 - Investing.com - FX | 株式市場 | ファイナンス | 金融ニュース",
+     "url": "https://news.google.com/rss/articles/CBMib0FVX3lxTFBpakFwRmNCWmpBcVBYZ0tjZ1NGUU03QWZHOU5kSmFXcENXYVU0RVVfeWQ2YmNHZmdxdGhlaGRFLXFKeU4weHJadFZnTVN1b3RCb2FPTzJaQktYMHRmRi1LRnNXbDdFUldKQk0yU1YwSQ?oc=5",
+     "date": "Sun, 01 Nov 2026 11:22:00 GMT"
     }
    ]
   },
@@ -388,34 +403,10 @@
    ]
   },
   {
-   "code": "6301",
-   "name": "コマツ",
-   "r": -7.3,
-   "price": 5812,
-   "prev": 6269,
-   "news": [
-    {
-     "title": "コマツ株価、午後急落3カ月ぶり安値 業績予想上方修正でも物足りず - 日本経済新聞",
-     "url": "https://news.google.com/rss/articles/CBMibEFVX3lxTE8zaWxLc1FkWW9oNnY2emZDWHFhbE9fV3hfTEpwRzdWU3F2OGg5bEZpaUVwUWRWcTY0UThqOTBKQUtrOVlUZDdQRktpLVRCYUNhU3E2R1pjTXczU1lLRll4VDN3Z2ZXUldBRkxZNQ?oc=5",
-     "date": "Thu, 29 Oct 2026 06:13:08 GMT"
-    },
-    {
-     "title": "コマツ【6301】慎重見通し裏切る上方修正、株価一段高 中東リスクと米国関税影響の影で建機巨頭から「フィジカルAI」銘柄に変貌？（Finasee） - Yahoo!ニュース",
-     "url": "https://news.google.com/rss/articles/CBMif0FVX3lxTE5rVng2Vm81RjdZOEx1Z1NQdW1aX3VIdlVGYlVGRVRyenJ2eUNpZGt0N3Bfb0Fsb29SdEYwcThsaENqX1h4d09wa0VDOWlXSUVGd3NiNG9xNDYxOTcwRG9uQjQ4WTdBeWJfRW1MWVVjcDlCa2thUlNWR05YOWdZSTA?oc=5",
-     "date": "Mon, 10 Aug 2026 07:00:00 GMT"
-    },
-    {
-     "title": "コマツ、2026年度第2四半期売上高が過去最高も株価9.3%急落 執筆 - Investing.com - FX | 株式市場 | ファイナンス | 金融ニュース",
-     "url": "https://news.google.com/rss/articles/CBMib0FVX3lxTFBpakFwRmNCWmpBcVBYZ0tjZ1NGUU03QWZHOU5kSmFXcENXYVU0RVVfeWQ2YmNHZmdxdGhlaGRFLXFKeU4weHJadFZnTVN1b3RCb2FPTzJaQktYMHRmRi1LRnNXbDdFUldKQk0yU1YwSQ?oc=5",
-     "date": "Sun, 01 Nov 2026 11:22:00 GMT"
-    }
-   ]
-  },
-  {
    "code": "4503",
    "name": "アステラス",
-   "r": -7.1,
-   "price": 2482,
+   "r": -7.2,
+   "price": 2480,
    "prev": 2672,
    "news": [
     {
@@ -438,8 +429,8 @@
   {
    "code": "8591",
    "name": "オリックス",
-   "r": -7.1,
-   "price": 5442,
+   "r": -7.2,
+   "price": 5435,
    "prev": 5858,
    "news": [
     {
@@ -456,6 +447,30 @@
      "title": "オリックスＦ、今期経常は14％減益へ - 株探",
      "url": "https://news.google.com/rss/articles/CBMiUkFVX3lxTE15OWdXc2tFYkVaUGttQnhzbm9PWTA1NE5KZDcxRjY4WThyYUc3LUhtY1RoT001OTg0Mjh0RTFvQklreWttMXUyeTQ4cElBLVNNeFE?oc=5",
      "date": "Thu, 22 Oct 2026 07:00:00 GMT"
+    }
+   ]
+  },
+  {
+   "code": "8802",
+   "name": "三菱地所",
+   "r": -7.1,
+   "price": 3973,
+   "prev": 4276,
+   "news": [
+    {
+     "title": "三菱地所物流リート投資法人【3481】：株価・株式情報（夜間PTS含む） - Yahoo!ファイナンス",
+     "url": "https://news.google.com/rss/articles/CBMiUkFVX3lxTFBBMjB3QWE4Vmo1YVozTS1PN2IweHJsRjZoTXhTbXVubHNEbXEya3Jxa2x2eGFmLWQ1el9lRGlBbmd2RTBwRk1FSTlKcGthQzVkcGc?oc=5",
+     "date": "Wed, 04 Nov 2026 08:00:00 GMT"
+    },
+    {
+     "title": "不動産株が上昇、三菱地所が3%高 国内金利低下で - 日本経済新聞",
+     "url": "https://news.google.com/rss/articles/CBMibEFVX3lxTFBIUkg5NHZWb1Q5aWJpdXlGMzVSeGMySVdXRjVuejVFOHJWT1l5VV9sRDVfTDd3aXFqVWxvRlFGckdleU9SS2JYWDlJRkt5ZXBpOE9Cb1dseThER3hraTdFSXoxWnh2TEVxaHdWZg?oc=5",
+     "date": "Fri, 23 Oct 2026 07:00:00 GMT"
+    },
+    {
+     "title": "三菱地所(株)【MITEY】：株価・株式情報 - Yahoo!ファイナンス",
+     "url": "https://news.google.com/rss/articles/CBMiUEFVX3lxTE8tNEpEUEpDT1FWU1dIS2dGLVQ4a0p4UWc1bEstZGxPQjUtZTA3NWMzRHg1S2RVckVDOXYxWWJDNnRlVk94cUpleGZTSmxFQWRp?oc=5",
+     "date": "Mon, 02 Nov 2026 01:18:56 GMT"
     }
    ]
   }
