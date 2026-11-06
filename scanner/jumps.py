@@ -38,6 +38,13 @@ def news(q):
     except Exception as e:
         return []
 for h in hits: h["news"] = news(f"{h['name']} 株価")
+# 引け後・夜間：PTS（夜間取引）の急落・ストップ安と、海外の政府措置などの見出しを拾い、監視銘柄の名前と照合する
+_have = {h["code"] for h in hits}
+for q in ("PTS ストップ安", "PTS 急落", "夜間取引 急落 株価", "特別気配 売り気配"):
+    for n in news(q) + []:
+        for c, nm in STOCKS.items():
+            if c in _have or nm not in n["title"]: continue
+            hits.append({"code": c, "name": nm, "r": -98.0, "price": None, "prev": None, "note": "見出しで検知（PTS・特別気配など。値段は未確認）", "news": [n]}); _have.add(c)
 hits.sort(key=lambda h: h["r"])
 out = {"at": datetime.now(JST).isoformat(timespec="minutes"), "th": TH, "hits": hits}
 try: old = {h["code"] for h in json.load(open("data/jumps.json"))["hits"]} if json.load(open("data/jumps.json"))["at"][:10] == out["at"][:10] else set()
