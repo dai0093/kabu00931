@@ -1,5 +1,5 @@
 {
- "at": "2026-11-06T11:17+09:00",
+ "at": "2026-11-06T11:28+09:00",
  "th": -7.0,
  "hits": [
   {
@@ -16,46 +16,22 @@
      "date": "Thu, 05 Nov 2026 13:45:34 GMT"
     },
     {
+     "title": "日本たばこ産業、株価ストップ安気配 ロシア事業に警戒 - 日本経済新聞",
+     "url": "https://news.google.com/rss/articles/CBMibEFVX3lxTE5ydHhTR3FScEhTQTlVQnpZbjNPN3MwdFJCNGR1ejJtM3poZ0llNXVkc3ZoaGJwZkhPLWoxV2szSjNVSVRPQ0N1VUduR0pGNlc1OTVwcEJ6WXMwbUdDQmt6ZXByS2tfLUZUN1ZfdQ?oc=5",
+     "date": "Fri, 06 Nov 2026 02:18:25 GMT"
+    },
+    {
      "title": "＜特別気配＞ ＪＴ、キオクシア、ＳＢＧが売り気配 - 株探",
      "url": "https://news.google.com/rss/articles/CBMiYEFVX3lxTE5Sckp3NUhnZFpRZkgtN0h2U08wSURiZ1BoWEhtYXVsR1RlRmZWaVI3ZFZoTU9zUmJELUg2SUw5anI4aHFraDc0RURXaEwtTk1wVkpUSkZFYTNmNDRDcGVaTA?oc=5",
      "date": "Fri, 06 Nov 2026 00:03:44 GMT"
-    },
-    {
-     "title": "ＪＴ－売り気配 大統領令によりロシア現地法人のうち製造会社4社が一時管理の対象に(トレーダーズ・ウェブ) - Yahoo!ファイナンス",
-     "url": "https://news.google.com/rss/articles/CBMihwFBVV95cUxNV2FvVWlqTGM3YXMwTDBQb0h3U0tHaWZ1X1hHdnBMWm1KMURaVFFCRnFqek9XZFc2TTQzNzFGbURHOGxNdEpMd3ZiVEUwYzEyLThSbXg3ZzVvb0lEeGpXdXF2cHJzM3BfYUI0ZDZEWlpVVTJheERGUVZlNE01cXBKY1gxdV94Z2s?oc=5",
-     "date": "Fri, 06 Nov 2026 00:01:02 GMT"
-    }
-   ]
-  },
-  {
-   "code": "9984",
-   "name": "ソフトバンクG",
-   "r": -10.0,
-   "price": 3582,
-   "prev": 3980,
-   "news": [
-    {
-     "title": "ソフトバンクG株価7カ月ぶり安値 アーム業績見通しに「物足りなさ」 - 日本経済新聞",
-     "url": "https://news.google.com/rss/articles/CBMibEFVX3lxTE91MHZxejduWUVoajJ4X1ZhQThWSk92X3JNQmNxQllBdjRuTWRhakNSRWtFalZrVVprYVlrWXNZZEd5d004SlZhc05hUXF4RXBOV1MzZTZzRXptV2tkZUw2ZFhrMHVGYjg2R25nQQ?oc=5",
-     "date": "Thu, 05 Nov 2026 03:58:39 GMT"
-    },
-    {
-     "title": "ソフトバンクG株価が下げ幅拡大、4000円割れ リスク回避の売り広がる - 日本経済新聞",
-     "url": "https://news.google.com/rss/articles/CBMibEFVX3lxTFBnNlhkX2NGN0dxd3kwV3dHWFB2ZkI4V0xlYkxuWkJCMUpZTkl5RGcyUU1kR0ZZN2ROTXpqWmxjSnZMem0wdG1lengxbHN0cjEwQlRFYkdfem5mb2FaX0lQVkFrY25kanBIc1JNRA?oc=5",
-     "date": "Wed, 04 Nov 2026 05:29:18 GMT"
-    },
-    {
-     "title": "ソフトバンクＧが大幅続落し４０００円を割り込む、米オープンＡＩの企業価値報道も重荷に - 株探",
-     "url": "https://news.google.com/rss/articles/CBMiYEFVX3lxTE1LN2ZEVDgxYjVydnNiSmg4THZTT2lTcjM0Q0NkQ1N2OE9rdm4wRDBTaDNPdmtDQ2t6Tnlsb1dvbmZteElKeFRKbEkyUjlPdjNneDYyeGxQdFZCV05xbFA3MQ?oc=5",
-     "date": "Fri, 23 Oct 2026 07:00:00 GMT"
     }
    ]
   },
   {
    "code": "4005",
    "name": "住友化学",
-   "r": -9.9,
-   "price": 468,
+   "r": -9.7,
+   "price": 469,
    "prev": 519,
    "news": [
     {
@@ -76,10 +52,34 @@
    ]
   },
   {
+   "code": "9984",
+   "name": "ソフトバンクG",
+   "r": -9.5,
+   "price": 3601,
+   "prev": 3980,
+   "news": [
+    {
+     "title": "ソフトバンクG株価7カ月ぶり安値 アーム業績見通しに「物足りなさ」 - 日本経済新聞",
+     "url": "https://news.google.com/rss/articles/CBMibEFVX3lxTE91MHZxejduWUVoajJ4X1ZhQThWSk92X3JNQmNxQllBdjRuTWRhakNSRWtFalZrVVprYVlrWXNZZEd5d004SlZhc05hUXF4RXBOV1MzZTZzRXptV2tkZUw2ZFhrMHVGYjg2R25nQQ?oc=5",
+     "date": "Thu, 05 Nov 2026 03:58:39 GMT"
+    },
+    {
+     "title": "ソフトバンクG株価が下げ幅拡大、4000円割れ リスク回避の売り広がる - 日本経済新聞",
+     "url": "https://news.google.com/rss/articles/CBMibEFVX3lxTFBnNlhkX2NGN0dxd3kwV3dHWFB2ZkI4V0xlYkxuWkJCMUpZTkl5RGcyUU1kR0ZZN2ROTXpqWmxjSnZMem0wdG1lengxbHN0cjEwQlRFYkdfem5mb2FaX0lQVkFrY25kanBIc1JNRA?oc=5",
+     "date": "Wed, 04 Nov 2026 05:29:18 GMT"
+    },
+    {
+     "title": "ソフトバンクＧが大幅続落し４０００円を割り込む、米オープンＡＩの企業価値報道も重荷に - 株探",
+     "url": "https://news.google.com/rss/articles/CBMiYEFVX3lxTE1LN2ZEVDgxYjVydnNiSmg4THZTT2lTcjM0Q0NkQ1N2OE9rdm4wRDBTaDNPdmtDQ2t6Tnlsb1dvbmZteElKeFRKbEkyUjlPdjNneDYyeGxQdFZCV05xbFA3MQ?oc=5",
+     "date": "Fri, 23 Oct 2026 07:00:00 GMT"
+    }
+   ]
+  },
+  {
    "code": "4568",
    "name": "第一三共",
    "r": -9.1,
-   "price": 2798,
+   "price": 2796,
    "prev": 3078,
    "news": [
     {
@@ -100,34 +100,10 @@
    ]
   },
   {
-   "code": "8015",
-   "name": "豊田通商",
-   "r": -8.6,
-   "price": 6182,
-   "prev": 6761,
-   "news": [
-    {
-     "title": "豊田通商(株)【8015】：今の株価の理由は？値動きの背景をAIが解説 - Yahoo!ファイナンス",
-     "url": "https://news.google.com/rss/articles/CBMiX0FVX3lxTE5HM25zelkzLWdvaHFWNEFBZTUxX2VXZ2w3LUJnejN4aGJCc1BORFNPYU90TGl1Ni00M2Z0SlExa0kybGxxcVpiYjlZeDdva1B3Vy1TTEN6UlhyMjNFNm9Z?oc=5",
-     "date": "Mon, 02 Nov 2026 07:03:50 GMT"
-    },
-    {
-     "title": "豊田通商、税後利益は半期実績で過去最高、18期連続増配へ 資源およびメモリ関連の市況上昇等が寄与 - みんかぶ",
-     "url": "https://news.google.com/rss/articles/CBMiRkFVX3lxTFBncmZFVEVQMWRWa3diaHZEeDlSQXZVZkY2Z3U4aUZRU19oYkRFaXB4cFBXck95WmNUMVpoeTNxNmJiQmRRYWc?oc=5",
-     "date": "Thu, 05 Nov 2026 08:00:01 GMT"
-    },
-    {
-     "title": "豊田通商株に見る「為替離れ」 円高の呪縛、成長力が解く - 日本経済新聞",
-     "url": "https://news.google.com/rss/articles/CBMibEFVX3lxTE5BSGY3Vm1fd3ZrcnpFNDZVVm44dk56SlkzdUxYVDNHMXZiUjkwUnJGMmRTLU1Pb3NIUllGaGFZb2E3Q0pOUFVnbHVDYTZReFducmZWd1JyR2I0Z1JVd2pIV2VwM085djRmUjlrSA?oc=5",
-     "date": "Fri, 11 Sep 2026 07:00:00 GMT"
-    }
-   ]
-  },
-  {
    "code": "8031",
    "name": "三井物産",
-   "r": -8.3,
-   "price": 4622,
+   "r": -8.6,
+   "price": 4607,
    "prev": 5039,
    "news": [
     {
@@ -148,34 +124,10 @@
    ]
   },
   {
-   "code": "7741",
-   "name": "HOYA",
-   "r": -8.3,
-   "price": 22080,
-   "prev": 24075,
-   "news": [
-    {
-     "title": "ＨＯＹＡ(株)【7741】：今の株価の理由は？値動きの背景をAIが解説 - Yahoo!ファイナンス",
-     "url": "https://news.google.com/rss/articles/CBMiX0FVX3lxTE56TmVNS055eGppTmxoUm9KU1gweUZTVFNCNDltcnBCQnJzTUtUcGUxanJiLU1ic3hBLTVMb1JFSkwwd2ZJekRHbWh0LWh6OVNCSzNLZGtZbGFSd2xMSzU0?oc=5",
-     "date": "Mon, 02 Nov 2026 07:07:40 GMT"
-    },
-    {
-     "title": "決算:HOYA、自社株買い2000億円 内視鏡の売却など検討開始 - 日本経済新聞",
-     "url": "https://news.google.com/rss/articles/CBMibEFVX3lxTE9kS1Mwd2pqZk5PYjNodVYyTS1laUFvMF9FajBaN1lBdmZDQllocXo1NlZvVnI2d2NGcUVOZ0pMRVoxUGFOZHRoRlotdGZ4bXoxcEMzOXpvVV9EOWdaTmxNaGlLMTlRVVJ2UWpxUg?oc=5",
-     "date": "Fri, 31 Jul 2026 07:00:00 GMT"
-    },
-    {
-     "title": "レーティング情報（目標株価変更・その２）＝キオクシア、ＨＯＹＡなど(ウエルスアドバイザー) - Yahoo!ファイナンス",
-     "url": "https://news.google.com/rss/articles/CBMihwFBVV95cUxOWjV3R0JfWjVLTDBYdW5qbDZTc2JEOWN4ZlFHT0ZnQVd6dzF4Z21odDFaQzBqWTYxYzdNdTRCd2lFM01vQ3FuMmJ3eVEtNDB2bUd5bUlZNjBzZldjVkxGSVRIdWsyaURnWUgtRy03WEFNUGFKRjdudzA0TUZUamtDMjVUbjRKTVk?oc=5",
-     "date": "Mon, 02 Nov 2026 00:25:09 GMT"
-    }
-   ]
-  },
-  {
    "code": "5020",
    "name": "ENEOS",
-   "r": -8.2,
-   "price": 1174,
+   "r": -8.5,
+   "price": 1170,
    "prev": 1278,
    "news": [
     {
@@ -196,34 +148,34 @@
    ]
   },
   {
-   "code": "8053",
-   "name": "住友商事",
-   "r": -8.0,
-   "price": 1596,
-   "prev": 1735,
+   "code": "8015",
+   "name": "豊田通商",
+   "r": -8.4,
+   "price": 6190,
+   "prev": 6761,
    "news": [
     {
-     "title": "決算:住友商事の純利益6700億円、27年3月期に上振れ 実質増配 - 日本経済新聞",
-     "url": "https://news.google.com/rss/articles/CBMibEFVX3lxTE9wQ1NDTmd0NVlVaXcyRTZsY1dGdFJmSEJ5a01lbzFrUU9pOUtPel9Bem9wSGZ6QmxBLWVuQVY3c3RrOHJnYnpCaS1TYjFBdVVEdUJIWlR1OURrYThubVpsNmw2S3g5d0VEXzYyVg?oc=5",
-     "date": "Mon, 02 Nov 2026 07:41:11 GMT"
+     "title": "豊田通商(株)【8015】：今の株価の理由は？値動きの背景をAIが解説 - Yahoo!ファイナンス",
+     "url": "https://news.google.com/rss/articles/CBMiX0FVX3lxTE5HM25zelkzLWdvaHFWNEFBZTUxX2VXZ2w3LUJnejN4aGJCc1BORFNPYU90TGl1Ni00M2Z0SlExa0kybGxxcVpiYjlZeDdva1B3Vy1TTEN6UlhyMjNFNm9Z?oc=5",
+     "date": "Mon, 02 Nov 2026 07:03:50 GMT"
     },
     {
-     "title": "住友商事(株)【8053】：今の株価の理由は？値動きの背景をAIが解説 - Yahoo!ファイナンス",
-     "url": "https://news.google.com/rss/articles/CBMiX0FVX3lxTE1HZURaMU5UYVdObE53dVpyczRRVXlFRjAtbS1ncEg4OERsM3RmSEJDV0RhanBKd0lqa0tEMlZiSU9IWjYyWEJmWGJEVnJnOTlreDE3dDhSa1NNWjBKZGl3?oc=5",
-     "date": "Mon, 16 Feb 2026 09:04:15 GMT"
+     "title": "豊田通商、税後利益は半期実績で過去最高、18期連続増配へ 資源およびメモリ関連の市況上昇等が寄与 - みんかぶ",
+     "url": "https://news.google.com/rss/articles/CBMiRkFVX3lxTFBncmZFVEVQMWRWa3diaHZEeDlSQXZVZkY2Z3U4aUZRU19oYkRFaXB4cFBXck95WmNUMVpoeTNxNmJiQmRRYWc?oc=5",
+     "date": "Thu, 05 Nov 2026 08:00:01 GMT"
     },
     {
-     "title": "住友商事が不採算プロジェクト撤退で株価急騰 時価総額で丸紅を一時逆転しても5大商社｢最低｣のPERは適正か - 東洋経済オンライン",
-     "url": "https://news.google.com/rss/articles/CBMiX0FVX3lxTFBkY1NCRzJrMEpTY1JyU1U5YUVENm9FbHp1MWxrNDlWbURGR2hMWU9HSVdfVkVJVUZhaTUwVzRXcjVrUERKZ0tMTTNRbFE5dEgtcW5VeXNZc3JYR2ZkaTdN?oc=5",
-     "date": "Mon, 15 Jun 2026 07:00:00 GMT"
+     "title": "豊田通商株に見る「為替離れ」 円高の呪縛、成長力が解く - 日本経済新聞",
+     "url": "https://news.google.com/rss/articles/CBMibEFVX3lxTE5BSGY3Vm1fd3ZrcnpFNDZVVm44dk56SlkzdUxYVDNHMXZiUjkwUnJGMmRTLU1Pb3NIUllGaGFZb2E3Q0pOUFVnbHVDYTZReFducmZWd1JyR2I0Z1JVd2pIV2VwM085djRmUjlrSA?oc=5",
+     "date": "Fri, 11 Sep 2026 07:00:00 GMT"
     }
    ]
   },
   {
    "code": "8002",
    "name": "丸紅",
-   "r": -7.9,
-   "price": 4703,
+   "r": -8.2,
+   "price": 4688,
    "prev": 5108,
    "news": [
     {
@@ -246,8 +198,8 @@
   {
    "code": "8604",
    "name": "野村HD",
-   "r": -7.9,
-   "price": 1454,
+   "r": -8.0,
+   "price": 1452,
    "prev": 1579,
    "news": [
     {
@@ -268,74 +220,50 @@
    ]
   },
   {
-   "code": "6305",
-   "name": "日立建機",
+   "code": "7741",
+   "name": "HOYA",
+   "r": -7.9,
+   "price": 22180,
+   "prev": 24075,
+   "news": [
+    {
+     "title": "ＨＯＹＡ(株)【7741】：今の株価の理由は？値動きの背景をAIが解説 - Yahoo!ファイナンス",
+     "url": "https://news.google.com/rss/articles/CBMiX0FVX3lxTE56TmVNS055eGppTmxoUm9KU1gweUZTVFNCNDltcnBCQnJzTUtUcGUxanJiLU1ic3hBLTVMb1JFSkwwd2ZJekRHbWh0LWh6OVNCSzNLZGtZbGFSd2xMSzU0?oc=5",
+     "date": "Mon, 02 Nov 2026 07:07:40 GMT"
+    },
+    {
+     "title": "決算:HOYA、自社株買い2000億円 内視鏡の売却など検討開始 - 日本経済新聞",
+     "url": "https://news.google.com/rss/articles/CBMibEFVX3lxTE9kS1Mwd2pqZk5PYjNodVYyTS1laUFvMF9FajBaN1lBdmZDQllocXo1NlZvVnI2d2NGcUVOZ0pMRVoxUGFOZHRoRlotdGZ4bXoxcEMzOXpvVV9EOWdaTmxNaGlLMTlRVVJ2UWpxUg?oc=5",
+     "date": "Fri, 31 Jul 2026 07:00:00 GMT"
+    },
+    {
+     "title": "レーティング情報（目標株価変更・その２）＝キオクシア、ＨＯＹＡなど(ウエルスアドバイザー) - Yahoo!ファイナンス",
+     "url": "https://news.google.com/rss/articles/CBMihwFBVV95cUxOWjV3R0JfWjVLTDBYdW5qbDZTc2JEOWN4ZlFHT0ZnQVd6dzF4Z21odDFaQzBqWTYxYzdNdTRCd2lFM01vQ3FuMmJ3eVEtNDB2bUd5bUlZNjBzZldjVkxGSVRIdWsyaURnWUgtRy03WEFNUGFKRjdudzA0TUZUamtDMjVUbjRKTVk?oc=5",
+     "date": "Mon, 02 Nov 2026 00:25:09 GMT"
+    }
+   ]
+  },
+  {
+   "code": "8053",
+   "name": "住友商事",
    "r": -7.8,
-   "price": 4840,
-   "prev": 5250,
+   "price": 1600,
+   "prev": 1735,
    "news": [
     {
-     "title": "【アナリスト評価】日立建機、レーティング強気を継続、目標株価6,300円に引下げ（米系大手証券）(アイフィス株予報) - Yahoo!ファイナンス",
-     "url": "https://news.google.com/rss/articles/CBMihwFBVV95cUxNbGRGekFhLUNBd2doTjYtV095eTF6RmNnajhCajh4NHh3V2pyaXM3dnViR2VUTF9rUlJySTVBSDYzTnlVT2lRNjRnQ3lQOUp1akpBcnE1S3V3SVJnWGo0VWx6djJCNDZpQ2JFM2tpNUt4Y3Vhak8xalEyNVVLZWFONlZnRC1FdWc?oc=5",
-     "date": "Thu, 05 Nov 2026 07:42:52 GMT"
+     "title": "決算:住友商事の純利益6700億円、27年3月期に上振れ 実質増配 - 日本経済新聞",
+     "url": "https://news.google.com/rss/articles/CBMibEFVX3lxTE9wQ1NDTmd0NVlVaXcyRTZsY1dGdFJmSEJ5a01lbzFrUU9pOUtPel9Bem9wSGZ6QmxBLWVuQVY3c3RrOHJnYnpCaS1TYjFBdVVEdUJIWlR1OURrYThubVpsNmw2S3g5d0VEXzYyVg?oc=5",
+     "date": "Mon, 02 Nov 2026 07:41:11 GMT"
     },
     {
-     "title": "日立、日立建機株を全株売却へ 約10%を1000億円規模で - 日本経済新聞",
-     "url": "https://news.google.com/rss/articles/CBMibEFVX3lxTE9hMV9hZlhYcHpoQzdhNmM3Yk1waUpkVXY1MXZYQjZkRVBwWnZRc01qVzRMYlA0eXF2c2JiY1B2elpteDhmZU54SHJ4WGFKT2FkWFJwRVpSLWV2Y29sRWdwV1ZycWZtbW5KWnFwWQ?oc=5",
-     "date": "Tue, 18 Aug 2026 07:00:00 GMT"
+     "title": "住友商事(株)【8053】：今の株価の理由は？値動きの背景をAIが解説 - Yahoo!ファイナンス",
+     "url": "https://news.google.com/rss/articles/CBMiX0FVX3lxTE1HZURaMU5UYVdObE53dVpyczRRVXlFRjAtbS1ncEg4OERsM3RmSEJDV0RhanBKd0lqa0tEMlZiSU9IWjYyWEJmWGJEVnJnOTlreDE3dDhSa1NNWjBKZGl3?oc=5",
+     "date": "Mon, 16 Feb 2026 09:04:15 GMT"
     },
     {
-     "title": "【コマツ・日立建機vsキャタピラー】日米建機3社の「稼ぐ力」を徹底比較！関税に直撃された日本勢の“値上げ”の行方は？ - ダイヤモンド・オンライン",
-     "url": "https://news.google.com/rss/articles/CBMiTEFVX3lxTE9oTU4zMTJPQkdUcmFReUpTRUJpWHFzUW12TzJsNi1kUmx6S1daYk41eGg2czd3MGRxMkZjRkUtbHNGc3Y4QkUtSjhQM1Y?oc=5",
-     "date": "Wed, 10 Jun 2026 07:00:00 GMT"
-    }
-   ]
-  },
-  {
-   "code": "6762",
-   "name": "TDK",
-   "r": -7.7,
-   "price": 2078,
-   "prev": 2252,
-   "news": [
-    {
-     "title": "ＴＤＫ(株)【TTDKY】：株価・株式情報 - Yahoo!ファイナンス",
-     "url": "https://news.google.com/rss/articles/CBMiUEFVX3lxTE13Z3NwM01sUXJIUEZobmRrYlprd2NmR1ZBVERoYTE2Rlg4NFhRdm1iN1lHMElOclVmbmtMM2R2RHdUaVhzMG1VOFJZTndyTzRx?oc=5",
-     "date": "Thu, 05 Nov 2026 16:36:23 GMT"
-    },
-    {
-     "title": "ＴＤＫは安い、通期業績・配当予想を上方修正も買い向かう姿勢限定的 - 株探",
-     "url": "https://news.google.com/rss/articles/CBMiYEFVX3lxTE9yQXVkUXM1T3dCcjNWdHNuQ0lHRGUtdEtVUFEzNHFDRVVkZGUzRWV1cmxGTGs0NmxwcG5id3BHUF84eGhiNk9pRTZiNVg2ZzNoZEFPSnptcFotOFJVMVl4Tg?oc=5",
-     "date": "Mon, 02 Nov 2026 00:27:00 GMT"
-    },
-    {
-     "title": "ＴＤＫと太陽誘電の株価が急伸、最先端品の共同開発を好感 「東の雄」勢力にも | ロイター - Reuters",
-     "url": "https://news.google.com/rss/articles/CBMihgFBVV95cUxQWnU5WllieXZyX2pHV1lwYk1hTDRTN2VxMGdja3E2OU5NNEo0VVRYUEdnODR0bE1neF9XR1NGZnFZV1dDWVlBZGc0YmM1VkFXdGJUTUM0NEYzX3doemsyaGpkdWlGd1FUb0NIWGtJOG9JT2hmSF9UaHNUaTlkV25LRXZNX2NvZw?oc=5",
-     "date": "Tue, 29 Sep 2026 07:00:00 GMT"
-    }
-   ]
-  },
-  {
-   "code": "7011",
-   "name": "三菱重工",
-   "r": -7.7,
-   "price": 2818,
-   "prev": 3052,
-   "news": [
-    {
-     "title": "三菱重工業(株)【MHVIY】：株価・株式情報 - Yahoo!ファイナンス",
-     "url": "https://news.google.com/rss/articles/CBMiUEFVX3lxTE96UHUzTzN4dkM0eWlBaDE4WTJRVS1PTlRqWG9oU29wbzlhY25oV3hfTmZETGI5NWY4QVRLQThOLXF3SHpGWGJiZjVkVzc3WEVh?oc=5",
-     "date": "Thu, 05 Nov 2026 19:40:56 GMT"
-    },
-    {
-     "title": "筆頭株主は三菱重工､2つのテーマで注目の銘柄 - 四季報オンライン",
-     "url": "https://news.google.com/rss/articles/CBMiV0FVX3lxTE1UM2RUV0ltRWNoaW52bzdndjJzaDhMOFNiaHVMNUlPQVVqZE9RSWxUUWRpOU1XNHk1cDNDS0xONTJsZTRFTFdRM3FubURZNjlPbWtDQkViSQ?oc=5",
-     "date": "Tue, 20 Oct 2026 02:00:50 GMT"
-    },
-    {
-     "title": "【日本株】三菱重工など2割下落…業績は過去最高なのになぜ？急落した「防衛関連株」の本当の実力 - マネクリ",
-     "url": "https://news.google.com/rss/articles/CBMiVEFVX3lxTE9UdmQ3VjJRSWpZcHlLSVdMbGM0QmVrSXdHVndaSE1nd1RHT09XZzBhanRrWlJBSmI3ZFBUeXVkQVIzeWE4c2JiV25tVVJpenR2OTFuMNIBV0FVX3lxTE5CaktCRG1wXzBLWXpaUUJ1a2xTWHIwclU3dEplQUZkZWxvTnpVd0liMFFOcUMxdENoUU5CbTdtdDZCWEJVUWNRMkk1d3daM29Lemp0Z0RlWQ?oc=5",
-     "date": "Wed, 03 Jun 2026 07:00:00 GMT"
+     "title": "住友商事が不採算プロジェクト撤退で株価急騰 時価総額で丸紅を一時逆転しても5大商社｢最低｣のPERは適正か - 東洋経済オンライン",
+     "url": "https://news.google.com/rss/articles/CBMiX0FVX3lxTFBkY1NCRzJrMEpTY1JyU1U5YUVENm9FbHp1MWxrNDlWbURGR2hMWU9HSVdfVkVJVUZhaTUwVzRXcjVrUERKZ0tMTTNRbFE5dEgtcW5VeXNZc3JYR2ZkaTdN?oc=5",
+     "date": "Mon, 15 Jun 2026 07:00:00 GMT"
     }
    ]
   },
@@ -364,34 +292,10 @@
    ]
   },
   {
-   "code": "3407",
-   "name": "旭化成",
-   "r": -7.6,
-   "price": 1483,
-   "prev": 1606,
-   "news": [
-    {
-     "title": "旭化成(株)【3407】：今の株価の理由は？値動きの背景をAIが解説 - Yahoo!ファイナンス",
-     "url": "https://news.google.com/rss/articles/CBMiX0FVX3lxTE9qb0lEZGZ6QUZmOW10ZTZ1T3FtdThUZEo2YVZKQ3hTRDBreDlWM0p4akhqN25QMUNZQ2lwc3B5R0Y3R1E0TGxLRDdhZWJzZkdCaW40OUFGOXFuUXdRS3dv?oc=5",
-     "date": "Wed, 04 Nov 2026 07:01:22 GMT"
-    },
-    {
-     "title": "旭化成(株)【3407】：株価・株式情報 - Yahoo!ファイナンス",
-     "url": "https://news.google.com/rss/articles/CBMiUkFVX3lxTFBiVW5LUklocmFlbFNRLXFMRTNiemZqWVViSlJXZERnb0dKLTMwUHVhcjFBcXUtTkFLQlFydmxpYzJDTjlzam1jbjhZZ21GcnhlNWc?oc=5",
-     "date": "Fri, 30 Oct 2026 07:01:33 GMT"
-    },
-    {
-     "title": "旭化成がしっかり、自社株２２８５万９４００株を消却へ - 株探",
-     "url": "https://news.google.com/rss/articles/CBMiYEFVX3lxTFB5S0c2MUlvdFc2YVc3MGxRbmtkRDhac1RGa0tIYVFsYjZuRGFDYWJCQVVZeXZ1UmdOOHF6WEZiSm1aZmdDOTRNZVdNb1FQYzlpTVJWRHZjWkdqRnpZM21vZA?oc=5",
-     "date": "Mon, 19 Oct 2026 07:00:00 GMT"
-    }
-   ]
-  },
-  {
    "code": "8411",
    "name": "みずほFG",
-   "r": -7.5,
-   "price": 7158,
+   "r": -7.6,
+   "price": 7149,
    "prev": 7741,
    "news": [
     {
@@ -412,50 +316,74 @@
    ]
   },
   {
-   "code": "6273",
-   "name": "SMC",
-   "r": -7.5,
-   "price": 54700,
-   "prev": 59130,
+   "code": "3407",
+   "name": "旭化成",
+   "r": -7.6,
+   "price": 1484,
+   "prev": 1606,
    "news": [
     {
-     "title": "ＳＭＣ(株)【6273】：今の株価の理由は？値動きの背景をAIが解説 - Yahoo!ファイナンス",
-     "url": "https://news.google.com/rss/articles/CBMiX0FVX3lxTFBhQkxub3NXSVF2ZWh4Zm5QcW8tU2xJS3pvQUxVVUtFWTJyMk9MemNxVGdfaWJlNktaTC1wZ0hJTU9xYWk2aUg1R1lXTmNIQXZMeGJCY0RHLXpMVmdhRmhv?oc=5",
-     "date": "Mon, 02 Nov 2026 07:09:29 GMT"
+     "title": "旭化成(株)【3407】：今の株価の理由は？値動きの背景をAIが解説 - Yahoo!ファイナンス",
+     "url": "https://news.google.com/rss/articles/CBMiX0FVX3lxTE9qb0lEZGZ6QUZmOW10ZTZ1T3FtdThUZEo2YVZKQ3hTRDBreDlWM0p4akhqN25QMUNZQ2lwc3B5R0Y3R1E0TGxLRDdhZWJzZkdCaW40OUFGOXFuUXdRS3dv?oc=5",
+     "date": "Wed, 04 Nov 2026 07:01:22 GMT"
     },
     {
-     "title": "SMC、「社員や取引先のための経営」まい進 株価は高値から3割安 - 日本経済新聞",
-     "url": "https://news.google.com/rss/articles/CBMibEFVX3lxTE81REpGNEpPcXlENUowSmw1ZHpVVGVJbTNMYTd2MzF5aGstekZqTFV6c2xxTFRkOEROQ0JES0U0WUVzeFhYdnZkYjBzSzJQOEo1TmYtNVF3eWw5ZFRYZWdDandVTDhERGgyc3QzTg?oc=5",
-     "date": "Fri, 29 May 2026 07:00:00 GMT"
+     "title": "旭化成(株)【3407】：株価・株式情報 - Yahoo!ファイナンス",
+     "url": "https://news.google.com/rss/articles/CBMiUkFVX3lxTFBiVW5LUklocmFlbFNRLXFMRTNiemZqWVViSlJXZERnb0dKLTMwUHVhcjFBcXUtTkFLQlFydmxpYzJDTjlzam1jbjhZZ21GcnhlNWc?oc=5",
+     "date": "Fri, 30 Oct 2026 07:01:33 GMT"
     },
     {
-     "title": "英ファンドのパリサーがＳＭＣ株取得、6000億円規模の自社株買い要請へ＝書簡 - Reuters",
-     "url": "https://news.google.com/rss/articles/CBMikgFBVV95cUxNZW1VS1M1M0tpRU4wa25FRDBPS250NmRIWnpTWVhJZzJJOE00QzFna1hIZFdndFZVbWMwZTVSaFU0anBWRFlXbHgxWVl4ZXBJRmV5UWw2N0tqaTF2NVFsR2FuT1JmQU5NbFFYS0ZUVXo4UzVlNHlzdjEtenQwUmFkcGw3UU5OeEV4VENqRGVFdFdtUQ?oc=5",
-     "date": "Sun, 26 Apr 2026 07:00:00 GMT"
+     "title": "旭化成がしっかり、自社株２２８５万９４００株を消却へ - 株探",
+     "url": "https://news.google.com/rss/articles/CBMiYEFVX3lxTFB5S0c2MUlvdFc2YVc3MGxRbmtkRDhac1RGa0tIYVFsYjZuRGFDYWJCQVVZeXZ1UmdOOHF6WEZiSm1aZmdDOTRNZVdNb1FQYzlpTVJWRHZjWkdqRnpZM21vZA?oc=5",
+     "date": "Mon, 19 Oct 2026 07:00:00 GMT"
     }
    ]
   },
   {
-   "code": "8591",
-   "name": "オリックス",
-   "r": -7.3,
-   "price": 5433,
-   "prev": 5858,
+   "code": "6305",
+   "name": "日立建機",
+   "r": -7.5,
+   "price": 4856,
+   "prev": 5250,
    "news": [
     {
-     "title": "オリックス不動産投資法人【8954】：株価・株式情報（夜間PTS含む） - Yahoo!ファイナンス",
-     "url": "https://news.google.com/rss/articles/CBMiUkFVX3lxTFBWNEg0SVJ1X1pZSTdaUVQ1cUdxRGxOUEYtdlBFRmhMUTM2Q2pHQXpnNjRqT2RBWDBmeHFkTXRLVi1feUxyS3JreS1CTFRBYTZzRUE?oc=5",
-     "date": "Thu, 29 Oct 2026 07:00:00 GMT"
+     "title": "【アナリスト評価】日立建機、レーティング強気を継続、目標株価6,300円に引下げ（米系大手証券）(アイフィス株予報) - Yahoo!ファイナンス",
+     "url": "https://news.google.com/rss/articles/CBMihwFBVV95cUxNbGRGekFhLUNBd2doTjYtV095eTF6RmNnajhCajh4NHh3V2pyaXM3dnViR2VUTF9rUlJySTVBSDYzTnlVT2lRNjRnQ3lQOUp1akpBcnE1S3V3SVJnWGo0VWx6djJCNDZpQ2JFM2tpNUt4Y3Vhak8xalEyNVVLZWFONlZnRC1FdWc?oc=5",
+     "date": "Thu, 05 Nov 2026 07:42:52 GMT"
     },
     {
-     "title": "決算:オリックスの4〜6月純利益、2.6倍の2808億円 キオクシア株高が寄与 - 日本経済新聞",
-     "url": "https://news.google.com/rss/articles/CBMibEFVX3lxTE5xNGRNVHRjSmZtNno5V2p3Zk55eC1ZUVV4U1ppX0hReWVIN0stejJvamlsVVVDcjRYeHN1Q2QwQjBod0ZzOHlXSHRneWJSMjZ0dWdhcTB0cXNQNXQ3U3B1MXdVR2V2bjExMXZNMw?oc=5",
-     "date": "Thu, 06 Aug 2026 07:00:00 GMT"
+     "title": "日立、日立建機株を全株売却へ 約10%を1000億円規模で - 日本経済新聞",
+     "url": "https://news.google.com/rss/articles/CBMibEFVX3lxTE9hMV9hZlhYcHpoQzdhNmM3Yk1waUpkVXY1MXZYQjZkRVBwWnZRc01qVzRMYlA0eXF2c2JiY1B2elpteDhmZU54SHJ4WGFKT2FkWFJwRVpSLWV2Y29sRWdwV1ZycWZtbW5KWnFwWQ?oc=5",
+     "date": "Tue, 18 Aug 2026 07:00:00 GMT"
     },
     {
-     "title": "オリックスＦ、今期経常は14％減益へ - 株探",
-     "url": "https://news.google.com/rss/articles/CBMiUkFVX3lxTE15OWdXc2tFYkVaUGttQnhzbm9PWTA1NE5KZDcxRjY4WThyYUc3LUhtY1RoT001OTg0Mjh0RTFvQklreWttMXUyeTQ4cElBLVNNeFE?oc=5",
-     "date": "Thu, 22 Oct 2026 07:00:00 GMT"
+     "title": "【コマツ・日立建機vsキャタピラー】日米建機3社の「稼ぐ力」を徹底比較！関税に直撃された日本勢の“値上げ”の行方は？ - ダイヤモンド・オンライン",
+     "url": "https://news.google.com/rss/articles/CBMiTEFVX3lxTE9oTU4zMTJPQkdUcmFReUpTRUJpWHFzUW12TzJsNi1kUmx6S1daYk41eGg2czd3MGRxMkZjRkUtbHNGc3Y4QkUtSjhQM1Y?oc=5",
+     "date": "Wed, 10 Jun 2026 07:00:00 GMT"
+    }
+   ]
+  },
+  {
+   "code": "7011",
+   "name": "三菱重工",
+   "r": -7.3,
+   "price": 2829,
+   "prev": 3052,
+   "news": [
+    {
+     "title": "三菱重工業(株)【MHVIY】：株価・株式情報 - Yahoo!ファイナンス",
+     "url": "https://news.google.com/rss/articles/CBMiUEFVX3lxTE96UHUzTzN4dkM0eWlBaDE4WTJRVS1PTlRqWG9oU29wbzlhY25oV3hfTmZETGI5NWY4QVRLQThOLXF3SHpGWGJiZjVkVzc3WEVh?oc=5",
+     "date": "Thu, 05 Nov 2026 19:40:56 GMT"
+    },
+    {
+     "title": "筆頭株主は三菱重工､2つのテーマで注目の銘柄 - 四季報オンライン",
+     "url": "https://news.google.com/rss/articles/CBMiV0FVX3lxTE1UM2RUV0ltRWNoaW52bzdndjJzaDhMOFNiaHVMNUlPQVVqZE9RSWxUUWRpOU1XNHk1cDNDS0xONTJsZTRFTFdRM3FubURZNjlPbWtDQkViSQ?oc=5",
+     "date": "Tue, 20 Oct 2026 02:00:50 GMT"
+    },
+    {
+     "title": "【日本株】三菱重工など2割下落…業績は過去最高なのになぜ？急落した「防衛関連株」の本当の実力 - マネクリ",
+     "url": "https://news.google.com/rss/articles/CBMiVEFVX3lxTE9UdmQ3VjJRSWpZcHlLSVdMbGM0QmVrSXdHVndaSE1nd1RHT09XZzBhanRrWlJBSmI3ZFBUeXVkQVIzeWE4c2JiV25tVVJpenR2OTFuMNIBV0FVX3lxTE5CaktCRG1wXzBLWXpaUUJ1a2xTWHIwclU3dEplQUZkZWxvTnpVd0liMFFOcUMxdENoUU5CbTdtdDZCWEJVUWNRMkk1d3daM29Lemp0Z0RlWQ?oc=5",
+     "date": "Wed, 03 Jun 2026 07:00:00 GMT"
     }
    ]
   },
@@ -484,50 +412,50 @@
    ]
   },
   {
-   "code": "6981",
-   "name": "村田製作所",
+   "code": "4503",
+   "name": "アステラス",
    "r": -7.1,
-   "price": 4677,
-   "prev": 5032,
+   "price": 2482,
+   "prev": 2672,
    "news": [
     {
-     "title": "(株)村田製作所【MRAAY】：株価・株式情報 - Yahoo!ファイナンス",
-     "url": "https://news.google.com/rss/articles/CBMiUEFVX3lxTE95MHhZcklYYklCUW91UWZBTXlmZ0daZ3hWcHNFdk5JSzZvNE85dXBHZDlpOGt4c2xpZzc1SklWZ0w3WTdBM1RaaUlaOHpRS2lO?oc=5",
-     "date": "Thu, 05 Nov 2026 18:32:44 GMT"
+     "title": "アステラス製薬(株)【ALPMY】：株価・株式情報 - Yahoo!ファイナンス",
+     "url": "https://news.google.com/rss/articles/CBMiUEFVX3lxTE1PTFd2N1FEV016Uzh2V0h4dThDZXdJV3l2WG5TQ1YyM1VGdFIzM2RkNGlrUTlOLXBXZmR4SDFFQUdmSzlaTU9sa21DaFVPdUxW?oc=5",
+     "date": "Tue, 03 Nov 2026 22:58:49 GMT"
     },
     {
-     "title": "太陽誘電、株価が午後一段高 村田製作所の工場拡張方針で連想買い - 日本経済新聞",
-     "url": "https://news.google.com/rss/articles/CBMibEFVX3lxTE1QNTZrQXp0TVBQOWdVZkdWdGtkZ3lLdDBxci1BUjZyT29kMlpVS1JGb3RlVnJFOW1EVW9HazJyNmVINnVRN1ZaVG9mRnBFTjVxRmo2N3d4c1FUQXROZHAzaEpiUDhHT1JGTmc4OQ?oc=5",
-     "date": "Wed, 14 Oct 2026 07:00:00 GMT"
+     "title": "アステラス製薬、株価が上場来高値 27年3月期純利益を上方修正 - 日本経済新聞",
+     "url": "https://news.google.com/rss/articles/CBMibEFVX3lxTE9vc084R0NHaWRNYnZCVVdTdFZ1V3NIR3YwZjhpQ0gwbURYekJxUnRTNkhlUFdkUmFvaGZYSXdXbEtybExCaVZVSFFwTVpPcGU3dTdaRmU5eGlycVlRRVRSTEdEeEZINzJKRXRHNA?oc=5",
+     "date": "Thu, 05 Nov 2026 01:21:56 GMT"
     },
     {
-     "title": "仮想通貨取引所OKX、村田製作所の株価に連動する先物を上場 - JinaCoin",
-     "url": "https://news.google.com/rss/articles/CBMiXEFVX3lxTFAyeno0SUl1NVhPU1NmUDJCSkkweEFmMzI2WURvTzNaUk5Pd1c0Mk5TM3RwWmg1NlpCanlNWjlJTEk0QmNNVHlWYXRHeGVZX2V4eXVkZWhsaFVhR3Nl?oc=5",
-     "date": "Thu, 05 Nov 2026 03:06:04 GMT"
+     "title": "本日の【上場来高値更新】 アステラス、良品計画など51銘柄(株探ニュース) - Yahoo!ファイナンス",
+     "url": "https://news.google.com/rss/articles/CBMihwFBVV95cUxNV2U4SVF6MEFBTlJsVkxOLVVnSDdKRUQ1T2hycm5Ib0pMRTZadTR1SDFXMmlheGVRTDh1ZmlRNUpLbzFYUXlia2xnMGx3SnRHY0VValBGMC1qNDhIWUJUQngxblRndHdoZS1vMTRXUGNFek1lb29vQjA2VjBRN0ZUREV2UDA0VXM?oc=5",
+     "date": "Thu, 05 Nov 2026 11:10:37 GMT"
     }
    ]
   },
   {
-   "code": "6752",
-   "name": "パナソニック",
+   "code": "8591",
+   "name": "オリックス",
    "r": -7.1,
-   "price": 2944,
-   "prev": 3168,
+   "price": 5442,
+   "prev": 5858,
    "news": [
     {
-     "title": "パナソニック ホールディングス(株)【PCRFY】：株価・株式情報 - Yahoo!ファイナンス",
-     "url": "https://news.google.com/rss/articles/CBMiUEFVX3lxTFA0MXNIYW5ZSmhXQ3BjRnhIaUwtNC1DQVhMTG9wbnFvbEhkTzd5WjVXVDVyRE84QW9CYXZkWnNIa2lGZ0VkUTJjaWFWbmEteE9l?oc=5",
-     "date": "Thu, 05 Nov 2026 23:26:22 GMT"
+     "title": "オリックス不動産投資法人【8954】：株価・株式情報（夜間PTS含む） - Yahoo!ファイナンス",
+     "url": "https://news.google.com/rss/articles/CBMiUkFVX3lxTFBWNEg0SVJ1X1pZSTdaUVQ1cUdxRGxOUEYtdlBFRmhMUTM2Q2pHQXpnNjRqT2RBWDBmeHFkTXRLVi1feUxyS3JreS1CTFRBYTZzRUE?oc=5",
+     "date": "Thu, 29 Oct 2026 07:00:00 GMT"
     },
     {
-     "title": "パナソニックHD株価が反発 27年3月期の純利益2.8倍に上方修正 - 日本経済新聞",
-     "url": "https://news.google.com/rss/articles/CBMibEFVX3lxTE0xZ1g0TDJwYVlIVHFBVi03eEp5dU8zWTQ0dUVtdzZwSEl0bVBxUXJ2NGdXRWRjbXZNcjdSVVBZWngwYjF1QV8xN2NhalVEZ2ZKaHBNcUVrR2IxVDE1NXBPSGFxY0x0RlFQaHd2UQ?oc=5",
-     "date": "Mon, 02 Nov 2026 01:24:29 GMT"
+     "title": "決算:オリックスの4〜6月純利益、2.6倍の2808億円 キオクシア株高が寄与 - 日本経済新聞",
+     "url": "https://news.google.com/rss/articles/CBMibEFVX3lxTE5xNGRNVHRjSmZtNno5V2p3Zk55eC1ZUVV4U1ppX0hReWVIN0stejJvamlsVVVDcjRYeHN1Q2QwQjBod0ZzOHlXSHRneWJSMjZ0dWdhcTB0cXNQNXQ3U3B1MXdVR2V2bjExMXZNMw?oc=5",
+     "date": "Thu, 06 Aug 2026 07:00:00 GMT"
     },
     {
-     "title": "【急転】42年ぶり最高益へ。パナソニックが「大復活」の真相 - NewsPicks",
-     "url": "https://news.google.com/rss/articles/CBMiU0FVX3lxTFBrR016eUJCLXFGVzhwcVRlQWxza0RZMTZ2bEVrc2w3OUNHbGtRcmJ0dVl0NmZ2bktPYXA4Z2NXSV94ODBxTkI0OWN2clV4OERDWi1B?oc=5",
-     "date": "Tue, 03 Nov 2026 20:30:00 GMT"
+     "title": "オリックスＦ、今期経常は14％減益へ - 株探",
+     "url": "https://news.google.com/rss/articles/CBMiUkFVX3lxTE15OWdXc2tFYkVaUGttQnhzbm9PWTA1NE5KZDcxRjY4WThyYUc3LUhtY1RoT001OTg0Mjh0RTFvQklreWttMXUyeTQ4cElBLVNNeFE?oc=5",
+     "date": "Thu, 22 Oct 2026 07:00:00 GMT"
     }
    ]
   }
