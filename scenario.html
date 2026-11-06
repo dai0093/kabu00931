@@ -1,0 +1,707 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2026年11月 世界同時株安：ロジックツリー＆シナリオ移行予定日</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&display=swap');
+        body {
+            font-family: 'Noto Sans JP', sans-serif;
+            background-color: #f8fafc;
+            color: #1e293b;
+        }
+
+        /* =========================================================
+           Lucid-Style Clean Horizontal Logic Tree (Left -> Right)
+           ========================================================= */
+        .tree-scroll-container {
+            overflow-x: auto;
+            background: #ffffff;
+            border: 1px solid #e2e8f0;
+            border-radius: 12px;
+            padding: 32px 28px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.04);
+        }
+
+        .logic-tree {
+            display: inline-flex;
+            align-items: center;
+            min-width: max-content;
+        }
+
+        .lt-branch {
+            display: flex;
+            align-items: center;
+            position: relative;
+            padding: 8px 0;
+        }
+
+        .lt-children {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            position: relative;
+            padding-left: 36px; /* Space for orthogonal connector lines */
+        }
+
+        /* Parent right-center to vertical spine */
+        .lt-children::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 50%;
+            width: 18px;
+            height: 2px;
+            background-color: #f59e0b;
+            transform: translateY(-50%);
+        }
+
+        /* Vertical spine to child left-center */
+        .lt-children > .lt-branch::before {
+            content: '';
+            position: absolute;
+            left: -18px;
+            top: 50%;
+            width: 18px;
+            height: 2px;
+            background-color: #f59e0b;
+            transform: translateY(-50%);
+        }
+
+        /* Vertical spine line segments */
+        .lt-children > .lt-branch::after {
+            content: '';
+            position: absolute;
+            left: -18px;
+            width: 2px;
+            background-color: #f59e0b;
+        }
+        .lt-children > .lt-branch:first-child::after {
+            top: 50%;
+            bottom: 0;
+        }
+        .lt-children > .lt-branch:last-child::after {
+            top: 0;
+            bottom: 50%;
+        }
+        .lt-children > .lt-branch:not(:first-child):not(:last-child)::after {
+            top: 0;
+            bottom: 0;
+        }
+        .lt-children > .lt-branch:only-child::after {
+            display: none;
+        }
+
+        /* Box Node Styling (Matching attached Lucid Software image) */
+        .lt-box {
+            border-radius: 4px;
+            padding: 10px 14px;
+            text-align: center;
+            font-weight: 700;
+            line-height: 1.35;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.12);
+            cursor: pointer;
+            transition: transform 0.15s ease, box-shadow 0.15s ease;
+            user-select: none;
+            position: relative;
+        }
+        .lt-box:hover {
+            transform: scale(1.03);
+            box-shadow: 0 6px 14px rgba(234, 88, 12, 0.25);
+            z-index: 10;
+        }
+        .lt-box-active {
+            outline: 3px solid #2563eb;
+            outline-offset: 2px;
+        }
+
+        /* Level 0: Root (Light Warm Peach Gradient) */
+        .lvl-0 {
+            background: linear-gradient(180deg, #fffDF9 0%, #fed7aa 60%, #fb923c 100%);
+            border: 1.5px solid #ea580c;
+            color: #1e293b;
+            width: 175px;
+            font-size: 14px;
+        }
+        /* Level 1: Category (Light Amber Orange Gradient) */
+        .lvl-1 {
+            background: linear-gradient(180deg, #fff7ed 0%, #fdba74 55%, #f97316 100%);
+            border: 1.5px solid #c2410c;
+            color: #1e293b;
+            width: 195px;
+            font-size: 13px;
+        }
+        /* Level 2: Sub-factor (Rich Bronze/Orange Gradient) */
+        .lvl-2 {
+            background: linear-gradient(180deg, #fdba74 0%, #ea580c 55%, #9a3412 100%);
+            border: 1.5px solid #7c2d12;
+            color: #ffffff;
+            text-shadow: 0 1px 2px rgba(0,0,0,0.3);
+            width: 210px;
+            font-size: 13px;
+        }
+        /* Level 3: Leaf Action/Metric (Coral Red Gradient like attached image) */
+        .lvl-3 {
+            background: linear-gradient(180deg, #fecaca 0%, #f87171 45%, #dc2626 100%);
+            border: 1.5px solid #991b1b;
+            color: #1e293b;
+            width: 235px;
+            font-size: 12.5px;
+        }
+
+        .badge-pill {
+            display: inline-block;
+            font-size: 10px;
+            font-weight: 900;
+            padding: 1px 6px;
+            border-radius: 999px;
+            margin-bottom: 3px;
+        }
+    </style>
+</head>
+<body class="min-h-screen pb-12">
+
+    <!-- Top Simple Header -->
+    <header class="bg-white border-b border-slate-200 sticky top-0 z-40">
+        <div class="max-w-7xl mx-auto px-4 py-3 flex flex-wrap items-center justify-between gap-3">
+            <div>
+                <div class="flex items-center gap-2">
+                    <span class="px-2 py-0.5 text-xs font-bold bg-orange-100 text-orange-800 rounded">2026年11月6日 基準</span>
+                    <h1 class="text-base md:text-lg font-black text-slate-800">2026年11月 世界同時株安：ロジックツリー＆次ステージ移行日</h1>
+                </div>
+            </div>
+
+            <!-- Main Mode Switcher -->
+            <div class="flex bg-slate-100 p-1 rounded-lg border border-slate-300 text-xs md:text-sm font-bold">
+                <button onclick="setMode('scenario')" id="tab-scenario" class="px-4 py-1.5 rounded-md bg-orange-500 text-white shadow-sm transition">
+                    ① シナリオ確率＆次ステージ移行日ツリー
+                </button>
+                <button onclick="setMode('why')" id="tab-why" class="px-4 py-1.5 rounded-md text-slate-700 hover:bg-white/60 transition">
+                    ② 株安の4大原因ツリー（Why分解）
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <main class="max-w-7xl mx-auto px-4 pt-5 space-y-6"><div class="text-xs bg-amber-50 border border-amber-300 rounded p-2 text-amber-900">取り込み資料の想定です。確率（55/30/15%）・価格レンジ・シミュレーターの増減は検証していません。検証済みの数字（検証48・53・54）は株ダッシュボードの「暴落の型との比較」「ロジックツリー」に表示しています。</div>
+
+        <!-- Stage Progress Banner (Always visible, super clean) -->
+        <section class="bg-white rounded-xl border border-slate-200 p-4 shadow-sm">
+            <div class="flex flex-wrap items-center justify-between gap-2 mb-3">
+                <h2 class="text-sm font-bold text-slate-700">■ 次ステージへの移行予定日ロードマップ（現在：第1ステージ）</h2>
+                <span class="text-xs font-bold text-orange-700 bg-orange-50 border border-orange-200 px-2.5 py-1 rounded">
+                    次回ステージ移行予定日：2026年11月17日(火) エヌビディア決算
+                </span>
+            </div>
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 text-xs">
+                <div class="p-3 rounded-lg border-2 border-orange-500 bg-orange-50/60">
+                    <div class="flex justify-between font-bold text-orange-900 mb-1">
+                        <span>【現在】第1ステージ</span>
+                        <span>11/6(金)〜11/13(金)</span>
+                    </div>
+                    <div class="font-bold text-slate-800">追証の強制決済と10月CPI</div>
+                    <div class="text-slate-600 mt-1">11/6-10 追証ピーク / 11/10 米CPI発表</div>
+                </div>
+
+                <div class="p-3 rounded-lg border border-slate-200 bg-slate-50">
+                    <div class="flex justify-between font-bold text-blue-700 mb-1">
+                        <span>【次期】第2ステージ</span>
+                        <span>移行日: 11/17(火)</span>
+                    </div>
+                    <div class="font-bold text-slate-800">NVDA決算とAI成長審判</div>
+                    <div class="text-slate-600 mt-1">11/17 NVDA決算 / 11/29 OPEC+会合</div>
+                </div>
+
+                <div class="p-3 rounded-lg border border-slate-200 bg-slate-50">
+                    <div class="flex justify-between font-bold text-purple-700 mb-1">
+                        <span>第3ステージ</span>
+                        <span>移行日: 12/8(火)</span>
+                    </div>
+                    <div class="font-bold text-slate-800">中銀決定とメジャーSQ底入れ</div>
+                    <div class="text-slate-600 mt-1">12/9 FOMC / 12/11 SQ(2番底) / 12/18 日銀</div>
+                </div>
+
+                <div class="p-3 rounded-lg border border-slate-200 bg-slate-50">
+                    <div class="flex justify-between font-bold text-emerald-700 mb-1">
+                        <span>第4ステージ</span>
+                        <span>移行日: 2027年1月上旬</span>
+                    </div>
+                    <div class="font-bold text-slate-800">米新議会招集と地政学リスク</div>
+                    <div class="text-slate-600 mt-1">ねじれ議会発足・対イラン再拡大警戒</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- =========================================================
+             MAIN LOGIC TREE DIAGRAM (White Background, Lucid Style)
+             ========================================================= -->
+        <section class="space-y-2">
+            <!-- Column Level Headers -->
+            <div class="grid grid-cols-4 gap-2 text-xs font-bold text-center text-slate-600 px-2">
+                <div class="bg-orange-100/80 border border-orange-200 py-1.5 rounded" id="col-head-1">1. 起点テーマ</div>
+                <div class="bg-orange-200/70 border border-orange-300 py-1.5 rounded" id="col-head-2">2. シナリオ分岐と確率</div>
+                <div class="bg-orange-600/90 text-white py-1.5 rounded" id="col-head-3">3. 次ステージ移行予定日</div>
+                <div class="bg-red-500/90 text-white py-1.5 rounded" id="col-head-4">4. 株価予測・具体アクション</div>
+            </div>
+
+            <!-- White Canvas Horizontal Tree -->
+            <div class="tree-scroll-container">
+                <div id="tree-root" class="logic-tree"></div>
+            </div>
+
+            <!-- Click Detail Box -->
+            <div id="detail-panel" class="bg-white border-l-4 border-l-orange-500 border border-slate-200 rounded-lg p-4 shadow-sm flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+                <div>
+                    <div class="text-xs font-bold text-orange-600" id="detail-path">💡 ボックスをクリックすると解説が表示されます</div>
+                    <div class="text-sm font-black text-slate-800 mt-0.5" id="detail-title">上図のオレンジ〜赤のボックスをクリックしてください</div>
+                    <p class="text-xs text-slate-600 mt-1 leading-relaxed" id="detail-desc">
+                        添付いただいた見本画像と同じく、左から右へ「起点 → 分岐（確率） → 移行予定日 → 結果（株価レンジ）」が一目で追える構造に整理しています。
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- =========================================================
+             INTERACTIVE PROBABILITY & TRANSITION TABLE
+             ========================================================= -->
+        <section class="grid grid-cols-1 lg:grid-cols-12 gap-6">
+            <!-- Probability Simulator (Left 5 cols) -->
+            <div class="lg:col-span-5 bg-white rounded-xl border border-slate-200 p-5 shadow-sm space-y-4">
+                <div class="flex items-center justify-between border-b border-slate-100 pb-2">
+                    <h3 class="text-sm font-black text-slate-800">■ 条件変更による確率シミュレーター</h3>
+                    <button onclick="resetSim()" class="text-xs px-2 py-1 bg-slate-100 hover:bg-slate-200 text-slate-700 rounded font-bold">
+                        初期値(55/30/15%)に戻す
+                    </button>
+                </div>
+
+                <div class="space-y-3 text-xs">
+                    <div>
+                        <label class="font-bold text-slate-700 block mb-1">① 原油・ホルムズ海峡（現在94ドル）</label>
+                        <select id="sel-oil" onchange="runSim()" class="w-full border border-slate-300 rounded-lg p-2 bg-slate-50 font-medium text-slate-800">
+                            <option value="main" selected>交渉継続・85〜105ドルで推移（メイン前提）</option>
+                            <option value="bear">イラン攻撃激化・125〜150ドルへ暴騰（悲観）</option>
+                            <option value="bull">電撃停戦合意・68〜80ドルへ急落（楽観）</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label class="font-bold text-slate-700 block mb-1">② 11/17 エヌビディア決算（第2ステージ移行日）</label>
+                        <select id="sel-nvda" onchange="runSim()" class="w-full border border-slate-300 rounded-lg p-2 bg-slate-50 font-medium text-slate-800">
+                            <option value="main" selected>Q3達成もDC規制で成長率鈍化（メイン前提）</option>
+                            <option value="bear">2027年設備投資が大幅凍結・新興DC破綻（悲観）</option>
+                            <option value="bull">海外需要で規制吸収・ガイダンス大幅上振れ（楽観）</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label class="font-bold text-slate-700 block mb-1">③ 12/9 FOMC＆12/18 日銀（第3ステージ移行日）</label>
+                        <select id="sel-bank" onchange="runSim()" class="w-full border border-slate-300 rounded-lg p-2 bg-slate-50 font-medium text-slate-800">
+                            <option value="main" selected>米タカ派据え置き・日銀も1〜3月へ利上げ先送り（メイン）</option>
+                            <option value="bear">インフレ再加速で米4.25-4.5%へ利上げ強行（悲観）</option>
+                            <option value="bull">米利上げ終了宣言・2027年利下げ示唆（楽観）</option>
+                        </select>
+                    </div>
+                </div>
+
+                <!-- Resulting Probability Bar -->
+                <div class="pt-2">
+                    <div class="text-xs font-bold text-slate-600 mb-1.5">シミュレーション後の生起確率：</div>
+                    <div class="h-8 w-full rounded-lg overflow-hidden flex text-xs font-black text-white shadow-inner">
+                        <div id="pbar-main" style="width:55%" class="bg-blue-600 flex items-center justify-center transition-all">メイン 55%</div>
+                        <div id="pbar-bear" style="width:30%" class="bg-red-600 flex items-center justify-center transition-all">悲観 30%</div>
+                        <div id="pbar-bull" style="width:15%" class="bg-emerald-600 flex items-center justify-center transition-all">楽観 15%</div>
+                    </div>
+                    <div class="grid grid-cols-3 gap-2 text-center mt-3 bg-slate-50 p-2.5 rounded-lg border border-slate-200">
+                        <div>
+                            <div class="text-[10px] text-slate-500 font-bold">11月末 期待日経平均</div>
+                            <div id="val-nov" class="text-sm font-black text-slate-800">55,950円</div>
+                        </div>
+                        <div>
+                            <div class="text-[10px] text-slate-500 font-bold">12月中旬(SQ) 期待値</div>
+                            <div id="val-dec" class="text-sm font-black text-orange-600">54,550円</div>
+                        </div>
+                        <div>
+                            <div class="text-[10px] text-slate-500 font-bold">27年3月末 期待値</div>
+                            <div id="val-mar" class="text-sm font-black text-blue-600">58,550円</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Summary Matrix (Right 7 cols) -->
+            <div class="lg:col-span-7 bg-white rounded-xl border border-slate-200 p-5 shadow-sm overflow-x-auto">
+                <h3 class="text-sm font-black text-slate-800 mb-3">■ シナリオ別・移行日程と日米株価予測マトリクス</h3>
+                <table class="w-full text-xs text-left border-collapse">
+                    <thead>
+                        <tr class="bg-slate-100 text-slate-700 border-b border-slate-300">
+                            <th class="py-2.5 px-3">項目 / ステージ移行日</th>
+                            <th class="py-2.5 px-3 text-blue-700 border-l border-slate-200">メイン：W字底入れ (55%)</th>
+                            <th class="py-2.5 px-3 text-red-700 border-l border-slate-200">悲観：長期弱気相場 (30%)</th>
+                            <th class="py-2.5 px-3 text-emerald-700 border-l border-slate-200">楽観：V字回復 (15%)</th>
+                        </tr>
+                    </thead>
+                    <tbody class="divide-y divide-slate-200 text-slate-700">
+                        <tr>
+                            <td class="py-2.5 px-3 font-bold bg-slate-50">第1ステージ<br><span class="text-[10px] text-slate-500">11/6〜11/13</span></td>
+                            <td class="py-2.5 px-3 border-l border-slate-200">11/6-10 追証一巡後に小反発<br><strong>11月末: 54,500〜57,500円</strong></td>
+                            <td class="py-2.5 px-3 border-l border-slate-200">11/10 CPI上振れで5%金利突破<br><strong>11月末: 52,000〜54,500円</strong></td>
+                            <td class="py-2.5 px-3 border-l border-slate-200">イラン停戦合意で6万円回復<br><strong>11月末: 60,000〜62,500円</strong></td>
+                        </tr>
+                        <tr>
+                            <td class="py-2.5 px-3 font-bold bg-slate-50">第2ステージ移行<br><span class="text-[10px] text-orange-600 font-bold">予定日: 11/17(火)</span></td>
+                            <td class="py-2.5 px-3 border-l border-slate-200">NVDA売上達成も成長鈍化確認<br>PER切り下げ継続</td>
+                            <td class="py-2.5 px-3 border-l border-slate-200">ハイパースケーラー投資凍結<br>新興DC事業者の破綻連鎖</td>
+                            <td class="py-2.5 px-3 border-l border-slate-200">海外AI需要が米規制を完全吸収<br>ポジティブ・サプライズ</td>
+                        </tr>
+                        <tr>
+                            <td class="py-2.5 px-3 font-bold bg-slate-50">第3ステージ移行<br><span class="text-[10px] text-orange-600 font-bold">予定日: 12/8〜18</span></td>
+                            <td class="py-2.5 px-3 border-l border-slate-200">12/11 メジャーSQで<strong>2番底形成</strong><br><strong class="text-orange-600">12月中旬: 53,000〜55,000円</strong></td>
+                            <td class="py-2.5 px-3 border-l border-slate-200">12/9 FRBが利上げ強行(4.25%+)<br><strong class="text-red-600">12月中旬: 49,500〜52,000円</strong></td>
+                            <td class="py-2.5 px-3 border-l border-slate-200">12/9 FRBが利上げ終了示唆<br><strong class="text-emerald-600">12月中旬: 63,000〜65,500円</strong></td>
+                        </tr>
+                        <tr>
+                            <td class="py-2.5 px-3 font-bold bg-slate-50">第4ステージ移行<br><span class="text-[10px] text-orange-600 font-bold">予定日: 27年1月上旬</span></td>
+                            <td class="py-2.5 px-3 border-l border-slate-200">非テック・ヘルスケア主導回復<br><strong class="text-blue-700">27年3月末: 59,000〜62,500円</strong></td>
+                            <td class="py-2.5 px-3 border-l border-slate-200">対イラン攻撃再拡大・原油150$<br><strong class="text-red-700">27年3月末: 47,000〜51,000円</strong></td>
+                            <td class="py-2.5 px-3 border-l border-slate-200">中間選挙後アノマリーで高値へ<br><strong class="text-emerald-700">27年3月末: 67,000〜72,000円</strong></td>
+                        </tr>
+                        <tr>
+                            <td class="py-2.5 px-3 font-bold bg-slate-50">FINRA信用残高<br><span class="text-[10px] text-slate-500">現在: 1.48兆ドル</span></td>
+                            <td class="py-2.5 px-3 border-l border-slate-200">1.20〜1.30兆ドルへ縮小<br>(-15〜-20%の秩序ある調整)</td>
+                            <td class="py-2.5 px-3 border-l border-slate-200">0.95〜1.10兆ドルへ急減<br>(-35%の強制清算連鎖)</td>
+                            <td class="py-2.5 px-3 border-l border-slate-200">1.40〜1.50兆ドルを維持<br>(短期でリスクテイク復活)</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+    </main>
+
+    <script>
+        // =========================================================================
+        // 1. シナリオ確率＆次ステージ移行日ツリー（簡潔・見やすいラベル）
+        // =========================================================================
+        const treeScenarioData = {
+            label: "今後の市場シナリオと<br>次ステージ移行予定日",
+            badge: "2026/11/6 起点",
+            detail: "2026年11月5〜6日の世界同時株安を受け、今後どの確率でどのステージへ移行するかを分解したロジックツリーです。",
+            children: [
+                {
+                    label: "メインシナリオ<br>（W字底入れ）",
+                    badge: "確率 55%",
+                    detail: "イラン交渉が継続し原油は85〜105ドルで推移。信用残高が15〜20%縮小する過程で12月中旬に2番底をつける標準シナリオ。",
+                    children: [
+                        {
+                            label: "第2ステージ移行<br>11月17日(火) NVDA決算",
+                            children: [
+                                {
+                                    label: "AI成長鈍化を確認し<br>11月末 日経5.45〜5.75万円",
+                                    detail: "11/6〜10の追証決済と11/10米CPI通過後、11/17のNVDA決算へ。売上計画(1,080億$)は達成するもDCモラトリアムでPER切り下げが継続。"
+                                },
+                                {
+                                    label: "半導体からヘルスケア・<br>Appleへ資金シフト",
+                                    detail: "民主党議会で恩恵を受けるメディケイド関連や、データセンター過剰投資リスクのないApple・非米国割安株へローテーション。"
+                                }
+                            ]
+                        },
+                        {
+                            label: "第3・4ステージ移行<br>12月9日 FOMC / 12月11日 SQ",
+                            children: [
+                                {
+                                    label: "12/11 メジャーSQで2番底<br>（日経 5.3万〜5.5万円）",
+                                    detail: "12/9 FOMCはタカ派的据え置き(3.75-4.00%)、12/18 日銀も利上げ先送り。12/11の日本メジャーSQと年末節税売りでWボトムを形成。"
+                                },
+                                {
+                                    label: "27年1月 新議会発足後<br>3月末 日経5.9〜6.25万円",
+                                    detail: "信用残高が1.2〜1.3兆ドルへ健全に縮小したのち、2027年第1四半期後半から緩やかな回復軌道へ移行。"
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    label: "悲観シナリオ<br>（2000年型崩壊＋中東危機）",
+                    badge: "確率 30%",
+                    detail: "トランプ氏がイラン核・石油施設攻撃を命じ原油が125〜150ドルへ暴騰。AIバブル崩壊とスタグフレーションが重なる長期弱気相場。",
+                    children: [
+                        {
+                            label: "分岐トリガー日<br>11月10日 CPI / 11月17日 決算",
+                            children: [
+                                {
+                                    label: "米10年債 5.25%突破・<br>原油100ドル再突破",
+                                    detail: "インフレ率が4.5〜5.0%へ再加速し、ハイパースケーラーが2027年設備投資(1.2兆$)を大幅凍結。新興DC事業者の破綻が連鎖。"
+                                }
+                            ]
+                        },
+                        {
+                            label: "決定打移行日<br>12月9日 FOMC / 27年1月",
+                            children: [
+                                {
+                                    label: "FRBが暴落中に利上げ強行<br>（政策金利 4.25〜4.50%）",
+                                    detail: "純現金不足1兆ドルの口座で壊滅的な追証連鎖が発生し、FINRA信用残高は30〜40%縮小（0.95〜1.10兆ドルへ急減）。"
+                                },
+                                {
+                                    label: "Nasdaq -35%下落・<br>27年3月末 日経4.7〜5.1万円",
+                                    detail: "外国人投資家の日本株全面引き揚げと急激な円高が重なり、日経平均は5万円の大台を割り込む。"
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    label: "楽観シナリオ<br>（イラン停戦＋V字回復）",
+                    badge: "確率 15%",
+                    detail: "カタール仲介で11月中に米国・イラン停戦合意が電撃成立し、原油が68〜80ドルへ急落する早期回復シナリオ。",
+                    children: [
+                        {
+                            label: "転換予定日<br>11月17日(火) NVDA決算",
+                            children: [
+                                {
+                                    label: "海外AI需要が米規制を吸収<br>11月末 日経6.0〜6.25万円",
+                                    detail: "強制ロスカットが11月中旬に短期完了し、NVDAの第4四半期ガイダンスが市場の懸念を払拭するポジティブ・サプライズに。"
+                                }
+                            ]
+                        },
+                        {
+                            label: "加速移行日<br>12月9日(水) FOMC",
+                            children: [
+                                {
+                                    label: "FRB利上げ終了宣言・<br>27年3月末 日経6.7〜7.2万円",
+                                    detail: "米10年債利回りが4.20〜4.60%へ低下。中間選挙後1年間の歴史的アノマリー（勝率100%・平均+17%上昇）へ回帰し最高値奪回。"
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        };
+
+        // =========================================================================
+        // 2. 株安の4大原因ツリー（Why分解：簡潔・見やすいラベル）
+        // =========================================================================
+        const treeWhyData = {
+            label: "なぜ11月5〜6日に<br>世界同時株安が起きたか？",
+            badge: "Why分析",
+            detail: "米SOX指数-12%、ナスダック-5.5%、日経平均一時4,300円超安（6万円割れ）、韓国KOSPIサーキットブレーカー発動を引き起こした4大構造要因。",
+            children: [
+                {
+                    label: "① イラン戦争と<br>FRBの利上げ再開",
+                    badge: "第1の断層",
+                    detail: "2026年2月28日のイラン侵攻とホルムズ海峡封鎖によるエネルギー危機がインフレを再燃させ、中央銀行の救済利下げ（Fed Put）を封じた。",
+                    children: [
+                        {
+                            label: "原油一時138ドル暴騰と<br>米CPI 3.7%への再加速",
+                            children: [
+                                {
+                                    label: "ガソリン4.5ドル高騰・<br>個人貯蓄率3%台へ枯渇",
+                                    detail: "生活費の急騰により米個人の貯蓄率が5.8%から3.0〜4.4%へ急低下し、中間選挙での与党惨敗の直接原因となった。"
+                                }
+                            ]
+                        },
+                        {
+                            label: "9月FOMCで利上げ再開<br>（政策金利 3.75〜4.00%）",
+                            children: [
+                                {
+                                    label: "株安でも利下げできない<br>スタグフレーション制約",
+                                    detail: "ウォーシュFRB議長のもと18名中16名が年内追加利上げを予想。高金利が1999年以来の高CAPEレシオを押し潰した。"
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    label: "② 米中間選挙の共和党惨敗と<br>DC建設モラトリアム",
+                    badge: "第2の断層",
+                    detail: "11月3日の米中間選挙で民主党が上下両院・主要州知事を完全制圧（ブルー・スイープ）。AIインフラ拡張に物理的・政治的急ブレーキ。",
+                    children: [
+                        {
+                            label: "全米の住民投票で<br>データセンター凍結可決",
+                            children: [
+                                {
+                                    label: "電力網逼迫と電気代高騰に<br>有権者が物理的拒絶",
+                                    detail: "テキサス州でヒノホサ民主党知事がDC凍結公約で当選したほか、全米ほぼ全ての自治体でデータセンター建設モラトリアム案が可決。"
+                                },
+                                {
+                                    label: "2027年以降のAI着工遅延<br>（半導体需要に空白期）",
+                                    detail: "無制限な拡張を前提としていたNVDA(-9.2%)、AMD(-12.2%)、SanDisk(-22%)の将来キャッシュフロー前提が崩壊。"
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    label: "③ AI過剰投資の限界と<br>成長率ピークアウト",
+                    badge: "第3の断層",
+                    detail: "ハイパースケーラーの2026年設備投資が8,000億ドルへ倍増する中、フリーCFのマイナス化と負債急増が嫌気された。",
+                    children: [
+                        {
+                            label: "キャッシュバーン懸念と<br>CDSスプレッド急拡大",
+                            children: [
+                                {
+                                    label: "インドESDS稼働遅延・<br>非AIのAppleへ資金逃避",
+                                    detail: "B300チップ8,000基の稼働遅延など収益化遅れが表面化。巨額投資を行わないAppleが安全資産として世界時価総額首位の座を奪還。"
+                                }
+                            ]
+                        },
+                        {
+                            label: "設備投資「成長率」の鈍化と<br>半導体業績の未達",
+                            children: [
+                                {
+                                    label: "キオクシア営業益予想未達<br>・インテル約29%暴落",
+                                    detail: "S&P500のEPS成長率は26年30%→27年18%へ減速見通し。キオクシアの10-12月期計画(1.995兆円)も市場予想(2.35兆円)に届かず。"
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    label: "④ 信用残高1.5兆ドルと<br>追証ロスカット連鎖",
+                    badge: "第4の断層",
+                    detail: "過去67年間で最も薄い現金バッファー（キャッシュ比率10%）の上に史上最大の信用買い残が乗り、機械的な投げ売りを誘発。",
+                    children: [
+                        {
+                            label: "米国FINRA信用残1.5兆$<br>（対GDP比4.6%で過去最高）",
+                            children: [
+                                {
+                                    label: "純現金不足1兆ドルの赤字<br>（2000年バブルの7.7倍）",
+                                    detail: "T+1/T+2決済ルールに基づき、担保維持率を割った口座の強制ロスカットと、優良株・金の換金売りが連鎖。"
+                                }
+                            ]
+                        },
+                        {
+                            label: "日韓の指数構造の歪みと<br>個人の高値信用買い",
+                            children: [
+                                {
+                                    label: "韓国KOSPI 2社集中売り・<br>キオクシア信用倍率44.4倍",
+                                    detail: "東芝の持ち株売却と外資空売りの中、個人が信用買い(5,165万株)を積み上げたキオクシアが1万円割れとなり追証スパイラル発動。"
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        };
+
+        let activeMode = 'scenario';
+
+        function buildTreeHTML(node, level = 0, pathStr = '') {
+            const currentPath = pathStr ? `${pathStr} ＞ ${node.label.replace(/<br>/g, '')}` : node.label.replace(/<br>/g, '');
+            const safeTitle = node.label.replace(/<br>/g, ' ').replace(/'/g, "\\'");
+            const safeDetail = (node.detail || 'この項目の詳細は親または子ボックスをご参照ください。').replace(/'/g, "\\'");
+            const safePath = currentPath.replace(/'/g, "\\'");
+
+            let badgeHtml = '';
+            if (node.badge) {
+                const bgClass = level === 0 ? 'bg-orange-700 text-white' : 'bg-white/90 text-orange-950';
+                badgeHtml = `<div><span class="badge-pill ${bgClass}">${node.badge}</span></div>`;
+            }
+
+            let html = `<div class="lt-branch">`;
+            html += `
+                <div class="lt-box lvl-${Math.min(level, 3)}" onclick="showNodeDetail(this, '${safePath}', '${safeTitle}', '${safeDetail}')">
+                    ${badgeHtml}
+                    <div>${node.label}</div>
+                </div>
+            `;
+
+            if (node.children && node.children.length > 0) {
+                html += `<div class="lt-children">`;
+                node.children.forEach(child => {
+                    html += buildTreeHTML(child, level + 1, currentPath);
+                });
+                html += `</div>`;
+            }
+
+            html += `</div>`;
+            return html;
+        }
+
+        function setMode(mode) {
+            activeMode = mode;
+            const btnScen = document.getElementById('tab-scenario');
+            const btnWhy = document.getElementById('tab-why');
+
+            if (mode === 'scenario') {
+                btnScen.className = "px-4 py-1.5 rounded-md bg-orange-500 text-white shadow-sm transition";
+                btnWhy.className = "px-4 py-1.5 rounded-md text-slate-700 hover:bg-white/60 transition";
+                document.getElementById('col-head-1').textContent = "1. 起点テーマ";
+                document.getElementById('col-head-2').textContent = "2. シナリオ分岐と確率";
+                document.getElementById('col-head-3').textContent = "3. 次ステージ移行予定日";
+                document.getElementById('col-head-4').textContent = "4. 株価予測・具体アクション";
+                document.getElementById('tree-root').innerHTML = buildTreeHTML(treeScenarioData, 0);
+            } else {
+                btnWhy.className = "px-4 py-1.5 rounded-md bg-orange-500 text-white shadow-sm transition";
+                btnScen.className = "px-4 py-1.5 rounded-md text-slate-700 hover:bg-white/60 transition";
+                document.getElementById('col-head-1').textContent = "1. 発生した問題";
+                document.getElementById('col-head-2').textContent = "2. 4大構造断層（大分類）";
+                document.getElementById('col-head-3').textContent = "3. 直接の引き金（中分類）";
+                document.getElementById('col-head-4').textContent = "4. 定量ファクト（具体事象）";
+                document.getElementById('tree-root').innerHTML = buildTreeHTML(treeWhyData, 0);
+            }
+        }
+
+        function showNodeDetail(el, path, title, desc) {
+            document.querySelectorAll('.lt-box').forEach(b => b.classList.remove('lt-box-active'));
+            el.classList.add('lt-box-active');
+            document.getElementById('detail-path').textContent = path;
+            document.getElementById('detail-title').textContent = title;
+            document.getElementById('detail-desc').textContent = desc;
+        }
+
+        // =========================================================================
+        // 3. 確率＆期待株価シミュレーター
+        // =========================================================================
+        function runSim() {
+            const oil = document.getElementById('sel-oil').value;
+            const nvda = document.getElementById('sel-nvda').value;
+            const bank = document.getElementById('sel-bank').value;
+
+            let pMain = 55, pBear = 30, pBull = 15;
+            [oil, nvda, bank].forEach(v => {
+                if (v === 'bear') { pBear += 15; pMain -= 10; pBull -= 5; }
+                if (v === 'bull') { pBull += 15; pMain -= 5; pBear -= 10; }
+            });
+
+            pMain = Math.max(5, pMain);
+            pBear = Math.max(5, pBear);
+            pBull = Math.max(5, pBull);
+            const sum = pMain + pBear + pBull;
+            pMain = Math.round((pMain / sum) * 100);
+            pBear = Math.round((pBear / sum) * 100);
+            pBull = 100 - pMain - pBear;
+
+            const bMain = document.getElementById('pbar-main');
+            const bBear = document.getElementById('pbar-bear');
+            const bBull = document.getElementById('pbar-bull');
+
+            bMain.style.width = pMain + '%';
+            bMain.textContent = `メイン ${pMain}%`;
+            bBear.style.width = pBear + '%';
+            bBear.textContent = `悲観 ${pBear}%`;
+            bBull.style.width = pBull + '%';
+            bBull.textContent = `楽観 ${pBull}%`;
+
+            const nkNov = Math.round((56000 * pMain + 53250 * pBear + 61250 * pBull) / 100 / 50) * 50;
+            const nkDec = Math.round((54000 * pMain + 50750 * pBear + 64250 * pBull) / 100 / 50) * 50;
+            const nkMar = Math.round((60750 * pMain + 49000 * pBear + 69500 * pBull) / 100 / 50) * 50;
+
+            document.getElementById('val-nov').textContent = nkNov.toLocaleString() + '円';
+            document.getElementById('val-dec').textContent = nkDec.toLocaleString() + '円';
+            document.getElementById('val-mar').textContent = nkMar.toLocaleString() + '円';
+        }
+
+        function resetSim() {
+            document.getElementById('sel-oil').value = 'main';
+            document.getElementById('sel-nvda').value = 'main';
+            document.getElementById('sel-bank').value = 'main';
+            runSim();
+        }
+
+        window.addEventListener('DOMContentLoaded', () => {
+            setMode('scenario');
+            runSim();
+        });
+    </script>
+</body>
+</html>
