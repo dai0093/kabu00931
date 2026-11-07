@@ -1,6 +1,6 @@
 {
  "updatedAt": "2026-11-06T12:20:00+09:00",
- "builtAt": "2026-11-07T00:26+09:00",
+ "builtAt": "2026-11-07T08:59+09:00",
  "phase": 3,
  "phaseName": "通り道が開通",
  "phaseDesc": "信用層に2つ以上点灯。　※期限切れのまま点灯・接近を保持：私募信用",
@@ -69,14 +69,14 @@
    [
     "金融機関株価",
     "near",
-    "未更新の群あり（日本、日本その他：前日までの値で判定） 代替で補った3銘柄（最新値・ADR）"
+    " 代替で補った8銘柄（最新値・ADR）"
    ]
   ],
   "fund": [
    [
     "NFCI",
     "near",
-    "代替：金融ストレス合成 1.48（≥1.5点灯・≥1.0接近、検証46で予測出来た）"
+    "代替：金融ストレス合成 1.35（≥1.5点灯・≥1.0接近、検証46で予測出来た）"
    ],
    [
     "生保",
@@ -126,18 +126,18 @@
  ],
  "values": {
   "vix": {
-   "value": 28.18,
+   "value": 25.64,
    "unit": "",
-   "observedAt": "2026-11-05",
-   "change": "+11.57（+69.7%、前日17.89）。日中高値28.09超で3/31以来の高水準",
-   "source": "https://finance.yahoo.com/markets/live/stock-market-today-thursday-november-5-dow-sp-500-nasdaq-plunge-chip-stocks-melt-down-193726491.html"
+   "observedAt": "2026-11-06",
+   "change": "前日比 -2.54（Yahoo確定終値）",
+   "source": "https://finance.yahoo.com/quote/%5EVIX/"
   },
   "us10": {
-   "value": 4.84,
+   "value": 4.859,
    "unit": "%",
-   "observedAt": "2026-11-05",
-   "change": "4.837%、前日比 −5.7bp／5日 −15bp（10/29 4.989%）／20日 未確認（10/7前後の値を取得できず）。株安による債券買い",
-   "source": "https://finance.yahoo.com/markets/live/stock-market-today-thursday-november-5-dow-sp-500-nasdaq-plunge-chip-stocks-melt-down-193726491.html"
+   "observedAt": "2026-11-06",
+   "change": "前日比 +0.022（Yahoo確定終値）",
+   "source": "https://finance.yahoo.com/quote/%5ETNX/"
   },
   "jgb10": {
    "value": 2.75,
@@ -168,9 +168,9 @@
    "source": "https://fred.stlouisfed.org/data/BAMLC0A0CM"
   },
   "t10y2y": {
-   "value": 0.38,
+   "value": 0.35,
    "unit": "%",
-   "observedAt": "2026-11-05",
+   "observedAt": "2026-11-06",
    "change": "財務省の利回り曲線（10年−2年）",
    "source": "https://home.treasury.gov/resource-center/data-chart-center/interest-rates/TextView?type=daily_treasury_yield_curve"
   },
