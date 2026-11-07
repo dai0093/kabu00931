@@ -1,3 +1,7 @@
+import json
+import urllib.request
+import urllib.parse
+import os
 """期限切れの日次・週次系列を、自動で取れるものだけ最新化する（data/series_live.json）。
 VIX（Yahoo、確定終値のみ）・VIX25超の連続日数・米10年（Yahoo）、HY/IG OAS・NFCI・10年-2年（FRED。失敗したら米財務省の利回り曲線で10年-2年だけ補う）。
 取れなかった系列は何も書かない（推測値で埋めない）。"""
@@ -56,6 +60,17 @@ def yy(t, per="3y", adj=False):
 try:
     sx = yy("^SOX", "2y"); dd = float((sx.iloc[-1] / sx.iloc[-250:].max() - 1) * 100)
     out["soxdd"] = {"value": round(dd, 1), "observedAt": str(sx.index[-1].date()), "change": "250日高値比（Yahoo）", "source": "https://finance.yahoo.com/quote/%5ESOX/"}
+    # SOXが高値から−40%超：2009年以降に例のない領域（岡崎氏資料の循環表。前半のみ例あり→判定には入れず注意のみ）
+    _hi = float(sx.max()); _ddall = (float(sx.iloc[-1]) / _hi - 1) * 100
+    out["sox40"] = {"value": round(_ddall, 1), "on": _ddall <= -40, "observedAt": str(sx.index[-1].date())}
+    try:
+        _sf = "data/sox40_sent.json"; _was = json.load(open(_sf)).get("on", False) if os.path.exists(_sf) else False
+        if _ddall <= -40 and not _was and os.environ.get("NTFY_TOPIC"):
+            _q = urllib.parse.urlencode({"title": "【注意】SOXが高値から−40%超", "priority": "4", "click": "https://dai0093.github.io/kabu00931/signals.html"})
+            _b = f"SOX {float(sx.iloc[-1]):,.0f}（高値{_hi:,.0f}から{_ddall:.1f}%）。2009年以降に例のない下げ。1997〜2008年に−40%を超えた5回は最終的に−42〜−69%まで下げた（後半の例がなく未検証のため目標%には入れない）"
+            urllib.request.urlopen(urllib.request.Request(f"https://ntfy.sh/{os.environ['NTFY_TOPIC']}?{_q}", data=_b.encode("utf-8"), method="POST"), timeout=30)
+        json.dump({"on": _ddall <= -40}, open(_sf, "w"))
+    except Exception as _e: print("sox40通知失敗", _e)
     out["sox"] = {"value": round(float(sx.iloc[-1]), 2), "observedAt": str(sx.index[-1].date()), "change": "", "source": "https://finance.yahoo.com/quote/%5ESOX/"}
 except Exception as e: print("SOX失敗", e)
 try:
