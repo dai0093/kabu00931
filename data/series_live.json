@@ -29,6 +29,11 @@
   "change": "250日高値比（Yahoo）",
   "source": "https://finance.yahoo.com/quote/%5ESOX/"
  },
+ "sox40": {
+  "value": -35.8,
+  "on": false,
+  "observedAt": "2026-11-06"
+ },
  "sox": {
   "value": 9390.25,
   "observedAt": "2026-11-06",
@@ -48,7 +53,7 @@
   "source": "https://finance.yahoo.com/quote/HYG/"
  },
  "nfci_px": {
-  "value": 1.35,
+  "value": 1.36,
   "observedAt": "2026-11-06",
   "change": "金融ストレス合成（VIX・社債・米銀のzスコア平均、NFCIの代替・検証46）",
   "source": "https://finance.yahoo.com/quote/%5EVIX/"
@@ -65,5 +70,5 @@
   "change": "仏−独10年 月次平均（ECB）",
   "source": "https://data.ecb.europa.eu/"
  },
- "_at": "2026-11-07T16:07+09:00"
+ "_at": "2026-11-08T07:21+09:00"
 }

@@ -25,12 +25,6 @@
    "lit_since": "2026-10-12",
    "before_start": true
   },
-  "IG OAS": {
-   "st": "near",
-   "since": "2026-11-02",
-   "lit_since": null,
-   "before_start": false
-  },
   "AI→銀行": {
    "st": "near",
    "since": "2026-10-12",
