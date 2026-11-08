@@ -1,5 +1,5 @@
 {
- "at": "2026-11-08T07:21+09:00",
+ "at": "2026-11-08T16:19+09:00",
  "th": -7.0,
  "hits": [
   {
@@ -14,6 +14,21 @@
      "title": "JT株価、私設取引でストップ安 ロシアが資産を一時管理下に - 日本経済新聞",
      "url": "https://news.google.com/rss/articles/CBMibEFVX3lxTE5nZkZXMWMyRklYTjQtaWJDenRYZEprXzdJTWpkdjdEa1ZreldFeHBTbWp3dXpHblRuWjlCQWFRTlRzQllyVnFXSERudm5xSlc0QjZrV21JNmxPb2xZU01QM2QtcGpuRWlPS0djcA?oc=5",
      "date": "Thu, 05 Nov 2026 13:45:34 GMT"
+    }
+   ]
+  },
+  {
+   "code": "6146",
+   "name": "ディスコ",
+   "r": -98.0,
+   "price": null,
+   "prev": null,
+   "note": "見出しで検知（PTS・特別気配など。値段は未確認）",
+   "news": [
+    {
+     "title": "(株)ディスコ【6146】：掲示板 - Yahoo!ファイナンス",
+     "url": "https://news.google.com/rss/articles/CBMiWkFVX3lxTE1zQmt2MERDdWxhWjY3aGFaMWRYRWZWamZHcVdSWW9rbVNyRHh5RmhURGhYS0tJNFd3OFhkVDZWYkJFbWllUXZ1UHNBR2Vzd01mX3p1bEJYaUREdw?oc=5",
+     "date": "Thu, 05 Nov 2026 08:00:00 GMT"
     }
    ]
   },
