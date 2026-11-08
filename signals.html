@@ -9,6 +9,14 @@
 <link rel="manifest" href="manifest.json">
 <title>株ダッシュボード</title>
 <style>
+#sig3 .lamp{border:2px solid var(--line);border-radius:12px;padding:12px;margin:10px 0}
+#sig3 .lamp.r{border-color:#e5534b}#sig3 .lamp.y{border-color:#e8b04b}#sig3 .lamp.g{border-color:#3fb950}
+#sig3 .tag{display:inline-block;font-size:12px;font-weight:800;padding:2px 8px;border-radius:6px;color:#fff;float:right}
+#sig3 .r .tag{background:#e5534b}#sig3 .y .tag{background:#c99a2e}#sig3 .g .tag{background:#2e9b44}
+#sig3 .hq{font-size:13px;color:var(--sub);font-weight:700}#sig3 .big2{font-size:24px;font-weight:900;margin:6px 0}
+#sig3 .todo{font-size:14px;line-height:1.6}#sig3 .meter{height:12px;background:#2a3346;border-radius:6px;overflow:hidden;margin:6px 0}
+#sig3 .meter i{display:block;height:100%}#sig3 .how{background:#1b2a40;border-left:4px solid #38bdf8;border-radius:6px;padding:8px 10px;font-size:13px;margin:8px 0;line-height:1.6}
+#sig3 .ck{font-size:13px;line-height:1.8}
 :root{--bg:#081a2c;--panel:#0f2a44;--panel2:#123250;--line:#2a4a6b;--ink:#eaf2fb;--sub:#9db3c9;--up:#ef5b5b;--dn:#4ea3f2;--good:#7ccf6b;--bad:#e34b4b;--head:#2f8f7f}
 *{box-sizing:border-box}
 body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.5 -apple-system,"Hiragino Sans","Noto Sans JP",sans-serif}
@@ -68,9 +76,10 @@ input{width:100%;font:inherit;font-size:18px;padding:10px;border-radius:8px;bord
  <div class="upd">最終更新<br><span id="hupd">--</span></div>
 </div>
 
-<div class="panel" id="rtop"></div>
+<div class="panel" id="sig3"></div>
+<div class="panel" id="rtop" data-fold></div>
 <div class="panel alert" id="jmp" style="display:none"></div>
-<div class="panel" id="half"></div>
+<div class="panel" id="half" data-fold></div>
 <div class="panel" id="crashcmp"></div>
 
 <div class="panel" id="concl"></div>
@@ -392,6 +401,37 @@ function render(){
    e.querySelectorAll('#ccbody input[type=checkbox]').forEach(c=>{c.addEventListener('click',ev=>ev.stopPropagation());c.addEventListener('change',()=>{on[c.dataset.id]=c.checked;try{localStorage.setItem('ccOn',JSON.stringify(on))}catch(_){}draw()})})};
   e.innerHTML=`<div class="ttl"><span class="nm">暴落の型との比較（ITバブル・リーマン・2024年8月）</span><span class="badge b-sell">参考</span></div><div id="ccbody"></div>`;draw()}else e.style.display='none'}
  {const e=document.getElementById('jmp');if(JMP&&JMP.hits&&JMP.hits.length){e.style.display='';e.innerHTML=`<div class="ttl"><span class="nm">個別株の急落（前日比${JMP.th}%以下）</span></div>`+JMP.hits.map(h=>`<div class="row"><span>${esc(h.name)}（${esc(h.code)}）</span><b class="up">${h.price==null?esc(h.note||'売買不成立'):h.r+'%　'+h.price.toLocaleString()+'円'}</b></div>${(h.news||[]).slice(0,2).map(n=>`<div class="note">・<a href="${esc(n.url)}" target="_blank" rel="noopener">${esc(n.title)}</a></div>`).join('')}`).join('')+`<div class="note">確認 ${esc(JMP.at.replace('T',' '))}。見出しは自動収集で、内容は未確認です</div>`}}
+ {const e=document.getElementById('sig3'),D=(DI&&DF&&DI.updatedAt>DF.updatedAt)?DI:(DF||DI);if(D){
+ const tg=Math.round(D.target*100),A={};((AS&&AS.items)||[]).forEach(a=>A[a.name]=a.ma200);
+ let hold=0;try{hold=+localStorage.getItem('holdMan')||0}catch(_){}
+ const lv=x=>x?'r':'g',yn=(b,t,f)=>b?`✅ ${t}`:`❌ ${f}`;
+ // ① 持ち高
+ const L1=tg===0?'r':tg<100?'y':'g',act=tg===0?'株はすべて売って、現金で待つ（新規の買いも止める）':tg<100?`持ち高を${tg}%まで減らす`:'持ってよい';
+ // ② 先行センサー（検証61・40・41）
+ const pc=SLV&&SLV.pc_px?SLV.pc_px.value:null,hy=SLV&&SLV.hy_px?SLV.hy_px.value:null,p5=OL&&OL.prob?OL.prob['5d_-5']:null,b5=OL&&OL.base?OL.base['5d_-5']:null,vx=OL&&OL.crowd?OL.crowd.find(c=>c.name.startsWith('VIX')):null;
+ const S2=[['米国の運用会社株 5日≤−8%',pc!=null&&pc<=-8,pc!=null?pc+'%':'—'],['社債の悪化 20日≤−2%',hy!=null&&hy<=-2,hy!=null?hy+'%':'—'],['5日以内に−5%の確率 2倍以上',p5!=null&&p5>=2*b5,p5!=null?Math.round(p5*100)+'%（ふだん'+Math.round(b5*100)+'%）':'—'],['VIXの急騰',vx&&vx.risk,vx?vx.value+'%':'—']];
+ const n2=S2.filter(x=>x[1]).length,L2=n2>=2?'r':n2===1?'y':'g';
+ // ③ 底打ち（買い戻し）条件
+ const nk=NKD?Object.values(NKD).slice(-1)[0]:null,B=D.bottom||{};
+ const AST=[['日本株（日経平均）',[[D.rebound&&D.rebound.on,'戻りの合図（SOX5日+5%）'],[B.above,'週足の戻り高値を上抜け'],[A['日本株']>=0,'200日線の上（今 '+(A['日本株']!=null?A['日本株'].toFixed(1)+'%':'—')+'）'],[nk>70799,'月足の戻り高値70,799円を上抜け（あと'+(nk?((70799/nk-1)*100).toFixed(1):'—')+'%）']]],
+  ['米国株（S&P500）',[[A['米国株']>=0,'200日線の上（今 '+(A['米国株']!=null?A['米国株'].toFixed(1)+'%':'—')+'）'],[hy!=null&&hy>-2,'社債の悪化が止まる（20日>−2%）']]],
+  ['金',[[A['金']>=0,'200日線の上（今 '+(A['金']!=null?A['金'].toFixed(1)+'%':'—')+'）']]],
+  ['株全体のロック解除（社債）',[[hy!=null&&hy>-2,'社債20日が−2%より上（今 '+(hy!=null?hy+'%':'—')+'）'],[(D.hold10_max||0)<1,'20営業日、危険信号なし']]]];
+ const L3=AST.every(a=>a[1].every(c=>c[0]))?'g':AST.some(a=>a[1].some(c=>c[0]))?'y':'r';
+ const sell=Math.max(0,hold-700*tg/100);
+ e.innerHTML=`<div class="ttl"><span class="nm">今日の結論（3つの信号）</span></div><div class="note">判定 ${esc(D.asOf)}${D.provisional?'（途中値 '+esc((D.updatedAt||'').slice(11,16))+'）':''}。まずここだけ見れば判断できます</div>
+ <div class="lamp ${L1}"><span class="tag">${L1==='r'?'赤：危険':L1==='y'?'黄：注意':'緑：安全'}</span><div class="hq">① いま株を持っていい？</div><div class="big2 ${L1==='r'?'up':''}">持ち高 ${tg}%</div><div class="todo">👉 いまやる事：${act}</div>
+  <div class="row"><span>今の保有額（万円）</span><b><input id="holdIn" type="number" value="${hold||''}" placeholder="入力" style="width:90px;font-size:15px;text-align:right"></b></div>
+  <div class="row"><span>必要な操作</span><b class="${sell>0?'up':''}" id="holdAct">${hold?(sell>0?Math.round(sell)+'万円 売る':'操作なし'):'保有額を入れると表示'}</b></div>
+  <div class="note">根拠：危険信号 最大${D.hold10_max}本（直近20営業日）${D.credit_cap?'・社債の悪化で0%に固定':''}。保有額はこのスマホにだけ保存</div></div>
+ <div class="lamp ${L2}"><span class="tag">${n2}/4 点灯</span><div class="hq">② 急落の前ぶれセンサー</div><div class="big2">${n2>=2?'前ぶれ多数':n2===1?'前ぶれ1つ':'前ぶれなし'}</div>
+  <div class="how">見方：急落が始まる4〜7日前に点灯しやすい指標です。点灯中は、急落が始まる確率がふだんの約1.5〜3倍。ただし急落の半分前後は事前に点灯せず、点灯の9割近くは空振りです（検証61）</div>
+  <div class="ck">${S2.map(x=>`<div class="row"><span>${x[1]?'🚨':'・'} ${x[0]}</span><b class="${x[1]?'up':''}">${esc(x[2])}</b></div>`).join('')}</div></div>
+ <div class="lamp ${L3}"><span class="tag">${L3==='g'?'買ってよい':L3==='y'?'一部回復':'まだ買わない'}</span><div class="hq">③ もう底打ちした？（買い戻しの条件）</div>
+  <div class="how">見方：✅が全部そろった資産から戻します。反発しても条件がそろうまでは「下げの途中のひと休み」として扱います（検証31・35・42・44・60）</div>
+  ${AST.map(([nm,cs])=>{const k=cs.filter(c=>c[0]).length;return `<div style="margin:8px 0"><div class="row"><span><b>${nm}</b></span><b class="${k===cs.length?'':'up'}">${k}/${cs.length} 達成</b></div><div class="meter"><i style="width:${k/cs.length*100}%;background:${k===cs.length?'#3fb950':k?'#e8b04b':'#e5534b'}"></i></div><div class="ck">${cs.map(c=>yn(c[0],c[1],c[1])).join('<br>')}</div></div>`}).join('')}</div>
+ <div class="note">下の「危険度」「半期の方針」などの詳しい根拠は、見出しを押すと開きます</div>`;
+ const hi=e.querySelector('#holdIn');hi.addEventListener('click',ev=>ev.stopPropagation());hi.addEventListener('input',()=>{const v=+hi.value||0;try{localStorage.setItem('holdMan',v)}catch(_){}const sl=Math.max(0,v-700*tg/100);e.querySelector('#holdAct').textContent=v?(sl>0?Math.round(sl)+'万円 売る':'操作なし'):'保有額を入れると表示'})}}
  // 防御方針C（検証28）：持ち高の目安
  {const e=document.getElementById('defn'),D=(DI&&DF&&DI.updatedAt>DF.updatedAt)?DI:(DF||DI);if(D){const p=Math.round(D.target*100),fl=Object.entries((D.today||{}).flags||{}),col=p===100?'b-sell':'b-buy';
   e.className='panel'+(p<100?' alert':'');
