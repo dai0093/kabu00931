@@ -80,6 +80,7 @@ input{width:100%;font:inherit;font-size:18px;padding:10px;border-radius:8px;bord
 <div class="panel" id="rtop" data-fold></div>
 <div class="panel alert" id="jmp" style="display:none"></div>
 <div class="panel" id="half" data-fold></div>
+<div class="panel" id="etfguard" data-fold></div>
 <div class="panel" id="crashcmp"></div>
 
 <div class="panel" id="concl"></div>
@@ -432,6 +433,21 @@ function render(){
   ${AST.map(([nm,cs])=>{const k=cs.filter(c=>c[0]).length;return `<div style="margin:8px 0"><div class="row"><span><b>${nm}</b></span><b class="${k===cs.length?'':'up'}">${k}/${cs.length} 達成</b></div><div class="meter"><i style="width:${k/cs.length*100}%;background:${k===cs.length?'#3fb950':k?'#e8b04b':'#e5534b'}"></i></div><div class="ck">${cs.map(c=>yn(c[0],c[1],c[1])).join('<br>')}</div></div>`}).join('')}</div>
  <div class="note">下の「危険度」「半期の方針」などの詳しい根拠は、見出しを押すと開きます</div>`;
  const hi=e.querySelector('#holdIn');hi.addEventListener('click',ev=>ev.stopPropagation());hi.addEventListener('input',()=>{const v=+hi.value||0;try{localStorage.setItem('holdMan',v)}catch(_){}const sl=Math.max(0,v-700*tg/100);e.querySelector('#holdAct').textContent=v?(sl>0?Math.round(sl)+'万円 売る':'操作なし'):'保有額を入れると表示'})}}
+ {const e=document.getElementById('etfguard'),D=(DI&&DF&&DI.updatedAt>DF.updatedAt)?DI:(DF||DI);if(e&&AS&&AS.items){const A={};AS.items.forEach(a=>A[a.name]=a.ma200);const tg=D?Math.round(D.target*100):null;
+ const R=[['日本株','1321・1306','eMAXIS Slim 国内株式',A['日本株'],'200日線ルール＋防御方針C（検証29・44）',true],['米国株','1655・2558','eMAXIS Slim 米国株式(S&P500)',A['米国株'],'200日線ルール（検証29）',false],['先進国株','1657・2513','eMAXIS Slim 先進国株式',A['先進国株'],'200日線ルール（検証29）',false],['金','1540・1326','金の投資信託',A['金'],'200日線ルール（検証42）',false],['銀','1542','—',A['銀'],'200日線ルール（検証42）',false],['REIT','1343・2515','eMAXIS Slim 国内/先進国リート',A['REIT'],'検証済みルールなし',null],['米国債','1482・2621','先進国債券(H有)',A['米国債'],'検証済みルールなし',null],['円の現金','預り金・MRF・個人向け国債','—',null,'急落中に最も損失が小さい（検証51）',null]];
+ const j=(r)=>r[0]==='円の現金'?'受け皿':r[5]===null?'判定なし':r[0]==='日本株'&&tg===0?'持たない（防御0%）':r[3]==null?'—':r[3]>=0?'持ってよい':'持たない';
+ e.innerHTML=`<div class="ttl"><span class="nm">ETFでの守り方と、資産ごとの判定</span></div>
+ <div class="how" style="background:#1b2a40;border-left:4px solid #38bdf8;border-radius:6px;padding:8px 10px;font-size:13px;margin:8px 0;line-height:1.6">暴落を避けるなら、投資信託より東証ETFが有利です。ETFは取引時間中なら数秒で売れ、逆指値（自動の売り注文）も置けます。投資信託は売る値段が決まるまで1〜3営業日かかり、逆指値も使えません。長く放っておく分だけ投資信託にします</div>
+ ${R.map(r=>`<div class="row"><span><b>${r[0]}</b>　<span class="note">ETF ${esc(r[1])}</span>${r[3]!=null?`<br><span class="note">200日線から ${r[3]>0?'+':''}${r[3].toFixed(1)}%・${esc(r[4])}</span>`:`<br><span class="note">${esc(r[4])}</span>`}</span><b class="${j(r).startsWith('持たない')?'up':''}">${j(r)}</b></div>`).join('')}
+ <div class="ttl" style="margin-top:12px"><span class="nm">ETFの逆指値の計算</span></div>
+ <div class="row"><span>買った値段（円）</span><b><input id="eBuy" type="number" style="width:110px;font-size:15px;text-align:right"></b></div>
+ <div class="row"><span>前日の終値（円）</span><b><input id="ePrev" type="number" style="width:110px;font-size:15px;text-align:right"></b></div>
+ <div class="row"><span>株数（口）</span><b><input id="eQty" type="number" style="width:110px;font-size:15px;text-align:right"></b></div>
+ <div id="eOut"></div>
+ <div class="note">①毎朝の逆指値：前日終値×0.985（検証10：前半・後半とも暴落の損失を約半分に＝予測出来た）。②最大の損切り：買値から−7%（取り込み資料の提案。検証はしていない）。どちらか近い方で売りになります</div>`;
+ const g=id=>+e.querySelector('#'+id).value||0,calc=()=>{const b=g('eBuy'),pv=g('ePrev'),q=g('eQty');if(!b&&!pv){e.querySelector('#eOut').innerHTML='';return}const s1=pv?Math.floor(pv*0.985):null,s2=b?Math.floor(b*0.93):null;
+  e.querySelector('#eOut').innerHTML=`${s1?`<div class="row"><span>① 毎朝の逆指値（前日終値−1.5%）</span><b class="up">${s1.toLocaleString()}円</b></div>`:''}${s2?`<div class="row"><span>② 最大の損切り（買値−7%）</span><b>${s2.toLocaleString()}円${q?'（損失 約'+Math.round((b-s2)*q/10000)+'万円）':''}</b></div>`:''}`};
+ ['eBuy','ePrev','eQty'].forEach(id=>{const x=e.querySelector('#'+id);x.addEventListener('click',ev=>ev.stopPropagation());x.addEventListener('input',calc)})}}
  // 防御方針C（検証28）：持ち高の目安
  {const e=document.getElementById('defn'),D=(DI&&DF&&DI.updatedAt>DF.updatedAt)?DI:(DF||DI);if(D){const p=Math.round(D.target*100),fl=Object.entries((D.today||{}).flags||{}),col=p===100?'b-sell':'b-buy';
   e.className='panel'+(p<100?' alert':'');
