@@ -1,19 +1,29 @@
 {
- "at": "2026-11-09T09:14+09:00",
+ "at": "2026-11-09T09:34+09:00",
  "th": -7.0,
  "hits": [
   {
    "code": "2914",
    "name": "JT",
-   "r": -98.0,
+   "r": -99.0,
    "price": null,
-   "prev": null,
-   "note": "見出しで検知（PTS・特別気配など。値段は未確認）",
+   "prev": 6269,
+   "note": "本日まだ売買不成立（ストップ気配・売買停止の可能性）",
    "news": [
     {
      "title": "JT株価、私設取引でストップ安 ロシアが資産を一時管理下に - 日本経済新聞",
      "url": "https://news.google.com/rss/articles/CBMibEFVX3lxTE5nZkZXMWMyRklYTjQtaWJDenRYZEprXzdJTWpkdjdEa1ZreldFeHBTbWp3dXpHblRuWjlCQWFRTlRzQllyVnFXSERudm5xSlc0QjZrV21JNmxPb2xZU01QM2QtcGpuRWlPS0djcA?oc=5",
      "date": "Thu, 05 Nov 2026 13:45:34 GMT"
+    },
+    {
+     "title": "＜特別気配＞ ＪＴ、キオクシア、ＳＢＧが売り気配 - 株探",
+     "url": "https://news.google.com/rss/articles/CBMiYEFVX3lxTE5Sckp3NUhnZFpRZkgtN0h2U08wSURiZ1BoWEhtYXVsR1RlRmZWaVI3ZFZoTU9zUmJELUg2SUw5anI4aHFraDc0RURXaEwtTk1wVkpUSkZFYTNmNDRDcGVaTA?oc=5",
+     "date": "Fri, 06 Nov 2026 00:03:44 GMT"
+    },
+    {
+     "title": "ロシア前大統領、JT株下落「良いこと」と投稿 - テレ東BIZ",
+     "url": "https://news.google.com/rss/articles/CBMiY0FVX3lxTE0wZVJYSGJweUZROGRLSkxzWmt3dFdnaEt0clJISV9tWXlOYklfbER6NUdxaUVTcXdReTJqVDRORHV5YUJsbjNiOWljRGVQZFFpOTRiUXZ1Sks4RHM1OWpWLUlzdw?oc=5",
+     "date": "Sat, 07 Nov 2026 08:20:00 GMT"
     }
    ]
   }
