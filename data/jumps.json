@@ -1,29 +1,19 @@
 {
- "at": "2026-11-09T21:09+09:00",
+ "at": "2026-11-10T02:51+09:00",
  "th": -7.0,
  "hits": [
   {
    "code": "2914",
    "name": "JT",
-   "r": -99.0,
+   "r": -98.0,
    "price": null,
-   "prev": 6269,
-   "note": "本日まだ売買不成立（ストップ気配・売買停止の可能性）",
+   "prev": null,
+   "note": "見出しで検知（PTS・特別気配など。値段は未確認）",
    "news": [
     {
-     "title": "ＪＴ株、連日ストップ安 累計２５００円下落 - 沖縄タイムス社",
-     "url": "https://news.google.com/rss/articles/CBMiXkFVX3lxTE5YX0RWdnFEeTctVE4wY01ka3ZCWFNwMUYxUGNRV2VBNWphbUQwQmZka3owYS1JeEJfbkYtYlJPOXpVbG1KVzlMdERGLVhHU0JOVXBUVEYwb0psVlYwdEE?oc=5",
-     "date": "Mon, 09 Nov 2026 10:34:31 GMT"
-    },
-    {
-     "title": "ＪＴ株の制限値幅下限を4000円に拡大、2日連続ストップ安で＝東証 - Reuters",
-     "url": "https://news.google.com/rss/articles/CBMihgFBVV95cUxOTVRQWkRIQUR3UlhvejJsQ05CNXpaUS1XRWk3dURWVmFQeE9TTm9OTnZBczhMWjh0dWZ5aDEzbTE1N1lYT1Y5dm91NVN1UEJRM1NReE9RUUc1dllLQ2ZiYjFIUDZvc3NDSXpkRTZJdWRYTkRkaHFwUzhwTVlUcTBuLVdoakdDdw?oc=5",
-     "date": "Mon, 09 Nov 2026 09:38:09 GMT"
-    },
-    {
-     "title": "対ロ投資は回収できるのか？JTのロシアの現地法人7社が政府管理下に、日本企業を直撃する資産没収リスクと出口戦略 【土田陽介のユーラシアモニター】外国企業への統制を強めるプーチン政権、対ロ投資の回収難が突きつける経営判断(1/4) - JBpress",
-     "url": "https://news.google.com/rss/articles/CBMiVkFVX3lxTE41dmlvWVJTeTlOR0pEQUlKb0RoZ0E3aWhqeTJ0bnNNSHRiR21TSV9wUHdUNGZVU0lOOUVjdlBSRjkxeEpibWxfb1FQWkc0bGM2N1NTTnFR?oc=5",
-     "date": "Mon, 09 Nov 2026 06:00:00 GMT"
+     "title": "JT株価、私設取引でストップ安 ロシアが資産を一時管理下に - 日本経済新聞",
+     "url": "https://news.google.com/rss/articles/CBMibEFVX3lxTE5nZkZXMWMyRklYTjQtaWJDenRYZEprXzdJTWpkdjdEa1ZreldFeHBTbWp3dXpHblRuWjlCQWFRTlRzQllyVnFXSERudm5xSlc0QjZrV21JNmxPb2xZU01QM2QtcGpuRWlPS0djcA?oc=5",
+     "date": "Thu, 05 Nov 2026 13:45:34 GMT"
     }
    ]
   },
@@ -39,30 +29,6 @@
      "title": "特別気配＞ 任天堂、ソニーＧ、住友鉱が買い気配(株探ニュース) - Yahoo!ファイナンス",
      "url": "https://news.google.com/rss/articles/CBMihwFBVV95cUxOSEo1c3NFbkR5QXhkMVJjVUNDcFliYlNPZlJRR3hSQmlRLUY4UDJ2NDMxMUk4Y3hUdWU5ZkZOUFZ2cUNYQWdjTEFhc1VINE1sY2VxdHZ3dTh2RDQwMzRmd2ZicTN1emJjUU4tVVJYd25jV0FiaE5yLUtTLTFBRlo2OUNCTDEyS3c?oc=5",
      "date": "Thu, 05 Nov 2026 00:04:04 GMT"
-    }
-   ]
-  },
-  {
-   "code": "2914",
-   "name": "JT",
-   "r": -16.0,
-   "price": 5269,
-   "prev": 6269,
-   "news": [
-    {
-     "title": "ＪＴ株、連日ストップ安 累計２５００円下落 - 沖縄タイムス社",
-     "url": "https://news.google.com/rss/articles/CBMiXkFVX3lxTE5YX0RWdnFEeTctVE4wY01ka3ZCWFNwMUYxUGNRV2VBNWphbUQwQmZka3owYS1JeEJfbkYtYlJPOXpVbG1KVzlMdERGLVhHU0JOVXBUVEYwb0psVlYwdEE?oc=5",
-     "date": "Mon, 09 Nov 2026 10:34:31 GMT"
-    },
-    {
-     "title": "ＪＴ株の制限値幅下限を4000円に拡大、2日連続ストップ安で＝東証 - Reuters",
-     "url": "https://news.google.com/rss/articles/CBMihgFBVV95cUxOTVRQWkRIQUR3UlhvejJsQ05CNXpaUS1XRWk3dURWVmFQeE9TTm9OTnZBczhMWjh0dWZ5aDEzbTE1N1lYT1Y5dm91NVN1UEJRM1NReE9RUUc1dllLQ2ZiYjFIUDZvc3NDSXpkRTZJdWRYTkRkaHFwUzhwTVlUcTBuLVdoakdDdw?oc=5",
-     "date": "Mon, 09 Nov 2026 09:38:09 GMT"
-    },
-    {
-     "title": "対ロ投資は回収できるのか？JTのロシアの現地法人7社が政府管理下に、日本企業を直撃する資産没収リスクと出口戦略 【土田陽介のユーラシアモニター】外国企業への統制を強めるプーチン政権、対ロ投資の回収難が突きつける経営判断(1/4) - JBpress",
-     "url": "https://news.google.com/rss/articles/CBMiVkFVX3lxTE41dmlvWVJTeTlOR0pEQUlKb0RoZ0E3aWhqeTJ0bnNNSHRiR21TSV9wUHdUNGZVU0lOOUVjdlBSRjkxeEpibWxfb1FQWkc0bGM2N1NTTnFR?oc=5",
-     "date": "Mon, 09 Nov 2026 06:00:00 GMT"
     }
    ]
   }

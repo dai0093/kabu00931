@@ -1,16 +1,16 @@
 {
  "updatedAt": "2026-11-09T12:25:00+09:00",
- "builtAt": "2026-11-09T21:08+09:00",
- "phase": 3,
- "phaseName": "通り道が開通",
- "phaseDesc": "信用層に2つ以上点灯。　※期限切れのまま点灯・接近を保持：HY OAS",
+ "builtAt": "2026-11-10T02:51+09:00",
+ "phase": 2,
+ "phaseName": "通り道の予兆",
+ "phaseDesc": "信用層に1つ点灯。　※期限切れで判定不能：逆イールド（未点灯と扱わない）　※期限切れのまま点灯・接近を保持：日米金利、私募信用、HY OAS、VIX、SOX下落",
  "counts": {
   "origin": [
    3,
    5
   ],
   "trans": [
-   2,
+   1,
    5
   ],
   "fund": [
@@ -56,15 +56,17 @@
    ],
    [
     "欧州ソブリン",
-    "lit"
+    "ok",
+    "ECB月次 仏−独 96.7bp"
    ],
    [
     "逆イールド",
-    "ok"
+    "stale"
    ],
    [
     "金融機関株価",
-    "ok"
+    "ok",
+    "未更新の群あり（日本、日本その他：前日までの値で判定） 代替で補った10銘柄（最新値・ADR）"
    ]
   ],
   "fund": [
@@ -93,9 +95,15 @@
    ]
   ]
  },
- "unjudged": [],
+ "unjudged": [
+  "逆イールド"
+ ],
  "held": [
-  "HY OAS"
+  "日米金利",
+  "私募信用",
+  "HY OAS",
+  "VIX",
+  "SOX下落"
  ],
  "assets": [
   {
@@ -186,8 +194,53 @@
  },
  "stale": [
   {
+   "name": "Nasdaq",
+   "observedAt": "2026-11-06",
+   "freq": "日次"
+  },
+  {
+   "name": "S&P 500",
+   "observedAt": "2026-11-06",
+   "freq": "日次"
+  },
+  {
+   "name": "VIX",
+   "observedAt": "2026-11-06",
+   "freq": "日次"
+  },
+  {
+   "name": "SOX指数",
+   "observedAt": "2026-11-06",
+   "freq": "日次"
+  },
+  {
+   "name": "SOX 52週高値からの下落率",
+   "observedAt": "2026-11-06",
+   "freq": "日次"
+  },
+  {
+   "name": "VIX25超の連続日数",
+   "observedAt": "2026-11-06",
+   "freq": "日次"
+  },
+  {
+   "name": "米10年金利",
+   "observedAt": "2026-11-06",
+   "freq": "日次"
+  },
+  {
    "name": "日本10年金利",
    "observedAt": "2026-11-05",
+   "freq": "日次"
+  },
+  {
+   "name": "米10年−2年",
+   "observedAt": "2026-11-06",
+   "freq": "日次"
+  },
+  {
+   "name": "ドル円",
+   "observedAt": "2026-11-06",
    "freq": "日次"
   },
   {
@@ -206,9 +259,29 @@
    "freq": "週次"
   },
   {
+   "name": "私募信用デフォルト率",
+   "observedAt": "2026-09-30",
+   "freq": "月次"
+  },
+  {
+   "name": "MND 30年固定",
+   "observedAt": "2026-11-06",
+   "freq": "日次"
+  },
+  {
    "name": "MBA購入申請",
    "observedAt": "2026-10-30",
    "freq": "週次"
+  },
+  {
+   "name": "中古住宅販売",
+   "observedAt": "2026-09-30",
+   "freq": "月次"
+  },
+  {
+   "name": "住宅着工",
+   "observedAt": "2026-09-30",
+   "freq": "月次"
   },
   {
    "name": "MBB OAS（MBS代理）",
@@ -224,6 +297,11 @@
    "name": "カード一般延滞率",
    "observedAt": "2026-06-30",
    "freq": "四半期"
+  },
+  {
+   "name": "仏10年−独10年 国債利回り差",
+   "observedAt": "2026-11-06",
+   "freq": "日次"
   }
  ],
  "events": [
@@ -336,10 +414,10 @@
  "source": "https://claude.ai/artifact/KJPgY7LSb8DMsdXt2A1Gst",
  "byAsset": {
   "日経平均": {
-   "phase": 3,
+   "phase": 2,
    "lit": {
     "起点": 3,
-    "信用": 2,
+    "信用": 1,
     "資金": 0,
     "市場": 1
    },
