@@ -1,9 +1,9 @@
 {
- "updatedAt": "2026-11-10T07:20:00+09:00",
- "builtAt": "2026-11-10T06:56+09:00",
- "phase": 3,
- "phaseName": "通り道が開通",
- "phaseDesc": "信用層に2つ以上点灯。　※期限切れで判定不能：逆イールド（未点灯と扱わない）　※期限切れのまま点灯・接近を保持：私募信用、HY OAS、SOX下落",
+ "updatedAt": "2026-11-09T12:25:00+09:00",
+ "builtAt": "2026-11-10T06:58+09:00",
+ "phase": 2,
+ "phaseName": "通り道の予兆",
+ "phaseDesc": "信用層に1つ点灯。　※期限切れのまま点灯・接近を保持：私募信用、HY OAS",
  "counts": {
   "origin": [
    3,
@@ -60,7 +60,7 @@
    ],
    [
     "逆イールド",
-    "stale"
+    "ok"
    ],
    [
     "金融機関株価",
@@ -70,8 +70,8 @@
   "fund": [
    [
     "NFCI",
-    "near",
-    "代替：金融ストレス合成 1.36（≥1.5点灯・≥1.0接近、検証46で予測出来た）"
+    "ok",
+    "代替：金融ストレス合成 0.74（≥1.5点灯・≥1.0接近、検証46で予測出来た）"
    ],
    [
     "生保",
@@ -93,13 +93,10 @@
    ]
   ]
  },
- "unjudged": [
-  "逆イールド"
- ],
+ "unjudged": [],
  "held": [
   "私募信用",
-  "HY OAS",
-  "SOX下落"
+  "HY OAS"
  ],
  "assets": [
   {
@@ -125,18 +122,18 @@
  ],
  "values": {
   "vix": {
-   "value": 20.02,
+   "value": 19.92,
    "unit": "",
    "observedAt": "2026-11-09",
-   "change": "−5.62（−21.9%、前日25.64）。25を下回った",
-   "source": "https://journalarta.com/en/2026/11/10/stock-market-today-sp-500-surges-2-35-to-7549-94-and-nasdaq-jumps-2-74-as-oil-falls-and-vix-drops/"
+   "change": "前日比 -5.72（Yahoo確定終値）",
+   "source": "https://finance.yahoo.com/quote/%5EVIX/"
   },
   "us10": {
-   "value": 4.86,
+   "value": 4.864,
    "unit": "%",
    "observedAt": "2026-11-09",
-   "change": "4.864%、前日比 ほぼ横ばい（11/6 4.859%）／5日 −3bp（11/2 4.89%）／20日差は10/12値が未確認で算出不可",
-   "source": "https://journalarta.com/en/2026/11/10/stock-market-today-sp-500-surges-2-35-to-7549-94-and-nasdaq-jumps-2-74-as-oil-falls-and-vix-drops/"
+   "change": "前日比 +0.005（Yahoo確定終値）",
+   "source": "https://finance.yahoo.com/quote/%5ETNX/"
   },
   "jgb10": {
    "value": 2.75,
@@ -167,11 +164,11 @@
    "source": "https://fred.stlouisfed.org/data/BAMLC0A0CM"
   },
   "t10y2y": {
-   "value": 0.35,
+   "value": 0.32,
    "unit": "%",
-   "observedAt": "2026-11-06",
-   "change": "FRED公表値。11/5の0.38から−3bp（11/4 0.32）",
-   "source": "https://fred.stlouisfed.org/series/T10Y2Y"
+   "observedAt": "2026-11-09",
+   "change": "財務省の利回り曲線（10年−2年）",
+   "source": "https://home.treasury.gov/resource-center/data-chart-center/interest-rates/TextView?type=daily_treasury_yield_curve"
   },
   "nfci": {
    "value": -0.459,
@@ -190,12 +187,12 @@
  },
  "stale": [
   {
-   "name": "SOX指数",
+   "name": "Nasdaq",
    "observedAt": "2026-11-06",
    "freq": "日次"
   },
   {
-   "name": "SOX 52週高値からの下落率",
+   "name": "S&P 500",
    "observedAt": "2026-11-06",
    "freq": "日次"
   },
@@ -205,7 +202,7 @@
    "freq": "日次"
   },
   {
-   "name": "米10年−2年",
+   "name": "ドル円",
    "observedAt": "2026-11-06",
    "freq": "日次"
   },
