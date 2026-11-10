@@ -41,7 +41,7 @@
   "source": "https://finance.yahoo.com/quote/%5ESOX/"
  },
  "nkf": {
-  "value": 4.67,
+  "value": 3.65,
   "observedAt": "2026-11-09",
   "change": "CME日経先物 前日比%（Yahoo）",
   "source": "https://finance.yahoo.com/quote/NKD%3DF/"
@@ -70,5 +70,5 @@
   "change": "仏−独10年 月次平均（ECB）",
   "source": "https://data.ecb.europa.eu/"
  },
- "_at": "2026-11-10T06:58+09:00"
+ "_at": "2026-11-10T12:41+09:00"
 }
