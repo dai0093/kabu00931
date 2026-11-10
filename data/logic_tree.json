@@ -1,9 +1,9 @@
 {
- "updatedAt": "2026-11-10T12:15:00+09:00",
- "builtAt": "2026-11-11T06:58+09:00",
- "phase": 3,
- "phaseName": "通り道が開通",
- "phaseDesc": "信用層に2つ以上点灯。　※期限切れのまま点灯・接近を保持：私募信用、HY OAS",
+ "updatedAt": "2026-11-11T06:53:17+09:00",
+ "builtAt": "2026-11-11T07:00+09:00",
+ "phase": 2,
+ "phaseName": "通り道の予兆",
+ "phaseDesc": "信用層に1つ点灯。　※期限切れのまま点灯・接近を保持：私募信用",
  "counts": {
   "origin": [
    3,
@@ -121,18 +121,18 @@
  ],
  "values": {
   "vix": {
-   "value": 19.46,
+   "value": 19.63,
    "unit": "",
    "observedAt": "2026-11-10",
-   "change": "前日比 -0.46（Yahoo確定終値）",
-   "source": "https://finance.yahoo.com/quote/%5EVIX/"
+   "change": "−0.39（前日20.02）。25以下が続く",
+   "source": "https://journalarta.com/en/2026/11/11/stock-market-today-sp-500-slips-0-38-to-7520-93-and-nasdaq-falls-0-74-as-10-year-yield-rises-to-4-98/"
   },
   "us10": {
-   "value": 4.983,
+   "value": 4.98,
    "unit": "%",
    "observedAt": "2026-11-10",
-   "change": "前日比 +0.119（Yahoo確定終値）",
-   "source": "https://finance.yahoo.com/quote/%5ETNX/"
+   "change": "4.98%（前日4.86%から+12bp）／5日 +3bp（11/3 4.95%）／20日差は10/13値が未確認で算出不可。CPI上振れで5%に接近",
+   "source": "https://journalarta.com/en/2026/11/11/stock-market-today-sp-500-slips-0-38-to-7520-93-and-nasdaq-falls-0-74-as-10-year-yield-rises-to-4-98/"
   },
   "jgb10": {
    "value": 2.75,
