@@ -45,9 +45,9 @@
   },
   "欧州ソブリン": {
    "since": "2026-11-10",
-   "lit_since": "2026-11-10",
+   "lit_since": null,
    "before_start": false,
-   "st": "lit"
+   "st": "near"
   }
  }
 }
