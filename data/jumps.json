@@ -1,5 +1,5 @@
 {
- "at": "2026-11-10T14:55+09:00",
+ "at": "2026-11-10T15:15+09:00",
  "th": -7.0,
  "hits": [
   {
@@ -14,6 +14,21 @@
      "title": "JT株価、私設取引でストップ安 ロシアが資産を一時管理下に - 日本経済新聞",
      "url": "https://news.google.com/rss/articles/CBMibEFVX3lxTE5nZkZXMWMyRklYTjQtaWJDenRYZEprXzdJTWpkdjdEa1ZreldFeHBTbWp3dXpHblRuWjlCQWFRTlRzQllyVnFXSERudm5xSlc0QjZrV21JNmxPb2xZU01QM2QtcGpuRWlPS0djcA?oc=5",
      "date": "Thu, 05 Nov 2026 13:45:34 GMT"
+    }
+   ]
+  },
+  {
+   "code": "7974",
+   "name": "任天堂",
+   "r": -98.0,
+   "price": null,
+   "prev": null,
+   "note": "見出しで検知（PTS・特別気配など。値段は未確認）",
+   "news": [
+    {
+     "title": "特別気配＞ 任天堂、ソニーＧ、住友鉱が買い気配(株探ニュース) - Yahoo!ファイナンス",
+     "url": "https://news.google.com/rss/articles/CBMihwFBVV95cUxOSEo1c3NFbkR5QXhkMVJjVUNDcFliYlNPZlJRR3hSQmlRLUY4UDJ2NDMxMUk4Y3hUdWU5ZkZOUFZ2cUNYQWdjTEFhc1VINE1sY2VxdHZ3dTh2RDQwMzRmd2ZicTN1emJjUU4tVVJYd25jV0FiaE5yLUtTLTFBRlo2OUNCTDEyS3c?oc=5",
+     "date": "Thu, 05 Nov 2026 00:04:04 GMT"
     }
    ]
   }
