@@ -32,8 +32,8 @@
    "hy": null,
    "hy_20": null,
    "nfci": null,
-   "brent": 91.57,
-   "brent_20": -0.141,
+   "brent": 91.79,
+   "brent_20": -0.139,
    "usdjpy": 158.292,
    "yen_20": 0.001,
    "credit_20": -0.023
@@ -44,7 +44,7 @@
    "last": 58776,
    "prev5": 63082
   },
-  "refreshed": "2026-11-10 12:49"
+  "refreshed": "2026-11-10 13:12"
  },
  "blocked": [],
  "updated": "2026-11-09 16:32",
