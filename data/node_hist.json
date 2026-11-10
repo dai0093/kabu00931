@@ -42,6 +42,12 @@
    "lit_since": "2026-11-06",
    "before_start": false,
    "st": "lit"
+  },
+  "欧州ソブリン": {
+   "since": "2026-11-10",
+   "lit_since": "2026-11-10",
+   "before_start": false,
+   "st": "lit"
   }
  }
 }
