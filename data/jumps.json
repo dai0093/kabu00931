@@ -1,5 +1,5 @@
 {
- "at": "2026-11-11T09:56+09:00",
+ "at": "2026-11-11T10:16+09:00",
  "th": -7.0,
  "hits": [
   {
@@ -14,30 +14,6 @@
      "title": "JT株価、私設取引でストップ安 ロシアが資産を一時管理下に - 日本経済新聞",
      "url": "https://news.google.com/rss/articles/CBMibEFVX3lxTE5nZkZXMWMyRklYTjQtaWJDenRYZEprXzdJTWpkdjdEa1ZreldFeHBTbWp3dXpHblRuWjlCQWFRTlRzQllyVnFXSERudm5xSlc0QjZrV21JNmxPb2xZU01QM2QtcGpuRWlPS0djcA?oc=5",
      "date": "Thu, 05 Nov 2026 13:45:34 GMT"
-    }
-   ]
-  },
-  {
-   "code": "9984",
-   "name": "ソフトバンクG",
-   "r": -9.0,
-   "price": 3522,
-   "prev": 3872,
-   "news": [
-    {
-     "title": "今日の株価材料（新聞など、11日）ソフトバンクG、4〜9月期最終赤字7680億円 - 日本経済新聞",
-     "url": "https://news.google.com/rss/articles/CBMibEFVX3lxTE5UaWd3ZGp0cTlCYkpIX1lXeENQSHBIcEs5dEs0SWFxcGU3RzhmOHU0UWFHbzUweU9XTWlFNGxiTWZXNXJDaFVMRi1neXRVZ1FLWkJETU1yYldWeHdWX0o0aXJCZVlTakRNSEFURw?oc=5",
-     "date": "Tue, 10 Nov 2026 22:21:56 GMT"
-    },
-    {
-     "title": "ソフトバンクG､AIデータセンターで試行錯誤－損失で7四半期ぶり赤字 - Bloomberg.com",
-     "url": "https://news.google.com/rss/articles/CBMid0FVX3lxTFB0cUk1YlJIekxKbXVLRUdZcUE3eXdJU2l4ODdPWndOMHZPNFBjVWFOODBHOU5tUHk3dGRqZU9HNkdyTThqWkxWZ0NtUTVkSU9wdmJfR0cxV2t6Nm1GcWpKcExrejJaMlN4QnRtSklIV1JlTWhrLWxV?oc=5",
-     "date": "Tue, 10 Nov 2026 09:50:00 GMT"
-    },
-    {
-     "title": "株価指数先物【引け後】 AI関連株はまちまち、ソフトバンクＧの決算待ちに - 株探",
-     "url": "https://news.google.com/rss/articles/CBMiYEFVX3lxTE1ESGY1YWZRMFFpdmpaekV4c2EzYzBWMVBwQUZOa2txTzk2TmNTdl9fNFR3OG1naWNRMVRZM3Uwb2I3Y0laMF9HUEhzb3Vwa09NRDYwT2ZFVkJ2Vk03b1JDQw?oc=5",
-     "date": "Mon, 09 Nov 2026 09:34:05 GMT"
     }
    ]
   }
