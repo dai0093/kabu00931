@@ -1,0 +1,9 @@
+range 2008-01-04 2026-11-11 736.1 last r 2.34 dd60 92.7
+all ~2011 n 974 next1 up% 40.3 avg% -0.07 | next5 up% 40.3 avg% -0.39
+all 2012~ n 3651 next1 up% 44.6 avg% 0.08 | next5 up% 52.0 avg% 0.39
+up2 ~2011 n 148 next1 up% 42.6 avg% -0.03 | next5 up% 36.5 avg% -1.02
+up2 2012~ n 380 next1 up% 44.5 avg% 0.18 | next5 up% 49.2 avg% 0.44
+up2_dd5 ~2011 n 96 next1 up% 40.6 avg% -0.14 | next5 up% 34.4 avg% -1.12
+up2_dd5 2012~ n 154 next1 up% 41.6 avg% -0.03 | next5 up% 50.7 avg% 0.23
+up2_dd5_nk<200 ~2011 n 80 next1 up% 43.8 avg% -0.12 | next5 up% 36.2 avg% -1.07
+up2_dd5_nk<200 2012~ n 77 next1 up% 46.8 avg% 0.3 | next5 up% 56.0 avg% 0.6
