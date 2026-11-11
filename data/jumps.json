@@ -1,5 +1,5 @@
 {
- "at": "2026-11-11T09:35+09:00",
+ "at": "2026-11-11T09:56+09:00",
  "th": -7.0,
  "hits": [
   {
@@ -20,8 +20,8 @@
   {
    "code": "9984",
    "name": "ソフトバンクG",
-   "r": -9.8,
-   "price": 3492,
+   "r": -9.0,
+   "price": 3522,
    "prev": 3872,
    "news": [
     {
@@ -30,14 +30,14 @@
      "date": "Tue, 10 Nov 2026 22:21:56 GMT"
     },
     {
+     "title": "ソフトバンクG､AIデータセンターで試行錯誤－損失で7四半期ぶり赤字 - Bloomberg.com",
+     "url": "https://news.google.com/rss/articles/CBMid0FVX3lxTFB0cUk1YlJIekxKbXVLRUdZcUE3eXdJU2l4ODdPWndOMHZPNFBjVWFOODBHOU5tUHk3dGRqZU9HNkdyTThqWkxWZ0NtUTVkSU9wdmJfR0cxV2t6Nm1GcWpKcExrejJaMlN4QnRtSklIV1JlTWhrLWxV?oc=5",
+     "date": "Tue, 10 Nov 2026 09:50:00 GMT"
+    },
+    {
      "title": "株価指数先物【引け後】 AI関連株はまちまち、ソフトバンクＧの決算待ちに - 株探",
      "url": "https://news.google.com/rss/articles/CBMiYEFVX3lxTE1ESGY1YWZRMFFpdmpaekV4c2EzYzBWMVBwQUZOa2txTzk2TmNTdl9fNFR3OG1naWNRMVRZM3Uwb2I3Y0laMF9HUEhzb3Vwa09NRDYwT2ZFVkJ2Vk03b1JDQw?oc=5",
      "date": "Mon, 09 Nov 2026 09:34:05 GMT"
-    },
-    {
-     "title": "ソフトバンクG株価一時14.9%高 アーム株高やアンソロピック上場観測 - 日本経済新聞",
-     "url": "https://news.google.com/rss/articles/CBMibEFVX3lxTE1hUS1xUGwxTjdaZHZzbm5iSnp3ZUNSVEMyQVNZdzBDTDEtdWI1NmZCM0pCa1BVOXFmZk9hQ1VoVzAxUjFkZXNFbFEtNDRWX3pVVGRGR3JyZ2d4eUNvMC1yVEY2d3dhMHhrZWVLUQ?oc=5",
-     "date": "Tue, 10 Nov 2026 02:25:24 GMT"
     }
    ]
   }
