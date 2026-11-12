@@ -1,7 +1,32 @@
 {
- "at": "2026-11-12T08:58+09:00",
+ "at": "2026-11-12T09:19+09:00",
  "th": -7.0,
  "hits": [
+  {
+   "code": "1925",
+   "name": "大和ハウス",
+   "r": -99.0,
+   "price": null,
+   "prev": 2262,
+   "note": "本日まだ売買不成立（ストップ気配・売買停止の可能性）",
+   "news": [
+    {
+     "title": "大和ハウスリート投資法人【8984】：株価・株式情報（夜間PTS含む） - Yahoo!ファイナンス",
+     "url": "https://news.google.com/rss/articles/CBMiUkFVX3lxTFBTZzE1d1RQNGFlYndOaFBnaDBkZ1lWZzFLSEFPVGxpTUZueVlUbmVleHpZOEd4U3hkRUM1ekkyOGs0RGs1dXdpV2Z6UTVwR3hNbXc?oc=5",
+     "date": "Mon, 09 Nov 2026 08:00:00 GMT"
+    },
+    {
+     "title": "ADR主要銘柄（日本）－ソフトバンクＧ、大和ハウスが上昇、ニデック、キーエンスが下落(トレーダーズ・ウェブ) - Yahoo!ファイナンス",
+     "url": "https://news.google.com/rss/articles/CBMihwFBVV95cUxOV19YNDdLSG9jOVNfcnpSZHRvSExpcEF1bjBWQm5MbEtmZkdIRlR1dHlFczNLMzJJZmI1N282cU9UMEQ0N1NMTDdyTk9acG5ROWRtaUZCbzg2YVNvY203M3pENjNsRnhiWFVpRVdBRjVhTXRnTldLWVpBQWExMGRFNFlRQ3RVazQ?oc=5",
+     "date": "Wed, 11 Nov 2026 22:20:01 GMT"
+    },
+    {
+     "title": "今日の株価材料（新聞など、10日）大和ハウス、大和自に出資 銀座でホテル開発へ - 日本経済新聞",
+     "url": "https://news.google.com/rss/articles/CBMibEFVX3lxTFBVTE1hcWROWG1Wb2l0Ynh3ODJpc3VHajU3eEt2Z1NaVU1BZHU4NlRiSU8yVkNkVTNzdzk4cEl3ZUdxN2drQVllcTVJMFIzeXhHdTBOSU1TRW9pTXpNSUd5NWNhZHZtUVVrT1RKSw?oc=5",
+     "date": "Thu, 10 Sep 2026 07:00:00 GMT"
+    }
+   ]
+  },
   {
    "code": "2914",
    "name": "JT",
