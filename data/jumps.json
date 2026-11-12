@@ -1,21 +1,5 @@
 {
- "at": "2026-11-13T06:54+09:00",
+ "at": "2026-11-13T06:59+09:00",
  "th": -7.0,
- "hits": [
-  {
-   "code": "2914",
-   "name": "JT",
-   "r": -98.0,
-   "price": null,
-   "prev": null,
-   "note": "見出しで検知（PTS・特別気配など。値段は未確認）",
-   "news": [
-    {
-     "title": "JT株価、私設取引でストップ安 ロシアが資産を一時管理下に - 日本経済新聞",
-     "url": "https://news.google.com/rss/articles/CBMibEFVX3lxTE5nZkZXMWMyRklYTjQtaWJDenRYZEprXzdJTWpkdjdEa1ZreldFeHBTbWp3dXpHblRuWjlCQWFRTlRzQllyVnFXSERudm5xSlc0QjZrV21JNmxPb2xZU01QM2QtcGpuRWlPS0djcA?oc=5",
-     "date": "Thu, 05 Nov 2026 13:45:34 GMT"
-    }
-   ]
-  }
- ]
+ "hits": []
 }

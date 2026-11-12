@@ -8,9 +8,9 @@
    "before_start": true
   },
   "日米金利": {
-   "st": "near",
+   "st": "lit",
    "since": "2026-10-12",
-   "lit_since": null,
+   "lit_since": "2026-11-13",
    "before_start": true
   },
   "AI債務": {
