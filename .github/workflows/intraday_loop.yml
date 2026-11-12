@@ -11,6 +11,7 @@ on:
     paths: [".github/workflows/intraday_loop.yml"]
 permissions:
   contents: write
+  actions: write
 concurrency:
   group: intraday-loop
   cancel-in-progress: false
@@ -41,6 +42,16 @@ jobs:
             git diff --cached --quiet || { git commit -qm "intraday loop $H" && git pull -q --rebase -X theirs && git push -q; } || echo push失敗
             sleep 1200
           done
+      - name: 大引け後の本判定（GitHubの定時実行が遅れても当日中に終値を反映）
+        if: always()
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          H=$(TZ=Asia/Tokyo date +%H%M); D=$(TZ=Asia/Tokyo date +%u)
+          if [ "$D" -le 5 ] && [ "$H" -ge 1500 ]; then
+            [ "$H" -lt 1535 ] && sleep 600
+            gh workflow run finwatch.yml --ref main -R ${{ github.repository }} && echo "本判定を起動"
+          fi
 # kick 2026-11-05
 # kick 2026-11-06
 # jumps
