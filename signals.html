@@ -592,7 +592,7 @@ function render(){
   PATHS.forEach(P=>{const H=PHI&&PHI.paths&&Object.entries(PHI.paths).find(([k])=>P.nm.startsWith(k.slice(0,3)));P.h=H?H[1]:null;
     P.stage=Math.floor(P.st.reduce((a,x)=>a+sc(x),0));const on=P.n.filter((n,q)=>P.st[q]==='lit'||P.st[q]==='near').map(n=>NHN[n]&&NHN[n].since).filter(Boolean).sort();
     P.sd=on.length?on[on.length-1]:null;const hs=P.h?Math.min(P.h.stage_now??P.stage,P.h.nodes.length):null;
-    P.tr=P.h?P.h.trans.find(t=>t.from===Math.max(1,hs)):null;P.nextIdx=P.st.lastIndexOf('lit')+1;
+    P.tr=P.h?P.h.trans.find(t=>t.from===Math.max(1,Math.min(P.stage,P.h.nodes.length-1))):null;P.nextIdx=P.st.lastIndexOf('lit')+1;
     P.eta=(P.tr&&P.sd&&P.tr.days_med!=null)?addBD(P.sd,P.tr.days_med):null;P.score=P.v*100+(P.tr?P.tr.p60/10:0)});
   const top=PATHS.slice().sort((a,b)=>b.score-a.score)[0];
   const W=110,G=18,PX=118,PW=140,RH=74,maxN=Math.max(...PATHS.map(P=>P.n.length)),SW=PX+PW+G+maxN*(W+G)+90,SH=PATHS.length*RH+30;
@@ -619,8 +619,8 @@ function render(){
    <div class="note">目盛り：−10%＝調整の線、−20%＝弱気相場の線、−35%、−61%＝リーマンショック時の日経（高値から安値）。下落はすでに起きている事実で、予測ではありません。</div>
    ${nk0?`<div class="note" style="color:var(--fg)">リーマン級（−61%）まで、日経はあと${((1-(nk0.hi*0.39)/nk0.c)*100).toFixed(0)}%の下げ（${Math.round(nk0.hi*0.39).toLocaleString()}円）。</div>`:''}
    <div class="ttl" style="margin-top:14px"><span class="nm">どの経路で進んでいるか</span></div>
-   ${PATHS.slice().sort((a,b)=>b.score-a.score).map(P=>`<div style="margin:10px 0;padding:8px;border-radius:8px;background:${P===top?'#3a1d24':'transparent'};border:1px solid ${P===top?'#e5534b':'#2a3550'}"><div style="font-weight:700">${esc(P.nm.replace(/（.*$/,''))}　<span style="color:${P.v>=1?'#ff5555':P.v>=0.5?'#e8b04b':'var(--sub)'}">${P.stage}/${P.n.length}段</span></div><div style="margin:4px 0">${dots(P)}</div><div class="note">${P.n.map((n,q)=>`${P.st[q]==='lit'?'●':P.st[q]==='near'?'◐':'○'}${esc(n)}`).join(' → ')}</div>${P.tr||P.eta?`<div class="note" style="color:#ffd27a">${P.nextIdx!=null&&P.n[P.nextIdx]?'次：'+esc(P.n[P.nextIdx])+'　':''}${P.tr?`60日内に進む確率${P.tr.p60}%`:''}${P.eta?`・${esc(P.eta)}`:''}</div>`:''}</div>`).join('')}
-   <div class="note">●＝点灯（赤）、◐＝接近（黄）、○＝未点灯。確率は検証49（2008年以降の段の移り方）。経路の分岐図は過去の検証で「予測出来た」のは2008型だけ（検証47）。</div>
+   ${PATHS.slice().sort((a,b)=>b.score-a.score).map(P=>`<div style="margin:10px 0;padding:8px;border-radius:8px;background:${P===top?'#3a1d24':'transparent'};border:1px solid ${P===top?'#e5534b':'#2a3550'}"><div style="font-weight:700">${esc(P.nm.replace(/（.*$/,''))}　<span style="color:${P.v>=1?'#ff5555':P.v>=0.5?'#e8b04b':'var(--sub)'}">${P.stage}/${P.n.length}段</span></div><div style="margin:4px 0">${dots(P)}</div><div class="note">${P.n.map((n,q)=>`<span style="color:${P.st[q]==='lit'?'#ff7b72':P.st[q]==='near'?'#e8b04b':'var(--sub)'}">${esc(n)}</span>`).join(' → ')}</div>${P.tr||P.eta?`<div class="note" style="color:#ffd27a">${P.nextIdx!=null&&P.n[P.nextIdx]?'次：'+esc(P.n[P.nextIdx])+'　':''}${P.tr?`60日内に進む確率${P.tr.p60}%`:''}${P.eta?`・${esc(P.eta)}`:''}</div>`:''}</div>`).join('')}
+   <div class="note">赤＝点灯、黄＝接近、灰＝未点灯。確率は検証49（2008年以降の段の移り方）。経路の分岐図は過去の検証で「予測出来た」のは2008型だけ（検証47）。</div>
    <details style="margin-top:8px"><summary>詳しい分岐図（横スクロール）</summary>
    <div style="overflow-x:auto;margin:8px -4px"><svg width="${SW}" height="${SH}" style="font-family:inherit"><defs><marker id="ar" markerUnits="userSpaceOnUse" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 z" fill="#7d8aa8"/></marker></defs>${svg}</svg></div>
    <div class="note">横にスクロールできます。赤＝点灯、黄＝接近。点線＝別の経路と共通の項目（そこで経路が合流・乗り換え）。「○日目」は点灯・接近してからの日数（記録開始${esc((NH&&NH.start)||'')}より前からの場合は「以上」）。確率・日数・予定は2008年以降の代替データでの段の移り方（検証49）。更新 ${esc((LT.builtAt||LT.updatedAt).replace('T',' ').slice(0,16))}</div>
