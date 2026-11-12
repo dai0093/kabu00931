@@ -41,26 +41,26 @@
   "source": "https://finance.yahoo.com/quote/%5ESOX/"
  },
  "nkf": {
-  "value": 2.8,
+  "value": 2.74,
   "observedAt": "2026-11-11",
   "change": "CME日経先物 前日比%（Yahoo）",
   "source": "https://finance.yahoo.com/quote/NKD%3DF/"
  },
  "hy_px": {
-  "value": -1.5,
-  "observedAt": "2026-11-10",
+  "value": -0.48,
+  "observedAt": "2026-11-11",
   "change": "HYG÷IEF 20日変化%（HY OASの代替・検証46）",
   "source": "https://finance.yahoo.com/quote/HYG/"
  },
  "nfci_px": {
-  "value": 0.43,
-  "observedAt": "2026-11-10",
+  "value": -0.07,
+  "observedAt": "2026-11-11",
   "change": "金融ストレス合成（VIX・社債・米銀のzスコア平均、NFCIの代替・検証46）",
   "source": "https://finance.yahoo.com/quote/%5EVIX/"
  },
  "pc_px": {
-  "value": 6.58,
-  "observedAt": "2026-11-10",
+  "value": -0.56,
+  "observedAt": "2026-11-11",
   "change": "私募信用運用会社株（BX・APO・KKR・ARES）5日中央値%（代替・検証46）",
   "source": "https://finance.yahoo.com/quote/BX/"
  },
@@ -70,5 +70,5 @@
   "change": "仏−独10年 月次平均（ECB）",
   "source": "https://data.ecb.europa.eu/"
  },
- "_at": "2026-11-12T11:22+09:00"
+ "_at": "2026-11-12T11:54+09:00"
 }
