@@ -1,5 +1,5 @@
 {
- "at": "2026-11-14T02:09+09:00",
+ "at": "2026-11-14T08:59+09:00",
  "th": -7.0,
  "hits": [
   {
@@ -11,72 +11,9 @@
    "note": "見出しで検知（PTS・特別気配など。値段は未確認）",
    "news": [
     {
-     "title": "JT株価、私設取引でストップ安 ロシアが資産を一時管理下に - 日本経済新聞",
-     "url": "https://news.google.com/rss/articles/CBMibEFVX3lxTE5nZkZXMWMyRklYTjQtaWJDenRYZEprXzdJTWpkdjdEa1ZreldFeHBTbWp3dXpHblRuWjlCQWFRTlRzQllyVnFXSERudm5xSlc0QjZrV21JNmxPb2xZU01QM2QtcGpuRWlPS0djcA?oc=5",
-     "date": "Thu, 05 Nov 2026 13:45:34 GMT"
-    }
-   ]
-  },
-  {
-   "code": "4543",
-   "name": "テルモ",
-   "r": -98.0,
-   "price": null,
-   "prev": null,
-   "note": "見出しで検知（PTS・特別気配など。値段は未確認）",
-   "news": [
-    {
-     "title": "話題株先取り【特別気配】速報 ＜買いトップ キオクシア、売りトップ テルモ＞ - 株探",
-     "url": "https://news.google.com/rss/articles/CBMiYEFVX3lxTE1DLVZIM0xWMG1iQ1ZNY0xmb05nVVF5TG5nQU5ZYzBvZUo5S1QzOXRHdkg0TEU1Sl9XTkw1RnlQWlJoa2FkMWwyNUtVREE4S3UxbEVGcTAyTUd0MjJtZGtqMQ?oc=5",
-     "date": "Fri, 13 Nov 2026 00:03:22 GMT"
-    }
-   ]
-  },
-  {
-   "code": "7012",
-   "name": "川崎重工",
-   "r": -8.5,
-   "price": 1809,
-   "prev": 1978,
-   "news": [
-    {
-     "title": "菱重工や川重など防衛株が急落、防衛費５年５０兆－６０兆円台案浮上と(ウエルスアドバイザー) - Yahoo!ファイナンス",
-     "url": "https://news.google.com/rss/articles/CBMihwFBVV95cUxQNVd0QllLVmZERW5kMjNycWhYR1JEVl82bS1hSXEtUl9BR2ljY1FoaDdVSi1qWUNtbTV3T1NUcG1BSmlkMmNSREVhRU5oSTNjQW5EZFRVM3UxRmcwdFpEcWszLVZWOElDVVJ6R3FONHdvWGFVS0JWTW1DS1FSdXF2SlIyOTRMMGs?oc=5",
-     "date": "Fri, 13 Nov 2026 05:29:08 GMT"
-    },
-    {
-     "title": "川崎重工の株価はなぜ下落？買い時を見極める3つの条件 - つばめ投資顧問",
-     "url": "https://news.google.com/rss/articles/CBMiTkFVX3lxTFBHWEp0WWNNWlkxUUt4QVJON1U3WC1NeW1TVTV2bHBDaUllT0hXV2dRQXY5NElJYlRFdEMxOHhULWFqbUdPNmdackZMNFNpQQ?oc=5",
-     "date": "Sun, 25 Oct 2026 07:00:00 GMT"
-    },
-    {
-     "title": "川崎重工業、株価が朝高後に失速 31年3月期に売上高3兆3000億円 - 日本経済新聞",
-     "url": "https://news.google.com/rss/articles/CBMibEFVX3lxTE10eHlDcjFWaGFmMWtaME12YnQ4anoxbk5hY0gyOHpSejk2WVkzVDU1aGcyRHY0NGktMmstVVc5U09DR3F0SEJmM2NXZlJuMjhqZGpOM01FYlVQQUgyVUI5WjNtREpMUnl4UFhtbQ?oc=5",
-     "date": "Wed, 07 Oct 2026 07:00:00 GMT"
-    }
-   ]
-  },
-  {
-   "code": "7011",
-   "name": "三菱重工",
-   "r": -7.4,
-   "price": 2920,
-   "prev": 3155,
-   "news": [
-    {
-     "title": "三菱重工業(株)【MHVIY】：株価・株式情報 - Yahoo!ファイナンス",
-     "url": "https://news.google.com/rss/articles/CBMiUEFVX3lxTE96UHUzTzN4dkM0eWlBaDE4WTJRVS1PTlRqWG9oU29wbzlhY25oV3hfTmZETGI5NWY4QVRLQThOLXF3SHpGWGJiZjVkVzc3WEVh?oc=5",
-     "date": "Fri, 13 Nov 2026 13:38:52 GMT"
-    },
-    {
-     "title": "日経平均終値1340円高 三菱重工「3本柱」がつないだ業績期待の買い - 日本経済新聞",
-     "url": "https://news.google.com/rss/articles/CBMibEFVX3lxTE9lZm81NTRJUU5hZFpkWlZnMXJ2QW5MX3Z5X1U2bHAtNzRqdW0yNEloem9nWWxKc1hMdlFYdkp4NThIX19Rd0F1a2JuczVVYmNNOUpRUENRT2RFTHVWMHZFa0czczZGRk9aZ2lpag?oc=5",
-     "date": "Mon, 09 Nov 2026 02:58:37 GMT"
-    },
-    {
-     "title": "三菱重工、自社株買いと業績予想上方修正後も4.6%下落し52週安値 - BigGo ファイナンス",
-     "url": "https://news.google.com/rss/articles/CBMidEFVX3lxTE92ME1oUl9tTnFVWVJyOFI3Wi0tN3NWYU9lWU1SVWtKZFk1RUF3UTRxRjVyNmRYcWhBWVF2ZlV6Tl9oQW04VWxiajNtUkp3V0k1MFBwcUo0RVlOa19rT01uVGhCd1Z1M3VnTnhneHVBdUg3cmNR?oc=5",
-     "date": "Fri, 06 Nov 2026 18:16:00 GMT"
+     "title": "東証、JT株の制限値幅の下限を10日に拡大 PTS夜間は8.9％安の4800円 - QUICK Money World",
+     "url": "https://news.google.com/rss/articles/CBMiVkFVX3lxTFB5eHdFSmpmSE13Qnp5bGFpbGU2X19jdWNtT2xZWEVYVktKdHBlR0RmRnVHU0RzVVU2YjhWWmRaNlFpaTY2c0t0TXM3N3RLYlV3dUR1Y0Z3?oc=5",
+     "date": "Mon, 09 Nov 2026 23:48:00 GMT"
     }
    ]
   }
