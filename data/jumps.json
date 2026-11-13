@@ -1,5 +1,5 @@
 {
- "at": "2026-11-13T10:55+09:00",
+ "at": "2026-11-13T11:01+09:00",
  "th": -7.0,
  "hits": [
   {
@@ -20,24 +20,15 @@
   {
    "code": "4543",
    "name": "テルモ",
-   "r": -7.0,
-   "price": 2378,
-   "prev": 2558,
+   "r": -98.0,
+   "price": null,
+   "prev": null,
+   "note": "見出しで検知（PTS・特別気配など。値段は未確認）",
    "news": [
     {
      "title": "話題株先取り【特別気配】速報 ＜買いトップ キオクシア、売りトップ テルモ＞ - 株探",
      "url": "https://news.google.com/rss/articles/CBMiYEFVX3lxTE1DLVZIM0xWMG1iQ1ZNY0xmb05nVVF5TG5nQU5ZYzBvZUo5S1QzOXRHdkg0TEU1Sl9XTkw1RnlQWlJoa2FkMWwyNUtVREE4S3UxbEVGcTAyTUd0MjJtZGtqMQ?oc=5",
      "date": "Fri, 13 Nov 2026 00:03:22 GMT"
-    },
-    {
-     "title": "話題株先取り【特別気配】速報 ＜買いトップ キオクシア、売りトップ テルモ＞(株探ニュース) - Yahoo!ファイナンス",
-     "url": "https://news.google.com/rss/articles/CBMihwFBVV95cUxQcS00MTBqckN2Z1lVTkZzN0ctcnVnOVNoa1AyWDY4QXFDOHJLVERSUHJqQUdnSk1mSmFBVEZfVzVqZVVGMG5XVW45UHcwcExuVHhBM0YtZHFqei15YWZuRENNX0V3MU96UzdpbFc4QkE4cUxSNVJDQnowODMxRURoc0VqVktVSDA?oc=5",
-     "date": "Fri, 13 Nov 2026 00:18:31 GMT"
-    },
-    {
-     "title": "テルモ株価が急反落 27年3月期純利益36%減に下方修正 - 日本経済新聞",
-     "url": "https://news.google.com/rss/articles/CBMie0FVX3lxTE5hVjIxejAxdGxlay1DZ2NCclZYeUdNVWVETUpNTGlLTUhvWW15bkh5LTBoUzZqSGUtQ2tKRk1qaU9lcVFVNDZ6bUNtM1VYSW1Za09DRmpYSlVoekdnd1hiNUdVb2ZXdldld2QtaDQyZ0NRc3dtdy1VczdvRQ?oc=5",
-     "date": "Fri, 13 Nov 2026 01:21:00 GMT"
     }
    ]
   }
