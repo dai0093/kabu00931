@@ -1,5 +1,5 @@
 {
- "at": "2026-11-13T08:54+09:00",
+ "at": "2026-11-13T09:14+09:00",
  "th": -7.0,
  "hits": [
   {
@@ -14,6 +14,21 @@
      "title": "JT株価、私設取引でストップ安 ロシアが資産を一時管理下に - 日本経済新聞",
      "url": "https://news.google.com/rss/articles/CBMibEFVX3lxTE5nZkZXMWMyRklYTjQtaWJDenRYZEprXzdJTWpkdjdEa1ZreldFeHBTbWp3dXpHblRuWjlCQWFRTlRzQllyVnFXSERudm5xSlc0QjZrV21JNmxPb2xZU01QM2QtcGpuRWlPS0djcA?oc=5",
      "date": "Thu, 05 Nov 2026 13:45:34 GMT"
+    }
+   ]
+  },
+  {
+   "code": "4543",
+   "name": "テルモ",
+   "r": -98.0,
+   "price": null,
+   "prev": null,
+   "note": "見出しで検知（PTS・特別気配など。値段は未確認）",
+   "news": [
+    {
+     "title": "話題株先取り【特別気配】速報 ＜買いトップ キオクシア、売りトップ テルモ＞ - 株探",
+     "url": "https://news.google.com/rss/articles/CBMiYEFVX3lxTE1DLVZIM0xWMG1iQ1ZNY0xmb05nVVF5TG5nQU5ZYzBvZUo5S1QzOXRHdkg0TEU1Sl9XTkw1RnlQWlJoa2FkMWwyNUtVREE4S3UxbEVGcTAyTUd0MjJtZGtqMQ?oc=5",
+     "date": "Fri, 13 Nov 2026 00:03:22 GMT"
     }
    ]
   }
