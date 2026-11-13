@@ -1,5 +1,5 @@
 {
- "at": "2026-11-13T15:14+09:00",
+ "at": "2026-11-13T15:57+09:00",
  "th": -7.0,
  "hits": [
   {
@@ -35,10 +35,15 @@
   {
    "code": "7012",
    "name": "川崎重工",
-   "r": -9.1,
-   "price": 1798,
+   "r": -8.5,
+   "price": 1809,
    "prev": 1978,
    "news": [
+    {
+     "title": "菱重工や川重など防衛株が急落、防衛費５年５０兆－６０兆円台案浮上と(ウエルスアドバイザー) - Yahoo!ファイナンス",
+     "url": "https://news.google.com/rss/articles/CBMihwFBVV95cUxQNVd0QllLVmZERW5kMjNycWhYR1JEVl82bS1hSXEtUl9BR2ljY1FoaDdVSi1qWUNtbTV3T1NUcG1BSmlkMmNSREVhRU5oSTNjQW5EZFRVM3UxRmcwdFpEcWszLVZWOElDVVJ6R3FONHdvWGFVS0JWTW1DS1FSdXF2SlIyOTRMMGs?oc=5",
+     "date": "Fri, 13 Nov 2026 05:29:08 GMT"
+    },
     {
      "title": "川崎重工の株価はなぜ下落？買い時を見極める3つの条件 - つばめ投資顧問",
      "url": "https://news.google.com/rss/articles/CBMiTkFVX3lxTFBHWEp0WWNNWlkxUUt4QVJON1U3WC1NeW1TVTV2bHBDaUllT0hXV2dRQXY5NElJYlRFdEMxOHhULWFqbUdPNmdackZMNFNpQQ?oc=5",
@@ -48,19 +53,14 @@
      "title": "川崎重工業、株価が朝高後に失速 31年3月期に売上高3兆3000億円 - 日本経済新聞",
      "url": "https://news.google.com/rss/articles/CBMibEFVX3lxTE10eHlDcjFWaGFmMWtaME12YnQ4anoxbk5hY0gyOHpSejk2WVkzVDU1aGcyRHY0NGktMmstVVc5U09DR3F0SEJmM2NXZlJuMjhqZGpOM01FYlVQQUgyVUI5WjNtREpMUnl4UFhtbQ?oc=5",
      "date": "Wed, 07 Oct 2026 07:00:00 GMT"
-    },
-    {
-     "title": "川崎重工業(株)【7012】：今の株価の理由は？値動きの背景をAIが解説 - Yahoo!ファイナンス",
-     "url": "https://news.google.com/rss/articles/CBMiX0FVX3lxTFBiMndhdFgyaG83SHE3QWdnTVhhOVV6am9iaF9uOXBlQW5zYm5Cc3lnM201c0cyMEY0ZllrSlkzRVEzQjRiTnNCUjg2YlpUNjlQSW00WlVJZVdxNDFxampZ?oc=5",
-     "date": "Mon, 16 Feb 2026 09:04:16 GMT"
     }
    ]
   },
   {
    "code": "7011",
    "name": "三菱重工",
-   "r": -7.9,
-   "price": 2905,
+   "r": -7.4,
+   "price": 2920,
    "prev": 3155,
    "news": [
     {
