@@ -281,11 +281,21 @@ try:
             _nd = settled(_nd, "N225.T")
             for _d, _v in nk_s.items():
                 if _d not in _nd.index: _nd.loc[_d] = _v
-            json.dump({str(k.date()): round(float(v), 2) for k, v in _nd.sort_index().items()}, open("data/nk_daily.json", "w"))
+            _o = {str(k.date()): round(float(v), 2) for k, v in _nd.sort_index().items()}
+            try:  # 2026-11-14修正：Yahooが直近の日を欠いた時に、前回保存した終値を消さない
+                for _k, _v in json.load(open("data/nk_daily.json")).items(): _o.setdefault(_k, _v)
+            except Exception: pass
+            json.dump(dict(sorted(_o.items())), open("data/nk_daily.json", "w"))
             _ix = {}
             for _t, _n in (("^IXIC", "NASDAQ"), ("^SOX", "SOX"), ("^GSPC", "S&P500")):
                 _z = yf.download(_t, period="2y", auto_adjust=False, progress=False)["Close"].squeeze().dropna(); _z.index = pd.to_datetime(_z.index).tz_localize(None)
                 _ix[_n] = {str(k.date()): round(float(v), 2) for k, v in settled(_z, _t).items()}
+            try:
+                for _n, _d0 in json.load(open("data/idx_daily.json")).items():
+                    if _n in _ix:
+                        for _k, _v in _d0.items(): _ix[_n].setdefault(_k, _v)
+                        _ix[_n] = dict(sorted(_ix[_n].items()))
+            except Exception: pass
             json.dump(_ix, open("data/idx_daily.json", "w"))
         except Exception as _en: print("nk_daily失敗", _en)
     _fn = "data/defense_intraday.json" if INTRA else "data/defense.json"; _kept = False

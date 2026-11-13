@@ -20,7 +20,8 @@ if not D: P.append("防御判定（defense.json）が読めない")
 else:
     lag = bd(D["asOf"]) - (0 if now.hour >= 16 else 1)
     if lag >= 1: P.append(f"防御判定の日付が古い（{D['asOf']}）")
-    if "前回の判定を維持" in (D.get("note") or ""): P.append("日経データ欠損で前回の判定を維持中")
+    # 2026-11-14修正：最新営業日の判定を残しているだけ（後の再計算でYahooが欠けた）なら問題にしない。古い日の判定を残している時だけ出す
+    if "前回の判定を維持" in (D.get("note") or "") and lag >= 1: P.append(f"日経データ欠損で前回の判定（{D['asOf']}）を維持中")
     sx = list((D.get("dbg_sox") or {}).keys())
     if sx and bd(sx[-1]) - (0 if now.hour >= 7 else 1) >= 2: P.append(f"SOXが古い（{sx[-1]}）")
 F = ld("data/finwatch.json")
