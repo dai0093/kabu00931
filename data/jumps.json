@@ -1,5 +1,5 @@
 {
- "at": "2026-11-13T14:17+09:00",
+ "at": "2026-11-13T14:38+09:00",
  "th": -7.0,
  "hits": [
   {
@@ -35,8 +35,8 @@
   {
    "code": "7012",
    "name": "川崎重工",
-   "r": -8.2,
-   "price": 1816,
+   "r": -8.9,
+   "price": 1802,
    "prev": 1978,
    "news": [
     {
@@ -59,8 +59,8 @@
   {
    "code": "7011",
    "name": "三菱重工",
-   "r": -7.4,
-   "price": 2923,
+   "r": -8.7,
+   "price": 2881,
    "prev": 3155,
    "news": [
     {
@@ -83,8 +83,8 @@
   {
    "code": "7013",
    "name": "IHI",
-   "r": -7.2,
-   "price": 2297,
+   "r": -7.5,
+   "price": 2289,
    "prev": 2474,
    "news": [
     {
@@ -98,9 +98,9 @@
      "date": "Wed, 04 Nov 2026 08:00:00 GMT"
     },
     {
-     "title": "(株)ＩＨＩ【7013】：今の株価の理由は？値動きの背景をAIが解説 - Yahoo!ファイナンス",
-     "url": "https://news.google.com/rss/articles/CBMiX0FVX3lxTE03b29iR1NScFFDWVl3aFoxaGVueW43VXBIaG5LV3pFMFF3VTdZMGZIQm9pbEZfRjY3RDlMS2pieVdXeDhoQWVUZTZfXzV0Wkw4em1yazhrUVU2UDl5cUhn?oc=5",
-     "date": "Fri, 06 Nov 2026 06:53:13 GMT"
+     "title": "後場コメント No.7 ＳＷＣＣ、ピーエス、ＨＵグループ、ＩＨＩ、住阪セメ、四国銀(トレーダーズ・ウェブ) - Yahoo!ファイナンス",
+     "url": "https://news.google.com/rss/articles/CBMihwFBVV95cUxNOHN3ZmhoZDZ6VkpCdHpHcFg4LUNocnpLdExyWEt4TnlrLWtXbUlUVGdHSXBwR3B6TnRnQlBldF9OaG9QRU5UOVJLWW9YQXE5SzVhaTFQcDdPQWt5OGRBNk81MVg2TXA1cjI2dTVpYi1oeEZQQ0VIbVJTRV90ajhGcDQ0b1JfbUE?oc=5",
+     "date": "Wed, 11 Nov 2026 06:31:04 GMT"
     }
    ]
   }
