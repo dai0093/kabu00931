@@ -1,5 +1,5 @@
 {
- "at": "2026-11-13T13:17+09:00",
+ "at": "2026-11-13T13:37+09:00",
  "th": -7.0,
  "hits": [
   {
@@ -35,8 +35,8 @@
   {
    "code": "7013",
    "name": "IHI",
-   "r": -8.1,
-   "price": 2273,
+   "r": -7.4,
+   "price": 2290,
    "prev": 2474,
    "news": [
     {
@@ -53,6 +53,30 @@
      "title": "(株)ＩＨＩ【7013】：今の株価の理由は？値動きの背景をAIが解説 - Yahoo!ファイナンス",
      "url": "https://news.google.com/rss/articles/CBMiX0FVX3lxTE03b29iR1NScFFDWVl3aFoxaGVueW43VXBIaG5LV3pFMFF3VTdZMGZIQm9pbEZfRjY3RDlMS2pieVdXeDhoQWVUZTZfXzV0Wkw4em1yazhrUVU2UDl5cUhn?oc=5",
      "date": "Fri, 06 Nov 2026 06:53:13 GMT"
+    }
+   ]
+  },
+  {
+   "code": "7012",
+   "name": "川崎重工",
+   "r": -7.2,
+   "price": 1836,
+   "prev": 1978,
+   "news": [
+    {
+     "title": "川崎重工の株価はなぜ下落？買い時を見極める3つの条件 - つばめ投資顧問",
+     "url": "https://news.google.com/rss/articles/CBMiTkFVX3lxTFBHWEp0WWNNWlkxUUt4QVJON1U3WC1NeW1TVTV2bHBDaUllT0hXV2dRQXY5NElJYlRFdEMxOHhULWFqbUdPNmdackZMNFNpQQ?oc=5",
+     "date": "Sun, 25 Oct 2026 07:00:00 GMT"
+    },
+    {
+     "title": "川崎重工業、株価が朝高後に失速 31年3月期に売上高3兆3000億円 - 日本経済新聞",
+     "url": "https://news.google.com/rss/articles/CBMibEFVX3lxTE10eHlDcjFWaGFmMWtaME12YnQ4anoxbk5hY0gyOHpSejk2WVkzVDU1aGcyRHY0NGktMmstVVc5U09DR3F0SEJmM2NXZlJuMjhqZGpOM01FYlVQQUgyVUI5WjNtREpMUnl4UFhtbQ?oc=5",
+     "date": "Wed, 07 Oct 2026 07:00:00 GMT"
+    },
+    {
+     "title": "川崎重工業(株)【7012】：今の株価の理由は？値動きの背景をAIが解説 - Yahoo!ファイナンス",
+     "url": "https://news.google.com/rss/articles/CBMiX0FVX3lxTFBiMndhdFgyaG83SHE3QWdnTVhhOVV6am9iaF9uOXBlQW5zYm5Cc3lnM201c0cyMEY0ZllrSlkzRVEzQjRiTnNCUjg2YlpUNjlQSW00WlVJZVdxNDFxampZ?oc=5",
+     "date": "Mon, 16 Feb 2026 09:04:16 GMT"
     }
    ]
   }
