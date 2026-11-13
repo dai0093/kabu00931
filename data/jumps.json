@@ -1,32 +1,7 @@
 {
- "at": "2026-11-13T10:35+09:00",
+ "at": "2026-11-13T10:55+09:00",
  "th": -7.0,
  "hits": [
-  {
-   "code": "8001",
-   "name": "伊藤忠",
-   "r": -99.0,
-   "price": null,
-   "prev": 2412,
-   "note": "本日まだ売買不成立（ストップ気配・売買停止の可能性）",
-   "news": [
-    {
-     "title": "伊藤忠は続伸、国内証券が目標株価引き上げ - 株探",
-     "url": "https://news.google.com/rss/articles/CBMiYEFVX3lxTE10SHEtNjZpZ01Oc2pETEZUU1R6dl82Q2U4Z09MVTR5cjkzdUh4STVhNlJCbDFGUWRKTzBoa2lFXzY0em1kR3Uza0R5SFRuWFZPZmtqaDlOaXk3a3JSZ3RYdA?oc=5",
-     "date": "Fri, 21 Aug 2026 07:00:00 GMT"
-    },
-    {
-     "title": "伊藤忠の株価低調、資源高の恩恵乏しく 1.5兆円投資に薄い反応 - 日本経済新聞",
-     "url": "https://news.google.com/rss/articles/CBMibEFVX3lxTE1TS0x0dU1HU3RZVHJ4WjlyeEZSM1ZZc0M2RnJDZWEySEtFYU9ZbHVESGFtOHJRdzdXMms5UjNDLXhZUTVvcTVoSE5rSm04SlJNcG9DNU5DV2MzYXFGTkVrWUQyWVVxcTFsaTZmbw?oc=5",
-     "date": "Sat, 13 Jun 2026 07:00:00 GMT"
-    },
-    {
-     "title": "シグマクシスResearch Memo：4%近い配当利回り、伊藤忠商事と新たな資本・業務提携を発表（2）(フィスコ) - Yahoo!ファイナンス",
-     "url": "https://news.google.com/rss/articles/CBMihwFBVV95cUxPamZUMThRbWlLaXpPOS1DTEQxM1Y3Q3VHcUtFeGgtcWYyaFRBNUZUX3NGUFJYTlliQXJjeEJ6cm9pSUQ5dmgtbTNoZDZpYy1zUlFZSWJiWUdSQjRvUDJBX2FmcUZYWlpCbWJ4andfdThwVHdyeEhReHFSTVl4NzF4RDR0VFdzbFk?oc=5",
-     "date": "Tue, 10 Nov 2026 06:02:00 GMT"
-    }
-   ]
-  },
   {
    "code": "2914",
    "name": "JT",
@@ -45,8 +20,8 @@
   {
    "code": "4543",
    "name": "テルモ",
-   "r": -7.3,
-   "price": 2372,
+   "r": -7.0,
+   "price": 2378,
    "prev": 2558,
    "news": [
     {
