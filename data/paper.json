@@ -161,6 +161,13 @@
    "value_def": 6556777,
    "target": 0.0,
    "nikkei": 6167316
+  },
+  {
+   "date": "2026-11-13",
+   "value": 6303460,
+   "value_def": 6556777,
+   "target": 0.0,
+   "nikkei": 6200069
   }
  ],
  "trades": [
@@ -248,7 +255,7 @@
    "status": "保有中",
    "buy": 4808.803999999999,
    "entry_date": "2026-10-16",
-   "last": 4770.0,
+   "last": 4844.0,
    "taken": true
   },
   {
@@ -310,10 +317,13 @@
    "entry": 5953,
    "stop": 5604,
    "shares": 200,
-   "status": "保有中",
+   "status": "決済",
    "buy": 5858.852999999999,
+   "sell": 5795.199,
+   "why": "25日線割れ",
    "entry_date": "2026-10-19",
-   "last": 5857.0,
+   "exit_date": "2026-11-13",
+   "pnl": -12730.799999999908,
    "taken": true
   },
   {
@@ -336,7 +346,7 @@
    "status": "保有中",
    "buy": 6657.650999999999,
    "entry_date": "2026-11-02",
-   "last": 6825.0,
+   "last": 6926.0,
    "taken": true
   },
   {
@@ -397,7 +407,7 @@
    "status": "保有中",
    "buy": 4215.210999999999,
    "entry_date": "2026-11-06",
-   "last": 4281.0,
+   "last": 4353.0,
    "taken": false
   },
   {
@@ -410,7 +420,7 @@
    "status": "保有中",
    "buy": 3894.8909999999996,
    "entry_date": "2026-11-06",
-   "last": 3969.0,
+   "last": 4006.0,
    "taken": false
   },
   {
@@ -420,15 +430,18 @@
    "entry": 4319,
    "stop": 4079,
    "shares": 200,
-   "status": "待ち",
-   "taken": false
+   "status": "保有中",
+   "buy": 4303.299,
+   "entry_date": "2026-11-13",
+   "last": 4402.0,
+   "taken": true
   }
  ],
- "closed": 6,
+ "closed": 7,
  "hit": 0,
- "miss": 6,
+ "miss": 7,
  "pf": 0.0,
- "realized": -341751,
+ "realized": -354481,
  "tax_est": 0,
  "expect": {
   "win_rate": 35.2,

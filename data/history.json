@@ -234,8 +234,15 @@
   "crash_out": false,
   "crash_why": "5日騰落 +11% / 値幅(ATR) 2.9% / 25日線乖離 +15%",
   "method": "高値更新",
-  "status": "open",
-  "sell_signal": "終値が25日線を割った → 明日の寄りで売り"
+  "status": "closed",
+  "sell_signal": "終値が25日線を割った → 明日の寄りで売り",
+  "buy": 5853.0,
+  "sell": 5801.0,
+  "entry_date": "2026-10-19",
+  "exit_date": "2026-11-13",
+  "reason": "25日線割れ",
+  "pnl": -10400.0,
+  "hit": false
  },
  {
   "date": "2026-10-30",
@@ -424,6 +431,6 @@
   "crash_out": false,
   "crash_why": "5日騰落 +1% / 値幅(ATR) 2.8% / 25日線乖離 +7%",
   "method": "高値更新",
-  "status": "pending"
+  "status": "open"
  }
 ]
