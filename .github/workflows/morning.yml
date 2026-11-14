@@ -1,10 +1,10 @@
 name: morning-reminder
 on:
   schedule:
-    - cron: "37 20 * * 0-4"   # 5:37 JST
-    - cron: "11 21 * * 0-4"   # 6:11 JST
-    - cron: "43 21 * * 0-4"   # 6:43 JST
-    - cron: "23 22 * * 0-4"   # 7:23 JST（遅延対策で4回。最初の1回だけ送る）
+    - cron: "37 20 * * 0-5"   # 5:37 JST
+    - cron: "11 21 * * 0-5"   # 6:11 JST
+    - cron: "43 21 * * 0-5"   # 6:43 JST
+    - cron: "23 22 * * 0-5"   # 7:23 JST（遅延対策で4回。最初の1回だけ送る）
   workflow_dispatch:
   push:
     paths: [".github/workflows/morning.yml", "scanner/morning.py", "scanner/risk_refresh.py", "scanner/risk.py"]
