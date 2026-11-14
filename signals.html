@@ -673,8 +673,11 @@ function render(){
   document.getElementById('hst').textContent='✓ 判定完了';{const W='日月火水木金土',u=new Date(S.updated.replace(' ','T')+':00+09:00'),md=new Date(S.market_date+'T00:00:00+09:00');
   let n=new Date(md.getTime()+864e5);while([0,6].includes(n.getUTCDay()===undefined?0:new Date(n.getTime()+9*36e5).getUTCDay()))n=new Date(n.getTime()+864e5);
   const f=x=>{const j=new Date(x.getTime()+9*36e5);return `${j.getUTCMonth()+1}/${j.getUTCDate()}(${W[j.getUTCDay()]})`};
-  document.getElementById('hupd').textContent=`${f(u)} ${S.updated.slice(11)}`;
-  document.getElementById('hst').textContent=`✓ ${f(md)}終値で判定済み・次回は${f(n)}夕方`;}
+  const now=new Date(),tj=new Date(now.getTime()+9*36e5),tdy=tj.toISOString().slice(0,10);document.getElementById('hdate').textContent=`${tj.getUTCMonth()+1}月${tj.getUTCDate()}日`;
+  const cand=[u];if(DF&&DF.updatedAt)cand.push(new Date(DF.updatedAt));if(DI&&DI.updatedAt)cand.push(new Date(DI.updatedAt));const lu=new Date(Math.max(...cand.filter(x=>!isNaN(x)).map(x=>x.getTime()))),lj=new Date(lu.getTime()+9*36e5);
+  document.getElementById('hupd').textContent=`${f(lu)} ${String(lj.getUTCHours()).padStart(2,'0')}:${String(lj.getUTCMinutes()).padStart(2,'0')}`;
+  const off=[0,6].includes(tj.getUTCDay())||(S.market_date<tdy&&tj.getUTCHours()>=16);
+  document.getElementById('hst').textContent=S.market_date===tdy?`✓ 今日の終値で判定済み・次回は${f(n)}夕方`:off&&[0,6].includes(tj.getUTCDay())?`今日は休場。判定は${f(md)}の終値（米国は最新の終値まで反映）・次回は${f(n)}夕方`:`判定は${f(md)}の終値・今日の分は夕方に更新`;}
   const ns=S.signals.length,nl=(S.sells||[]).length;
   document.getElementById('notice').innerHTML=`${S.updated}<b>${ns||nl?`買い候補 ${ns}件・売り ${nl}件`:((DF&&DF.target===0)?'防御0%：待機用の日経ETF(1321)も持たず現金で待つ':'本日は売買なし。ETFのまま保有')}</b>`}
  else document.getElementById('notice').innerHTML='<b>まだ判定データがありません</b>';
