@@ -1,7 +1,32 @@
 {
- "at": "2026-11-16T06:59+09:00",
+ "at": "2026-11-16T09:20+09:00",
  "th": -7.0,
  "hits": [
+  {
+   "code": "8411",
+   "name": "みずほFG",
+   "r": -99.0,
+   "price": null,
+   "prev": 8020,
+   "note": "本日まだ売買不成立（ストップ気配・売買停止の可能性）",
+   "news": [
+    {
+     "title": "(株)みずほフィナンシャルグループ【8411】：株価・株式情報（夜間PTS含む） - Yahoo!ファイナンス",
+     "url": "https://news.google.com/rss/articles/CBMiUkFVX3lxTE1WWUNmc0I5WWtzTUhFY21UQVZSaGMxUVZZS3QwTWpxbDdlbVM4LWRVRngtbk45alFYMjA3TnBJcUZtR09RSFU0X3V0UXFlcUZYdlE?oc=5",
+     "date": "Fri, 13 Nov 2026 08:00:00 GMT"
+    },
+    {
+     "title": "(株)みずほフィナンシャルグループ【8411】：掲示板 - Yahoo!ファイナンス",
+     "url": "https://news.google.com/rss/articles/CBMiWkFVX3lxTE10M0dmaU1WUWlhR2Q5Z3pvNTA2a0lJaWE4UzFlSjhuM1ZjN0JzUkVXRFc2Q040bGhyc0NfcUtrb3hXWE05ZmRyeG5qTWlSajhaNGNvNTJudTFJdw?oc=5",
+     "date": "Fri, 13 Nov 2026 08:00:00 GMT"
+    },
+    {
+     "title": "みずほフィナンシャルグループ[8411]：自己株式取得に係る事項の決定および自己株式消却に係る事項の決定に関するお知らせ 2026年11月13日(適時開示) ：日経会社情報DIGITAL - 日本経済新聞",
+     "url": "https://news.google.com/rss/articles/CBMiakFVX3lxTE1vT05pVlNkVWJHbGJ4Q1VfT1ktd1A5ZlZnZzk1UnVfNnZNM05TZ3pzcWx2RjlidkJiRjZza29DdVE1Y1JqU0NMM09Ha2xBQkVTVGtlZXVSNVlUb1psRXMwU2dCTE9NeF9lZGc?oc=5",
+     "date": "Fri, 13 Nov 2026 06:30:00 GMT"
+    }
+   ]
+  },
   {
    "code": "7974",
    "name": "任天堂",
