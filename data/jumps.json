@@ -1,12 +1,12 @@
 {
- "at": "2026-11-16T14:35+09:00",
+ "at": "2026-11-16T14:55+09:00",
  "th": -7.0,
  "hits": [
   {
    "code": "6920",
    "name": "レーザーテック",
-   "r": -11.9,
-   "price": 31830,
+   "r": -12.0,
+   "price": 31790,
    "prev": 36130,
    "news": [
     {
@@ -29,8 +29,8 @@
   {
    "code": "6857",
    "name": "アドバンテスト",
-   "r": -10.7,
-   "price": 27340,
+   "r": -10.8,
+   "price": 27310,
    "prev": 30610,
    "news": [
     {
@@ -47,6 +47,30 @@
      "title": "アドバンテスト株上昇 検査装置、年産1万台前倒しへ（13日の株式市場） - 日本経済新聞",
      "url": "https://news.google.com/rss/articles/CBMibEFVX3lxTE1CRG1xdG5kVm5PWXptR3JHaFNQd1hmYTVLZUlRZXBDbFFrcTg4WWQwZ3lMRnNkY01qTEpUdTRFVURVNklrTkFUcjYzdFNvRXFkRFhoMHV2UTNzR1JRaWZoLWdtTEdqYWhUakZVUA?oc=5",
      "date": "Fri, 13 Nov 2026 07:30:54 GMT"
+    }
+   ]
+  },
+  {
+   "code": "6146",
+   "name": "ディスコ",
+   "r": -7.1,
+   "price": 44090,
+   "prev": 47470,
+   "news": [
+    {
+     "title": "(株)ディスコ【6146】：掲示板 - Yahoo!ファイナンス",
+     "url": "https://news.google.com/rss/articles/CBMiWkFVX3lxTE1zQmt2MERDdWxhWjY3aGFaMWRYRWZWamZHcVdSWW9rbVNyRHh5RmhURGhYS0tJNFd3OFhkVDZWYkJFbWllUXZ1UHNBR2Vzd01mX3p1bEJYaUREdw?oc=5",
+     "date": "Thu, 12 Nov 2026 08:00:00 GMT"
+    },
+    {
+     "title": "(株)ディスコ【6146】：今の株価の理由は？値動きの背景をAIが解説 - Yahoo!ファイナンス",
+     "url": "https://news.google.com/rss/articles/CBMiX0FVX3lxTE9FdVFibm5aUTJtZGh4a19wbXh2ZE5vT2ZFV0VDcWVqTFZiMlR5a2x3c0Y1dHNnSUxjNzFSYkNZOUNFcC1zdW1qQjlkQVJKYks5LWRTNmZQemlBUWFvTnUw?oc=5",
+     "date": "Fri, 13 Nov 2026 06:55:41 GMT"
+    },
+    {
+     "title": "ディスコ株価一時7.6%安 4〜9月個別売上高33%増に「想定内」の声 - 日本経済新聞",
+     "url": "https://news.google.com/rss/articles/CBMibEFVX3lxTFBQZ3RwNzVpMXZkcjExVm9Pd0gtTENZVzNtS2FIWVdmSjhEZlNkeEs3SWhOSUUzbWFpZXBueUVLcjZ1NFJFQmJuWVBhM2QtUXM5YTJ2amNCdHNHelk4X1pRd09faFl0ZlNmaUg1TQ?oc=5",
+     "date": "Wed, 07 Oct 2026 07:00:00 GMT"
     }
    ]
   }
