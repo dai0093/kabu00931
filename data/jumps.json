@@ -1,12 +1,12 @@
 {
- "at": "2026-11-16T14:55+09:00",
+ "at": "2026-11-16T15:15+09:00",
  "th": -7.0,
  "hits": [
   {
    "code": "6920",
    "name": "レーザーテック",
-   "r": -12.0,
-   "price": 31790,
+   "r": -12.3,
+   "price": 31700,
    "prev": 36130,
    "news": [
     {
@@ -29,8 +29,8 @@
   {
    "code": "6857",
    "name": "アドバンテスト",
-   "r": -10.8,
-   "price": 27310,
+   "r": -11.0,
+   "price": 27230,
    "prev": 30610,
    "news": [
     {
@@ -54,14 +54,9 @@
    "code": "6146",
    "name": "ディスコ",
    "r": -7.1,
-   "price": 44090,
+   "price": 44080,
    "prev": 47470,
    "news": [
-    {
-     "title": "(株)ディスコ【6146】：掲示板 - Yahoo!ファイナンス",
-     "url": "https://news.google.com/rss/articles/CBMiWkFVX3lxTE1zQmt2MERDdWxhWjY3aGFaMWRYRWZWamZHcVdSWW9rbVNyRHh5RmhURGhYS0tJNFd3OFhkVDZWYkJFbWllUXZ1UHNBR2Vzd01mX3p1bEJYaUREdw?oc=5",
-     "date": "Thu, 12 Nov 2026 08:00:00 GMT"
-    },
     {
      "title": "(株)ディスコ【6146】：今の株価の理由は？値動きの背景をAIが解説 - Yahoo!ファイナンス",
      "url": "https://news.google.com/rss/articles/CBMiX0FVX3lxTE9FdVFibm5aUTJtZGh4a19wbXh2ZE5vT2ZFV0VDcWVqTFZiMlR5a2x3c0Y1dHNnSUxjNzFSYkNZOUNFcC1zdW1qQjlkQVJKYks5LWRTNmZQemlBUWFvTnUw?oc=5",
@@ -71,6 +66,59 @@
      "title": "ディスコ株価一時7.6%安 4〜9月個別売上高33%増に「想定内」の声 - 日本経済新聞",
      "url": "https://news.google.com/rss/articles/CBMibEFVX3lxTFBQZ3RwNzVpMXZkcjExVm9Pd0gtTENZVzNtS2FIWVdmSjhEZlNkeEs3SWhOSUUzbWFpZXBueUVLcjZ1NFJFQmJuWVBhM2QtUXM5YTJ2amNCdHNHelk4X1pRd09faFl0ZlNmaUg1TQ?oc=5",
      "date": "Wed, 07 Oct 2026 07:00:00 GMT"
+    },
+    {
+     "title": "本日の注目個別銘柄：ディスコ、信越ポリマ、KOAなど - 株探",
+     "url": "https://news.google.com/rss/articles/CBMiYEFVX3lxTFBXVmY4VDk5ZzM2SlBKMWV6S1UzMnhTNktVVlctLWVVaHBiN3ZjaXM5YmMzZC0wb2lTY2dhSzBjejRNbUZaRFpSQnE1NXJsYkJ6SHhFcm42Y2p6SHVERmJPcg?oc=5",
+     "date": "Fri, 24 Jul 2026 07:00:00 GMT"
+    }
+   ]
+  },
+  {
+   "code": "5802",
+   "name": "住友電工",
+   "r": -7.1,
+   "price": 1412,
+   "prev": 1519,
+   "news": [
+    {
+     "title": "決算:住友電工の純利益3700億円 27年3月期に上振れ、実質増配 - 日本経済新聞",
+     "url": "https://news.google.com/rss/articles/CBMibEFVX3lxTE5FV19sSUtBcC1ZRWExMVotR3lIM01KLXlZWHY5Z1k3dV9IaEN3TFNYY2xnclltdHdibkdfaU0yaXhCS2pZa0Y3RDFDbW5kcEJ3YTU5OGFEcUZZbnJFS0VkS3ZvTDNVRU5ucENsbA?oc=5",
+     "date": "Fri, 30 Oct 2026 07:00:00 GMT"
+    },
+    {
+     "title": "住友電気工業(株)【5802】：今の株価の理由は？値動きの背景をAIが解説 - Yahoo!ファイナンス",
+     "url": "https://news.google.com/rss/articles/CBMiX0FVX3lxTE1YdXplcFFBM2V5NGktMFp1MGl5UVlUbFVSNzZQSWxqR3RndWJ1WnRzcUdpajRFRUJEX2h6M3YwOTJvNl9xNTdxOFFYa3VjU2tSU1BoRmtSMXM3VEtCYlY0?oc=5",
+     "date": "Tue, 17 Feb 2026 09:51:23 GMT"
+    },
+    {
+     "title": "住友電工の株価は今後どうなる？上昇・下落の理由を徹底解説！ - かぶリッジ",
+     "url": "https://news.google.com/rss/articles/CBMiXkFVX3lxTFBkVTdlUVZaUGlwR3ZwVWF5VU1QN1VmSVBlQ1lVY0plamZ0eVBUanpkQ2xqaVp4UjB5MjFNQktMejhlR3p1aTh1LWlwem1FS2Z1RDdSZ1RNZUJiMkR6aWc?oc=5",
+     "date": "Thu, 22 Oct 2026 07:00:00 GMT"
+    }
+   ]
+  },
+  {
+   "code": "8035",
+   "name": "東京エレクトロン",
+   "r": -7.0,
+   "price": 8794,
+   "prev": 9461,
+   "news": [
+    {
+     "title": "東エレク、非開示だった今期経常は87％増で2期ぶり最高益、未定だった配当は523円実施、実質52％増配 - 株探",
+     "url": "https://news.google.com/rss/articles/CBMiUkFVX3lxTFBfeFhCZXN5U282b3hPT00wSGlRbVB5OGdqaU80VHQtNWFPaDZEaDBEM09IRFBYbVVJWGs1ZWVoX0F4elBleURReXE0ZXZHNzVDb2c?oc=5",
+     "date": "Fri, 30 Oct 2026 07:00:00 GMT"
+    },
+    {
+     "title": "東京エレクトロン、株価上昇失速不安 最高値から3割安 本格回復先送り - IG",
+     "url": "https://news.google.com/rss/articles/CBMisAFBVV95cUxOQThyZERnSVVqSXh6dzNQenhIbXhCSE9vOXhvRjNfZXkxcU1OVmFXVWdjYlAtZFVOVE45WkQ4REpqaGJhdXE4d0lJYnhLS2o2bDI2OVlaSDZlX1NyS3p0SXVIeWl0VkZaRk90OTlCcWtld0tfVEV5V19FU3NvYU9BaEFDN2Z0V3E0c3VwRXB6QUd5LVNXN0VVSmo0aHJWUjlaR1gyakdsVjVYSkthUEhTOQ?oc=5",
+     "date": "Sun, 23 Aug 2026 07:00:00 GMT"
+    },
+    {
+     "title": "東京エレクトロン株価が一進一退 「営業益1兆円の公算」報道 - 日本経済新聞",
+     "url": "https://news.google.com/rss/articles/CBMibEFVX3lxTFA1SXZCVUsyMUI0U1VvM0FkQkFGZ0F5MEFoUDV6b2Z2T1Mwc0lqdlFXUjd4VzFtZ3FzTnVHUlFQb3pPLXVjVVZNZWZvem1KcFk4c2dWYjdMRXF4ZUVjUU9EMC1MVmdYd2UyekRaTQ?oc=5",
+     "date": "Tue, 06 Oct 2026 07:00:00 GMT"
     }
    ]
   }
