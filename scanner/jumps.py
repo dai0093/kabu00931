@@ -44,6 +44,14 @@ for q in ("PTS ストップ安", "PTS 急落", "夜間取引 急落 株価", "�
     for n in news(q) + []:
         for c, nm in STOCKS.items():
             if c in _have or nm not in n["title"]: continue
+            t = n["title"]
+            # 株価ページ・掲示板などの定型の見出しは除く。下げを表す語が見出しに無ければ拾わない。24時間より古い記事も除く
+            if re.search(r"株価・株式情報|株式情報|掲示板|チャート|株価 - |Yahoo!ファイナンス\s*$|株探|みんかぶ|kabutan|minkabu", t): continue
+            if not re.search(r"ストップ安|急落|暴落|売り気配|特別売り気配|大幅安|急反落|続落|下落|安値", t): continue
+            try:
+                from email.utils import parsedate_to_datetime
+                if (datetime.now(JST) - parsedate_to_datetime(n["date"])).total_seconds() > 86400: continue
+            except Exception: continue
             hits.append({"code": c, "name": nm, "r": -98.0, "price": None, "prev": None, "note": "見出しで検知（PTS・特別気配など。値段は未確認）", "news": [n]}); _have.add(c)
 hits.sort(key=lambda h: h["r"])
 out = {"at": datetime.now(JST).isoformat(timespec="minutes"), "th": TH, "hits": hits}
