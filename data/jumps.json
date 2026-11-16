@@ -1,32 +1,7 @@
 {
- "at": "2026-11-16T09:20+09:00",
+ "at": "2026-11-16T10:14+09:00",
  "th": -7.0,
  "hits": [
-  {
-   "code": "8411",
-   "name": "みずほFG",
-   "r": -99.0,
-   "price": null,
-   "prev": 8020,
-   "note": "本日まだ売買不成立（ストップ気配・売買停止の可能性）",
-   "news": [
-    {
-     "title": "(株)みずほフィナンシャルグループ【8411】：株価・株式情報（夜間PTS含む） - Yahoo!ファイナンス",
-     "url": "https://news.google.com/rss/articles/CBMiUkFVX3lxTE1WWUNmc0I5WWtzTUhFY21UQVZSaGMxUVZZS3QwTWpxbDdlbVM4LWRVRngtbk45alFYMjA3TnBJcUZtR09RSFU0X3V0UXFlcUZYdlE?oc=5",
-     "date": "Fri, 13 Nov 2026 08:00:00 GMT"
-    },
-    {
-     "title": "(株)みずほフィナンシャルグループ【8411】：掲示板 - Yahoo!ファイナンス",
-     "url": "https://news.google.com/rss/articles/CBMiWkFVX3lxTE10M0dmaU1WUWlhR2Q5Z3pvNTA2a0lJaWE4UzFlSjhuM1ZjN0JzUkVXRFc2Q040bGhyc0NfcUtrb3hXWE05ZmRyeG5qTWlSajhaNGNvNTJudTFJdw?oc=5",
-     "date": "Fri, 13 Nov 2026 08:00:00 GMT"
-    },
-    {
-     "title": "みずほフィナンシャルグループ[8411]：自己株式取得に係る事項の決定および自己株式消却に係る事項の決定に関するお知らせ 2026年11月13日(適時開示) ：日経会社情報DIGITAL - 日本経済新聞",
-     "url": "https://news.google.com/rss/articles/CBMiakFVX3lxTE1vT05pVlNkVWJHbGJ4Q1VfT1ktd1A5ZlZnZzk1UnVfNnZNM05TZ3pzcWx2RjlidkJiRjZza29DdVE1Y1JqU0NMM09Ha2xBQkVTVGtlZXVSNVlUb1psRXMwU2dCTE9NeF9lZGc?oc=5",
-     "date": "Fri, 13 Nov 2026 06:30:00 GMT"
-    }
-   ]
-  },
   {
    "code": "7974",
    "name": "任天堂",
@@ -43,17 +18,50 @@
    ]
   },
   {
+   "code": "6857",
+   "name": "アドバンテスト",
+   "r": -7.4,
+   "price": 28355,
+   "prev": 30610,
+   "news": [
+    {
+     "title": "(株)アドバンテスト【6857】：掲示板 - Yahoo!ファイナンス",
+     "url": "https://news.google.com/rss/articles/CBMiWkFVX3lxTE9Fc3I2YXlDdnRrNTlEanF5RlhIaWI0QWZwNFplYVB2U280bEdUV0VabTJDWlJrUVBTNll0QWFuLVllejVHeTlDYktvQVNvTmRhQ1VlWFBpR0tGdw?oc=5",
+     "date": "Fri, 13 Nov 2026 07:07:44 GMT"
+    },
+    {
+     "title": "(株)アドバンテスト【ATEYY】：株価・株式情報 - Yahoo!ファイナンス",
+     "url": "https://news.google.com/rss/articles/CBMiUEFVX3lxTE0wZ2w4SjUzeWhJVEhydGV5T3dEajJDTmFCZEE1YmdnaDJmWm83bFZTOXdWem5SLWIxYUhieGxMSTV3N244QXFiR01UcWFuNVJO?oc=5",
+     "date": "Sun, 15 Nov 2026 20:49:14 GMT"
+    },
+    {
+     "title": "アドバンテスト株上昇 検査装置、年産1万台前倒しへ（13日の株式市場） - 日本経済新聞",
+     "url": "https://news.google.com/rss/articles/CBMibEFVX3lxTE1CRG1xdG5kVm5PWXptR3JHaFNQd1hmYTVLZUlRZXBDbFFrcTg4WWQwZ3lMRnNkY01qTEpUdTRFVURVNklrTkFUcjYzdFNvRXFkRFhoMHV2UTNzR1JRaWZoLWdtTEdqYWhUakZVUA?oc=5",
+     "date": "Fri, 13 Nov 2026 07:30:54 GMT"
+    }
+   ]
+  },
+  {
    "code": "6920",
    "name": "レーザーテック",
-   "r": -98.0,
-   "price": null,
-   "prev": null,
-   "note": "見出しで検知（PTS・特別気配など。値段は未確認）",
+   "r": -7.2,
+   "price": 33540,
+   "prev": 36130,
    "news": [
+    {
+     "title": "レーザーテック(株)【6920】：株価・株式情報（夜間PTS含む） - Yahoo!ファイナンス",
+     "url": "https://news.google.com/rss/articles/CBMiUkFVX3lxTE9lbGVpZzhvYjZpbjh0cWthOVg4aVVkbXZPRnVlekE4b1hTcVRnQjR1M002SkNodnpiVWN1LWFIcVZYeVBnRWRwUnVaeENUYm55N0E?oc=5",
+     "date": "Fri, 13 Nov 2026 08:00:00 GMT"
+    },
     {
      "title": "レーザーテック(株)【6920】：掲示板 - Yahoo!ファイナンス",
      "url": "https://news.google.com/rss/articles/CBMiWkFVX3lxTE1zUEFNWkpGVTR4Zml0TFNSS3JCMDA2SzYyTHhheEhBeEpMWDdQLVlKaVJXLXNjeUNLa0ZYSDZxVkhhZVFTYkNlRzlvYk11YXdPa2M4WE9SRnc3QQ?oc=5",
-     "date": "Fri, 13 Nov 2026 07:07:49 GMT"
+     "date": "Thu, 12 Nov 2026 08:00:00 GMT"
+    },
+    {
+     "title": "レーザーテク、7-9月期(1Q)経常は46％減益で着地 - 株探",
+     "url": "https://news.google.com/rss/articles/CBMiUkFVX3lxTE9BRTlwTGlIVjhZdkpjaEFQektlVHUtdS1haHVBODlsdHJjWTJhQ0U3UG01UTFmMklxeDQ3V1ZGV1RHcjlrbUtZVWV2TDNUeGo4bWc?oc=5",
+     "date": "Fri, 30 Oct 2026 07:00:00 GMT"
     }
    ]
   }
