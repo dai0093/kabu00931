@@ -1,14 +1,19 @@
 {
- "at": "2026-11-16T12:54+09:00",
+ "at": "2026-11-16T13:14+09:00",
  "th": -7.0,
  "hits": [
   {
    "code": "6920",
    "name": "レーザーテック",
    "r": -10.8,
-   "price": 32210,
+   "price": 32240,
    "prev": 36130,
    "news": [
+    {
+     "title": "レーザーテック(株)【6920】：株価・株式情報（夜間PTS含む） - Yahoo!ファイナンス",
+     "url": "https://news.google.com/rss/articles/CBMiUkFVX3lxTE9lbGVpZzhvYjZpbjh0cWthOVg4aVVkbXZPRnVlekE4b1hTcVRnQjR1M002SkNodnpiVWN1LWFIcVZYeVBnRWRwUnVaeENUYm55N0E?oc=5",
+     "date": "Fri, 13 Nov 2026 08:00:00 GMT"
+    },
     {
      "title": "レーザーテック(株)【6920】：掲示板 - Yahoo!ファイナンス",
      "url": "https://news.google.com/rss/articles/CBMiWkFVX3lxTE1zUEFNWkpGVTR4Zml0TFNSS3JCMDA2SzYyTHhheEhBeEpMWDdQLVlKaVJXLXNjeUNLa0ZYSDZxVkhhZVFTYkNlRzlvYk11YXdPa2M4WE9SRnc3QQ?oc=5",
@@ -18,11 +23,6 @@
      "title": "4〜9月期決算、株価上昇要因にならず - 日本経済新聞",
      "url": "https://news.google.com/rss/articles/CBMifkFVX3lxTE9sLVE5aXlhRVRsTWtPek5zaTkxYlZ1WUZ0QlRFbC1lZ3NLNkxlSktyNV95T2hNRjVraDlqTjl1T1dNcXlXV2J5NGY3dXp4VTRZcDhHZ3VHUWpzZW96Z3VLQmRmYWlRVnRhemdOeWh0U3U3bXNXTkg3akYxOU93Zw?oc=5",
      "date": "Fri, 13 Nov 2026 20:00:00 GMT"
-    },
-    {
-     "title": "レーザーテック(株)【6920】：今の株価の理由は？値動きの背景をAIが解説 - Yahoo!ファイナンス",
-     "url": "https://news.google.com/rss/articles/CBMiX0FVX3lxTE5GdUcyS2tma3g1cjRqN0l0Q3Z0ZDhLZk5RcmI5T2ZpcloyN0d4Z2pTdVZHMVl6dEV2ZTI4QTR2NlozREhvN2RHOFJFRUdPWklMZUExZXZZMUpoTFVwVmZj?oc=5",
-     "date": "Fri, 13 Nov 2026 06:54:23 GMT"
     }
    ]
   },
@@ -30,7 +30,7 @@
    "code": "6857",
    "name": "アドバンテスト",
    "r": -10.5,
-   "price": 27410,
+   "price": 27390,
    "prev": 30610,
    "news": [
     {
@@ -47,30 +47,6 @@
      "title": "アドバンテスト株上昇 検査装置、年産1万台前倒しへ（13日の株式市場） - 日本経済新聞",
      "url": "https://news.google.com/rss/articles/CBMibEFVX3lxTE1CRG1xdG5kVm5PWXptR3JHaFNQd1hmYTVLZUlRZXBDbFFrcTg4WWQwZ3lMRnNkY01qTEpUdTRFVURVNklrTkFUcjYzdFNvRXFkRFhoMHV2UTNzR1JRaWZoLWdtTEdqYWhUakZVUA?oc=5",
      "date": "Fri, 13 Nov 2026 07:30:54 GMT"
-    }
-   ]
-  },
-  {
-   "code": "6146",
-   "name": "ディスコ",
-   "r": -7.1,
-   "price": 44100,
-   "prev": 47470,
-   "news": [
-    {
-     "title": "(株)ディスコ【6146】：掲示板 - Yahoo!ファイナンス",
-     "url": "https://news.google.com/rss/articles/CBMiWkFVX3lxTE1zQmt2MERDdWxhWjY3aGFaMWRYRWZWamZHcVdSWW9rbVNyRHh5RmhURGhYS0tJNFd3OFhkVDZWYkJFbWllUXZ1UHNBR2Vzd01mX3p1bEJYaUREdw?oc=5",
-     "date": "Thu, 12 Nov 2026 08:00:00 GMT"
-    },
-    {
-     "title": "サンディスク【SNDK】：株価・株式情報 - Yahoo!ファイナンス",
-     "url": "https://news.google.com/rss/articles/CBMiT0FVX3lxTE4yRGE0cG1GNW1GcS1aQWs1bTNUaGhRM0llaEU1UHh1S0dRVVhLNkwtdDRwWjRYbGZyaEk2cEZndDNiQmdtUkVkWVhaTVNycnc?oc=5",
-     "date": "Mon, 16 Nov 2026 01:56:57 GMT"
-    },
-    {
-     "title": "ディスコ株価一時7.6%安 4〜9月個別売上高33%増に「想定内」の声 - 日本経済新聞",
-     "url": "https://news.google.com/rss/articles/CBMibEFVX3lxTFBQZ3RwNzVpMXZkcjExVm9Pd0gtTENZVzNtS2FIWVdmSjhEZlNkeEs3SWhOSUUzbWFpZXBueUVLcjZ1NFJFQmJuWVBhM2QtUXM5YTJ2amNCdHNHelk4X1pRd09faFl0ZlNmaUg1TQ?oc=5",
-     "date": "Wed, 07 Oct 2026 07:00:00 GMT"
     }
    ]
   }
