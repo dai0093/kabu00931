@@ -10,6 +10,7 @@ on:
     paths: [".github/workflows/morning.yml", "scanner/morning.py", "scanner/risk_refresh.py", "scanner/risk.py"]
 permissions:
   contents: write
+  actions: write
 jobs:
   remind:
     runs-on: ubuntu-latest
@@ -26,3 +27,14 @@ jobs:
           git config user.name "kabu-bot"
           git config user.email "kabu-bot@users.noreply.github.com"
           git add data/morning_sent.txt data/morning.json data/signals.json && git commit -m "morning sent" && git pull --rebase -X theirs && git push || echo "no change"
+      - name: 途中判定ループが動いていなければ起動
+        if: always()
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          H=$(TZ=Asia/Tokyo date +%H%M); D=$(TZ=Asia/Tokyo date +%u)
+          if [ "$D" -le 5 ] && [ "$H" -ge 0830 ] && [ "$H" -le 1450 ]; then
+            N=$(gh run list -R ${{ github.repository }} -w intraday_loop.yml -s in_progress --json databaseId -q length 2>/dev/null || echo 0)
+            Q=$(gh run list -R ${{ github.repository }} -w intraday_loop.yml -s queued --json databaseId -q length 2>/dev/null || echo 0)
+            if [ "${N:-0}" = "0" ] && [ "${Q:-0}" = "0" ]; then gh workflow run intraday_loop.yml --ref main -R ${{ github.repository }} && echo "途中判定ループを起動"; else echo "稼働中"; fi
+          fi

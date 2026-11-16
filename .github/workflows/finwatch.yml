@@ -11,6 +11,7 @@ on:
     paths: [".github/workflows/finwatch.yml", "scanner/finwatch.py", "scanner/series_refresh.py", "scanner/logic_from_state.py"]
 permissions:
   contents: write
+  actions: write
 concurrency: data-write
 jobs:
   run:
@@ -37,3 +38,14 @@ jobs:
           git config user.name "kabu-bot"
           git config user.email "kabu-bot@users.noreply.github.com"
           for f in data/finwatch.json data/finwatch_sent.json data/logic_tree.json data/node_hist.json data/series_live.json data/assets.json data/ah_sent.json data/defense.json data/defense_intraday.json data/defense_sent.json data/defense_err.txt data/health.json data/outlook.json data/outlook_log.json data/defense_track.json data/nk_daily.json data/idx_daily.json data/jumps.json data/sox40_sent.json; do [ -f $f ] && git add $f; done; git diff --cached --quiet && echo nochange ||  git commit -m "finwatch" && git pull --rebase -X theirs && git push || echo "no change"
+      - name: 途中判定ループが動いていなければ起動
+        if: always()
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          H=$(TZ=Asia/Tokyo date +%H%M); D=$(TZ=Asia/Tokyo date +%u)
+          if [ "$D" -le 5 ] && [ "$H" -ge 0830 ] && [ "$H" -le 1450 ]; then
+            N=$(gh run list -R ${{ github.repository }} -w intraday_loop.yml -s in_progress --json databaseId -q length 2>/dev/null || echo 0)
+            Q=$(gh run list -R ${{ github.repository }} -w intraday_loop.yml -s queued --json databaseId -q length 2>/dev/null || echo 0)
+            if [ "${N:-0}" = "0" ] && [ "${Q:-0}" = "0" ]; then gh workflow run intraday_loop.yml --ref main -R ${{ github.repository }} && echo "途中判定ループを起動"; else echo "稼働中"; fi
+          fi
