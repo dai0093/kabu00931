@@ -1,9 +1,9 @@
 {
  "updatedAt": "2026-11-16T12:14:00+09:00",
- "builtAt": "2026-11-17T02:31+09:00",
+ "builtAt": "2026-11-17T06:59+09:00",
  "phase": 2,
  "phaseName": "通り道の予兆",
- "phaseDesc": "信用層に1つ点灯。　※期限切れで判定不能：原油、逆イールド、VIX（未点灯と扱わない）　※期限切れのまま点灯・接近を保持：日米金利、私募信用、HY OAS、SOX下落",
+ "phaseDesc": "信用層に1つ点灯。　※期限切れで判定不能：原油（未点灯と扱わない）　※期限切れのまま点灯・接近を保持：私募信用、HY OAS",
  "counts": {
   "origin": [
    4,
@@ -18,7 +18,7 @@
    2
   ],
   "market": [
-   1,
+   2,
    3
   ]
  },
@@ -61,19 +61,18 @@
    ],
    [
     "逆イールド",
-    "stale"
+    "ok"
    ],
    [
     "金融機関株価",
-    "ok",
-    "未更新の群あり（日本、日本その他：前日までの値で判定） 代替で補った10銘柄（最新値・ADR）"
+    "ok"
    ]
   ],
   "fund": [
    [
     "NFCI",
     "ok",
-    "代替：金融ストレス合成 -0.17（≥1.5点灯・≥1.0接近、検証46で予測出来た）"
+    "代替：金融ストレス合成 0.33（≥1.5点灯・≥1.0接近、検証46で予測出来た）"
    ],
    [
     "生保",
@@ -83,11 +82,11 @@
   "market": [
    [
     "VIX",
-    "stale"
+    "ok"
    ],
    [
     "日経先物",
-    "ok"
+    "lit"
    ],
    [
     "SOX下落",
@@ -96,15 +95,11 @@
   ]
  },
  "unjudged": [
-  "原油",
-  "逆イールド",
-  "VIX"
+  "原油"
  ],
  "held": [
-  "日米金利",
   "私募信用",
-  "HY OAS",
-  "SOX下落"
+  "HY OAS"
  ],
  "assets": [
   {
@@ -130,18 +125,18 @@
  ],
  "values": {
   "vix": {
-   "value": 19.3,
+   "value": 22.91,
    "unit": "",
-   "observedAt": "2026-11-13",
-   "change": "前日比 +0.60（Yahoo確定終値）",
+   "observedAt": "2026-11-16",
+   "change": "前日比 +3.61（Yahoo確定終値）",
    "source": "https://finance.yahoo.com/quote/%5EVIX/"
   },
   "us10": {
-   "value": 5.14,
+   "value": 5.121,
    "unit": "%",
-   "observedAt": "2026-11-13",
-   "change": "5.14%（+1bp、Trading Economics）／5日 +30bp（11/5 4.84%、FRED）／20日 +4bp（10/15 5.10%、FRED）。5%台が続き点灯域",
-   "source": "https://tradingeconomics.com/united-states/government-bond-yield"
+   "observedAt": "2026-11-16",
+   "change": "前日比 -0.033（Yahoo確定終値）",
+   "source": "https://finance.yahoo.com/quote/%5ETNX/"
   },
   "jgb10": {
    "value": 2.855,
@@ -172,9 +167,9 @@
    "source": "https://fred.stlouisfed.org/data/BAMLC0A0CM"
   },
   "t10y2y": {
-   "value": 0.27,
+   "value": 0.29,
    "unit": "%",
-   "observedAt": "2026-11-13",
+   "observedAt": "2026-11-16",
    "change": "財務省の利回り曲線（10年−2年）",
    "source": "https://home.treasury.gov/resource-center/data-chart-center/interest-rates/TextView?type=daily_treasury_yield_curve"
   },
@@ -205,37 +200,7 @@
    "freq": "日次"
   },
   {
-   "name": "VIX",
-   "observedAt": "2026-11-13",
-   "freq": "日次"
-  },
-  {
-   "name": "SOX指数",
-   "observedAt": "2026-11-13",
-   "freq": "日次"
-  },
-  {
-   "name": "SOX 52週高値からの下落率",
-   "observedAt": "2026-11-13",
-   "freq": "日次"
-  },
-  {
-   "name": "VIX25超の連続日数",
-   "observedAt": "2026-11-13",
-   "freq": "日次"
-  },
-  {
-   "name": "米10年金利",
-   "observedAt": "2026-11-13",
-   "freq": "日次"
-  },
-  {
    "name": "日本10年金利",
-   "observedAt": "2026-11-13",
-   "freq": "日次"
-  },
-  {
-   "name": "米10年−2年",
    "observedAt": "2026-11-13",
    "freq": "日次"
   },
@@ -420,7 +385,7 @@
     "起点": 4,
     "信用": 1,
     "資金": 0,
-    "市場": 1
+    "市場": 2
    },
    "items": 15
   },
@@ -430,7 +395,7 @@
     "起点": 3,
     "信用": 1,
     "資金": 0,
-    "市場": 1
+    "市場": 2
    },
    "items": 11
   },

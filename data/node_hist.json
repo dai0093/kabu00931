@@ -48,6 +48,12 @@
    "lit_since": null,
    "before_start": false,
    "st": "near"
+  },
+  "日経先物": {
+   "since": "2026-11-17",
+   "lit_since": "2026-11-17",
+   "before_start": false,
+   "st": "lit"
   }
  }
 }
