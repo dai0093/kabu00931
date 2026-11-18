@@ -1,5 +1,21 @@
 {
- "at": "2026-11-19T01:46+09:00",
+ "at": "2026-11-19T02:58+09:00",
  "th": -7.0,
- "hits": []
+ "hits": [
+  {
+   "code": "6273",
+   "name": "SMC",
+   "r": -98.0,
+   "price": null,
+   "prev": null,
+   "note": "見出しで検知（PTS・特別気配など。値段は未確認）",
+   "news": [
+    {
+     "title": "エヌビディア決算発表前夜、台湾指数先物の夜間取引が219ポイント急落 TSMC先物は2,130ポイント割れ - BigGo ファイナンス",
+     "url": "https://news.google.com/rss/articles/CBMidEFVX3lxTFB4amhCeGJ6Q0didkFQVU5TbkRhLUtNTVZtYmU0STZlal9hVXZfUlpobGExOHpYNlhqZUpzOGNOZ0cxTUp2OG9Ra2hMRUlta1VMQVVwRG1Ra2o0WmlpdXVPdzF0bnl2bHZaVHhweHlMcUFQZDdm?oc=5",
+     "date": "Tue, 17 Nov 2026 23:25:00 GMT"
+    }
+   ]
+  }
+ ]
 }
