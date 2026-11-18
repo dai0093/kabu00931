@@ -45,9 +45,9 @@
   },
   "欧州ソブリン": {
    "since": "2026-11-10",
-   "lit_since": null,
+   "lit_since": "2026-11-18",
    "before_start": false,
-   "st": "near"
+   "st": "lit"
   },
   "VIX": {
    "since": "2026-11-18",
