@@ -64,5 +64,11 @@
   "change": "私募信用運用会社株（BX・APO・KKR・ARES）5日中央値%（代替・検証46）",
   "source": "https://finance.yahoo.com/quote/BX/"
  },
- "_at": "2026-11-18T21:16+09:00"
+ "frspread_m": {
+  "value": 147.4,
+  "observedAt": "2026-10-28",
+  "change": "仏−独10年 月次平均（ECB）",
+  "source": "https://data.ecb.europa.eu/"
+ },
+ "_at": "2026-11-18T22:27+09:00"
 }
