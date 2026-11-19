@@ -1,6 +1,6 @@
 {
  "updatedAt": "2026-11-19T12:19:00+09:00",
- "builtAt": "2026-11-20T01:52+09:00",
+ "builtAt": "2026-11-20T06:59+09:00",
  "phase": 3,
  "phaseName": "通り道が開通",
  "phaseDesc": "信用層に2つ以上点灯。　※期限切れのまま点灯・接近を保持：私募信用、HY OAS",
@@ -64,15 +64,14 @@
    ],
    [
     "金融機関株価",
-    "near",
-    "未更新の群あり（日本、日本その他：前日までの値で判定） 代替で補った11銘柄（最新値・ADR）"
+    "near"
    ]
   ],
   "fund": [
    [
     "NFCI",
-    "ok",
-    "代替：金融ストレス合成 0.88（≥1.5点灯・≥1.0接近、検証46で予測出来た）"
+    "near",
+    "代替：金融ストレス合成 1.11（≥1.5点灯・≥1.0接近、検証46で予測出来た）"
    ],
    [
     "生保",
@@ -82,11 +81,11 @@
   "market": [
    [
     "VIX",
-    "ok"
+    "near"
    ],
    [
     "日経先物",
-    "ok"
+    "near"
    ],
    [
     "SOX下落",
@@ -123,17 +122,17 @@
  ],
  "values": {
   "vix": {
-   "value": 24.56,
+   "value": 28.44,
    "unit": "",
-   "observedAt": "2026-11-18",
-   "change": "前日比 -0.90（Yahoo確定終値）",
+   "observedAt": "2026-11-19",
+   "change": "前日比 +3.88（Yahoo確定終値）",
    "source": "https://finance.yahoo.com/quote/%5EVIX/"
   },
   "us10": {
-   "value": 5.066,
+   "value": 5.052,
    "unit": "%",
-   "observedAt": "2026-11-18",
-   "change": "前日比 -0.037（Yahoo確定終値）",
+   "observedAt": "2026-11-19",
+   "change": "前日比 -0.014（Yahoo確定終値）",
    "source": "https://finance.yahoo.com/quote/%5ETNX/"
   },
   "jgb10": {
@@ -165,9 +164,9 @@
    "source": "https://fred.stlouisfed.org/data/BAMLC0A0CM"
   },
   "t10y2y": {
-   "value": 0.27,
+   "value": 0.28,
    "unit": "%",
-   "observedAt": "2026-11-18",
+   "observedAt": "2026-11-19",
    "change": "財務省の利回り曲線（10年−2年）",
    "source": "https://home.treasury.gov/resource-center/data-chart-center/interest-rates/TextView?type=daily_treasury_yield_curve"
   },
