@@ -48,6 +48,12 @@
    "lit_since": "2026-11-18",
    "before_start": false,
    "st": "lit"
+  },
+  "金融機関株価": {
+   "since": "2026-11-19",
+   "lit_since": null,
+   "before_start": false,
+   "st": "near"
   }
  }
 }
