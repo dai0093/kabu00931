@@ -1,5 +1,5 @@
 {
- "at": "2026-11-20T09:55+09:00",
+ "at": "2026-11-20T10:15+09:00",
  "th": -7.0,
  "hits": [
   {
@@ -21,7 +21,7 @@
    "code": "9984",
    "name": "ソフトバンクG",
    "r": -14.8,
-   "price": 3013,
+   "price": 3015,
    "prev": 3537,
    "news": [
     {
@@ -35,17 +35,17 @@
      "date": "Mon, 02 Nov 2026 08:00:00 GMT"
     },
     {
-     "title": "ソフトバンクＧが一時５％超上昇し売買代金も２位に、アーム株上昇とオープンＡＩの資金調達巡る思惑が株価刺激 - 株探",
-     "url": "https://news.google.com/rss/articles/CBMiYEFVX3lxTE1SLWctLTlMTlVLNU40cGR5YnFJdjFRS216MkJBYTFnUHVZSmt2QXUyUTBJWl9xMW9taFlWeV9Kel9DZWsyTkRRek9QZC1Ba3N2dGt1U210M0pYTng2UE84cQ?oc=5",
-     "date": "Wed, 30 Sep 2026 07:00:00 GMT"
+     "title": "ソフトバンクＧが急落し３０００円大台割れ、アンソロピック上場後の米ハイテク株急落がロング圧縮の売り促す - みんかぶ",
+     "url": "https://news.google.com/rss/articles/CBMiSEFVX3lxTE1BWWNNOEhCS3ZfekVTS01qYzdzLXNPdENuZVR6ZTBOVVpjaEVtWDhNUlNrbVJsT1h2RFlCZmNzejRuUDFCU2xZNg?oc=5",
+     "date": "Fri, 20 Nov 2026 00:51:32 GMT"
     }
    ]
   },
   {
    "code": "6857",
    "name": "アドバンテスト",
-   "r": -10.2,
-   "price": 24285,
+   "r": -10.9,
+   "price": 24095,
    "prev": 27045,
    "news": [
     {
@@ -66,10 +66,34 @@
    ]
   },
   {
+   "code": "2914",
+   "name": "JT",
+   "r": -8.8,
+   "price": 5340,
+   "prev": 5857,
+   "news": [
+    {
+     "title": "JT株急落・減配で狼狽する投資家が知っておくべき「ロシアリスクはかねて開示されていた」事実 「見落としがちなリスク」を確認できるAIを使った有価証券報告書のチェック術（マネーポストWEB） - Yahoo!ニュース",
+     "url": "https://news.google.com/rss/articles/CBMif0FVX3lxTFBRaDVTWVFRcWNxVGdlMVFaZjB4QmR6SlgzOUo5TzkwaGpDaXpHU3dJOElSSjVSaEpXUUlvQ084TXhSdmY1ZmJxNDJPZGhWNUItWkpqOXlqSEEtc3lIakRNaUtjdFB1N3hEZ1ctSFZOVjMwcTFQUDBnaldrVENqTmc?oc=5",
+     "date": "Thu, 19 Nov 2026 22:20:08 GMT"
+    },
+    {
+     "title": "JT(2914)、ロシア事業の損失計上で｢減配｣を発表、配当利回り3.4％に！ 年間配当は前回予想から25％減、2026年12月期は前期比30円減の｢1株あたり204円｣ - ダイヤモンド・オンライン",
+     "url": "https://news.google.com/rss/articles/CBMiU0FVX3lxTE1Mek0wLVN5RWg0ZTFkUEZGVnpISHQ3aGx2Q0oycEFTcGxzT2RLMmx6WkJYRTNsbVVmTE1CcmlLX1ZkOGpWUk00WnkxbGplQzA2eWIw?oc=5",
+     "date": "Thu, 19 Nov 2026 11:15:00 GMT"
+    },
+    {
+     "title": "ＪＴがＰＴＳで急落、ロシア事業の連結除外で１兆３７７０億円の損失計上 - 株探",
+     "url": "https://news.google.com/rss/articles/CBMiUkFVX3lxTFAxdWo3cjVoVmlJeGk4aFBTbk9VUEIteXNHSE9NbnFVUFVLc0lCMVlqcllORzVYQ2xUdl9FMFRJS3RkaVJjOEhEV0JOaUxUTWJudnc?oc=5",
+     "date": "Thu, 19 Nov 2026 07:51:00 GMT"
+    }
+   ]
+  },
+  {
    "code": "6752",
    "name": "パナソニック",
    "r": -8.6,
-   "price": 2757,
+   "price": 2756,
    "prev": 3015,
    "news": [
     {
@@ -90,10 +114,58 @@
    ]
   },
   {
+   "code": "6920",
+   "name": "レーザーテック",
+   "r": -8.5,
+   "price": 30500,
+   "prev": 33320,
+   "news": [
+    {
+     "title": "レーザーテック株価が反発 7〜9月期純利益44%減でも受注見通し好感 - 日本経済新聞",
+     "url": "https://news.google.com/rss/articles/CBMibEFVX3lxTE1wRVFlU1BHM2xhU1gtZVA4eEZGTWw1a0YwUUdpQXVCZENQOHJGLTdfWFpNZkxkNmFULXItNjVhV18tT3pJLUVQbUpJSmRkd09OSXJqck92RmphajRGc1R2X0JYdXJrbFNZeTZrbQ?oc=5",
+     "date": "Mon, 02 Nov 2026 08:00:00 GMT"
+    },
+    {
+     "title": "レーザーテック(株)【6920】：企業情報（決算時期・代表者名・大株主情報・IR動画など） - Yahoo!ファイナンス",
+     "url": "https://news.google.com/rss/articles/CBMidkFVX3lxTFBZN3F0Z0N6OXV0TGtxakItT1p4VjVmclh5T1J6WHVydjl3TklkNkd5VGVaYk5GbV9jaHZSSjRfQW9KWHRFMnZvNWJxdUtiSEx5SGp6Q29TOXlQblBUbHJmRzhrVXN2S3k3M0RiVS1xZzBKWkczdWc?oc=5",
+     "date": "Thu, 05 Nov 2026 10:02:25 GMT"
+    },
+    {
+     "title": "決算レポート：レーザーテック（2027年6月期受注高は大幅増へ） - トウシル",
+     "url": "https://news.google.com/rss/articles/CBMiWkFVX3lxTE5vZkMzRExVZHFQWE5QYnlkdDV3bnlFZ1J4TTZ3ek9hVnlVTmR5Y3R4anhqVXFEMlhIVEUyeVJqazREM2g4dTExbUZQTHhic3JrMVczLWRaUl9kUQ?oc=5",
+     "date": "Mon, 17 Aug 2026 07:00:00 GMT"
+    }
+   ]
+  },
+  {
+   "code": "6981",
+   "name": "村田製作所",
+   "r": -8.5,
+   "price": 4721,
+   "prev": 5161,
+   "news": [
+    {
+     "title": "(株)村田製作所【MRAAY】：株価・株式情報 - Yahoo!ファイナンス",
+     "url": "https://news.google.com/rss/articles/CBMiUEFVX3lxTE95MHhZcklYYklCUW91UWZBTXlmZ0daZ3hWcHNFdk5JSzZvNE85dXBHZDlpOGt4c2xpZzc1SklWZ0w3WTdBM1RaaUlaOHpRS2lO?oc=5",
+     "date": "Thu, 19 Nov 2026 18:14:52 GMT"
+    },
+    {
+     "title": "太陽誘電、株価が午後一段高 村田製作所の工場拡張方針で連想買い - 日本経済新聞",
+     "url": "https://news.google.com/rss/articles/CBMibEFVX3lxTE1QNTZrQXp0TVBQOWdVZkdWdGtkZ3lLdDBxci1BUjZyT29kMlpVS1JGb3RlVnJFOW1EVW9HazJyNmVINnVRN1ZaVG9mRnBFTjVxRmo2N3d4c1FUQXROZHAzaEpiUDhHT1JGTmc4OQ?oc=5",
+     "date": "Wed, 14 Oct 2026 07:00:00 GMT"
+    },
+    {
+     "title": "村田製作所に強気評価相次ぐ、欧州系大手が目標株価1万5500円に引き上げ - BigGo ファイナンス",
+     "url": "https://news.google.com/rss/articles/CBMidEFVX3lxTE9jaG1DWGV0dWJ2cm0xYjJlWWFlazhrVjZ2SENhME5MNG1FZjM4VjBWMm90V1dlSlFwamttbUhhX01vMTdVWlBuT1d5bUxDSE9rU1Q2dWxyOHZmVENUUnVkbWhMMndzWkVUcE1rZHdMMnlCUWds?oc=5",
+     "date": "Tue, 30 Jun 2026 07:00:00 GMT"
+    }
+   ]
+  },
+  {
    "code": "6146",
    "name": "ディスコ",
-   "r": -8.2,
-   "price": 41420,
+   "r": -8.3,
+   "price": 41350,
    "prev": 45100,
    "news": [
     {
@@ -114,50 +186,74 @@
    ]
   },
   {
-   "code": "2914",
-   "name": "JT",
-   "r": -8.1,
-   "price": 5381,
-   "prev": 5857,
+   "code": "8035",
+   "name": "東京エレクトロン",
+   "r": -7.1,
+   "price": 8309,
+   "prev": 8940,
    "news": [
     {
-     "title": "日経平均、アンソロピック上場が重荷 JT株に注目（先読み株式相場） - 日本経済新聞",
-     "url": "https://news.google.com/rss/articles/CBMibEFVX3lxTE9QMXlHQlQ1aklNWVc5QlgxeTVaUkNqX3E3ajA3NHJPU01BekZmeHJNeThZLURwUzVTOTdCcUJobEJuNmRoTnZDc3M2S09ZSFFtTWpqWVRiNTVsaEllNjF0MFZiOEhpVHlENzVWWg?oc=5",
-     "date": "Thu, 19 Nov 2026 22:30:00 GMT"
+     "title": "東京エレクトロン株が大幅高 半導体「スーパーサイクル」見方強まる - 日本経済新聞",
+     "url": "https://news.google.com/rss/articles/CBMibEFVX3lxTE1BSk96aGFhdy1Vb2FHMl9ONm5WUG1OOU9OYWpxWnViWHFiakV2YzU0WnZsUDZ6b3VmNjFzWlZzMnVfNnpndEh6LUIyNlpQSUo4Q19zREtMRzRWZ1g2S0MtbTRfMjN5emZLbzhFMQ?oc=5",
+     "date": "Mon, 02 Nov 2026 08:00:00 GMT"
     },
     {
-     "title": "JT(2914)、ロシア事業の損失計上で｢減配｣を発表、配当利回り3.4％に！ 年間配当は前回予想から25％減、2026年12月期は前期比30円減の｢1株あたり204円｣ - ダイヤモンド・オンライン",
-     "url": "https://news.google.com/rss/articles/CBMiU0FVX3lxTE1Mek0wLVN5RWg0ZTFkUEZGVnpISHQ3aGx2Q0oycEFTcGxzT2RLMmx6WkJYRTNsbVVmTE1CcmlLX1ZkOGpWUk00WnkxbGplQzA2eWIw?oc=5",
-     "date": "Thu, 19 Nov 2026 11:15:00 GMT"
+     "title": "東エレク、非開示だった今期経常は87％増で2期ぶり最高益、未定だった配当は523円実施、実質52％増配 - 株探",
+     "url": "https://news.google.com/rss/articles/CBMiUkFVX3lxTFBfeFhCZXN5U282b3hPT00wSGlRbVB5OGdqaU80VHQtNWFPaDZEaDBEM09IRFBYbVVJWGs1ZWVoX0F4elBleURReXE0ZXZHNzVDb2c?oc=5",
+     "date": "Fri, 30 Oct 2026 07:00:00 GMT"
     },
     {
-     "title": "JT株急落・減配で狼狽する投資家が知っておくべき「ロシアリスクはかねて開示されていた」事実 「見落としがちなリスク」を確認できるAIを使った有価証券報告書のチェック術（マネーポストWEB） - Yahoo!ニュース",
-     "url": "https://news.google.com/rss/articles/CBMif0FVX3lxTFBRaDVTWVFRcWNxVGdlMVFaZjB4QmR6SlgzOUo5TzkwaGpDaXpHU3dJOElSSjVSaEpXUUlvQ084TXhSdmY1ZmJxNDJPZGhWNUItWkpqOXlqSEEtc3lIakRNaUtjdFB1N3hEZ1ctSFZOVjMwcTFQUDBnaldrVENqTmc?oc=5",
-     "date": "Thu, 19 Nov 2026 22:20:08 GMT"
+     "title": "東京エレクトロン、株価上昇失速不安 最高値から3割安 本格回復先送り - IG",
+     "url": "https://news.google.com/rss/articles/CBMisAFBVV95cUxOQThyZERnSVVqSXh6dzNQenhIbXhCSE9vOXhvRjNfZXkxcU1OVmFXVWdjYlAtZFVOVE45WkQ4REpqaGJhdXE4d0lJYnhLS2o2bDI2OVlaSDZlX1NyS3p0SXVIeWl0VkZaRk90OTlCcWtld0tfVEV5V19FU3NvYU9BaEFDN2Z0V3E0c3VwRXB6QUd5LVNXN0VVSmo0aHJWUjlaR1gyakdsVjVYSkthUEhTOQ?oc=5",
+     "date": "Sun, 23 Aug 2026 07:00:00 GMT"
     }
    ]
   },
   {
-   "code": "6981",
-   "name": "村田製作所",
-   "r": -7.7,
-   "price": 4766,
-   "prev": 5161,
+   "code": "4755",
+   "name": "楽天G",
+   "r": -7.1,
+   "price": 566,
+   "prev": 609,
    "news": [
     {
-     "title": "(株)村田製作所【MRAAY】：株価・株式情報 - Yahoo!ファイナンス",
-     "url": "https://news.google.com/rss/articles/CBMiUEFVX3lxTE95MHhZcklYYklCUW91UWZBTXlmZ0daZ3hWcHNFdk5JSzZvNE85dXBHZDlpOGt4c2xpZzc1SklWZ0w3WTdBM1RaaUlaOHpRS2lO?oc=5",
-     "date": "Thu, 19 Nov 2026 18:14:52 GMT"
+     "title": "楽天G株価が続落、3年ぶり安値 楽天証券で資産情報など漏洩 - 日本経済新聞",
+     "url": "https://news.google.com/rss/articles/CBMibEFVX3lxTE9Db2tyZW5CUExJZnZjYzhhUTJEUTYwTzA5OGktdmRZblV3bkFDWmI5RGFfajI4MV9xRl9xMS1BRkNnMjZHOG1HcVBQMDFkYWliSTRscnl0TE9VQnFLLVFxMHlIN3NpbUtFNFlOMQ?oc=5",
+     "date": "Wed, 18 Nov 2026 00:50:56 GMT"
     },
     {
-     "title": "太陽誘電、株価が午後一段高 村田製作所の工場拡張方針で連想買い - 日本経済新聞",
-     "url": "https://news.google.com/rss/articles/CBMibEFVX3lxTE1QNTZrQXp0TVBQOWdVZkdWdGtkZ3lLdDBxci1BUjZyT29kMlpVS1JGb3RlVnJFOW1EVW9HazJyNmVINnVRN1ZaVG9mRnBFTjVxRmo2N3d4c1FUQXROZHAzaEpiUDhHT1JGTmc4OQ?oc=5",
-     "date": "Wed, 14 Oct 2026 07:00:00 GMT"
+     "title": "【アナリスト評価】楽天Ｇ、レーティング強気を継続、目標株価840円に引下げ（欧州系大手証券）(アイフィス株予報) - Yahoo!ファイナンス",
+     "url": "https://news.google.com/rss/articles/CBMihwFBVV95cUxQX0tWVFVxckFOX2xiUXhvUTZ6UU1NVW50RzlhNFZfal9mYWlVaTVFOEEzR05WVnpVOVhXZm52VUtKQm1zdVVWYzBaa2NWMnRHQThMTVRQSjBoZ2h4WUxtNFllNVhvcmpXcmExaTVRRW5jdUZ0VWw0Q3pQV2lNTWczam4tRHJBMjQ?oc=5",
+     "date": "Mon, 16 Nov 2026 09:37:48 GMT"
     },
     {
-     "title": "村田製作所に強気評価相次ぐ、欧州系大手が目標株価1万5500円に引き上げ - BigGo ファイナンス",
-     "url": "https://news.google.com/rss/articles/CBMidEFVX3lxTE9jaG1DWGV0dWJ2cm0xYjJlWWFlazhrVjZ2SENhME5MNG1FZjM4VjBWMm90V1dlSlFwamttbUhhX01vMTdVWlBuT1d5bUxDSE9rU1Q2dWxyOHZmVENUUnVkbWhMMndzWkVUcE1rZHdMMnlCUWds?oc=5",
-     "date": "Tue, 30 Jun 2026 07:00:00 GMT"
+     "title": "楽天銀行株がストップ安、傘下の楽天証券の顧客情報漏えいを嫌気 - Bloomberg.com",
+     "url": "https://news.google.com/rss/articles/CBMiZ0FVX3lxTE00LWlNSEVaX1NpWkN5ZDJZbVZxd1NycUNzT2pCSW1HaUd5amVaVEFYZWFROEZvRGJCcjZXc2lINEFTZmtxV2hobzA5SlZuTmJDWUpBNlNKUlBEX3dGcm9UN3dOaWJfVWs?oc=5",
+     "date": "Wed, 18 Nov 2026 00:14:00 GMT"
+    }
+   ]
+  },
+  {
+   "code": "5802",
+   "name": "住友電工",
+   "r": -7.1,
+   "price": 1246,
+   "prev": 1342,
+   "news": [
+    {
+     "title": "フジクラ・古河電工・住友電工の株価はなぜ下落？電線3社は今買い時なのか - つばめ投資顧問",
+     "url": "https://news.google.com/rss/articles/CBMiT0FVX3lxTE13SElGc3RicEszb2tkMjdkVm12RW5XWkxuTE9aYTczS3VseC0xY3ROZ1hTbEl5TXN5U1FyZmdGX1Y3VWh6WmVwVWpZSFBPOHM?oc=5",
+     "date": "Wed, 18 Nov 2026 09:19:10 GMT"
+    },
+    {
+     "title": "決算:住友電工の純利益3700億円 27年3月期に上振れ、実質増配 - 日本経済新聞",
+     "url": "https://news.google.com/rss/articles/CBMibEFVX3lxTE5FV19sSUtBcC1ZRWExMVotR3lIM01KLXlZWHY5Z1k3dV9IaEN3TFNYY2xnclltdHdibkdfaU0yaXhCS2pZa0Y3RDFDbW5kcEJ3YTU5OGFEcUZZbnJFS0VkS3ZvTDNVRU5ucENsbA?oc=5",
+     "date": "Fri, 30 Oct 2026 07:00:00 GMT"
+    },
+    {
+     "title": "住友電気工業(株)【5802】：今の株価の理由は？値動きの背景をAIが解説 - Yahoo!ファイナンス",
+     "url": "https://news.google.com/rss/articles/CBMiX0FVX3lxTE1YdXplcFFBM2V5NGktMFp1MGl5UVlUbFVSNzZQSWxqR3RndWJ1WnRzcUdpajRFRUJEX2h6M3YwOTJvNl9xNTdxOFFYa3VjU2tSU1BoRmtSMXM3VEtCYlY0?oc=5",
+     "date": "Tue, 17 Feb 2026 09:51:23 GMT"
     }
    ]
   }
