@@ -376,24 +376,28 @@ function render(){
   <div class="note">検証50：半年の悪い時の損失が、前半・後半とも最も小さい投資ルール（予測出来た）。代わりに平均の利益は持ち続けより小さい。今と同じく高値から−10%以下で始めた半年は、持ち続けの悪い時が前半−37.6%・後半−8.3%</div>`}else e.style.display='none'}
  {const e=document.getElementById('crashcmp');if(NKD){const K=Object.keys(NKD).sort().filter(d=>d>='2026-05-01'),V=K.map(d=>NKD[d]),last=V[V.length-1];
   const ma=n=>V.map((_,i)=>{const a=Object.keys(NKD).sort(),j=a.indexOf(K[i]);if(j<n-1)return null;let t=0;for(let q=j-n+1;q<=j;q++)t+=NKD[a[q]];return t/n});
-  const m25=ma(25),m75=ma(75),FUT=[6,19,32],B0=K.indexOf('2026-11-06');
-  const SC=[['itb','① ITバブル崩壊型',[61200,55800,51500],'#ff9900','反発しても61,000円付近で頭打ち→長期下落。確率（60日以内にさらに−10〜−20%）：前半38%・後半8%（資料30%）'],['leh','② リーマン型',[52000,46500,44200],'#ff3366','追証の連鎖で反発なく下落。確率（60日以内にさらに−20%以上）：前半4%・後半0%'],['ued','③ 2024年8月型（V字）',[60200,63500,65000],'#33ccff','投げ売りの一巡後に急回復。確率（60日以内に高値の−10%以内まで戻す）：前半35%・後半76%（資料15%）']];
-  let on={};try{on=JSON.parse(localStorage.getItem('ccOn')||'{}')}catch(_){};SC.forEach(x=>{if(on[x[0]]===undefined)on[x[0]]=true});
-  const draw=()=>{const W=360,H=250,L=44,R=8,T=10,B=24,N=K.length,TOT=Math.max(N,B0+32)+4,all=V.concat([57400],...SC.filter(x=>on[x[0]]).map(x=>x[2]));
+  const m25=ma(25),m75=ma(75),P0=K.indexOf('2026-06-25'),HI0=NKD['2026-06-25']||72366;
+  const CC={'リーマン2007':['#ff3366','2007年7月9日の高値から'],'ITバブル2000':['#ff9900','2000年4月12日の高値から'],'2024年8月':['#33ccff','2024年7月11日の高値から'],'1990バブル':['#c58af9','1989年12月29日の高値から'],'2018':['#9be9a8','2018年10月2日の高値から'],'2015チャイナ':['#e3b341','2015年6月24日の高値から'],'コロナ2020':['#8b949e','2020年1月17日の高値から']};
+  const SC=OVL?Object.keys(CC).filter(k=>OVL[k]).map(k=>[k,k,OVL[k].map(x=>HI0*(1+x/100)),CC[k][0],CC[k][1]]):[];
+  let on={};try{on=JSON.parse(localStorage.getItem('ccOn')||'{}')}catch(_){};SC.forEach(x=>{if(on[x[0]]===undefined)on[x[0]]=['リーマン2007','ITバブル2000','2024年8月'].includes(x[0])});
+  const draw=()=>{const W=360,H=250,L=44,R=8,T=10,B=24,N=K.length,TOT=Math.max(N,P0+(SC[0]?SC[0][2].length:0))+2,all=V.concat(...SC.filter(x=>on[x[0]]).map(x=>x[2]));
    const lo=Math.floor(Math.min(...all,60520)/5000)*5000-2000,hi=Math.ceil(Math.max(...all)/5000)*5000,X=i=>L+(W-L-R)*i/TOT,Y=v=>T+(H-T-B)*(hi-v)/(hi-lo);
    let g='';for(let v=Math.ceil(lo/5000)*5000;v<=hi;v+=5000)g+=`<line x1="${L}" x2="${W-R}" y1="${Y(v)}" y2="${Y(v)}" stroke="#8883" stroke-width=".5"/><text x="${L-3}" y="${Y(v)+3}" font-size="8" text-anchor="end" fill="currentColor">${(v/1000).toFixed(0)}千</text>`;
    [0,Math.floor(N/2),N-1].forEach(i=>g+=`<text x="${X(i)}" y="${H-8}" font-size="8" text-anchor="middle" fill="currentColor">${K[i].slice(5).replace('-','/')}</text>`);
-   g+=`<text x="${X(B0+32)}" y="${H-8}" font-size="8" text-anchor="middle" fill="currentColor">12月下旬</text>`;
+   g+=`<text x="${X(TOT-8)}" y="${H-8}" font-size="8" text-anchor="middle" fill="currentColor">+60日</text>`;
    g+=`<rect x="${L}" y="${Y(62530)}" width="${W-L-R}" height="${Y(60520)-Y(62530)}" fill="#ff990022"/><text x="${L+4}" y="${Y(62530)-3}" font-size="8" fill="#e3b341">8月安値60,520〜9月安値62,530円の帯（戻り売りの壁）</text>`;
    const pl=(a,c,w,d)=>{const pts=a.map((v,i)=>v==null?null:X(i)+','+Y(v)).filter(Boolean).join(' ');return pts?`<polyline points="${pts}" fill="none" stroke="${c}" stroke-width="${w}" ${d?'stroke-dasharray="5 3"':''}/>`:''};
    let sv=pl(m25,'#d2a8ff',1)+pl(m75,'#58a6ff',1)+pl(V,'#00ff88',2.2);
-   SC.forEach(([id,nm,p,c])=>{if(!on[id])return;const pts=[[B0,57400]].concat(p.map((v,q)=>[B0+FUT[q],v]));sv+=`<polyline points="${pts.map(([i,v])=>X(i)+','+Y(v)).join(' ')}" fill="none" stroke="${c}" stroke-width="1.8" stroke-dasharray="5 3"/>`});
-   sv+=`<circle cx="${X(B0)}" cy="${Y(57400)}" r="3" fill="#ff5555"/><text x="${X(B0)+4}" y="${Y(57400)+12}" font-size="8" fill="#ff7b72">起点 11/6 57,400</text>`;
+   SC.forEach(([id,nm,p,c])=>{if(!on[id]||P0<0)return;sv+=`<polyline points="${p.map((v,i)=>X(P0+i)+','+Y(v)).join(' ')}" fill="none" stroke="${c}" stroke-width="1.6" stroke-dasharray="5 3"/>`});
+   sv+=`<circle cx="${X(P0)}" cy="${Y(HI0)}" r="3" fill="#ff5555"/><text x="${X(P0)+4}" y="${Y(HI0)-5}" font-size="8" fill="#ff7b72">起点：高値 6/25 ${Math.round(HI0).toLocaleString()}</text>`;
    const hi0=Math.max(...V);
    e.querySelector('#ccbody').innerHTML=`<svg viewBox="0 0 ${W} ${H}" width="100%" style="max-width:520px">${g}${sv}</svg>
    <div class="row"><span>日経平均（実測、緑）</span><b>${Math.round(last).toLocaleString()}円（${K[N-1]}）・高値${Math.round(hi0).toLocaleString()}円から${((last/hi0-1)*100).toFixed(1)}%</b></div>
    <div class="row"><span>移動平均（紫25日／青75日）</span><b>${m25[N-1]?Math.round(m25[N-1]).toLocaleString():'—'}円／${m75[N-1]?Math.round(m75[N-1]).toLocaleString():'—'}円</b></div>
-   ${SC.map(([id,nm,p,c,d])=>`<div class="row"><span><label><input type="checkbox" data-id="${id}" ${on[id]?'checked':''}> <span style="color:${c}">${nm}</span></label></span><b>11月中旬 ${p[0].toLocaleString()}／12月上旬 ${p[1].toLocaleString()}／12月下旬 ${p[2].toLocaleString()}円</b></div><div class="note" style="color:${c}">${(()=>{const k=N-1-B0;if(B0<0||k<1)return '';const P=[[0,57400]].concat(p.map((v,q)=>[FUT[q],v]));let j=0;while(j<P.length-2&&P[j+1][0]<k)j++;const [a,va]=P[j],[b,vb]=P[j+1],e=va+(vb-va)*Math.min(1,(k-a)/(b-a)),df=(last/e-1)*100;return `今日（起点から${k}営業日目）の線の値 ${Math.round(e).toLocaleString()}円 → 実測は${df>=0?'+':''}${df.toFixed(1)}%（${Math.abs(df)<=2?'一致':df>0?'実測が上':'実測が下'}）`})()}</div><div class="note">${d}</div>`).join('')}
+   <div class="note">点線＝実際の過去の暴落の日経（それぞれの高値＝今回の高値6/25にそろえ、営業日数で重ねたもの）。予想の線ではありません（検証67）</div>
+   ${SC.map(([id,nm,p,c,d])=>{const k=N-1-P0;if(P0<0||k<1||k>=p.length)return '';let se=0;for(let i=0;i<=k;i++){const a=V[P0+i]/HI0-1,b=p[i]/HI0-1;se+=(a-b)**2}const rm=Math.sqrt(se/(k+1))*100,df=(last/p[k]-1)*100,fut=p.slice(k+1,k+61),mn=fut.length?(Math.min(...fut)/p[k]-1)*100:null;
+     return `<div class="row"><span><label><input type="checkbox" data-id="${id}" ${on[id]?'checked':''}> <span style="color:${c}">${esc(nm)}</span></label></span><b>ずれ ${rm.toFixed(1)}</b></div><div class="note" style="color:${c}">${esc(d)}・高値から${k}営業日目の位置 ${((p[k]/HI0-1)*100).toFixed(1)}%（今は${((last/HI0-1)*100).toFixed(1)}%）${mn!=null?`・その後60日の最安 ${mn.toFixed(1)}%`:''}</div>`}).join('')}
+   <div class="note">ずれ＝毎日の位置の差（%ポイント）の二乗平均の平方根。小さいほど形が近い。過去の例は「後から暴落と分かった例」だけなので、その後も下げた例が多いのは当然で、この比較で先は予測出来ません（検証66では今と同じ状態からさらに−20%は0回）。</div>
    ${(()=>{if(!IXD)return '<div class="note">NASDAQ・SOX・S&P500は次の自動更新で表示されます</div>';const S0={'日経平均':NKD,...IXD},COL={'日経平均':'#00ff88','NASDAQ':'#f2c14e','SOX':'#ff5577','S&P500':'#58a6ff'},st='2026-05-01';
      const ser=Object.entries(S0).map(([n,o])=>{const k=Object.keys(o).sort().filter(d=>d>=st);const b=o[k[0]];return [n,k,k.map(d=>o[d]/b*100),Math.max(...k.map(d=>o[d]))]});
      const all=ser.flatMap(x=>x[2]),lo=Math.floor(Math.min(...all)/10)*10,hi=Math.ceil(Math.max(...all)/10)*10,W=360,H=210,L=34,R=8,T=8,B=20,t0=new Date(st).getTime(),t1=Date.now(),X=d=>L+(W-L-R)*(new Date(d).getTime()-t0)/(t1-t0),Y=v=>T+(H-T-B)*(hi-v)/(hi-lo);
@@ -672,7 +676,7 @@ function render(){
 }
 
 (async()=>{
- [S,C,BT,PP,LT,MG,FW,FI,FC,DF,DI,AS,HL,OL,TRK,PHI,NH,NKD,IXD,JMP,CAT,SLV]=await Promise.all([get('data/signals.json'),get('data/candles.json'),get('data/compare6.json'),get('data/paper.json'),get('data/logic_tree.json'),get('data/morning.json'),get('data/finwatch.json'),get('data/finwatch_intraday.json'),get('data/forecast.json'),get('data/defense.json'),get('data/defense_intraday.json'),get('data/assets.json'),get('data/health.json'),get('data/outlook.json'),get('data/defense_track.json'),get('data/path_hist.json'),get('data/node_hist.json'),get('data/nk_daily.json'),get('data/idx_daily.json'),get('data/jumps.json'),get('data/catalysts.json'),get('data/series_live.json')]);
+ [S,C,BT,PP,LT,MG,FW,FI,FC,DF,DI,AS,HL,OL,TRK,PHI,NH,NKD,IXD,JMP,CAT,SLV,OVL]=await Promise.all([get('data/signals.json'),get('data/candles.json'),get('data/compare6.json'),get('data/paper.json'),get('data/logic_tree.json'),get('data/morning.json'),get('data/finwatch.json'),get('data/finwatch_intraday.json'),get('data/forecast.json'),get('data/defense.json'),get('data/defense_intraday.json'),get('data/assets.json'),get('data/health.json'),get('data/outlook.json'),get('data/defense_track.json'),get('data/path_hist.json'),get('data/node_hist.json'),get('data/nk_daily.json'),get('data/idx_daily.json'),get('data/jumps.json'),get('data/catalysts.json'),get('data/series_live.json'),get('data/crash_overlay.json')]);
  if(S){const [y,m,d]=S.market_date.split('-');document.getElementById('hdate').textContent=`${+m}月${+d}日`;
   document.getElementById('hst').textContent='✓ 判定完了';{const W='日月火水木金土',u=new Date(S.updated.replace(' ','T')+':00+09:00'),md=new Date(S.market_date+'T00:00:00+09:00');
   let n=new Date(md.getTime()+864e5);while([0,6].includes(n.getUTCDay()===undefined?0:new Date(n.getTime()+9*36e5).getUTCDay()))n=new Date(n.getTime()+864e5);
