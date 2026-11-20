@@ -1,12 +1,27 @@
 {
- "at": "2026-11-20T09:34+09:00",
+ "at": "2026-11-20T09:55+09:00",
  "th": -7.0,
  "hits": [
   {
+   "code": "6273",
+   "name": "SMC",
+   "r": -98.0,
+   "price": null,
+   "prev": null,
+   "note": "見出しで検知（PTS・特別気配など。値段は未確認）",
+   "news": [
+    {
+     "title": "TSMCのADRが2.9%急落、台湾指数先物の夜間取引も500ポイント暴落 台湾株の寄り付きに警戒感 - BigGo ファイナンス",
+     "url": "https://news.google.com/rss/articles/CBMidEFVX3lxTE81UDlMdWZqSUZ5d2JfNnQ5XzZTNHZIUU1jTmRfS0czazl6bVdsNXpFVTM0MlMxWEF4d1VzSjRNWFVWVjMyUTN4NjQ4dW5pUzVOQ0tvalQ2Y0RlbEtLS3hrOTBnM3pHdkV3dFl6SGJxYmJiN21J?oc=5",
+     "date": "Fri, 20 Nov 2026 00:25:00 GMT"
+    }
+   ]
+  },
+  {
    "code": "9984",
    "name": "ソフトバンクG",
-   "r": -13.3,
-   "price": 3068,
+   "r": -14.8,
+   "price": 3013,
    "prev": 3537,
    "news": [
     {
@@ -20,17 +35,17 @@
      "date": "Mon, 02 Nov 2026 08:00:00 GMT"
     },
     {
-     "title": "日経平均寄与度ランキング（大引け）～日経平均は続伸、ソフトバンクGや東エレクが2銘柄で約246円分押し上げ - みんかぶ",
-     "url": "https://news.google.com/rss/articles/CBMiRkFVX3lxTFBIZHVMbGg5ZXNlUFowVWlCOTBDUVp3bmZHSDQ4S2FBNnJ3VUFpQ0kydlU5aFMtQUE2b2hVN3NmUF83a1dVd2c?oc=5",
-     "date": "Thu, 19 Nov 2026 07:48:05 GMT"
+     "title": "ソフトバンクＧが一時５％超上昇し売買代金も２位に、アーム株上昇とオープンＡＩの資金調達巡る思惑が株価刺激 - 株探",
+     "url": "https://news.google.com/rss/articles/CBMiYEFVX3lxTE1SLWctLTlMTlVLNU40cGR5YnFJdjFRS216MkJBYTFnUHVZSmt2QXUyUTBJWl9xMW9taFlWeV9Kel9DZWsyTkRRek9QZC1Ba3N2dGt1U210M0pYTng2UE84cQ?oc=5",
+     "date": "Wed, 30 Sep 2026 07:00:00 GMT"
     }
    ]
   },
   {
    "code": "6857",
    "name": "アドバンテスト",
-   "r": -7.3,
-   "price": 25070,
+   "r": -10.2,
+   "price": 24285,
    "prev": 27045,
    "news": [
     {
@@ -47,6 +62,102 @@
      "title": "アドバンテスト株が本日急落した理由とは - Investing.com - FX | 株式市場 | ファイナンス | 金融ニュース",
      "url": "https://news.google.com/rss/articles/CBMid0FVX3lxTE5vUmhmOUl1ZjdTaThUeVVBYVdVOEtHeGtzdkFQdWlKVFdFdF9STnptZnhrOTcxVXhYRk85SlYxajhTTXNZaVU3NWx2WXhneWhhZUlGSXVfYnRKbzR3WVM3V3pnbVptcE1wTUNYSTN4M2Z2VU13Z2lR?oc=5",
      "date": "Tue, 17 Nov 2026 04:08:00 GMT"
+    }
+   ]
+  },
+  {
+   "code": "6752",
+   "name": "パナソニック",
+   "r": -8.6,
+   "price": 2757,
+   "prev": 3015,
+   "news": [
+    {
+     "title": "パナソニック ホールディングス(株)【PCRFY】：株価・株式情報 - Yahoo!ファイナンス",
+     "url": "https://news.google.com/rss/articles/CBMiUEFVX3lxTFA0MXNIYW5ZSmhXQ3BjRnhIaUwtNC1DQVhMTG9wbnFvbEhkTzd5WjVXVDVyRE84QW9CYXZkWnNIa2lGZ0VkUTJjaWFWbmEteE9l?oc=5",
+     "date": "Thu, 19 Nov 2026 13:21:58 GMT"
+    },
+    {
+     "title": "パナソニックHD株価が反発 27年3月期の純利益2.8倍に上方修正 - 日本経済新聞",
+     "url": "https://news.google.com/rss/articles/CBMibEFVX3lxTE0xZ1g0TDJwYVlIVHFBVi03eEp5dU8zWTQ0dUVtdzZwSEl0bVBxUXJ2NGdXRWRjbXZNcjdSVVBZWngwYjF1QV8xN2NhalVEZ2ZKaHBNcUVrR2IxVDE1NXBPSGFxY0x0RlFQaHd2UQ?oc=5",
+     "date": "Mon, 02 Nov 2026 08:00:00 GMT"
+    },
+    {
+     "title": "パナソニックHD“株価3倍”の理由は【トップを直撃】 - テレ東BIZ",
+     "url": "https://news.google.com/rss/articles/CBMiYkFVX3lxTE9HaWUwLUo0TnFvSmROdU1XV2xpMk1sNGU2XzRPZTh6V29IWkMxTFBWVnRySlFOUEVtdXcxRmcycThsWU13Z1YtcnR3bFNTWjhrOTJkZWNTa2QtQm4ybHo0bGhB?oc=5",
+     "date": "Mon, 05 Oct 2026 07:00:00 GMT"
+    }
+   ]
+  },
+  {
+   "code": "6146",
+   "name": "ディスコ",
+   "r": -8.2,
+   "price": 41420,
+   "prev": 45100,
+   "news": [
+    {
+     "title": "ディスコ株価、一時12.7%安 26年7〜9月純利益が市場予想下回る - 日本経済新聞",
+     "url": "https://news.google.com/rss/articles/CBMibEFVX3lxTE1hZDFmQV9ZZ0hkTUFrYmwtbi0yXzNWMGc2S3FrWm9NdkRlSmJvVlV1amJrc3JaWnhZMUxQNmJ2LUFTUU1qYTBIWVpoVS1hRE9GaWFpdm1TZG9zTF9FalNmQms3TjlVWVktTFpEcw?oc=5",
+     "date": "Fri, 24 Jul 2026 07:00:00 GMT"
+    },
+    {
+     "title": "(株)ディスコ【DSCSY】：掲示板 - Yahoo!ファイナンス",
+     "url": "https://news.google.com/rss/articles/CBMiWEFVX3lxTE0zT2xObzVhalZSN2hqS2hDdVVtN3FsUFpNMS1pb3JZTUhrMk1UMTNsTExheVI3SXh3NVBqSVZHQ0xmQzB4LUpQOWNXdDhFd3dRMnlGdTJqWlY?oc=5",
+     "date": "Sat, 05 Sep 2026 07:00:00 GMT"
+    },
+    {
+     "title": "本日の注目個別銘柄：ディスコ、信越ポリマ、KOAなど - 株探",
+     "url": "https://news.google.com/rss/articles/CBMiYEFVX3lxTFBXVmY4VDk5ZzM2SlBKMWV6S1UzMnhTNktVVlctLWVVaHBiN3ZjaXM5YmMzZC0wb2lTY2dhSzBjejRNbUZaRFpSQnE1NXJsYkJ6SHhFcm42Y2p6SHVERmJPcg?oc=5",
+     "date": "Fri, 24 Jul 2026 07:00:00 GMT"
+    }
+   ]
+  },
+  {
+   "code": "2914",
+   "name": "JT",
+   "r": -8.1,
+   "price": 5381,
+   "prev": 5857,
+   "news": [
+    {
+     "title": "日経平均、アンソロピック上場が重荷 JT株に注目（先読み株式相場） - 日本経済新聞",
+     "url": "https://news.google.com/rss/articles/CBMibEFVX3lxTE9QMXlHQlQ1aklNWVc5QlgxeTVaUkNqX3E3ajA3NHJPU01BekZmeHJNeThZLURwUzVTOTdCcUJobEJuNmRoTnZDc3M2S09ZSFFtTWpqWVRiNTVsaEllNjF0MFZiOEhpVHlENzVWWg?oc=5",
+     "date": "Thu, 19 Nov 2026 22:30:00 GMT"
+    },
+    {
+     "title": "JT(2914)、ロシア事業の損失計上で｢減配｣を発表、配当利回り3.4％に！ 年間配当は前回予想から25％減、2026年12月期は前期比30円減の｢1株あたり204円｣ - ダイヤモンド・オンライン",
+     "url": "https://news.google.com/rss/articles/CBMiU0FVX3lxTE1Mek0wLVN5RWg0ZTFkUEZGVnpISHQ3aGx2Q0oycEFTcGxzT2RLMmx6WkJYRTNsbVVmTE1CcmlLX1ZkOGpWUk00WnkxbGplQzA2eWIw?oc=5",
+     "date": "Thu, 19 Nov 2026 11:15:00 GMT"
+    },
+    {
+     "title": "JT株急落・減配で狼狽する投資家が知っておくべき「ロシアリスクはかねて開示されていた」事実 「見落としがちなリスク」を確認できるAIを使った有価証券報告書のチェック術（マネーポストWEB） - Yahoo!ニュース",
+     "url": "https://news.google.com/rss/articles/CBMif0FVX3lxTFBRaDVTWVFRcWNxVGdlMVFaZjB4QmR6SlgzOUo5TzkwaGpDaXpHU3dJOElSSjVSaEpXUUlvQ084TXhSdmY1ZmJxNDJPZGhWNUItWkpqOXlqSEEtc3lIakRNaUtjdFB1N3hEZ1ctSFZOVjMwcTFQUDBnaldrVENqTmc?oc=5",
+     "date": "Thu, 19 Nov 2026 22:20:08 GMT"
+    }
+   ]
+  },
+  {
+   "code": "6981",
+   "name": "村田製作所",
+   "r": -7.7,
+   "price": 4766,
+   "prev": 5161,
+   "news": [
+    {
+     "title": "(株)村田製作所【MRAAY】：株価・株式情報 - Yahoo!ファイナンス",
+     "url": "https://news.google.com/rss/articles/CBMiUEFVX3lxTE95MHhZcklYYklCUW91UWZBTXlmZ0daZ3hWcHNFdk5JSzZvNE85dXBHZDlpOGt4c2xpZzc1SklWZ0w3WTdBM1RaaUlaOHpRS2lO?oc=5",
+     "date": "Thu, 19 Nov 2026 18:14:52 GMT"
+    },
+    {
+     "title": "太陽誘電、株価が午後一段高 村田製作所の工場拡張方針で連想買い - 日本経済新聞",
+     "url": "https://news.google.com/rss/articles/CBMibEFVX3lxTE1QNTZrQXp0TVBQOWdVZkdWdGtkZ3lLdDBxci1BUjZyT29kMlpVS1JGb3RlVnJFOW1EVW9HazJyNmVINnVRN1ZaVG9mRnBFTjVxRmo2N3d4c1FUQXROZHAzaEpiUDhHT1JGTmc4OQ?oc=5",
+     "date": "Wed, 14 Oct 2026 07:00:00 GMT"
+    },
+    {
+     "title": "村田製作所に強気評価相次ぐ、欧州系大手が目標株価1万5500円に引き上げ - BigGo ファイナンス",
+     "url": "https://news.google.com/rss/articles/CBMidEFVX3lxTE9jaG1DWGV0dWJ2cm0xYjJlWWFlazhrVjZ2SENhME5MNG1FZjM4VjBWMm90V1dlSlFwamttbUhhX01vMTdVWlBuT1d5bUxDSE9rU1Q2dWxyOHZmVENUUnVkbWhMMndzWkVUcE1rZHdMMnlCUWds?oc=5",
+     "date": "Tue, 30 Jun 2026 07:00:00 GMT"
     }
    ]
   }
