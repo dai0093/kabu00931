@@ -1,5 +1,5 @@
 {
- "at": "2026-11-20T14:54+09:00",
+ "at": "2026-11-20T15:15+09:00",
  "th": -7.0,
  "hits": [
   {
@@ -20,8 +20,8 @@
   {
    "code": "9984",
    "name": "ソフトバンクG",
-   "r": -13.7,
-   "price": 3053,
+   "r": -13.3,
+   "price": 3067,
    "prev": 3537,
    "news": [
     {
@@ -45,7 +45,7 @@
    "code": "6752",
    "name": "パナソニック",
    "r": -10.6,
-   "price": 2694,
+   "price": 2696,
    "prev": 3015,
    "news": [
     {
@@ -66,34 +66,10 @@
    ]
   },
   {
-   "code": "6857",
-   "name": "アドバンテスト",
-   "r": -10.3,
-   "price": 24255,
-   "prev": 27045,
-   "news": [
-    {
-     "title": "アドバンテスト株価が続落、7カ月ぶり安値 半導体関連は総崩れ - 日本経済新聞",
-     "url": "https://news.google.com/rss/articles/CBMibEFVX3lxTE91WXZHN1dzTEU3cmNuYnJTZ1gxOFJvR1lzaVRHbGl3RElqN1N0eHVuT3ZHX0tSWkVGRzBuQ09OMGFObkNZcjZtTkFPRHJqTGtYc1BLMHgwbzdUckxZYUQ4UWd2SVVfUnFFVldSQg?oc=5",
-     "date": "Fri, 20 Nov 2026 01:33:33 GMT"
-    },
-    {
-     "title": "日経平均は大幅に3日ぶり反落、アドバンテストが1銘柄で約631円分押し下げ(フィスコ) - Yahoo!ファイナンス",
-     "url": "https://news.google.com/rss/articles/CBMihwFBVV95cUxONGw5dXZ3NU5NRGUxbkNKRTZ3SV9Lci1RUEQtc0hqOEp1SzhHZVh5ZDJtUzVhYXBuU3lkUGdUTGdKOXEzSGZxYlhnTFo4NUpBaTdzWlhfNE5hNGFDZVRqWVhkNWQ3bU5hSlFNbFFUa2ozZG12WU9LQm55czloNjVURmxxNUpvSUU?oc=5",
-     "date": "Fri, 20 Nov 2026 03:35:47 GMT"
-    },
-    {
-     "title": "アドバンテスト---大幅続落、半導体関連は米AMDの株価下落も弱材料視 執筆 Fisco - Investing.com - FX | 株式市場 | ファイナンス | 金融ニュース",
-     "url": "https://news.google.com/rss/articles/CBMicEFVX3lxTE1MS0JxQUlhRjdmV1dQRlFLZTB5V0ZLVGlHRGptTTZmLXRzXzFFNkdKYmpRRklLZlEyNjVhbDdxR1h1aHhSZENTd280ZGtiRUdHTHY5cXY5SjN6bHhrZ013YmcxZk5mRjBOa0VjMnhTaFo?oc=5",
-     "date": "Fri, 20 Nov 2026 01:23:00 GMT"
-    }
-   ]
-  },
-  {
    "code": "2914",
    "name": "JT",
    "r": -10.3,
-   "price": 5254,
+   "price": 5253,
    "prev": 5857,
    "news": [
     {
@@ -114,10 +90,34 @@
    ]
   },
   {
+   "code": "6857",
+   "name": "アドバンテスト",
+   "r": -9.9,
+   "price": 24355,
+   "prev": 27045,
+   "news": [
+    {
+     "title": "アドバンテスト株価が続落、7カ月ぶり安値 半導体関連は総崩れ - 日本経済新聞",
+     "url": "https://news.google.com/rss/articles/CBMibEFVX3lxTE91WXZHN1dzTEU3cmNuYnJTZ1gxOFJvR1lzaVRHbGl3RElqN1N0eHVuT3ZHX0tSWkVGRzBuQ09OMGFObkNZcjZtTkFPRHJqTGtYc1BLMHgwbzdUckxZYUQ4UWd2SVVfUnFFVldSQg?oc=5",
+     "date": "Fri, 20 Nov 2026 01:33:33 GMT"
+    },
+    {
+     "title": "日経平均は大幅に3日ぶり反落、アドバンテストが1銘柄で約631円分押し下げ(フィスコ) - Yahoo!ファイナンス",
+     "url": "https://news.google.com/rss/articles/CBMihwFBVV95cUxONGw5dXZ3NU5NRGUxbkNKRTZ3SV9Lci1RUEQtc0hqOEp1SzhHZVh5ZDJtUzVhYXBuU3lkUGdUTGdKOXEzSGZxYlhnTFo4NUpBaTdzWlhfNE5hNGFDZVRqWVhkNWQ3bU5hSlFNbFFUa2ozZG12WU9LQm55czloNjVURmxxNUpvSUU?oc=5",
+     "date": "Fri, 20 Nov 2026 03:35:47 GMT"
+    },
+    {
+     "title": "アドバンテスト---大幅続落、半導体関連は米AMDの株価下落も弱材料視 執筆 Fisco - Investing.com - FX | 株式市場 | ファイナンス | 金融ニュース",
+     "url": "https://news.google.com/rss/articles/CBMicEFVX3lxTE1MS0JxQUlhRjdmV1dQRlFLZTB5V0ZLVGlHRGptTTZmLXRzXzFFNkdKYmpRRklLZlEyNjVhbDdxR1h1aHhSZENTd280ZGtiRUdHTHY5cXY5SjN6bHhrZ013YmcxZk5mRjBOa0VjMnhTaFo?oc=5",
+     "date": "Fri, 20 Nov 2026 01:23:00 GMT"
+    }
+   ]
+  },
+  {
    "code": "6920",
    "name": "レーザーテック",
-   "r": -9.4,
-   "price": 30200,
+   "r": -9.0,
+   "price": 30310,
    "prev": 33320,
    "news": [
     {
@@ -140,8 +140,8 @@
   {
    "code": "6981",
    "name": "村田製作所",
-   "r": -8.7,
-   "price": 4710,
+   "r": -8.6,
+   "price": 4718,
    "prev": 5161,
    "news": [
     {
@@ -162,34 +162,10 @@
    ]
   },
   {
-   "code": "6146",
-   "name": "ディスコ",
-   "r": -8.2,
-   "price": 41380,
-   "prev": 45100,
-   "news": [
-    {
-     "title": "ディスコ株価、一時12.7%安 26年7〜9月純利益が市場予想下回る - 日本経済新聞",
-     "url": "https://news.google.com/rss/articles/CBMibEFVX3lxTE1hZDFmQV9ZZ0hkTUFrYmwtbi0yXzNWMGc2S3FrWm9NdkRlSmJvVlV1amJrc3JaWnhZMUxQNmJ2LUFTUU1qYTBIWVpoVS1hRE9GaWFpdm1TZG9zTF9FalNmQms3TjlVWVktTFpEcw?oc=5",
-     "date": "Fri, 24 Jul 2026 07:00:00 GMT"
-    },
-    {
-     "title": "(株)ディスコ【DSCSY】：掲示板 - Yahoo!ファイナンス",
-     "url": "https://news.google.com/rss/articles/CBMiWEFVX3lxTE0zT2xObzVhalZSN2hqS2hDdVVtN3FsUFpNMS1pb3JZTUhrMk1UMTNsTExheVI3SXh3NVBqSVZHQ0xmQzB4LUpQOWNXdDhFd3dRMnlGdTJqWlY?oc=5",
-     "date": "Sat, 05 Sep 2026 07:00:00 GMT"
-    },
-    {
-     "title": "本日の注目個別銘柄：ディスコ、信越ポリマ、KOAなど - 株探",
-     "url": "https://news.google.com/rss/articles/CBMiYEFVX3lxTFBXVmY4VDk5ZzM2SlBKMWV6S1UzMnhTNktVVlctLWVVaHBiN3ZjaXM5YmMzZC0wb2lTY2dhSzBjejRNbUZaRFpSQnE1NXJsYkJ6SHhFcm42Y2p6SHVERmJPcg?oc=5",
-     "date": "Fri, 24 Jul 2026 07:00:00 GMT"
-    }
-   ]
-  },
-  {
    "code": "7012",
    "name": "川崎重工",
-   "r": -8.2,
-   "price": 1536,
+   "r": -8.4,
+   "price": 1533,
    "prev": 1673,
    "news": [
     {
@@ -212,8 +188,8 @@
   {
    "code": "4755",
    "name": "楽天G",
-   "r": -8.2,
-   "price": 560,
+   "r": -8.3,
+   "price": 559,
    "prev": 609,
    "news": [
     {
@@ -234,10 +210,34 @@
    ]
   },
   {
+   "code": "6146",
+   "name": "ディスコ",
+   "r": -8.0,
+   "price": 41480,
+   "prev": 45100,
+   "news": [
+    {
+     "title": "サンディスク【SNDK】：株価・株式情報 - Yahoo!ファイナンス",
+     "url": "https://news.google.com/rss/articles/CBMiT0FVX3lxTE4yRGE0cG1GNW1GcS1aQWs1bTNUaGhRM0llaEU1UHh1S0dRVVhLNkwtdDRwWjRYbGZyaEk2cEZndDNiQmdtUkVkWVhaTVNycnc?oc=5",
+     "date": "Fri, 20 Nov 2026 06:06:08 GMT"
+    },
+    {
+     "title": "ディスコ株価、一時12.7%安 26年7〜9月純利益が市場予想下回る - 日本経済新聞",
+     "url": "https://news.google.com/rss/articles/CBMibEFVX3lxTE1hZDFmQV9ZZ0hkTUFrYmwtbi0yXzNWMGc2S3FrWm9NdkRlSmJvVlV1amJrc3JaWnhZMUxQNmJ2LUFTUU1qYTBIWVpoVS1hRE9GaWFpdm1TZG9zTF9FalNmQms3TjlVWVktTFpEcw?oc=5",
+     "date": "Fri, 24 Jul 2026 07:00:00 GMT"
+    },
+    {
+     "title": "本日の注目個別銘柄：ディスコ、信越ポリマ、KOAなど - 株探",
+     "url": "https://news.google.com/rss/articles/CBMiYEFVX3lxTFBXVmY4VDk5ZzM2SlBKMWV6S1UzMnhTNktVVlctLWVVaHBiN3ZjaXM5YmMzZC0wb2lTY2dhSzBjejRNbUZaRFpSQnE1NXJsYkJ6SHhFcm42Y2p6SHVERmJPcg?oc=5",
+     "date": "Fri, 24 Jul 2026 07:00:00 GMT"
+    }
+   ]
+  },
+  {
    "code": "5802",
    "name": "住友電工",
-   "r": -8.1,
-   "price": 1234,
+   "r": -7.3,
+   "price": 1243,
    "prev": 1342,
    "news": [
     {
@@ -254,30 +254,6 @@
      "title": "住友電気工業(株)【5802】：今の株価の理由は？値動きの背景をAIが解説 - Yahoo!ファイナンス",
      "url": "https://news.google.com/rss/articles/CBMiX0FVX3lxTE1YdXplcFFBM2V5NGktMFp1MGl5UVlUbFVSNzZQSWxqR3RndWJ1WnRzcUdpajRFRUJEX2h6M3YwOTJvNl9xNTdxOFFYa3VjU2tSU1BoRmtSMXM3VEtCYlY0?oc=5",
      "date": "Tue, 17 Feb 2026 09:51:23 GMT"
-    }
-   ]
-  },
-  {
-   "code": "6723",
-   "name": "ルネサス",
-   "r": -7.1,
-   "price": 2424,
-   "prev": 2608,
-   "news": [
-    {
-     "title": "レーティング情報（目標株価変更・その２）＝松風、ルネサスなど(ウエルスアドバイザー) - Yahoo!ファイナンス",
-     "url": "https://news.google.com/rss/articles/CBMihwFBVV95cUxOSGowRnVzanN4aDF5R0VWdVBiMy1VZEFmdzBNSFdCeW5Cemx0WXZpYXVUZUNNTkc5TEhjakFJX0swSExPSzUyZVM4ZFJYandSX3dURFA1ZmUtQkZFTWxVWXZIZXpTWnV5N25mWlNiZEZITlJqcy1fVWp5Sm4tT09ZOEp5WXJTLW8?oc=5",
-     "date": "Fri, 30 Oct 2026 07:00:00 GMT"
-    },
-    {
-     "title": "ルネサスエレクトロニクス株価急伸 1〜6月期は2173億円の黒字 - 日本経済新聞",
-     "url": "https://news.google.com/rss/articles/CBMibEFVX3lxTE9qSjRTbHNNZVJROHZBdHdkc2VlRmpBUmNyb3lMZlRMZ1lXTjJ0dTE5Z0tMOGFremxqUnp3N1d3MjZhTFFTUDJCVGN4eUk4M04zUlVkb2pSNUJaZVVpU0Q3MDVhWHhHU0U3M0I4Mg?oc=5",
-     "date": "Mon, 03 Aug 2026 07:00:00 GMT"
-    },
-    {
-     "title": "ルネサスが大幅続伸、野村と米系証券が目標株価を大幅引き上げ AI需要を追い風に - BigGo ファイナンス",
-     "url": "https://news.google.com/rss/articles/CBMidEFVX3lxTE0tdUFWcUJDOW1UUmRBQWg4S3ZQN0huTzhZUjN0QzVTdDN6MVNvd1RvQVJYLUMxZzFkTVVBbDVpclVCMFhjdGJ6RWJ4UTlFU2YtbkpMZjNfQkJsWVdGb09NLTZSb3NIRjVUTGRuUmV3ZERyT2It?oc=5",
-     "date": "Thu, 25 Jun 2026 07:00:00 GMT"
     }
    ]
   }
