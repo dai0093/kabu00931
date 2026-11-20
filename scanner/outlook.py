@@ -19,6 +19,10 @@ try:  # Yahooの日経が最新日を欠く時は 1321 の騰落で補う
     C = C.sort_index()
 except Exception as _x: print("1321補完失敗", _x)
 NEXT = C.index[-1] + pd.offsets.BDay(1)   # 次の東京の取引日（前夜の米国を織り込んだ予測を出すため）
+try:  # 2026-11-21修正：祝日（例 11/23）を取引日と数えると、祝日の夜の米国の値が予測から落ちていた
+    import jpholiday
+    while jpholiday.is_holiday(NEXT.date()) or (NEXT.month == 12 and NEXT.day == 31) or (NEXT.month == 1 and NEXT.day <= 3): NEXT += pd.offsets.BDay(1)
+except Exception as _x: print("祝日の確認失敗", _x)
 cal = C.index.append(pd.DatetimeIndex([NEXT])); C = C.reindex(cal)
 def al(t): return dl(t)["Close"].dropna()
 sox, vix, bkx, jpy = al("^SOX"), al("^VIX"), al("^BKX"), al("JPY=X")
