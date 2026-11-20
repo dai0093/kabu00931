@@ -51,9 +51,9 @@
   },
   "金融機関株価": {
    "since": "2026-11-19",
-   "lit_since": null,
+   "lit_since": "2026-11-20",
    "before_start": false,
-   "st": "near"
+   "st": "lit"
   },
   "NFCI": {
    "since": "2026-11-20",
