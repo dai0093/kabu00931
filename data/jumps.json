@@ -1,5 +1,5 @@
 {
- "at": "2026-11-20T11:36+09:00",
+ "at": "2026-11-20T11:56+09:00",
  "th": -7.0,
  "hits": [
   {
@@ -20,8 +20,8 @@
   {
    "code": "9984",
    "name": "ソフトバンクG",
-   "r": -14.6,
-   "price": 3019,
+   "r": -15.0,
+   "price": 3007,
    "prev": 3537,
    "news": [
     {
@@ -44,15 +44,10 @@
   {
    "code": "6857",
    "name": "アドバンテスト",
-   "r": -10.3,
-   "price": 24250,
+   "r": -10.8,
+   "price": 24120,
    "prev": 27045,
    "news": [
-    {
-     "title": "アドバンテスト株価が一時7%高 NVIDIA株が決算後に上昇 - 日本経済新聞",
-     "url": "https://news.google.com/rss/articles/CBMibEFVX3lxTE03cWpGY2sxMGdmUzIzWGxZTHZmYXI5dDRtZVRSVkZVanBNQl91bFowWWtqUkpYNW9YLVBmNWJMWnhHOWZzM0pTSm93akNaNk9SZUhRVXdJa2EzVDMyREZYNWhrbHAxbFBZdVlPSQ?oc=5",
-     "date": "Wed, 18 Nov 2026 00:48:45 GMT"
-    },
     {
      "title": "アドバンテスト株価が続落、7カ月ぶり安値 半導体関連は総崩れ - 日本経済新聞",
      "url": "https://news.google.com/rss/articles/CBMibEFVX3lxTE91WXZHN1dzTEU3cmNuYnJTZ1gxOFJvR1lzaVRHbGl3RElqN1N0eHVuT3ZHX0tSWkVGRzBuQ09OMGFObkNZcjZtTkFPRHJqTGtYc1BLMHgwbzdUckxZYUQ4UWd2SVVfUnFFVldSQg?oc=5",
@@ -62,14 +57,19 @@
      "title": "アドバンテスト---大幅続落、半導体関連は米AMDの株価下落も弱材料視(フィスコ) - Yahoo!ファイナンス",
      "url": "https://news.google.com/rss/articles/CBMihwFBVV95cUxQSFZ3azVYXzdUWU5BYzcyWnBqQ0FfTVVhSUxITGJQSjBCSlptS09uYkd4YllqQ01oR1ZjLUJydHZtVEZMNmpqYk5mUnNzdWpyT1hZRnVPMTVuLUZzX2YwdE5mcDR1bkdCVFA3cGhxZkN5NTJrSkhEb0dzNXpNM2ZORmtHeFJseUU?oc=5",
      "date": "Fri, 20 Nov 2026 01:23:27 GMT"
+    },
+    {
+     "title": "アドバンテスト---大幅続落、半導体関連は米AMDの株価下落も弱材料視 執筆 Fisco - Investing.com - FX | 株式市場 | ファイナンス | 金融ニュース",
+     "url": "https://news.google.com/rss/articles/CBMicEFVX3lxTE1MS0JxQUlhRjdmV1dQRlFLZTB5V0ZLVGlHRGptTTZmLXRzXzFFNkdKYmpRRklLZlEyNjVhbDdxR1h1aHhSZENTd280ZGtiRUdHTHY5cXY5SjN6bHhrZ013YmcxZk5mRjBOa0VjMnhTaFo?oc=5",
+     "date": "Fri, 20 Nov 2026 01:23:00 GMT"
     }
    ]
   },
   {
    "code": "6920",
    "name": "レーザーテック",
-   "r": -9.2,
-   "price": 30270,
+   "r": -9.6,
+   "price": 30120,
    "prev": 33320,
    "news": [
     {
@@ -92,8 +92,8 @@
   {
    "code": "6752",
    "name": "パナソニック",
-   "r": -8.9,
-   "price": 2747,
+   "r": -9.1,
+   "price": 2741,
    "prev": 3015,
    "news": [
     {
@@ -114,34 +114,10 @@
    ]
   },
   {
-   "code": "2914",
-   "name": "JT",
-   "r": -8.5,
-   "price": 5362,
-   "prev": 5857,
-   "news": [
-    {
-     "title": "JT株急落・減配で狼狽する投資家が知っておくべき「ロシアリスクはかねて開示されていた」事実 「見落としがちなリスク」を確認できるAIを使った有価証券報告書のチェック術（マネーポストWEB） - Yahoo!ニュース",
-     "url": "https://news.google.com/rss/articles/CBMif0FVX3lxTFBRaDVTWVFRcWNxVGdlMVFaZjB4QmR6SlgzOUo5TzkwaGpDaXpHU3dJOElSSjVSaEpXUUlvQ084TXhSdmY1ZmJxNDJPZGhWNUItWkpqOXlqSEEtc3lIakRNaUtjdFB1N3hEZ1ctSFZOVjMwcTFQUDBnaldrVENqTmc?oc=5",
-     "date": "Thu, 19 Nov 2026 22:15:00 GMT"
-    },
-    {
-     "title": "JT(2914)、ロシア事業の損失計上で｢減配｣を発表、配当利回り3.4％に！ 年間配当は前回予想から25％減、2026年12月期は前期比30円減の｢1株あたり204円｣ - ダイヤモンド・オンライン",
-     "url": "https://news.google.com/rss/articles/CBMiU0FVX3lxTE1Mek0wLVN5RWg0ZTFkUEZGVnpISHQ3aGx2Q0oycEFTcGxzT2RLMmx6WkJYRTNsbVVmTE1CcmlLX1ZkOGpWUk00WnkxbGplQzA2eWIw?oc=5",
-     "date": "Thu, 19 Nov 2026 11:15:00 GMT"
-    },
-    {
-     "title": "決算:JT株が一時8%安 ロシア事業損失で最終赤字転落、減配も嫌気 - 日本経済新聞",
-     "url": "https://news.google.com/rss/articles/CBMibEFVX3lxTE5fT0pPNlpwUHR6bFh3cWc0eGtwOWpkWmpPTTBhZ0hXQllxbUJIX3JIS3AzSWFqNmhEbEg5TVYwNkxRLVBJUjhObHYyNDNlYV9SMllCbXVrWWRTVHdnRUdlX052NmtqU2JsX1hTWA?oc=5",
-     "date": "Fri, 20 Nov 2026 00:17:12 GMT"
-    }
-   ]
-  },
-  {
    "code": "6981",
    "name": "村田製作所",
-   "r": -8.3,
-   "price": 4734,
+   "r": -8.8,
+   "price": 4708,
    "prev": 5161,
    "news": [
     {
@@ -162,10 +138,34 @@
    ]
   },
   {
+   "code": "2914",
+   "name": "JT",
+   "r": -8.6,
+   "price": 5355,
+   "prev": 5857,
+   "news": [
+    {
+     "title": "決算:JT株が一時8%安 ロシア事業損失で最終赤字転落、減配も嫌気 - 日本経済新聞",
+     "url": "https://news.google.com/rss/articles/CBMibEFVX3lxTE5fT0pPNlpwUHR6bFh3cWc0eGtwOWpkWmpPTTBhZ0hXQllxbUJIX3JIS3AzSWFqNmhEbEg5TVYwNkxRLVBJUjhObHYyNDNlYV9SMllCbXVrWWRTVHdnRUdlX052NmtqU2JsX1hTWA?oc=5",
+     "date": "Fri, 20 Nov 2026 00:17:12 GMT"
+    },
+    {
+     "title": "JT(2914)、ロシア事業の損失計上で｢減配｣を発表、配当利回り3.4％に！ 年間配当は前回予想から25％減、2026年12月期は前期比30円減の｢1株あたり204円｣ - ダイヤモンド・オンライン",
+     "url": "https://news.google.com/rss/articles/CBMiU0FVX3lxTE1Mek0wLVN5RWg0ZTFkUEZGVnpISHQ3aGx2Q0oycEFTcGxzT2RLMmx6WkJYRTNsbVVmTE1CcmlLX1ZkOGpWUk00WnkxbGplQzA2eWIw?oc=5",
+     "date": "Thu, 19 Nov 2026 11:15:00 GMT"
+    },
+    {
+     "title": "JT株急落・減配で狼狽する投資家が知っておくべき「ロシアリスクはかねて開示されていた」事実 「見落としがちなリスク」を確認できるAIを使った有価証券報告書のチェック術(マネーポストWEB) - Yahoo!ファイナンス",
+     "url": "https://news.google.com/rss/articles/CBMihwFBVV95cUxNeFhqY19EWFRJUk9OeDJqM1plTjVuMzlyLTA4SHZnWkhuTUJXMENZaGxUWkFLekVkUVhXMWE3OHpaVUtEMjhpQWVqQzRZUGpzNW0yXy0tbzMwTWpBSnBwa0lxeHRkMGotZkxOODRwaGJLZEs5MUN0ektxZFcwU0tjMmY4dWZuWHc?oc=5",
+     "date": "Thu, 19 Nov 2026 22:15:00 GMT"
+    }
+   ]
+  },
+  {
    "code": "6146",
    "name": "ディスコ",
-   "r": -8.0,
-   "price": 41480,
+   "r": -8.4,
+   "price": 41320,
    "prev": 45100,
    "news": [
     {
@@ -186,34 +186,10 @@
    ]
   },
   {
-   "code": "5802",
-   "name": "住友電工",
-   "r": -7.2,
-   "price": 1244,
-   "prev": 1342,
-   "news": [
-    {
-     "title": "フジクラ・古河電工・住友電工の株価はなぜ下落？電線3社は今買い時なのか - つばめ投資顧問",
-     "url": "https://news.google.com/rss/articles/CBMiT0FVX3lxTE13SElGc3RicEszb2tkMjdkVm12RW5XWkxuTE9aYTczS3VseC0xY3ROZ1hTbEl5TXN5U1FyZmdGX1Y3VWh6WmVwVWpZSFBPOHM?oc=5",
-     "date": "Wed, 18 Nov 2026 09:19:10 GMT"
-    },
-    {
-     "title": "決算:住友電工の純利益3700億円 27年3月期に上振れ、実質増配 - 日本経済新聞",
-     "url": "https://news.google.com/rss/articles/CBMibEFVX3lxTE5FV19sSUtBcC1ZRWExMVotR3lIM01KLXlZWHY5Z1k3dV9IaEN3TFNYY2xnclltdHdibkdfaU0yaXhCS2pZa0Y3RDFDbW5kcEJ3YTU5OGFEcUZZbnJFS0VkS3ZvTDNVRU5ucENsbA?oc=5",
-     "date": "Fri, 30 Oct 2026 07:00:00 GMT"
-    },
-    {
-     "title": "住友電気工業(株)【5802】：今の株価の理由は？値動きの背景をAIが解説 - Yahoo!ファイナンス",
-     "url": "https://news.google.com/rss/articles/CBMiX0FVX3lxTE1YdXplcFFBM2V5NGktMFp1MGl5UVlUbFVSNzZQSWxqR3RndWJ1WnRzcUdpajRFRUJEX2h6M3YwOTJvNl9xNTdxOFFYa3VjU2tSU1BoRmtSMXM3VEtCYlY0?oc=5",
-     "date": "Tue, 17 Feb 2026 09:51:23 GMT"
-    }
-   ]
-  },
-  {
    "code": "7012",
    "name": "川崎重工",
-   "r": -7.1,
-   "price": 1554,
+   "r": -7.5,
+   "price": 1548,
    "prev": 1673,
    "news": [
     {
@@ -230,6 +206,30 @@
      "title": "川崎重工(7012)の株価、今後の焦点は航空宇宙の下期利益580億円 - 日本投資機構株式会社",
      "url": "https://news.google.com/rss/articles/CBMiWkFVX3lxTE5xX2RvVWlTVVB1Y3dGS3otcExqZ2RqTFZBM1VQRnlWRmZmNml3TkFwRWkxRk4xeGh3WnNRaDJGcXNmRkpfS3c5bmxTdUM3bE9jbjBWSjgyMlI5Zw?oc=5",
      "date": "Sun, 15 Nov 2026 05:24:38 GMT"
+    }
+   ]
+  },
+  {
+   "code": "5802",
+   "name": "住友電工",
+   "r": -7.0,
+   "price": 1248,
+   "prev": 1342,
+   "news": [
+    {
+     "title": "フジクラ・古河電工・住友電工の株価はなぜ下落？電線3社は今買い時なのか - つばめ投資顧問",
+     "url": "https://news.google.com/rss/articles/CBMiT0FVX3lxTE13SElGc3RicEszb2tkMjdkVm12RW5XWkxuTE9aYTczS3VseC0xY3ROZ1hTbEl5TXN5U1FyZmdGX1Y3VWh6WmVwVWpZSFBPOHM?oc=5",
+     "date": "Wed, 18 Nov 2026 09:19:10 GMT"
+    },
+    {
+     "title": "決算:住友電工の純利益3700億円 27年3月期に上振れ、実質増配 - 日本経済新聞",
+     "url": "https://news.google.com/rss/articles/CBMibEFVX3lxTE5FV19sSUtBcC1ZRWExMVotR3lIM01KLXlZWHY5Z1k3dV9IaEN3TFNYY2xnclltdHdibkdfaU0yaXhCS2pZa0Y3RDFDbW5kcEJ3YTU5OGFEcUZZbnJFS0VkS3ZvTDNVRU5ucENsbA?oc=5",
+     "date": "Fri, 30 Oct 2026 07:00:00 GMT"
+    },
+    {
+     "title": "住友電気工業(株)【5802】：今の株価の理由は？値動きの背景をAIが解説 - Yahoo!ファイナンス",
+     "url": "https://news.google.com/rss/articles/CBMiX0FVX3lxTE1YdXplcFFBM2V5NGktMFp1MGl5UVlUbFVSNzZQSWxqR3RndWJ1WnRzcUdpajRFRUJEX2h6M3YwOTJvNl9xNTdxOFFYa3VjU2tSU1BoRmtSMXM3VEtCYlY0?oc=5",
+     "date": "Tue, 17 Feb 2026 09:51:23 GMT"
     }
    ]
   }
