@@ -41,7 +41,7 @@
   "source": "https://finance.yahoo.com/quote/%5ESOX/"
  },
  "nkf": {
-  "value": -1.89,
+  "value": -3.13,
   "observedAt": "2026-11-19",
   "change": "CME日経先物 前日比%（Yahoo）",
   "source": "https://finance.yahoo.com/quote/NKD%3DF/"
@@ -59,7 +59,7 @@
   "source": "https://finance.yahoo.com/quote/%5EVIX/"
  },
  "pc_px": {
-  "value": -4.69,
+  "value": -4.17,
   "observedAt": "2026-11-19",
   "change": "私募信用運用会社株（BX・APO・KKR・ARES）5日中央値%（代替・検証46）",
   "source": "https://finance.yahoo.com/quote/BX/"
@@ -70,5 +70,5 @@
   "change": "仏−独10年 月次平均（ECB）",
   "source": "https://data.ecb.europa.eu/"
  },
- "_at": "2026-11-20T06:59+09:00"
+ "_at": "2026-11-20T11:29+09:00"
 }
