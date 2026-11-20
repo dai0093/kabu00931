@@ -1,5 +1,5 @@
 {
- "at": "2026-11-20T10:35+09:00",
+ "at": "2026-11-20T10:55+09:00",
  "th": -7.0,
  "hits": [
   {
@@ -20,10 +20,15 @@
   {
    "code": "9984",
    "name": "ソフトバンクG",
-   "r": -12.2,
-   "price": 3104,
+   "r": -14.5,
+   "price": 3024,
    "prev": 3537,
    "news": [
+    {
+     "title": "ソフトバンクG株価が一時3000円割れ 米アンソロピック上場でAI株急落 - 日本経済新聞",
+     "url": "https://news.google.com/rss/articles/CBMibEFVX3lxTE5OZ2owMUdwQlJIRS1aR3hJN3NjcUJzem5tNlduZEx6dnVXbVlUeFhLUXpDM2J1T3BHVmJhYTB6NXRlQm16N3c2aVhZdXhVM0V6SVdUb0VXdm1mRFN3Ny1BUHFQSGM3WFozN0xNbg?oc=5",
+     "date": "Fri, 20 Nov 2026 01:30:37 GMT"
+    },
     {
      "title": "ソフトバンクＧが急落し３０００円大台割れ、アンソロピック上場後の米ハイテク株急落がロング圧縮の売り促す - みんかぶ",
      "url": "https://news.google.com/rss/articles/CBMiSEFVX3lxTE1BWWNNOEhCS3ZfekVTS01qYzdzLXNPdENuZVR6ZTBOVVpjaEVtWDhNUlNrbVJsT1h2RFlCZmNzejRuUDFCU2xZNg?oc=5",
@@ -33,43 +38,38 @@
      "title": "ソフトバンクＧ---大幅反落、アンソロピックの株価失速などでAI関連売り優勢(フィスコ) - Yahoo!ファイナンス",
      "url": "https://news.google.com/rss/articles/CBMihwFBVV95cUxNVmdZTU96Q3lQamRkTkkxY0FYZlQxTkxKNURENTZFUVZ5VnRyeU1nb3RRTG1wN3hadHF1eGUycnJ6eG1DV21zNl9JM211czEwcXBISjI4Ujd4NGczNHdScHAybzI4YVc3dFVJd1FiUEx3ZFctdzE5NncxVnp5WWtTdV94U1lBams?oc=5",
      "date": "Fri, 20 Nov 2026 01:19:19 GMT"
-    },
-    {
-     "title": "ソフトバンクG株価が下げ渋り 米OpenAI調達額引き下げ報道は重荷 - 日本経済新聞",
-     "url": "https://news.google.com/rss/articles/CBMibEFVX3lxTE1NVUVISkMzVXRpWC1qZlhrOV82Wms5ZDJyVEhHZVJfWVBKY3pwbjRuVDV3Y0pOczVFXzkyOEtVUi1FUTRIcElvRm03Smx3SGhnV2kwV3pNUmRELS1rUzBWYkc0YmJhNlNOc1lONw?oc=5",
-     "date": "Mon, 02 Nov 2026 08:00:00 GMT"
     }
    ]
   },
   {
    "code": "6857",
    "name": "アドバンテスト",
-   "r": -9.4,
-   "price": 24505,
+   "r": -10.8,
+   "price": 24130,
    "prev": 27045,
    "news": [
     {
-     "title": "(株)アドバンテスト【ATEYY】：株価・株式情報 - Yahoo!ファイナンス",
-     "url": "https://news.google.com/rss/articles/CBMiUEFVX3lxTE0wZ2w4SjUzeWhJVEhydGV5T3dEajJDTmFCZEE1YmdnaDJmWm83bFZTOXdWem5SLWIxYUhieGxMSTV3N244QXFiR01UcWFuNVJO?oc=5",
-     "date": "Thu, 19 Nov 2026 20:33:01 GMT"
+     "title": "アドバンテスト株価が一時7%高 NVIDIA株が決算後に上昇 - 日本経済新聞",
+     "url": "https://news.google.com/rss/articles/CBMibEFVX3lxTE03cWpGY2sxMGdmUzIzWGxZTHZmYXI5dDRtZVRSVkZVanBNQl91bFowWWtqUkpYNW9YLVBmNWJMWnhHOWZzM0pTSm93akNaNk9SZUhRVXdJa2EzVDMyREZYNWhrbHAxbFBZdVlPSQ?oc=5",
+     "date": "Wed, 18 Nov 2026 00:48:45 GMT"
     },
     {
-     "title": "アドバンテスト株価が大幅反落 米半導体株安が波及、200日平均割る - 日本経済新聞",
-     "url": "https://news.google.com/rss/articles/CBMibEFVX3lxTE5rUEtValV2LW9CbnpCT0RZNnJnbDhTVnc3Z2JsTnFJS2pYWGE4ZGhrY2l0VzYtb21HLXpMQ1FTLXBLTHlSbnUzTWRfNFVpUW5BQjBMR2d5UU9JZEp0a0V0ODFxQmJKR3VrWXpncA?oc=5",
-     "date": "Mon, 16 Nov 2026 01:26:15 GMT"
+     "title": "アドバンテスト株価が続落、7カ月ぶり安値 半導体関連は総崩れ - 日本経済新聞",
+     "url": "https://news.google.com/rss/articles/CBMibEFVX3lxTE91WXZHN1dzTEU3cmNuYnJTZ1gxOFJvR1lzaVRHbGl3RElqN1N0eHVuT3ZHX0tSWkVGRzBuQ09OMGFObkNZcjZtTkFPRHJqTGtYc1BLMHgwbzdUckxZYUQ4UWd2SVVfUnFFVldSQg?oc=5",
+     "date": "Fri, 20 Nov 2026 01:33:33 GMT"
     },
     {
-     "title": "アドバンテスト---大幅続落、半導体関連は米AMDの株価下落も弱材料視 執筆 Fisco - Investing.com - FX | 株式市場 | ファイナンス | 金融ニュース",
-     "url": "https://news.google.com/rss/articles/CBMicEFVX3lxTE1MS0JxQUlhRjdmV1dQRlFLZTB5V0ZLVGlHRGptTTZmLXRzXzFFNkdKYmpRRklLZlEyNjVhbDdxR1h1aHhSZENTd280ZGtiRUdHTHY5cXY5SjN6bHhrZ013YmcxZk5mRjBOa0VjMnhTaFo?oc=5",
-     "date": "Fri, 20 Nov 2026 01:23:00 GMT"
+     "title": "アドバンテスト---大幅続落、半導体関連は米AMDの株価下落も弱材料視 - 株探",
+     "url": "https://news.google.com/rss/articles/CBMiYEFVX3lxTE0xcVc3MTJZLWF5Y3ZWUzc3TktkQW9KYm1idklhaHl2NGQxQXBRNU5FOFdTeWNqMG14eDAwMnhXVnc1WDBMNEtoUG94Q0F2QWJtQi1QSU9LdFJqX09jUmh6WQ?oc=5",
+     "date": "Fri, 20 Nov 2026 01:23:27 GMT"
     }
    ]
   },
   {
    "code": "2914",
    "name": "JT",
-   "r": -9.2,
-   "price": 5319,
+   "r": -9.3,
+   "price": 5313,
    "prev": 5857,
    "news": [
     {
@@ -92,8 +92,8 @@
   {
    "code": "6752",
    "name": "パナソニック",
-   "r": -8.5,
-   "price": 2760,
+   "r": -9.2,
+   "price": 2739,
    "prev": 3015,
    "news": [
     {
@@ -107,41 +107,17 @@
      "date": "Mon, 02 Nov 2026 08:00:00 GMT"
     },
     {
-     "title": "パナソニックHD“株価3倍”の理由は【トップを直撃】 - テレ東BIZ",
-     "url": "https://news.google.com/rss/articles/CBMiYkFVX3lxTE9HaWUwLUo0TnFvSmROdU1XV2xpMk1sNGU2XzRPZTh6V29IWkMxTFBWVnRySlFOUEVtdXcxRmcycThsWU13Z1YtcnR3bFNTWjhrOTJkZWNTa2QtQm4ybHo0bGhB?oc=5",
-     "date": "Mon, 05 Oct 2026 07:00:00 GMT"
-    }
-   ]
-  },
-  {
-   "code": "6981",
-   "name": "村田製作所",
-   "r": -7.9,
-   "price": 4754,
-   "prev": 5161,
-   "news": [
-    {
-     "title": "(株)村田製作所【MRAAY】：株価・株式情報 - Yahoo!ファイナンス",
-     "url": "https://news.google.com/rss/articles/CBMiUEFVX3lxTE95MHhZcklYYklCUW91UWZBTXlmZ0daZ3hWcHNFdk5JSzZvNE85dXBHZDlpOGt4c2xpZzc1SklWZ0w3WTdBM1RaaUlaOHpRS2lO?oc=5",
-     "date": "Thu, 19 Nov 2026 18:14:52 GMT"
-    },
-    {
-     "title": "太陽誘電、株価が午後一段高 村田製作所の工場拡張方針で連想買い - 日本経済新聞",
-     "url": "https://news.google.com/rss/articles/CBMibEFVX3lxTE1QNTZrQXp0TVBQOWdVZkdWdGtkZ3lLdDBxci1BUjZyT29kMlpVS1JGb3RlVnJFOW1EVW9HazJyNmVINnVRN1ZaVG9mRnBFTjVxRmo2N3d4c1FUQXROZHAzaEpiUDhHT1JGTmc4OQ?oc=5",
-     "date": "Wed, 14 Oct 2026 07:00:00 GMT"
-    },
-    {
-     "title": "村田製作所に強気評価相次ぐ、欧州系大手が目標株価1万5500円に引き上げ - BigGo ファイナンス",
-     "url": "https://news.google.com/rss/articles/CBMidEFVX3lxTE9jaG1DWGV0dWJ2cm0xYjJlWWFlazhrVjZ2SENhME5MNG1FZjM4VjBWMm90V1dlSlFwamttbUhhX01vMTdVWlBuT1d5bUxDSE9rU1Q2dWxyOHZmVENUUnVkbWhMMndzWkVUcE1rZHdMMnlCUWds?oc=5",
-     "date": "Tue, 30 Jun 2026 07:00:00 GMT"
+     "title": "パナソニックHDの株価はまだ上がる？中間決算と今後の見通しを分析 - 日本投資機構株式会社",
+     "url": "https://news.google.com/rss/articles/CBMiWkFVX3lxTE9nU1pSY2psWGg2WFlhOVRBY0tBdDNfQkdHNWRSTndpdmE3X3pmNXlON184NWFXbExDRUlYWUFMSHRJU2tLcmlxOGxtaUhfYlU3YzVheVZpTFFoQQ?oc=5",
+     "date": "Wed, 11 Nov 2026 08:00:00 GMT"
     }
    ]
   },
   {
    "code": "6920",
    "name": "レーザーテック",
-   "r": -7.6,
-   "price": 30800,
+   "r": -8.9,
+   "price": 30370,
    "prev": 33320,
    "news": [
     {
@@ -162,10 +138,34 @@
    ]
   },
   {
+   "code": "6981",
+   "name": "村田製作所",
+   "r": -8.7,
+   "price": 4712,
+   "prev": 5161,
+   "news": [
+    {
+     "title": "(株)村田製作所【MRAAY】：株価・株式情報 - Yahoo!ファイナンス",
+     "url": "https://news.google.com/rss/articles/CBMiUEFVX3lxTE95MHhZcklYYklCUW91UWZBTXlmZ0daZ3hWcHNFdk5JSzZvNE85dXBHZDlpOGt4c2xpZzc1SklWZ0w3WTdBM1RaaUlaOHpRS2lO?oc=5",
+     "date": "Thu, 19 Nov 2026 18:14:52 GMT"
+    },
+    {
+     "title": "太陽誘電、株価が午後一段高 村田製作所の工場拡張方針で連想買い - 日本経済新聞",
+     "url": "https://news.google.com/rss/articles/CBMibEFVX3lxTE1QNTZrQXp0TVBQOWdVZkdWdGtkZ3lLdDBxci1BUjZyT29kMlpVS1JGb3RlVnJFOW1EVW9HazJyNmVINnVRN1ZaVG9mRnBFTjVxRmo2N3d4c1FUQXROZHAzaEpiUDhHT1JGTmc4OQ?oc=5",
+     "date": "Wed, 14 Oct 2026 07:00:00 GMT"
+    },
+    {
+     "title": "村田製作所に強気評価相次ぐ、欧州系大手が目標株価1万5500円に引き上げ - BigGo ファイナンス",
+     "url": "https://news.google.com/rss/articles/CBMidEFVX3lxTE9jaG1DWGV0dWJ2cm0xYjJlWWFlazhrVjZ2SENhME5MNG1FZjM4VjBWMm90V1dlSlFwamttbUhhX01vMTdVWlBuT1d5bUxDSE9rU1Q2dWxyOHZmVENUUnVkbWhMMndzWkVUcE1rZHdMMnlCUWds?oc=5",
+     "date": "Tue, 30 Jun 2026 07:00:00 GMT"
+    }
+   ]
+  },
+  {
    "code": "6146",
    "name": "ディスコ",
-   "r": -7.3,
-   "price": 41830,
+   "r": -8.5,
+   "price": 41280,
    "prev": 45100,
    "news": [
     {
@@ -182,6 +182,54 @@
      "title": "本日の注目個別銘柄：ディスコ、信越ポリマ、KOAなど - 株探",
      "url": "https://news.google.com/rss/articles/CBMiYEFVX3lxTFBXVmY4VDk5ZzM2SlBKMWV6S1UzMnhTNktVVlctLWVVaHBiN3ZjaXM5YmMzZC0wb2lTY2dhSzBjejRNbUZaRFpSQnE1NXJsYkJ6SHhFcm42Y2p6SHVERmJPcg?oc=5",
      "date": "Fri, 24 Jul 2026 07:00:00 GMT"
+    }
+   ]
+  },
+  {
+   "code": "5802",
+   "name": "住友電工",
+   "r": -7.9,
+   "price": 1235,
+   "prev": 1342,
+   "news": [
+    {
+     "title": "フジクラ・古河電工・住友電工の株価はなぜ下落？電線3社は今買い時なのか - つばめ投資顧問",
+     "url": "https://news.google.com/rss/articles/CBMiT0FVX3lxTE13SElGc3RicEszb2tkMjdkVm12RW5XWkxuTE9aYTczS3VseC0xY3ROZ1hTbEl5TXN5U1FyZmdGX1Y3VWh6WmVwVWpZSFBPOHM?oc=5",
+     "date": "Wed, 18 Nov 2026 09:19:10 GMT"
+    },
+    {
+     "title": "決算:住友電工の純利益3700億円 27年3月期に上振れ、実質増配 - 日本経済新聞",
+     "url": "https://news.google.com/rss/articles/CBMibEFVX3lxTE5FV19sSUtBcC1ZRWExMVotR3lIM01KLXlZWHY5Z1k3dV9IaEN3TFNYY2xnclltdHdibkdfaU0yaXhCS2pZa0Y3RDFDbW5kcEJ3YTU5OGFEcUZZbnJFS0VkS3ZvTDNVRU5ucENsbA?oc=5",
+     "date": "Fri, 30 Oct 2026 07:00:00 GMT"
+    },
+    {
+     "title": "住友電気工業(株)【5802】：株価チャート - Yahoo!ファイナンス",
+     "url": "https://news.google.com/rss/articles/CBMiWkFVX3lxTFBkVG1kS3R2R0VLQ1dqTFBHb1VVUHlfQ2dZa3UxU0IwV3dFVHBVcE1rV1RvdmFWYmpnbHcwYTJoaVFuaDc3b2lSMlVOSmlxSnBNU2l2eXBvTzE0dw?oc=5",
+     "date": "Fri, 18 Sep 2026 07:00:00 GMT"
+    }
+   ]
+  },
+  {
+   "code": "7012",
+   "name": "川崎重工",
+   "r": -7.1,
+   "price": 1555,
+   "prev": 1673,
+   "news": [
+    {
+     "title": "川崎重工業(株)【KWHIY】：株価・株式情報 - Yahoo!ファイナンス",
+     "url": "https://news.google.com/rss/articles/CBMiUEFVX3lxTE9tTzlKRkZObFlyUnZGb2FnQkJzVkhTYVRSVF9OUUxRYjVzQjA4N25JQ0wteEZnZ0g3SDh6ZHo3bEZLU1ZYTWZveGRKTVVIak5E?oc=5",
+     "date": "Thu, 19 Nov 2026 12:16:55 GMT"
+    },
+    {
+     "title": "川崎重工業(株)【7012】：株価チャート - Yahoo!ファイナンス",
+     "url": "https://news.google.com/rss/articles/CBMiWkFVX3lxTE9qVDVwUW90aE9SMjU5M20zTUlhbmxEenprNWRaaW5pc0pVeGtKTlZBMl9mamVyaE9NaVk5UDZKMl9oU1UzS3JOR3JnV0VWeWZLZXhBSVlxMFh5UQ?oc=5",
+     "date": "Sun, 15 Nov 2026 15:02:38 GMT"
+    },
+    {
+     "title": "川崎重工(7012)の株価、今後の焦点は航空宇宙の下期利益580億円 - 日本投資機構株式会社",
+     "url": "https://news.google.com/rss/articles/CBMiWkFVX3lxTE5xX2RvVWlTVVB1Y3dGS3otcExqZ2RqTFZBM1VQRnlWRmZmNml3TkFwRWkxRk4xeGh3WnNRaDJGcXNmRkpfS3c5bmxTdUM3bE9jbjBWSjgyMlI5Zw?oc=5",
+     "date": "Sun, 15 Nov 2026 05:24:38 GMT"
     }
    ]
   }
