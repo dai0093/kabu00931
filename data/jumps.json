@@ -1,5 +1,54 @@
 {
- "at": "2026-11-20T09:14+09:00",
+ "at": "2026-11-20T09:34+09:00",
  "th": -7.0,
- "hits": []
+ "hits": [
+  {
+   "code": "9984",
+   "name": "ソフトバンクG",
+   "r": -13.3,
+   "price": 3068,
+   "prev": 3537,
+   "news": [
+    {
+     "title": "【アナリスト評価】ソフトバンクＧ、レーティング強気を継続、目標株価7,990円に引下げ（日系大手証券）(アイフィス株予報) - Yahoo!ファイナンス",
+     "url": "https://news.google.com/rss/articles/CBMihwFBVV95cUxQbjVVZVctVS0xdXNSR3JuOUZnd1pzTXFheFExbGZSYjZRQTh2bmNCal9yeXlKV0JJei1UemhRdUhua1R0dEZHN0FZazc1TVhmcGlvbDFWZmxzdUJRUF82UVhqSGNlbmRScUh6YXhfZTlwYmhoTTFqTjFhNkpMSzRYdlppcml4Zm8?oc=5",
+     "date": "Thu, 19 Nov 2026 11:59:56 GMT"
+    },
+    {
+     "title": "ソフトバンクG株価が下げ渋り 米OpenAI調達額引き下げ報道は重荷 - 日本経済新聞",
+     "url": "https://news.google.com/rss/articles/CBMibEFVX3lxTE1NVUVISkMzVXRpWC1qZlhrOV82Wms5ZDJyVEhHZVJfWVBKY3pwbjRuVDV3Y0pOczVFXzkyOEtVUi1FUTRIcElvRm03Smx3SGhnV2kwV3pNUmRELS1rUzBWYkc0YmJhNlNOc1lONw?oc=5",
+     "date": "Mon, 02 Nov 2026 08:00:00 GMT"
+    },
+    {
+     "title": "日経平均寄与度ランキング（大引け）～日経平均は続伸、ソフトバンクGや東エレクが2銘柄で約246円分押し上げ - みんかぶ",
+     "url": "https://news.google.com/rss/articles/CBMiRkFVX3lxTFBIZHVMbGg5ZXNlUFowVWlCOTBDUVp3bmZHSDQ4S2FBNnJ3VUFpQ0kydlU5aFMtQUE2b2hVN3NmUF83a1dVd2c?oc=5",
+     "date": "Thu, 19 Nov 2026 07:48:05 GMT"
+    }
+   ]
+  },
+  {
+   "code": "6857",
+   "name": "アドバンテスト",
+   "r": -7.3,
+   "price": 25070,
+   "prev": 27045,
+   "news": [
+    {
+     "title": "(株)アドバンテスト【ATEYY】：株価・株式情報 - Yahoo!ファイナンス",
+     "url": "https://news.google.com/rss/articles/CBMiUEFVX3lxTE0wZ2w4SjUzeWhJVEhydGV5T3dEajJDTmFCZEE1YmdnaDJmWm83bFZTOXdWem5SLWIxYUhieGxMSTV3N244QXFiR01UcWFuNVJO?oc=5",
+     "date": "Thu, 19 Nov 2026 20:33:01 GMT"
+    },
+    {
+     "title": "アドバンテスト株価が大幅反落 米半導体株安が波及、200日平均割る - 日本経済新聞",
+     "url": "https://news.google.com/rss/articles/CBMibEFVX3lxTE5rUEtValV2LW9CbnpCT0RZNnJnbDhTVnc3Z2JsTnFJS2pYWGE4ZGhrY2l0VzYtb21HLXpMQ1FTLXBLTHlSbnUzTWRfNFVpUW5BQjBMR2d5UU9JZEp0a0V0ODFxQmJKR3VrWXpncA?oc=5",
+     "date": "Mon, 16 Nov 2026 01:26:15 GMT"
+    },
+    {
+     "title": "アドバンテスト株が本日急落した理由とは - Investing.com - FX | 株式市場 | ファイナンス | 金融ニュース",
+     "url": "https://news.google.com/rss/articles/CBMid0FVX3lxTE5vUmhmOUl1ZjdTaThUeVVBYVdVOEtHeGtzdkFQdWlKVFdFdF9STnptZnhrOTcxVXhYRk85SlYxajhTTXNZaVU3NWx2WXhneWhhZUlGSXVfYnRKbzR3WVM3V3pnbVptcE1wTUNYSTN4M2Z2VU13Z2lR?oc=5",
+     "date": "Tue, 17 Nov 2026 04:08:00 GMT"
+    }
+   ]
+  }
+ ]
 }
