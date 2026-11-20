@@ -1,5 +1,5 @@
 {
- "at": "2026-11-20T14:38+09:00",
+ "at": "2026-11-20T14:54+09:00",
  "th": -7.0,
  "hits": [
   {
@@ -20,8 +20,8 @@
   {
    "code": "9984",
    "name": "ソフトバンクG",
-   "r": -14.2,
-   "price": 3034,
+   "r": -13.7,
+   "price": 3053,
    "prev": 3537,
    "news": [
     {
@@ -45,7 +45,7 @@
    "code": "6752",
    "name": "パナソニック",
    "r": -10.6,
-   "price": 2696,
+   "price": 2694,
    "prev": 3015,
    "news": [
     {
@@ -66,34 +66,10 @@
    ]
   },
   {
-   "code": "2914",
-   "name": "JT",
-   "r": -10.3,
-   "price": 5251,
-   "prev": 5857,
-   "news": [
-    {
-     "title": "JT株が一時10%安 ロシア事業損失で最終赤字転落・減配を嫌気 - 日本経済新聞",
-     "url": "https://news.google.com/rss/articles/CBMibEFVX3lxTE5fT0pPNlpwUHR6bFh3cWc0eGtwOWpkWmpPTTBhZ0hXQllxbUJIX3JIS3AzSWFqNmhEbEg5TVYwNkxRLVBJUjhObHYyNDNlYV9SMllCbXVrWWRTVHdnRUdlX052NmtqU2JsX1hTWA?oc=5",
-     "date": "Fri, 20 Nov 2026 00:17:12 GMT"
-    },
-    {
-     "title": "全国CPIやJT最終赤字に注目(スケジュールチェック) - QUICK Money World",
-     "url": "https://news.google.com/rss/articles/CBMiVkFVX3lxTE16enphNkdKR3M2a3RtNG9wM0tqbmhzR2lDeEYwbVRTMWF5OXlXQzRWXzRVdWt3dEhJVzd3LWNHcjFqbkVLSEdjS3QwYm1YUFlLcGt3ak5B?oc=5",
-     "date": "Thu, 19 Nov 2026 08:20:00 GMT"
-    },
-    {
-     "title": "JT株19％下落、ストップ安 ロシア事業警戒（共同通信） - Yahoo!ニュース",
-     "url": "https://news.google.com/rss/articles/CBMif0FVX3lxTE1XTlpRa2FYZG9pQXpmWTBrLWlaRTdMQm9oRlNiaGxpRVBtMHpjU1RWUmxSal9DRGQzUU9qU0NFdTUzaVFIZDhLem5RRVE3QUo2LVp6M2Etc0dfZFlWNEhuUDFwTG84U0I5MFVtaGpWMkQ1RnUtOXZkRE5LTzNmcXM?oc=5",
-     "date": "Fri, 06 Nov 2026 08:00:00 GMT"
-    }
-   ]
-  },
-  {
    "code": "6857",
    "name": "アドバンテスト",
-   "r": -10.2,
-   "price": 24275,
+   "r": -10.3,
+   "price": 24255,
    "prev": 27045,
    "news": [
     {
@@ -114,10 +90,34 @@
    ]
   },
   {
+   "code": "2914",
+   "name": "JT",
+   "r": -10.3,
+   "price": 5254,
+   "prev": 5857,
+   "news": [
+    {
+     "title": "JT株が一時10%安 ロシア事業損失で最終赤字転落・減配を嫌気 - 日本経済新聞",
+     "url": "https://news.google.com/rss/articles/CBMibEFVX3lxTE5fT0pPNlpwUHR6bFh3cWc0eGtwOWpkWmpPTTBhZ0hXQllxbUJIX3JIS3AzSWFqNmhEbEg5TVYwNkxRLVBJUjhObHYyNDNlYV9SMllCbXVrWWRTVHdnRUdlX052NmtqU2JsX1hTWA?oc=5",
+     "date": "Fri, 20 Nov 2026 00:17:12 GMT"
+    },
+    {
+     "title": "全国CPIやJT最終赤字に注目(スケジュールチェック) - QUICK Money World",
+     "url": "https://news.google.com/rss/articles/CBMiVkFVX3lxTE16enphNkdKR3M2a3RtNG9wM0tqbmhzR2lDeEYwbVRTMWF5OXlXQzRWXzRVdWt3dEhJVzd3LWNHcjFqbkVLSEdjS3QwYm1YUFlLcGt3ak5B?oc=5",
+     "date": "Thu, 19 Nov 2026 08:20:00 GMT"
+    },
+    {
+     "title": "JT株19％下落、ストップ安 ロシア事業警戒（共同通信） - Yahoo!ニュース",
+     "url": "https://news.google.com/rss/articles/CBMif0FVX3lxTE1XTlpRa2FYZG9pQXpmWTBrLWlaRTdMQm9oRlNiaGxpRVBtMHpjU1RWUmxSal9DRGQzUU9qU0NFdTUzaVFIZDhLem5RRVE3QUo2LVp6M2Etc0dfZFlWNEhuUDFwTG84U0I5MFVtaGpWMkQ1RnUtOXZkRE5LTzNmcXM?oc=5",
+     "date": "Fri, 06 Nov 2026 08:00:00 GMT"
+    }
+   ]
+  },
+  {
    "code": "6920",
    "name": "レーザーテック",
-   "r": -9.3,
-   "price": 30210,
+   "r": -9.4,
+   "price": 30200,
    "prev": 33320,
    "news": [
     {
@@ -126,22 +126,22 @@
      "date": "Mon, 02 Nov 2026 08:00:00 GMT"
     },
     {
-     "title": "【アナリスト予想】レーザーテック、27年6月期経常予想。対前週0.9%下降。(アイフィス株予報) - Yahoo!ファイナンス",
-     "url": "https://news.google.com/rss/articles/CBMihwFBVV95cUxQN2dIMXY4NXhJYkFmbExYQkpZeURFX2pZYkx5V1M1YUtNeEJqMXJlTTV3YTlka1dYcFhZWjEtcW05SkFtUHEyMi1Bd19xamRyeTd4X01zZ3dVOW93NklqemZCdkV1dVFUbE9MNUJvNjA0eExXaENiaHdrd2k0RDZacXZadW1yZTg?oc=5",
-     "date": "Tue, 17 Nov 2026 13:46:29 GMT"
+     "title": "【アナリスト評価】レーザーテック、レーティング強気を継続、目標株価53,000円に引上げ（米系大手証券）(アイフィス株予報) - Yahoo!ファイナンス",
+     "url": "https://news.google.com/rss/articles/CBMihwFBVV95cUxOYUZ0Sy1iRnhuNFdrZGhjejAxdG9QcEhVcW9JTmpzclJBQ2YyWWNTNmFhSkFGTWlWNnlPa0Y3bHR4UW1wbFBoQ1JQOVJWeWczMk9IVHZHVFkxVXZCbGFuSEZxbURiNEtsc18xTXlwWXdhSHBaZnZhVGJIWmEtOExCdXBKR3dBVzQ?oc=5",
+     "date": "Tue, 17 Nov 2026 05:24:11 GMT"
     },
     {
-     "title": "決算レポート：レーザーテック（2027年6月期受注高は大幅増へ） - トウシル",
-     "url": "https://news.google.com/rss/articles/CBMiWkFVX3lxTE5vZkMzRExVZHFQWE5QYnlkdDV3bnlFZ1J4TTZ3ek9hVnlVTmR5Y3R4anhqVXFEMlhIVEUyeVJqazREM2g4dTExbUZQTHhic3JrMVczLWRaUl9kUQ?oc=5",
-     "date": "Mon, 17 Aug 2026 07:00:00 GMT"
+     "title": "レーザーテック---大幅反発、受注高見通しを大幅に引き上げ - 株探",
+     "url": "https://news.google.com/rss/articles/CBMiYEFVX3lxTFBmVWFDSEdsLVYxaTl6RWJHY1hBcDZpNjB4YXFqZ2tpT0VNZFlkRFQ3QlBNZWFtWXpPRjJJWm5vd2R1RGU4SXhnNHVGRjZnVEtnTThYLWpTY052Qk0xVjdVVQ?oc=5",
+     "date": "Mon, 02 Nov 2026 08:00:00 GMT"
     }
    ]
   },
   {
    "code": "6981",
    "name": "村田製作所",
-   "r": -8.8,
-   "price": 4705,
+   "r": -8.7,
+   "price": 4710,
    "prev": 5161,
    "news": [
     {
@@ -150,38 +150,14 @@
      "date": "Fri, 20 Nov 2026 02:59:37 GMT"
     },
     {
-     "title": "太陽誘電、株価が午後一段高 村田製作所の工場拡張方針で連想買い - 日本経済新聞",
-     "url": "https://news.google.com/rss/articles/CBMibEFVX3lxTE1QNTZrQXp0TVBQOWdVZkdWdGtkZ3lLdDBxci1BUjZyT29kMlpVS1JGb3RlVnJFOW1EVW9HazJyNmVINnVRN1ZaVG9mRnBFTjVxRmo2N3d4c1FUQXROZHAzaEpiUDhHT1JGTmc4OQ?oc=5",
-     "date": "Wed, 14 Oct 2026 07:00:00 GMT"
-    },
-    {
      "title": "【アナリスト評価】村田製作所、レーティング強気を継続、目標株価10,300円に引下げ（欧州系大手証券）(アイフィス株予報) - Yahoo!ファイナンス",
      "url": "https://news.google.com/rss/articles/CBMihwFBVV95cUxQVWhFM1BlSmtJYTdjM1JRNzUtaDRrSkM5RUNoeFFaX2dDVmpCWU9IOFVOeVdJWkV5VWFfR3ZHOHhnc21xV2RveHRWN1YtSk0ya3BicEx2VmdhMW94aDhpUHNRY01BTExzLXFNR3Y2Q3hfa0J5aXR6YUQ2X0VXb0JvLTFlc3J2M1U?oc=5",
      "date": "Fri, 20 Nov 2026 02:08:12 GMT"
-    }
-   ]
-  },
-  {
-   "code": "4755",
-   "name": "楽天G",
-   "r": -8.5,
-   "price": 558,
-   "prev": 609,
-   "news": [
-    {
-     "title": "楽天G株価急落、2年11カ月ぶり安値 楽天証券に報告徴求命令 - 日本経済新聞",
-     "url": "https://news.google.com/rss/articles/CBMibEFVX3lxTFBraGlfdjBid3dkNDYxVlJMMU50U19PVERDUVVjQlhQUm5LM2RJdXhaNWs3ek9wdU4wLWJrQ1FwZmtiTmVnTHA0VVV1Y2QzTmRxempRZjBiWmtlQVBYVkozNFZidUV2ekZHeWx0Sg?oc=5",
-     "date": "Fri, 20 Nov 2026 03:03:17 GMT"
     },
     {
-     "title": "楽天G株価が続落、3年ぶり安値 楽天証券で資産情報など漏洩 - 日本経済新聞",
-     "url": "https://news.google.com/rss/articles/CBMibEFVX3lxTE9Db2tyZW5CUExJZnZjYzhhUTJEUTYwTzA5OGktdmRZblV3bkFDWmI5RGFfajI4MV9xRl9xMS1BRkNnMjZHOG1HcVBQMDFkYWliSTRscnl0TE9VQnFLLVFxMHlIN3NpbUtFNFlOMQ?oc=5",
-     "date": "Wed, 18 Nov 2026 00:50:56 GMT"
-    },
-    {
-     "title": "【アナリスト評価】楽天Ｇ、レーティング強気を継続、目標株価840円に引下げ（欧州系大手証券）(アイフィス株予報) - Yahoo!ファイナンス",
-     "url": "https://news.google.com/rss/articles/CBMihwFBVV95cUxQX0tWVFVxckFOX2xiUXhvUTZ6UU1NVW50RzlhNFZfal9mYWlVaTVFOEEzR05WVnpVOVhXZm52VUtKQm1zdVVWYzBaa2NWMnRHQThMTVRQSjBoZ2h4WUxtNFllNVhvcmpXcmExaTVRRW5jdUZ0VWw0Q3pQV2lNTWczam4tRHJBMjQ?oc=5",
-     "date": "Mon, 16 Nov 2026 09:37:48 GMT"
+     "title": "太陽誘電、株価が午後一段高 村田製作所の工場拡張方針で連想買い - 日本経済新聞",
+     "url": "https://news.google.com/rss/articles/CBMibEFVX3lxTE1QNTZrQXp0TVBQOWdVZkdWdGtkZ3lLdDBxci1BUjZyT29kMlpVS1JGb3RlVnJFOW1EVW9HazJyNmVINnVRN1ZaVG9mRnBFTjVxRmo2N3d4c1FUQXROZHAzaEpiUDhHT1JGTmc4OQ?oc=5",
+     "date": "Wed, 14 Oct 2026 07:00:00 GMT"
     }
    ]
   },
@@ -198,46 +174,22 @@
      "date": "Fri, 24 Jul 2026 07:00:00 GMT"
     },
     {
-     "title": "ディスコ（ダイサ、グラインダともに出荷額が順調に増加） - トウシル",
-     "url": "https://news.google.com/rss/articles/CBMiWkFVX3lxTE95Q0FweXBCekpDWEpfT0lRQ3NhRWV2S3ZobzA0anhrR3Nrb2N0dENNZjVPUzVGV0dhWUs3a1ZMR010ajNPcFNMQWVHSzRsYkxmeFl3X3g1ZkhhZw?oc=5",
-     "date": "Mon, 17 Aug 2026 07:00:00 GMT"
-    },
-    {
      "title": "(株)ディスコ【DSCSY】：掲示板 - Yahoo!ファイナンス",
      "url": "https://news.google.com/rss/articles/CBMiWEFVX3lxTE0zT2xObzVhalZSN2hqS2hDdVVtN3FsUFpNMS1pb3JZTUhrMk1UMTNsTExheVI3SXh3NVBqSVZHQ0xmQzB4LUpQOWNXdDhFd3dRMnlGdTJqWlY?oc=5",
      "date": "Sat, 05 Sep 2026 07:00:00 GMT"
-    }
-   ]
-  },
-  {
-   "code": "5802",
-   "name": "住友電工",
-   "r": -8.2,
-   "price": 1232,
-   "prev": 1342,
-   "news": [
-    {
-     "title": "フジクラ・古河電工・住友電工の株価はなぜ下落？電線3社は今買い時なのか - つばめ投資顧問",
-     "url": "https://news.google.com/rss/articles/CBMiT0FVX3lxTE13SElGc3RicEszb2tkMjdkVm12RW5XWkxuTE9aYTczS3VseC0xY3ROZ1hTbEl5TXN5U1FyZmdGX1Y3VWh6WmVwVWpZSFBPOHM?oc=5",
-     "date": "Wed, 18 Nov 2026 09:19:10 GMT"
     },
     {
-     "title": "決算:住友電工の純利益3700億円 27年3月期に上振れ、実質増配 - 日本経済新聞",
-     "url": "https://news.google.com/rss/articles/CBMibEFVX3lxTE5FV19sSUtBcC1ZRWExMVotR3lIM01KLXlZWHY5Z1k3dV9IaEN3TFNYY2xnclltdHdibkdfaU0yaXhCS2pZa0Y3RDFDbW5kcEJ3YTU5OGFEcUZZbnJFS0VkS3ZvTDNVRU5ucENsbA?oc=5",
-     "date": "Fri, 30 Oct 2026 07:00:00 GMT"
-    },
-    {
-     "title": "住友電気工業(株)【5802】：今の株価の理由は？値動きの背景をAIが解説 - Yahoo!ファイナンス",
-     "url": "https://news.google.com/rss/articles/CBMiX0FVX3lxTE1YdXplcFFBM2V5NGktMFp1MGl5UVlUbFVSNzZQSWxqR3RndWJ1WnRzcUdpajRFRUJEX2h6M3YwOTJvNl9xNTdxOFFYa3VjU2tSU1BoRmtSMXM3VEtCYlY0?oc=5",
-     "date": "Tue, 17 Feb 2026 09:51:23 GMT"
+     "title": "本日の注目個別銘柄：ディスコ、信越ポリマ、KOAなど - 株探",
+     "url": "https://news.google.com/rss/articles/CBMiYEFVX3lxTFBXVmY4VDk5ZzM2SlBKMWV6S1UzMnhTNktVVlctLWVVaHBiN3ZjaXM5YmMzZC0wb2lTY2dhSzBjejRNbUZaRFpSQnE1NXJsYkJ6SHhFcm42Y2p6SHVERmJPcg?oc=5",
+     "date": "Fri, 24 Jul 2026 07:00:00 GMT"
     }
    ]
   },
   {
    "code": "7012",
    "name": "川崎重工",
-   "r": -8.1,
-   "price": 1538,
+   "r": -8.2,
+   "price": 1536,
    "prev": 1673,
    "news": [
     {
@@ -258,10 +210,58 @@
    ]
   },
   {
+   "code": "4755",
+   "name": "楽天G",
+   "r": -8.2,
+   "price": 560,
+   "prev": 609,
+   "news": [
+    {
+     "title": "楽天G株価急落、2年11カ月ぶり安値 楽天証券に報告徴求命令 - 日本経済新聞",
+     "url": "https://news.google.com/rss/articles/CBMibEFVX3lxTFBraGlfdjBid3dkNDYxVlJMMU50U19PVERDUVVjQlhQUm5LM2RJdXhaNWs3ek9wdU4wLWJrQ1FwZmtiTmVnTHA0VVV1Y2QzTmRxempRZjBiWmtlQVBYVkozNFZidUV2ekZHeWx0Sg?oc=5",
+     "date": "Fri, 20 Nov 2026 03:03:17 GMT"
+    },
+    {
+     "title": "楽天G株価が続落、3年ぶり安値 楽天証券で資産情報など漏洩 - 日本経済新聞",
+     "url": "https://news.google.com/rss/articles/CBMibEFVX3lxTE9Db2tyZW5CUExJZnZjYzhhUTJEUTYwTzA5OGktdmRZblV3bkFDWmI5RGFfajI4MV9xRl9xMS1BRkNnMjZHOG1HcVBQMDFkYWliSTRscnl0TE9VQnFLLVFxMHlIN3NpbUtFNFlOMQ?oc=5",
+     "date": "Wed, 18 Nov 2026 00:50:56 GMT"
+    },
+    {
+     "title": "【アナリスト評価】楽天Ｇ、レーティング強気を継続、目標株価840円に引下げ（欧州系大手証券）(アイフィス株予報) - Yahoo!ファイナンス",
+     "url": "https://news.google.com/rss/articles/CBMihwFBVV95cUxQX0tWVFVxckFOX2xiUXhvUTZ6UU1NVW50RzlhNFZfal9mYWlVaTVFOEEzR05WVnpVOVhXZm52VUtKQm1zdVVWYzBaa2NWMnRHQThMTVRQSjBoZ2h4WUxtNFllNVhvcmpXcmExaTVRRW5jdUZ0VWw0Q3pQV2lNTWczam4tRHJBMjQ?oc=5",
+     "date": "Mon, 16 Nov 2026 09:37:48 GMT"
+    }
+   ]
+  },
+  {
+   "code": "5802",
+   "name": "住友電工",
+   "r": -8.1,
+   "price": 1234,
+   "prev": 1342,
+   "news": [
+    {
+     "title": "フジクラ・古河電工・住友電工の株価はなぜ下落？電線3社は今買い時なのか - つばめ投資顧問",
+     "url": "https://news.google.com/rss/articles/CBMiT0FVX3lxTE13SElGc3RicEszb2tkMjdkVm12RW5XWkxuTE9aYTczS3VseC0xY3ROZ1hTbEl5TXN5U1FyZmdGX1Y3VWh6WmVwVWpZSFBPOHM?oc=5",
+     "date": "Wed, 18 Nov 2026 09:19:10 GMT"
+    },
+    {
+     "title": "決算:住友電工の純利益3700億円 27年3月期に上振れ、実質増配 - 日本経済新聞",
+     "url": "https://news.google.com/rss/articles/CBMibEFVX3lxTE5FV19sSUtBcC1ZRWExMVotR3lIM01KLXlZWHY5Z1k3dV9IaEN3TFNYY2xnclltdHdibkdfaU0yaXhCS2pZa0Y3RDFDbW5kcEJ3YTU5OGFEcUZZbnJFS0VkS3ZvTDNVRU5ucENsbA?oc=5",
+     "date": "Fri, 30 Oct 2026 07:00:00 GMT"
+    },
+    {
+     "title": "住友電気工業(株)【5802】：今の株価の理由は？値動きの背景をAIが解説 - Yahoo!ファイナンス",
+     "url": "https://news.google.com/rss/articles/CBMiX0FVX3lxTE1YdXplcFFBM2V5NGktMFp1MGl5UVlUbFVSNzZQSWxqR3RndWJ1WnRzcUdpajRFRUJEX2h6M3YwOTJvNl9xNTdxOFFYa3VjU2tSU1BoRmtSMXM3VEtCYlY0?oc=5",
+     "date": "Tue, 17 Feb 2026 09:51:23 GMT"
+    }
+   ]
+  },
+  {
    "code": "6723",
    "name": "ルネサス",
-   "r": -7.3,
-   "price": 2418,
+   "r": -7.1,
+   "price": 2424,
    "prev": 2608,
    "news": [
     {
