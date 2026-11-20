@@ -41,5 +41,6 @@ for nm in [k for k in R if k.startswith("V")]:
     ok = d1 >= b[1] + 1 and d2 >= b[3] + 1 and a1 >= b[0] - 10 and a2 >= b[2] - 10 and w >= b[4] - 0.05
     print(nm, "→", "予測出来た（採用条件を満たす）" if ok else "予測出来なかった（採用条件を満たさない）", f"最大下落の差 前半{d1-b[1]:+.1f} 後半{d2-b[3]:+.1f}・累積の差 前半{a1-b[0]:+.0f} 後半{a2-b[2]:+.0f}")
 for nm_, a, z in (("リーマン", "2008-09-01", "2009-06-30"), ("2000-02", "2000-04-01", "2003-04-30"), ("コロナ", "2020-02-01", "2020-12-31"), ("2026/10〜", "2026-10-01", None)):
-    print(nm_, {k: [round(v) for v in st(run(pol(k)), a, z)] for k in ("base", "V1", "V2", "V3")}, "持ちっぱなし", [round(v) for v in st(run(pd.Series(1.0, index=cal)), a, z)])
+    try: print(nm_, {k: [round(v) for v in st(run(pol(k)), a, z)] for k in ("base", "V1", "V2", "V3")}, "持ちっぱなし", [round(v) for v in st(run(pd.Series(1.0, index=cal)), a, z)])
+    except Exception as _x: print(nm_, "期間外", cal[0].date(), "〜", cal[-1].date())
 print("今：深い下落", bool(deep[-1]), "25日線の上", bool(above25[-1]), cal[-1].date())
