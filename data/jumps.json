@@ -1,21 +1,5 @@
 {
- "at": "2026-11-21T09:00+09:00",
+ "at": "2026-11-21T12:10+09:00",
  "th": -7.0,
- "hits": [
-  {
-   "code": "6273",
-   "name": "SMC",
-   "r": -98.0,
-   "price": null,
-   "prev": null,
-   "note": "見出しで検知（PTS・特別気配など。値段は未確認）",
-   "news": [
-    {
-     "title": "TSMCのADRが2.9%急落、台湾指数先物の夜間取引が500ポイント暴落、台湾株は本日の寄り付きに重い下げ圧力 - BigGo ファイナンス",
-     "url": "https://news.google.com/rss/articles/CBMidEFVX3lxTE81UDlMdWZqSUZ5d2JfNnQ5XzZTNHZIUU1jTmRfS0czazl6bVdsNXpFVTM0MlMxWEF4d1VzSjRNWFVWVjMyUTN4NjQ4dW5pUzVOQ0tvalQ2Y0RlbEtLS3hrOTBnM3pHdkV3dFl6SGJxYmJiN21J?oc=5",
-     "date": "Fri, 20 Nov 2026 00:25:00 GMT"
-    }
-   ]
-  }
- ]
+ "hits": []
 }
