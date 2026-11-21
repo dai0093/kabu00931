@@ -8,9 +8,9 @@
    "before_start": true
   },
   "日米金利": {
-   "st": "lit",
+   "st": "near",
    "since": "2026-10-12",
-   "lit_since": "2026-11-13",
+   "lit_since": null,
    "before_start": true
   },
   "AI債務": {
@@ -57,9 +57,9 @@
   },
   "NFCI": {
    "since": "2026-11-20",
-   "lit_since": null,
+   "lit_since": "2026-11-21",
    "before_start": false,
-   "st": "near"
+   "st": "lit"
   },
   "VIX": {
    "since": "2026-11-20",
@@ -69,9 +69,9 @@
   },
   "日経先物": {
    "since": "2026-11-20",
-   "lit_since": null,
+   "lit_since": "2026-11-21",
    "before_start": false,
-   "st": "near"
+   "st": "lit"
   }
  }
 }

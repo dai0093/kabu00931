@@ -1,12 +1,12 @@
 {
  "updatedAt": "2026-11-20T12:45:00+09:00",
- "builtAt": "2026-11-21T01:26+09:00",
- "phase": 3,
- "phaseName": "通り道が開通",
- "phaseDesc": "信用層に2つ以上点灯。　※期限切れのまま点灯・接近を保持：私募信用、HY OAS",
+ "builtAt": "2026-11-21T08:59+09:00",
+ "phase": 5,
+ "phaseName": "強制売却",
+ "phaseDesc": "資金調達が詰まり市場も崩れています。　※期限切れのまま点灯・接近を保持：私募信用、HY OAS",
  "counts": {
   "origin": [
-   4,
+   3,
    5
   ],
   "trans": [
@@ -14,11 +14,11 @@
    5
   ],
   "fund": [
-   0,
+   1,
    2
   ],
   "market": [
-   1,
+   2,
    3
   ]
  },
@@ -34,7 +34,7 @@
    ],
    [
     "日米金利",
-    "lit"
+    "near"
    ],
    [
     "AI債務",
@@ -66,14 +66,14 @@
    [
     "金融機関株価",
     "lit",
-    "未更新の群あり（日本その他：前日までの値で判定） 代替で補った14銘柄（最新値・ADR）"
+    " 代替で補った10銘柄（最新値・ADR）"
    ]
   ],
   "fund": [
    [
     "NFCI",
-    "near",
-    "代替：金融ストレス合成 1.11（≥1.5点灯・≥1.0接近、検証46で予測出来た）"
+    "lit",
+    "代替：金融ストレス合成 2.06（≥1.5点灯・≥1.0接近、検証46で予測出来た）"
    ],
    [
     "生保",
@@ -87,7 +87,7 @@
    ],
    [
     "日経先物",
-    "near"
+    "lit"
    ],
    [
     "SOX下落",
@@ -124,17 +124,17 @@
  ],
  "values": {
   "vix": {
-   "value": 28.44,
+   "value": 35.89,
    "unit": "",
-   "observedAt": "2026-11-19",
-   "change": "前日比 +3.88（Yahoo確定終値）",
+   "observedAt": "2026-11-20",
+   "change": "前日比 +7.45（Yahoo確定終値）",
    "source": "https://finance.yahoo.com/quote/%5EVIX/"
   },
   "us10": {
-   "value": 5.052,
+   "value": 4.912,
    "unit": "%",
-   "observedAt": "2026-11-19",
-   "change": "前日比 -0.014（Yahoo確定終値）",
+   "observedAt": "2026-11-20",
+   "change": "前日比 -0.140（Yahoo確定終値）",
    "source": "https://finance.yahoo.com/quote/%5ETNX/"
   },
   "jgb10": {
@@ -166,9 +166,9 @@
    "source": "https://fred.stlouisfed.org/data/BAMLC0A0CM"
   },
   "t10y2y": {
-   "value": 0.28,
+   "value": 0.29,
    "unit": "%",
-   "observedAt": "2026-11-19",
+   "observedAt": "2026-11-20",
    "change": "財務省の利回り曲線（10年−2年）",
    "source": "https://home.treasury.gov/resource-center/data-chart-center/interest-rates/TextView?type=daily_treasury_yield_curve"
   },
@@ -359,31 +359,31 @@
  "source": "https://claude.ai/artifact/KJPgY7LSb8DMsdXt2A1Gst",
  "byAsset": {
   "日経平均": {
-   "phase": 3,
+   "phase": 5,
    "lit": {
-    "起点": 4,
+    "起点": 3,
     "信用": 2,
-    "資金": 0,
-    "市場": 1
+    "資金": 1,
+    "市場": 2
    },
    "items": 15
   },
   "200A（半導体）": {
-   "phase": 3,
+   "phase": 5,
    "lit": {
-    "起点": 3,
+    "起点": 2,
     "信用": 2,
-    "資金": 0,
-    "市場": 1
+    "資金": 1,
+    "市場": 2
    },
    "items": 11
   },
   "SOXL": {
-   "phase": 2,
+   "phase": 4,
    "lit": {
-    "起点": 2,
+    "起点": 1,
     "信用": 1,
-    "資金": 0,
+    "資金": 1,
     "市場": 1
    },
    "items": 7
