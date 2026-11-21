@@ -379,7 +379,7 @@ function render(){
   const m25=ma(25),m75=ma(75),P0=K.indexOf('2026-06-25'),HI0=NKD['2026-06-25']||72366;
   const CC={'リーマン2007':['#ff3366','2007年7月9日の高値から'],'ITバブル2000':['#ff9900','2000年4月12日の高値から'],'2024年8月':['#33ccff','2024年7月11日の高値から'],'1990バブル':['#c58af9','1989年12月29日の高値から'],'2018':['#9be9a8','2018年10月2日の高値から'],'2015チャイナ':['#e3b341','2015年6月24日の高値から'],'コロナ2020':['#8b949e','2020年1月17日の高値から']};
   let WON=false;try{WON=localStorage.getItem('ccWarp')==='1'}catch(e){}
-  const SRC=(WON&&WRP)?Object.fromEntries(Object.entries(WRP).map(([k,v])=>[k,v.curve])):OVL;
+  const SRC=(WON&&WRP)?Object.fromEntries(Object.entries(WRP).map(([k,v])=>[k,v.curve.slice(0,Math.max(0,K.length-K.indexOf('2026-06-25'))+60)])):OVL;
   const SC=SRC?Object.keys(CC).filter(k=>SRC[k]).map(k=>[k,k+(WON&&WRP&&WRP[k]?`（時間${WRP[k].k}倍）`:''),SRC[k].map(x=>HI0*(1+x/100)),CC[k][0],CC[k][1]]):[];
   let on={};try{on=JSON.parse(localStorage.getItem('ccOn')||'{}')}catch(_){};SC.forEach(x=>{if(on[x[0]]===undefined)on[x[0]]=['リーマン2007','ITバブル2000','2024年8月'].includes(x[0])});
   const draw=()=>{const W=360,H=250,L=44,R=8,T=10,B=24,N=K.length,TOT=Math.max(N,P0+(SC[0]?SC[0][2].length:0))+2,all=V.concat(...SC.filter(x=>on[x[0]]).map(x=>x[2]));
