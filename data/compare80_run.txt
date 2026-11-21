@@ -8,19 +8,7 @@ V1 深い下落中は維持40日 → 予測出来なかった（採用条件を�
 V2 深い下落中は上限50% → 予測出来なかった（採用条件を満たさない） 最大下落の差 前半+2.7 後半+0.0・累積の差 前半+3 後半+0
 V3 深い下落中は25日線の上まで0% → 予測出来なかった（採用条件を満たさない） 最大下落の差 前半-0.4 後半+0.0・累積の差 前半-0 後半+0
 リーマン {'base': [-2, -4], 'V1': [0, 0], 'V2': [0, -3], 'V3': [-2, -4]} 持ちっぱなし [-24, -45]
-Traceback (most recent call last):
-  File "/home/runner/work/kabu00931/kabu00931/scanner/compare80.py", line 44, in <module>
-    print(nm_, {k: [round(v) for v in st(run(pol(k)), a, z)] for k in ("base", "V1", "V2", "V3")}, "持ちっぱなし", [round(v) for v in st(run(pd.Series(1.0, index=cal)), a, z)])
-               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/home/runner/work/kabu00931/kabu00931/scanner/compare80.py", line 44, in <dictcomp>
-    print(nm_, {k: [round(v) for v in st(run(pol(k)), a, z)] for k in ("base", "V1", "V2", "V3")}, "持ちっぱなし", [round(v) for v in st(run(pd.Series(1.0, index=cal)), a, z)])
-                                      ^^^^^^^^^^^^^^^^^^^^^
-  File "<string>", line 31, in st
-  File "/opt/hostedtoolcache/Python/3.11.18/x64/lib/python3.11/site-packages/pandas/core/indexing.py", line 1342, in __getitem__
-    return self._getitem_axis(maybe_callable, axis=axis)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/opt/hostedtoolcache/Python/3.11.18/x64/lib/python3.11/site-packages/pandas/core/indexing.py", line 2432, in _getitem_axis
-    self._validate_integer(key, axis)
-  File "/opt/hostedtoolcache/Python/3.11.18/x64/lib/python3.11/site-packages/pandas/core/indexing.py", line 2365, in _validate_integer
-    raise IndexError("single positional indexer is out-of-bounds")
-IndexError: single positional indexer is out-of-bounds
+2000-02 期間外 2005-01-04 〜 2026-11-19
+コロナ {'base': [17, -5], 'V1': [17, -5], 'V2': [17, -5], 'V3': [17, -5]} 持ちっぱなし [18, -31]
+2026/10〜 {'base': [-2, -5], 'V1': [-2, -5], 'V2': [-2, -5], 'V3': [-2, -5]} 持ちっぱなし [-11, -19]
+今：深い下落 False 25日線の上 False 2026-11-19
