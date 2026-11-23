@@ -1,6 +1,6 @@
 {
  "asOf": "2026-11-20",
- "updatedAt": "2026-11-23T18:52+09:00",
+ "updatedAt": "2026-11-23T19:51+09:00",
  "provisional": true,
  "policy": "C",
  "target": 0.0,
@@ -147,7 +147,7 @@
   "nk1": -5.06,
   "nk5": -7.7,
   "sox_prev": -2.41,
-  "jp_d1": -4.6
+  "jp_d1": -4.5
  },
  "note": "",
  "loosen_warn": []
