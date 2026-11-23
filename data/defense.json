@@ -1,6 +1,6 @@
 {
  "asOf": "2026-11-20",
- "updatedAt": "2026-11-23T22:44+09:00",
+ "updatedAt": "2026-11-24T04:31+09:00",
  "provisional": false,
  "policy": "C",
  "target": 0.0,
@@ -8,7 +8,7 @@
  "hold10_max": 6,
  "hold_days": 20,
  "credit_cap": false,
- "credit_d20": -1.41,
+ "credit_d20": -1.12,
  "rebound": {
   "sox5": -17.13,
   "on": false,
