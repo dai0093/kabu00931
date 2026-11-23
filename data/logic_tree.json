@@ -1,9 +1,9 @@
 {
  "updatedAt": "2026-11-23T12:25:00+09:00",
- "builtAt": "2026-11-24T04:31+09:00",
- "phase": 5,
- "phaseName": "強制売却",
- "phaseDesc": "資金調達が詰まり市場も崩れています。　※期限切れで判定不能：原油、逆イールド（未点灯と扱わない）　※期限切れのまま点灯・接近を保持：日米金利、私募信用、HY OAS、VIX、日経先物、SOX下落",
+ "builtAt": "2026-11-24T06:58+09:00",
+ "phase": 3,
+ "phaseName": "通り道が開通",
+ "phaseDesc": "信用層に2つ以上点灯。　※期限切れで判定不能：原油（未点灯と扱わない）　※期限切れのまま点灯・接近を保持：私募信用、HY OAS",
  "counts": {
   "origin": [
    3,
@@ -14,7 +14,7 @@
    5
   ],
   "fund": [
-   1,
+   0,
    2
   ],
   "market": [
@@ -61,19 +61,18 @@
    ],
    [
     "逆イールド",
-    "stale"
+    "ok"
    ],
    [
     "金融機関株価",
-    "lit",
-    " 代替で補った6銘柄（最新値・ADR）"
+    "lit"
    ]
   ],
   "fund": [
    [
     "NFCI",
-    "lit",
-    "代替：金融ストレス合成 2.06（≥1.5点灯・≥1.0接近、検証46で予測出来た）"
+    "near",
+    "代替：金融ストレス合成 1.27（≥1.5点灯・≥1.0接近、検証46で予測出来た）"
    ],
    [
     "生保",
@@ -83,11 +82,11 @@
   "market": [
    [
     "VIX",
-    "near"
+    "lit"
    ],
    [
     "日経先物",
-    "lit"
+    "ok"
    ],
    [
     "SOX下落",
@@ -96,16 +95,11 @@
   ]
  },
  "unjudged": [
-  "原油",
-  "逆イールド"
+  "原油"
  ],
  "held": [
-  "日米金利",
   "私募信用",
-  "HY OAS",
-  "VIX",
-  "日経先物",
-  "SOX下落"
+  "HY OAS"
  ],
  "assets": [
   {
@@ -131,17 +125,17 @@
  ],
  "values": {
   "vix": {
-   "value": 35.89,
+   "value": 26.62,
    "unit": "",
-   "observedAt": "2026-11-20",
-   "change": "前日比 +7.45（Yahoo確定終値）",
+   "observedAt": "2026-11-23",
+   "change": "前日比 -9.27（Yahoo確定終値）",
    "source": "https://finance.yahoo.com/quote/%5EVIX/"
   },
   "us10": {
-   "value": 4.912,
+   "value": 4.918,
    "unit": "%",
-   "observedAt": "2026-11-20",
-   "change": "前日比 -0.140（Yahoo確定終値）",
+   "observedAt": "2026-11-23",
+   "change": "前日比 +0.006（Yahoo確定終値）",
    "source": "https://finance.yahoo.com/quote/%5ETNX/"
   },
   "jgb10": {
@@ -175,7 +169,7 @@
   "t10y2y": {
    "value": 0.29,
    "unit": "%",
-   "observedAt": "2026-11-20",
+   "observedAt": "2026-11-23",
    "change": "財務省の利回り曲線（10年−2年）",
    "source": "https://home.treasury.gov/resource-center/data-chart-center/interest-rates/TextView?type=daily_treasury_yield_curve"
   },
@@ -206,42 +200,7 @@
    "freq": "日次"
   },
   {
-   "name": "VIX",
-   "observedAt": "2026-11-20",
-   "freq": "日次"
-  },
-  {
-   "name": "日経225先物 夜間（前日比）",
-   "observedAt": "2026-11-20",
-   "freq": "日次"
-  },
-  {
-   "name": "SOX指数",
-   "observedAt": "2026-11-20",
-   "freq": "日次"
-  },
-  {
-   "name": "SOX 52週高値からの下落率",
-   "observedAt": "2026-11-20",
-   "freq": "日次"
-  },
-  {
-   "name": "VIX25超の連続日数",
-   "observedAt": "2026-11-20",
-   "freq": "日次"
-  },
-  {
-   "name": "米10年金利",
-   "observedAt": "2026-11-20",
-   "freq": "日次"
-  },
-  {
    "name": "日本10年金利",
-   "observedAt": "2026-11-20",
-   "freq": "日次"
-  },
-  {
-   "name": "米10年−2年",
    "observedAt": "2026-11-20",
    "freq": "日次"
   },
@@ -426,32 +385,32 @@
  "source": "https://claude.ai/artifact/KJPgY7LSb8DMsdXt2A1Gst",
  "byAsset": {
   "日経平均": {
-   "phase": 5,
+   "phase": 3,
    "lit": {
     "起点": 3,
     "信用": 2,
-    "資金": 1,
+    "資金": 0,
     "市場": 2
    },
    "items": 15
   },
   "200A（半導体）": {
-   "phase": 5,
+   "phase": 3,
    "lit": {
     "起点": 2,
     "信用": 2,
-    "資金": 1,
+    "資金": 0,
     "市場": 2
    },
    "items": 11
   },
   "SOXL": {
-   "phase": 4,
+   "phase": 2,
    "lit": {
     "起点": 1,
     "信用": 1,
-    "資金": 1,
-    "市場": 1
+    "資金": 0,
+    "市場": 2
    },
    "items": 7
   }
