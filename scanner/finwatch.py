@@ -287,7 +287,7 @@ try:
             except Exception: pass
             json.dump(dict(sorted(_o.items())), open("data/nk_daily.json", "w"))
             _ix = {}
-            for _t, _n in (("^IXIC", "NASDAQ"), ("^SOX", "SOX"), ("^GSPC", "S&P500"), ("200A.T", "日経半導体ETF"), ("1615.T", "銀行ETF"), ("1632.T", "金融（除く銀行）ETF"), ("1625.T", "電機・精密ETF"), ("1630.T", "運輸・物流ETF"), ("1343.T", "REIT ETF"), ("1621.T", "医薬品ETF"), ("1617.T", "食品ETF")):
+            for _t, _n in (("^IXIC", "NASDAQ"), ("^SOX", "SOX"), ("^GSPC", "S&P500"), ("200A.T", "日経半導体ETF"), ("1615.T", "銀行ETF"), ("1632.T", "金融（除く銀行）ETF"), ("1625.T", "電機・精密ETF"), ("1630.T", "運輸・物流ETF"), ("1343.T", "REIT ETF"), ("1621.T", "医薬品ETF"), ("1617.T", "食品ETF"), ("285A.T", "キオクシア"), ("4062.T", "イビデン"), ("6857.T", "アドバンテスト")):
                 try: _z = yf.download(_t, period="2y", auto_adjust=False, progress=False)["Close"].squeeze().dropna(); _z.index = pd.to_datetime(_z.index).tz_localize(None)
                 except Exception: continue
                 if len(_z) < 5: continue
