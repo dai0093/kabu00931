@@ -5,7 +5,7 @@ on:
   workflow_dispatch:
 permissions:
   contents: write
-concurrency: data-write
+concurrency: ${{ github.workflow }}   # 毎日の更新(data-write)を取り消さないよう別の列
 jobs:
   scan:
     runs-on: ubuntu-latest

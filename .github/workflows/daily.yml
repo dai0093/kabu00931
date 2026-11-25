@@ -9,7 +9,7 @@ on:
     paths: ["scanner/daily.py", ".github/workflows/daily.yml"]
 permissions:
   contents: write
-concurrency: data-write
+concurrency: ${{ github.workflow }}
 jobs:
   scan:
     runs-on: ubuntu-latest
@@ -26,4 +26,4 @@ jobs:
       - run: |
           git config user.name "kabu-bot"
           git config user.email "kabu-bot@users.noreply.github.com"
-          git add data && git commit -m "daily scan $(date +%F)" && git pull --rebase -X theirs && git push || echo "no change"
+          git add data && git commit -m "daily scan $(date +%F)" && for _i in 1 2 3 4 5; do git pull --rebase -X theirs && git push && break; sleep $((RANDOM%10+5)); done || echo "no change"

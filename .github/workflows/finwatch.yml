@@ -12,7 +12,7 @@ on:
 permissions:
   contents: write
   actions: write
-concurrency: data-write
+concurrency: ${{ github.workflow }}
 jobs:
   run:
     runs-on: ubuntu-latest
@@ -39,7 +39,7 @@ jobs:
       - run: |
           git config user.name "kabu-bot"
           git config user.email "kabu-bot@users.noreply.github.com"
-          for f in data/finwatch.json data/finwatch_sent.json data/logic_tree.json data/node_hist.json data/series_live.json data/assets.json data/ah_sent.json data/defense.json data/defense_intraday.json data/defense_sent.json data/defense_err.txt data/health.json data/outlook.json data/outlook_log.json data/defense_track.json data/nk_daily.json data/idx_daily.json data/jumps.json data/sox40_sent.json data/sectors.json data/sectors_hist.json data/asset_rules.json; do [ -f $f ] && git add $f; done; git diff --cached --quiet && echo nochange ||  git commit -m "finwatch" && git pull --rebase -X theirs && git push || echo "no change"
+          for f in data/finwatch.json data/finwatch_sent.json data/logic_tree.json data/node_hist.json data/series_live.json data/assets.json data/ah_sent.json data/defense.json data/defense_intraday.json data/defense_sent.json data/defense_err.txt data/health.json data/outlook.json data/outlook_log.json data/defense_track.json data/nk_daily.json data/idx_daily.json data/jumps.json data/sox40_sent.json data/sectors.json data/sectors_hist.json data/asset_rules.json; do [ -f $f ] && git add $f; done; git diff --cached --quiet && echo nochange ||  git commit -m "finwatch" && for _i in 1 2 3 4 5; do git pull --rebase -X theirs && git push && break; sleep $((RANDOM%10+5)); done || echo "no change"
       - name: 途中判定ループが動いていなければ起動
         if: always()
         env:

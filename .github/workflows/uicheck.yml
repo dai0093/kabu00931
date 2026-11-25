@@ -9,8 +9,8 @@ on:
 permissions:
   contents: write
 concurrency:
-  group: data-write
-  cancel-in-progress: false
+  group: uicheck   # data-write に入れると、待機中の更新処理(finwatch)を取り消してしまうため別にする
+  cancel-in-progress: true
 jobs:
   check:
     runs-on: ubuntu-latest
