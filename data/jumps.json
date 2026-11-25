@@ -1,5 +1,5 @@
 {
- "at": "2026-11-25T14:32+09:00",
+ "at": "2026-11-25T14:52+09:00",
  "th": -7.0,
  "hits": [
   {
@@ -21,7 +21,7 @@
    "code": "9984",
    "name": "ソフトバンクG",
    "r": -15.1,
-   "price": 2687,
+   "price": 2688,
    "prev": 3166,
    "news": [
     {
@@ -44,8 +44,8 @@
   {
    "code": "6981",
    "name": "村田製作所",
-   "r": -14.8,
-   "price": 4603,
+   "r": -15.0,
+   "price": 4588,
    "prev": 5400,
    "news": [
     {
@@ -66,34 +66,10 @@
    ]
   },
   {
-   "code": "8035",
-   "name": "東京エレクトロン",
-   "r": -13.2,
-   "price": 7761,
-   "prev": 8946,
-   "news": [
-    {
-     "title": "東京エレクトロン(株)【TOELY】：株価・株式情報 - Yahoo!ファイナンス",
-     "url": "https://news.google.com/rss/articles/CBMiUEFVX3lxTFAwaldHLXNSRDFXRDJjc0swcktjckNyaTJoY2FtbDNSNmRCb0lBUl9pbmZ2aGJaTmpSZUFkV3ZRM2g3UEtPMTZJbmw1UHNYUnlr?oc=5",
-     "date": "Tue, 24 Nov 2026 21:33:45 GMT"
-    },
-    {
-     "title": "東京エレクトロン株が大幅高 半導体「スーパーサイクル」見方強まる - 日本経済新聞",
-     "url": "https://news.google.com/rss/articles/CBMibEFVX3lxTE1BSk96aGFhdy1Vb2FHMl9ONm5WUG1OOU9OYWpxWnViWHFiakV2YzU0WnZsUDZ6b3VmNjFzWlZzMnVfNnpndEh6LUIyNlpQSUo4Q19zREtMRzRWZ1g2S0MtbTRfMjN5emZLbzhFMQ?oc=5",
-     "date": "Mon, 02 Nov 2026 08:00:00 GMT"
-    },
-    {
-     "title": "東京エレクトロン、株価上昇失速不安 最高値から3割安 本格回復先送り - IG",
-     "url": "https://news.google.com/rss/articles/CBMisAFBVV95cUxOQThyZERnSVVqSXh6dzNQenhIbXhCSE9vOXhvRjNfZXkxcU1OVmFXVWdjYlAtZFVOVE45WkQ4REpqaGJhdXE4d0lJYnhLS2o2bDI2OVlaSDZlX1NyS3p0SXVIeWl0VkZaRk90OTlCcWtld0tfVEV5V19FU3NvYU9BaEFDN2Z0V3E0c3VwRXB6QUd5LVNXN0VVSmo0aHJWUjlaR1gyakdsVjVYSkthUEhTOQ?oc=5",
-     "date": "Sun, 23 Aug 2026 07:00:00 GMT"
-    }
-   ]
-  },
-  {
    "code": "6857",
    "name": "アドバンテスト",
-   "r": -13.1,
-   "price": 23710,
+   "r": -13.8,
+   "price": 23505,
    "prev": 27275,
    "news": [
     {
@@ -114,10 +90,34 @@
    ]
   },
   {
+   "code": "8035",
+   "name": "東京エレクトロン",
+   "r": -13.6,
+   "price": 7725,
+   "prev": 8946,
+   "news": [
+    {
+     "title": "東京エレクトロン (8035) の株価・株式 - QUICK Money World",
+     "url": "https://news.google.com/rss/articles/CBMiV0FVX3lxTE42WHhfaUFTRFJKODFyUHBVcXgyejJfRUdDRENlSVJuY3lFb2I4WlFwRWw1MnFKT0F6ZEtiLWlSMWttZE5ESzcyS1BiRkdVNEIwOElfdERWWQ?oc=5",
+     "date": "Fri, 20 Nov 2026 08:00:00 GMT"
+    },
+    {
+     "title": "東京エレクトロン株が大幅高 半導体「スーパーサイクル」見方強まる - 日本経済新聞",
+     "url": "https://news.google.com/rss/articles/CBMibEFVX3lxTE1BSk96aGFhdy1Vb2FHMl9ONm5WUG1OOU9OYWpxWnViWHFiakV2YzU0WnZsUDZ6b3VmNjFzWlZzMnVfNnpndEh6LUIyNlpQSUo4Q19zREtMRzRWZ1g2S0MtbTRfMjN5emZLbzhFMQ?oc=5",
+     "date": "Mon, 02 Nov 2026 08:00:00 GMT"
+    },
+    {
+     "title": "キオクシア・東京エレクほか、株価急落で再評価したい上半期大幅増益銘柄 - SBI証券",
+     "url": "https://news.google.com/rss/articles/CBMif0FVX3lxTE9UR0ZoWDBiY0gyVUpHLUg3enlqZjJJZUNmckhPM3puTVQzVWx4STFrQ3JBNm5hMnBOUEl5aTFfblZhUWtmS195LUJSSUZ0X0wyOUJ2cmtBaGF1bUVYZnAtT2JER1ZQVjlPUG5SUDIxLW5laU9Zc1hjSlo5eWY5ZjA?oc=5",
+     "date": "Fri, 06 Nov 2026 08:00:00 GMT"
+    }
+   ]
+  },
+  {
    "code": "6920",
    "name": "レーザーテック",
-   "r": -11.9,
-   "price": 29250,
+   "r": -12.4,
+   "price": 29070,
    "prev": 33200,
    "news": [
     {
@@ -138,34 +138,10 @@
    ]
   },
   {
-   "code": "6723",
-   "name": "ルネサス",
-   "r": -9.9,
-   "price": 2366,
-   "prev": 2625,
-   "news": [
-    {
-     "title": "ルネサスエレクトロニクス(株)【6723】：掲示板 - Yahoo!ファイナンス",
-     "url": "https://news.google.com/rss/articles/CBMiWkFVX3lxTFB3RlFVa3JFZlh0eUNyMTdEZ3FXNkRGMHRCOTlSb0Y0bVdNekVwS04xUkFQS3JidDVVVGRFMG13dkJMUXRwVGNoQmxaSmRLYXltZEFKdklsdVpxZw?oc=5",
-     "date": "Thu, 19 Nov 2026 08:00:00 GMT"
-    },
-    {
-     "title": "ルネサスエレクトロニクス株価急伸 1〜6月期は2173億円の黒字 - 日本経済新聞",
-     "url": "https://news.google.com/rss/articles/CBMibEFVX3lxTE9qSjRTbHNNZVJROHZBdHdkc2VlRmpBUmNyb3lMZlRMZ1lXTjJ0dTE5Z0tMOGFremxqUnp3N1d3MjZhTFFTUDJCVGN4eUk4M04zUlVkb2pSNUJaZVVpU0Q3MDVhWHhHU0U3M0I4Mg?oc=5",
-     "date": "Mon, 03 Aug 2026 07:00:00 GMT"
-    },
-    {
-     "title": "ルネサスが大幅続伸、野村と米系証券が目標株価を大幅引き上げ AI需要を追い風に - BigGo ファイナンス",
-     "url": "https://news.google.com/rss/articles/CBMidEFVX3lxTE0tdUFWcUJDOW1UUmRBQWg4S3ZQN0huTzhZUjN0QzVTdDN6MVNvd1RvQVJYLUMxZzFkTVVBbDVpclVCMFhjdGJ6RWJ4UTlFU2YtbkpMZjNfQkJsWVdGb09NLTZSb3NIRjVUTGRuUmV3ZERyT2It?oc=5",
-     "date": "Thu, 25 Jun 2026 07:00:00 GMT"
-    }
-   ]
-  },
-  {
    "code": "6146",
    "name": "ディスコ",
-   "r": -9.5,
-   "price": 40420,
+   "r": -9.8,
+   "price": 40280,
    "prev": 44650,
    "news": [
     {
@@ -186,26 +162,50 @@
    ]
   },
   {
+   "code": "6723",
+   "name": "ルネサス",
+   "r": -9.8,
+   "price": 2368,
+   "prev": 2625,
+   "news": [
+    {
+     "title": "ルネサスエレクトロニクス(株)【6723】：掲示板 - Yahoo!ファイナンス",
+     "url": "https://news.google.com/rss/articles/CBMiWkFVX3lxTFB3RlFVa3JFZlh0eUNyMTdEZ3FXNkRGMHRCOTlSb0Y0bVdNekVwS04xUkFQS3JidDVVVGRFMG13dkJMUXRwVGNoQmxaSmRLYXltZEFKdklsdVpxZw?oc=5",
+     "date": "Thu, 19 Nov 2026 08:00:00 GMT"
+    },
+    {
+     "title": "ルネサスエレクトロニクス株価急伸 1〜6月期は2173億円の黒字 - 日本経済新聞",
+     "url": "https://news.google.com/rss/articles/CBMibEFVX3lxTE9qSjRTbHNNZVJROHZBdHdkc2VlRmpBUmNyb3lMZlRMZ1lXTjJ0dTE5Z0tMOGFremxqUnp3N1d3MjZhTFFTUDJCVGN4eUk4M04zUlVkb2pSNUJaZVVpU0Q3MDVhWHhHU0U3M0I4Mg?oc=5",
+     "date": "Mon, 03 Aug 2026 07:00:00 GMT"
+    },
+    {
+     "title": "ルネサスが大幅続伸、野村と米系証券が目標株価を大幅引き上げ AI需要を追い風に - BigGo ファイナンス",
+     "url": "https://news.google.com/rss/articles/CBMidEFVX3lxTE0tdUFWcUJDOW1UUmRBQWg4S3ZQN0huTzhZUjN0QzVTdDN6MVNvd1RvQVJYLUMxZzFkTVVBbDVpclVCMFhjdGJ6RWJ4UTlFU2YtbkpMZjNfQkJsWVdGb09NLTZSb3NIRjVUTGRuUmV3ZERyT2It?oc=5",
+     "date": "Thu, 25 Jun 2026 07:00:00 GMT"
+    }
+   ]
+  },
+  {
    "code": "6752",
    "name": "パナソニック",
-   "r": -8.9,
-   "price": 2683,
+   "r": -9.4,
+   "price": 2668,
    "prev": 2946,
    "news": [
     {
      "title": "パナソニック ホールディングス(株)【PCRHY】：株価・株式情報 - Yahoo!ファイナンス",
      "url": "https://news.google.com/rss/articles/CBMiUEFVX3lxTE1ZMEtyWmxsUnBma3lZd1JJUWRMRE5BR1NkWWpLSnJFQ203bEFjdGJoQmt5M1ZScGJSOS1WVldZYjkzeVhYYnlZbjh4ZVNtMC14?oc=5",
-     "date": "Mon, 23 Nov 2026 03:26:34 GMT"
+     "date": "Wed, 25 Nov 2026 02:53:46 GMT"
+    },
+    {
+     "title": "パナソニック ホールディングス (6752) の株価・株式 - QUICK Money World",
+     "url": "https://news.google.com/rss/articles/CBMiV0FVX3lxTE92YnN2UEJvNnkxNjh6VWdTLTREOGs4cE5xdl80SnZFeDlhOUNwcnZ6Z3pzUFhOWmVkcU9qYWsyYnZzZ2U3SklXSlY4c1ZsYU9sUlQzLWhvSQ?oc=5",
+     "date": "Fri, 20 Nov 2026 08:00:00 GMT"
     },
     {
      "title": "パナソニックHD株価が反発 27年3月期の純利益2.8倍に上方修正 - 日本経済新聞",
      "url": "https://news.google.com/rss/articles/CBMibEFVX3lxTE0xZ1g0TDJwYVlIVHFBVi03eEp5dU8zWTQ0dUVtdzZwSEl0bVBxUXJ2NGdXRWRjbXZNcjdSVVBZWngwYjF1QV8xN2NhalVEZ2ZKaHBNcUVrR2IxVDE1NXBPSGFxY0x0RlFQaHd2UQ?oc=5",
      "date": "Mon, 02 Nov 2026 08:00:00 GMT"
-    },
-    {
-     "title": "パナソニック ホールディングス(株)【6752】：株価・株式情報 - Yahoo!ファイナンス",
-     "url": "https://news.google.com/rss/articles/CBMiUkFVX3lxTFBpb055eFl3Rnc0OUZudjJXT1dTVFB1MzduMU9QcjVvQTA4TnpJeDU3TlRXWUxxbnFLaGIwaVd6SWRQLWpCOGs1MWNEZGlQLS1aTXc?oc=5",
-     "date": "Fri, 20 Nov 2026 06:53:39 GMT"
     }
    ]
   }
