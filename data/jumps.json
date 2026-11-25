@@ -1,5 +1,5 @@
 {
- "at": "2026-11-25T14:12+09:00",
+ "at": "2026-11-25T14:19+09:00",
  "th": -7.0,
  "hits": [
   {
@@ -18,34 +18,10 @@
    ]
   },
   {
-   "code": "6981",
-   "name": "村田製作所",
-   "r": -14.9,
-   "price": 4597,
-   "prev": 5400,
-   "news": [
-    {
-     "title": "(株)村田製作所【6981】：株価・株式情報 - Yahoo!ファイナンス",
-     "url": "https://news.google.com/rss/articles/CBMiUkFVX3lxTE92ZDVQTWVBNHBNU3pqN1VzN09ReUVtc0txOW51aDAwWmZBQXkzS052X1JnYzEwRVQxYTZjQnZPMWdfbzE1NDJNc0h5R2ZNbmluWlE?oc=5",
-     "date": "Fri, 20 Nov 2026 06:52:37 GMT"
-    },
-    {
-     "title": "太陽誘電、株価が午後一段高 村田製作所の工場拡張方針で連想買い - 日本経済新聞",
-     "url": "https://news.google.com/rss/articles/CBMibEFVX3lxTE1QNTZrQXp0TVBQOWdVZkdWdGtkZ3lLdDBxci1BUjZyT29kMlpVS1JGb3RlVnJFOW1EVW9HazJyNmVINnVRN1ZaVG9mRnBFTjVxRmo2N3d4c1FUQXROZHAzaEpiUDhHT1JGTmc4OQ?oc=5",
-     "date": "Wed, 14 Oct 2026 07:00:00 GMT"
-    },
-    {
-     "title": "株式会社村田製作所の株価が本日急騰した理由とは？ - Investing.com - FX | 株式市場 | ファイナンス | 金融ニュース",
-     "url": "https://news.google.com/rss/articles/CBMid0FVX3lxTE5Ka1k1Y0J6NTFhRmRSQ3lNbTBiT0Z4MXJ2NGx1bHRuTFhCcXBQNWpvNzJtckx4aDJVLWtBbkRDbVdJUHpucUZXV2RtbTMxX1UxTzZCQk9vMi0tUGhLbXZkYkswWGJNN2lrdFFyZEJKUWVXZjRpLWg0?oc=5",
-     "date": "Tue, 24 Nov 2026 04:03:00 GMT"
-    }
-   ]
-  },
-  {
    "code": "9984",
    "name": "ソフトバンクG",
-   "r": -14.7,
-   "price": 2702,
+   "r": -14.9,
+   "price": 2694,
    "prev": 3166,
    "news": [
     {
@@ -62,6 +38,54 @@
      "title": "ソフトバンクグループは来年、存続の危機を迎えるかもしれない #エキスパートトピ（中原圭介） - エキスパート - Yahoo!ニュース",
      "url": "https://news.google.com/rss/articles/CBMiiAFBVV95cUxQOS1wQ1hmMlhxN0tUdF9BTWxwcXhZMnJPQW9rcE0tZk9sRC1ZdVRES1dFeDVuYXMtMUU2ZmJpaDZmWThFMUlZZVAySURfTDI2U1VoR29hMjJzQXk2YlNmNkIxZXdoc0p4SmdSeXpiUTFJdVpHN0FCTEVDanRXb3hSX2tCMnEwMGFG?oc=5",
      "date": "Tue, 24 Nov 2026 03:05:21 GMT"
+    }
+   ]
+  },
+  {
+   "code": "6981",
+   "name": "村田製作所",
+   "r": -14.8,
+   "price": 4600,
+   "prev": 5400,
+   "news": [
+    {
+     "title": "移動平均線で読み解く！村田製作所の株価はどうなるのか - 四季報オンライン",
+     "url": "https://news.google.com/rss/articles/CBMiV0FVX3lxTE8yaFNCN3RqUFQzSktDdGFWVF9aQldReFo0NHpNaUtzRVptbFZNVFYyRXJqT1E0QWRhcFVvSG1qQXVVZW5fMEFhdTdaVjgtMW5RWEVzRmRUTQ?oc=5",
+     "date": "Thu, 12 Nov 2026 08:00:00 GMT"
+    },
+    {
+     "title": "太陽誘電、株価が午後一段高 村田製作所の工場拡張方針で連想買い - 日本経済新聞",
+     "url": "https://news.google.com/rss/articles/CBMibEFVX3lxTE1QNTZrQXp0TVBQOWdVZkdWdGtkZ3lLdDBxci1BUjZyT29kMlpVS1JGb3RlVnJFOW1EVW9HazJyNmVINnVRN1ZaVG9mRnBFTjVxRmo2N3d4c1FUQXROZHAzaEpiUDhHT1JGTmc4OQ?oc=5",
+     "date": "Wed, 14 Oct 2026 07:00:00 GMT"
+    },
+    {
+     "title": "【アナリスト評価】村田製作所、レーティング強気を継続、目標株価11,300円に引上げ（欧州系大手証券）(アイフィス株予報) - Yahoo!ファイナンス",
+     "url": "https://news.google.com/rss/articles/CBMihwFBVV95cUxPdXlGbXRTSW5hblhNbHZTT2Z4QnZ0UWlZWHpiaEtxeGlnaWNVNWJ3enJnZkZVRFo4QVZoaXpMRDY5RDJ2VXdoOVJXdlhKZ2lGdnlNVWxBODRsT2RSRkFGVENQTWt5VUpORDdPZENtbWZsNjlQUTZMU1dGcmZCdFlKMVpFYTVLYlk?oc=5",
+     "date": "Mon, 02 Nov 2026 08:00:00 GMT"
+    }
+   ]
+  },
+  {
+   "code": "8035",
+   "name": "東京エレクトロン",
+   "r": -13.0,
+   "price": 7784,
+   "prev": 8946,
+   "news": [
+    {
+     "title": "東京エレクトロン(株)【TOELY】：株価・株式情報 - Yahoo!ファイナンス",
+     "url": "https://news.google.com/rss/articles/CBMiUEFVX3lxTFAwaldHLXNSRDFXRDJjc0swcktjckNyaTJoY2FtbDNSNmRCb0lBUl9pbmZ2aGJaTmpSZUFkV3ZRM2g3UEtPMTZJbmw1UHNYUnlr?oc=5",
+     "date": "Tue, 24 Nov 2026 21:33:45 GMT"
+    },
+    {
+     "title": "東京エレクトロン株が大幅高 半導体「スーパーサイクル」見方強まる - 日本経済新聞",
+     "url": "https://news.google.com/rss/articles/CBMibEFVX3lxTE1BSk96aGFhdy1Vb2FHMl9ONm5WUG1OOU9OYWpxWnViWHFiakV2YzU0WnZsUDZ6b3VmNjFzWlZzMnVfNnpndEh6LUIyNlpQSUo4Q19zREtMRzRWZ1g2S0MtbTRfMjN5emZLbzhFMQ?oc=5",
+     "date": "Mon, 02 Nov 2026 08:00:00 GMT"
+    },
+    {
+     "title": "東京エレクトロン、株価上昇失速不安 最高値から3割安 本格回復先送り - IG",
+     "url": "https://news.google.com/rss/articles/CBMisAFBVV95cUxOQThyZERnSVVqSXh6dzNQenhIbXhCSE9vOXhvRjNfZXkxcU1OVmFXVWdjYlAtZFVOVE45WkQ4REpqaGJhdXE4d0lJYnhLS2o2bDI2OVlaSDZlX1NyS3p0SXVIeWl0VkZaRk90OTlCcWtld0tfVEV5V19FU3NvYU9BaEFDN2Z0V3E0c3VwRXB6QUd5LVNXN0VVSmo0aHJWUjlaR1gyakdsVjVYSkthUEhTOQ?oc=5",
+     "date": "Sun, 23 Aug 2026 07:00:00 GMT"
     }
    ]
   },
@@ -83,41 +107,17 @@
      "date": "Wed, 25 Nov 2026 00:02:03 GMT"
     },
     {
-     "title": "アドバンテスト---大幅続落、半導体関連は米AMDの株価下落も弱材料視 - 株探",
-     "url": "https://news.google.com/rss/articles/CBMiYEFVX3lxTE0xcVc3MTJZLWF5Y3ZWUzc3TktkQW9KYm1idklhaHl2NGQxQXBRNU5FOFdTeWNqMG14eDAwMnhXVnc1WDBMNEtoUG94Q0F2QWJtQi1QSU9LdFJqX09jUmh6WQ?oc=5",
-     "date": "Fri, 20 Nov 2026 01:23:27 GMT"
-    }
-   ]
-  },
-  {
-   "code": "8035",
-   "name": "東京エレクトロン",
-   "r": -12.7,
-   "price": 7807,
-   "prev": 8946,
-   "news": [
-    {
-     "title": "東京エレクトロン(株)【TOELY】：株価・株式情報 - Yahoo!ファイナンス",
-     "url": "https://news.google.com/rss/articles/CBMiUEFVX3lxTFAwaldHLXNSRDFXRDJjc0swcktjckNyaTJoY2FtbDNSNmRCb0lBUl9pbmZ2aGJaTmpSZUFkV3ZRM2g3UEtPMTZJbmw1UHNYUnlr?oc=5",
-     "date": "Tue, 24 Nov 2026 21:33:45 GMT"
-    },
-    {
-     "title": "東京エレクトロン株が大幅高 半導体「スーパーサイクル」見方強まる - 日本経済新聞",
-     "url": "https://news.google.com/rss/articles/CBMibEFVX3lxTE1BSk96aGFhdy1Vb2FHMl9ONm5WUG1OOU9OYWpxWnViWHFiakV2YzU0WnZsUDZ6b3VmNjFzWlZzMnVfNnpndEh6LUIyNlpQSUo4Q19zREtMRzRWZ1g2S0MtbTRfMjN5emZLbzhFMQ?oc=5",
-     "date": "Mon, 02 Nov 2026 08:00:00 GMT"
-    },
-    {
-     "title": "東京エレクトロン、株価上昇失速不安 最高値から3割安 本格回復先送り - IG",
-     "url": "https://news.google.com/rss/articles/CBMisAFBVV95cUxOQThyZERnSVVqSXh6dzNQenhIbXhCSE9vOXhvRjNfZXkxcU1OVmFXVWdjYlAtZFVOVE45WkQ4REpqaGJhdXE4d0lJYnhLS2o2bDI2OVlaSDZlX1NyS3p0SXVIeWl0VkZaRk90OTlCcWtld0tfVEV5V19FU3NvYU9BaEFDN2Z0V3E0c3VwRXB6QUd5LVNXN0VVSmo0aHJWUjlaR1gyakdsVjVYSkthUEhTOQ?oc=5",
-     "date": "Sun, 23 Aug 2026 07:00:00 GMT"
+     "title": "アドバンテスト株が本日急落した理由とは - Investing.com - FX | 株式市場 | ファイナンス | 金融ニュース",
+     "url": "https://news.google.com/rss/articles/CBMid0FVX3lxTE05LXNkZWpQcGE1Z3RIamdqMEREcGRWT3JQWVQyZkwzRE83WndNWVZmOGtZSWRoMW1IZzRtNkJqTVBnck1tWUJTTVlxZWpzRzdPd1I2cldXVV8tLV9TVU1BS0lBMnlNNUhKSldUX1ZqMFc1TnBuS2gw?oc=5",
+     "date": "Wed, 25 Nov 2026 05:06:00 GMT"
     }
    ]
   },
   {
    "code": "6920",
    "name": "レーザーテック",
-   "r": -11.5,
-   "price": 29390,
+   "r": -11.8,
+   "price": 29280,
    "prev": 33200,
    "news": [
     {
@@ -126,14 +126,14 @@
      "date": "Tue, 24 Nov 2026 22:32:00 GMT"
     },
     {
-     "title": "レーザーテック (6920) の株価・株式 - QUICK Money World",
-     "url": "https://news.google.com/rss/articles/CBMiV0FVX3lxTFBHUnJfWWo1RXlvM2Y0bWNqSENXZ01VUGpmWTlWemhUbk45UDBsRHNScXE3XzMyMjNkMFN1UG1nVHBSZ2FYRWJReU1NYzNwajFyaklNU18zZw?oc=5",
-     "date": "Fri, 20 Nov 2026 08:00:00 GMT"
-    },
-    {
      "title": "レーザーテック株価が反発 7〜9月期純利益44%減でも受注見通し好感 - 日本経済新聞",
      "url": "https://news.google.com/rss/articles/CBMibEFVX3lxTE1wRVFlU1BHM2xhU1gtZVA4eEZGTWw1a0YwUUdpQXVCZENQOHJGLTdfWFpNZkxkNmFULXItNjVhV18tT3pJLUVQbUpJSmRkd09OSXJqck92RmphajRGc1R2X0JYdXJrbFNZeTZrbQ?oc=5",
      "date": "Mon, 02 Nov 2026 08:00:00 GMT"
+    },
+    {
+     "title": "決算レポート：レーザーテック（2027年6月期受注高は大幅増へ） - トウシル",
+     "url": "https://news.google.com/rss/articles/CBMiWkFVX3lxTE5vZkMzRExVZHFQWE5QYnlkdDV3bnlFZ1J4TTZ3ek9hVnlVTmR5Y3R4anhqVXFEMlhIVEUyeVJqazREM2g4dTExbUZQTHhic3JrMVczLWRaUl9kUQ?oc=5",
+     "date": "Mon, 17 Aug 2026 07:00:00 GMT"
     }
    ]
   },
@@ -141,7 +141,7 @@
    "code": "6723",
    "name": "ルネサス",
    "r": -10.0,
-   "price": 2364,
+   "price": 2362,
    "prev": 2625,
    "news": [
     {
@@ -164,8 +164,8 @@
   {
    "code": "6146",
    "name": "ディスコ",
-   "r": -9.3,
-   "price": 40500,
+   "r": -9.4,
+   "price": 40450,
    "prev": 44650,
    "news": [
     {
@@ -188,8 +188,8 @@
   {
    "code": "6752",
    "name": "パナソニック",
-   "r": -8.8,
-   "price": 2688,
+   "r": -9.0,
+   "price": 2680,
    "prev": 2946,
    "news": [
     {
