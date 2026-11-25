@@ -13,7 +13,7 @@ SEC=[
  ("投資会社・証券",{"9984.T":"ソフトバンクG","8473.T":"SBI HD","GS":"ゴールドマン","MS":"モルガン・スタンレー"}),
  ("銀行",{"KRE":"米地方銀行","JPM":"JPモルガン","8306.T":"三菱UFJ","1615.T":"銀行ETF"}),
 ]
-tick=[t for _,d in SEC for t in d]
+tick=[t for _,d in SEC for t in d]+["HYG","IEF","LQD"]
 raw=yf.download(tick,period="14mo",progress=False,auto_adjust=True,group_by="ticker",threads=True)
 def ser(t):
     try: s=raw[t]["Close"].dropna()
@@ -35,6 +35,15 @@ for nm,d in SEC:
     tr="改善" if d5>=3 else "悪化中" if d5<=-3 else "横ばい"
     out["sectors"].append({"name":nm,"state":st,"trend":tr,"dd":round(dd,1),"d20":round(d20,1),"d5":round(d5,1),"p5":round(p5,1),"d1":round(d1,1),
         "items":[{k:(round(r[k],1) if isinstance(r[k],float) and k!="last" else r[k]) for k in ("n","t","last","date","d1","d5","d20","dd")} for r in rows]})
+# 信用（事前登録の条件用）
+try:
+    c={}
+    for a,b,k in [("HYG","IEF","hy20"),("LQD","IEF","ig20")]:
+        x=(ser(a)/ser(b)).dropna();c[k]=round((x.iloc[-1]/x.iloc[-21]-1)*100,2)
+    v=yf.download("^VIX",period="1mo",progress=False,auto_adjust=True)["Close"].squeeze().dropna();c["vix"]=round(float(v.iloc[-1]),1);c["vix_prev"]=round(float(v.iloc[-2]),1)
+    k=ser("KRE");c["kre_dd"]=round((k.iloc[-1]/k[-250:].max()-1)*100,1)
+    out["credit"]=c
+except Exception as e: print("credit失敗",e)
 # 履歴
 hp="data/sectors_hist.json";H=json.load(open(hp)) if os.path.exists(hp) else {}
 day=datetime.now(JST).strftime("%Y-%m-%d");H[day]={s["name"]:{"state":s["state"],"dd":s["dd"],"d20":s["d20"]} for s in out["sectors"]}
