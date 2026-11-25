@@ -1,5 +1,5 @@
 {
- "at": "2026-11-25T15:19+09:00",
+ "at": "2026-11-25T15:55+09:00",
  "th": -7.0,
  "hits": [
   {
@@ -21,7 +21,7 @@
    "code": "9984",
    "name": "ソフトバンクG",
    "r": -14.8,
-   "price": 2699,
+   "price": 2696,
    "prev": 3166,
    "news": [
     {
@@ -44,14 +44,14 @@
   {
    "code": "6981",
    "name": "村田製作所",
-   "r": -14.7,
-   "price": 4606,
+   "r": -14.5,
+   "price": 4616,
    "prev": 5400,
    "news": [
     {
-     "title": "(株)村田製作所【6981】：株価・株式情報 - Yahoo!ファイナンス",
-     "url": "https://news.google.com/rss/articles/CBMiUkFVX3lxTE92ZDVQTWVBNHBNU3pqN1VzN09ReUVtc0txOW51aDAwWmZBQXkzS052X1JnYzEwRVQxYTZjQnZPMWdfbzE1NDJNc0h5R2ZNbmluWlE?oc=5",
-     "date": "Fri, 20 Nov 2026 06:52:37 GMT"
+     "title": "移動平均線で読み解く！村田製作所の株価はどうなるのか - 四季報オンライン",
+     "url": "https://news.google.com/rss/articles/CBMiV0FVX3lxTE8yaFNCN3RqUFQzSktDdGFWVF9aQldReFo0NHpNaUtzRVptbFZNVFYyRXJqT1E0QWRhcFVvSG1qQXVVZW5fMEFhdTdaVjgtMW5RWEVzRmRUTQ?oc=5",
+     "date": "Thu, 12 Nov 2026 08:00:00 GMT"
     },
     {
      "title": "太陽誘電、株価が午後一段高 村田製作所の工場拡張方針で連想買い - 日本経済新聞",
@@ -59,17 +59,41 @@
      "date": "Wed, 14 Oct 2026 07:00:00 GMT"
     },
     {
-     "title": "株式会社村田製作所の株価が本日急騰した理由とは？ - Investing.com - FX | 株式市場 | ファイナンス | 金融ニュース",
-     "url": "https://news.google.com/rss/articles/CBMid0FVX3lxTE5Ka1k1Y0J6NTFhRmRSQ3lNbTBiT0Z4MXJ2NGx1bHRuTFhCcXBQNWpvNzJtckx4aDJVLWtBbkRDbVdJUHpucUZXV2RtbTMxX1UxTzZCQk9vMi0tUGhLbXZkYkswWGJNN2lrdFFyZEJKUWVXZjRpLWg0?oc=5",
-     "date": "Tue, 24 Nov 2026 04:03:00 GMT"
+     "title": "村田製作所が好決算でも株価が上がらないワケと今後の見通し｜注目企業の決算レポート - Yahoo!ファイナンス",
+     "url": "https://news.google.com/rss/articles/CBMib0FVX3lxTE42TUZHWWhhSUdCZDA5ekJhbFFWNmlUb1FCSlRCbnFIZUlySEx0clM3d0dJb2VSX0pjT0dsazRteWNINjd3M1FRNEhHZVd1RnFWeGt3Um53VlJRZExYX0NCQzdLaUR4UnpFUjgwWG9uVQ?oc=5",
+     "date": "Thu, 27 Aug 2026 07:00:00 GMT"
+    }
+   ]
+  },
+  {
+   "code": "6857",
+   "name": "アドバンテスト",
+   "r": -13.1,
+   "price": 23715,
+   "prev": 27275,
+   "news": [
+    {
+     "title": "アドバンテスト株が急落 米半導体株指数7%安で連想売り - 日本経済新聞",
+     "url": "https://news.google.com/rss/articles/CBMibEFVX3lxTE9Fc3BuRDRadE50RDVUcGk4VjR4U21HRm9wSUFQeTY0c0FxQmFxTnVCVS1rR2hrcTBsc1R1VnVUN1ZmRktySHZUaFc2al9nbkQwbmZGc2NDcXBVTnl5ekZhbWZTTVlRNzBGWWM4dg?oc=5",
+     "date": "Wed, 25 Nov 2026 01:50:33 GMT"
+    },
+    {
+     "title": "アドバンテスト株が本日急落した理由とは - Investing.com - FX | 株式市場 | ファイナンス | 金融ニュース",
+     "url": "https://news.google.com/rss/articles/CBMid0FVX3lxTE05LXNkZWpQcGE1Z3RIamdqMEREcGRWT3JQWVQyZkwzRE83WndNWVZmOGtZSWRoMW1IZzRtNkJqTVBnck1tWUJTTVlxZWpzRzdPd1I2cldXVV8tLV9TVU1BS0lBMnlNNUhKSldUX1ZqMFc1TnBuS2gw?oc=5",
+     "date": "Wed, 25 Nov 2026 05:06:00 GMT"
+    },
+    {
+     "title": "アドバンテスト－売り気配 米ハイテク株は買い続かず SOXは7％超下落(トレーダーズ・ウェブ) - Yahoo!ファイナンス",
+     "url": "https://news.google.com/rss/articles/CBMihwFBVV95cUxOUFNTZ0tUeGJIUi1TWjRrZnNoYU82aG81a2x0QUp2bGlqVjU1S1ZIUjk4RmZET0NYbmtyYVAxeHBfR0JFelVITmhIQTFWVmwyLUxXcHh5WVRFSXM1OEs0Z0ZDS2xKRUtWcW1VdWFQTnRudi1YcExjSlcycEgxMjRmbS1ieURlams?oc=5",
+     "date": "Wed, 25 Nov 2026 00:02:03 GMT"
     }
    ]
   },
   {
    "code": "8035",
    "name": "東京エレクトロン",
-   "r": -13.4,
-   "price": 7745,
+   "r": -12.6,
+   "price": 7818,
    "prev": 8946,
    "news": [
     {
@@ -90,34 +114,10 @@
    ]
   },
   {
-   "code": "6857",
-   "name": "アドバンテスト",
-   "r": -13.3,
-   "price": 23655,
-   "prev": 27275,
-   "news": [
-    {
-     "title": "アドバンテスト株が急落 米半導体株指数7%安で連想売り - 日本経済新聞",
-     "url": "https://news.google.com/rss/articles/CBMibEFVX3lxTE9Fc3BuRDRadE50RDVUcGk4VjR4U21HRm9wSUFQeTY0c0FxQmFxTnVCVS1rR2hrcTBsc1R1VnVUN1ZmRktySHZUaFc2al9nbkQwbmZGc2NDcXBVTnl5ekZhbWZTTVlRNzBGWWM4dg?oc=5",
-     "date": "Wed, 25 Nov 2026 01:50:33 GMT"
-    },
-    {
-     "title": "(株)アドバンテスト【ATEYY】：株価・株式情報 - Yahoo!ファイナンス",
-     "url": "https://news.google.com/rss/articles/CBMiUEFVX3lxTE0wZ2w4SjUzeWhJVEhydGV5T3dEajJDTmFCZEE1YmdnaDJmWm83bFZTOXdWem5SLWIxYUhieGxMSTV3N244QXFiR01UcWFuNVJO?oc=5",
-     "date": "Tue, 24 Nov 2026 19:52:31 GMT"
-    },
-    {
-     "title": "アドバンテスト株が本日急落した理由とは - Investing.com - FX | 株式市場 | ファイナンス | 金融ニュース",
-     "url": "https://news.google.com/rss/articles/CBMid0FVX3lxTE05LXNkZWpQcGE1Z3RIamdqMEREcGRWT3JQWVQyZkwzRE83WndNWVZmOGtZSWRoMW1IZzRtNkJqTVBnck1tWUJTTVlxZWpzRzdPd1I2cldXVV8tLV9TVU1BS0lBMnlNNUhKSldUX1ZqMFc1TnBuS2gw?oc=5",
-     "date": "Wed, 25 Nov 2026 05:06:00 GMT"
-    }
-   ]
-  },
-  {
    "code": "6920",
    "name": "レーザーテック",
-   "r": -11.9,
-   "price": 29240,
+   "r": -11.7,
+   "price": 29305,
    "prev": 33200,
    "news": [
     {
@@ -140,32 +140,32 @@
   {
    "code": "6723",
    "name": "ルネサス",
-   "r": -9.6,
-   "price": 2374,
+   "r": -9.4,
+   "price": 2378,
    "prev": 2625,
    "news": [
-    {
-     "title": "ルネサスエレクトロニクス(株)【6723】：掲示板 - Yahoo!ファイナンス",
-     "url": "https://news.google.com/rss/articles/CBMiWkFVX3lxTFB3RlFVa3JFZlh0eUNyMTdEZ3FXNkRGMHRCOTlSb0Y0bVdNekVwS04xUkFQS3JidDVVVGRFMG13dkJMUXRwVGNoQmxaSmRLYXltZEFKdklsdVpxZw?oc=5",
-     "date": "Thu, 19 Nov 2026 08:00:00 GMT"
-    },
-    {
-     "title": "＊ルネサス－野村が投資判断を「Buy」継続、目標株価6000円→4800円 - TradingView",
-     "url": "https://news.google.com/rss/articles/CBMib0FVX3lxTE1iYUh2bU1qTXZDLTN5ckZpSEd5TGtoU09BVnVaeXZKYnlSMmt6WVRRY0wtdG5Td3pEYnNiZ2JuN1BQbkhjT1VLMnQ1cENyci16eElRVmozYUFhbThtRmVnSEZCdDBlYVRheVc3YmFpSQ?oc=5",
-     "date": "Wed, 18 Nov 2026 23:00:01 GMT"
-    },
     {
      "title": "ルネサスエレクトロニクス株価急伸 1〜6月期は2173億円の黒字 - 日本経済新聞",
      "url": "https://news.google.com/rss/articles/CBMibEFVX3lxTE9qSjRTbHNNZVJROHZBdHdkc2VlRmpBUmNyb3lMZlRMZ1lXTjJ0dTE5Z0tMOGFremxqUnp3N1d3MjZhTFFTUDJCVGN4eUk4M04zUlVkb2pSNUJaZVVpU0Q3MDVhWHhHU0U3M0I4Mg?oc=5",
      "date": "Mon, 03 Aug 2026 07:00:00 GMT"
+    },
+    {
+     "title": "レーティング情報（目標株価変更・その２）＝松風、ルネサスなど(ウエルスアドバイザー) - Yahoo!ファイナンス",
+     "url": "https://news.google.com/rss/articles/CBMihwFBVV95cUxOSGowRnVzanN4aDF5R0VWdVBiMy1VZEFmdzBNSFdCeW5Cemx0WXZpYXVUZUNNTkc5TEhjakFJX0swSExPSzUyZVM4ZFJYandSX3dURFA1ZmUtQkZFTWxVWXZIZXpTWnV5N25mWlNiZEZITlJqcy1fVWp5Sm4tT09ZOEp5WXJTLW8?oc=5",
+     "date": "Fri, 30 Oct 2026 07:00:00 GMT"
+    },
+    {
+     "title": "ルネサスが大幅続伸、野村と米系証券が目標株価を大幅引き上げ AI需要を追い風に - BigGo ファイナンス",
+     "url": "https://news.google.com/rss/articles/CBMidEFVX3lxTE0tdUFWcUJDOW1UUmRBQWg4S3ZQN0huTzhZUjN0QzVTdDN6MVNvd1RvQVJYLUMxZzFkTVVBbDVpclVCMFhjdGJ6RWJ4UTlFU2YtbkpMZjNfQkJsWVdGb09NLTZSb3NIRjVUTGRuUmV3ZERyT2It?oc=5",
+     "date": "Thu, 25 Jun 2026 07:00:00 GMT"
     }
    ]
   },
   {
    "code": "6146",
    "name": "ディスコ",
-   "r": -9.3,
-   "price": 40480,
+   "r": -9.1,
+   "price": 40590,
    "prev": 44650,
    "news": [
     {
@@ -188,8 +188,8 @@
   {
    "code": "6752",
    "name": "パナソニック",
-   "r": -8.3,
-   "price": 2702,
+   "r": -8.0,
+   "price": 2710,
    "prev": 2946,
    "news": [
     {
