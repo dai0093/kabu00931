@@ -5,6 +5,7 @@ from datetime import datetime, timedelta, timezone
 import pandas as pd, yfinance as yf
 sys.path.insert(0, os.path.dirname(__file__))
 from universe import STOCKS
+STOCKS = {**STOCKS, "285A": "キオクシア", "4062": "イビデン", "5803": "フジクラ", "5801": "古河電工", "6525": "KOKUSAI", "6976": "太陽誘電", "8473": "SBI"}
 JST = timezone(timedelta(hours=9)); TH = -7.0
 tk = [c + ".T" for c in STOCKS]
 d = yf.download(tk, period="5d", interval="1d", auto_adjust=False, progress=False)["Close"]
@@ -33,17 +34,27 @@ def news(q):
     try:
         u = "https://news.google.com/rss/search?" + urllib.parse.urlencode({"q": q, "hl": "ja", "gl": "JP", "ceid": "JP:ja"})
         x = urllib.request.urlopen(urllib.request.Request(u, headers={"User-Agent": "Mozilla/5.0"}), timeout=20).read().decode("utf-8", "ignore")
-        its = re.findall(r"<item>.*?<title>(.*?)</title>.*?<link>(.*?)</link>.*?<pubDate>(.*?)</pubDate>", x, re.S)[:3]
-        return [{"title": html.unescape(a), "url": b, "date": c} for a, b, c in its]
+        its = re.findall(r"<item>.*?<title>(.*?)</title>.*?<link>(.*?)</link>.*?<pubDate>(.*?)</pubDate>", x, re.S)[:20]
+        from email.utils import parsedate_to_datetime
+        out = []
+        for a, b, c in its:
+            try:
+                if (datetime.now(JST) - parsedate_to_datetime(c)).total_seconds() > 172800: continue  # 48時間より古い記事は除く
+            except Exception: continue
+            out.append({"title": html.unescape(a), "url": b, "date": c})
+        return out[:3]
     except Exception as e:
         return []
-for h in hits: h["news"] = news(f"{h['name']} 株価")
+_u = {}
+for h in hits: _u.setdefault(h["code"], h)  # 同じ銘柄の重複を除く
+hits = list(_u.values())
+for h in hits: h["news"] = [n for n in news(f"{h['name']} 株価") if re.search(r"急落|暴落|ストップ安|大幅安|下落|反落|続落|安値|売られ|下げ", n["title"]) and not re.search(r"株価・株式情報|株価はどうなる", n["title"])]
 # 引け後・夜間：PTS（夜間取引）の急落・ストップ安と、海外の政府措置などの見出しを拾い、監視銘柄の名前と照合する
 _have = {h["code"] for h in hits}
 for q in ("PTS ストップ安", "PTS 急落", "夜間取引 急落 株価", "特別気配 売り気配"):
     for n in news(q) + []:
         for c, nm in STOCKS.items():
-            if c in _have or nm not in n["title"]: continue
+            if c in _have or not re.search(("(?<![A-Za-z])" + re.escape(nm) + "(?![A-Za-z])") if re.fullmatch(r"[A-Za-z&]+", nm) else re.escape(nm), n["title"]): continue  # SMCがTSMCに一致するのを防ぐ
             t = n["title"]
             # 株価ページ・掲示板などの定型の見出しは除く。下げを表す語が見出しに無ければ拾わない。24時間より古い記事も除く
             if re.search(r"株価・株式情報|株式情報|掲示板|チャート|株価 - |Yahoo!ファイナンス\s*$|株探|みんかぶ|kabutan|minkabu", t): continue
