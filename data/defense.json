@@ -1,6 +1,6 @@
 {
  "asOf": "2026-11-24",
- "updatedAt": "2026-11-25T12:54+09:00",
+ "updatedAt": "2026-11-25T12:56+09:00",
  "provisional": false,
  "policy": "C",
  "target": 0.0,
@@ -16,7 +16,7 @@
  },
  "bottom": {
   "peak": 72832.0,
-  "close": 56988.0,
+  "close": 56973.0,
   "dd": -21.8,
   "line10": 65549.0,
   "active": true,
@@ -25,7 +25,7 @@
   "valleyDate": "2026-11-20",
   "reb": 70799.0,
   "above": false,
-  "toReb": 24.2
+  "toReb": 24.3
  },
  "history": [
   {
