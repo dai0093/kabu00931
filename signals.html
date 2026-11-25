@@ -713,7 +713,7 @@ window.renderFan=()=>{try{(()=>{const el=document.getElementById('fan');if(!el||
  Object.entries(FAN.idx).forEach(([nm,d])=>{const L=LIVE[nm];if(!L)return;const hk=Object.keys(L).sort(),ld=hk[hk.length-1],lv=L[ld],sc=lv/d.last;
   const q={};for(const k in d.q)q[k]=d.q[k].map(v=>v*sc);const leh=d.lehman?d.lehman.map(v=>v*sc):null;
   const H0=hk.slice(-120).map(k=>L[k]),NH=H0.length,NF=q.p50.length,TOT=NH+NF;
-  const W=340,Hh=190,pl=44,pr=6,pt=10,pb=22;const all=H0.concat(q.p10,q.p90,leh||[]);const mn=Math.min(...all)*0.98,mx=Math.max(...all)*1.02;
+  const W=340,Hh=200,pl=44,pr=6,pt=10,pb=26;const all=H0.concat(q.p10,q.p90,leh||[]);const mn=Math.min(...all)*0.98,mx=Math.max(...all)*1.02;
   const X=i=>pl+(W-pl-pr)*i/(TOT-1),Y=v=>pt+(Hh-pt-pb)*(1-(v-mn)/(mx-mn));
   const band=(a,b,c,o)=>`<path d="M${a.map((v,i)=>X(NH-1+i)+','+Y(v)).join('L')}L${b.map((v,i)=>X(NH-1+i)+','+Y(v)).reverse().join('L')}Z" fill="${c}" opacity="${o}"/>`;
   const line=(a,off,c,w,da)=>`<polyline points="${a.map((v,i)=>X(off+i)+','+Y(v)).join(' ')}" fill="none" stroke="${c}" stroke-width="${w}" ${da?`stroke-dasharray="${da}"`:''}/>`;
@@ -723,7 +723,11 @@ window.renderFan=()=>{try{(()=>{const el=document.getElementById('fan');if(!el||
   const lline=nm==='日経平均'?d.hi*0.5:d.hi*0.6;if(lline>mn&&lline<mx)g+=`<line x1="${pl}" x2="${W-pr}" y1="${Y(lline)}" y2="${Y(lline)}" stroke="#ff4d6d" stroke-dasharray="2 3"/><text x="${pl+3}" y="${Y(lline)-2}" font-size="8" fill="#ff8fa3">リーマン級の線 ${f(lline)}</text>`;
   g+=`<rect x="${X(NH-1+t25)}" y="${pt}" width="${X(NH-1+t75)-X(NH-1+t25)}" height="${Hh-pt-pb}" fill="#ff9900" opacity=".10"/><line x1="${X(NH-1+t50)}" x2="${X(NH-1+t50)}" y1="${pt}" y2="${Hh-pb}" stroke="#ff9900"/>`;
   g+=band(q.p10,q.p90,'#4a6fa5',.25)+band(q.p25,q.p75,'#4a6fa5',.5)+line(H0,0,'#2ee59d',1.6)+line(q.p50,NH-1,'#ffd27a',1.6)+(leh?line(leh,NH-1,'#ff4d6d',1.1,'4 3'):'');
-  g+=`<text x="${X(0)}" y="${Hh-6}" font-size="8" fill="currentColor">${hk[hk.length-120].slice(2).replace(/-/g,'/')}</text><text x="${X(NH-1)}" y="${Hh-6}" font-size="8" text-anchor="middle" fill="currentColor">今</text><text x="${W-pr}" y="${Hh-6}" font-size="8" text-anchor="end" fill="currentColor">${md(dt(NF-1))}</text>`;
+  {const DS=hk.slice(-NH).map(k=>new Date(k));const FD=[];{const x=new Date(ld);let n=0;FD.push(new Date(x));while(FD.length<NF){x.setDate(x.getDate()+1);if(x.getDay()%6)FD.push(new Date(x))}}
+   const ALL=DS.concat(FD.slice(1));let pm=-1;ALL.forEach((d,i)=>{const m=d.getMonth();if(m!==pm&&i>0){pm=m;if(m%2===0){g+=`<line x1="${X(i)}" x2="${X(i)}" y1="${pt}" y2="${Hh-pb}" stroke="#ffffff22"/><text x="${X(i)}" y="${Hh-11}" font-size="7.5" text-anchor="middle" fill="currentColor">${m===0?(d.getFullYear()%100)+'/1':(m+1)+'月'}</text>`}}else if(i===0)pm=m});
+   g+=`<line x1="${X(NH-1)}" x2="${X(NH-1)}" y1="${pt}" y2="${Hh-pb}" stroke="#2ee59d" stroke-dasharray="2 2"/><text x="${X(NH-1)}" y="${Hh-2}" font-size="7.5" text-anchor="middle" fill="#2ee59d">今 ${ld.slice(5).replace('-','/')}</text>`;
+   [20,60,120,249].forEach(k=>{g+=`<circle cx="${X(NH-1+k)}" cy="${Y(q.p50[k])}" r="2.5" fill="#ffd27a"/><text x="${X(NH-1+k)}" y="${Y(q.p50[k])-5}" font-size="7" text-anchor="middle" fill="#ffd27a">${md(dt(k)).slice(3)}</text>`});
+   g+=`<text x="${X(NH-1+t50)+2}" y="${pt+8}" font-size="7.5" fill="#ffb84d">底 ${md(dt(t50))}</text>`}
   const rows=[20,60,120,249].map(k=>`<div class="row"><span>${md(dt(k))}ごろ</span><b>${f(q.p50[k])}（${pc((q.p50[k]/lv-1)*100)}）</b></div><div class="note">半分の例：${f(q.p25[k])}〜${f(q.p75[k])}</div>`).join('');
   const mins=d.q.p50?null:null;
   h+=`<div class="ttl" style="margin-top:14px"><span class="nm">${nm}　今 ${f(lv)}（${ld.slice(5)}）</span></div><svg viewBox="0 0 ${W} ${Hh}" width="100%" style="color:var(--sub)">${g}</svg>
