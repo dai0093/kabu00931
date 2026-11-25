@@ -257,6 +257,9 @@ try:
         _ohlc = yf.download("^N225", period="3y", auto_adjust=False, progress=False)
         _ohlc.columns = [c[0] if isinstance(c, tuple) else c for c in _ohlc.columns]
         _ohlc.index = pd.to_datetime(_ohlc.index).tz_localize(None)
+        for _d, _v in nk_s.items():  # 2026-11-26修正：Yahooが最新日を欠く時は確定終値で補う（底打ち欄が前日の値のままだった）
+            if _d not in _ohlc.index: _ohlc.loc[_d, ["Open", "High", "Low", "Close"]] = float(_v)
+        _ohlc = _ohlc.sort_index()
         _wk = _ohlc.resample("W-FRI").agg({"High": "max", "Low": "min", "Close": "last"}).dropna()
         _H, _L, _C = _wk.High.values, _wk.Low.values, _wk.Close.values; _pk = _peak = None
         _peak, _pki, _m = _H[0], 0, None
