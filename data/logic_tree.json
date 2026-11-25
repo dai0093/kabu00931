@@ -1,9 +1,9 @@
 {
  "updatedAt": "2026-11-25T12:14:26+09:00",
- "builtAt": "2026-11-26T03:14+09:00",
- "phase": 3,
- "phaseName": "通り道が開通",
- "phaseDesc": "信用層に2つ以上点灯。　※期限切れのまま点灯・接近を保持：私募信用、HY OAS",
+ "builtAt": "2026-11-26T06:58+09:00",
+ "phase": 5,
+ "phaseName": "強制売却",
+ "phaseDesc": "資金調達が詰まり市場も崩れています。　※期限切れのまま点灯・接近を保持：私募信用、HY OAS",
  "counts": {
   "origin": [
    3,
@@ -14,7 +14,7 @@
    5
   ],
   "fund": [
-   0,
+   1,
    2
   ],
   "market": [
@@ -64,15 +64,14 @@
    ],
    [
     "金融機関株価",
-    "near",
-    "未更新の群あり（日本、日本その他：前日までの値で判定） 代替で補った7銘柄（最新値・ADR）"
+    "ok"
    ]
   ],
   "fund": [
    [
     "NFCI",
-    "near",
-    "代替：金融ストレス合成 1.42（≥1.5点灯・≥1.0接近、検証46で予測出来た）"
+    "lit",
+    "代替：金融ストレス合成 1.71（≥1.5点灯・≥1.0接近、検証46で予測出来た）"
    ],
    [
     "生保",
@@ -123,17 +122,17 @@
  ],
  "values": {
   "vix": {
-   "value": 26.36,
+   "value": 28.29,
    "unit": "",
-   "observedAt": "2026-11-24",
-   "change": "前日比 -0.26（Yahoo確定終値）",
+   "observedAt": "2026-11-25",
+   "change": "前日比 +1.93（Yahoo確定終値）",
    "source": "https://finance.yahoo.com/quote/%5EVIX/"
   },
   "us10": {
-   "value": 4.904,
+   "value": 4.848,
    "unit": "%",
-   "observedAt": "2026-11-24",
-   "change": "前日比 -0.014（Yahoo確定終値）",
+   "observedAt": "2026-11-25",
+   "change": "前日比 -0.056（Yahoo確定終値）",
    "source": "https://finance.yahoo.com/quote/%5ETNX/"
   },
   "jgb10": {
@@ -165,9 +164,9 @@
    "source": "https://fred.stlouisfed.org/data/BAMLC0A0CM"
   },
   "t10y2y": {
-   "value": 0.28,
+   "value": 0.24,
    "unit": "%",
-   "observedAt": "2026-11-24",
+   "observedAt": "2026-11-25",
    "change": "財務省の利回り曲線（10年−2年）",
    "source": "https://home.treasury.gov/resource-center/data-chart-center/interest-rates/TextView?type=daily_treasury_yield_curve"
   },
@@ -363,31 +362,31 @@
  "source": "https://claude.ai/artifact/KJPgY7LSb8DMsdXt2A1Gst",
  "byAsset": {
   "日経平均": {
-   "phase": 3,
+   "phase": 5,
    "lit": {
     "起点": 3,
     "信用": 2,
-    "資金": 0,
+    "資金": 1,
     "市場": 2
    },
    "items": 15
   },
   "200A（半導体）": {
-   "phase": 2,
+   "phase": 5,
    "lit": {
     "起点": 2,
     "信用": 1,
-    "資金": 0,
+    "資金": 1,
     "市場": 2
    },
    "items": 11
   },
   "SOXL": {
-   "phase": 2,
+   "phase": 5,
    "lit": {
     "起点": 1,
     "信用": 1,
-    "資金": 0,
+    "資金": 1,
     "市場": 2
    },
    "items": 7

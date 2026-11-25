@@ -51,15 +51,21 @@
   },
   "NFCI": {
    "since": "2026-11-20",
-   "lit_since": null,
+   "lit_since": "2026-11-26",
    "before_start": false,
-   "st": "near"
+   "st": "lit"
   },
   "VIX": {
    "since": "2026-11-20",
    "lit_since": "2026-11-24",
    "before_start": false,
    "st": "lit"
+  },
+  "金融機関株価": {
+   "since": "2026-11-26",
+   "lit_since": null,
+   "before_start": false,
+   "st": "near"
   }
  }
 }
