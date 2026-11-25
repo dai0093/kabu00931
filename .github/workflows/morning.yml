@@ -33,6 +33,9 @@ jobs:
           GH_TOKEN: ${{ github.token }}
         run: |
           H=$(TZ=Asia/Tokyo date +%H%M); D=$(TZ=Asia/Tokyo date +%u)
+          if [ "$D" -le 5 ] && [ "$H" -ge 0600 ] && [ "$H" -lt 0840 ]; then
+            NOW=$(TZ=Asia/Tokyo date +%s); TGT=$(TZ=Asia/Tokyo date -d "08:42" +%s); sleep $((TGT-NOW)); H=0842
+          fi
           if [ "$D" -le 5 ] && [ "$H" -ge 0830 ] && [ "$H" -le 1450 ]; then
             N=$(gh run list -R ${{ github.repository }} -w intraday_loop.yml -s in_progress --json databaseId -q length 2>/dev/null || echo 0)
             Q=$(gh run list -R ${{ github.repository }} -w intraday_loop.yml -s queued --json databaseId -q length 2>/dev/null || echo 0)
