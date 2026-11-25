@@ -1,0 +1,29 @@
+{
+ "updatedAt": "2026-11-25T12:45+09:00",
+ "note": "毎週月曜朝に予約作業が更新。数字は出典つき。ここの項目は判定（持ち高）には使わない（記録が短く未検証）。",
+ "groups": [
+  {"name": "① 実需（AIの需要そのもの）", "items": [
+    {"k": "エヌビディア売上（直近四半期）", "v": "1,158億ドル（前年比+103%）", "prev": "", "state": "ok", "date": "2026-11-17", "src": "https://www.streetinsider.com/dr/news.php?gfv=1&id=27363954"},
+    {"k": "エヌビディア次の四半期の見通し", "v": "1,300億ドル（中国のデータセンター売上ゼロの前提）", "prev": "", "state": "ok", "date": "2026-11-17", "src": "https://247wallst.com/cards/nvidia-q3-2027-earnings-nvda-01m7nph36m2fmpwcfatxg16f2z"},
+    {"k": "TSMC月次売上", "v": "10月 5,868.9億台湾ドル（前年比+59.7%、過去最高）", "prev": "", "state": "ok", "date": "2026-11-10", "src": "https://pr.tsmc.com/english/news/3349"},
+    {"k": "GPU貸出価格 H100", "v": "約3.1ドル/時（1年で約+60%）", "prev": "", "state": "ok", "date": "2026-11-23", "src": "https://shattered.io/nvidia-older-gpu-rental-prices-h100-3-11-hour-stock-falls-14-percent/"},
+    {"k": "GPU貸出価格 B200", "v": "約8ドル/時（3か月で+79%）", "prev": "", "state": "ok", "date": "2026-11", "src": "https://shattered.io/nvidia-b200-cloud-price-79-percent-surge-2026/"},
+    {"k": "メモリ価格", "v": "DRAM契約価格は10月に過去最高。NANDは21か月ぶりに上昇停止。高すぎて容量を減らす顧客も", "prev": "", "state": "near", "date": "2026-11-18", "src": "https://en.coinotag.com/trendforce-2026-q4-dram-contract-prices-up-10-15"}
+  ]},
+  {"name": "② 来年の投資計画（巨大IT企業）", "items": [
+    {"k": "2027年の設備投資（市場予想、4社）", "v": "約9,345億ドル（2026年計画7,325億ドル比+28%）", "prev": "", "state": "ok", "date": "2026-10", "src": "https://www.yieldtheory.app/research/hyperscaler-capex-2027-forecast"},
+    {"k": "会社の公式の2027年計画", "v": "まだ数字なし（メタ・アルファベットは未提示、アマゾンは言葉だけ）。1月下旬〜2月の決算で判明", "prev": "", "state": "near", "date": "2026-11", "src": "https://alcapitaladvisory.com/research/intelligence/ai-infrastructure.html"}
+  ]},
+  {"name": "③ お金の調達（借金で支える仕組み）", "items": [
+    {"k": "巨大IT企業の社債発行", "v": "2026年 2,960億ドル、2027年 4,400億ドルの見込み（ゴールドマン）", "prev": "", "state": "near", "date": "2026-11-16", "src": "https://www.tradingkey.com/analysis/stocks/us-stocks/262305788-ai-debt-risks-why-meta-alphabet-microsoft-oracle-borrowing-raising-concerns-tradingkey"},
+    {"k": "帳簿外の負担", "v": "リース・購入約束・保証で約3兆ドル（UBP試算）。ムーディーズが信用力の低下を警告", "prev": "", "state": "near", "date": "2026-10", "src": "https://www.useluminix.com/reports/industry-analysis/who-is-financing-the-ai-buildout/source/0"},
+    {"k": "CCC格社債の上乗せ金利", "v": "約10%（今年の最低から+5%以上）", "prev": "", "state": "lit", "date": "2026-11-20", "src": "https://ceoeconomy.com/article/junk-bond-stress-ccc-spreads-coreweave-ecb"},
+    {"k": "CoreWeave社債", "v": "破綻懸念の水準で取引", "prev": "", "state": "lit", "date": "2026-11-20", "src": "https://ceoeconomy.com/article/junk-bond-stress-ccc-spreads-coreweave-ecb"}
+  ]}
+ ],
+ "turn": [
+  {"k": "GPUの貸出価格が下がり始める（需要の天井）", "state": "ok", "now": "上昇中"},
+  {"k": "巨大IT企業が2027年の投資を減らす計画を出す", "state": "ok", "now": "未発表（1〜2月）"},
+  {"k": "オラクル・CoreWeaveなど借金の多い会社の社債が崩れる", "state": "near", "now": "CoreWeaveは破綻懸念の水準、オラクルはBBBで見通しネガティブ"}
+ ]
+}

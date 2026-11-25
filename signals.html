@@ -85,6 +85,7 @@ input{width:100%;font:inherit;font-size:18px;padding:10px;border-radius:8px;bord
 <div class="panel" id="etfguard"></div>
 <div class="panel" id="crashcmp"></div>
 <div class="panel" id="fan"></div>
+<div class="panel" id="aic"></div>
 
 <div class="panel" id="concl"></div>
 <div class="panel" id="trk" data-fold></div>
@@ -376,6 +377,7 @@ function render(){
   <div class="row"><span>参考：持ち続けた場合</span><b>平均 +3.4%／+7.2%、悪い時 −23.8%／−10.0%</b></div>
   <div class="note">検証50：半年の悪い時の損失が、前半・後半とも最も小さい投資ルール（予測出来た）。代わりに平均の利益は持ち続けより小さい。今と同じく高値から−10%以下で始めた半年は、持ち続けの悪い時が前半−37.6%・後半−8.3%</div>`}else e.style.display='none'}
  try{window.renderFan&&window.renderFan()}catch(_){}
+ try{window.renderAIC&&window.renderAIC()}catch(_){}
  {const e=document.getElementById('crashcmp');if(NKD){const K=Object.keys(NKD).sort().filter(d=>d>='2026-05-01'),V=K.map(d=>NKD[d]),last=V[V.length-1];
   const ma=n=>V.map((_,i)=>{const a=Object.keys(NKD).sort(),j=a.indexOf(K[i]);if(j<n-1)return null;let t=0;for(let q=j-n+1;q<=j;q++)t+=NKD[a[q]];return t/n});
   const m25=ma(25),m75=ma(75),P0=K.indexOf('2026-06-25'),HI0=NKD['2026-06-25']||72366;
@@ -681,7 +683,7 @@ function render(){
 }
 
 (async()=>{
- [S,C,BT,PP,LT,MG,FW,FI,FC,DF,DI,AS,HL,OL,TRK,PHI,NH,NKD,IXD,JMP,CAT,SLV,OVL,WRP,FAN]=await Promise.all([get('data/signals.json'),get('data/candles.json'),get('data/compare6.json'),get('data/paper.json'),get('data/logic_tree.json'),get('data/morning.json'),get('data/finwatch.json'),get('data/finwatch_intraday.json'),get('data/forecast.json'),get('data/defense.json'),get('data/defense_intraday.json'),get('data/assets.json'),get('data/health.json'),get('data/outlook.json'),get('data/defense_track.json'),get('data/path_hist.json'),get('data/node_hist.json'),get('data/nk_daily.json'),get('data/idx_daily.json'),get('data/jumps.json'),get('data/catalysts.json'),get('data/series_live.json'),get('data/crash_overlay.json'),get('data/crash_warp.json'),get('data/forecast_fan.json')]);
+ [S,C,BT,PP,LT,MG,FW,FI,FC,DF,DI,AS,HL,OL,TRK,PHI,NH,NKD,IXD,JMP,CAT,SLV,OVL,WRP,FAN,AIC]=await Promise.all([get('data/signals.json'),get('data/candles.json'),get('data/compare6.json'),get('data/paper.json'),get('data/logic_tree.json'),get('data/morning.json'),get('data/finwatch.json'),get('data/finwatch_intraday.json'),get('data/forecast.json'),get('data/defense.json'),get('data/defense_intraday.json'),get('data/assets.json'),get('data/health.json'),get('data/outlook.json'),get('data/defense_track.json'),get('data/path_hist.json'),get('data/node_hist.json'),get('data/nk_daily.json'),get('data/idx_daily.json'),get('data/jumps.json'),get('data/catalysts.json'),get('data/series_live.json'),get('data/crash_overlay.json'),get('data/crash_warp.json'),get('data/forecast_fan.json'),get('data/ai_cycle.json')]);
  if(S){const [y,m,d]=S.market_date.split('-');document.getElementById('hdate').textContent=`${+m}月${+d}日`;
   document.getElementById('hst').textContent='✓ 判定完了';{const W='日月火水木金土',u=new Date(S.updated.replace(' ','T')+':00+09:00'),md=new Date(S.market_date+'T00:00:00+09:00');
   let n=new Date(md.getTime()+864e5);while([0,6].includes(n.getUTCDay()===undefined?0:new Date(n.getTime()+9*36e5).getUTCDay()))n=new Date(n.getTime()+864e5);
@@ -705,6 +707,17 @@ document.addEventListener('click',e=>{const t=e.target.closest('[data-fold]>.ttl
 if('serviceWorker' in navigator)navigator.serviceWorker.register('sw.js').catch(()=>{});
 
 /* 今後1年の予測の幅（検証91） */
+
+window.renderAIC=()=>{try{const el=document.getElementById('aic');if(!el||!AIC){if(el)el.style.display='none';return}
+ const col={ok:'#3fb950',near:'#e8b04b',lit:'#ff5555'},lab={ok:'平常',near:'注意',lit:'悪化'};
+ const nTurn=AIC.turn.filter(t=>t.state==='lit').length,nNear=AIC.turn.filter(t=>t.state==='near').length;
+ let h=`<div class="ttl"><span class="nm">AIサイクルの実体（実需・投資計画・お金の調達）</span><span class="tag" style="background:${nTurn?'#ff5555':nNear?'#e8b04b':'#3fb950'}">深い型への合図 ${nTurn}/3</span></div>
+ <div class="note">株価ではなく、AI投資の中身を毎週同じ項目で記録（${esc(AIC.updatedAt.slice(0,10))}更新）。${esc(AIC.note)}</div>
+ <div class="ttl" style="margin-top:10px"><span class="nm">深い型（2000年・2008年）に変わる合図</span></div>`+
+ AIC.turn.map(t=>`<div class="row"><span>${esc(t.k)}</span><b style="color:${col[t.state]}">${lab[t.state]}</b></div><div class="note">今：${esc(t.now)}</div>`).join('');
+ AIC.groups.forEach(g=>{h+=`<div class="ttl" style="margin-top:12px"><span class="nm">${esc(g.name)}</span></div>`+g.items.map(i=>`<div class="row"><span>${esc(i.k)}</span><b style="color:${col[i.state]};font-weight:600">${lab[i.state]}</b></div><div class="note">${esc(i.v)}${i.prev?`（前回：${esc(i.prev)}）`:''}・${esc(i.date)}・<a href="${esc(i.src)}" target="_blank" rel="noopener">出典</a></div>`).join('')});
+ el.innerHTML=h}catch(e){console.log('aic',e)}};
+
 window.renderFan=()=>{try{(()=>{const el=document.getElementById('fan');if(!el||!FAN||!FAN.idx){if(el)el.style.display='none';return}
  const LIVE={'日経平均':NKD,'S&P500':IXD&&IXD['S&P500'],'NASDAQ':IXD&&IXD['NASDAQ']};
  const f=n=>Math.round(n).toLocaleString(),pc=x=>(x>=0?'+':'')+x.toFixed(0)+'%';
