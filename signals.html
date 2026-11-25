@@ -732,10 +732,10 @@ window.renderSFN=()=>{try{const el=document.getElementById('stkfan');if(!el||!SF
   g+=`<circle cx="${X(NH-1+td)}" cy="${Y(tp)}" r="3.5" fill="#ff9900"/><text x="${X(NH-1+td)+5}" y="${Y(tp)+12}" font-size="8" fill="#ffb84d">底 ${md(bd(ANC,td))} ${f(tp)}円</text>`;
   const last=A1[A1.length-1],k=A1.length-1,pf=d.q.p50[Math.min(k,NF-1)],lo=d.q.p25[Math.min(k,NF-1)],hi=d.q.p75[Math.min(k,NF-1)];
   const where=last<lo?'予測より下（厳しい側）':last>hi?'予測より上（軽い側）':'予測の範囲内';
-  h+=`<div class="ttl" style="margin-top:14px"><span class="nm">${nm}　今 ${f(last)}円（${hk[hk.length-1].slice(5)}）</span></div><svg viewBox="0 0 ${W} ${Hh}" width="100%" style="color:var(--sub)">${g}</svg>
+  const pend=ai0<0;h+=`<div class="ttl" style="margin-top:14px"><span class="nm">${nm}　${pend?`起点 ${f(d.p0)}円（${ANC.slice(5)}途中値）`:`今 ${f(last)}円（${hk[hk.length-1].slice(5)}）`}</span></div><svg viewBox="0 0 ${W} ${Hh}" width="100%" style="color:var(--sub)">${g}</svg>
    <div class="row"><span>セリングクライマックス（最安）</span><b style="color:#ffb84d">${md(bd(ANC,td))}ごろ ${f(tp)}円（${pc((tp/d.p0-1)*100)}）</b></div>
    <div class="note">厳しめ ${f(d.trough_px[0])}円（${pc((d.trough_px[0]/d.p0-1)*100)}）／軽め ${f(d.trough_px[2])}円（${pc((d.trough_px[2]/d.p0-1)*100)}）。時期の幅 ${md(bd(ANC,d.trough_day[0]))}〜${md(bd(ANC,Math.min(NF-1,d.trough_day[2])))}。1年高値 ${f(d.hi)}円・β ${d.beta}</div>
-   <div class="row"><span>実績と予測（${k}営業日目）</span><b>${f(last)}円／予測 ${f(pf)}円</b></div><div class="note">半分の例の幅 ${f(lo)}〜${f(hi)}円 → <b>${where}</b></div>
+   ${pend?`<div class="note">起点の日（${ANC}）の終値が入ると、毎日の実績と予測の比較が出ます。</div>`:`<div class="row"><span>実績と予測（${k}営業日目）</span><b>${f(last)}円／予測 ${f(pf)}円</b></div><div class="note">半分の例の幅 ${f(lo)}〜${f(hi)}円 → <b>${where}</b></div>`}
    <div class="note" style="color:var(--fg)">アドバイス：今は買わない。持っていればToolの判定（持ち高0%）どおり売る。買い戻しは、底の時期を過ぎ、底打ちの条件（SOX5日+5%・週足の戻り高値の上抜け）がそろってから。</div>`});
  el.innerHTML=h}catch(e){console.log('sfn',e)}};
 
