@@ -76,3 +76,13 @@ for sec in L("data/sectors.json")["sectors"][:9]:
         except Exception as e: P.append(f"セクター {m.get('t')}: {e}")
 print("\n=== 不一致",len(P));[print("✗",x) for x in P]
 print("\n=== 一致",len(OKS));[print("○",x) for x in OKS]
+import os,urllib.parse,urllib.request
+from datetime import datetime,timedelta,timezone
+_o={"at":datetime.now(timezone(timedelta(hours=9))).isoformat(timespec="minutes"),"ok":not P,"problems":P,"n_ok":len(OKS)}
+try: _old=json.load(open("data/audit.json"))
+except Exception: _old={}
+json.dump(_o,open("data/audit.json","w"),ensure_ascii=False,indent=1)
+_T=os.environ.get("NTFY_TOPIC")
+if _T and P and P!=_old.get("problems"):
+    q=urllib.parse.urlencode({"title":"【Tool監査】数字の食い違い","priority":"4","click":"https://dai0093.github.io/kabu00931/signals.html"})
+    urllib.request.urlopen(urllib.request.Request(f"https://ntfy.sh/{_T}?{q}",data="\n".join(P).encode(),method="POST"),timeout=30)

@@ -871,6 +871,6 @@ window.renderFan=()=>{try{(()=>{const el=document.getElementById('fan');if(!el||
  el.innerHTML=h})()}catch(e){console.log('fan',e)}};
 
 </script>
-<script>fetch('data/uicheck.json?'+Date.now()).then(r=>r.json()).then(u=>{if(!u||u.ok)return;const d=document.createElement('div');d.style.cssText='background:#ff5555;color:#fff;padding:10px;margin:6px;border-radius:8px;font-size:14px';d.innerHTML='<b>⚠ 自動点検で表示とデータの食い違いを検知（'+u.at.slice(5,16).replace('T',' ')+'）</b><br>'+u.problems.map(x=>'・'+x.replace(/</g,'&lt;')).join('<br>')+'<br>この欄の値は信用せず、修正を待ってください';document.body.prepend(d)}).catch(()=>{})</script>
+<script>Promise.all([fetch('data/uicheck.json?'+Date.now()).then(r=>r.json()).catch(()=>null),fetch('data/audit.json?'+Date.now()).then(r=>r.json()).catch(()=>null)]).then(([x,y])=>({ok:(!x||x.ok)&&(!y||y.ok),at:((y&&y.at)||(x&&x.at)||''),problems:[...((x&&x.problems)||[]),...((y&&y.problems)||[])]})).then(u=>{if(!u||u.ok)return;const d=document.createElement('div');d.style.cssText='background:#ff5555;color:#fff;padding:10px;margin:6px;border-radius:8px;font-size:14px';d.innerHTML='<b>⚠ 自動点検で表示とデータの食い違いを検知（'+u.at.slice(5,16).replace('T',' ')+'）</b><br>'+u.problems.map(x=>'・'+x.replace(/</g,'&lt;')).join('<br>')+'<br>この欄の値は信用せず、修正を待ってください';document.body.prepend(d)}).catch(()=>{})</script>
 </body>
 </html>
