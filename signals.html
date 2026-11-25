@@ -754,7 +754,7 @@ window.renderV2=()=>{
   ${rows.map(r=>`<div class="row"><span>${r.n}</span><b style="color:${r.pend?'var(--sub)':r.ok?'#3fb950':'#ff5555'}">${r.pend?'持たない（取得待ち）':r.ok?'持ってよい':'持たない'}</b></div><div class="note">${esc(r.why)}</div>`).join('')}
   <div class="note">割合の決め方：日本株は防御方針Cの目安%の4割まで、日本株以外で各ルールが「持ってよい」の資産は1つ15%（合計60%まで）、残りは円の現金・個人向け国債（検証51：急落中に最も損失が小さい）。保有額は「今日の結論」の欄で入力した値（このスマホだけに保存）。</div>`}catch(e){console.log('reb',e)}
  /* ② 暴落の合図とセリングクライマックスの日付 */
- try{const el=document.getElementById('sigdate');const cr=(SEC&&SEC.credit)||{};const fl=(DF&&DF.today&&DF.today.flags)||{};
+ try{const el=document.getElementById('sigdate');const cr=(SEC&&SEC.credit)||{};const DD=(DI&&DF&&DI.updatedAt>DF.updatedAt)?DI:(DF||DI),fl=(DD&&DD.today&&DD.today.flags)||{};
   const NM={nk2:'日経1日≤−2%',nk3:'日経1日≤−3%',nk5d:'日経5日≤−5%',sox:'SOX前夜≤−4%',bank:'銀行群1日≤−4%',fin:'金融機関基準'};
   const pre=[['社債（HYG÷IEF）20日 ≤ −2%',cr.hy20,v=>v<=-2,v=>pc(v,2)],['投資適格社債（LQD÷IEF）20日 ≤ −2%',cr.ig20,v=>v<=-2,v=>pc(v,2)],['米地銀KRE 高値から ≤ −25%',cr.kre_dd,v=>v<=-25,v=>pc(v)],['銀行群 1日 ≤ −4%',fl.bank?1:0,v=>v>0,v=>v?'点灯':'未点灯'],['VIX ≥ 45',cr.vix,v=>v>=45,v=>(+v).toFixed(1)]];
   const npre=pre.filter(x=>x[1]!=null&&x[2](x[1])).length;
@@ -764,8 +764,8 @@ window.renderV2=()=>{
   if(SFN&&SFN.stocks)Object.entries(SFN.stocks).forEach(([nm,d])=>{dt+=`<div class="row"><span>${nm}</span><b style="color:#ffb84d">${md(bd(SFN.anchor,d.trough_day[1]))}ごろ ${f(d.trough_px[1])}円</b></div><div class="note">厳しめ ${f(d.trough_px[0])}円／軽め ${f(d.trough_px[2])}円</div>`});
   el.innerHTML=`<div class="ttl"><span class="nm">② 暴落の合図とセリングクライマックスの日付</span><span class="tag" style="background:${npre>=2?'#ff5555':npre?'#e8b04b':'#3fb950'}">リーマン型 ${npre}/5</span></div>
   <div class="ttl" style="margin-top:6px"><span class="nm">防御の信号（今日）</span></div>
-  ${Object.entries(NM).map(([k,n])=>`<div class="row"><span>${n}</span><b style="color:${fl[k]?'#ff5555':'#3fb950'}">${fl[k]?'点灯':'未点灯'}</b></div>`).join('')}
-  <div class="note">直近20営業日の最大点灯数で持ち高を決めます（防御方針C）。判定日 ${DF?esc(DF.asOf):'—'}</div>
+  ${Object.entries(fl).map(([n,v])=>`<div class="row"><span>${esc(n)}</span><b style="color:${v?'#ff5555':'#3fb950'}">${v?'点灯':'未点灯'}</b></div>`).join('')||'<div class="note">取得待ち</div>'}
+  <div class="note">直近20営業日の最大点灯数で持ち高を決めます（防御方針C）。判定日 ${DD?esc(DD.asOf):'—'}（今日 ${Object.values(fl).filter(Boolean).length}本点灯）</div>
   <div class="ttl" style="margin-top:10px"><span class="nm">リーマン型へ進んだ合図（事前登録 2026-11-21、2つで判断を変える）</span></div>
   ${pre.map(([n,v,ok,fm])=>`<div class="row"><span>${n}</span><b style="color:${v!=null&&ok(v)?'#ff5555':'#3fb950'}">${v==null?'取得待ち':fm(v)}</b></div>`).join('')}
   <div class="ttl" style="margin-top:10px"><span class="nm">セリングクライマックスの目印（そろった日が頂点の候補）</span></div>
