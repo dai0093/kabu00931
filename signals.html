@@ -724,6 +724,12 @@ if('serviceWorker' in navigator)navigator.serviceWorker.register('sw.js').catch(
 window.renderV2=()=>{
  const f=n=>Math.round(n).toLocaleString(),pc=(x,d=1)=>(x>=0?'+':'')+(+x).toFixed(d)+'%',C={ok:'#3fb950',near:'#e8b04b',lit:'#ff5555'},LB={ok:'平常',near:'注意',lit:'悪化'};
  const bd=(d0,n)=>{const x=new Date(d0);let k=0;while(k<n){x.setDate(x.getDate()+1);if(x.getDay()%6)k++}return x},md=x=>`${x.getFullYear()}/${x.getMonth()+1}/${x.getDate()}`;
+ /* 検証95 信用評価損益率 */
+ try{const mg=ARL&&ARL.margin,el=document.getElementById('sigdate');if(mg&&el){const e=mg.er,c=e<=-25?'#ff5555':e<=-20?'#ff5555':e<=-15?'#e8b04b':'#3fb950';
+  const d=document.createElement('div');d.className='card';d.innerHTML=`<div class="ttl"><span class="nm">個人の信用取引（追証の温度計）</span><span class="tag" style="background:${c}">${e.toFixed(1)}%</span></div>
+  <div class="note">信用評価損益率 ${mg.date}時点（週1回・東証）。直近：${mg.hist.slice(-4).map(x=>x[1].toFixed(1)).join(' → ')}</div>
+  <div class="row"><span>−20%に初めて入った後</span><b style="color:#ff5555">26週以内にさらに−10%超 6/11回</b></div><div class="note">検証95（2001〜）：13週後に上がったのは4/10回、追加の下げの中央値 −10.8%。−20%は「底」の合図ではなかった。今回は11/6に−21.1%で該当。</div>
+  <div class="row"><span>−25%まで達した後</span><b>13週後プラス 4/5回</b></div><div class="note">例外は2008年10月（−30.8%から、さらに−34%）。信用（社債・銀行）が崩れていると底になりにくい。</div>`;el.after(d)}}catch(_){}
  /* ① リバランス */
  try{const el=document.getElementById('reb');const A=(AS&&AS.items)||[],gi=n=>A.find(a=>a.name===n);
   const jp=DF?DF.target:null,rows=[];

@@ -17,3 +17,14 @@ for name,t,rule in [("J-REIT","1343.T","m10"),("米REIT","IYR","m10"),("米国�
             out["items"].append({"name":name,"ticker":t,"rule":"1年モメンタム","ok":r>0,"r252":round(r,2)})
     except Exception as e: out["items"].append({"name":name,"ticker":t,"err":str(e)})
 json.dump(out,open("data/asset_rules.json","w"),ensure_ascii=False,indent=1);print(json.dumps(out,ensure_ascii=False))
+# 検証95：信用評価損益率（週次）
+try:
+    import requests,io
+    h=requests.get("https://www.traders.co.jp/margin_derivatives/margin_transition",timeout=30,headers={"User-Agent":"Mozilla/5.0"}).text
+    t=[x for x in pd.read_html(io.StringIO(h)) if any("損益率" in str(c) for c in x.columns.to_flat_index())][0]
+    t.columns=[" ".join(map(str,c)) if isinstance(c,tuple) else str(c) for c in t.columns]
+    dc=[c for c in t.columns if "申込日" in c][0];ec=[c for c in t.columns if "損益率" in c][0]
+    s=pd.DataFrame({"d":pd.to_datetime(t[dc],errors="coerce"),"e":pd.to_numeric(t[ec],errors="coerce")}).dropna().sort_values("d")
+    out["margin"]={"date":str(s.d.iloc[-1].date()),"er":float(s.e.iloc[-1]),"hist":[[str(a.date()),float(b)] for a,b in zip(s.d.iloc[-12:],s.e.iloc[-12:])]}
+    json.dump(out,open("data/asset_rules.json","w"),ensure_ascii=False,indent=1);print("margin",out["margin"]["er"])
+except Exception as e: print("margin失敗",e)
