@@ -78,15 +78,23 @@ input{width:100%;font:inherit;font-size:18px;padding:10px;border-radius:8px;bord
 </div>
 
 <div id="ver" style="font-size:13px;text-align:right;margin:4px"><a href="#etfguard">▼ ETFでの守り方・資産ごとの判定へ</a>　<span style="font-size:11px;color:#8b98ad">画面の版 11-10</span></div>
+<div id="v2nav" style="position:sticky;top:0;z-index:20;display:flex;gap:6px;overflow-x:auto;padding:8px 0;background:var(--bg)">
+ <a href="#reb" class="v2b">①持つ割合</a><a href="#sigdate" class="v2b">②暴落の合図と日付</a><a href="#shock" class="v2b">③過去ショック</a><a href="#spill" class="v2b">④AI関連の波及</a><a href="#detail" class="v2b">詳細</a></div>
+<style>.v2b{flex:none;padding:7px 11px;border-radius:16px;background:var(--panel2);color:var(--fg);text-decoration:none;font-size:13px;font-weight:700;border:1px solid #ffffff22}</style>
+<div class="panel" id="reb"></div>
+<div class="panel" id="sigdate"></div>
+<div class="panel" id="shock"></div>
+<div class="panel" id="crashcmp"></div>
+<div class="panel" id="fan"></div>
+<div class="panel" id="stkfan"></div>
+<div class="panel" id="spill"></div>
+<div class="panel" id="aic"></div>
+<h2 id="detail">詳細（これまでの欄）</h2>
 <div class="panel" id="sig3"></div>
 <div class="panel" id="rtop" data-fold></div>
 <div class="panel alert" id="jmp" style="display:none"></div>
 <div class="panel" id="half" data-fold></div>
 <div class="panel" id="etfguard"></div>
-<div class="panel" id="crashcmp"></div>
-<div class="panel" id="fan"></div>
-<div class="panel" id="stkfan"></div>
-<div class="panel" id="aic"></div>
 
 <div class="panel" id="concl"></div>
 <div class="panel" id="trk" data-fold></div>
@@ -380,6 +388,7 @@ function render(){
  try{window.renderFan&&window.renderFan()}catch(_){}
  try{window.renderAIC&&window.renderAIC()}catch(_){}
  try{window.renderSFN&&window.renderSFN()}catch(_){}
+ try{window.renderV2&&window.renderV2()}catch(_){}
  {const e=document.getElementById('crashcmp');if(NKD){const K=Object.keys(NKD).sort().filter(d=>d>='2026-05-01'),V=K.map(d=>NKD[d]),last=V[V.length-1];
   const ma=n=>V.map((_,i)=>{const a=Object.keys(NKD).sort(),j=a.indexOf(K[i]);if(j<n-1)return null;let t=0;for(let q=j-n+1;q<=j;q++)t+=NKD[a[q]];return t/n});
   const m25=ma(25),m75=ma(75),P0=K.indexOf('2026-06-25'),HI0=NKD['2026-06-25']||72366;
@@ -685,7 +694,7 @@ function render(){
 }
 
 (async()=>{
- [S,C,BT,PP,LT,MG,FW,FI,FC,DF,DI,AS,HL,OL,TRK,PHI,NH,NKD,IXD,JMP,CAT,SLV,OVL,WRP,FAN,AIC,SFN]=await Promise.all([get('data/signals.json'),get('data/candles.json'),get('data/compare6.json'),get('data/paper.json'),get('data/logic_tree.json'),get('data/morning.json'),get('data/finwatch.json'),get('data/finwatch_intraday.json'),get('data/forecast.json'),get('data/defense.json'),get('data/defense_intraday.json'),get('data/assets.json'),get('data/health.json'),get('data/outlook.json'),get('data/defense_track.json'),get('data/path_hist.json'),get('data/node_hist.json'),get('data/nk_daily.json'),get('data/idx_daily.json'),get('data/jumps.json'),get('data/catalysts.json'),get('data/series_live.json'),get('data/crash_overlay.json'),get('data/crash_warp.json'),get('data/forecast_fan.json'),get('data/ai_cycle.json'),get('data/stock_fan.json')]);
+ [S,C,BT,PP,LT,MG,FW,FI,FC,DF,DI,AS,HL,OL,TRK,PHI,NH,NKD,IXD,JMP,CAT,SLV,OVL,WRP,FAN,AIC,SFN,SEC,SECH]=await Promise.all([get('data/signals.json'),get('data/candles.json'),get('data/compare6.json'),get('data/paper.json'),get('data/logic_tree.json'),get('data/morning.json'),get('data/finwatch.json'),get('data/finwatch_intraday.json'),get('data/forecast.json'),get('data/defense.json'),get('data/defense_intraday.json'),get('data/assets.json'),get('data/health.json'),get('data/outlook.json'),get('data/defense_track.json'),get('data/path_hist.json'),get('data/node_hist.json'),get('data/nk_daily.json'),get('data/idx_daily.json'),get('data/jumps.json'),get('data/catalysts.json'),get('data/series_live.json'),get('data/crash_overlay.json'),get('data/crash_warp.json'),get('data/forecast_fan.json'),get('data/ai_cycle.json'),get('data/stock_fan.json'),get('data/sectors.json'),get('data/sectors_hist.json')]);
  if(S){const [y,m,d]=S.market_date.split('-');document.getElementById('hdate').textContent=`${+m}月${+d}日`;
   document.getElementById('hst').textContent='✓ 判定完了';{const W='日月火水木金土',u=new Date(S.updated.replace(' ','T')+':00+09:00'),md=new Date(S.market_date+'T00:00:00+09:00');
   let n=new Date(md.getTime()+864e5);while([0,6].includes(n.getUTCDay()===undefined?0:new Date(n.getTime()+9*36e5).getUTCDay()))n=new Date(n.getTime()+864e5);
@@ -710,6 +719,75 @@ if('serviceWorker' in navigator)navigator.serviceWorker.register('sw.js').catch(
 
 /* 今後1年の予測の幅（検証91） */
 
+
+
+window.renderV2=()=>{
+ const f=n=>Math.round(n).toLocaleString(),pc=(x,d=1)=>(x>=0?'+':'')+(+x).toFixed(d)+'%',C={ok:'#3fb950',near:'#e8b04b',lit:'#ff5555'},LB={ok:'平常',near:'注意',lit:'悪化'};
+ const bd=(d0,n)=>{const x=new Date(d0);let k=0;while(k<n){x.setDate(x.getDate()+1);if(x.getDay()%6)k++}return x},md=x=>`${x.getFullYear()}/${x.getMonth()+1}/${x.getDate()}`;
+ /* ① リバランス */
+ try{const el=document.getElementById('reb');const A=(AS&&AS.items)||[],gi=n=>A.find(a=>a.name===n);
+  const jp=DF?DF.target:null,rows=[];
+  rows.push({n:'日本株（日経・TOPIX）',ok:jp>0,w:jp||0,why:`防御方針C：直近20営業日の危険信号 最大${DF?DF.hold10_max??'—':'—'}本・社債20日 ${DF&&DF.credit_d20!=null?pc(DF.credit_d20,2):'—'} → 目安${jp??'—'}%`});
+  [['米国株','米国株'],['先進国株','先進国株'],['金','金'],['銀','銀']].forEach(([lab,n])=>{const a=gi(n);if(!a)return;rows.push({n:lab,ok:a.ma200!=null&&a.ma200>=0,ma:a.ma200,why:`200日線から ${a.ma200!=null?pc(a.ma200):'—'}（検証29・42：線の上だけ持つ）`})});
+  ['REIT','米国債','日本国債'].forEach(n=>{const a=gi(n);rows.push({n,ok:false,nr:true,why:`検証で効く売買ルールがない${a&&a.ma200!=null?`（200日線から ${pc(a.ma200)}）`:''} → 新しくは持たない`})});
+  const risk=rows.filter(r=>!r.nr&&r.ok);let alloc={};
+  const jpW=(jp||0)/100;const others=risk.filter(r=>r.n!=='日本株（日経・TOPIX）');
+  const riskTot=(jpW>0?0.4*jpW:0)+(others.length?Math.min(0.6,others.length*0.15):0);
+  if(jpW>0)alloc['日本株（日経・TOPIX）']=0.4*jpW;others.forEach(r=>alloc[r.n]=Math.min(0.6,others.length*0.15)/others.length);
+  const cash=1-Object.values(alloc).reduce((a,b)=>a+b,0);alloc['円の現金・個人向け国債']=cash;
+  let hold=0;try{hold=+localStorage.getItem('holdMan')||0}catch(_){}
+  const bar=Object.entries(alloc).filter(([,v])=>v>0).map(([k,v],i)=>`<div title="${k}" style="flex:${v};background:${k.startsWith('円')?'#58a6ff':['#3fb950','#e8b04b','#d2a8ff','#ffa657'][i%4]}"></div>`).join('');
+  el.innerHTML=`<div class="ttl"><span class="nm">① 今持つべき割合（リバランス案）</span><span class="tag" style="background:${cash>=0.999?'#ff5555':'#3fb950'}">${cash>=0.999?'現金100%':'一部保有'}</span></div>
+  <div style="display:flex;height:16px;border-radius:8px;overflow:hidden;margin:8px 0">${bar}</div>
+  ${Object.entries(alloc).filter(([,v])=>v>0).map(([k,v])=>`<div class="row"><span>${k}</span><b>${(v*100).toFixed(0)}%${hold?`（${f(hold*v)}万円）`:''}</b></div>`).join('')}
+  <div class="ttl" style="margin-top:10px"><span class="nm">資産ごとの判定</span></div>
+  ${rows.map(r=>`<div class="row"><span>${r.n}</span><b style="color:${r.nr?'var(--sub)':r.ok?'#3fb950':'#ff5555'}">${r.nr?'持たない（判定なし）':r.ok?'持ってよい':'持たない'}</b></div><div class="note">${esc(r.why)}</div>`).join('')}
+  <div class="note">割合の決め方：日本株は防御方針Cの目安%の4割まで、日本株以外で200日線の上にある資産は1つ15%（合計60%まで）、残りは円の現金・個人向け国債（検証51：急落中に最も損失が小さい）。保有額は「今日の結論」の欄で入力した値（このスマホだけに保存）。</div>`}catch(e){console.log('reb',e)}
+ /* ② 暴落の合図とセリングクライマックスの日付 */
+ try{const el=document.getElementById('sigdate');const cr=(SEC&&SEC.credit)||{};const fl=(DF&&DF.today&&DF.today.flags)||{};
+  const NM={nk2:'日経1日≤−2%',nk3:'日経1日≤−3%',nk5d:'日経5日≤−5%',sox:'SOX前夜≤−4%',bank:'銀行群1日≤−4%',fin:'金融機関基準'};
+  const pre=[['社債（HYG÷IEF）20日 ≤ −2%',cr.hy20,v=>v<=-2,v=>pc(v,2)],['投資適格社債（LQD÷IEF）20日 ≤ −2%',cr.ig20,v=>v<=-2,v=>pc(v,2)],['米地銀KRE 高値から ≤ −25%',cr.kre_dd,v=>v<=-25,v=>pc(v)],['銀行群 1日 ≤ −4%',fl.bank?1:0,v=>v>0,v=>v?'点灯':'未点灯'],['VIX ≥ 45',cr.vix,v=>v>=45,v=>(+v).toFixed(1)]];
+  const npre=pre.filter(x=>x[1]!=null&&x[2](x[1])).length;
+  const clm=[['VIX ≥ 45 で翌日から低下',cr.vix!=null&&cr.vix_prev!=null&&cr.vix_prev>=45&&cr.vix<cr.vix_prev,`今 ${cr.vix??'—'}（前日 ${cr.vix_prev??'—'}）`],['日経1日 ≤ −5%',DF&&DF.today&&DF.today.nk1!=null&&DF.today.nk1<=-5,`今日 ${DF&&DF.today&&DF.today.nk1!=null?pc(DF.today.nk1,2):'—'}`],['社債20日 ≤ −2%',cr.hy20!=null&&cr.hy20<=-2,`今 ${cr.hy20!=null?pc(cr.hy20,2):'—'}`]];
+  const nclm=clm.filter(x=>x[1]).length;
+  let dt='';if(FAN&&FAN.idx){Object.entries(FAN.idx).forEach(([nm,d])=>{const T=[...d.trough_days].sort((a,b)=>a-b),q=p=>T[Math.floor(p*(T.length-1))];const L=nm==='日経平均'?NKD:IXD&&IXD[nm];if(!L)return;const hk=Object.keys(L).sort(),ld=hk[hk.length-1],sc=L[ld]/d.last,t=Math.max(1,q(.5));dt+=`<div class="row"><span>${nm}</span><b style="color:#ffb84d">${md(bd(ld,t))}ごろ ${f(Math.min(...d.q.p50)*sc)}</b></div><div class="note">半分の例：${md(bd(ld,Math.max(1,q(.25))))}〜${md(bd(ld,q(.75)))}・底の値（中央値の線の最安）</div>`})}
+  if(SFN&&SFN.stocks)Object.entries(SFN.stocks).forEach(([nm,d])=>{dt+=`<div class="row"><span>${nm}</span><b style="color:#ffb84d">${md(bd(SFN.anchor,d.trough_day[1]))}ごろ ${f(d.trough_px[1])}円</b></div><div class="note">厳しめ ${f(d.trough_px[0])}円／軽め ${f(d.trough_px[2])}円</div>`});
+  el.innerHTML=`<div class="ttl"><span class="nm">② 暴落の合図とセリングクライマックスの日付</span><span class="tag" style="background:${npre>=2?'#ff5555':npre?'#e8b04b':'#3fb950'}">リーマン型 ${npre}/5</span></div>
+  <div class="ttl" style="margin-top:6px"><span class="nm">防御の信号（今日）</span></div>
+  ${Object.entries(NM).map(([k,n])=>`<div class="row"><span>${n}</span><b style="color:${fl[k]?'#ff5555':'#3fb950'}">${fl[k]?'点灯':'未点灯'}</b></div>`).join('')}
+  <div class="note">直近20営業日の最大点灯数で持ち高を決めます（防御方針C）。判定日 ${DF?esc(DF.asOf):'—'}</div>
+  <div class="ttl" style="margin-top:10px"><span class="nm">リーマン型へ進んだ合図（事前登録 2026-11-21、2つで判断を変える）</span></div>
+  ${pre.map(([n,v,ok,fm])=>`<div class="row"><span>${n}</span><b style="color:${v!=null&&ok(v)?'#ff5555':'#3fb950'}">${v==null?'取得待ち':fm(v)}</b></div>`).join('')}
+  <div class="ttl" style="margin-top:10px"><span class="nm">セリングクライマックスの目印（そろった日が頂点の候補）</span></div>
+  ${clm.map(([n,ok,now])=>`<div class="row"><span>${n}</span><b style="color:${ok?'#ff5555':'var(--sub)'}">${ok?'点灯':'未'}</b></div><div class="note">${now}</div>`).join('')}
+  <div class="note">点灯 ${nclm}/3。2つ以上そろった日に「今が頂点の候補」と判断します。</div>
+  <div class="ttl" style="margin-top:10px"><span class="nm">セリングクライマックスの日付（予測）</span></div>${dt}
+  <div class="note">今日と同じ形の過去11局面から出した予測（検証91・93）。日付と値段をピンポイントで当てることは予測出来なかった側です。私の見方は2027年1〜3月（巨大IT企業の来年の投資計画が出る時期）。</div>`}catch(e){console.log('sigdate',e)}
+ /* ③ 過去ショック */
+ try{document.getElementById('shock').innerHTML=`<div class="ttl"><span class="nm">③ 過去のショックとの連動</span></div><div class="note">下の2つのグラフで、今回の日経を過去の暴落に重ねています。「暴落の型との比較」は高値6/25から重ねた実際の推移（時間の伸び縮みも可）、「今後1年の予測の幅」は今日と同じ形の過去11局面から出した幅です。2つが食い違うのは例の選び方の違いで、どちらが正しいかは予測出来なかった側です。形が最も近いのはリーマン前（2007年）でした（検証67・80）。</div>`}catch(e){}
+ /* ④ AI関連の波及 */
+ try{const el=document.getElementById('spill');if(!SEC||!SEC.sectors){el.innerHTML='<div class="ttl"><span class="nm">④ AI関連の分野ごとの波及</span></div><div class="note">データの初回作成中です（次の判定の更新で表示）。</div>';}else{
+  const S=SEC.sectors,W=340,cw=104,ch=62,gx=8,gy=26,ox=6,oy=8;let g='';
+  const pos=i=>{const r=Math.floor(i/3),c=r%2?2-(i%3):i%3;return [ox+c*(cw+gx),oy+r*(ch+gy)]};
+  S.forEach((s,i)=>{if(i<S.length-1){const [x1,y1]=pos(i),[x2,y2]=pos(i+1);const ax=x1+cw/2,ay=y1+ch/2,bx=x2+cw/2,by=y2+ch/2;const sx=Math.sign(bx-ax),sy=Math.sign(by-ay);
+     const p1=sy?[ax,y1+ch]:[sx>0?x1+cw:x1,ay],p2=sy?[bx,y2]:[sx>0?x2:x2+cw,by];g+=`<line x1="${p1[0]}" y1="${p1[1]}" x2="${p2[0]}" y2="${p2[1]}" stroke="${C[S[i+1].state]}" stroke-width="2" marker-end="url(#ah)"/>`}});
+  S.forEach((s,i)=>{const [x,y]=pos(i);const arr=s.trend==='改善'?'↗ 改善':s.trend==='悪化中'?'↘ 悪化中':'→ 横ばい';
+   g+=`<a href="#sec${i}"><rect x="${x}" y="${y}" width="${cw}" height="${ch}" rx="8" fill="${C[s.state]}22" stroke="${C[s.state]}" stroke-width="2"/>
+   <text x="${x+cw/2}" y="${y+15}" font-size="9.5" font-weight="700" text-anchor="middle" fill="var(--fg)">${esc(s.name)}</text>
+   <text x="${x+cw/2}" y="${y+31}" font-size="9" text-anchor="middle" fill="${C[s.state]}">${LB[s.state]}・高値${s.dd}%</text>
+   <text x="${x+cw/2}" y="${y+45}" font-size="8.5" text-anchor="middle" fill="currentColor">20日${pc(s.d20)}・5日${pc(s.d5)}</text>
+   <text x="${x+cw/2}" y="${y+57}" font-size="8.5" text-anchor="middle" fill="${s.trend==='改善'?'#3fb950':s.trend==='悪化中'?'#ff5555':'currentColor'}">${arr}</text></a>`});
+  const H=Math.ceil(S.length/3)*(ch+gy)+oy;
+  const days=SECH?Object.keys(SECH).sort().slice(-20):[];
+  const strip=S.map(s=>`<div style="display:flex;align-items:center;gap:4px;margin:2px 0"><span style="width:118px;font-size:11px;flex:none">${esc(s.name)}</span>${days.map(d=>{const v=SECH[d][s.name];return `<span title="${d}" style="flex:1;height:12px;border-radius:2px;background:${v?C[v.state]:'#333'}"></span>`}).join('')}</div>`).join('');
+  const nl=S.filter(s=>s.state==='lit').length,nn=S.filter(s=>s.state==='near').length;
+  el.innerHTML=`<div class="ttl"><span class="nm">④ AI関連の分野ごとの波及</span><span class="tag" style="background:${nl>=5?'#ff5555':nl?'#e8b04b':'#3fb950'}">悪化 ${nl}・注意 ${nn}／${S.length}</span></div>
+  <div class="note">AIのお金の流れの順（半導体 → AIクラウド → 巨大IT → 電力 → 建設 → 不動産・データセンター → 私募信用 → 投資会社 → 銀行）に並べ、どこまで悪化が広がったかを色で示します。分野内の銘柄の中央値。悪化＝高値から−25%以下か20日−12%以下、注意＝高値から−12%以下か20日−6%以下。向き＝5日で±3%。更新 ${esc(SEC.updatedAt)}</div>
+  <svg viewBox="0 0 ${W} ${H}" width="100%" style="color:var(--sub)"><defs><marker id="ah" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6 Z" fill="#aaa"/></marker></defs>${g}</svg>
+  <div class="ttl" style="margin-top:8px"><span class="nm">悪化と改善の推移（直近${days.length}日）</span></div>${strip}
+  <div class="note">左が古い日、右が最新。緑＝平常、黄＝注意、赤＝悪化。</div>
+  ${S.map((s,i)=>`<details id="sec${i}" style="margin-top:6px"><summary><b style="color:${C[s.state]}">${esc(s.name)}</b>　${LB[s.state]}・${s.trend}</summary>${s.items.map(it=>`<div class="row"><span>${esc(it.n)}</span><b style="color:${it.dd<=-25?'#ff5555':it.dd<=-12?'#e8b04b':'#3fb950'}">高値${pc(it.dd)}</b></div><div class="note">1日${pc(it.d1)}・5日${pc(it.d5)}・20日${pc(it.d20)}・${it.date}</div>`).join('')}</details>`).join('')}`}}catch(e){console.log('spill',e)}
+};
 
 window.renderSFN=()=>{try{const el=document.getElementById('stkfan');if(!el||!SFN||!IXD){if(el)el.style.display='none';return}
  const f=n=>Math.round(n).toLocaleString(),pc=x=>(x>=0?'+':'')+x.toFixed(0)+'%',ANC=SFN.anchor;
