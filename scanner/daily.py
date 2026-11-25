@@ -251,7 +251,7 @@ if risk.get("off"):
                  + (f"\n見送った候補：{'、'.join(t['name'] for t in blocked)}" if blocked else ""))
 if weak and weak["on"] and today:
     parts.append(f"【地合い注意・見送り推奨】日経5日騰落 {weak['last']:,} ÷ {weak['prev5']:,} − 1 = {weak['n225_5d']*100:+.1f}%\n"
-                 "検証7：マイナスの日の買いを見送ると成績が改善（前半+30万円・後半+147万円）。下の候補は買わない判断を推奨")
+                 "検証7：マイナスの日の買いを見送ると成績が改善（どの時期でも改善する傾向：+30万円・+147万円）。下の候補は買わない判断を推奨")
 if crash_out:
     parts.append("【急落リスクで除外】" + "、".join(f"{t['name']}({t['code']}) 急落スコア{t['crash_p']*100:.0f}" for t in crash_out[:5])
                  + f"\n検証13：5日以内に−10%以上の急落確率が {crash_out[0]['crash_thr']*100:.0f}%以上の候補は除外")

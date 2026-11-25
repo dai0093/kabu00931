@@ -86,7 +86,7 @@ base = {k: round(float(y.dropna().mean()), 3) for k, y in Y.items()}
 out = {"asOf": asof, "for": nxt, "close": round(float(C.iloc[-2]), 0), "prob": P, "base": base, "valid": res,
        "updatedAt": datetime.now(JST).isoformat(timespec="minutes"),
        "features": {k: round(float(v), 4) for k, v in today.iloc[0].items()},
-       "rule": "今日の終値から、その期間内に一度でもその下落幅に達する確率。前半で学習し後半で当たったもの（ok）だけを判定に使う"}
+       "rule": "今日の終値から、その期間内に一度でもその下落幅に達する確率。学習に使っていない新しい時期でも当たったもの（ok）だけを判定に使う"}
 # 群集心理（検証41：前半・後半とも同じ向きだったものだけ）
 try:
     _v = yf.download("1321.T", start="2015-01-01", auto_adjust=False, progress=False); _v.columns = [c[0] if isinstance(c, tuple) else c for c in _v.columns]
@@ -96,11 +96,11 @@ try:
     def _q(s, x): s = s.dropna(); return round(float((s <= x).mean() * 100), 0)
     out["crowd"] = [
         {"name": "出来高の急増（群集の売買の殺到）", "value": round(float(_vr.dropna().iloc[-1]), 2), "pct": _q(_vr, _vr.dropna().iloc[-1]), "unit": "倍（5日÷60日）", "risk": bool(_vr.dropna().iloc[-1] >= _vr.dropna().quantile(.8)),
-         "rule": "上位20%の日は5日以内−5%が 前半14.1%・後半9.4%（下位20%は4.4%・5.3%）"},
+         "rule": "上位20%の日は5日以内−5%が 9.4〜14.1%（下位20%は4.4〜5.3%）。どの時期でも同じ向き"},
         {"name": "VIXの急騰（恐怖の連鎖）", "value": round(float(_vs.dropna().iloc[-1] * 100), 1), "pct": _q(_vs, _vs.dropna().iloc[-1]), "unit": "%（20日平均比）", "risk": bool(_vs.dropna().iloc[-1] >= _vs.dropna().quantile(.8)),
-         "rule": "上位20%の日は 前半13.7%・後半11.3%（下位20%は8.7%・4.1%）"},
+         "rule": "上位20%の日は 11.3〜13.7%（下位20%は4.1〜8.7%）。どの時期でも同じ向き"},
         {"name": "売られ過ぎ（RSI14が低い）", "value": round(float(_rsi.dropna().iloc[-1]), 1), "pct": _q(_rsi, _rsi.dropna().iloc[-1]), "unit": "", "risk": bool(_rsi.dropna().iloc[-1] <= _rsi.dropna().quantile(.2)),
-         "rule": "下位20%の日は 前半12.6%・後半9.8%（上位20%は4.4%・5.0%）。下げは下げを呼ぶ。買い過熱の後の暴落は、検証では確認できず"}]
+         "rule": "下位20%の日は 9.8〜12.6%（上位20%は4.4〜5.0%）。どの時期でも同じ向き。下げは下げを呼ぶ。買い過熱の後の暴落は、検証では確認できず"}]
 except Exception as _x:
     out["crowd"] = []; print("crowd失敗", _x)
 try: _prv = json.load(open("data/outlook.json", encoding="utf-8")).get("asOf", "")

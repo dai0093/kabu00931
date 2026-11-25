@@ -195,7 +195,7 @@ try:
     _sg = ",".join(sorted(x.split()[0] for x in _ah))
     if _ah and _sg != _pa and os.environ.get("NTFY_TOPIC") and "--no-notify" not in sys.argv:
         _q = urllib.parse.urlencode({"title": "【注意】米大型株が時間外で急落", "priority": "3", "click": "https://dai0093.github.io/kabu00931/signals.html"})
-        _b = "、".join(_ah) + "\n検証37：当日の東京エレクトロン・アドバンテストは下落しやすい（前半・後半とも6割程度。逆に上がる日も4割）。暴落の予兆ではない（検証38）。"
+        _b = "、".join(_ah) + "\n検証37：当日の東京エレクトロン・アドバンテストは下落しやすい（どの時期でも6割程度。逆に上がる日も4割）。暴落の予兆ではない（検証38）。"
         urllib.request.urlopen(urllib.request.Request(f"https://ntfy.sh/{os.environ['NTFY_TOPIC']}?{_q}", data=_b.encode("utf-8"), method="POST"), timeout=30)
     json.dump({"sig": _sg, "items": _ah, "at": datetime.now(JST).isoformat(timespec="minutes")}, open(_AHF, "w"), ensure_ascii=False)
 except Exception as _e:
@@ -252,7 +252,7 @@ try:
     if _ccap: target = 0.0
     stale_us = [x for x in stale if not x.endswith((".T", ".SS", ".HK"))]
     _sox5 = float((sx_s.iloc[-1] / sx_s.iloc[-6] - 1) * 100)
-    _reb = {"sox5": round(_sox5, 2), "on": bool(_sox5 >= 5 and _hist[-1]["score"] == 0 and sh > 0), "rule": "SOX5日≥+5%かつ当日の信号0本（検証31：前半・後半とも20日後の日経が上昇）"}
+    _reb = {"sox5": round(_sox5, 2), "on": bool(_sox5 >= 5 and _hist[-1]["score"] == 0 and sh > 0), "rule": "SOX5日≥+5%かつ当日の信号0本（検証31：どの時期でも20日後の日経が上がる傾向）"}
     try:
         _ohlc = yf.download("^N225", period="3y", auto_adjust=False, progress=False)
         _ohlc.columns = [c[0] if isinstance(c, tuple) else c for c in _ohlc.columns]
