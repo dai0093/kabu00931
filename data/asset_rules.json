@@ -1,25 +1,45 @@
 {
- "updatedAt": "2026-11-25T05:34Z",
+ "updatedAt": "2026-11-25T05:37Z",
  "items": [
   {
    "name": "J-REIT",
    "ticker": "1343.T",
-   "err": "single positional indexer is out-of-bounds"
+   "rule": "10か月線(月末)",
+   "ok": false,
+   "me_date": "2026-10-31",
+   "me": 1771.98876953125,
+   "m10": 1934.7848876953126,
+   "gap": -8.41,
+   "now_gap": -5.41
   },
   {
    "name": "米REIT",
    "ticker": "IYR",
-   "err": "single positional indexer is out-of-bounds"
+   "rule": "10か月線(月末)",
+   "ok": true,
+   "me_date": "2026-10-31",
+   "me": 99.66000366210938,
+   "m10": 99.18953475952148,
+   "gap": 0.47,
+   "now_gap": 0.71
   },
   {
    "name": "米国債",
    "ticker": "IEF",
-   "err": "single positional indexer is out-of-bounds"
+   "rule": "1年モメンタム",
+   "ok": false,
+   "r252": -1.91
   },
   {
    "name": "日本国債",
    "ticker": "2510.T",
-   "err": "single positional indexer is out-of-bounds"
+   "rule": "10か月線(月末)",
+   "ok": false,
+   "me_date": "2026-10-31",
+   "me": 804.0999755859375,
+   "m10": 809.9944091796875,
+   "gap": -0.73,
+   "now_gap": 0.37
   }
  ]
 }
