@@ -350,7 +350,7 @@ function render(){
     rows+=`<div class="cr"><div><b>${lab}</b><div class="d">${m==null?'200日線を取得できず':'200日線の'+(m>=0?'上（+':'下（')+m.toFixed(1)+'%）'+(m>=0&&m<1?'。線すれすれ':'')}</div></div><div class="v">${m==null?'--':m>=0?'保持':'割れ'}</div></div>`});
    [['金','金'],['銀','銀']].forEach(([lab,n])=>{const m=ma(n);
     rows+=`<div class="cr"><div><b>${lab}（200日線ルール・暴落回避向け）</b><div class="d">${m==null?'200日線を取得できず':'200日線の'+(m>=0?'上（+':'下（')+m.toFixed(1)+'%）'}。検証42：最大下落が前半・後半とも縮小（利益は減る）</div></div><div class="v">${m==null?'--':m>=0?'保持':'持たない'}</div></div>`});
-   rows+=`<div class="cr"><div><b>プラチナ・REIT・債券</b><div class="d">下げを避ける検証済みのルールなし（プラチナは200日線ルールで後半悪化）</div></div><div class="v" style="color:var(--sub)">判定なし</div></div>`;
+   rows+=`<div class="cr"><div><b>プラチナ</b><div class="d">REIT・国債は①の欄で検証94のルールで判定。プラチナは200日線ルールが効かない</div></div><div class="v" style="color:var(--sub)">持たない</div></div>`;
    e.className='panel'+(pc<100?' alert':'');
    e.innerHTML=`<div class="note">日経関連・半導体・銀行を、いま持ってよい割合</div><div class="big ${pc<100?'up':''}">${pc}%</div><div class="note">総額700万円なら上限 ${(700*pc/100).toLocaleString()}万円</div><div class="lead">${pc===100?'今まで通り持ってよい':pc===0?'全部売って現金にする状態':'持ち株を'+pc+'%まで減らす（'+(100-pc)+'%売る）'}</div>
    ${(()=>{const sx=Object.entries(D.dbg_sox||{});if(sx.length<2)return '';const [d1,v1]=sx[sx.length-1],[,v0]=sx[sx.length-2],r=(v1/v0-1)*100;if(d1<D.asOf||r>-4)return '';return `<div class="row"><span>次の東京の取引日に点灯見込み</span><b class="up">SOX前夜≤-4%（${d1} SOX ${r.toFixed(1)}%）</b></div><div class="note">東京の取引が始まると信号に加わります。日経がその日−2%以下なら2本で25%、−3%以下なら3本で0%です</div>`})()}
@@ -694,7 +694,7 @@ function render(){
 }
 
 (async()=>{
- [S,C,BT,PP,LT,MG,FW,FI,FC,DF,DI,AS,HL,OL,TRK,PHI,NH,NKD,IXD,JMP,CAT,SLV,OVL,WRP,FAN,AIC,SFN,SEC,SECH]=await Promise.all([get('data/signals.json'),get('data/candles.json'),get('data/compare6.json'),get('data/paper.json'),get('data/logic_tree.json'),get('data/morning.json'),get('data/finwatch.json'),get('data/finwatch_intraday.json'),get('data/forecast.json'),get('data/defense.json'),get('data/defense_intraday.json'),get('data/assets.json'),get('data/health.json'),get('data/outlook.json'),get('data/defense_track.json'),get('data/path_hist.json'),get('data/node_hist.json'),get('data/nk_daily.json'),get('data/idx_daily.json'),get('data/jumps.json'),get('data/catalysts.json'),get('data/series_live.json'),get('data/crash_overlay.json'),get('data/crash_warp.json'),get('data/forecast_fan.json'),get('data/ai_cycle.json'),get('data/stock_fan.json'),get('data/sectors.json'),get('data/sectors_hist.json')]);
+ [S,C,BT,PP,LT,MG,FW,FI,FC,DF,DI,AS,HL,OL,TRK,PHI,NH,NKD,IXD,JMP,CAT,SLV,OVL,WRP,FAN,AIC,SFN,SEC,SECH,ARL]=await Promise.all([get('data/signals.json'),get('data/candles.json'),get('data/compare6.json'),get('data/paper.json'),get('data/logic_tree.json'),get('data/morning.json'),get('data/finwatch.json'),get('data/finwatch_intraday.json'),get('data/forecast.json'),get('data/defense.json'),get('data/defense_intraday.json'),get('data/assets.json'),get('data/health.json'),get('data/outlook.json'),get('data/defense_track.json'),get('data/path_hist.json'),get('data/node_hist.json'),get('data/nk_daily.json'),get('data/idx_daily.json'),get('data/jumps.json'),get('data/catalysts.json'),get('data/series_live.json'),get('data/crash_overlay.json'),get('data/crash_warp.json'),get('data/forecast_fan.json'),get('data/ai_cycle.json'),get('data/stock_fan.json'),get('data/sectors.json'),get('data/sectors_hist.json'),get('data/asset_rules.json')]);
  if(S){const [y,m,d]=S.market_date.split('-');document.getElementById('hdate').textContent=`${+m}月${+d}日`;
   document.getElementById('hst').textContent='✓ 判定完了';{const W='日月火水木金土',u=new Date(S.updated.replace(' ','T')+':00+09:00'),md=new Date(S.market_date+'T00:00:00+09:00');
   let n=new Date(md.getTime()+864e5);while([0,6].includes(n.getUTCDay()===undefined?0:new Date(n.getTime()+9*36e5).getUTCDay()))n=new Date(n.getTime()+864e5);
@@ -729,7 +729,11 @@ window.renderV2=()=>{
   const jp=DF?DF.target:null,rows=[];
   rows.push({n:'日本株（日経・TOPIX）',ok:jp>0,w:jp||0,why:`防御方針C：直近20営業日の危険信号 最大${DF?DF.hold10_max??'—':'—'}本・社債20日 ${DF&&DF.credit_d20!=null?pc(DF.credit_d20,2):'—'} → 目安${jp??'—'}%`});
   [['米国株','米国株'],['先進国株','先進国株'],['金','金'],['銀','銀']].forEach(([lab,n])=>{const a=gi(n);if(!a)return;rows.push({n:lab,ok:a.ma200!=null&&a.ma200>=0,ma:a.ma200,why:`200日線から ${a.ma200!=null?pc(a.ma200):'—'}（検証29・42：線の上だけ持つ）`})});
-  ['REIT','米国債','日本国債'].forEach(n=>{const a=gi(n);rows.push({n,ok:false,nr:true,why:`検証で効く売買ルールがない${a&&a.ma200!=null?`（200日線から ${pc(a.ma200)}）`:''} → 新しくは持たない`})});
+  {const R=(ARL&&ARL.items)||[],gr=n=>R.find(x=>x.name===n);
+   [['J-REIT','J-REIT','検証94：月末に10か月平均より上なら翌月持つ。最大下げ 48→29%、5年区間4/4で下げが小さくなった'],['米REIT','米REIT','検証94（IYR）：月末10か月線。最大下げ 74→27%、6区間中5で下げが小さくなった'],['米国債','米国債','検証94（IEF）：1年の騰落がプラスなら持つ。最大下げ 24→10%、5区間中4で下げが小さくなった'],['日本国債','日本国債','検証94（2510）：月末10か月線。最大下げ 21→6%（2018年からの短いデータ・2区間2/2）']].forEach(([lab,n,v])=>{const x=gr(n);
+    if(!x||x.err){rows.push({n:lab,ok:false,pend:true,why:v+' → 今日の値は取得待ち（持たない扱い）'});return}
+    const st=x.rule==='1年モメンタム'?`1年の騰落 ${pc(x.r252)}`:`${x.me_date}末の終値が10か月平均から ${pc(x.gap)}（今日の値なら ${pc(x.now_gap)}）`;
+    rows.push({n:lab,ok:!!x.ok,why:`${st}\n${v}`})})}
   const risk=rows.filter(r=>!r.nr&&r.ok);let alloc={};
   const jpW=(jp||0)/100;const others=risk.filter(r=>r.n!=='日本株（日経・TOPIX）');
   const riskTot=(jpW>0?0.4*jpW:0)+(others.length?Math.min(0.6,others.length*0.15):0);
@@ -741,8 +745,8 @@ window.renderV2=()=>{
   <div style="display:flex;height:16px;border-radius:8px;overflow:hidden;margin:8px 0">${bar}</div>
   ${Object.entries(alloc).filter(([,v])=>v>0).map(([k,v])=>`<div class="row"><span>${k}</span><b>${(v*100).toFixed(0)}%${hold?`（${f(hold*v)}万円）`:''}</b></div>`).join('')}
   <div class="ttl" style="margin-top:10px"><span class="nm">資産ごとの判定</span></div>
-  ${rows.map(r=>`<div class="row"><span>${r.n}</span><b style="color:${r.nr?'var(--sub)':r.ok?'#3fb950':'#ff5555'}">${r.nr?'持たない（判定なし）':r.ok?'持ってよい':'持たない'}</b></div><div class="note">${esc(r.why)}</div>`).join('')}
-  <div class="note">割合の決め方：日本株は防御方針Cの目安%の4割まで、日本株以外で200日線の上にある資産は1つ15%（合計60%まで）、残りは円の現金・個人向け国債（検証51：急落中に最も損失が小さい）。保有額は「今日の結論」の欄で入力した値（このスマホだけに保存）。</div>`}catch(e){console.log('reb',e)}
+  ${rows.map(r=>`<div class="row"><span>${r.n}</span><b style="color:${r.pend?'var(--sub)':r.ok?'#3fb950':'#ff5555'}">${r.pend?'持たない（取得待ち）':r.ok?'持ってよい':'持たない'}</b></div><div class="note">${esc(r.why)}</div>`).join('')}
+  <div class="note">割合の決め方：日本株は防御方針Cの目安%の4割まで、日本株以外で各ルールが「持ってよい」の資産は1つ15%（合計60%まで）、残りは円の現金・個人向け国債（検証51：急落中に最も損失が小さい）。保有額は「今日の結論」の欄で入力した値（このスマホだけに保存）。</div>`}catch(e){console.log('reb',e)}
  /* ② 暴落の合図とセリングクライマックスの日付 */
  try{const el=document.getElementById('sigdate');const cr=(SEC&&SEC.credit)||{};const fl=(DF&&DF.today&&DF.today.flags)||{};
   const NM={nk2:'日経1日≤−2%',nk3:'日経1日≤−3%',nk5d:'日経5日≤−5%',sox:'SOX前夜≤−4%',bank:'銀行群1日≤−4%',fin:'金融機関基準'};

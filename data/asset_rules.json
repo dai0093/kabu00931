@@ -1,0 +1,25 @@
+{
+ "updatedAt": "2026-11-25T05:34Z",
+ "items": [
+  {
+   "name": "J-REIT",
+   "ticker": "1343.T",
+   "err": "single positional indexer is out-of-bounds"
+  },
+  {
+   "name": "米REIT",
+   "ticker": "IYR",
+   "err": "single positional indexer is out-of-bounds"
+  },
+  {
+   "name": "米国債",
+   "ticker": "IEF",
+   "err": "single positional indexer is out-of-bounds"
+  },
+  {
+   "name": "日本国債",
+   "ticker": "2510.T",
+   "err": "single positional indexer is out-of-bounds"
+  }
+ ]
+}
