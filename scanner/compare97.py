@@ -8,11 +8,12 @@ jre=pd.concat([g(t) for t in ("8801.T","8802.T","8830.T")],axis=1).dropna();jre=
 jreit=g("1343.T")
 try:
     r=requests.get("https://fred.stlouisfed.org/graph/fredgraph.csv?id=DRSFRMACBS",timeout=30).text
-    dq=pd.read_csv(io.StringIO(r),parse_dates=[0]).set_index(pd.read_csv(io.StringIO(r)).columns[0]).iloc[:,0] if False else None
-    t=pd.read_csv(io.StringIO(r));t.iloc[:,0]=pd.to_datetime(t.iloc[:,0]);dq=pd.to_numeric(t.set_index(t.columns[0]).iloc[:,0],errors="coerce").dropna()
+    t=pd.read_csv(io.StringIO(r));t.index=pd.to_datetime(t.iloc[:,0]);dq=pd.to_numeric(t.iloc[:,1],errors="coerce").dropna()
     print("延滞率",dq.index[0].date(),"〜",dq.index[-1].date(),"最新",dq.iloc[-1])
 except Exception as e: dq=None;print("延滞率 取得失敗",e)
-def crash(idx,day,h=120,th=-20):
+H_=250
+def crash(idx,day,h=None,th=-20):
+    h=h or H_
     s=idx[idx.index>=day]
     if len(s)<h: return np.nan
     return float((s.iloc[:h+1].min()/s.iloc[0]-1)*100<=th)
@@ -25,7 +26,7 @@ def events(sig,gap=60):
 def test(name,sig,idx,lab):
     ev=events(sig);base=[crash(idx,d) for d in idx.index[::5]];base=np.nanmean(base)*100
     rs=[crash(idx,d) for d in ev];hit=np.nanmean(rs)*100 if ev else np.nan
-    print(f"\n== {name} → {lab}120日以内−20%：合図{len(ev)}回 的中{np.nansum(rs):.0f}/{np.sum(~np.isnan(rs))} = {hit:.0f}%（ふだん{base:.1f}%）")
+    print(f"\n== {name} → {lab}{H_}日以内−20%：合図{len(ev)}回 的中{np.nansum(rs):.0f}/{np.sum(~np.isnan(rs))} = {hit:.0f}%（ふだん{base:.1f}%）")
     yrs=range(1995,2027,5);good=0;n=0
     for y in yrs:
         e=[d for d in ev if y<=d.year<y+5]
