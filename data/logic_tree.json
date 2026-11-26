@@ -1,6 +1,6 @@
 {
  "updatedAt": "2026-11-26T12:40:00+09:00",
- "builtAt": "2026-11-27T02:55+09:00",
+ "builtAt": "2026-11-27T06:59+09:00",
  "phase": 5,
  "phaseName": "強制売却",
  "phaseDesc": "資金調達が詰まり市場も崩れています。　※期限切れのまま点灯・接近を保持：私募信用、HY OAS",
@@ -65,8 +65,7 @@
    ],
    [
     "金融機関株価",
-    "ok",
-    " 代替で補った14銘柄（最新値・ADR）"
+    "ok"
    ]
   ],
   "fund": [
@@ -124,10 +123,10 @@
  ],
  "values": {
   "vix": {
-   "value": 28.29,
+   "value": 26.8,
    "unit": "",
-   "observedAt": "2026-11-25",
-   "change": "前日比 +1.93（Yahoo確定終値）",
+   "observedAt": "2026-11-26",
+   "change": "前日比 -1.49（Yahoo確定終値）",
    "source": "https://finance.yahoo.com/quote/%5EVIX/"
   },
   "us10": {

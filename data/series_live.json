@@ -1,13 +1,13 @@
 {
  "vix": {
-  "value": 28.29,
-  "observedAt": "2026-11-25",
-  "change": "前日比 +1.93（Yahoo確定終値）",
+  "value": 26.8,
+  "observedAt": "2026-11-26",
+  "change": "前日比 -1.49（Yahoo確定終値）",
   "source": "https://finance.yahoo.com/quote/%5EVIX/"
  },
  "vixd": {
-  "value": 5,
-  "observedAt": "2026-11-25",
+  "value": 6,
+  "observedAt": "2026-11-26",
   "change": "VIX25以上の連続日数（確定終値から計算）",
   "source": "https://finance.yahoo.com/quote/%5EVIX/"
  },
@@ -41,8 +41,8 @@
   "source": "https://finance.yahoo.com/quote/%5ESOX/"
  },
  "nkf": {
-  "value": -0.1,
-  "observedAt": "2026-11-25",
+  "value": 0.55,
+  "observedAt": "2026-11-26",
   "change": "CME日経先物 前日比%（Yahoo）",
   "source": "https://finance.yahoo.com/quote/NKD%3DF/"
  },
@@ -70,5 +70,5 @@
   "change": "仏−独10年 月次平均（ECB）",
   "source": "https://data.ecb.europa.eu/"
  },
- "_at": "2026-11-27T02:55+09:00"
+ "_at": "2026-11-27T06:59+09:00"
 }
