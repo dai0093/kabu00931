@@ -68,155 +68,162 @@
    "date": "2026-10-23",
    "value": 6593664,
    "value_def": 6361954,
-   "target": 0.5,
+   "target": 1.0,
    "nikkei": 6357327
   },
   {
    "date": "2026-10-26",
    "value": 6612669,
-   "value_def": 6339062,
-   "target": 0.5,
+   "value_def": 6316171,
+   "target": 1.0,
    "nikkei": 6306269
   },
   {
    "date": "2026-10-27",
    "value": 6643686,
-   "value_def": 6393322,
-   "target": 0.5,
+   "value_def": 6424297,
+   "target": 1.0,
    "nikkei": 6415655
   },
   {
    "date": "2026-10-28",
    "value": 6602376,
-   "value_def": 6427736,
-   "target": 0.5,
+   "value_def": 6493459,
+   "target": 1.0,
    "nikkei": 6485200
   },
   {
    "date": "2026-10-29",
    "value": 6541144,
-   "value_def": 6455217,
-   "target": 0.5,
+   "value_def": 6548984,
+   "target": 1.0,
    "nikkei": 6556718
   },
   {
    "date": "2026-10-30",
    "value": 6507512,
-   "value_def": 6385125,
+   "value_def": 6406763,
    "target": 0.5,
    "nikkei": 6417860
   },
   {
    "date": "2026-11-02",
    "value": 6484418,
-   "value_def": 6381727,
+   "value_def": 6403354,
    "target": 0.5,
    "nikkei": 6396742
   },
   {
    "date": "2026-11-04",
    "value": 6434006,
-   "value_def": 6338988,
+   "value_def": 6360470,
    "target": 0.5,
    "nikkei": 6306165
   },
   {
    "date": "2026-11-05",
    "value": 6580877,
-   "value_def": 6274933,
+   "value_def": 6296198,
    "target": 0.5,
    "nikkei": 6193533
   },
   {
    "date": "2026-11-06",
    "value": 6042646,
-   "value_def": 6113885,
+   "value_def": 6134605,
    "target": 0.0,
    "nikkei": 5824106
   },
   {
    "date": "2026-11-09",
    "value": 6200666,
-   "value_def": 6113885,
+   "value_def": 6134605,
    "target": 0.0,
    "nikkei": 5960061
   },
   {
    "date": "2026-11-10",
    "value": 6212345,
-   "value_def": 6113885,
+   "value_def": 6134605,
    "target": 0.0,
    "nikkei": 6130833
   },
   {
    "date": "2026-11-11",
    "value": 6269200,
-   "value_def": 6113885,
+   "value_def": 6134605,
    "target": 0.0,
    "nikkei": 6210842
   },
   {
    "date": "2026-11-12",
    "value": 6249895,
-   "value_def": 6113885,
+   "value_def": 6134605,
    "target": 0.0,
    "nikkei": 6167316
   },
   {
    "date": "2026-11-13",
    "value": 6303460,
-   "value_def": 6113885,
+   "value_def": 6134605,
    "target": 0.0,
    "nikkei": 6200069
   },
   {
    "date": "2026-11-16",
    "value": 6264626,
-   "value_def": 6113885,
+   "value_def": 6134605,
    "target": 0.0,
    "nikkei": 6049957
   },
   {
    "date": "2026-11-17",
    "value": 6228482,
-   "value_def": 6113885,
+   "value_def": 6134605,
    "target": 0.0,
    "nikkei": 5968673
   },
   {
    "date": "2026-11-18",
    "value": 6192751,
-   "value_def": 6113885,
+   "value_def": 6134605,
    "target": 0.0,
    "nikkei": 5985288
   },
   {
    "date": "2026-11-19",
    "value": 6232923,
-   "value_def": 6113885,
+   "value_def": 6134605,
    "target": 0.0,
    "nikkei": 6027871
   },
   {
    "date": "2026-11-20",
    "value": 6049001,
-   "value_def": 6113885,
+   "value_def": 6134605,
    "target": 0.0,
    "nikkei": 5722892
   },
   {
    "date": "2026-11-24",
    "value": 6202109,
-   "value_def": 6113885,
+   "value_def": 6134605,
    "target": 0.0,
    "nikkei": 5946790
   },
   {
    "date": "2026-11-25",
    "value": 6238207,
-   "value_def": 6113885,
+   "value_def": 6134605,
    "target": 0.0,
-   "nikkei": 5946790
+   "nikkei": 5781197
+  },
+  {
+   "date": "2026-11-26",
+   "value": 6224015,
+   "value_def": 6134605,
+   "target": 0.0,
+   "nikkei": 5830635
   }
  ],
  "trades": [
@@ -304,7 +311,7 @@
    "status": "保有中",
    "buy": 4808.803999999999,
    "entry_date": "2026-10-16",
-   "last": 5094.0,
+   "last": 5099.0,
    "taken": true
   },
   {
@@ -395,7 +402,7 @@
    "status": "保有中",
    "buy": 6657.650999999999,
    "entry_date": "2026-11-02",
-   "last": 7365.0,
+   "last": 7250.0,
    "taken": true
   },
   {
@@ -456,7 +463,7 @@
    "status": "保有中",
    "buy": 4215.210999999999,
    "entry_date": "2026-11-06",
-   "last": 4513.0,
+   "last": 4448.0,
    "taken": false
   },
   {
@@ -469,7 +476,7 @@
    "status": "保有中",
    "buy": 3894.8909999999996,
    "entry_date": "2026-11-06",
-   "last": 4118.0,
+   "last": 4081.0,
    "taken": false
   },
   {
@@ -482,7 +489,7 @@
    "status": "保有中",
    "buy": 4303.299,
    "entry_date": "2026-11-13",
-   "last": 4385.0,
+   "last": 4330.0,
    "taken": true
   }
  ],
