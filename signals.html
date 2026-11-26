@@ -724,6 +724,16 @@ if('serviceWorker' in navigator)navigator.serviceWorker.register('sw.js').catch(
 window.renderV2=()=>{
  const f=n=>Math.round(n).toLocaleString(),pc=(x,d=1)=>(x>=0?'+':'')+(+x).toFixed(d)+'%',C={ok:'#3fb950',near:'#e8b04b',lit:'#ff5555'},LB={ok:'平常',near:'注意',lit:'悪化'};
  const bd=(d0,n)=>{const x=new Date(d0);let k=0;while(k<n){x.setDate(x.getDate()+1);if(x.getDay()%6)k++}return x},md=x=>`${x.getFullYear()}/${x.getMonth()+1}/${x.getDate()}`;
+ /* 検証97 住宅・不動産（参考） */
+ try{const H=ARL&&ARL.housing,el=document.getElementById('sigdate');if(H&&el){const c=(v,t)=>v<=t?'#ff5555':'var(--fg)';
+  const d=document.createElement('div');d.className='card';d.innerHTML=`<div class="ttl"><span class="nm">住宅・不動産（参考・判定に使わない）</span><span class="tag" style="background:#666">予測出来なかった</span></div>
+  <div class="note">検証97（1995〜）：下の合図のどれも、その後の株価指数−20%（120日・250日以内）を、5年ごとの区間で一貫して予測出来なかった。社債より先に出ることはあるが（中央値4〜8か月前）、空振りが多い。</div>
+  <div class="row"><span>米 住宅建設株ITB 高値から</span><b style="color:${c(H.itb_dd,-25)}">${H.itb_dd}%</b></div>
+  <div class="row"><span>米 住宅建設株XHB 高値から</span><b style="color:${c(H.xhb_dd,-25)}">${H.xhb_dd}%</b></div>
+  ${H.dq!=null?`<div class="row"><span>米 住宅ローン延滞率（${H.dq_date}）</span><b style="color:${H.dq_yoy>=0.5?'#ff5555':'var(--fg)'}">${H.dq}%（1年で${H.dq_yoy>=0?'+':''}${H.dq_yoy}pt）</b></div><div class="note">1年で+0.5pt以上は1991年以降で2007年4月の1回だけ（件数が足りず検証不能）</div>`:''}
+  <div class="row"><span>日 不動産株3社（三井・三菱地所・住友）高値から</span><b style="color:${c(H.jp3_dd,-25)}">${H.jp3_dd}%</b></div>
+  <div class="row"><span>日 不動産株3社 日経との差 60日</span><b>${H.jp3_rel60>0?'+':''}${H.jp3_rel60}%</b></div>
+  <div class="row"><span>日 J-REIT 高値から</span><b style="color:${c(H.jreit_dd,-20)}">${H.jreit_dd}%</b></div>`;el.after(d)}}catch(_){}
  /* 検証95 信用評価損益率 */
  try{const mg=ARL&&ARL.margin,el=document.getElementById('sigdate');if(mg&&el){const e=mg.er,c=e<=-25?'#ff5555':e<=-20?'#ff5555':e<=-15?'#e8b04b':'#3fb950';
   const d=document.createElement('div');d.className='card';d.innerHTML=`<div class="ttl"><span class="nm">個人の信用取引（追証の温度計）</span><span class="tag" style="background:${c}">${e.toFixed(1)}%</span></div>
