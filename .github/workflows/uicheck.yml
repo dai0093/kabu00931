@@ -1,7 +1,7 @@
 name: uicheck
 on:
   workflow_run:
-    workflows: [finwatch, jumps, morning-reminder]
+    workflows: [audit, jumps, morning-reminder]
     types: [completed]
   push:
     paths: ["signals.html","scanner/uicheck.py"]

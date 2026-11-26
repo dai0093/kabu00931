@@ -29,7 +29,10 @@ fl_now=(L("data/defense.json")["today"] or {}).get("flags",{})
 for k,v in {"日経1日≤-2%":r1<=-2,"日経1日≤-3%":r1<=-3,"日経5日≤-5%":r5<=-5,"SOX前夜≤-4%":sp<=-4}.items():
     (OKS if fl_now.get(k)==v else P).append(f"信号「{k}」 Tool={fl_now.get(k)} 再計算={v}")
 # 底打ち欄
-b=D.get("bottom",{});chk("底打ち欄の日経(最新終値のはず)",b.get("close"),float(c.iloc[-1]),1.0)
+b=D.get("bottom",{})
+_u=pd.Timestamp(D["updatedAt"]).tz_convert("Asia/Tokyo") if pd.Timestamp(D["updatedAt"]).tzinfo else pd.Timestamp(D["updatedAt"])
+if _u.weekday()<5 and 9<=_u.hour and (_u.hour*60+_u.minute)<15*60+40: OKS.append("底打ち欄：取引時間中の値のため照合しない（"+str(_u)[:16]+"）")
+else: chk("底打ち欄の日経(最新終値のはず)",b.get("close"),float(c.iloc[-1]),1.0)
 # 高値
 chk("終値の高値",float(c.max()),float(nk.max()),1.0)
 # 社債など
