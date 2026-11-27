@@ -1,66 +1,66 @@
 {
  "vix": {
-  "value": 26.8,
-  "observedAt": "2026-11-26",
-  "change": "前日比 -1.49（Yahoo確定終値）",
+  "value": 23.81,
+  "observedAt": "2026-11-27",
+  "change": "前日比 -2.99（Yahoo確定終値）",
   "source": "https://finance.yahoo.com/quote/%5EVIX/"
  },
  "vixd": {
-  "value": 6,
-  "observedAt": "2026-11-26",
+  "value": 0,
+  "observedAt": "2026-11-27",
   "change": "VIX25以上の連続日数（確定終値から計算）",
   "source": "https://finance.yahoo.com/quote/%5EVIX/"
  },
  "us10": {
-  "value": 4.848,
-  "observedAt": "2026-11-25",
-  "change": "前日比 -0.056（Yahoo確定終値）",
+  "value": 4.936,
+  "observedAt": "2026-11-27",
+  "change": "前日比 +0.088（Yahoo確定終値）",
   "source": "https://finance.yahoo.com/quote/%5ETNX/"
  },
  "t10y2y": {
-  "value": 0.24,
-  "observedAt": "2026-11-25",
+  "value": 0.25,
+  "observedAt": "2026-11-27",
   "change": "財務省の利回り曲線（10年−2年）",
   "source": "https://home.treasury.gov/resource-center/data-chart-center/interest-rates/TextView?type=daily_treasury_yield_curve"
  },
  "soxdd": {
-  "value": -40.0,
-  "observedAt": "2026-11-25",
+  "value": -37.2,
+  "observedAt": "2026-11-27",
   "change": "250日高値比（Yahoo）",
   "source": "https://finance.yahoo.com/quote/%5ESOX/"
  },
  "sox40": {
-  "value": -40.0,
-  "on": true,
-  "observedAt": "2026-11-25"
+  "value": -37.2,
+  "on": false,
+  "observedAt": "2026-11-27"
  },
  "sox": {
-  "value": 8774.86,
-  "observedAt": "2026-11-25",
+  "value": 9186.71,
+  "observedAt": "2026-11-27",
   "change": "",
   "source": "https://finance.yahoo.com/quote/%5ESOX/"
  },
  "nkf": {
-  "value": -0.1,
-  "observedAt": "2026-11-25",
+  "value": 2.88,
+  "observedAt": "2026-11-27",
   "change": "CME日経先物 前日比%（Yahoo）",
   "source": "https://finance.yahoo.com/quote/NKD%3DF/"
  },
  "hy_px": {
-  "value": -2.5,
-  "observedAt": "2026-11-25",
+  "value": -1.52,
+  "observedAt": "2026-11-27",
   "change": "HYG÷IEF 20日変化%（HY OASの代替・検証46）",
   "source": "https://finance.yahoo.com/quote/HYG/"
  },
  "nfci_px": {
-  "value": 1.71,
-  "observedAt": "2026-11-25",
+  "value": 1.12,
+  "observedAt": "2026-11-27",
   "change": "金融ストレス合成（VIX・社債・米銀のzスコア平均、NFCIの代替・検証46）",
   "source": "https://finance.yahoo.com/quote/%5EVIX/"
  },
  "pc_px": {
-  "value": 2.77,
-  "observedAt": "2026-11-25",
+  "value": 5.45,
+  "observedAt": "2026-11-27",
   "change": "私募信用運用会社株（BX・APO・KKR・ARES）5日中央値%（代替・検証46）",
   "source": "https://finance.yahoo.com/quote/BX/"
  },
@@ -70,5 +70,5 @@
   "change": "仏−独10年 月次平均（ECB）",
   "source": "https://data.ecb.europa.eu/"
  },
- "_at": "2026-11-28T02:41+09:00"
+ "_at": "2026-11-28T08:58+09:00"
 }

@@ -1,9 +1,9 @@
 {
  "updatedAt": "2026-11-27T12:30:00+09:00",
- "builtAt": "2026-11-28T02:41+09:00",
- "phase": 5,
- "phaseName": "強制売却",
- "phaseDesc": "資金調達が詰まり市場も崩れています。　※期限切れのまま点灯・接近を保持：私募信用、HY OAS",
+ "builtAt": "2026-11-28T08:58+09:00",
+ "phase": 2,
+ "phaseName": "通り道の予兆",
+ "phaseDesc": "信用層に1つ点灯。　※期限切れのまま点灯・接近を保持：私募信用、HY OAS",
  "counts": {
   "origin": [
    3,
@@ -14,11 +14,11 @@
    5
   ],
   "fund": [
-   1,
+   0,
    2
   ],
   "market": [
-   2,
+   1,
    3
   ]
  },
@@ -65,14 +65,14 @@
    [
     "金融機関株価",
     "ok",
-    "未更新の群あり（日本その他：前日までの値で判定） 代替で補った11銘柄（最新値・ADR）"
+    " 代替で補った8銘柄（最新値・ADR）"
    ]
   ],
   "fund": [
    [
     "NFCI",
-    "lit",
-    "代替：金融ストレス合成 1.71（≥1.5点灯・≥1.0接近、検証46で予測出来た）"
+    "near",
+    "代替：金融ストレス合成 1.12（≥1.5点灯・≥1.0接近、検証46で予測出来た）"
    ],
    [
     "生保",
@@ -82,7 +82,7 @@
   "market": [
    [
     "VIX",
-    "lit"
+    "ok"
    ],
    [
     "日経先物",
@@ -123,17 +123,17 @@
  ],
  "values": {
   "vix": {
-   "value": 26.8,
+   "value": 23.81,
    "unit": "",
-   "observedAt": "2026-11-26",
-   "change": "前日比 -1.49（Yahoo確定終値）",
+   "observedAt": "2026-11-27",
+   "change": "前日比 -2.99（Yahoo確定終値）",
    "source": "https://finance.yahoo.com/quote/%5EVIX/"
   },
   "us10": {
-   "value": 4.848,
+   "value": 4.936,
    "unit": "%",
-   "observedAt": "2026-11-25",
-   "change": "前日比 -0.056（Yahoo確定終値）",
+   "observedAt": "2026-11-27",
+   "change": "前日比 +0.088（Yahoo確定終値）",
    "source": "https://finance.yahoo.com/quote/%5ETNX/"
   },
   "jgb10": {
@@ -165,9 +165,9 @@
    "source": "https://fred.stlouisfed.org/data/BAMLC0A0CM"
   },
   "t10y2y": {
-   "value": 0.24,
+   "value": 0.25,
    "unit": "%",
-   "observedAt": "2026-11-25",
+   "observedAt": "2026-11-27",
    "change": "財務省の利回り曲線（10年−2年）",
    "source": "https://home.treasury.gov/resource-center/data-chart-center/interest-rates/TextView?type=daily_treasury_yield_curve"
   },
@@ -373,32 +373,32 @@
  "source": "https://claude.ai/artifact/KJPgY7LSb8DMsdXt2A1Gst",
  "byAsset": {
   "日経平均": {
-   "phase": 5,
+   "phase": 2,
    "lit": {
     "起点": 3,
     "信用": 1,
-    "資金": 1,
-    "市場": 2
+    "資金": 0,
+    "市場": 1
    },
    "items": 15
   },
   "200A（半導体）": {
-   "phase": 5,
+   "phase": 2,
    "lit": {
     "起点": 2,
     "信用": 1,
-    "資金": 1,
-    "市場": 2
+    "資金": 0,
+    "市場": 1
    },
    "items": 11
   },
   "SOXL": {
-   "phase": 5,
+   "phase": 2,
    "lit": {
     "起点": 1,
     "信用": 1,
-    "資金": 1,
-    "市場": 2
+    "資金": 0,
+    "市場": 1
    },
    "items": 7
   }

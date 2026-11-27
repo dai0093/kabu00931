@@ -51,15 +51,9 @@
   },
   "NFCI": {
    "since": "2026-11-20",
-   "lit_since": "2026-11-26",
+   "lit_since": null,
    "before_start": false,
-   "st": "lit"
-  },
-  "VIX": {
-   "since": "2026-11-20",
-   "lit_since": "2026-11-24",
-   "before_start": false,
-   "st": "lit"
+   "st": "near"
   }
  }
 }
