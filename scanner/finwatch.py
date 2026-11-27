@@ -139,6 +139,7 @@ except Exception:
 # 信用（社債）の代替：FREDのHY/IG OASが取れないため、社債ETF÷米国債ETFの比で毎日見る（閾値は未検証。表示のみ）
 try:
     _cx = yf.download(["HYG", "LQD", "IEF"], period="1y", auto_adjust=True, progress=False)["Close"].dropna()
+    _cx = settled(_cx, "HYG")  # 2026-11-28修正：米国の取引時間中の未確定値で社債20日（0%上限の条件）が動いていた（11/28 2:40の実行で −2.5→−1.58）
     _cr = {}
     for _k in ("HYG", "LQD"):
         _q = _cx[_k] / _cx["IEF"]
