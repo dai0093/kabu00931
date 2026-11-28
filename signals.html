@@ -68,6 +68,34 @@ input{width:100%;font:inherit;font-size:18px;padding:10px;border-radius:8px;bord
 [data-fold][data-open]>.ttl::after{content:"－"}
 [data-fold]:not([data-open])>:not(.ttl){display:none}
 </style>
+<style>
+/* 折りたたみスマホ（開いた画面）用：2026-11-28 */
+#kpi{display:grid;grid-template-columns:repeat(4,1fr);gap:6px;margin:6px 0 12px}
+#kpi .k{background:linear-gradient(180deg,#10304e,#0b2238);border:1px solid #2a4a6b;border-radius:10px;padding:8px 10px;min-height:64px}
+#kpi .k .l{font-size:11px;letter-spacing:.06em;color:var(--sub);font-weight:700}
+#kpi .k .v{font-size:22px;font-weight:900;font-variant-numeric:tabular-nums;line-height:1.2}
+#kpi .k .s{font-size:11px;color:var(--sub)}
+@media (max-width:699px){#kpi .k{padding:6px 7px;min-height:56px}#kpi .k .v{font-size:17px}#kpi .k .l{font-size:10px}}
+#kpi .k.r{border-color:#e5534b;box-shadow:0 0 0 1px #e5534b55 inset,0 0 14px #e5534b33}#kpi .k.r .v{color:#ff6b6b}
+#kpi .k.y{border-color:#e8b04b}#kpi .k.y .v{color:#f0c060}
+#kpi .k.g .v{color:#6fdc8c}
+@media (min-width:700px){
+ main{max-width:1500px;padding:0 14px 48px}
+ .head{margin:0 -14px 10px}
+ #fold2{display:grid;grid-template-columns:1fr 1fr;gap:14px;align-items:start}
+ #fold2>div>.panel,#fold2>div>.card{margin-bottom:14px}
+ #foldW>.panel{margin-bottom:14px}
+ #foldD{columns:2;column-gap:14px}
+ #foldD>*{break-inside:avoid;display:block}
+ .panel{border-radius:12px;box-shadow:0 0 0 1px #ffffff08 inset}
+ .ttl .nm{font-size:17px}
+ #v2nav{justify-content:center}
+ #kpi{grid-template-columns:repeat(7,1fr)}
+ #kpi .k .v{font-size:20px}
+ .head .date{white-space:nowrap}
+}
+@media (min-width:1150px){#fold2{grid-template-columns:1fr 1fr 1fr}#foldD{columns:3}}
+</style>
 </head>
 <body>
 <main>
@@ -77,10 +105,11 @@ input{width:100%;font:inherit;font-size:18px;padding:10px;border-radius:8px;bord
  <div class="upd">最終更新<br><span id="hupd">--</span></div>
 </div>
 
-<div id="ver" style="font-size:13px;text-align:right;margin:4px"><a href="#etfguard">▼ ETFでの守り方・資産ごとの判定へ</a>　<span style="font-size:11px;color:#8b98ad">画面の版 11-25</span></div>
+<div id="ver" style="font-size:13px;text-align:right;margin:4px"><a href="#etfguard">▼ ETFでの守り方・資産ごとの判定へ</a>　<span style="font-size:11px;color:#8b98ad">画面の版 11-28</span></div>
 <div id="v2nav" style="position:sticky;top:0;z-index:20;display:flex;gap:6px;overflow-x:auto;padding:8px 0;background:var(--bg)">
- <a href="#reb" class="v2b">①持つ割合</a><a href="#sigdate" class="v2b">②暴落の合図と日付</a><a href="#shock" class="v2b">③過去ショック</a><a href="#spill" class="v2b">④AI関連の波及</a><a href="#detail" class="v2b">詳細</a></div>
+ <a href="#kpi" class="v2b">要点</a> <a href="#reb" class="v2b">①持つ割合</a><a href="#sigdate" class="v2b">②暴落の合図と日付</a><a href="#shock" class="v2b">③過去ショック</a><a href="#spill" class="v2b">④AI関連の波及</a><a href="#detail" class="v2b">詳細</a></div>
 <style>.v2b{flex:none;padding:7px 11px;border-radius:16px;background:var(--panel2);color:var(--fg);text-decoration:none;font-size:13px;font-weight:700;border:1px solid #ffffff22}</style>
+<div id="kpi"></div>
 <div class="panel" id="reb"></div>
 <div class="panel" id="sigdate"></div>
 <div class="panel" id="shock"></div>
@@ -724,6 +753,20 @@ if('serviceWorker' in navigator)navigator.serviceWorker.register('sw.js').catch(
 window.renderV2=()=>{
  const f=n=>Math.round(n).toLocaleString(),pc=(x,d=1)=>(x>=0?'+':'')+(+x).toFixed(d)+'%',C={ok:'#3fb950',near:'#e8b04b',lit:'#ff5555'},LB={ok:'平常',near:'注意',lit:'悪化'};
  const bd=(d0,n)=>{const x=new Date(d0);let k=0;while(k<n){x.setDate(x.getDate()+1);if(x.getDay()%6)k++}return x},md=x=>`${x.getFullYear()}/${x.getMonth()+1}/${x.getDate()}`;
+ /* 上の帯 */
+ try{const k=document.getElementById('kpi');if(k){const DD=(DI&&DF&&DI.updatedAt>DF.updatedAt)?DI:(DF||DI),cr=(SEC&&SEC.credit)||{},fl=(DD&&DD.today&&DD.today.flags)||{};
+  const nfl=Object.values(fl).filter(Boolean).length,tg=DF?Math.round(DF.target*100):null;
+  const pre=[cr.hy20<=-2,cr.ig20<=-2,cr.kre_dd<=-25,!!fl['銀行群1日≤-4%'],cr.vix>=45].filter(Boolean).length;
+  const bt=DF&&DF.bottom,mg=ARL&&ARL.margin;
+  const T=(l,v,s,c)=>`<div class="k ${c}"><div class="l">${l}</div><div class="v">${v}</div><div class="s">${s}</div></div>`;
+  k.innerHTML=[T('日本株の持ち高',tg==null?'—':tg+'%','防御方針C',tg===0?'r':tg<100?'y':'g'),
+   T('リーマン型',pre+'/5','2つで判断を変える',pre>=2?'r':pre==1?'y':'g'),
+   T('社債 20日',cr.hy20!=null?cr.hy20.toFixed(2)+'%':'—','−2%で点灯',cr.hy20<=-2?'r':cr.hy20<=-1.5?'y':'g'),
+   T('VIX',cr.vix!=null?cr.vix.toFixed(1):'—','45で点灯',cr.vix>=45?'r':cr.vix>=30?'y':'g'),
+   T('日経 高値から',bt?bt.dd+'%':'—',bt?Math.round(bt.close).toLocaleString()+'円・場中の高値基準':'',bt&&bt.dd<=-20?'r':bt&&bt.dd<=-10?'y':'g'),
+   T('防御の信号',nfl+'本','今日の点灯',nfl>=2?'r':nfl==1?'y':'g'),
+   T('信用評価損益率',mg?mg.er.toFixed(1)+'%':'—',mg?mg.date.slice(5)+'時点':'',mg&&mg.er<=-20?'r':mg&&mg.er<=-15?'y':'g')].join('')}}catch(_){}
+ try{window.foldLayout&&window.foldLayout()}catch(_){}
  /* 検証97 住宅・不動産（参考） */
  try{const H=ARL&&ARL.housing,el=document.getElementById('sigdate');if(H&&el){const c=(v,t)=>v<=t?'#ff5555':'var(--fg)';
   const d=document.createElement('div');d.className='card';d.innerHTML=`<div class="ttl"><span class="nm">住宅・不動産（参考・判定に使わない）</span><span class="tag" style="background:#666">予測出来なかった</span></div>
@@ -882,5 +925,25 @@ window.renderFan=()=>{try{(()=>{const el=document.getElementById('fan');if(!el||
 
 </script>
 <script>Promise.all([fetch('data/uicheck.json?'+Date.now()).then(r=>r.json()).catch(()=>null),fetch('data/audit.json?'+Date.now()).then(r=>r.json()).catch(()=>null)]).then(([x,y])=>({ok:(!x||x.ok)&&(!y||y.ok),at:((y&&y.at)||(x&&x.at)||''),problems:[...((x&&x.problems)||[]),...((y&&y.problems)||[])]})).then(u=>{if(!u||u.ok)return;const d=document.createElement('div');d.style.cssText='background:#ff5555;color:#fff;padding:10px;margin:6px;border-radius:8px;font-size:14px';d.innerHTML='<b>⚠ 自動点検で表示とデータの食い違いを検知（'+u.at.slice(5,16).replace('T',' ')+'）</b><br>'+u.problems.map(x=>'・'+x.replace(/</g,'&lt;')).join('<br>')+'<br>この欄の値は信用せず、修正を待ってください';document.body.prepend(d)}).catch(()=>{})</script>
+<script>
+/* 開いた画面では欄を並べる。閉じたら1列に戻す */
+(function(){
+ const A=['reb','sigdate'],B=['shock','crashcmp','fan','stkfan'],W=['spill','aic'];
+ function wide(){const m=document.querySelector('main');if(document.getElementById('fold2'))return;
+  const f=document.createElement('div');f.id='fold2';const ca=document.createElement('div'),cb=document.createElement('div');f.append(ca,cb);
+  const first=document.getElementById('reb');first.before(f);
+  const take=(id,col)=>{const e=document.getElementById(id);if(!e)return;let n=e.nextElementSibling;col.append(e);
+    while(n&&(n.classList.contains('card'))){const nx=n.nextElementSibling;col.append(n);n=nx}};
+  A.forEach(i=>take(i,ca));B.forEach(i=>take(i,cb));
+  const w=document.createElement('div');w.id='foldW';f.after(w);W.forEach(i=>take(i,w));
+  const d=document.getElementById('detail');if(d){const D=document.createElement('div');D.id='foldD';d.after(D);let n=D.nextElementSibling;while(n&&n.tagName!=='SCRIPT'){const nx=n.nextElementSibling;if(n.tagName!=='H2'||true)D.append(n);n=nx}}}
+ function narrow(){const f=document.getElementById('fold2');if(!f)return;const kids=[...f.querySelectorAll(':scope>div>*')];
+  kids.forEach(k=>f.before(k));f.remove();const w=document.getElementById('foldW');if(w){[...w.children].forEach(k=>w.before(k));w.remove()}
+  const D=document.getElementById('foldD');if(D){[...D.children].forEach(k=>D.before(k));D.remove()}}
+ function lay(){innerWidth>=700?wide():narrow()}
+ window.foldLayout=lay;let t;addEventListener('resize',()=>{clearTimeout(t);t=setTimeout(lay,200)});
+ setTimeout(lay,2500);setTimeout(lay,7000);
+})();
+</script>
 </body>
 </html>
