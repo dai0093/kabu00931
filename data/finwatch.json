@@ -1,5 +1,5 @@
 {
- "updatedAt": "2026-11-28T09:04+09:00",
+ "updatedAt": "2026-11-28T12:52+09:00",
  "th": {
   "d1": -4.0,
   "d5": -8.0,
@@ -268,10 +268,10 @@
    "g": "PC",
    "name": "パートナーズ・グループ",
    "t": "PGHN.SW",
-   "date": "2026-11-26",
+   "date": "2026-11-27",
    "close": 638.6,
-   "d1": 1.7,
-   "d5": 0.3,
+   "d1": 0.0,
+   "d5": 4.0,
    "dd": -6.8,
    "flag": []
   },
@@ -877,14 +877,14 @@
  "stale": [
   "CVC.AS",
   "TKO.PA",
-  "RF.PA",
-  "PGHN.SW"
+  "RF.PA"
  ],
  "stale_groups": [],
  "substituted": {
   "ALV.DE": "最新値",
   "ICG.L": "最新値",
   "MNG.L": "最新値",
+  "PGHN.SW": "ADR PGPHF",
   "HSBA.L": "最新値",
   "BARC.L": "最新値",
   "STAN.L": "ADR SCBFY",
